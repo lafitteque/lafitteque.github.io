@@ -1,0 +1,23 @@
+---
+const { children } = Astro.props;
+---
+
+<script type="module">
+  import katex from "https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.js";
+  import "https://cdn.jsdelivr.net/npm/katex@0.15.2/dist/katex.min.css";
+
+  // Fonction pour rendre LaTeX
+  function renderLatex() {
+    const elements = document.querySelectorAll('.latex');
+    elements.forEach(el => {
+      katex.render(el.textContent, el);
+    });
+  }
+
+  // Rendu des formules après le chargement de la page
+  window.addEventListener("load", renderLatex);
+</script>
+
+<div class="katex">
+  {children}
+</div>
