@@ -1,0 +1,23 @@
+[
+    { 
+      "titre": "Chapitre 1 - Logique", 
+      "url": "/mpsi_01_logique", 
+      "tags": ["autre"] 
+    },
+    { 
+      "titre": "Chapitre 2 - Applications", 
+      "url": "/mpsi_02_applications", 
+      "tags": ["algèbre"] 
+    },
+    { 
+      "titre": "Chapitre 3 - Espaces vectoriels", 
+      "url": "/mpsi_03_espaces_vectoriels", 
+      "tags": ["algèbre", "espaces vectoriels"] 
+    },
+    { 
+      "titre": "Chapitre 4 - Séries", 
+      "url": "/mpsi_04_series", 
+      "tags": ["analyse", "séries"] 
+    }
+  ]
+  

@@ -1,0 +1,50 @@
+---
+import "../styles/global.css"; // Importe le CSS global
+import Filiere from '../components/filiere.astro';
+import Sidebar from '../components/Sidebar.astro';
+---
+
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mon Site de Cours</title>
+  </head>
+  <body>
+    <!-- Zone fixe pour Filiere -->
+    <header>
+      <Filiere />
+    </header>
+
+    <div class="container">
+      <aside class="sidebar">
+        <Sidebar />
+      </aside>
+
+      <div class="main-content-wrapper">
+        <main class="main-content">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sidebar = document.getElementById("sidebar");
+        const mainContentWrapper = document.getElementById("mainContentWrapper");
+        const toggleButton = document.getElementById("toggleSidebar");
+
+        let sidebarVisible = true;
+
+        const toggleSidebar = () => {
+          sidebarVisible = !sidebarVisible;
+          sidebar.classList.toggle("hidden", !sidebarVisible);
+          mainContentWrapper.classList.toggle("sidebar-hidden", !sidebarVisible);
+        };
+
+        toggleButton.addEventListener("click", toggleSidebar);
+      });
+    </script>
+  </body>
+</html>

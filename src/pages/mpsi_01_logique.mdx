@@ -1,0 +1,58 @@
+---
+title: "Cours de logique"
+tag: "autre"
+---
+
+import Base from '../layouts/Base.astro'
+import Hideable from '../components/Hideable.astro'
+import Item from '../components/Item.astro'
+import Tableofcontents from '../components/Tableofcontents.astro'
+
+<Base>
+<Tableofcontents/>
+
+<h1> Mon titre principal </h1>
+
+## Une section
+Blabla contenu de la section.
+
+### Une sous-section
+Contenu de la sous-section.
+
+### Une autre sous-section
+Contenu d'une autre sous-section.
+
+
+<Item type="definition" titre="Définition 1">
+  Voici la définition d'un concept en logique.
+</Item>
+
+<Item type="theorem" titre="Théorème 1">
+  Voici le premier théorème important de cette leçon.
+</Item>
+
+<Item type="propriete" titre="Propriété de la logique">
+  Cette propriété décrit une règle fondamentale.
+</Item>
+
+### Une sous-section dans une nouvelle section
+Et ici le contenu de cette sous-section.
+
+
+Cette section contient du **Markdown** pour du texte simple, des listes, etc.
+
+
+<h1> Mon titre principal </h1>
+
+## Une section
+Blabla contenu de la section.
+
+### Une sous-section
+Contenu de la sous-section.
+
+### Une autre sous-section
+Contenu d'une autre sous-section.
+
+
+</Base>
+

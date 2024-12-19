@@ -1,0 +1,66 @@
+---
+// Tableofcontents.astro : Le composant pour générer la table des matières dynamique
+import "../styles/global.css"; // Assurez-vous que le style est correctement importé
+---
+
+<div class="toc-container">
+  <nav class="toc">
+    <ul id="toc-list">
+      <!-- La table des matières sera remplie dynamiquement ici -->
+    </ul>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const headings = document.querySelectorAll("h2, h3"); // Sélectionner uniquement les titres h2 et h3
+    const tocList = document.getElementById("toc-list");
+    const tocItems = [];
+  
+    let sectionCounter = 0;
+    let subsectionCounter = 0;
+  
+    // Fonction pour générer les numéros des sous-sections sous forme de A, B, C, ..., Z, AA, AB, etc.
+    function getSubsectionNumber(counter) {
+      let result = '';
+      while (counter >= 0) {
+        result = String.fromCharCode(65 + (counter % 26)) + result;
+        counter = Math.floor(counter / 26) - 1;
+      }
+      return result;
+    }
+  
+    headings.forEach((heading) => {
+      const id = heading.id || heading.textContent.trim().replace(/\s+/g, "-").toLowerCase(); // Générer un id unique
+      heading.id = id; // Appliquer l'id
+      const level = parseInt(heading.tagName[1], 10);
+  
+      // Ajouter des classes pour le style (facultatif)
+      if (level === 2) {
+        heading.classList.add('level-2');
+      } else if (level === 3) {
+        heading.classList.add('level-3');
+      }
+  
+      let number = "";
+      if (level === 2) {
+        sectionCounter++;
+        subsectionCounter = 0;
+        number = `${sectionCounter})`;
+      } else if (level === 3) {
+        subsectionCounter++;
+        number = `${sectionCounter}.${getSubsectionNumber(subsectionCounter - 1)})`; // A, B, C, ...
+      }
+  
+      tocItems.push({ id, level, text: heading.textContent.trim(), number });
+    });
+  
+    // Ajouter les éléments de la table des matières à la liste
+    tocItems.forEach((item) => {
+      const li = document.createElement("li");
+      li.className = `toc-item level-${item.level}`;
+      li.innerHTML = `<a href="#${item.id}">${item.number} ${item.text}</a>`;
+      tocList.appendChild(li);
+    });
+  });
+</script>

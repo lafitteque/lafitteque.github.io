@@ -1,0 +1,67 @@
+---
+import coursData from "../data/cours.json"; // Importation du fichier JSON
+import "../styles/global.css"; // Importe le CSS global
+// Extraction des tags uniques
+const tags = ["Tous", ...new Set(coursData.flatMap((cours) => cours.tags))];
+---
+
+
+<aside id="sidebar" class="sidebar">
+  <!-- Sidebar content -->
+  <div class="tags-container">
+    {tags.map((tag) => (
+      <button class="tag-btn" data-tag={tag}>{tag}</button>
+    ))}
+  </div>
+
+  <nav class="cours-nav">
+    <ul>
+      {coursData.map((cours) => (
+        <li class="cours" data-tags={cours.tags.join(",")}>
+          <a href={cours.url}>{cours.titre}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+  </aside>
+  <button id="toggleSidebar" class="toggle-btn toggle-main">←</button>
+  
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Sélectionner les éléments nécessaires
+  const sidebar = document.querySelector(".sidebar");
+  const mainContentWrapper = document.querySelector(".main-content-wrapper");
+  const toggleButton = document.getElementById("toggleSidebar");
+
+  // Si un des éléments est manquant, afficher un message d'erreur
+  if (!sidebar || !mainContentWrapper || !toggleButton) {
+    console.error("Un ou plusieurs éléments nécessaires sont manquants dans le DOM.");
+    return; // Sortir de la fonction si les éléments sont manquants
+  }
+
+  let sidebarVisible = true;
+
+  const toggleSidebar = () => {
+    // Change la visibilité de la sidebar et ajuste la classe du contenu principal
+    sidebarVisible = !sidebarVisible;
+    
+    // Cache ou affiche la sidebar
+    sidebar.classList.toggle("hidden", !sidebarVisible);
+    
+    // Ajuste la largeur du contenu principal
+    mainContentWrapper.classList.toggle("sidebar-hidden", !sidebarVisible);
+
+    // Change le texte du bouton pour la flèche
+    if (sidebarVisible) {
+      toggleButton.textContent = "←"; // Flèche gauche quand la sidebar est visible
+    } else {
+      toggleButton.textContent = "→"; // Flèche droite quand la sidebar est cachée
+    }
+  };
+
+  // Ajouter l'événement de clic sur le bouton
+  toggleButton.addEventListener("click", toggleSidebar);
+});
+
+</script>

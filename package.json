@@ -9,6 +9,12 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.0.9"
+    "@astrojs/mdx": "^4.0.2",
+    "astro": "^5.0.9",
+    "astro-remote": "^0.3.3",
+    "latex.js": "^0.12.6",
+    "markdown-it": "^14.1.0",
+    "rehype-katex": "^7.0.1",
+    "remark-math": "^6.0.0"
   }
 }

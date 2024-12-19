@@ -1,0 +1,13 @@
+---
+import "../styles/global.css"; // Importe le CSS global
+import latexjs from 'latex.js';
+
+// Récupérer la formule LaTeX via les props
+const { latex } = Astro.props;
+
+// Initialiser latex.js pour parser le LaTeX
+const renderedLatex = latexjs(latex).toString();
+---
+
+<!-- Afficher le LaTeX rendu dans une div -->
+<div class="latex-container" innerHTML={renderedLatex}></div>

@@ -1,0 +1,67 @@
+---
+import markdownit from 'markdown-it';  // Importer markdown-it
+import "../styles/global.css"; // Importe le CSS global
+const md = markdownit();
+const { type, titre } = Astro.props;
+const markdownContent = String(Astro.slots.default || "");  // S'assurer que le contenu est une chaîne de caractères
+
+// Définir les couleurs en fonction du type
+const typeColors = {
+  exemple: "#e0e0e0", // Gris clair pour exemple
+  démonstration: "#f5cccc", // Rouge pâle pour démonstration
+  remarque: "#ccf5cc", // Vert pâle pour remarque
+};
+
+const borderColor = typeColors[type] || "#e0e0e0"; // Défaut : gris clair
+const uniqueId = `hideable${titre}` //-${Math.random().toString(36).substr(2, 9)}`; // Générer un ID unique pour chaque hideable
+
+const renderedMarkdown = md.render(markdownContent); // Convertir le Markdown en HTML
+---
+
+<div class="hideable-container" style={`border-color: ${borderColor};`}>
+  <div 
+    class="hideable-header" 
+    style={`background-color: ${borderColor};`} 
+    id={`toggle-header-${uniqueId}`}  <!-- ID unique pour le header -->
+  >
+    {titre}
+    <span class="toggle-hideable-icon">▼</span>
+  </div>
+  <div class="hideable-body" id={`toggle-body-${uniqueId}`} style="display: none;">  <!-- ID unique pour le body -->
+    <!-- Contenu Markdown rendu dans le slot -->
+    <div class="markdown-content">
+        <div class="markdown-content">
+            <slot/> <!-- Utilisation de Fragment pour insérer le HTML -->
+        </div><!-- Utilisation de Fragment pour insérer le HTML -->
+    </div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Sélectionner tous les headers (dans le cas où il y en aurait plusieurs)
+    const headers = document.querySelectorAll('.hideable-header');
+
+    headers.forEach(header => {
+      const uniqueId = header.id.split('-')[2];  // Récupère la partie unique de l'ID (ex: hideable-oi6rlys2k)
+      const body = document.getElementById(`toggle-body-${uniqueId}`);
+      const icon = header.querySelector('.toggle-hideable-icon');
+
+      // Ajout du gestionnaire d'événements pour chaque header
+      header.addEventListener("click", function() {
+
+        // Vérifier que le body est bien trouvé avant de tenter de le basculer
+        if (body) {
+          // Vérification de l'état actuel de la visibilité et bascule
+          if (body.style.display === 'none' || body.style.display === '') {
+            body.style.display = 'block';
+            icon.textContent = '▲';  // Flèche vers le haut
+          } else {
+            body.style.display = 'none';
+            icon.textContent = '▼';  // Flèche vers le bas
+          }
+        }
+      });
+    });
+  });
+</script>
