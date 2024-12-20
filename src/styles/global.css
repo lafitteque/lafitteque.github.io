@@ -47,6 +47,7 @@ h5, .heading-h5 {
 
 h6, .heading-h6 {
   font-size: 16px;
+  margin-bottom: 10px;
 }
 
 /* Styles des sections */
@@ -259,6 +260,7 @@ h4::before {
 
 .tags-container {
   margin-bottom: 1rem;
+  margin-top: -2rem;
 }
 
 .tags-container button {
