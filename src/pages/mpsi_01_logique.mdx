@@ -7,54 +7,74 @@ import Base from '../layouts/Base.astro'
 import Hideable from '../components/Hideable.astro'
 import Item from '../components/Item.astro'
 import Tableofcontents from '../components/Tableofcontents.astro'
+import Katex from '../components/Katex.astro'
 
 <Base>
+# Logique et ensembles
+
 <Tableofcontents/>
 
-<h1> Mon titre principal </h1>
 
-## Une section
-Blabla contenu de la section.
 
-<Hideable type="demonstration">
-bla bla $x^2+2x+7=5$
+## Fondements de logique
+avant la formule math inline mode : $2x + x^2$
+
+avant la formule math display mode :$$ 3x + 3x^3 \N$$
+
+### Opérateurs logiques fondamentaux
+
+<Item type="definition" titre="Proposition"> On appelle proposition (ou assertion) un énoncé mathématique qui a une valeur de vérité donnée : soit vrai soit faux. </Item>
+
+a <Katex>\cP_1</Katex> b
+
+<Hideable type="exemple" titre="Exemple de proposition"> 
+  Regardons les deux propositions suivantes :
+  <Katex>\cP_1 : \text\{"tout entier naturel est pair" est fausse.\} </Katex>
+  <Katex>\cP_2 : \text\{"tout entier multiple de quatre est également un multiple de deux" est vraie.\} </Katex>
 </Hideable>
-### Une sous-section
-Contenu de la sous-section.
 
-### Une autre sous-section
-Contenu d'une autre sous-section.
+<Item type="definition" titre="Table de vérité"> On appelle table de vérité un tableau à double entrée définissant la valeur d'une fonction logique
+pour chacune des combinaisons possibles des entrées. </Item>
+
+<Item type="definition" titre="Conjonction, disjonction et négation"> 
 
 
-<Item type="definition" titre="Définition 1">
-  Voici la définition d'un concept en logique.
+Soient A et B deux 
+
+| A  | B | A et B |  A ou B |
+|---|---|---|---|
+| Vrai | Vrai | Vrai | Vrai |
+| Vrai | Faux | Faux | Vrai |
+| Faux | Vrai | Faux | Vrai |
+| Faux | Faux | Faux | Faux |
+
+
+
 </Item>
 
-<Item type="theorem" titre="Théorème 1">
-  Voici le premier théorème important de cette leçon.
-</Item>
 
-<Item type="propriete" titre="Propriété de la logique">
-  Cette propriété décrit une règle fondamentale.
-</Item>
-
-### Une sous-section dans une nouvelle section
-Et ici le contenu de cette sous-section.
+### Travail avec les quantificateurs
 
 
-Cette section contient du **Markdown** pour du texte simple, des listes, etc.
+
+### Les différents modes de raisonnement
 
 
-<h1> Mon titre principal </h1>
 
-## Une section
-Blabla contenu de la section.
 
-### Une sous-section
-Contenu de la sous-section.
 
-### Une autre sous-section
-Contenu d'une autre sous-section.
+## Ensembles, généralités
+
+### Rappel : les ensembles usuels
+
+
+
+### Opérations usuelles
+
+
+
+### Produit cartésien
+
 
 
 </Base>

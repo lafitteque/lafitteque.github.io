@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^4.0.2",
     "astro": "^5.0.9",
     "astro-remote": "^0.3.3",
+    "katex": "^0.16.18",
     "latex.js": "^0.12.6",
     "markdown-it": "^14.1.0",
     "rehype-katex": "^7.0.1",

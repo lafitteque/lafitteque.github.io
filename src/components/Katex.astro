@@ -1,0 +1,47 @@
+---
+import katex from 'katex';
+
+// Configuration des macros globales
+const macros = {
+  "\\N": "\\mathbb{N}",
+  "\\Z": "\\mathbb{Z}",
+  "\\D": "\\mathbb{D}",
+  "\\Q": "\\mathbb{Q}",
+  "\\R": "\\mathbb{R}",
+  "\\C": "\\mathbb{C}",
+  "\\K": "\\mathbb{K}",
+  "\\L": "\\mathbb{L}",
+
+  "\\cA": "\\mathscr{A}",
+  "\\cB": "\\mathscr{B}",
+  "\\cC": "\\mathscr{C}",
+  "\\cD": "\\mathscr{D}",
+  "\\cE": "\\mathscr{E}",
+  "\\cF": "\\mathscr{F}",
+  "\\cM": "\\mathscr{M}",
+  "\\cN": "\\mathscr{N}",
+  "\\cP": "\\mathscr{P}",
+  "\\cT": "\\mathscr{T}",
+
+  "\\ssi": "\\Leftrightarrow",
+  "\\vect": "\\mathbf{#1}", // Exemple de macro avec un argument
+};
+
+// Récupération du contenu du slot par défaut
+const formula = await Astro.slots.render('default') || '';
+const html = katex.renderToString(formula.trim(), {
+  throwOnError: false,
+  macros,
+  displayMode: false,  // Assurez-vous que ce paramètre est défini sur false pour un rendu inline
+});
+
+---
+
+<div class="text-center"><span class="katex-container" set:html={html}></span></div>
+
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.css"
+  integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+  crossorigin="anonymous"
+/>

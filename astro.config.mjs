@@ -1,10 +1,53 @@
+import rehypeKatex from 'rehype-katex';
+import remarkMath from 'remark-math';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+
+const macros = {
+  "\\N": "\\mathbb{N}",
+  "\\Z": "\\mathbb{Z}",
+  "\\D": "\\mathbb{D}",
+  "\\Q": "\\mathbb{Q}",
+  "\\R": "\\mathbb{R}",
+  "\\C": "\\mathbb{C}",
+  "\\K": "\\mathbb{K}",
+  "\\L": "\\mathbb{L}",
+
+  "\\cA": "\\mathscr{A}",
+  "\\cB": "\\mathscr{B}",
+  "\\cC": "\\mathscr{C}",
+  "\\cD": "\\mathscr{D}",
+  "\\cE": "\\mathscr{E}",
+  "\\cF": "\\mathscr{F}",
+  "\\cM": "\\mathscr{M}",
+  "\\cN": "\\mathscr{N}",
+  "\\cP": "\\mathscr{P}",
+  "\\cT": "\\mathscr{T}",
+
+  "\\ssi": "\\Leftrightarrow",
+  "\\vect": "\\mathbf{#1}", // Exemple de macro avec un argument
+};
+
 export default defineConfig({
-  build: {
-    format: 'directory', // Crée une structure de fichiers et dossiers
+  markdown: {
+    shikiConfig: {
+      theme: "dracula",
+      wrap: false,
+    }
   },
   site: 'https://lafitteque.github.io',
-  base: '', 
-  integrations: [mdx()],
+  integrations: [
+    mdx({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [
+        [
+          rehypeKatex,
+          {
+            output: 'html',  // Désactiver MathML
+            macros: macros,  // Ajouter tes macros ici
+          }
+        ]
+      ]
+    }),
+  ],
 });

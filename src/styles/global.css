@@ -2,15 +2,16 @@
    Styles globaux
 ========================== */
 
-/* Police par défaut */
+/* Police par défaut - Computer Modern */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
+  font-size: 1rem; /* Vous pouvez ajuster la taille si nécessaire */
   counter-reset: section-counter; /* Réinitialisation du compteur global */
 }
 
 .latex-container {
-  font-family: Arial, serif; /* LaTeX standard */
-  font-size: 1.2rem;
+  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
+  font-size: 1rem; /* Vous pouvez ajuster la taille si nécessaire */
 }
 
 /* Container global pour la mise en page */
@@ -218,6 +219,7 @@ h4::before {
 /* ==========================
    Sidebar
 ========================== */
+
 /* Sidebar */
 .sidebar {
   width: 250px; /* Largeur de la sidebar */
@@ -240,7 +242,6 @@ h4::before {
   transition: width 0.3s ease; /* Transition fluide de la largeur */
 }
 
-
 /* Le bouton de bascule doit toujours être visible et fonctionnel, même quand la sidebar est cachée */
 .toggle-btn {
   position: fixed;
@@ -254,9 +255,6 @@ h4::before {
   z-index: 1000; /* Assurez-vous que le bouton est au-dessus de tout le reste */
   transition: left 0.3s ease;
 }
-
-
-
 
 .tags-container {
   margin-bottom: 1rem;
@@ -314,6 +312,7 @@ html, body {
    Sidebar
 ========================== */
 
+/* Sidebar */
 .sidebar {
   position: fixed; /* Fixe la sidebar */
   top: 0;
@@ -370,7 +369,6 @@ html, body {
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
 }
 
-
 .filiere-button {
   background-color: #4caf50;
   color: white;
@@ -399,13 +397,12 @@ html, body {
   text-decoration: underline;
 }
 
-
 .toggle-btn.hidden {
   left: 10px;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
   counter-reset: item-counter; /* Réinitialise le compteur au niveau du document */
 }
 
@@ -429,7 +426,7 @@ body {
 }
 
 .item-header {
-  padding:3px 0px; /* Augmente l'espace autour du texte */
+  padding: 3px 0px; /* Augmente l'espace autour du texte */
   min-height: 30px; /* Définit une hauteur minimale */
   border-radius: 5px; /* Ajoute des coins arrondis */
   display: flex;
@@ -456,9 +453,27 @@ body {
   border-radius: 5px;
 }
 
-
 /* Quand la sidebar est cachée */
 .main-content-wrapper.full-width {
   margin-left: 0;
   width: 100%;
+}
+
+.katex-container {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Ajouter des bordures aux tableaux */
+table {
+  border-collapse: collapse; /* Fusionner les bordures des cellules */
+}
+
+table, th, td {
+  border: 1px solid black; /* Bordure noire autour des cellules */
+}
+
+th, td {
+  padding: 8px; /* Espacement autour du texte */
+  text-align: center; /* Centrer le contenu */
 }
