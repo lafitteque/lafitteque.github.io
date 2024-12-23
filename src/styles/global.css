@@ -5,7 +5,7 @@
 /* Police par défaut - Computer Modern */
 body {
   font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
-  font-size: 1rem; /* Vous pouvez ajuster la taille si nécessaire */
+  font-size: 1.2rem; /* Vous pouvez ajuster la taille si nécessaire */
   counter-reset: section-counter; /* Réinitialisation du compteur global */
 }
 
@@ -27,23 +27,27 @@ body {
 
 /* Taille des titres */
 h1, .heading-h1 {
-  font-size: 32px;
+  font-size: 64px;
+  margin: 1rem 10rem;
+  text-align: center;
 }
 
 h2, .heading-h2 {
-  font-size: 28px;
+  font-size: 48px;
+  margin: 2rem 8rem;
 }
 
 h3, .heading-h3 {
-  font-size: 24px;
+  font-size: 32px;
+  margin: 1rem 4rem;
 }
 
 h4, .heading-h4 {
-  font-size: 20px;
+  font-size: 28px;
 }
 
 h5, .heading-h5 {
-  font-size: 18px;
+  font-size: 24px;
 }
 
 h6, .heading-h6 {
@@ -130,15 +134,20 @@ h4::before {
 
 /* Styles d'indentation pour les niveaux */
 .toc-item.level-1 {
+  font-size: 28px;
   padding-left: 0; /* Pas d'indentation pour le niveau 1 */
 }
 
 .toc-item.level-2 {
-  padding-left: 20px; /* Indentation de 20px pour les sous-sections */
+  margin: 0.5rem 0rem;
+  font-size: 24px;
+  padding-left: 0rem; /* Indentation de 20px pour les sous-sections */
 }
 
 .toc-item.level-3 {
-  padding-left: 40px; /* Indentation de 40px pour les sous-sous-sections */
+  margin: 0.25rem 0rem;
+  font-size: 20px;
+  padding-left: 4rem; /* Indentation de 40px pour les sous-sous-sections */
 }
 
 .toc-item.level-4 {
@@ -157,6 +166,10 @@ h4::before {
 }
 
 .hideable-header {
+  padding: 3px 0px; /* Augmente l'espace autour du texte */
+  min-height: 30px; /* Définit une hauteur minimale */
+  border-radius: 5px; /* Ajoute des coins arrondis */
+  font-size: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;

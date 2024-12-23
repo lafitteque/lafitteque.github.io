@@ -25,7 +25,9 @@ const macros = {
   "\\cT": "\\mathscr{T}",
 
   "\\ssi": "\\Leftrightarrow",
-  "\\vect": "\\mathbf{#1}", // Exemple de macro avec un argument
+  "\\pv": "; \\;",
+  "\\overvar": "",
+  "\\vect": "\\mathbf{#1}",
 };
 
 export default defineConfig({
