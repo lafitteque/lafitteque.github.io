@@ -163,6 +163,7 @@ h4::before {
   border-radius: 5px;
   margin: 20px 0;
   overflow: hidden;
+  margin-left: 4rem; /* Décale le bloc de 2rem vers la droite */
 }
 
 .hideable-header {
@@ -171,8 +172,8 @@ h4::before {
   border-radius: 5px; /* Ajoute des coins arrondis */
   font-size: 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: left;
   padding: 10px 15px;
   font-weight: bold;
   cursor: pointer;
@@ -186,6 +187,13 @@ h4::before {
 .toggle-hideable-icon {
   font-size: 20px;
   font-weight: bold;
+  margin-right: 10px;
+}
+
+.ellipsis {
+  flex-grow: 1;  /* Cette partie occupera tout l'espace disponible */
+  text-align: center;
+  overflow: hidden;
 }
 
 /* ==========================
@@ -490,3 +498,4 @@ th, td {
   padding: 8px; /* Espacement autour du texte */
   text-align: center; /* Centrer le contenu */
 }
+
