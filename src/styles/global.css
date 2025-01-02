@@ -14,13 +14,6 @@ body {
   font-size: 1rem; /* Vous pouvez ajuster la taille si nécessaire */
 }
 
-/* Container global pour la mise en page */
-.container {
-  display: flex;
-  height: 100vh;
-  width: 100%; /* S'assurer que la largeur de .container couvre toute la largeur de la page */
-}
-
 /* ==========================
    Styles des titres (h1, h2, h3...)
 ========================== */
@@ -57,8 +50,9 @@ h6, .heading-h6 {
 
 /* Styles des sections */
 h2 {
-  counter-reset: subsection-counter;
+  counter-reset: subsection-counter  exercice-counter;
   counter-increment: section-counter; /* Incrémente le compteur de section */
+  
 }
 
 h2::before {
@@ -159,17 +153,14 @@ h4::before {
 ========================== */
 
 .hideable-container {
-  border: 1px solid;
-  border-radius: 5px;
-  margin: 20px 0;
+  margin-bottom: 2rem;
   overflow: hidden;
-  margin-left: 4rem; /* Décale le bloc de 2rem vers la droite */
+  margin-left: 5rem; 
 }
 
 .hideable-header {
   padding: 3px 0px; /* Augmente l'espace autour du texte */
   min-height: 30px; /* Définit une hauteur minimale */
-  border-radius: 5px; /* Ajoute des coins arrondis */
   font-size: 20px;
   display: flex;
   justify-content: flex-start;
@@ -177,11 +168,12 @@ h4::before {
   padding: 10px 15px;
   font-weight: bold;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
 }
 
 .hideable-body {
   padding: 10px 15px;
+  background-color: #fafafa;
+  transition: max-height 5s ease, opacity 5s ease; /* Transition fluide */
 }
 
 .toggle-hideable-icon {
@@ -323,9 +315,6 @@ html, body {
 
 /* Container global pour la mise en page */
 .container {
-  display: flex;
-  height: 100vh;
-  width: 100%; /* S'assurer que la largeur de .container couvre toute la largeur de la page */
   overflow: hidden; /* Empêche une barre de défilement horizontale */
 }
 
@@ -442,6 +431,7 @@ body {
   text-align: center;
   margin-right: 10px;
   margin-left: 5px;
+  margin-bottom: 5px;
   font-weight: bold;
   color: black;
 }
@@ -449,7 +439,6 @@ body {
 .item-header {
   padding: 3px 0px; /* Augmente l'espace autour du texte */
   min-height: 30px; /* Définit une hauteur minimale */
-  border-radius: 5px; /* Ajoute des coins arrondis */
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -471,7 +460,6 @@ body {
 .item-body {
   padding: 10px;
   background-color: #fafafa;
-  border-radius: 5px;
 }
 
 /* Quand la sidebar est cachée */
@@ -499,3 +487,23 @@ th, td {
   text-align: center; /* Centrer le contenu */
 }
 
+
+.exercice-header {
+  margin-left: 2rem;
+  margin-bottom: 0px;
+  padding: 0px 0px;
+  counter-increment: exercice-counter; /* Réinitialisation du compteur global */
+}
+
+.exercice-body{
+  margin-left: 5rem;
+  border-top-style: none;
+  border-right-style: none;
+  border-bottom-style: solid;
+  border-left-style: solid;
+}
+
+.exercice-number::after {
+  content: counter(section-counter) "." counter(exercice-counter);
+  font-weight: bold;
+}

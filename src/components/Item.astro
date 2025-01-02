@@ -2,21 +2,59 @@
 import "../styles/global.css"; // Importe le CSS global
 const { type, titre } = Astro.props;
 const typeColors = {
-  definition: "#ccf5cc",  // Vert pâle pour Définition
-  theorem: "#f5cccc",     // Rouge pâle pour Théorème
-  propriete: "#ffe5b4",   // Orange pâle pour Propriété
-  corollaire: "#fff5b3",  // Jaune pâle pour Corollaire
+  definition: "#ccf5cc",  
+  theoreme: "#ede6af",   
+  propriete: "#ede6af",   
+  proposition: "#ede6af",   
+  corollaire: "#ede6af",  
+  lemme: "#ede6af",  
+};
+const typeBorderColors = {
+  definition: "#b0d5b0",  
+  theoreme: "#b64b4b",     
+  propriete: "#db9224", 
+  proposition: "#db9224",  
+  corollaire: "#56b0d3",  
+  lemme: "#56b0d3",  
+};
+const borderWidths = {
+  definition: 6,  
+  theoreme: 8,     
+  propriete: 6, 
+  proposition: 6,  
+  corollaire: 4,  
+  lemme: 4,  
+};
+
+const textValues = {
+  definition: "Définition",  
+  theoreme: "Théorème",     
+  propriete: "Propriété", 
+  proposition: "Proposition",  
+  corollaire: "Corollaire",  
+  lemme: "Lemme",  
 };
 
 const itemColor = typeColors[type] || "#e0e0e0"; // Couleur par défaut si type inconnu
+const borderColor = typeBorderColors[type];
+const itemWidth = borderWidths[type]
+const itemText = textValues[type];
 ---
+<style>
+  p {
+    color: #e6bedc; /* Fond */
+    color: #84408a;
+    color: #56b0d3;
+    color: #4498c9;
+  }
+</style>
 
-<div class="item-container" style={`border-color: ${itemColor};`}>
+<div class="item-container" style={`border: ${itemWidth}px solid ${borderColor};border-radius: 5px;border-top: none;border-right: none;border-bottom: none`}>
   <div class="item-header" style={`background-color: ${itemColor};`}>
     <span class="item-number"></span>
-    <strong>{type.charAt(0).toUpperCase() + type.slice(1)} : {titre}</strong>
+    <strong>{itemText} : {titre}</strong>
   </div>
-  <div class="item-body" style={`border: 3px solid ${itemColor}; border-bottom: 3px solid ${itemColor};`}>
+  <div class="item-body">
     <div style="margin: 0 5px;"><slot /></div> <!-- Le contenu de l'item -->
   </div>
 </div>

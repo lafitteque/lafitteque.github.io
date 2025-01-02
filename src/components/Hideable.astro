@@ -4,26 +4,19 @@ import "../styles/global.css"; // Importe le CSS global
 import { suid } from '../libs/utils';
 
 const { type, titre } = Astro.props;
+const type_upper = type.charAt(0).toUpperCase() + String(type).slice(1)
 
-// Définir les couleurs en fonction du type
-const typeColors = {
-  exemple: "#e0e0e0", // Gris clair pour exemple
-  démonstration: "#f5cccc", // Rouge pâle pour démonstration
-  remarque: "#ccf5cc", // Vert pâle pour remarque
-};
-
-const borderColor = typeColors[type] || "#e0e0e0"; // Défaut : gris clair
 const uniqueId = suid();
 ---
 
-<div class="hideable-container" style={`border-color: ${borderColor};`}>
-  <div class="hideable-header" style={`background-color: ${borderColor};`} id={`toggle-header-${uniqueId}`}>
+<div class="hideable-container">
+  <div class="hideable-header" style={`background-color: #fafafa;`} id={`toggle-header-${uniqueId}`}>
     <span class="toggle-hideable-icon">▼</span> <!-- Flèche gauche -->
-    <span class="titre">{titre}</span>
+    <span class="titre">{type_upper} : {titre}</span>
     <span class="ellipsis"></span> <!-- Ajouter une zone pour les points de suspension -->
     <span class="toggle-hideable-icon">▼</span> <!-- Flèche droite -->
   </div>
-  <div class="hideable-body" id={`toggle-body-${uniqueId}`} style="display: none;">
+  <div class="hideable-body" id={`toggle-body-${uniqueId}`} style=`display: none;border: 1px dotted rgb(180, 180, 180);border-bottom: none;border-left: none;border-right: none;`>
     <!-- Contenu Markdown rendu dans le slot -->
     <div class="markdown-content">
       <div class="markdown-content">

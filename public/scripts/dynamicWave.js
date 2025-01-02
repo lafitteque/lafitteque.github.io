@@ -1,7 +1,7 @@
 export default function generateWavePath(height, amplitude, frequency) {
-    let path = "M0,20 ";
+    let path = "M0,0 ";
     const step = 5;
-    for (let y = 20; y <= height-20; y += step) {
+    for (let y = 0; y <= height-20; y += step) {
       const x = amplitude * Math.sin((2 * Math.PI * frequency * y) / 100);
       path += `L${x},${y} `;
     }

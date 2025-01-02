@@ -1,5 +1,5 @@
 ---
-import "../styles/global.css"; // Importe le CSS global
+//import "../styles/global.css"; // Importe le CSS global
 import { suid } from '../libs/utils';
 
 const uniqueId = suid();  // Générer un uniqueId pour chaque instance du composant
@@ -8,15 +8,14 @@ const { title, content } = Astro.props;
 
 <style>
   .wave-block {
-    display: flex;
+    display:flex;
     align-items: stretch;
     color: black;
   }
 
   .wave {
     flex: 0 0 auto;
-    width: 20px;
-    display: flex;
+    width: 12px;
     align-items: center;
     position: relative;
     color: black;
@@ -27,16 +26,18 @@ const { title, content } = Astro.props;
     width: 100%;
     color: black;
   }
+
 </style>
 
-<b> Remarque : </b>
+
 
 <div class="wave-block" id={`wave-block-${uniqueId}`}>
   <div class="wave" style="padding: 0rem 0.5rem;">
     <!-- Ajout du uniqueId dans l'ID de l'élément SVG -->
     <svg class="dynamic-wave" id={`dynamic-wave-${uniqueId}`} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg>
   </div>
-  <div class="content" id={`content-${uniqueId}`} style="padding: 0rem 1rem;">
+  <div class="content" id={`content-${uniqueId}`} >
+    <b> Remarque : </b>
     <slot/>
   </div>
 </div>
@@ -44,23 +45,20 @@ const { title, content } = Astro.props;
 <!-- Charger le script côté client -->
 <script type="module">
   import generateWave from '/scripts/dynamicWave.js';
-
   document.addEventListener("DOMContentLoaded", () => {
-    // Utiliser le uniqueId pour sélectionner les éléments spécifiques à chaque instance
+  requestAnimationFrame(() => {
     const headers = document.querySelectorAll('.wave-block');
-
     headers.forEach(header => {
-      const uniqueId = header.id.slice(11);  // Récupère la partie unique de l'ID
+      const uniqueId = header.id.slice(11);
       const content = document.querySelector(`#content-${uniqueId}`);
       const waveSvg = document.querySelector(`#dynamic-wave-${uniqueId}`);
-      console.log(" unique Id ", uniqueId)
+
       if (content && waveSvg) {
         const rect = content.getBoundingClientRect();
         const height = rect.height;
 
-        const amplitude = 10; // Ajuster selon les besoins
+        const amplitude = 10;
         const frequency = 2.5;
-
         const pathData = generateWave(height, amplitude, frequency);
 
         waveSvg.setAttribute('viewBox', `-${amplitude} 0 ${2 * amplitude} ${height}`);
@@ -69,4 +67,6 @@ const { title, content } = Astro.props;
       }
     });
   });
+});
 </script>
+

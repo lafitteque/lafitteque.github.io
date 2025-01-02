@@ -1,0 +1,23 @@
+---
+import "../styles/global.css"; // Importe le CSS global
+const {titre} = Astro.props;
+
+---
+
+<div class="exercice-container">
+  <div class="exercice-header">
+    <strong class="encadre">Exercice <span class="exercice-number"></span></strong><span>&nbsp {titre}</span>
+  </div>
+  <div class="exercice-body">
+    <div style="margin: 0 5px;"><slot /></div> <!-- Le contenu de l'item -->
+  </div>
+</div>
+<br>
+
+<style>
+.encadre {
+    border-style: solid;
+    border-width: 2px;
+    padding: 5px 5px;
+}
+</style>

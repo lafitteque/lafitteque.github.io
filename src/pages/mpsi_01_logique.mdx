@@ -5,6 +5,8 @@ tag: "autre"
 
 import Base from '../layouts/Base.astro'
 import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
 import Item from '../components/Item.astro'
 import Tableofcontents from '../components/Tableofcontents.astro'
 import Katex from '../components/Katex.astro'
@@ -22,7 +24,7 @@ import Katex from '../components/Katex.astro'
 <Item type="definition" titre="proposition"> On appelle proposition (ou assertion) un énoncé mathématique qui a une valeur de vérité donnée : soit vrai soit faux. </Item>
 
 
-<Hideable type="exemple" titre="Exemple de proposition"> 
+<Hideable type="exemple" titre=" proposition"> 
   Regardons les deux propositions suivantes : $ \cP_1 $ : "tout entier naturel est pair" est fausse. $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
 </Hideable>
 
@@ -45,8 +47,15 @@ La table de vérité ci-dessous définit ces opérations selon la valeur de vér
 | Faux | Faux | Faux | Faux |
 </Item>
 
-Exercice - Montrer que "A ou (non A)" a pour valeur de vérité "Vrai" et que "A et (non A)" a pour valeur de vérité "Faux".
-<Hideable type='exercice' titre='Exercice : simplifications'>
+<Remarque>
+Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux être vrais. L'opération "ou exclisif" se note généralement "XOR".
+</Remarque>
+
+<Exercice titre="">
+Montrer que "A ou (non A)" a pour valeur de vérité "Vrai" et que "A et (non A)" a pour valeur de vérité "Faux".
+</Exercice>
+
+<Hideable type="solution" titre=''>
 Dressons les tables de vérité de ces propositions.
 
 | A  | non A | | A ou (non A) | A et (non A)| 
@@ -55,8 +64,11 @@ Dressons les tables de vérité de ces propositions.
 | Faux | Vrai | | Vrai | Faux | 
 </Hideable>
 
-Exercice - Donner la table de vérité de (A et B) ou C où A, B et C sont trois propositions.
-<Hideable type='exercice' titre='Exercice : donner la table de vérité de (A et B) ou C'>
+<Exercice titre=""> 
+Donner la table de vérité de (A et B) ou C où A, B et C sont trois propositions. 
+</Exercice>
+
+<Hideable type="solution" titre=''>
 
 Répondre à la question c'est dire si "A et B" est vrai ou bien si C est vrai. Pour cela, on a besoin de leur table de vérité.
 
@@ -82,7 +94,7 @@ On a les propriétés suivantes :
 </Item>
 
 
-<Hideable type='demonstration' titre='Démonstration de la commutativité'>
+<Hideable type='démonstration' titre=' Commutativité'>
 La table de vérité de "A et B" est la même que celle de "B et A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A et de B.
 
 Il en va de même pour "A ou B".
@@ -95,7 +107,7 @@ Il en va de même pour "A ou B".
 - "non(A ou B)" a la même valeur de vérité que "(non A) et (non B)"
 </Item>
 
-<Hideable type='demonstration' titre='Démonstration : négation des conjonctions et des disjonctions'>
+<Hideable type='démonstration' titre=' Négation des conjonctions et des disjonctions'>
 On dresse la table de vérité des propositions :
 
 | A  | B || non A  | non B || A et B | non (A et B) | (non A) ou (non B) || A ou B | non(A ou B) | (non A) et (non B) |
@@ -117,7 +129,7 @@ Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident a
 </Item>
 
 
-<Hideable type='demonstration' titre='Distributivité de la conjonction sur la disjonction (et réciproquement)'>
+<Hideable type='démonstration' titre=' Distributivité de la conjonction sur la disjonction (et réciproquement)'>
 Dressons la table de vérité des propositions.
 
 Etudions d'abord "(A et B) ou C" :
@@ -169,8 +181,11 @@ et "A $ \ssi $ B" signifie que A et B ont la même table de vérité.
 </Item>
 
 
-Exercice : Montrer que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $
-<Hideable type='exercice' titre='Solution : une autre écriture des implications'>
+<Exercice titre="">
+Montrer que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $
+</Exercice>
+
+<Hideable type="solution" titre=''>
 On dresse la table de vérité de  "(non A) ou B" et on devrait tomber sur celle de "A $\Rightarrow$ B".
 
 | A  | B || non A |  (non A) ou B |
@@ -184,10 +199,13 @@ Donc "A $ \Rightarrow $ B" et  "(non A) ou B" ont la même table de vérité. Ce
 </Hideable>
 
 
-Exercice : Donner la négation de "non (A $\Rightarrow$ B)" et celle de "non (A $\ssi$ B)" en n'utilisant que des disjonctions, des conjonctions et des négations.
-<Hideable type='exercice' titre='Solution : négation des implications et équivalences'>
+<Exercice titre="">
+Donner la négation de "non (A $\Rightarrow$ B)" et celle de "non (A $\ssi$ B)" en n'utilisant que des disjonctions, des conjonctions et des négations.
+</Exercice>
+
+<Hideable type="solution" titre=''>
 - A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $ et donc, en passant à la négation et en développant, 
-on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($non (non A) $\Big)$ et (non B)$" qui a même valeur de vérité que "A et (non B)" 
+on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($non (non A) $\Big)$ et (non B)" qui a même valeur de vérité que "A et (non B)" 
 
 - A partir de la table de vérité de "A $\ssi$ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( non A) et (non B) $\Big)$ ou (A et B)" 
 ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en déduit, en passant à la négation que, 
@@ -198,7 +216,7 @@ en développant puis en simplifiant , on obtient "$\Big($ A et (non B) $\Big)$ o
 Soient A et B deux propositions. (A $\ssi$ B) ssi  $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
 </Item>
 
-<Hideable type='demonstration' titre='Démonstration : raisonnement par double implication'>
+<Hideable type='démonstration' titre=' Raisonnement par double implication'>
 On dresse la table de vérité des deux propositions :
 
 | A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) et (B $\Rightarrow$ A) | A $\ssi$ B |
@@ -220,7 +238,7 @@ Soient A, B et C trois propositions.
 - "$\Big($ (A $\ssi$ B) et (B $\ssi$ C) $\Big)$" $\Rightarrow$ "(A $\ssi$ C)"
 </Item>
 
-<Hideable type='demonstration' titre='Démonstration : transitivité des implications et des équivalences'>
+<Hideable type='démonstration' titre=' Transitivité des implications et des équivalences'>
 - "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" ssi  "$\big($ B ou (non A) $\big)$  et  $\big($ C ou (non B) $\big)$" ssi 
 "(B et C) ou (B et (non B)) ou ((non A) et C) ou ((non A) et (non B))" ssi 
 "(B et C) ou ((non A) et C) ou ((non A) et (non B))" mais donc, si cette proposition est vraie, alors "C ou (non A) ou (non A)" est vraie également 
@@ -248,13 +266,16 @@ Soient A et B deux propositions.
 On a (A $\Rightarrow$ B) ssi (non B) $\Rightarrow$ (non A).
 </Item>
 
-<Hideable type='demonstration' titre='Démonstration : raisonnement par contraposée'>
+<Hideable type='démonstration' titre=' Raisonnement par contraposée'>
 "A $\Rightarrow$ B" ssi "B ou (non A)" ssi "(non A) ou B" ssi "(non B) $\Rightarrow$ (non A)"
 </Hideable>
 
 
-Exercice : On suppose que $x \in \R$. Donner la contraposée de $\cP$ : "$x<0 \Rightarrow x^3 < 0$"
-<Hideable type='exercice' titre='Solution de ...'>
+<Exercice titre=""> 
+On suppose que $x \in \R$. Donner la contraposée de $\cP$ : "$x<0 \Rightarrow x^3 < 0$"
+</Exercice>
+
+<Hideable type="solution" titre=''>
 Il s'agit de "$(x^3 \geqslant 0) \Rightarrow (x \geqslant 0)$"
 </Hideable>
 
@@ -273,13 +294,15 @@ Les quantificateurs sont des symbôles mathématiques permettant d'énoncer des 
 | $\nexists $ | Il n'existe pas | $\nexists x \in \R \mid \; x^2 < 0$ |
 </Item>
 
-Exercice : Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
+<Exercice titre="">
+Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
 - $\forall n \in E, n^2 \in E$
 - $\exists x \in E \mid x \times x = 0$
 - $\forall x \in E, \forall y \in E, x \times y = y \times x$
 - $\exists a > 0 \mid \forall x,y \in \big[1 \pv 2 \big], |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
+</Exercice>
 
-<Hideable type="exercice" titre="Solution : négations de propositions avec des quantificateurs">
+<Hideable type="solution" titre="">
 Dans l'ordre, on a :
 - $\exists n \in E, n^2 \notin E$
 - $\forall x \in E, x \times x \neq 0$
@@ -330,7 +353,9 @@ En effet :
 Un ensemble est une collection d'objets.
 </Item>
 
-Exemple : $\{ Maud ,\, Benoît ,\, Mathilde\}$ contient trois noms.
+<Hideable type="exemple" titre=" Ensemble">
+$\{ Maud ,\, Benoît ,\, Mathilde\}$ est une collection de noms.
+</Hideable> 
 
 ### Rappel : les ensembles usuels
 
@@ -376,7 +401,7 @@ Soient $A$ et $B$ deux ensembles. $A = B \ssi (A \subset B $ et $ B \subset A) $
 </Item>
 
 
-<Hideable type='demonstration' titre='Démonstration : double inclusion'>
+<Hideable type='démonstration' titre=' Double inclusion'>
 $A = B \ssi (x \in A \ssi x \in B) \ssi \big( (x \in A \Rightarrow x \in B) $ et $ (x \in B \Rightarrow x \in A)\big) \ssi (A \subset B$ et $ B \subset A)$ 
 </Hideable>
 
@@ -403,7 +428,7 @@ Soit $E$ un ensemble et $A$, $B$ deux sous ensenbles de $E$. On a :
 - $\overline{A \bigcup B} = \overline{A} \bigcap \overline{B}$
 </Item>
 
-<Hideable type='demonstration' titre="Demonstration : complémentaire de la réunion et de l'intersection">
+<Hideable type='démonstration' titre=" Complémentaire de la réunion et de l'intersection">
 - Montrons que $\overline{A \bigcap B} = \overline{A} \bigcup \overline{B}$: $x \in \overline{A \bigcap B} \ssi (x \notin A \bigcap B) \ssi $ non $\big((x \in A )$ et $(x \in B)\big)$ puis en développant la négation : 
 $x \in \overline{A \bigcap B} \ssi \big( ($non $x \in A)$ ou $ ( $non $x \in B) \big) \ssi (x \in \overline{A} \bigcup \overline{B})$
 - Montrons que $\overline{A \bigcup B} = \overline{A} \bigcap \overline{B}$ : c'est exactement la même démonstration où l'on remplace les "et" par des "ou" et inversement.
@@ -426,11 +451,13 @@ En particulier, $\prod_{i=1}^n E $ est noté $ E^n$.
 </Item>
 
 
-Exercice : Soit $E = \big[0 ,\, + \infty\big[ \times \R_+$. 
+<Exercice titre="">
+Soit $E = \big[0 ,\, + \infty\big[ \times \R_+$. 
 - 1) Proposer $x$ tel que $x \in E$ et $y$ tel que $y \notin E$.
 - 2) Décrire l'ensemble $\complement_{\R^2}^E$ comme une réunion de produits cartésiens.
+</Exercice>
 
-<Hideable type="exercice" titre="Solution : étude d'un produit cartésien">
+<Hideable type="solution" titre="">
 - 1) On peut proposer $x = (1 ,\, 1)$ et $y = (-1 ,\, 1)$
 - 2) $\complement_{\R^2}^E = (\big]- \infty ,\, 0 \big[ \times \R) \bigcup (\big[ 0 ,\, + \infty \big[ \times \big]- \infty ,\, 0 \big[ )$. En effet, 
 être dans le complémentaire de $E$, c'est avoir une première coordonnée qui ne coïncide pas avec la définition de $E$ ou bien une seconde 
