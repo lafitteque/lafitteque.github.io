@@ -212,6 +212,14 @@ ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en d
 en développant puis en simplifiant , on obtient "$\Big($ A et (non B) $\Big)$ ou $\Big($ (non A) et B $\Big)$"
 </Hideable>
 
+<Remarque>
+Si $A \Rightarrow B$, on dit que $A$ est une condition suffisante pour avoir $B$. 
+
+Si $A \Leftarrow B$, on dit que $A$ est une condition nécessaire pour avoir $B$ (en effet, s'il y a $B$, alors il y a $A$).
+
+Si $A \ssi B$, on dit que $A$ est une condition nécessaire et suffisante pour avoir $B$.
+</Remarque>
+
 <Item type='propriete' titre='raisonnement par double implication'>
 Soient A et B deux propositions. (A $\ssi$ B) ssi  $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
 </Item>
@@ -354,7 +362,7 @@ Un ensemble est une collection d'objets.
 </Item>
 
 <Hideable type="exemple" titre=" Ensemble">
-$\{ Maud ,\, Benoît ,\, Mathilde\}$ est une collection de noms.
+$\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
 </Hideable> 
 
 ### Rappel : les ensembles usuels
@@ -369,6 +377,7 @@ $\{ Maud ,\, Benoît ,\, Mathilde\}$ est une collection de noms.
 | $\Q$ | Nombres rationnels | $\dfrac{51}{13}$ ou 100 | $\{q \in \R \mid  \exists a \in \Z, \exists b \in \N^* , q = \dfrac{a}{b}  \}$ |
 | $\R$ | Nombres réels | $\pi$ ou -44 | Hors programme |
 | $\C$ | Nombres complexes | $2 + 3i$ | Hors programme |
+| $\llbracket  n \pv m \rrbracket$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
 
 On note $A^*$ l'ensemble des éléments non nuls de $A$
 </Item>
@@ -464,5 +473,44 @@ Soit $E = \big[0 ,\, + \infty\big[ \times \R_+$.
 coordonnée qui ne coïncide pas avec la définition de $E$.
 </Hideable>
 
+
+### Extremûms
+
+<Item type="definition" titre="majorants et minorants">
+Soit $E \subset \R$ un ensemble non vide. On appelle **minorant** de $E$ (resp. **majorant** de $E$) un élément $a$ de $\R$ tel que :
+$\forall x \in E, a \leqslant x$ (resp. $\forall x \in E, a \geqslant x$)
+
+Quand $E$ admet un minorant __ET__ un majorant, on dit que $E$ est **borné**
+</Item>
+
+
+<Item type="definition" titre="extremûms">
+Soit $E \subset \R$ un ensemble non vide. Le **minimum** de $E$, s'il existe, est noté $min \; E$. C'est l'élément $a$ de $E$ tel que :
+
+$$ \forall x \in E, x \leqslant E$$
+
+De même, le **maximum** de $E$, s'il existe, est l'élément $b$ (noté $max \;E$) tel que :
+
+$$ \forall x \in E, x \geqslant E$$
+
+Le minimum et le maximum d'un ensemble, quand ils existent, sont appelés les **extremûms** de cet ensemble.
+</Item>
+
+
+
+<Remarque>
+Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appartient à $E$.
+</Remarque>
+
+<Hideable type="exemple" titre="">
+
+| | $E = \big[ -2 \pv 8 \big[$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
+|---|---|---|---|
+| minimum | $-2$ | n'en a pas | n'en a pas |
+| maximum | n'en a pas | 1 | n'en a pas |
+| minorants | $-2 \pv -27 \pv -9,1 \pv \dotsm$ | $0 \pv -20 \, 523 \pv \dotsm$| n'en a pas |
+| majorants | $8 \pv 424 \, 242 \pv \dotsm$| $1 \pv \pi \pv \dotsm$| n'en a pas |
+
+</Hideable>
 </Base>
 
