@@ -26,8 +26,12 @@ const macros = {
 
   "\\ssi": "\\Leftrightarrow",
   "\\pv": "; \\;",
+  "\\v": ", \\;",
   "\\overvar": "",
   "\\vect": "\\mathbf{#1}",
+  "\\somme": "\\sum \\limits_{#1}^{#2}",
+  "\\produit": "\\prod \\limits_{#1}^{#2}",
+  "\\integ": "\\int \\limits_{#1}^{#2}",
 };
 
 export default defineConfig({

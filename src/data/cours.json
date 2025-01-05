@@ -1,17 +1,17 @@
 [
     { 
-      "titre": "Chapitre 1 - Logique", 
-      "url": "/mpsi_01_logique", 
+      "titre": "Chapitre 1 - Logique et ensembles", 
+      "url": "/mpsi_logique", 
       "tags": ["autre"] 
     },
     { 
-      "titre": "Chapitre 2 - Applications", 
-      "url": "/mpsi_02_applications", 
+      "titre": "Chapitre 2 - Sommes et produits", 
+      "url": "/mpsi_sommes_produits", 
       "tags": ["algèbre"] 
     },
     { 
       "titre": "Chapitre 3 - Espaces vectoriels", 
-      "url": "/mpsi_03_espaces_vectoriels", 
+      "url": "/mpsi_espaces_vectoriels", 
       "tags": ["algèbre", "espaces vectoriels"] 
     },
     { 

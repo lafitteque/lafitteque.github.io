@@ -1,0 +1,545 @@
+---
+title: "Sommes et produits"
+tag: "autre"
+---
+
+import Base from '../layouts/Base.astro'
+import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
+import Item from '../components/Item.astro'
+import Tableofcontents from '../components/Tableofcontents.astro'
+import Katex from '../components/Katex.astro'
+
+<Base>
+
+# Sommes et produits
+
+<Tableofcontents/>
+
+## Sommes et produits : généralités
+
+### Sommes : définitions et quelques propriétés
+
+<Item type='definition' titre='notation somme'>
+Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :
+
+$ \somme{i=1}{n} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n $
+
+ou encore $\somme{i \in \llbracket 1 \v n \rrbracket}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$
+
+Par convention, on pose 
+
+$\somme{i \in \emptyset}{} a_i = 0 $
+
+</Item>
+
+<Item type='proposition' titre='linéarité de la somme'>
+Soient $\alpha$ et $\beta$ des complexes, $n$ un entier strictement positif, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{n-1} \v b_n)$ des éléments de $\C$. On a la relation suivante :
+
+$$\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+$\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = (\alpha \times a_1  + \beta \times b_1 ) + (\alpha \times a_2  + \beta \times b_2 ) + \dotsm + (\alpha \times a_{ n-1} + \beta \times b_{n-1}) + (\alpha \times a_n  + \beta \times b_n)$
+
+En réorganisant les termes, on obtient $ \somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha (a_1 + a_2 + \dotsm + a_{n-1} + a_n) + \beta(b_1 + b_2 + \dotsm + b_{n-1} + b_n) $
+
+Finalement, $\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k$
+</Hideable>
+
+<Item type='proposition' titre='sommes des entiers et de leurs carrés'>
+Soit $n \in \N$. On a :
+
+$$ \somme{k=1}{n} k = \dfrac{n(n+1)}{2}$$
+
+$$ \somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} $$
+
+</Item>
+
+<Hideable type='démonstration' titre='somme des entiers'>
+**Démontrons le premier résultat par récurrence.**
+
+ On souhaite montrer la propriété suivante pour $n \in \N^*$:
+
+$$\cP(n) \, : \, "\somme{k = 1}{n} k = \dfrac{n(n+1)}{2} " $$
+
+**Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. En effet $\somme{k=1}{n}k = 1$ et $\dfrac{n(n+1)}{2} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
+
+**Hérédité :** On souhaite montrer que si $n \in \N*$ alors $\cP(n) \Rightarrow \cP(n+1)$. Supposons donc pour cela que $\cP(n)$ est vérifiée et où $n \in \N^*$. Montrons alors que la propriété est également vraie au rang suivant. 
+
+$\somme{k=1}{n+1}k = \somme{i=1}{n} k \; + \; n+1$
+
+Par hypothèse de récurrence, comme $\cP(n)$ est supposée vérifiée, on a $\somme{k=1}{n+1}k = \dfrac{n(n+1)}{2} \; + \; n+1$
+
+Donc $\somme{k=1}{n+1}k = \dfrac{n(n+1)}{2} \; + \; \dfrac{2(n+1)}{2} = \dfrac{n^2 + n + 2n + 2}{2} = \dfrac{n^2 + 3n + 2}{2} = \dfrac{(n+1)(n+2)}{2}$.
+
+On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
+
+**Conclusion :** $\cP(1)$ est vérifiée et $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Hideable>
+
+<Hideable type='démonstration' titre='somme des carrés'>
+**Démontrons le second résultat par récurrence.**
+
+ On souhaite montrer la propriété suivante pour $n \in \N^*$:
+
+$$\cP(n) \, : \, "\somme{k = 1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} " $$
+
+**Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. En effet $\somme{k=1}{n}k^2 = 1$ et $\dfrac{n(n+1)(2n+1)}{6} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
+
+**Hérédité :** On souhaite montrer que si $n \in \N*$ alors $\cP(n) \Rightarrow \cP(n+1)$. Supposons donc pour cela que $\cP(n)$ est vérifiée et où $n \in \N^*$. Montrons alors que la propriété est également vraie au rang suivant. 
+
+$\somme{k=1}{n+1}k^2 = \somme{i=1}{n} k^2 \; + \; (n+1)^2$
+
+Par hypothèse de récurrence, comme $\cP(n)$ est supposée vérifiée, on a $\somme{k=1}{n+1}k^2 = \dfrac{n(n+1)(2n+1)}{6} \; + \; (n+1)^2$
+
+Donc $\somme{k=1}{n+1}k = \dfrac{n(n+1)(2n+1)}{6} \; + \; \dfrac{6(n+1)^2}{6} = \dfrac{(n+1)\big[ n(2n+1) + 6n+6\big]}{6} $
+
+Puis $\somme{k=1}{n+1}k = \dfrac{(n+1)\big[ 2n^2 + n + 6n+6\big]}{6} = \dfrac{(n+1)\big[ 2n^2 + 7n + 6\big]}{6}$.
+
+Finalement, $\somme{k=1}{n+1}k = \dfrac{(n+1)(n+2)(2n+3)}{6}$ en identifiant $(n+2)(2n+3)$ à $2n^2 +7n +6$ car leurs formes développées ont les mêmes coéficients.
+
+On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
+
+**Conclusion :** $\cP(1)$ est vérifiée et $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Hideable>
+
+<Item type='proposition' titre='somme géométrique'>
+Soit $q \in \R\setminus\{ 1\}$.
+
+$$ \somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q}$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Démontrons le résultat par récurrence. Soit $\cP(n) \, : \, " \somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q} "$ où $n \in \N$
+
+**Initialisation :** Montrons $\cP(0)$ : si $n = 0$, on a $\somme{i=0}{n} q^i = 1 = \dfrac{1-q^{0+1}}{1-q}$ d'où le résultat.
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée où $n \in \N$. Montrons donc $\cP(n+1)$.
+
+$\somme{i=0}{n+1} q^i = \somme{i=0}{n} q^i \, + \, q^{n+1}$
+
+Par hypothèse de récurrence, puisque $\cP(n)$ est supposée vraie, on a $\somme{i=0}{n+1} q^i =  \dfrac{1-q^{n+1}}{1-q} + q^{n+1}$
+
+Puis $\somme{i=0}{n+1} q^i =  \dfrac{1-q^{n+1}}{1-q} + \dfrac{q^{n+1}-q^{n+2}}{1-q} = \dfrac{1-q^{n+2}}{1-q}$
+
+On a bien montré que $\cP(n) \Rightarrow \cP(n+1)$.
+
+**Conclusion :** On a montré que $\cP(0)$ est vérifiée et que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N$. On a bien montré que $\cP(n)$ était vérifiée pour tout $n$ entier naturel.
+</Hideable>
+
+
+### Produits : définition et conventions
+
+<Item type='definition' titre='notation produit'>
+
+Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :
+
+$$ \produit{i=1}{n} a_i = a_1 \times a_2 \times \dotsm \times a_{n-1} \times a_n $$
+
+$$\text{ou encore } \produit{i \in \llbracket 1 \v n \rrbracket}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$$
+
+Par convention, on pose 
+
+$$\produit{i \in \emptyset}{} a_i = 1 $$
+
+</Item>
+
+
+<Item type='definition' titre='exponentiation'>
+
+Soient $a \in \R_+^*$ et $b \in \R$. On note $a^b$ la quantité $e^{b \ln(a)}$
+</Item>
+
+<Item type='proposition' titre='produits et exponentiation'>
+Soient $n \in \N$, $a_1 \v a_2 \v \dotsm \v a_n$ des éléments de $R$ et $x \in \R_+^*$. On a :
+
+$$\produit{i=1}{n} x^{a_i} = x^{\somme{i=1}{n} a_i}$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+le produit est composé de facteurs strictement positifs, il est donc également strictement positif. On peut donc appliquer le logarithme népérien :
+
+$\ln \Big( \produit{i=1}{n} x^{a_i} \Big) = \somme{i=1}{n} a_i \ln(x) = \ln(x)\somme{i=1}{n} a_i$ par linéarité de la somme.
+
+En repassant à l'exponentielle, on trouve bien $\produit{i=1}{n} x^{a_i} = exp\Big( \ln(x)\somme{i=1}{n} a_i \Big) = x^{\somme{i=1}{n} a_i}$
+</Hideable>
+
+<Exercice titre='Calculs de produits'>
+Soit $n \in \N$, 
+- 1) Simplifier $\produit{k=1}{n} 2$
+- 2) Simplifier $\produit{k=1}{n} 2^k$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+1) Il s'agit de $2 \times 2 \times \dotsm \times 2$ avec $n$ fois le terme $2$. C'est la définition de $2^n$. Donc $\produit{k=1}{n} 2 = 2^n$
+2) D'après la propriété précédente, $\produit{k=1}{n} 2^k = 2^{\somme{k=1}{n} k} = 2^{\dfrac{n(n+1)}{2}}$
+</Hideable>
+
+### Transformation de sommes : le changement d'indice
+
+Parfois, les indices des sommes ne seront pas pratiques pour les calculs que nous souhaiterons faire. Il pourra être intéressant, selon la situation, de changer 
+d'indexation. 
+
+Par exemple : 
+
+$$\somme{i=1}{n} a_{i-1}$$ se réexprime $$\somme{i'=0}{n-1} a_{i'}$$ en effectuant le changement d'indice $i' = i-1$. En effet, avec ce changement d'indices, 
+
+- $i = 1 \ssi i' = 0$ d'où la nouvelle borne de départ
+- $i = n \ssi i' = n-1$ d'où la nouvelle borne d'arrivée.
+- $i-1 = i'$ d'où $a_{i-1} = a_{i'}$
+
+
+**En résumé :** changer d'indice c'est définir un nouvel indice en fonction de celui (ou ceux) déjà présents et réecrire la somme en fonction de ce nouvel indice. 
+
+<Item type='proposition' titre='différence de puissances'>
+Soient $a,b$ des réels et $n$ un entier positif. Alors :
+
+$$a^n - b^n = (a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1}$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soient $a$ et $b$ des réels et soit $n \in \N$. 
+
+$(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = \sum_{k= 0}^{n-1} (a-b)a^kb^{n-k-1} = \sum_{k= 0}^{n-1} a^{k+1}b^{n-k-1} - \sum_{k= 0}^{n-1}a^kb^{n-k}$
+
+On isole le dernier terme de la première somme et le premier terme de la deuxième somme, d'où :
+
+$(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} =  \sum_{k= 0}^{n-2} a^{k+1}b^{n-k-1} + a^nb^0 - a^0b^n - \sum_{k= 1}^{n-1}a^kb^{n-k}$
+
+Puis en posant $l = k-1$ dans la deuxième somme, on obtient :
+
+$(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = a^n - b^n + \sum_{k= 0}^{n-2} a^{k+1}b^{n-k-1}  - \sum_{l= 0}^{n-2} a^{l+1}b^{n-l-1}$
+
+Les deux sommes étant égales, leur différence est nulle, d'où $(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = a^n - b^n$
+</Hideable>
+
+
+<Exercice titre='Somme des entiers (bis)'>
+Soit $n \in \N$.
+
+- 1) Effectuer le changement d'indice $k = n-i+1$ sur la somme $ \somme{i = 1 }{n} i$ notée $S_n$
+- 2) Exprimer $2S_n$ et en déduire $S_n$ 
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1) $ \somme{i = 1 }{n} i = \somme{k = n }{1} (n - k + 1) = \somme{k = 1 }{n} (n-k+1)$
+
+2) $2S_n = \somme{i = 1 }{n} i + \somme{i = 1 }{n} (n-i+1)$ et par linéarité de la somme, on obtient :
+
+ $2S_n = \somme{i = 1 }{n} (i + n -i + 1) = \somme{i = 1 }{n} (n+1) = n(n+1)$
+
+ On a donc $S_n = \dfrac{n(n+1)}{2}$
+
+</Hideable>
+
+### Méthode du télescopage
+
+
+<Item type='proposition' titre='somme télescopique'>
+
+Soit $(U_n)_{n \in \N}$ une suite de complexes et $m \in \N$. On a :
+
+$$ \somme{i=0}{m} U_{i+1} - U_i = U_{m+1} - U_0$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+$ \somme{i=0}{m} U_{i+1} - U_i = \somme{i=0}{m} U_{i+1} \, - \, \somme{i=0}{m}U_i$. En changeant d'indice sur la deuxième somme avec $i' = i-1$, on a :
+
+$ \somme{i=0}{m} U_{i+1} - U_i = \somme{i=0}{m-1} U_{i+1} \, - \, \somme{i=0}{m-1}U_{i'+1} + U_{m+1} - U_0$ (on retire les termes nécessaires de fin / début des sommes). D'où :
+
+$ \somme{i=0}{m} U_{i+1} - U_i =  U_{m+1} - U_0$
+</Hideable>
+
+<Item type='proposition' titre='produit télescopique'>
+
+Soit $(U_n)_{n \in \N}$ une suite de complexes  qui ne s'annule pas et $m \in \N$. On a :
+
+$$ \produit{i=0}{m} \dfrac{U_{i+1}}{U_i} = \dfrac{U_{m+1}}{U_0} $$
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+$ln \Big( \produit{i=0}{m} \dfrac{U_{i+1}}{U_i} \Big)  = \somme{i=0}{m} ln(U_{i+1}) - ln(U_i)$. On pose $V_i = ln(U_i)$ d'où :
+
+$ln \Big( \produit{i=0}{m} \dfrac{U_{i+1}}{U_i} \Big)  = ln(U_{m+1}) - ln(U_0)$ par télescopage. En repassant à l'exponentielle, on a :
+
+$\produit{i=0}{m} \dfrac{U_{i+1}}{U_i} = \dfrac{U_{m+1}}{U_0}$
+</Hideable>
+
+
+<Exercice titre='Somme géométrique'>
+Soient $q \in \C \setminus \{ 1\}$ et $n \in \N$.
+
+Calculer astucieusement $(1-q)\somme{i = 0}{n} q^i$ et en déduire $\somme{i = 0}{n} q^i$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+Par linéarité de la somme,  $(1-q)\somme{i = 0}{n} q^i = \somme{i = 0}{n} (1-q)q^i = \somme{i = 0}{n} q^{i+1} - q^i = q^{n+1} - 1$
+
+En divisant par $1-q$ (on sait que $1-q \neq 0$ car $q \neq 1$). On obtient $\somme{i = 0}{n} q^i = \dfrac{1-q^{n+1}}{1-q}$
+</Hideable>
+
+
+<Exercice titre='Somme des entiers (ter) et de leurs carrés (bis)'>
+Soit $n \in \N$.
+
+- 1) Calculer $\somme{k=1}{n} (k+1)^2 - k^2$ de deux manières différentes et en déduire $\somme{k=1}{n} k$.
+- 2) En proposant une somme télescopique appropriée, calculer $\somme{k=1}{n} k^2$
+- 3) Quelle somme télescopique permettrait de calculer $\somme{k=1}{n} k^{67}$ ? Aucun calcul n'est attendu!
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1) Cette somme est télescopique et vaut donc $(n+1)^2 - 1$. Par ailleurs, en développant le terme $(k+1)^2 - k^2$, on obtient $2k +1$. On peut combiner cela pour obtenir :
+
+On obtient $ (n+1)^2 - 1 = \somme{k=1}{n} (2k + 1)$. Puis en utilisant la linéarité de la somme : 
+
+$ n^2 + 2n = 2\somme{k=1}{n} k \, + \, n$ et finalement, on a $\somme{k=1}{n} = \dfrac{n^2 + n}{2} =  \dfrac{n(n+1)}{2}$
+
+2) On se propose d'utiliser la somme $\somme{k=1}{n} (k+1)^3 - k^3$. Nous allons la calculer à l'aide d'un télescopage mais également la réexprimer puisque $(k+1)^3 - k^3 = 3k^2 + 3k -1$.
+
+D'abord, $(n+1)^3 - 1 = \somme{k=1}{n} 3k^2 + 3k +1$ puis par linéarité de la somme on a :
+
+$(n+1)^3 - 1 = 3\somme{k=1}{n} k^2 + 3\somme{k=1}{n} k \, + \, n$ d'où, en utilisant la formule de la somme des entiers :
+
+$\dfrac{(n+1)^3 -1 - n - 3\dfrac{n(n+1)}{2}}{3} = \somme{k=1}{n} k^2$ 
+
+mais $(n+1)^3 -1 - n - 3\dfrac{n(n+1)}{2} = \dfrac{2n^3 +6n^2 + 6n + 2 - 2 - 2n - 3n^2 -3n}{2} = \dfrac{2n^3 +3n^2 + n }{2} = \dfrac{n(2n^2 + 3n + 1) }{2}$
+
+et on identifie $2n^2 +3n +5$ à $(n+1)(2n+1)$ ce qui donne  $\somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6}$
+
+
+3) Il faudrait utiliser le telescopage $\somme{k=1}{n} (k+1)^{68} - k^{68}$ pour obtenir une expression en fonction de toutes les sommes de puissances inférieures. Ce qui signifie qu'il faut d'abord calculer la somme des cubes, puis celle des entiers à la puissance quatre, etc.
+
+</Hideable>
+
+## Sommes doubles
+
+Une somme double  est une somme de la forme $\somme{i \in I}{} \somme{j \in J}{} a_{i,j} $ où $I$ et $J$ sont des ensembles et les $a_{i,j}$ sont des complèxes indéxés dans $I\times J$.
+
+De telles sommes apparaissent souvent en combinatoire et en probabilités mais pas uniquement. En analyse, elles sont également très courantes. Il est 
+donc très important de savoir les manipuler avec les méthodes usuelles.
+
+<Item type='proposition' titre='produits de sommes'>
+Soient $n$ et $m$ deux entiers strictement positifs, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{m-1} \v b_m)$ des éléments de $\C$. On a :
+
+$$ \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j = \somme{(i,j)\in I \times J}{} a_i b_j$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons par récurrence sur $n \in \N$ la propriété $\cP(n)$ : $ \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j $
+
+**Initialisation :** $\cP(0)$ est vérifiée immédiatement les deux côtés de l'égalité sont nuls dans ce cas puisque la somme se fait sur un ensemble vide.
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée pour un certain $n \in \N$. Montrons $\cP(n+1)$
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \Big( \somme{i=1}{n} a_i \, + \, a_{n+1} \Big) \Big( \somme{j=1}{m} b_i \Big) $
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big)  +  a_{n+1} \Big( \somme{j=1}{m} b_i \Big)  $
+
+Or, par hypothèse de récurrence, puisque $\cP(n)$ est supposée vraie,
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j  +  \somme{j=1}{m} a_{n+1}  b_i  $
+
+Finalement, $ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n+1} \somme{j=1}{m} a_i b_j$
+
+
+**Conclusion :** On a montré que $\cP(0)$ était vérifiée ainsi que l'implication $\cP(n) \Rightarrow \cP(n+1)$ pour $n \in \N$. 
+On a donc bien montré la propriété $\cP(n)$ pour tout $n \in \N$
+
+</Hideable>
+
+<Item type='proposition' titre='somme triangulaire'>
+Soient $n \in \N$ et $ a_{i,j} \in C^n$ où $0 \leqslant j \leqslant i \leqslant n$. On a :
+
+$$\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{j = 0}{n} \somme{i = j}{n} a_{i,j}$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Plus qu'une démonstration, il s'agit d'une explication. En fait, on parcours chaque combinaison $(i,j)$ du tableau suivant :
+
+| i / j | 0 | 1 | 2 | ... | n |
+|---|---|---|---|---|---|
+| 0 | (0,0) | / | / | ... | /|
+| 1 | (1,0) | (1,1) | / | ... | /|
+| 2 | (2,0) | (2,1) | (2,2) | ... | /|
+| ... | ... | ... | ... | ... | ...|
+| n | (n,0) | (n,1) | (n,2) | ... | (n,n)|
+
+On peut parcourir les éléments de ce tableau ligne par ligne. Cela signifie que l'on lit d'abord la valeur de $i$ et on regarde ensuite les valeurs de $j$ qui conviennent.
+
+Mais on peut aussi parcourir le tableau colonne par colonne. On lit la valeur de $j$ puis on regarde les valeurs de $i$ qui conviennent. En fait, à $j$ fixé, les valeurs de $i$ qui conviennent sont celles dans $\llbracket j \v n\rrbracket$. D'où la propriété.
+</Hideable>
+
+<Remarque>
+En utilisant le tableau de la démonstration précédente et ses diagonales, si l'on note $L = \{ (i \v j) \mid 0\leqslant j \leqslant i \leqslant n \; \text{et} \;  i+j = k \}$ on a également 
+
+$$\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{k = 0}{2n} \somme{ (i \v j) \in L }{} a_{i,j}$$
+</Remarque>
+
+## Factorielle et coefficients binômiaux
+
+### Factorielle
+
+<Item type='definition' titre='factorielle'>
+Soit $n\in \N$ On appelle factorielle de $n$ et on note $n!$ la quantité suivante :
+
+$$ n! = \prod_{k=1}^{n} k$$
+
+On remarque que $n! = 1$
+</Item>
+
+<Remarque>
+La factorielle s'applique à la quantité précédant le symbôle "!". Il faudra donc parenthéser correctement afin que le sens du calcul soit celui voulu.
+</Remarque>
+
+<Item type='proposition' titre='formule de récurrence de la factorielle'>
+Soit $n \in \N$, $(n+1)! = (n+1) \times n!$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+$(n+1)! = \produit{k=1}{n+1}k = (n+1)\produit{k=1}{n}k = (n+1) \times n!$
+</Hideable>
+
+<Exercice titre="Réexprimer des produits">
+Soit $n \in \N$
+- 1) Réexprimer $\produit{k=1}{n} 2k$ et $\produit{k=0}{n} (2k+1)$ à l'aide de la factorielle
+- 2) Exprimer $\dfrac{n!}{(n-p)!}$ à l'aide d'une seule notation produit $ (\prod ) $.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1) **On s'intéresse d'abord au produit des entiers pairs :** il y a plusieurs manières de faire. La première est de passer au logarithme et utiliser la linéarité de la somme pour montrer que 
+$\ln \Big(\produit{k=1}{n} 2k \Big) = 2n + \somme{k=1}{n} \ln(k)$, ce qui, en repassant à l'exponentielle, donne :
+$\produit{k=1}{n} 2k = 2^n  n!$.
+
+La deuxième manière de faire est simplement d'écrire $\produit{k=1}{n} 2k  = (2\times 1) \times (2 \times 2) \times (2 \times 3) \times \dotsm \times (2 \times n)$ et de réorganiser les facteurs pour obtenir $2^n n!$.
+
+**Intéressons-nous maintenant au produit des entiers impairs :** $\produit{k=1}{n} (2k+1) = \dfrac{\produit{k=1}{2n+1} k}{\produit{k=1}{n} 2k}$.
+
+En clair, le produit des impairs c'est le produit des entiers divisé par le produit des pairs. Mais donc $\produit{k=1}{n} (2k+1) = \dfrac{(2n+1)!}{2^n n!}$
+
+2) $\dfrac{n!}{(n-p)!} = \dfrac{\cancel{1} \times \cancel{2} \times \dotsm \times \cancel{(n-p)} \times (n-p+1) \times \dotsm \times n}{\cancel{1} \times \cancel{2} \times \dotsm \times \cancel{(n-p)}} = (n-p+1)\times(n-p+2) \times \dotsm \times n = \produit{k = n-p+1}{n} k $
+</Hideable>
+
+
+
+### Coefficients binômiaux
+
+<Item type='definition' titre='coefficients binomiaux'>
+Soit le couple $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$. On note $\binom{n}{k}$ (se lit "$k$ parmi $n$") la quantité suivante :
+
+$$ \binom{n}{k} = \dfrac{n!}{k!(n-k)!}$$
+
+</Item>
+
+<Remarque titre='convention'>
+Par convention, si $k \in \Z$ et $k \notin \llbracket 0 \v n \rrbracket$, on pose $\binom{n}{k} = 0$. La raison étant que cela permet de conserver la propriété de somme qui sera présentée ultérieurement.
+</Remarque>
+
+<Item type='corollaire' titre='formules usuelles'>
+Soit $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$
+
+- $\binom{n}{0} = \binom{n}{n} = 1$
+
+- $\binom{n}{k} = \binom{n}{n-k}$
+
+- $\binom{n}{1} = n$
+
+- $\binom{n}{2} = \dfrac{n(n-1)}{2}$ (ce qui n'est pas sans rappeler la somme des entiers de $1$ à $n-1$)
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Toutes les formules sont triviales en partant de la définition.
+</Hideable>
+
+
+<Item type='proposition' titre='formulaire des coefficients binômiaux'>
+Soient $k$ et $n$ des entiers tels que $0 \leqslant k \leqslant n$. On a :
+
+- $\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}$
+- $\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Montrons la première formule :** $\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k+1)!(n-k-1)!}$ puis on factorise pour obtenir :
+
+ $\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k-1)!}\Big( \dfrac{1}{k+1} + \dfrac{1}{n-k} \Big) = \dfrac{n!}{k!(n-k-1)!}\dfrac{(n+1)}{(k+1)(n-k)!}$
+
+ On a donc $\binom{n}{k} + \binom{n}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \binom{n+1}{k+1}$
+
+
+**Montrons maintenant la seconde formule :** $\binom{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \dfrac{(n+1)\times n!}{(k+1)\times k! (n-k)!} = \dfrac{n+1}{k+1} \dfrac{n!}{k!(n-k)!} $
+
+Finalement, $\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}$
+</Hideable>
+
+<Item type='definition' titre='triangle de Pascal'>
+Le triangle de pascal est le tableau contenant les coefficients binômiaux :
+
+| n / k | 0 | 1 | 2 | 3 | 4 | 5 | ... | n |
+|---|---|---|---|---|---|---|---|---|
+| 0 | 1 | 0 | *0* | *0* | *0* | *0* | ... | *0* |
+| 1 | 1 | 1 | *0* | *0* | *0* | *0* | ... | *0* |
+| 2 | 1 | 2 | 1 | *0* | *0* | *0* | ... | *0* |
+| 3 | 1 | 3 | 3 | 1 | *0* | *0* | ... | *0* |
+| 4 | 1 | 4 | 6 | 4 | 1 | *0* | ... | *0* |
+| 5 | 1 | 5 | 10 | 10 | 5 | 1 | ... | *0* |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| n | $\binom{n}{0}$ | $\binom{n}{1}$ | $\binom{n}{2}$ | $\binom{n}{3}$ | $\binom{n}{4}$ | $\binom{n}{5}$ | ... | 1 |
+</Item>
+
+<Item type='proposition' titre='binome de newton'>
+Soient $a,b$ deux complexes et $n$ un entier naturel. On a :
+
+$$(a+b)^n = \somme{k=0}{n} a^kb^{n-k} $$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On utilise la convention $0^0 = 1$, sans quoi il faudrait ajouter les hypothèses suivantes à l'énoncé : $a \neq 0$ , $b \neq 0$ et $n \in \N^*$ et donc initialiser à $n = 1$.
+
+On démontre cela par récurrence : soit la propriété $\cP(n) \, : \, "(a+b)^n = \somme{k=0}{n} \binom{n}{k} a^kb^{n-k}, \forall (a,b) \in (\C^*)^2"$ où $n$ est un entier naturel.
+
+**Initialisation :** $\cP(0)$ est trivialement vérifiée puisque $(a+b)^0 = 1$ et $\somme{k=0}{0} a^kb^{n-k} = a^0b^0 = 1$
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée pour un certain $n \in \N$. Montrons $\cP(n+1)$.
+
+$(a+b)^{n+1} = (a+b)(a+b)^n = (a+b)\somme{k=0}{n} \binom{n}{k} a^kb^{n-k} = \somme{k=0}{n} \binom{n}{k} (a+b)a^kb^{n-k} $ par linéarité de la somme et par hypothèse de récurrence en utilisant $\cP(n)$. D'où :
+
+$(a+b)^{n+1} = \somme{k=0}{n} \binom{n}{k} a^{k+1}b^{n-k} + \somme{k=0}{n} \binom{n}{k} a^kb^{n-k+1} $ encore par linéarité de la somme. Puis :
+
+$(a+b)^{n+1} = a^{n+1}b^0 + \somme{k=0}{n-1} \binom{n}{k} a^{k+1}b^{n-k} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} $ puis on effectue le changement d'indice $k' = k+1$ sur la somme de gauche :
+
+$(a+b)^{n+1} = a^{n+1}b^0 + \somme{k'=1}{n} \binom{n}{k'-1} a^{k'}b^{n-k'+1} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} $
+
+
+$(a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} (\binom{n}{k-1} + \binom{n}{k}) a^{k}b^{n-k+1}$ mais $(\binom{n}{k-1} + \binom{n}{k}) = \binom{n+1}{k}$, donc :
+
+$(a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \binom{n+1}{k} a^{k}b^{n-k+1} = \somme{k = 0}{n+1} \binom{n+1}{k} a^{k}b^{(n+1)-k}$
+
+On a bien montré $\cP(n) \Rightarrow \cP(n+1)$
+
+**Conclusion :** On a montré $\cP(0)$ et on a également montré que $\cP(n) \Rightarrow \cP(n+1)$ pour $n\in \NN$. On a donc bien montré $\cP(n)$ pour tout $n \in \N$?
+
+</Hideable>
+
+<Item type='corollaire' titre=''>
+Soit $n \in \N^*$. 
+
+- $\somme{k = 0}{n} \binom{n}{k} = 2^n$
+
+- $\somme{k=0}{n} \binom{n}{k}(-1)^k = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On applique la formule du binôme à $(1+1)^n$ et à $(1-1)^n$.
+</Hideable>
+
+
+</Base>

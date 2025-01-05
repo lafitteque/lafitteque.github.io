@@ -307,7 +307,7 @@ Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
 - $\forall n \in E, n^2 \in E$
 - $\exists x \in E \mid x \times x = 0$
 - $\forall x \in E, \forall y \in E, x \times y = y \times x$
-- $\exists a > 0 \mid \forall x,y \in \big[1 \pv 2 \big], |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
+- $\exists a > 0 \mid \forall x,y \in \big[1 \v 2 \big], |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
 </Exercice>
 
 <Hideable type="solution" titre="">
@@ -315,7 +315,7 @@ Dans l'ordre, on a :
 - $\exists n \in E, n^2 \notin E$
 - $\forall x \in E, x \times x \neq 0$
 - $\exists x \in E, \exists y \in E \mid x \times y \neq y \times x$
-- $\forall a > 0, \exists x,y \in \big[1 \pv 2 \big] \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
+- $\forall a > 0, \exists x,y \in \big[1 \v 2 \big] \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
 </Hideable>
 
 ### Les différents modes de raisonnement
@@ -377,7 +377,7 @@ $\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
 | $\Q$ | Nombres rationnels | $\dfrac{51}{13}$ ou 100 | $\{q \in \R \mid  \exists a \in \Z, \exists b \in \N^* , q = \dfrac{a}{b}  \}$ |
 | $\R$ | Nombres réels | $\pi$ ou -44 | Hors programme |
 | $\C$ | Nombres complexes | $2 + 3i$ | Hors programme |
-| $\llbracket  n \pv m \rrbracket$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
+| $\llbracket  n \v m \rrbracket$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
 
 On note $A^*$ l'ensemble des éléments non nuls de $A$
 </Item>
@@ -394,11 +394,11 @@ Tout ensemble non vide de $\N$ admet un minimum.
 <Item type="definition" titre="notations ensemblistes">
 | Notation | Nom | Exemple | Description à l'aide de quantificateurs| 
 |---|---|---|---|
-| $x \in A$ | Appartient à | $2 \in \{-5 \pv 8 \pv 2 \}$ | / |
-| $x \notin A$ | N'appartient pas à | $\pi \notin \{-5 \pv 8 \pv 2 \}$ | / |
-| $A \subset B$ | A est un sous-ensemble de B | $\{-5 \pv 8 \pv 2 \} \subset \{-5 \pv 12 \pv 2 \pv 8 \pv 42 \}$ | $A \subset B$ ssi $a \in A \Rightarrow a \in B$ |
-| $A \bigcup B$ | Réunion (ou Union) de A et B | $\{3 \pv 1 \} \bigcap \{ 6\} = \{3 \pv 1 \pv 6\}$ | $\{ x \mid (x \in A$ ou $x \in B)\}$ |
-| $A \bigcap B$ | Intersection de A et B | $\{4 \pv 1 \pv 55 \} \bigcap \{ 2 \pv 4 \pv 1\} = \{4 \pv 1 \}$ | $\{ x \mid (x \in A$ et $x \in B)\}$ |
+| $x \in A$ | Appartient à | $2 \in \{-5 \v 8 \v 2 \}$ | / |
+| $x \notin A$ | N'appartient pas à | $\pi \notin \{-5 \v 8 \v 2 \}$ | / |
+| $A \subset B$ | A est un sous-ensemble de B | $\{-5 \v 8 \v 2 \} \subset \{-5 \v 12 \v 2 \v 8 \v 42 \}$ | $A \subset B$ ssi $a \in A \Rightarrow a \in B$ |
+| $A \bigcup B$ | Réunion (ou Union) de A et B | $\{3 \v 1 \} \bigcap \{ 6\} = \{3 \v 1 \v 6\}$ | $\{ x \mid (x \in A$ ou $x \in B)\}$ |
+| $A \bigcap B$ | Intersection de A et B | $\{4 \v 1 \v 55 \} \bigcap \{ 2 \v 4 \v 1\} = \{4 \v 1 \}$ | $\{ x \mid (x \in A$ et $x \in B)\}$ |
 </Item>
 
 <Item type="definition" titre="égalité d'enembles">
@@ -451,7 +451,7 @@ Soit $E$ un ensemble. On note $\cP(E)$ l'ensemble des parties de $E$ : $\cP(E) =
 
 
 <Item type="definition" titre="produit cartésien">
-Soient $E$ et $F$ deux ensembles. On appelle produit cartésien l'ensemble suivant : $E \times F = \{ (x \pv y) | (x \in E $ et $ x \in F) \}$.
+Soient $E$ et $F$ deux ensembles. On appelle produit cartésien l'ensemble suivant : $E \times F = \{ (x \v y) | (x \in E $ et $ x \in F) \}$.
 Il s'agit de l'ensemble des couples d'éléments de $E$ (en première coordonnée) et $F$ (en seconde coodonnée).
 
 Soient $E_1, \, E_2 , \, \dotsm ,\, E_n$ des ensembles où $n \in \N^*$. On note $\prod_{i=1}^n E_i$ l'ensemble $\{ (x_1,\, x_2 ,\, \dotsm ,\, x_n) \mid x_1 \in E_1 $ et $ x_2 \in E_2 $ et ... et $x_n \in E_n \}$.
@@ -504,12 +504,12 @@ Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appar
 
 <Hideable type="exemple" titre="">
 
-| | $E = \big[ -2 \pv 8 \big[$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
+| | $E = \big[ -2 \v 8 \big[$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
 |---|---|---|---|
 | minimum | $-2$ | n'en a pas | n'en a pas |
 | maximum | n'en a pas | 1 | n'en a pas |
-| minorants | $-2 \pv -27 \pv -9,1 \pv \dotsm$ | $0 \pv -20 \, 523 \pv \dotsm$| n'en a pas |
-| majorants | $8 \pv 424 \, 242 \pv \dotsm$| $1 \pv \pi \pv \dotsm$| n'en a pas |
+| minorants | $-2 \v -27 \v -9,1 \v \dotsm$ | $0 \v -20 \, 523 \v \dotsm$| n'en a pas |
+| majorants | $8 \v 424 \, 242 \v \dotsm$| $1 \v \pi \v \dotsm$| n'en a pas |
 
 </Hideable>
 </Base>
