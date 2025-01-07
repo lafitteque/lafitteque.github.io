@@ -10,6 +10,8 @@ import Exercice from '../components/Exercice.astro'
 import Item from '../components/Item.astro'
 import Tableofcontents from '../components/Tableofcontents.astro'
 import Katex from '../components/Katex.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
 
 <Base>
 
@@ -331,17 +333,26 @@ On utilise plusieurs modes de raisonnement en mathématiques dont voici les plus
 - Le raisonnement par analyse-synthèse qui consiste à chercher les caractéristiques d'une solution à un problème en supposant qu'elle existe jusqu'à trouver une (ou des) potentielle solution (analyse) puis à vérifier que la solution convient (synthèse).
 </Item>
 
-Exemple classique : raisonnement par analyse-synthèse. Montrons que toute fonction $f$ de $\R$ dans $\R$ peut s'écrire comme la somme d'une fonction paire et d'une fonction impaire.
+**Exemple classique** : raisonnement par analyse-synthèse. Montrons que toute fonction $f$ de $\R$ dans $\R$ peut s'écrire comme la somme d'une fonction paire et d'une fonction impaire.
+<Fil>
+**Analyse** : 
 
-**Analyse** : Dans cette partie, on va chercher à tâtons. D'abord, on suppose qu'il existe $f_p$ (resp. $f_i$) paire (resp. impaire) tel que $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$.
+<Indent>
+
+Dans cette partie, on va chercher à tâtons. D'abord, on suppose qu'il existe $f_p$ (resp. $f_i$) paire (resp. impaire) tel que $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$.
 Comme l'étude de la parité consiste à évaluer en $-x$, on peut évaluer $f$ en $-x$ : $f(-x) = f_p(-x) + f_i(-x), \; \forall x \in \R$.
 Mais donc $f(-x) = f_p(x) - f_i(x), \; \forall x \in \R$. Ce qui nous donne une deuxième équation en plus de $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$.
 Avec deux équations, on peut effectuer des combinaisons linéaires et obtenir $f(x) + f(-x) = 2f_p(x)$ par somme mais aussi $f(x) - f(-x) = 2f_i(x)$ par différence et ce pour tout $x $ dans $\R$.
 
 On en déduit donc que, si $f_p$ et $f_i$ existent, ces deux fonctions vérifient $f_p(x) = \dfrac{f(x) + f(-x)}{2}$ et $f_i(x) = \dfrac{f(x)- f(-x)}{2}$ et ce pour tout $x$ dans $\R$.
+</Indent>
 
 
-**Synthèse** : Dans cette partie, on va vérifier que nos prétendants trouvés précédemment vérifient bel et bien la propriété voulue (On était partis du principe que $f_p$ et $f_i$ existaient, cela pourrait être faux et mener à des absurdités. Il faut donc vérifier.) 
+**Synthèse** : 
+
+<Indent>
+
+Dans cette partie, on va vérifier que nos prétendants trouvés précédemment vérifient bel et bien la propriété voulue (On était partis du principe que $f_p$ et $f_i$ existaient, cela pourrait être faux et mener à des absurdités. Il faut donc vérifier.) 
 
 Soient $f_p : x \longrightarrow \dfrac{f(x) + f(-x)}{2}$ et $f_i : x \longrightarrow \dfrac{f(x) - f(-x)}{2}$. Nous devons vérifier que :
 - $f_p$ est paire
@@ -352,9 +363,10 @@ En effet :
 - $f_p(-x) = \dfrac{f(-x) + f(x)}{2} = f_p(x), \; \forall x \in \R$ et donc $f_p$ est paire.
 - $f_i(-x) = \dfrac{f(-x) - f(x)}{2} = -f_i(x), \; \forall x \in \R$ et donc $f_p$ est impaire.
 - $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x)}{2} + \dfrac{f(x) - f(-x)}{2} = \dfrac{f(x) + f(-x) + f(x) - f(-x)}{2} = \dfrac{2f(x)}{2} = f(x), \; \forall x \in \R$
-
+</Indent>
 
 **Conclusion** : La propriété est donc vraie.
+</Fil>
 
 ## Ensembles, généralités
 <Item type='definition' titre='ensemble'>

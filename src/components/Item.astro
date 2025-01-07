@@ -1,6 +1,6 @@
 ---
 import "../styles/global.css"; // Importe le CSS global
-const { type, titre } = Astro.props;
+const { type, titre, tag} = Astro.props;
 const typeColors = {
   definition: "#ccf5cc",  
   theoreme: "#ede6af",   
@@ -8,6 +8,9 @@ const typeColors = {
   proposition: "#ede6af",   
   corollaire: "#ede6af",  
   lemme: "#ede6af",  
+  consequence:"#ede6af",
+  methode: "#e0e0e0",
+  defprop: "#ccf5cc",
 };
 const typeBorderColors = {
   definition: "#b0d5b0",  
@@ -16,6 +19,9 @@ const typeBorderColors = {
   proposition: "#db9224",  
   corollaire: "#56b0d3",  
   lemme: "#56b0d3",  
+  consequence: "#56b0d3",
+  methode: "#a0a0a0" ,  
+  defprop: "#b0d5b0",
 };
 const borderWidths = {
   definition: 6,  
@@ -24,6 +30,9 @@ const borderWidths = {
   proposition: 6,  
   corollaire: 4,  
   lemme: 4,  
+  consequence: 4,  
+  methode: 4,
+  defprop: 6,
 };
 
 const textValues = {
@@ -33,29 +42,30 @@ const textValues = {
   proposition: "Proposition",  
   corollaire: "Corollaire",  
   lemme: "Lemme",  
+  consequence: "Conséquence",
+  methode: "Méthode",
+  defprop: "Définition - Propriété",
 };
 
-const itemColor = typeColors[type] || "#e0e0e0"; // Couleur par défaut si type inconnu
+const tagweight = (tag == "admis") * 2 || 0;
+const itemColor = typeColors[type]; // Couleur par défaut si type inconnu
 const borderColor = typeBorderColors[type];
 const itemWidth = borderWidths[type]
 const itemText = textValues[type];
 ---
-<style>
-  p {
-    color: #e6bedc; /* Fond */
-    color: #84408a;
-    color: #56b0d3;
-    color: #4498c9;
-  }
-</style>
 
 <div class="item-container" style={`border: ${itemWidth}px solid ${borderColor};border-radius: 5px;border-top: none;border-right: none;border-bottom: none`}>
   <div class="item-header" style={`background-color: ${itemColor};`}>
     <span class="item-number"></span>
-    <strong>{itemText} : {titre}</strong>
+    <strong>{itemText} : {titre}</strong> 
+    <span class="ellipsis"></span>
+    <span style="align-content: right;"> 
+      <span style=`border: solid ${tagweight}px #ff4545; margin-right: 1rem;border-radius: 10%;`> {tag}</span>
+   </span>
   </div>
   <div class="item-body">
     <div style="margin: 0 5px;"><slot /></div> <!-- Le contenu de l'item -->
   </div>
 </div>
 <br>
+

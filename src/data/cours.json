@@ -7,17 +7,12 @@
     { 
       "titre": "Chapitre 2 - Sommes et produits", 
       "url": "/mpsi_sommes_produits", 
-      "tags": ["algèbre"] 
+      "tags": ["autre"] 
     },
     { 
-      "titre": "Chapitre 3 - Espaces vectoriels", 
-      "url": "/mpsi_espaces_vectoriels", 
-      "tags": ["algèbre", "espaces vectoriels"] 
-    },
-    { 
-      "titre": "Chapitre 4 - Séries", 
-      "url": "/mpsi_04_series", 
-      "tags": ["analyse", "séries"] 
+      "titre": "Chapitre 3 - Nombres complexes", 
+      "url": "/mpsi_nombres_complexes", 
+      "tags": ["Analyse"] 
     }
   ]
   

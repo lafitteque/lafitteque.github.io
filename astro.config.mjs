@@ -10,6 +10,7 @@ const macros = {
   "\\Q": "\\mathbb{Q}",
   "\\R": "\\mathbb{R}",
   "\\C": "\\mathbb{C}",
+  "\\U": "\\mathbb{U}",
   "\\K": "\\mathbb{K}",
   "\\L": "\\mathbb{L}",
 
@@ -25,13 +26,18 @@ const macros = {
   "\\cT": "\\mathscr{T}",
 
   "\\ssi": "\\Leftrightarrow",
+
   "\\pv": "; \\;",
   "\\v": ", \\;",
-  "\\overvar": "",
-  "\\vect": "\\mathbf{#1}",
+
   "\\somme": "\\sum \\limits_{#1}^{#2}",
   "\\produit": "\\prod \\limits_{#1}^{#2}",
   "\\integ": "\\int \\limits_{#1}^{#2}",
+
+  "\\Re": "\\operatorname{Re}",
+  "\\Im": "\\operatorname{Im}",
+  "\\Arg": "\\operatorname{Arg}",
+  "\\Ker": "\\operatorname{Ker}",
 };
 
 export default defineConfig({

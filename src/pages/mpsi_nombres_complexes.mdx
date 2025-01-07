@@ -1,57 +1,392 @@
 ---
-title: "Cours de logique"
+title: "Nombres complexes et trigonométrie"
 tag: "autre"
 ---
 import Base from '../layouts/Base.astro'
 import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
 import Item from '../components/Item.astro'
+import Tableofcontents from '../components/Tableofcontents.astro'
+import Katex from '../components/Katex.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
+import Admis from '../components/Admis.astro'
+import Coeur from '../components/ParCoeur.astro'
+import HP from '../components/HorsProgramme.astro'
 
 <Base>
 
-<h1> Mon titre principal </h1>
+# Nombres complexes et trigonométrie
 
-## Une section
-Blabla contenu de la section.
+<Tableofcontents></Tableofcontents>
 
-### Une sous-section
-Contenu de la sous-section.
+On se place dans un repère orthonormé $(O \v \vec{i} \v \vec{j})$.
 
-### Une autre sous-section
-Contenu d'une autre sous-section.
+## Trigonométrie : cercle trigonométrique, fonctions trigonométriques et formules
 
-## Une autre section
-Encore du contenu ici.
+### Cercle trigonométrique et ce qui en découle directement
 
-<Item type="definition" titre="Définition 1">
-  Voici la définition d'un concept en logique.
+<Item type='definition' titre='cercle trigonométrique'>
+Le cercle trigonométrique est l'ensemble des éléments du plan qui sont à $1$ de distance de l'origine $O$.
+
+Autrement dit, $(x \v y ) \in \R^2$ appartient au cercle unité si et seulement si $x^2 + y^2 = 1$.
 </Item>
 
-<Item type="theorem" titre="Théorème 1">
-  Voici le premier théorème important de cette leçon.
+<Item type='definition' titre='fonctions trigonométriques'>
+Soit $(x\v y)$ un point du cercle trigonométrique. Si l'on note $\theta$ la longueur de l'arc de cercle partant de $(1 \v 0)$ et allant jusqu'au point $(x\v y)$ en s'enroulant dans le sens trigonométrique (anti-horaire), on note :
+
+$$ \begin{cases} x = \cos(\theta) \\ y = \sin(\theta) \end{cases}$$
+
+</Item> 
+
+<Remarque titre="la notion d'angle">
+La définition rigoureuse d'un angle n'est pas au programme d'aucune filière de CPGE. Cependant, il est essentiel de comprendre son interprétation géométrique et quelques propriétés :
+
+- Les angles sont orientés : $-\theta$ c'est l'angle qui est parcouru par la même longueur d'arc de cercle $\theta$ mais dans le sens anti-trigonométrique (horaire).
+
+- Les angles sont donnés à un multiple de $2\pi$ près. Les angles $\theta = \pi$ et $\phi = 5\pi$ ont la même interprétation géométrique malgré le fait que leurs valeurs soient différentes. 
+
+- On parle de mesure principale d'un angle quand on précise que l'on parle d'une valeur dans $\llbracket - \pi \v \pi \rrbracket$. Par mesure de simplicité et pour prendre de bonnes habitudes, on ramènera toujours une mesure d'angle à la mesure principale de l'angle. 
+</Remarque>
+
+<Item type='consequence' titre='somme des carrés des fonctions trigonométriques'>
+
+$$ \forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1$$
 </Item>
 
-<Item type="propriete" titre="Propriété de la logique">
-  Cette propriété décrit une règle fondamentale.
+<Item type='definition' titre="périodicité d'une fonction">
+Soit $f$ une fonction définie sur $\R$ et $T \in \R$. On dit que $f$ est $T$-périodique si :
+
+$$\forall x \in \R \v f(x+T) = f(x) $$
 </Item>
 
-### Une sous-section dans une nouvelle section
-Et ici le contenu de cette sous-section.
+<Item type='proposition' titre='périodicité des fonctions trigonométriques'>
+$\cos$ et $\sin$ sont $2\pi$-périodiques.
+</Item>
+
+<Item type='proposition' titre='formulaire des déphasages'>
+Pour tout $x \in \R$, on a les formules suivantes :
+
+- $\cos(x + \pi) = \cos(x - \pi) = -\cos(x)$
+
+- $\sin(x + \pi) = \sin(x - \pi) = - \sin(x)$
+
+- $\cos(x + \dfrac{\pi}{2}) = -\sin(x)$
+
+- $\sin(x + \dfrac{\pi}{2}) = \cos(x)$
+
+</Item>
+
+### A propos des fonctions trigonométriques
+
+<Item type='proposition' titre='dérivées des fonctions trigonométriques' tag="admis">
+$\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
+
+- $\cos'(x) = -\sin(x)$
+- $\sin'(x) = \cos(x)$
+</Item>
+
+<Item type='proposition' titre='inégalité usuelle'>
+soit $x \in \R$,
+
+$\mid \sin(x)\mid \leqslant \mid x \mid $
+</Item>
+
+<Item type='definition' titre='fonction tangente'>
+Soit $x \in \big] -\dfrac{\pi}{2} \v \dfrac{\pi}{2}\big[$, on définit la fonction tangente sur ce même ensemble ainsi :
+
+$$ \tan(x) = \dfrac{\sin(x)}{\cos(x)}$$
+</Item>
+
+<Item type='proposition' titre='dérivation de la fonction tangente'>
+Soit $x \in \R$,
+
+$\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
+</Item>
+
+### Valeurs usuelles des fonctions trigonométriques
 
 
-Cette section contient du **Markdown** pour du texte simple, des listes, etc.
+| $\theta$ | $\cos(\theta)$ | $\sin(\theta)$ | $\tan(\theta)$ |
+|---|---|---|---|
+| $0$ | $1$ | $0$ | $0$ |
+| $\dfrac{\pi}{6}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\dfrac{1}{\sqrt{3}}$ |
+| $\dfrac{\pi}{4}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
+| $\dfrac{\pi}{3}$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\sqrt{3}$ |
+| $\dfrac{\pi}{2}$ | $0$ | $1$ | / |
+
+## Les complexes, opérations usuelles et interprétation géométrique
+
+<Item type='definition' titre='les nombres complexes'>
+
+On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$
+</Item>
 
 
-<h1> Mon titre principal </h1>
+<Item type='definition' titre='partie réelle et imaginaire'>
 
-## Une section
-Blabla contenu de la section.
+Un nombre complexe $z \in \C$ qui s'écrit $z = a + ib$ où $a$ et $b$ sont des réels. On note :
 
-### Une sous-section
-Contenu de la sous-section.
+- $\Re(z)$ la quantité $a$ qui est appelée "partie réelle de $z$"
+- $\Im(z)$ la quantité $b$ qui est appelée "partie imaginaire de $z$"
 
-### Une autre sous-section
-Contenu d'une autre sous-section.
+Il suit que $z = \Re(z) + i\Im(z)$. Si $z \in \C^*$ et $\Re(z) = 0$, on dit que $z$ est un **imaginaire pur* 
+</Item>
 
+<Item type='definition' titre='opérations entre complexes'>
+Soient $z = a+ib$ et $z' = c + id$ deux nombres complexes. On définit leur somme et leur produit comme suit :
+
+- $z + z' = (a+c) + i(b+d)$
+
+- $z \times z' = (ac - bd) + i(ad + bc)$
+</Item>
+
+<Remarque titre=''>
+Ces opérations sont assez naturelles : l'addition est faite terme à terme en utilisant l'écriture $z = a + ib$ et $z' = c + id$ et le produit est exactement le résultat que l'on attendrait avec une double distributivité. 
+
+On remarque qu'il s'agit bien là d'une définition. On ne peut nullement déduire cela d'une double distributivité puisque cela supposerait que, pour définir le produit de complexes, on sait déjà faire le produit de complexes. On appelle ce genre de raisonnement un "raisonnement circulaire" qu'il faut à tout prix éviter.
+</Remarque>
+
+## Conjugaison et module, utilisation de la forme trigonométrique
+
+### Conjugaison et module
+
+<Item type='definition' titre='conjugaison'>
+
+</Item>
+
+<Item type='proposition' titre='propriétés de la conjugaison'>
+
+</Item>
+
+<Item type='definition' titre='module'>
+
+</Item>
+
+<Item type='proposition' titre='propriétés du module'>
+
+</Item>
+
+<Item type='proposition' titre='module et conjugaison'>
+
+</Item>
+
+<Item type='theoreme' titre='inégalité triangulaire'>
+
+</Item>
+
+<Item type='proposition' titre='inégalité triangulaire généralisée'>
+
+</Item>
+
+
+
+
+### Forme trigonométrique et forme exponentielle
+
+<Item type='defprop' titre='forme trigonométrique'>
+Soit $z \in \C$. Il existe $\theta \in \R$ tel que :
+
+$$z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big) $$
+
+Cette écriture de $z$ est une **forme trigonométrique** de $z$.
+</Item>
+
+<Item type='proposition' titre='identification par forme trigonométrique'>
+Soient $z$ et $z'$ deux complexes dont une éxriture sous forme trigonométrique est $z = |z| \Big( \cos(\theta_1) + i \sin(\theta_1) \Big)$ et $z' = |z'| \Big( \cos(\theta_2) + i \sin(\theta_2) \Big)$. On a :
+
+$$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$$
+</Item>
+
+<Item type='definition' titre='argument'>
+La fonction $\Arg : \begin{cases}
+\C \rightarrow \big] -\pi \v \pi \big] \\
+z \rightarrow \Arg(z)\\
+\end{cases}$ où $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
+</Item>
+
+<Item type='proposition' titre="propriétés  de l'argument">
+Soient $(z \v z') \in \C^2$.
+
+- $\Arg(z z') \equiv \Arg(z) + \Arg(z') \, [2 \pi ]$
+- Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
+</Item>
+
+<Item type='definition' titre='forme exponentielle'>
+
+Soit $z \in \C$ et $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$ où $\theta \in \R$. On note  $z = |z| e^{i \theta}$. On appelle cette écriture une **forme exponentielle** de $z$.
+</Item>
+
+<Item type='proposition' titre='identification par forme exponentielle'>
+Soient $z$ et $z'$ deux complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| e^{i \theta_2}$. On a :
+
+$$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$$
+</Item>
+
+<Item type='proposition' titre='propriétés de la forme exponentielle'>
+Soit $z$ et $z'$ des complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| z^{i \theta_2}$. On a :
+
+- $ zz' = |z||z'|e^{i(\theta_1 + \theta_2)}$
+- si $z' \neq 0$, $ \dfrac{z}{z'} = \dfrac{|z|}{|z'|}e^{i(\theta_1 - \theta_2)}$
+- si $n \in \Z$, $z^n = |z|^n e^{ni\theta}$
+</Item>
+
+<Item type='proposition' titre='formules de Moivre'>
+Soit $\theta \in \R$. On a :
+
+- $\cos(\theta) = \dfrac{e^{i\theta} + e^{-i\theta}}{2}$
+
+- $\sin(\theta) = \dfrac{e^{i\theta} - e^{-i\theta}}{2i}$
+
+</Item>
+
+
+### Applications à la trigonométrie
+
+<Item type='proposition' titre='formules trigonométriques de sommes et différence des angles'>
+Soient $a$ et $b$ deux réels. On a :
+
+- $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$
+
+- $\cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b)$
+
+- $\sin(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)$
+
+- $\sin(a - b) = \cos(a)\sin(b) - \sin(a)\cos(b)$
+
+- $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$
+
+- $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$
+</Item>
+
+
+<Item type='consequence' titre='formulaire sommes de fonctions trigonométriques'>
+Soient $p$ et $q$ deux réels :
+
+- $\cos(p) + \cos(q) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+
+- $\cos(p) - \cos(q) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
+
+- $\sin(p) + \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
+
+- $\sin(p) - \sin(q) = 2 \sin(\dfrac{p+q}{2}) \cos(\dfrac{p-q}{2})$
+</Item>
+
+<Item type='proposition' titre='angle double'>
+Soit $\theta \in \R$. On a :
+
+- $\cos^2(\theta) = \dfrac{1 + \cos(2 \theta)}{2}$
+
+- $\sin^2(\theta) = \dfrac{1 - \cos(2 \theta)}{2}$
+
+</Item>
+
+
+<Item type='proposition' titre="formules de l'angle moitié">
+Soit $\theta \in \big[ - \dfrac{\pi}{2} \v \dfrac{\pi}{2} \big]$. On pose $\tan(\dfrac{\theta}{2})$, on a :
+
+- $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
+
+- $\sin(\theta) = \dfrac{2t}{1 + t^2}$
+</Item>
+
+
+<Exercice titre='Des éléments rationnels du cercle'>
+
+Soit $\cC$ le cercle unité. Y-a-t'il un nombre fini d'éléments dans $\Big(\Q \times \Q \Big) \bigcap \cC$?
+</Exercice>
+
+
+<Item type='methode' titre='réexprimer une somme'>
+
+**Résultat :**
+
+Soient $\omega \in \R$ et $(a,b) \in \R^2$. Il existe $A \in \R$ et $\phi \in \R$ tels que :
+
+$$\forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$$
+
+
+**Méthode :**
+
+En effet, soit $t \in \R$,  $a \cos( \omega t ) + b \sin ( \omega t ) = \sqrt{a^2 + b^2} + \dfrac{a}{\sqrt{a^2 + b^2}}\cos( \omega t ) + \dfrac{b}{\sqrt{a^2 + b^2}} \sin ( \omega t )$
+
+On note $A = \sqrt{a^2 + b^2}$, $\tilde{a} = \dfrac{a}{A}$ et $\tilde{b} = \dfrac{b}{A}$. Comme $\tilde{a}^2 + \tilde{b}^2 = 1$, il existe $\psi \in \R$ tel que $\tilde{a} = \cos(\psi)$ et $\tilde{b} = \sin(\psi)$
+
+On a donc $a \cos( \omega t ) + b \sin ( \omega t ) = A \Big( \cos(\psi) \cos( \omega t ) + \sin(\psi) \sin ( \omega t ) \Big)$
+
+à l'aide de la formule $\cos(a)\cos(b) + \sin(a)\sin(b) = \cos(a-b)$, on a :
+
+$A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$ c.q.f.d.
+</Item>
+
+## Racines de l'unité
+
+### Cercle unité
+
+<Item type='definition' titre='cercle unité'>
+On appelle cercle unité l'ensemble $\U = \{ z \in \C \mid |z| = 1 \}$.
+</Item>
+
+<Exercice titre='stabilité du cercle unité'>
+
+1) Est-ce que $\U$ est stable par produit?
+
+2) Est-ce que $\U$ est stable par somme?
+
+3) Est-ce que $\U$ est stable par exponentiation entière?
+</Exercice>
+
+### Racines n-ièmes 
+
+<Item type='defprop' titre='racine n-ième'>
+Soit $z \in \C^*$. On appelle racine n-ième de $z$ les solutions de l'équation suivante d'inconnue $r \in \C$ :
+
+$$ r^n = z $$
+
+Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \llbracket \v n-1 \rrbracket$
+</Item>
+
+
+<Item type='definition' titre="racines n-ièmes de l'unité">
+Soit $n \in \N$. On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. En particulier, $\U_n \subset \U$.
+</Item>
+
+
+<Exercice titre='racines n-ièmes'>
+
+1) Donner les racines 5-ièmes de l'unité
+
+2) Donner les racines 4-ièmes de $1 + i\sqrt{3}$
+</Exercice>
+
+
+<Exercice titre="inclusions des ensembles des racines de l'unité">
+Soit $(n\v m) \in (\N^*)^2$. Montrer que, si $n$ divise $m$, alors $\U_n \subset \U_m$.
+</Exercice>
+
+<Item type='proposition' titre="somme des racines de l'unité">
+Soient $\omega_1 \v \omega_2 \v \dotsm \v \omega_n$ les racines n-ièmes de l'unité où $n \in \N$. On a :
+
+$$\somme{i = 1}{n} \omega_i = 0$$
+</Item>
+
+
+## Interprétations géométrique
+
+**Conjugaison :** symétrie blabla
+
+**Module :** distance
+
+**Argument :** angle
+
+**Transormation affine :** rotation, homothétie et translation
+
+{/*
+  Elements manquants:
+    - définitions de fonctions avec accolades
+    - ajouter exercice pour formules de l'argument
+*/}
 
 </Base>
 
