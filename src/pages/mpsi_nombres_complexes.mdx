@@ -17,7 +17,7 @@ import HP from '../components/HorsProgramme.astro'
 
 <Base>
 
-# Nombres complexes et trigonométrie
+# Chapitre 3 - Nombres complexes et trigonométrie
 
 <Tableofcontents></Tableofcontents>
 
@@ -120,7 +120,9 @@ $\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
 
 <Item type='definition' titre='les nombres complexes'>
 
-On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$
+On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$.
+
+On peut représenter les éléments de $\C$ dans le repère orthonormé $\big(O \v \vec{i} \v \vec{j} \big)$. On dit que le complexe $z = a + ib$ a pour **affixe** $(a \v b)$.
 </Item>
 
 
@@ -153,31 +155,63 @@ On remarque qu'il s'agit bien là d'une définition. On ne peut nullement dédui
 ### Conjugaison et module
 
 <Item type='definition' titre='conjugaison'>
-
+Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle conjugué de $z$ le complexe $\overline{z} = a - ib $
 </Item>
 
 <Item type='proposition' titre='propriétés de la conjugaison'>
+Soient $z$ et $z'$ des complexes et $\lambda$ un réel. On a :
 
+- $\overline{\big(\overline{z}\big)} = z$
+
+- $\overline{z . z'} = \overline{z} . \overline{z'}$
+
+- $\overline{\Big(\dfrac{z}{z'}\Big)} = \dfrac{\;\; \overline{z}\;\; }{\overline{z'}}$
+
+- $\overline{z + z'} = \overline{z} + \overline{z'}$
 </Item>
+
 
 <Item type='definition' titre='module'>
-
+Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle module de $z$ le réel $|z| = \sqrt{a^2 + b^2} $
 </Item>
 
-<Item type='proposition' titre='propriétés du module'>
 
+<Item type='proposition' titre='propriétés du module'>
+Soient $z$ et $z'$ des complexes et $n$ un entier. On a :
+
+- $|z| = |\overline{z}|$
+
+- $|z . z'| = |z|. |z'|$
+
+- $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$
+
+- $|z^n| = |z|^n$
 </Item>
 
 <Item type='proposition' titre='module et conjugaison'>
+Soit $z \in \C$, on a :
 
+$$ z \overline{z} = |z|^2$$
+</Item>
+
+<Item type='definition' titre='colinéarité'>
+On dit que $z$ et $z'$ deux complexes sont colinéaires s'il existe $\lambda \in \R^*$ tel que $z = \lambda z'$ ou $z' = \lambda z$. 
 </Item>
 
 <Item type='theoreme' titre='inégalité triangulaire'>
+Soient $z$ et $z'$ deux complexes. On a :
 
+$$ \mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|$$
+
+Il y a égalité à droite si et seulement si $z$ et $z'$ sont colinéaires.
 </Item>
 
 <Item type='proposition' titre='inégalité triangulaire généralisée'>
+Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. On a :
 
+$$\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $$
+
+Avec égalité si et seulement s'il existe $i \in \llbracket 1 \v n \rrbracket$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \llbracket 1 \v n \rrbracket$.
 </Item>
 
 
