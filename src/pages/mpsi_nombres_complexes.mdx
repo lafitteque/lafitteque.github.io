@@ -56,7 +56,7 @@ $$ \forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Soit $\theta \in \R$, $(\cos(\theta) \sin(\theta) )$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
+Soit $\theta \in \R$, $(\cos(\theta) \v \sin(\theta) )$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
 </Hideable>
 
 <Item type='definition' titre="périodicité d'une fonction">
@@ -154,7 +154,7 @@ $\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
 
 La démonstration consiste à utiliser des formules démontrées plus tard ($\cos(a+b)$ et $\sin(a+b)$) et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
 
-L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. On peut encadrer l'aire de la section de cercle d'arc $\theta$ par deux triangles rectangles et en déduire la compariason des aires (deux triangles et une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
+L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. On peut encadrer l'aire de la section de cercle d'arc $\theta$ par les aires de deux triangles rectangles et en déduire la compariason des aires (aires de deux triangles et d'une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
 </Remarque>
 
 
@@ -191,11 +191,20 @@ Soit $x \in \deftan$, $\tan'(x) = \dfrac{\sin'(x) \times \cos(x) - \sin(x) \time
 <Hideable type='démonstration' titre=''>
 $ \sin(\theta) = \sqrt{1 - \cos^2(\theta)} $ donc la deuxième colonne se déduit de la première. La troisième se déduit des deux premières.
 
-**Cas $\theta = 0$ :** $\cos(0) = 1$ s'obtient par construction géométrique.
+**Cas $\theta = 0$ :** 
+<Indent>
+$\cos(0) = 1$ s'obtient par construction géométrique.
+</Indent>
 
-**Cas $\theta = \dfrac{\pi}{4}$ :** comme $A\Big(\cos(\dfrac{\pi}{4}) \, \sin(\dfrac{\pi}{4})\Big)$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
+**Cas $\theta = \dfrac{\pi}{4}$ :** 
+<Indent>
+Comme $A\Big(\cos(\dfrac{\pi}{4}) \, \sin(\dfrac{\pi}{4})\Big)$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
+</Indent>
 
-**Cas $\theta = \dfrac{\pi}{3}$ :** on place $A\Big(\cos(\dfrac{\pi}{3}\Big) \v \sin(\dfrac{\pi}{3}))$  et $B\Big(2\cos(\dfrac{\pi}{3} \v 0)\Big)$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
+**Cas $\theta = \dfrac{\pi}{3}$ :** 
+<Indent>
+On place $A\Big(\cos(\dfrac{\pi}{3}\Big) \v \sin(\dfrac{\pi}{3}))$  et $B\Big(2\cos(\dfrac{\pi}{3} \v 0)\Big)$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
+</Indent>
 </Hideable>
 
 ## Les complexes, opérations usuelles et interprétation géométrique
@@ -252,6 +261,37 @@ Soient $z$ et $z'$ des complexes et $\lambda$ un réel. On a :
 - $\overline{z + z'} = \overline{z} + \overline{z'}$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
+
+
+**Première égalité :** 
+<Indent>
+
+$\overline{z} = a -ib = a + i \tilde{b}$ où $\tilde{b} = -b$. Donc $\overline{\big(\overline{z}\big)} = a - i\tilde{b} = a + ib = z$
+</Indent>
+
+**Deuxième égalité :** 
+<Indent>
+
+$\overline{z . z'} = (ac -bd) -i(bc + ad)$ et $ \overline{z} . \overline{z'} = (a - ib)(c - id) = ac + (-ib)(-id) + (-ib)c + a(-id) = (ac -bd) -i(bc + ad)$ d'où l'égalité.
+</Indent>
+
+**Troisième égalité :** 
+<Indent>
+
+$\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}.\dfrac{c - id}{c - id}\Big)} = \overline{\Big(\dfrac{(a+ib)(c-id)}{c^2 + d^2}\Big)}$
+
+A l'aide de la deuxième égalité, on a $\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{(a+ib)} \overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} = \dfrac{\overline{(a+ib)}}{\overline{(\overline{c+id})}}$ puisque $\overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} = \dfrac{c+id}{c^2 + d^2} = \dfrac{1}{c-id}$. 
+</Indent>
+
+**Quatrième égalité :** 
+<Indent>
+
+$\overline{z + z'} = \overline{a + ib + c + id} = a + c - ib - id =  \overline{z} + \overline{z'}$
+</Indent>
+
+</Hideable>
 
 <Item type='definition' titre='module'>
 Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle module de $z$ le réel $|z| = \sqrt{a^2 + b^2} $
@@ -259,16 +299,63 @@ Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle 
 
 
 <Item type='proposition' titre='propriétés du module'>
-Soient $z$ et $z'$ des complexes et $n$ un entier. On a :
+Soient $z$ et $z'$ des complexes et $n$ un entier non nul. On a :
 
 - $|z| = |\overline{z}|$
 
 - $|z . z'| = |z|. |z'|$
 
-- $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$
+- Si $z' \neq 0$, $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$ 
 
 - $|z^n| = |z|^n$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
+
+**Première égalité :** 
+<Indent>
+
+$|z| = \sqrt{a^2 + b^2} = \sqrt{a^2 + (-b)^2} = |\overline{z}|$
+</Indent>
+
+**Deuxième égalité :** Pour éviter de manipuler les racines carrées, on étudie les carrés des quantités voulues. Cela ne pose pas problème car l'on sait que les quantités étudiées sont des réels positifs car il s'agit de distances.
+<Indent>
+$|z . z'|^2 = |(ac - bd) + i(ad +bc)|^2 = (ac - bd)^2 + (ad +bc)^2 = a^2c^2 -\cancel{2abcd} + b^2d^2 + a^2d^2 +\cancel{2abcd} + b^2c^2
+$(|z|.|z'|)^2 = (a^2 + b^2) (c^2 + d^2) = a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2$
+
+Donc $|z . z'|^2 = (|z|.|z'|)^2$ d'où $|z . z'| = |z|.|z'|$ car ces quantités sont toutes réelles et positives.
+</Indent>
+
+**Troisième égalité :** 
+<Indent>
+
+On suppose $z' \neq 0$.
+$|\dfrac{z}{z'}| = |z|\mid \dfrac{1}{z'} \mid$ d'après la deuxième égalité. Montrons donc que $\mid \dfrac{1}{z'} \mid = \dfrac{1}{|z'|}$.
+
+$\mid \dfrac{1}{z'} \mid = \mid \dfrac{1}{c+id} \dfrac{c-id}{c-id} \mid = \mid \dfrac{\overline{z'}}{c^2+d^2}  \mid = \dfrac{|\overline{z'}|}{c^2+d^2}$ d'après la deuxième formule et comme $\dfrac{1}{c^2 + d^2}$ a pour partie imaginaire $0$, son module est lui-même (puisqu'il est positif).
+
+On a donc $ \mid \dfrac{1}{z'} \mid = \dfrac{|\overline{z'}|}{c^2+d^2} = \dfrac{|z'|}{|z'|^2} = \dfrac{1}{|z'|}$. On a bien le résultat voulu.
+</Indent>
+
+**Quatrième égalité :** 
+<Indent>
+
+Soit $z \in \C$. Montrons par récurrence sur $n \in \N^*$ la propriété $\cP(n) \, : \, " |z^n| = |z|^n "$.
+
+**Initialisation :** $\cP(1)$ est trivial et on a même $\cP(2)$ d'après la deuxième formule.
+
+**Hérédité :** Supposons $\cP(n)$ vraie où $n \geqslant 3$. Montrons $\cP(n+1)$.
+
+$|z^{n+1}| = |z.z^n| = |z|.|z^n|$ d'après la deuxième formule.
+
+Ensuite, $|z^{n+1}| = |z|.|z^n|^n = |z|.|z|^n$ par hypothèse de récurrence puisque $\cP(n)$ est supposée vraie. On a donc $|z^{n+1}| = |z|^{n+1}$.
+
+**Conclusion :** On a montré $\cP(1)$. Et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Indent>
+
+</Hideable>
 
 <Item type='proposition' titre='module et conjugaison'>
 Soit $z \in \C$, on a :
