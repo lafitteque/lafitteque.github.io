@@ -28,7 +28,7 @@ Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1
 
 $ \somme{i=1}{n} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n $
 
-ou encore $\somme{i \in \llbracket 1 \v n \rrbracket}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$
+ou encore $\somme{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$
 
 Par convention, on pose 
 
@@ -140,7 +140,7 @@ Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1
 
 $$ \produit{i=1}{n} a_i = a_1 \times a_2 \times \dotsm \times a_{n-1} \times a_n $$
 
-$$\text{ou encore } \produit{i \in \llbracket 1 \v n \rrbracket}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$$
+$$\text{ou encore } \produit{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$$
 
 Par convention, on pose 
 
@@ -375,7 +375,7 @@ Plus qu'une démonstration, il s'agit d'une explication. En fait, on parcours ch
 
 On peut parcourir les éléments de ce tableau ligne par ligne. Cela signifie que l'on lit d'abord la valeur de $i$ et on regarde ensuite les valeurs de $j$ qui conviennent.
 
-Mais on peut aussi parcourir le tableau colonne par colonne. On lit la valeur de $j$ puis on regarde les valeurs de $i$ qui conviennent. En fait, à $j$ fixé, les valeurs de $i$ qui conviennent sont celles dans $\llbracket j \v n\rrbracket$. D'où la propriété.
+Mais on peut aussi parcourir le tableau colonne par colonne. On lit la valeur de $j$ puis on regarde les valeurs de $i$ qui conviennent. En fait, à $j$ fixé, les valeurs de $i$ qui conviennent sont celles dans $\defentiers{j}{n}$. D'où la propriété.
 </Hideable>
 
 <Remarque>
@@ -441,7 +441,8 @@ $$ \binom{n}{k} = \dfrac{n!}{k!(n-k)!}$$
 </Item>
 
 <Remarque titre='convention'>
-Par convention, si $k \in \Z$ et $k \notin \llbracket 0 \v n \rrbracket$, on pose $\binom{n}{k} = 0$. La raison étant que cela permet de conserver la propriété de somme qui sera présentée ultérieurement.
+
+Par convention, si $k \in \Z$ et $k \notin \defentiers{0}{n}$, on pose $\binom{n}{k} = 0$. La raison étant que cela permet de conserver la propriété de somme qui sera présentée ultérieurement.
 </Remarque>
 
 <Item type='corollaire' titre='formules usuelles'>

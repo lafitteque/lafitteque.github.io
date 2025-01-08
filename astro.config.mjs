@@ -25,6 +25,22 @@ const macros = {
   "\\cP": "\\mathscr{P}",
   "\\cT": "\\mathscr{T}",
 
+  "\\defoo": "\\big] {#1} \\v {#2} \\big[",
+  "\\defff": "\\big[ {#1} \\v {#2} \\big]",
+  "\\defof": "\\big] {#1} \\v {#2} \\big]",
+  "\\deffo": "\\big[ {#1} \\v {#2} \\big[",
+
+  "\\deftan": "\\big] -\\dfrac{\\pi}{2} \\v \\dfrac{\\pi}{2}\\big[",
+  "\\defrad": "\\big[ 0 \\v 2\\pi \\big[",
+
+  "\\defunitoo": "\\big] 0 \\v 1\\big[",
+  "\\defunitfo": "\\big[ 0 \\v 1\\big[",
+  "\\defunitof": "\\big] 0 \\v 1\\big]",
+  "\\defunitff": "\\big[ 0 \\v 1\\big]",
+
+  "\\defentiersn": "\\llbracket 1 \\v n\\rrbracket",
+  "\\defentiers": "\\llbracket {#1} \\v {#2} \\rrbracket",
+
   "\\ssi": "\\Leftrightarrow",
 
   "\\pv": "; \\;",
@@ -33,6 +49,8 @@ const macros = {
   "\\somme": "\\sum \\limits_{#1}^{#2}",
   "\\produit": "\\prod \\limits_{#1}^{#2}",
   "\\integ": "\\int \\limits_{#1}^{#2}",
+
+  "\\limm": "\\lim \\limits_{ {#1} }",
 
   "\\Re": "\\operatorname{Re}",
   "\\Im": "\\operatorname{Im}",

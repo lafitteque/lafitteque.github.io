@@ -47,7 +47,7 @@ La définition rigoureuse d'un angle n'est pas au programme d'aucune filière de
 
 - Les angles sont donnés à un multiple de $2\pi$ près. Les angles $\theta = \pi$ et $\phi = 5\pi$ ont la même interprétation géométrique malgré le fait que leurs valeurs soient différentes. 
 
-- On parle de mesure principale d'un angle quand on précise que l'on parle d'une valeur dans $\llbracket - \pi \v \pi \rrbracket$. Par mesure de simplicité et pour prendre de bonnes habitudes, on ramènera toujours une mesure d'angle à la mesure principale de l'angle. 
+- On parle de mesure principale d'un angle quand on précise que l'on parle d'une valeur dans $\defof{-\pi}{\pi}$. Par mesure de simplicité et pour prendre de bonnes habitudes, on ramènera toujours une mesure d'angle à la mesure principale de l'angle. 
 </Remarque>
 
 <Item type='consequence' titre='somme des carrés des fonctions trigonométriques'>
@@ -55,15 +55,30 @@ La définition rigoureuse d'un angle n'est pas au programme d'aucune filière de
 $$ \forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1$$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+Soit $\theta \in \R$, $(\cos(\theta) \sin(\theta) )$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
+</Hideable>
+
 <Item type='definition' titre="périodicité d'une fonction">
-Soit $f$ une fonction définie sur $\R$ et $T \in \R$. On dit que $f$ est $T$-périodique si :
+Soit $f$ une fonction définie sur $\R$ et $T \in \R^*$. On dit que $f$ est $T$-périodique si :
 
 $$\forall x \in \R \v f(x+T) = f(x) $$
+
+On dit qu'une fonction $f$ est périodique s'il existe $T \in \R^*$ tel que $f$ soit $T$-périodique.
 </Item>
 
 <Item type='proposition' titre='périodicité des fonctions trigonométriques'>
 $\cos$ et $\sin$ sont $2\pi$-périodiques.
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in \R$. L'enroulement d'une corde de longueur $x+2\pi$ autour du cerle trigonométrique peut être décomposé en deux sections : un tour entier du cercle soit une longueur $2\pi$ et un enroulement de $x$. 
+
+Comme l'enroulement de longueur $2\pi$ emène sur le point $(1\v 0)$, y ajouter un enroulement de longueur $x$ emène sur $(\cos(x) \v \sin(x))$. 
+
+D'où $\begin{cases} \cos(x + 2\pi) \\ \sin(x + 2\pi) \end{cases}$ c.q.f.d.
+</Hideable>
 
 <Item type='proposition' titre='formulaire des déphasages'>
 Pour tout $x \in \R$, on a les formules suivantes :
@@ -76,9 +91,57 @@ Pour tout $x \in \R$, on a les formules suivantes :
 
 - $\sin(x + \dfrac{\pi}{2}) = \cos(x)$
 
+- $\cos(\dfrac{\pi}{2} - x) = -\sin(x)$
+
+- $\sin(\dfrac{\pi}{2} - x) = \cos(x)$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+**Déphasage de $\pi$ :**
+<Indent>
+Un déphasage de $\pi$ correspond à prendre le symétrique de $(\cos(x) \v \sin(x))$ par symétrie centrale de centre $O$. On obtient donc l'image par symétrie : $(-\cos(x) \v -\sin(x))$. 
+
+Si cela n'est pas suffisament évident, vous pouvez voir la symétrie centrale comme la succession de deux symétries axiales d'axes $x=0$ et $y=0$. La première change le signe de l'ordonnée et la seconde change le signe de l'abscisse. 
+</Indent>
+
+**Déphasage de $\dfrac{\pi}{2}$**
+<Indent>
+Un déphasage de $\dfrac{\pi}{2}$ correspond à effectuer une rotation d'un quart de tour. Une telle rotation envoie un point $(x \v y)$ sur $(-y \v x)$ d'où le résultat.
+</Indent>
+
+**Les deux dernières formules**
+<Indent>
+On note $A$ le point d'intersection entre le cercle trigonométrique et la droite d'équation $x=y$ qui se trouve dans le cadrant haut-droit (cadran 1).
+
+Montrons que symétrie d'axe $x=y$ envoie $(\cos(x) \v \sin(x))$ sur $(\cos(\dfrac{\pi}{2} -x) \v \sin(\dfrac{\pi}{2} - x))$ et inversement. En partant de $A(\cos(\dfrac{\pi}{4}) \v \sin(\dfrac{\pi}{4}))$, on peut enrouler une corde de longueur $\dfrac{\pi}{4} - x$ dans les deux sens (trigonométrique et anti-trigonométrique). Comme l'axe $x=y$ est un axe de symétrie du cercle, l'enroulement de part et d'autre enmène à un point et son symétrique par la symétrie d'axe $x=y$.
+
+Mais la symétrie envoie $(x \v y)$ sur $(y \v x)$, d'où le résultat. 
+</Indent>
+
+</Hideable>
+
 ### A propos des fonctions trigonométriques
+
+<Item type='proposition' titre='inégalité usuelle'>
+
+soit $x \in \R$,
+
+$\mid \sin(x)\mid \leqslant \mid x \mid $
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Démonstration géométrique :**
+
+Soient $A(\cos(x) \v 0)$, $B(\cos(x) \v \sin(x))$ et $C(1 \v 0)$.  Mais $BC \leqslant |x|$ car il s'agit du chemin le plus court entre $B$ et $C$ et $x$ est la longueur d'un chemin entre $B$ et $C$. 
+
+D'autre part, $ABC$ est un triangle rectangle en $A$ et donc $BC \geqslant AB$ car $BC$ est l'hypothénuse du triangle rectangle. On remarque de plus que $AB = |\sin(x)|$.
+
+On en conclut que $|x| \geqslant |\sin(x)|$
+
+</Hideable>
+
 
 <Item type='proposition' titre='dérivées des fonctions trigonométriques' tag="admis">
 $\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
@@ -87,23 +150,32 @@ $\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
 - $\sin'(x) = \cos(x)$
 </Item>
 
-<Item type='proposition' titre='inégalité usuelle'>
-soit $x \in \R$,
+<Remarque titre='pistes pour la preuve géométrique'>
 
-$\mid \sin(x)\mid \leqslant \mid x \mid $
-</Item>
+La démonstration consiste à utiliser des formules démontrées plus tard ($\cos(a+b)$ et $\sin(a+b)$) et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
+
+L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. On peut encadrer l'aire de la section de cercle d'arc $\theta$ par deux triangles rectangles et en déduire la compariason des aires (deux triangles et une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
+</Remarque>
+
 
 <Item type='definition' titre='fonction tangente'>
-Soit $x \in \big] -\dfrac{\pi}{2} \v \dfrac{\pi}{2}\big[$, on définit la fonction tangente sur ce même ensemble ainsi :
+
+Soit $x \in \deftan$, on définit la fonction tangente sur ce même ensemble ainsi :
 
 $$ \tan(x) = \dfrac{\sin(x)}{\cos(x)}$$
 </Item>
 
 <Item type='proposition' titre='dérivation de la fonction tangente'>
-Soit $x \in \R$,
+
+Soit $x \in \deftan$,
 
 $\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in \deftan$, $\tan'(x) = \dfrac{\sin'(x) \times \cos(x) - \sin(x) \times \cos'(x)}{\cos^2(x)} = \dfrac{\sin^2(x) - \cos^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
+</Hideable>
 
 ### Valeurs usuelles des fonctions trigonométriques
 
@@ -115,6 +187,16 @@ $\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
 | $\dfrac{\pi}{4}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
 | $\dfrac{\pi}{3}$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\sqrt{3}$ |
 | $\dfrac{\pi}{2}$ | $0$ | $1$ | / |
+
+<Hideable type='démonstration' titre=''>
+$ \sin(\theta) = \sqrt{1 - \cos^2(\theta)} $ donc la deuxième colonne se déduit de la première. La troisième se déduit des deux premières.
+
+**Cas $\theta = 0$ :** $\cos(0) = 1$ s'obtient par construction géométrique.
+
+**Cas $\theta = \dfrac{\pi}{4}$ :** comme $A\Big(\cos(\dfrac{\pi}{4}) \, \sin(\dfrac{\pi}{4})\Big)$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
+
+**Cas $\theta = \dfrac{\pi}{3}$ :** on place $A\Big(\cos(\dfrac{\pi}{3}\Big) \v \sin(\dfrac{\pi}{3}))$  et $B\Big(2\cos(\dfrac{\pi}{3} \v 0)\Big)$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
+</Hideable>
 
 ## Les complexes, opérations usuelles et interprétation géométrique
 
@@ -211,7 +293,7 @@ Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. On a :
 
 $$\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $$
 
-Avec égalité si et seulement s'il existe $i \in \llbracket 1 \v n \rrbracket$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \llbracket 1 \v n \rrbracket$.
+Avec égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \defentiersn$.
 </Item>
 
 
@@ -318,7 +400,8 @@ Soit $\theta \in \R$. On a :
 
 
 <Item type='proposition' titre="formules de l'angle moitié">
-Soit $\theta \in \big[ - \dfrac{\pi}{2} \v \dfrac{\pi}{2} \big]$. On pose $\tan(\dfrac{\theta}{2})$, on a :
+
+Soit $\theta \in \defoo{-\pi}{\pi}$. On pose $\tan(\dfrac{\theta}{2})$, on a :
 
 - $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
 
@@ -378,7 +461,7 @@ Soit $z \in \C^*$. On appelle racine n-ième de $z$ les solutions de l'équation
 
 $$ r^n = z $$
 
-Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \llbracket \v n-1 \rrbracket$
+Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$
 </Item>
 
 

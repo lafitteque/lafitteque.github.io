@@ -309,7 +309,7 @@ Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
 - $\forall n \in E, n^2 \in E$
 - $\exists x \in E \mid x \times x = 0$
 - $\forall x \in E, \forall y \in E, x \times y = y \times x$
-- $\exists a > 0 \mid \forall x,y \in \big[1 \v 2 \big], |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
+- $\exists a > 0 \mid \forall x,y \in \defff{1}{2}, |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
 </Exercice>
 
 <Hideable type="solution" titre="">
@@ -317,7 +317,7 @@ Dans l'ordre, on a :
 - $\exists n \in E, n^2 \notin E$
 - $\forall x \in E, x \times x \neq 0$
 - $\exists x \in E, \exists y \in E \mid x \times y \neq y \times x$
-- $\forall a > 0, \exists x,y \in \big[1 \v 2 \big] \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
+- $\forall a > 0, \exists x,y \in \defff{1}{2} \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
 </Hideable>
 
 ### Les différents modes de raisonnement
@@ -380,6 +380,7 @@ $\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
 ### Rappel : les ensembles usuels
 
 <Item type="definition" titre="Ensembles usuels">
+
 | Notation | Nom | Exemple(s) | Description à l'aide de quantificateurs| 
 |---|---|---|---|
 | $\empty$ ou $\{ \}$ | Ensemble vide | / | / |
@@ -389,7 +390,7 @@ $\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
 | $\Q$ | Nombres rationnels | $\dfrac{51}{13}$ ou 100 | $\{q \in \R \mid  \exists a \in \Z, \exists b \in \N^* , q = \dfrac{a}{b}  \}$ |
 | $\R$ | Nombres réels | $\pi$ ou -44 | Hors programme |
 | $\C$ | Nombres complexes | $2 + 3i$ | Hors programme |
-| $\llbracket  n \v m \rrbracket$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
+| $\defentiers{n}{m}$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
 
 On note $A^*$ l'ensemble des éléments non nuls de $A$
 </Item>
@@ -473,14 +474,14 @@ En particulier, $\prod_{i=1}^n E $ est noté $ E^n$.
 
 
 <Exercice titre="">
-Soit $E = \big[0 ,\, + \infty\big[ \times \R_+$. 
+Soit $E = \deffo{0}{+ \infty} \times \R_+$. 
 - 1) Proposer $x$ tel que $x \in E$ et $y$ tel que $y \notin E$.
 - 2) Décrire l'ensemble $\complement_{\R^2}^E$ comme une réunion de produits cartésiens.
 </Exercice>
 
 <Hideable type="solution" titre="">
 - 1) On peut proposer $x = (1 ,\, 1)$ et $y = (-1 ,\, 1)$
-- 2) $\complement_{\R^2}^E = (\big]- \infty ,\, 0 \big[ \times \R) \bigcup (\big[ 0 ,\, + \infty \big[ \times \big]- \infty ,\, 0 \big[ )$. En effet, 
+- 2) $\complement_{\R^2}^E = (\defoo{- \infty}{0} \times \R) \bigcup (\deffo{0{+ \infty} \times \defoo{- \infty}{0} )$. En effet, 
 être dans le complémentaire de $E$, c'est avoir une première coordonnée qui ne coïncide pas avec la définition de $E$ ou bien une seconde 
 coordonnée qui ne coïncide pas avec la définition de $E$.
 </Hideable>
@@ -516,7 +517,7 @@ Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appar
 
 <Hideable type="exemple" titre="">
 
-| | $E = \big[ -2 \v 8 \big[$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
+| | $E = \deffo{-2}{8}$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
 |---|---|---|---|
 | minimum | $-2$ | n'en a pas | n'en a pas |
 | maximum | n'en a pas | 1 | n'en a pas |
