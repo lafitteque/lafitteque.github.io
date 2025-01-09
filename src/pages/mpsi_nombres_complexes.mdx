@@ -11,9 +11,6 @@ import Tableofcontents from '../components/Tableofcontents.astro'
 import Katex from '../components/Katex.astro'
 import Indent from '../components/Indent.astro'
 import Fil from '../components/Fil.astro'
-import Admis from '../components/Admis.astro'
-import Coeur from '../components/ParCoeur.astro'
-import HP from '../components/HorsProgramme.astro'
 
 <Base>
 
@@ -34,7 +31,8 @@ Autrement dit, $(x \v y ) \in \R^2$ appartient au cercle unité si et seulement 
 </Item>
 
 <Item type='definition' titre='fonctions trigonométriques'>
-Soit $(x\v y)$ un point du cercle trigonométrique. Si l'on note $\theta$ la longueur de l'arc de cercle partant de $(1 \v 0)$ et allant jusqu'au point $(x\v y)$ en s'enroulant dans le sens trigonométrique (anti-horaire), on note :
+
+Soit $\Point{x}{y}$ un point du cercle trigonométrique. Si l'on note $\theta$ la longueur de l'arc de cercle partant de $\Point{1}{0}$ et allant jusqu'au point $\Point{x}{y}$ en s'enroulant dans le sens trigonométrique (anti-horaire), on note :
 
 $$ \begin{cases} x = \cos(\theta) \\ y = \sin(\theta) \end{cases}$$
 
@@ -56,7 +54,8 @@ $$ \forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Soit $\theta \in \R$, $(\cos(\theta) \v \sin(\theta) )$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
+
+Soit $\theta \in \R$, $\Point{\cos(\theta)}{\sin(\theta)}$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
 </Hideable>
 
 <Item type='definition' titre="périodicité d'une fonction">
@@ -75,9 +74,36 @@ $\cos$ et $\sin$ sont $2\pi$-périodiques.
 
 Soit $x \in \R$. L'enroulement d'une corde de longueur $x+2\pi$ autour du cerle trigonométrique peut être décomposé en deux sections : un tour entier du cercle soit une longueur $2\pi$ et un enroulement de $x$. 
 
-Comme l'enroulement de longueur $2\pi$ emène sur le point $(1\v 0)$, y ajouter un enroulement de longueur $x$ emène sur $(\cos(x) \v \sin(x))$. 
+Comme l'enroulement de longueur $2\pi$ emène sur le point $\Point{1}{0}$, y ajouter un enroulement de longueur $x$ emène sur $\Point{\cos(x)}{{\sin(x)}$. 
 
 D'où $\begin{cases} \cos(x + 2\pi) \\ \sin(x + 2\pi) \end{cases}$ c.q.f.d.
+</Hideable>
+
+<Item type='definition' titre="parité d'une fonction">
+Soit $f$ une fonction définie sur $\defoo{-A}{A}$ où $A \in \R$ (également valable si les deux bornes sont ouvertes). On dit que :
+
+- $f$ est paire si $\forall x \in \defoo{-A}{A}\v f(-x) = f(x)$
+
+- $f$ est impaire si $\forall x \in \defoo{-A}{A}\v f(-x) = -f(x)$
+</Item>
+
+<Remarque titre=''>
+
+- Une fonction est paire ssi. l'axe des ordonnées est un axe de symétrie de sa représentation graphique. 
+
+- Une fonction est impaire ssi. son origine est un centre de symétrie de sa représentation graphique.
+</Remarque>
+
+<Item type='proposition' titre='parité des fonctions cosinus et sinus'>
+La fonction $\cos$ est paire alors que la fonction $\sin$ est impaire.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+La symétrie d'axe $y=0$ envoie $\Point{x}{y}$ sur $\Point{x}{-y}$. On utilise cela pour conclure :
+
+- on en déduit que $\cos(-x) = \cos(x) \, \forall x \in \R$.
+
+- on en déduit que $\sin(-x) = -\sin(x) \, \forall x \in \R$.
 </Hideable>
 
 <Item type='proposition' titre='formulaire des déphasages'>
@@ -107,18 +133,101 @@ Si cela n'est pas suffisament évident, vous pouvez voir la symétrie centrale c
 
 **Déphasage de $\dfrac{\pi}{2}$**
 <Indent>
-Un déphasage de $\dfrac{\pi}{2}$ correspond à effectuer une rotation d'un quart de tour. Une telle rotation envoie un point $(x \v y)$ sur $(-y \v x)$ d'où le résultat.
+Un déphasage de $\dfrac{\pi}{2}$ correspond à effectuer une rotation d'un quart de tour. Une telle rotation envoie un point $\Point{x}{y}$ sur $\Point{-y}{x})$ d'où le résultat.
 </Indent>
 
 **Les deux dernières formules**
 <Indent>
 On note $A$ le point d'intersection entre le cercle trigonométrique et la droite d'équation $x=y$ qui se trouve dans le cadrant haut-droit (cadran 1).
 
-Montrons que symétrie d'axe $x=y$ envoie $(\cos(x) \v \sin(x))$ sur $(\cos(\dfrac{\pi}{2} -x) \v \sin(\dfrac{\pi}{2} - x))$ et inversement. En partant de $A(\cos(\dfrac{\pi}{4}) \v \sin(\dfrac{\pi}{4}))$, on peut enrouler une corde de longueur $\dfrac{\pi}{4} - x$ dans les deux sens (trigonométrique et anti-trigonométrique). Comme l'axe $x=y$ est un axe de symétrie du cercle, l'enroulement de part et d'autre enmène à un point et son symétrique par la symétrie d'axe $x=y$.
+Montrons que symétrie d'axe $x=y$ envoie $\Point{\cos(x)}{\sin(x)}$ sur $\Point{\cos(\dfrac{\pi}{2} -x)}{\sin(\dfrac{\pi}{2} - x)}$ et inversement. En partant de $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$, on peut enrouler une corde de longueur $\dfrac{\pi}{4} - x$ dans les deux sens (trigonométrique et anti-trigonométrique). Comme l'axe $x=y$ est un axe de symétrie du cercle, l'enroulement de part et d'autre enmène à un point et son symétrique par la symétrie d'axe $x=y$.
 
 Mais la symétrie envoie $(x \v y)$ sur $(y \v x)$, d'où le résultat. 
 </Indent>
 
+</Hideable>
+
+
+<Item type='proposition' titre='formules trigonométriques de sommes et différence des angles'>
+Soient $a$ et $b$ deux réels. On a :
+
+- $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$
+
+- $\cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b)$
+
+- $\sin(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)$
+
+- $\sin(a - b) = \cos(a)\sin(b) - \sin(a)\cos(b)$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+A FAIRE : ajouter image. Placer sur le cercle trigo le point D d'angle a+b puis projeter orthogonalement sur la droite inclinée d'angle a ET sur y = 0. On obtient deux intersections (G pour celle sur y=0 et E pour l'autre). On re projette E sur y=0 pour obtenif F. On projette E sur (DG) pour obtenir H.
+
+D'après la figure, on a $\sin(a + b) = DH + HG = DE.\sin(b) + OE.\sin(a) = \cos(a)\sin(b) + \sin(a)\cos(b)$.
+
+De même, $\cos(a + b) = OG = OF - FG = OE.\cos(a) - HE = \cos(b)\cos(a) - \sin(b)\sin(a)$.
+
+Les autres formules sont des conséquences immédiates de celles-ci.
+</Hideable>
+
+
+
+<Item type='proposition' titre='angle double'>
+Soit $\theta \in \R$. On a :
+
+- $\cos^2(\theta) = \dfrac{1 + \cos(2 \theta)}{2}$
+
+- $\sin^2(\theta) = \dfrac{1 - \cos(2 \theta)}{2}$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $\theta \in \R$, on a :
+
+- $\cos(\theta) = \cos^2(\theta) - \sin^2(\theta) = \cos^2(\theta) - ( 1 - \cos^2(\theta)) = 2\cos^2(\theta) - 1$ d'où $\cos^2(\theta) = \dfrac{1 + \cos(2\theta)}{2}$
+
+- $\sin^2(\theta) = 1 - \cos^2(\theta) = 1 - \dfrac{1 + \cos(2\theta)}{2} = \dfrac{1 - \cos(2\theta)}{2}$
+</Hideable>
+
+
+
+
+<Item type='methode' titre='réexprimer une somme'>
+
+**Résultat :**
+
+Soient $\omega \in \R$ et $(a,b) \in \R^2$. Il existe $A \in \R$ et $\phi \in \R$ tels que :
+
+$$\forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$$
+
+
+**Méthode :**
+
+En effet, soit $t \in \R$,  $a \cos( \omega t ) + b \sin ( \omega t ) = \sqrt{a^2 + b^2} + \dfrac{a}{\sqrt{a^2 + b^2}}\cos( \omega t ) + \dfrac{b}{\sqrt{a^2 + b^2}} \sin ( \omega t )$
+
+On note $A = \sqrt{a^2 + b^2}$, $\tilde{a} = \dfrac{a}{A}$ et $\tilde{b} = \dfrac{b}{A}$. Comme $\tilde{a}^2 + \tilde{b}^2 = 1$, il existe $\psi \in \R$ tel que $\tilde{a} = \cos(\psi)$ et $\tilde{b} = \sin(\psi)$
+
+On a donc $a \cos( \omega t ) + b \sin ( \omega t ) = A \Big( \cos(\psi) \cos( \omega t ) + \sin(\psi) \sin ( \omega t ) \Big)$
+
+à l'aide de la formule $\cos(a)\cos(b) + \sin(a)\sin(b) = \cos(a-b)$, on a :
+
+$A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$ c.q.f.d.
+</Item>
+
+
+<Item type='proposition' titre='égalité de cosinus et de sinus'>
+
+- $\cos(x) = \cos(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv -y \; [2\pi]$
+
+- $\sin(x) = \sin(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv \pi - y \; [2\pi]$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+- On obtient ce résultat géométriquement par symétrie du cercle d'axe $y=0$. Cette transformation correspond angulairement à $\theta \rightarrow - \theta$.
+
+- On obtient ce résultat géométriquement par symétrie du cercle d'axe $x=0$. Cette transformation correspond angulairement à $\theta \rightarrow \pi - \theta$.
 </Hideable>
 
 ### A propos des fonctions trigonométriques
@@ -160,10 +269,77 @@ L'élément crucial est la démonstration de la première limite qui se fait de 
 
 <Item type='definition' titre='fonction tangente'>
 
-Soit $x \in \deftan$, on définit la fonction tangente sur ce même ensemble ainsi :
+Soit $x \in \deftan $, on définit la fonction tangente sur ce même ensemble ainsi :
 
 $$ \tan(x) = \dfrac{\sin(x)}{\cos(x)}$$
+
 </Item>
+
+<Item type='proposition' titre='propriétés fondamentales de la fonction tangente'>
+La fonction tangente est impaire, $2\pi$-périodique et strictement croissante.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\tan(-x) = \dfrac{\sin(-x)}{\cos(-x)} = \dfrac{-\sin(x)}{\cos(x)}$ par parité du cosinus et imparité du sinus. D'où $\tan(-x) = -\tan(x)$ et $\tan$ est donc impaire.
+
+$\tan(x + \pi) = \dfrac{\sin(x  \pi)}{\cos(x + \pi)} = \dfrac{-\sin(x)}{-\cos(x)} = \tan(x)$
+
+On admet que la fonction $\tan'(x) = 1 + \tan^2(x) > 0$. La fonction tangente est donc strictement croissante.
+</Hideable>
+
+<Item type='proposition' titre=''>
+
+Soient $(a,b) \in \deftan^2$. On a :
+
+- $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$ si $a+b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+
+- $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$ si $a-b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+
+- $ 1 + \tan^2(a) = \dfrac{1}{\cos^2(a)}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\tan(a + b) = \dfrac{\sin(a+b)}{\cos(a+b)} = \dfrac{\sin(a)\cos(b) + \sin(b)\cos(a)}{\cos(a)\cos(b) - \sin(a)\sin(b)} $
+
+En factorisant par $\cos(a)\cos(b)$, on a $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} $
+
+En appliquant la formule à $\tilde{a} = a$ et $\tilde{b} = -b$, la seconde égalité est immédiate par imparité de $\tan$.
+
+La dernière égalité est immédiate par définition de la tangente : $ 1 + \tan^2(a) = 1 + \dfrac{\sin^2(a)}{\cos^2(a)} = \dfrac{\cos^2(a) + \sin^2(a)}{\cos^2(a)} = \dfrac{1}{\cos^2(a)}$
+</Hideable>
+
+
+<Item type='proposition' titre="formules de l'angle moitié">
+
+Soit $\theta \in \defoo{-\pi}{\pi}$. On pose $\tan(\dfrac{\theta}{2})$, on a :
+
+- $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
+
+- $\sin(\theta) = \dfrac{2t}{1 + t^2}$
+
+- $\tan(\theta) = \dfrac{2t}{1 + t^2}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\theta \in \R \mid \dfrac{\theta}{2} \in \deftan$. On pose $t = \tan(\dfrac{\theta}{2})$. On a : 
+
+$\cos(2 \dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) - \sin^2(\dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) (1 - t^2) = \dfrac{1 - t^2}{e + t^2}$
+
+$\sin(2 \dfrac{\theta}{2}) = 2\cos(\dfrac{\theta}{2})\sin(\dfrac{\theta}{2}) = 2 \cos(\dfrac{\theta}{2}) . \sin(\cos(\dfrac{\theta}{2})) . \dfrac{\cos(\dfrac{\theta}{2})}{\cos(\dfrac{\theta}{2})} = 2 \cos^2(\cos(\dfrac{\theta}{2})) . t = \dfrac{2t}{1 + t^2}$ 
+
+</Hideable>
+
+<Exercice titre='Des éléments rationnels du cercle'>
+
+Soit $\cC$ le cercle unité. Y-a-t'il un nombre fini d'éléments dans $\Big(\Q \times \Q \Big) \bigcap \cC$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+Soit $t \in \Q$, alors $ \{ \Point{\dfrac{1 - t^2}{1 + t^2}}{\dfrac{2t}{1 + t^2}} \mid t \in \R \}$ est un ensemble contenant une infinité d'éléments du cercle puisque leurs coordonnées vérifient $x^2 + y^2 = 1$
+</Hideable>
 
 <Item type='proposition' titre='dérivation de la fonction tangente'>
 
@@ -198,12 +374,14 @@ $\cos(0) = 1$ s'obtient par construction géométrique.
 
 **Cas $\theta = \dfrac{\pi}{4}$ :** 
 <Indent>
-Comme $A\Big(\cos(\dfrac{\pi}{4}) \, \sin(\dfrac{\pi}{4})\Big)$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
+
+Comme $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
 </Indent>
 
 **Cas $\theta = \dfrac{\pi}{3}$ :** 
 <Indent>
-On place $A\Big(\cos(\dfrac{\pi}{3}\Big) \v \sin(\dfrac{\pi}{3}))$  et $B\Big(2\cos(\dfrac{\pi}{3} \v 0)\Big)$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
+
+On place $A\Point{\cos(\dfrac{\pi}{3}\Big)}{\sin(\dfrac{\pi}{3})}$  et $B\Point{2\cos(\dfrac{\pi}{3}}{0}$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
 </Indent>
 </Hideable>
 
@@ -517,6 +695,15 @@ $$z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big) $$
 Cette écriture de $z$ est une **forme trigonométrique** de $z$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Soit $z \in \C$, si $z = 0$, on peut choisir $\theta$ quelconque.
+
+Sinon, on pose $A = \dfrac{\Re(z)}{|z|}$ et $B = \dfrac{\Im(z)}{|z|}$ on a $z = |z| (A + B)$. Or $A^2 + B^2 = 1$ donc il existe $\theta \in \R$ tel qye $A = \cos(\theta)$ et $B = \sin(\theta)$. D'où le résultat : 
+
+$z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$
+</Hideable>
+
 <Item type='proposition' titre='identification par forme trigonométrique'>
 Soient $z$ et $z'$ deux complexes dont une éxriture sous forme trigonométrique est $z = |z| \Big( \cos(\theta_1) + i \sin(\theta_1) \Big)$ et $z' = |z'| \Big( \cos(\theta_2) + i \sin(\theta_2) \Big)$. On a :
 
@@ -524,23 +711,50 @@ $$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \en
 </Item>
 
 <Hideable type='démonstration' titre=''>
+On écarte le cas $z = z' = 0$ qui est évident. On considère donc $z \neq 0$.
 
-**Sens direct ($\Rightarrow$) :** $z = z' \ssi |z|\Big( \cos(\theta_1) + i \sin(\theta_1) \Big) = |z'|\Big( \cos(\theta_2) + i \sin(\theta_2) \Big) \ssi \begin{cases} |z| \cos(\theta_1) = |z'|\cos(\theta_2)  \\ |z| \sin(\theta_1) = |z'|\sin(\theta_2)  \end{cases}$ 
+$z = z' \ssi |z|\Big( \cos(\theta_1) + i \sin(\theta_1) \Big) = |z'|\Big( \cos(\theta_2) + i \sin(\theta_2) \Big) \ssi \begin{cases} |z| \cos(\theta_1) = |z'|\cos(\theta_2)  \quad (L_1) \\ |z| \sin(\theta_1) = |z'|\sin(\theta_2)   \quad (L_2)  \end{cases}$ 
+
+L'opération $L_1^2 + L_2^2$ donne $|z| = |z'|$. On a donc $z = z' \ssi \begin{cases}  \cos(\theta_1) = \cos(\theta_2) \\ \sin(\theta_1) = \sin(\theta_2) \\ |z| = |z'| \end{cases} \ssi \begin{cases} \theta_1 \equiv \pm \theta_2 \; [2\pi] \\  \theta_1 \equiv \theta_2 \; [2\pi] ou  \theta_1 \equiv \pi - \theta_2 \; [2\pi]\\ |z| = |z'| \end{cases} \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$ 
+
 </Hideable>
 
 <Item type='definition' titre='argument'>
-La fonction $\Arg : \begin{cases}
-\C \rightarrow \big] -\pi \v \pi \big] \\
-z \rightarrow \Arg(z)\\
-\end{cases}$ où $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
+
+La fonction $\Arg : \begin{cases} \C \rightarrow \big] -\pi \v \pi \big] \\ z \rightarrow \Arg(z)\\ \end{cases}$
+ où $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
 </Item>
+
 
 <Item type='proposition' titre="propriétés  de l'argument">
 Soient $(z \v z') \in \C^2$.
 
+- $\Arg(\overline{z}) = - \Arg(z)$
+
 - $\Arg(z z') \equiv \Arg(z) + \Arg(z') \, [2 \pi ]$
+
 - Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $a = \Arg(z)$ et $b = \Arg(z')$.
+
+**Première égalité :**
+$z = \cos(a) + i \sin(a)$ donc $\overline{z} = \cos(a) - i \sin(a) = \cos(-a) + i \sin(-a)$. Comme $a \in \defprincipale$, $-a \in \defprincipale$. D'où $\Arg(\overline{z}) = -a = - \Arg(z)$
+
+
+**Deuxième égalité :**
+$z = |z|\Big( \cos(a) + i \sin(a) \Big)$ et $z' = |z'|\Big( \cos(b) + i \sin(b) \Big)$. On a donc :
+
+$zz' = |z|\Big( \cos(a) + i \sin(a) \Big)|z'|\Big( \cos(b) + i \sin(b) \Big) = |z|.|z'|\Big( \cos(a) \cos(b) - \sin(a) \sin(b) + i(\cos(a) \sin(b) + \sin(a) \cos(b)) \Big) = |z|.|z'|\Big( \cos(a+b) + i \sin(a+b) \Big) $ d'où $\Arg(z + z') \equiv \Arg(z) + \Arg(z') \; [2\pi]$
+
+**Troisième égalité :**
+Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) =  \Arg(\dfrac{z\overline{z'}}{z'\overline{z'}})  \equiv \Arg(z) + \Arg(\overline{z'}) + \Arg(\dfrac{1}{z'\overline{z'}}) \; [2\pi]$. Mais le dernier terme est réel strictement positif donc son argument est $0$. D'où 
+
+$\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
+
+</Hideable>
 
 <Item type='definition' titre='forme exponentielle'>
 
@@ -553,13 +767,41 @@ Soient $z$ et $z'$ deux complexes dont une éxriture sous forme exponentielle es
 $$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+Daprès l'identification par forme géométrique, l'équivalence est immédiate.
+</Hideable>
+
 <Item type='proposition' titre='propriétés de la forme exponentielle'>
 Soit $z$ et $z'$ des complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| z^{i \theta_2}$. On a :
 
 - $ zz' = |z||z'|e^{i(\theta_1 + \theta_2)}$
 - si $z' \neq 0$, $ \dfrac{z}{z'} = \dfrac{|z|}{|z'|}e^{i(\theta_1 - \theta_2)}$
-- si $n \in \Z$, $z^n = |z|^n e^{ni\theta}$
+- si $n \in \Z^*$, $z^n = |z|^n e^{ni\theta}$
+- $\overline{\big(e^{i\theta}\big)} = e^{-i\theta}$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Les deux premières formules ainsi que la dernière découlent immédiatement des propriétés sur le module et l'argument. 
+
+La troisième propriété se montre en partie par récurrence. 
+
+Montrons sur $\N^*$ la propriété $\cP(n) : " \forall z \in \C \, z^n = |z|^n e^{ni\theta}"$.
+
+**Initialisation :** On vérifie $\cP(1)$. En effet, |z^1| = |z|^1. $\cP(2)$ est également vérifiée d'après la première formule.
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
+
+$z^{n+1} = z. z^n = |z| . e^{i\theta} . |z^n| e^{i n\theta} = |z|.|z^n|e^{i\theta} .e^{i n\theta}$ d'après l'hypothèse de récurrence.
+
+Mais donc, $z^{n+1}  = |z^{n+1}| e^{i (n+1)\theta}$ d'après la première formule.
+
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+Pour étendre la propriété sur $\Z^*$, il suffit d'appliquer la deuxième formule puisque $z^{n} = \dfrac{z^{-n}}$.
+
+
+</Hideable>
 
 <Item type='proposition' titre='formules de Moivre'>
 Soit $\theta \in \R$. On a :
@@ -570,24 +812,14 @@ Soit $\theta \in \R$. On a :
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$e^{i\theta} = \cos(\theta) + i \sin(\theta)$ et $e^{-i\theta} = \cos(-\theta) + i \sin(-\theta) = \cos(\theta) - i \sin(-\theta)$
+
+Par somme on déduit la première égalité et par différence on déduit la seconde égalité.
+</Hideable>
 
 ### Applications à la trigonométrie
-
-<Item type='proposition' titre='formules trigonométriques de sommes et différence des angles'>
-Soient $a$ et $b$ deux réels. On a :
-
-- $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$
-
-- $\cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b)$
-
-- $\sin(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)$
-
-- $\sin(a - b) = \cos(a)\sin(b) - \sin(a)\cos(b)$
-
-- $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$
-
-- $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$
-</Item>
 
 
 <Item type='consequence' titre='formulaire sommes de fonctions trigonométriques'>
@@ -602,53 +834,23 @@ Soient $p$ et $q$ deux réels :
 - $\sin(p) - \sin(q) = 2 \sin(\dfrac{p+q}{2}) \cos(\dfrac{p-q}{2})$
 </Item>
 
-<Item type='proposition' titre='angle double'>
-Soit $\theta \in \R$. On a :
 
-- $\cos^2(\theta) = \dfrac{1 + \cos(2 \theta)}{2}$
+<Hideable type='démonstration' titre=''>
 
-- $\sin^2(\theta) = \dfrac{1 - \cos(2 \theta)}{2}$
+**Première égalité :** 
+<Indent>
+$\cos(p) + \cos(q) = \Re( e^{ip} + e^{iq}) = \Re \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big) $ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
 
-</Item>
+$\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) = 2\cos(\dfrac{p-q}{2})} \Re(e^{i\dfrac{p+q}{2}}) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+</Indent>
 
-
-<Item type='proposition' titre="formules de l'angle moitié">
-
-Soit $\theta \in \defoo{-\pi}{\pi}$. On pose $\tan(\dfrac{\theta}{2})$, on a :
-
-- $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
-
-- $\sin(\theta) = \dfrac{2t}{1 + t^2}$
-</Item>
+**Troisième égalité :**
+<Indent>
+$\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq}) = \Im \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big)$
+</Indent>
 
 
-<Exercice titre='Des éléments rationnels du cercle'>
-
-Soit $\cC$ le cercle unité. Y-a-t'il un nombre fini d'éléments dans $\Big(\Q \times \Q \Big) \bigcap \cC$?
-</Exercice>
-
-
-<Item type='methode' titre='réexprimer une somme'>
-
-**Résultat :**
-
-Soient $\omega \in \R$ et $(a,b) \in \R^2$. Il existe $A \in \R$ et $\phi \in \R$ tels que :
-
-$$\forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$$
-
-
-**Méthode :**
-
-En effet, soit $t \in \R$,  $a \cos( \omega t ) + b \sin ( \omega t ) = \sqrt{a^2 + b^2} + \dfrac{a}{\sqrt{a^2 + b^2}}\cos( \omega t ) + \dfrac{b}{\sqrt{a^2 + b^2}} \sin ( \omega t )$
-
-On note $A = \sqrt{a^2 + b^2}$, $\tilde{a} = \dfrac{a}{A}$ et $\tilde{b} = \dfrac{b}{A}$. Comme $\tilde{a}^2 + \tilde{b}^2 = 1$, il existe $\psi \in \R$ tel que $\tilde{a} = \cos(\psi)$ et $\tilde{b} = \sin(\psi)$
-
-On a donc $a \cos( \omega t ) + b \sin ( \omega t ) = A \Big( \cos(\psi) \cos( \omega t ) + \sin(\psi) \sin ( \omega t ) \Big)$
-
-à l'aide de la formule $\cos(a)\cos(b) + \sin(a)\sin(b) = \cos(a-b)$, on a :
-
-$A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$ c.q.f.d.
-</Item>
+</Hideable>
 
 ## Racines de l'unité
 
@@ -716,6 +918,8 @@ $$\somme{i = 1}{n} \omega_i = 0$$
   Elements manquants:
     - définitions de fonctions avec accolades
     - ajouter exercice pour formules de l'argument
+    - variations et représentations graphiques des fctions trigo
+    - continuité dérivabilité de cos, tan et sin
 */}
 
 </Base>

@@ -25,12 +25,16 @@ const macros = {
   "\\cP": "\\mathscr{P}",
   "\\cT": "\\mathscr{T}",
 
+  "\\Point": "\\Big( { #1 } \\v { #2 } \\Big)",
+
   "\\defoo": "\\big] {#1} \\v {#2} \\big[",
   "\\defff": "\\big[ {#1} \\v {#2} \\big]",
   "\\defof": "\\big] {#1} \\v {#2} \\big]",
   "\\deffo": "\\big[ {#1} \\v {#2} \\big[",
 
-  "\\deftan": "\\big] -\\dfrac{\\pi}{2} \\v \\dfrac{\\pi}{2}\\big[",
+  "\\deftan": "\\R \\setminus \\{ \\dfrac{\\pi}{2} + k\\pi \\mid k \\in \\Z \\}",
+  "\\deftanprincipal": "\\big] -\\dfrac{\\pi}{2} \\v \\dfrac{\\pi}{2}\\big[",
+  "\\defprincipale": "\\big] - \\pi \\v \\pi \\big]",
   "\\defrad": "\\big[ 0 \\v 2\\pi \\big[",
 
   "\\defunitoo": "\\big] 0 \\v 1\\big[",
