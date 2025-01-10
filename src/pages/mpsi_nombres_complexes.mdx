@@ -829,9 +829,9 @@ Soient $p$ et $q$ deux réels :
 
 - $\cos(p) - \cos(q) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
 
-- $\sin(p) + \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
+- $\sin(p) + \sin(q) = -2 \cos(\dfrac{p-q}{2}) \sin(\dfrac{p+q}{2})$
 
-- $\sin(p) - \sin(q) = 2 \sin(\dfrac{p+q}{2}) \cos(\dfrac{p-q}{2})$
+- $\sin(p) - \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
 </Item>
 
 
@@ -841,16 +841,32 @@ Soient $p$ et $q$ deux réels :
 <Indent>
 $\cos(p) + \cos(q) = \Re( e^{ip} + e^{iq}) = \Re \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big) $ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
 
-$\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) = 2\cos(\dfrac{p-q}{2})} \Re(e^{i\dfrac{p+q}{2}}) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+$\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) = 2\cos(\dfrac{p-q}{2}) \Re(e^{i\dfrac{p+q}{2}}) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+</Indent>
+
+**Déuxième inégalité :**
+<Indent>
+$\cos(p) - \cos(q) = \Re( e^{ip} - e^{iq} ) = \Re \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} - e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big) $ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
+
+$\cos(p) - \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} - e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\sin(\dfrac{p-q}{2})}\Bigg) =  \Re \Bigg( 2i\sin(\dfrac{p-q}{2}) \Big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})  \Big) \Bigg) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
 </Indent>
 
 **Troisième égalité :**
 <Indent>
-$\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq}) = \Im \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big)$
+$\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq} ) = \Im \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big)$ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
+
+$\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) =  \Im \Big( 2\cos(\dfrac{p-q}{2}) \big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})\big) \Big) = -2 \sin(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
 </Indent>
 
+**Quatrième égalité :** On applique la troisième égalité à $\tilde{p} = p$ et $\tilde{q} = -q$. Par imparité du sinus, on obtient le résultat.
 
 </Hideable>
+
+<Remarque titre='retrouver les formules trigonométriques rapidement'>
+Voyons comment retrouver les formules de $\cos(a+b)$ , $\sin(a+b)$ , ... 
+
+Il suffit de regarder la partie réelle ou imaginaire d'une exponentielle : $\cos(a+b) = \Re( e^{i(a+b)}) = \Re( e^{ia}e^{ib})$. En passant à la forme trigonométrique et en développant, on obtient la formule pour le cosinus (celle pour le sinus vient de la partie imaginaire). 
+</Remarque>
 
 ## Racines de l'unité
 
@@ -869,6 +885,15 @@ On appelle cercle unité l'ensemble $\U = \{ z \in \C \mid |z| = 1 \}$.
 3) Est-ce que $\U$ est stable par exponentiation entière?
 </Exercice>
 
+<Hideable type='solution' titre=''>
+
+1) Soit le couple $(z,z') \in \U^2$. On a $|z| = |z'| = 1$ mais donc $|zz'| = |z|.|z'| = 1$ d'où $zz' \in \U$. $\U$ est donc stable par produit.
+
+2) En général non : par exemple $1 \in \U$ mais $1 + 1 \notin \U$.
+
+3) Soit $z \in \U$. $|z| = 1$ donc pour tout $n \in \Z$, $|z^n| = |z|^n = 1^n = 1$. Donc : $  \forall n \in \Z \, z^n \in \U$. $\U$ est bien stable par exponentiation entière.
+</Hideable>
+
 ### Racines n-ièmes 
 
 <Item type='defprop' titre='racine n-ième'>
@@ -879,6 +904,11 @@ $$ r^n = z $$
 Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+Nous devons admettre qu'un polynôme à coefficient dans $\C$ de degré $n$ admet au plus $n$ racines. Ceci sera démontré dans le chapitre sur les polynômes.
+
+La fonction polynômiale $P(r) = z - r^n \, \forall r \in \C$ admet au plus $n$ racines car elle est de degré $n$. Mais les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$ conviennent et sont au nombre de $n$. On a donc trouvé toutes les racines de $P$ qui sont les racines n-ièmes de $z$.
+</Hideable>
 
 <Item type='definition' titre="racines n-ièmes de l'unité">
 Soit $n \in \N$. On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. En particulier, $\U_n \subset \U$.
@@ -887,22 +917,57 @@ Soit $n \in \N$. On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. En part
 
 <Exercice titre='racines n-ièmes'>
 
-1) Donner les racines 5-ièmes de l'unité
+1) Donner la forme algébrique des racines 3-ièmes de l'unité.
 
-2) Donner les racines 4-ièmes de $1 + i\sqrt{3}$
+2) Donner les racines 4-ièmes de $1 + i\sqrt{3}$.
 </Exercice>
+
+<Hideable type='solution' titre=''>
+
+1) 
+<Indent>
+
+D'après la propriété, il s'agit de $e^{\dfrac{2i\times 0 \times \pi}{3}} \v e^{\dfrac{2i\times 1 \times \pi}{3}}$ \v $e^{\dfrac{2i\times 2 \times \pi}{3}}$. Soit $1 \v \cos(\dfrac{2i\times 1 \times \pi}{3}) + i \sin(\dfrac{2i\times 1 \times \pi}{3}) \v \cos(\dfrac{2i\times 2 \times \pi}{3}) + i \sin(\dfrac{2i\times 2 \times \pi}{3})$. 
+
+En remplaçant par les valeurs usuelles et en utilisant la transformation $\theta \rightarrow \pi - \theta$, on obtient les racines suivantes : $1 \v \dfrac{1}{2} + i \dfrac{\sqrt{3}}{2} \v \dfrac{1}{2} - i \dfrac{\sqrt{3}}{2}$.
+
+On note usuellement $j$ la racine $3$-ième de l'unité : $\dfrac{1}{2} + i \dfrac{\sqrt{3}}{2}$. Les racines troisièmes de l'unité sont alors $\{1 \v j \v j^2\} = \{1 \v j \v \overline{j}\}$
+</Indent>
+
+2) 
+<Indent> 
+
+On écrit d'abord $z = 1 + i\sqrt{3}$ sous forme exponentielle en factorisant par le module $|z| = \sqrt{1^2 + \sqrt{3}^2} = 2$. D'où $z = 2\Big( \dfrac{1}{2} + i \dfrac{\sqrt{2}}{2}\Big) = 2\Big( \cos(\dfrac{\pi}{3}) + i \sin(\dfrac{\pi}{3})\Big) = 2 e^{i\dfrac{\pi}{3}}$
+
+On en déduit les racines 4-ièmes de $z$ : $ \sqrt[4]{2} e^{\dfrac{i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{7i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{13i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{19i\pi}{12}}$. En se ramenant à la mesure d'angle principale, on a $ \sqrt[4]{2} e^{\dfrac{i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{7i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{-11i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{-5i\pi}{12}}$
+</Indent>
+</Hideable>
 
 
 <Exercice titre="inclusions des ensembles des racines de l'unité">
 Soit $(n\v m) \in (\N^*)^2$. Montrer que, si $n$ divise $m$, alors $\U_n \subset \U_m$.
 </Exercice>
 
+<Hideable type='solution' titre=''>
+Soient $n,m$ deux entiers naturels non nuls tels que $n$ divise $m$. Il existe $k \in \N^*$ tel que  $m = kn$.
+
+Soit $z \in \U_n$, il existe $a \in \defentiers{0}{n-1}$ tel que $z = e^{\dfrac{2ia\pi}{n}}$. Mais donc $z^m = e^{\dfrac{2iam\pi}{n}}$ mais $\dfrac{m}{n} = k$ d'où $z^m = e^{2iak} = 1$. Comme $z^m = 1$, $z \in \U_m$. 
+
+On a bien montré que tout élément de $\U_n$ était dans $\U_m$ d'où $\U_n \subset \U_m$.
+</Hideable>
+
 <Item type='proposition' titre="somme des racines de l'unité">
-Soient $\omega_1 \v \omega_2 \v \dotsm \v \omega_n$ les racines n-ièmes de l'unité où $n \in \N$. On a :
+
+Soient $\omega_1 \v \omega_2 \v \dotsm \v \omega_n$ les racines n-ièmes de l'unité où $n \in \N \v n \geqslant 2$. On a :
 
 $$\somme{i = 1}{n} \omega_i = 0$$
 </Item>
 
+<Hideable type='dmonstration' titre=''>
+$\somme{k = 1}{n} \omega_k = \somme{k = 0}{n-1} e^{\dfrac{2ik\pi}{n}} = \somme{k = 0}{n-1} \Big(e^{\dfrac{2i\pi}{n}}\Big)^k $.
+
+Par somme géométrique de raison $q = e^{\dfrac{2i\pi}{n}} \neq 1$, $\somme{k = 1}{n} \omega_k = \dfrac{1 - \overbrace{q^n}^{= 1 \text{ car } q \in \U_n}}{1-q} = 0$
+</Hideable>
 
 ## Interprétations géométrique
 
