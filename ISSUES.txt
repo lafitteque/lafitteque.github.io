@@ -1,0 +1,7 @@
+- $$ ne fonctionne pas
+- Comment intégrer des graphs?
+- Remarque taille minimale : ondelettes dépassent
+- Pas de version mobile ...
+- Hideable titre se déplace
+- sidebar à refaire (et éviter le problème quand cachée / affichée)
+- table des matières style pas appliqué si style dans .astro (OK quand style dans global.css)

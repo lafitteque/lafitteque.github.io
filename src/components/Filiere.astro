@@ -17,3 +17,42 @@ import "../styles/global.css"; // Importe le CSS global
     </button>
   ))}
 </div>
+<style>
+.filieres-container {
+  position: fixed;
+  top: 20px; /* Ajuste la distance par rapport au haut de l'écran */
+  left: 50%;
+  transform: translateX(-50%); /* Centre horizontalement */
+  display: flex;
+  gap: 10px;
+}
+
+.filiere-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.filiere-button:hover {
+  background-color: #45a049;
+}
+
+.filiere-button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.filiere-link {
+  color: white;
+  text-decoration: none;
+}
+
+.filiere-link:hover {
+  text-decoration: underline;
+}
+
+</style>

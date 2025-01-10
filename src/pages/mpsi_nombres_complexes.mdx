@@ -74,7 +74,7 @@ $\cos$ et $\sin$ sont $2\pi$-périodiques.
 
 Soit $x \in \R$. L'enroulement d'une corde de longueur $x+2\pi$ autour du cerle trigonométrique peut être décomposé en deux sections : un tour entier du cercle soit une longueur $2\pi$ et un enroulement de $x$. 
 
-Comme l'enroulement de longueur $2\pi$ emène sur le point $\Point{1}{0}$, y ajouter un enroulement de longueur $x$ emène sur $\Point{\cos(x)}{{\sin(x)}$. 
+Comme l'enroulement de longueur $2\pi$ emène sur le point $\Point{1}{0}$, y ajouter un enroulement de longueur $x$ emène sur $\Point{\cos(x)}{{\sin(x)}}$. 
 
 D'où $\begin{cases} \cos(x + 2\pi) \\ \sin(x + 2\pi) \end{cases}$ c.q.f.d.
 </Hideable>
@@ -819,6 +819,22 @@ $e^{i\theta} = \cos(\theta) + i \sin(\theta)$ et $e^{-i\theta} = \cos(-\theta) +
 Par somme on déduit la première égalité et par différence on déduit la seconde égalité.
 </Hideable>
 
+
+<Item type='definition' titre='exponentielle complexe'>
+Soit $z \in \C$, on définit $e^z$ comme suit :
+
+$$e^z = e^{|z|}e^{i\Arg(z)}$$
+</Item>
+
+<Item type='proposition' titre="multiplicativité de l'exponentielle complexe">
+
+$$\forall (z,z') \in \C^2 \v e^{z+z'} = e^ze^{z'}$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Immédiat en appliquant les propriétés de l'exponentielle réelle et de l'exponentielle d'imaginaires purs ($e^{i(a+b)} = e^{ia}e^{ib}$).
+</Hideable>
+
 ### Applications à la trigonométrie
 
 
@@ -866,6 +882,8 @@ $\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big
 Voyons comment retrouver les formules de $\cos(a+b)$ , $\sin(a+b)$ , ... 
 
 Il suffit de regarder la partie réelle ou imaginaire d'une exponentielle : $\cos(a+b) = \Re( e^{i(a+b)}) = \Re( e^{ia}e^{ib})$. En passant à la forme trigonométrique et en développant, on obtient la formule pour le cosinus (celle pour le sinus vient de la partie imaginaire). 
+
+Attention cependant, il ne s'agit pas d'une démonstration mais d'une manière de retrouver rapidement les formules. En effet, on a démontré les propriétés de l'argument en utilisant les formules $\cos(a+b)$ et $\sin(a+b)$. On ne peut donc pas utiliser les propriétés de l'argument pour démontrer ces formules (ce serait un raisonnement circulaire)
 </Remarque>
 
 ## Racines de l'unité
@@ -971,18 +989,31 @@ Par somme géométrique de raison $q = e^{\dfrac{2i\pi}{n}} \neq 1$, $\somme{k =
 
 ## Interprétations géométrique
 
-**Conjugaison :** symétrie blabla
+Dans cette section, on interprète les éléments de $\C$ par leur affixe et donc comme des points du plan.
 
-**Module :** distance
+**Conjugaison :** La conjugaison correspond à faire une symétrie axiale dont l'axe de symétrie est l'axe des ordonnées.
 
-**Argument :** angle
+**Module :** Le module est la distance entre un point et l'origine. C'est littéralement la distance à zéro qui coïncide avec la définition de la valeur absolue abordée dès la seconde dans le programme actuel.
 
-**Transormation affine :** rotation, homothétie et translation
+**Argument :** Si $M$ est le poit d'affixe $z$, alors $\Arg(z)$ est l'angle orienté $(\vec{OI} \v \vec{OM})$.
+
+**Transormation affine :** Soit $f : z \rightarrow az + b$ définie sur $\C$ et où $a,b \in \C$.
+<Indent>
+
+- $b$ a un effet de translation
+
+- l'argument de $a$ a un effet de rotation
+
+- le module de $a$ a un effet d'homothétie (agrandissement / réduction)
+
+De par l'ordre des priorités opératoires, la translation est appliquée après l'homothétie et la rotation.
+</Indent>
 
 {/*
   Elements manquants:
     - définitions de fonctions avec accolades
     - ajouter exercice pour formules de l'argument
+    - ajouter linéarisation de cos sin
     - variations et représentations graphiques des fctions trigo
     - continuité dérivabilité de cos, tan et sin
 */}

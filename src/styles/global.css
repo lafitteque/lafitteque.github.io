@@ -9,10 +9,6 @@ body {
   counter-reset: section-counter; /* Réinitialisation du compteur global */
 }
 
-.latex-container {
-  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
-  font-size: 1rem; /* Vous pouvez ajuster la taille si nécessaire */
-}
 
 /* ==========================
    Styles des titres (h1, h2, h3...)
@@ -48,7 +44,10 @@ h6, .heading-h6 {
   margin-bottom: 10px;
 }
 
-/* Styles des sections */
+/* ==========================
+   Numérotation automatique des titres (h2, h3 et h4)
+========================== */
+
 h2 {
   counter-reset: subsection-counter  exercice-counter;
   counter-increment: section-counter; /* Incrémente le compteur de section */
@@ -82,151 +81,22 @@ h4::before {
   margin-right: 10px;
 }
 
-/* ==========================
-   Table of Contents (TOC)
-========================== */
-
-/* Table des matières (TOC) */
-.toc-container {
-  display: flex;
-  justify-content: center;
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 90%; /* Largeur maximale */
-}
-
-.toc {
-  background-color: #f9f9f9;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 1rem;
-  width: 100%;
-  max-width: 800px;
-  text-align: left;
-}
-
-.toc ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
-}
-
-.toc li {
-  margin: 5px 0;
-  font-size: 1rem;
-}
-
-.toc-item a {
-  text-decoration: none;
-  color: #007acc;
-  font-weight: bold;
-}
-
-.toc-item a:hover {
-  text-decoration: underline;
-}
-
-/* Styles d'indentation pour les niveaux */
-.toc-item.level-1 {
-  font-size: 28px;
-  padding-left: 0; /* Pas d'indentation pour le niveau 1 */
-}
-
-.toc-item.level-2 {
-  margin: 0.5rem 0rem;
-  font-size: 24px;
-  padding-left: 0rem; /* Indentation de 20px pour les sous-sections */
-}
-
-.toc-item.level-3 {
-  margin: 0.25rem 0rem;
-  font-size: 20px;
-  padding-left: 4rem; /* Indentation de 40px pour les sous-sous-sections */
-}
-
-.toc-item.level-4 {
-  padding-left: 60px; /* Indentation de 60px pour le niveau 4, etc. */
-}
 
 /* ==========================
-   Composant Hideable
+   Numérotation automatique des items et exercices
 ========================== */
 
-.hideable-container {
-  margin-bottom: 2rem;
-  overflow: hidden;
-  margin-left: 5rem; 
+.item-container {
+  counter-increment: item-counter; /* Incrémente le compteur pour chaque item */
 }
 
-.hideable-header {
-  padding: 3px 0px; /* Augmente l'espace autour du texte */
-  min-height: 30px; /* Définit une hauteur minimale */
-  font-size: 20px;
-  display: flex;
-  justify-content: flex-start;
-  align-items: left;
-  padding: 10px 15px;
+.exercice-header {
+  counter-increment: exercice-counter; /* Réinitialisation du compteur global */
+}
+
+.exercice-number::after {
+  content: counter(section-counter) "." counter(exercice-counter);
   font-weight: bold;
-  cursor: pointer;
-}
-
-.hideable-body {
-  padding: 10px 15px;
-  background-color: #fafafa;
-  transition: max-height 5s ease, opacity 5s ease; /* Transition fluide */
-}
-
-.toggle-hideable-icon {
-  font-size: 20px;
-  font-weight: bold;
-  margin-right: 10px;
-}
-
-.ellipsis {
-  flex-grow: 1;  /* Cette partie occupera tout l'espace disponible */
-  text-align: center;
-  overflow: hidden;
-}
-
-/* ==========================
-   Composant Filiere
-========================== */
-
-.filieres-container {
-  position: fixed;
-  top: 20px; /* Ajuste la distance par rapport au haut de l'écran */
-  left: 50%;
-  transform: translateX(-50%); /* Centre horizontalement */
-  display: flex;
-  gap: 10px;
-}
-
-.filiere-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.filiere-button:hover {
-  background-color: #45a049;
-}
-
-.filiere-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.filiere-link {
-  color: white;
-  text-decoration: none;
-}
-
-.filiere-link:hover {
-  text-decoration: underline;
 }
 
 /* ==========================
@@ -235,12 +105,16 @@ h4::before {
 
 /* Sidebar */
 .sidebar {
-  width: 250px; /* Largeur de la sidebar */
+  position: fixed; /* Fixe la sidebar */
+  top: 0;
+  left: 0;
+  width: 250px;
+  height: 100vh; /* Hauteur de la sidebar pour qu'elle occupe toute la hauteur */
   background-color: #f8f9fa;
   padding: 1rem;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, width 0.3s ease;
-  flex-shrink: 0; /* Empêche la sidebar de se rétrécir */
+  z-index: 10; /* Assure qu'elle est au-dessus du contenu */
+  overflow-y: auto; /* Permet à la sidebar de défiler si nécessaire */
 }
 
 /* Sidebar cachée */
@@ -313,28 +187,7 @@ html, body {
   overflow-x: hidden; /* Empêche les débordements horizontaux */
 }
 
-/* Container global pour la mise en page */
-.container {
-  overflow: hidden; /* Empêche une barre de défilement horizontale */
-}
 
-/* ==========================
-   Sidebar
-========================== */
-
-/* Sidebar */
-.sidebar {
-  position: fixed; /* Fixe la sidebar */
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100vh; /* Hauteur de la sidebar pour qu'elle occupe toute la hauteur */
-  background-color: #f8f9fa;
-  padding: 1rem;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 10; /* Assure qu'elle est au-dessus du contenu */
-  overflow-y: auto; /* Permet à la sidebar de défiler si nécessaire */
-}
 
 /* ==========================
    Contenu principal
@@ -365,102 +218,6 @@ html, body {
   overflow-y: auto; /* Permet de faire défiler uniquement le contenu */
 }
 
-.filieres-container {
-  position: fixed;
-  top: -5px; /* Réduit la distance par rapport au haut de l'écran */
-  left: 50%; /* Centré horizontalement */
-  transform: translateX(-50%); /* Centrage exact */
-  z-index: 20; /* Assurer que les filières sont au-dessus de la sidebar */
-  display: flex;
-  gap: 10px;
-  background-color: #f0f0f0; /* Fond gris clair */
-  padding: 10px; /* Espacement autour des boutons */
-  border-radius: 8px; /* Coins arrondis */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
-}
-
-.filiere-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.filiere-button:hover {
-  background-color: #45a049;
-}
-
-.filiere-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.filiere-link {
-  color: white;
-  text-decoration: none;
-}
-
-.filiere-link:hover {
-  text-decoration: underline;
-}
-
-.toggle-btn.hidden {
-  left: 10px;
-}
-
-body {
-  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
-  counter-reset: item-counter; /* Réinitialise le compteur au niveau du document */
-}
-
-.item-container {
-  counter-increment: item-counter; /* Incrémente le compteur pour chaque item */
-}
-
-.item-container .item-number::before {
-  content: counter(item-counter); /* Affiche la valeur actuelle du compteur */
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  line-height: 25px;
-  border: 1px solid black;
-  border-radius: 50%;
-  text-align: center;
-  margin-right: 10px;
-  margin-left: 5px;
-  margin-bottom: 5px;
-  font-weight: bold;
-  color: black;
-}
-
-.item-header {
-  padding: 3px 0px; /* Augmente l'espace autour du texte */
-  min-height: 30px; /* Définit une hauteur minimale */
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.item-number {
-  display: inline-block;
-  font-size: 14px;
-  width: 30px;
-  height: 30px;
-  line-height: 30px;
-  text-align: center;
-  border-radius: 50%;
-  margin-right: 10px;
-}
-
-.item-body {
-  padding: 10px;
-  background-color: #fafafa;
-}
 
 /* Quand la sidebar est cachée */
 .main-content-wrapper.full-width {
@@ -468,10 +225,6 @@ body {
   width: 100%;
 }
 
-.katex-container {
-  display: inline-block;
-  vertical-align: middle;
-}
 
 /* Ajouter des bordures aux tableaux */
 table {
@@ -488,22 +241,3 @@ th, td {
 }
 
 
-.exercice-header {
-  margin-left: 2rem;
-  margin-bottom: 0px;
-  padding: 0px 0px;
-  counter-increment: exercice-counter; /* Réinitialisation du compteur global */
-}
-
-.exercice-body{
-  margin-left: 5rem;
-  border-top-style: none;
-  border-right-style: none;
-  border-bottom-style: solid;
-  border-left-style: solid;
-}
-
-.exercice-number::after {
-  content: counter(section-counter) "." counter(exercice-counter);
-  font-weight: bold;
-}

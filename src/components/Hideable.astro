@@ -9,51 +9,29 @@ const type_upper = type.charAt(0).toUpperCase() + String(type).slice(1)
 const uniqueId = suid();
 ---
 
-<div class="hideable-container">
-  <div class="hideable-header" style={`background-color: #fafafa;`} id={`toggle-header-${uniqueId}`}>
-    <span class="toggle-hideable-icon">▼</span> <!-- Flèche gauche -->
-    <span class="titre">{type_upper} : {titre}</span>
-    <span class="ellipsis"></span> <!-- Ajouter une zone pour les points de suspension -->
-    <span class="toggle-hideable-icon">▼</span> <!-- Flèche droite -->
-  </div>
-  <div class="hideable-body" id={`toggle-body-${uniqueId}`} style=`display: none;border: 1px dotted rgb(180, 180, 180);border-bottom: none;border-left: none;border-right: none;`>
-    <!-- Contenu Markdown rendu dans le slot -->
-    <div class="markdown-content">
-      <div class="markdown-content">
-        <slot/> <!-- Utilisation de Fragment pour insérer le HTML -->
-      </div>
-    </div>
-  </div>
-</div>
+<details>
+  <summary> {type_upper} : {titre} </summary>
+  <slot/>
+</details>
 
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Sélectionner tous les headers (dans le cas où il y en aurait plusieurs)
-    const headers = document.querySelectorAll('.hideable-header');
-
-    headers.forEach(header => {
-      const uniqueId = header.id.slice(14);  // Récupère la partie unique de l'ID
-      const body = document.getElementById(`toggle-body-${uniqueId}`);
-      const icons = header.querySelectorAll('.toggle-hideable-icon');  // Sélectionne les deux flèches (gauche et droite)
-
-      if (body) {
-        // Ajout du gestionnaire d'événements pour chaque header
-        header.addEventListener("click", function() {
-          // Vérifier si le body existe et basculer son affichage
-          if (body.style.display === 'none' || body.style.display === '') {
-            body.style.display = 'block';  // Afficher le corps
-            icons[0].textContent = '▲';  // Flèche vers le haut (gauche)
-            icons[1].textContent = '▲';  // Flèche vers le haut (droite)
-          } else {
-            body.style.display = 'none';  // Masquer le corps
-            icons[0].textContent = '▼';  // Flèche vers le bas (gauche)
-            icons[1].textContent = '▼';  // Flèche vers le bas (droite)
-          }
-        });
-      }
-    });
-  });
-</script>
-
-
-<!-- Summary et detail font tout ça pour moi -->
+<style>
+  details {
+    margin-bottom: 2rem;
+    margin-left: 5rem; 
+    background-color: #fafafa;
+  }
+  
+  details[open] {
+    padding: 10px 15px;
+    background-color: #fafafa;
+    transition: max-height 5s ease, opacity 5s ease; /* Transition fluide */
+  }
+    
+  summary {
+    padding: 10px 15px; /* Augmente l'espace autour du texte */
+    font-size: 20px;
+    align-items: left;
+    font-weight: bold;
+    cursor: pointer;
+  }
+</style>

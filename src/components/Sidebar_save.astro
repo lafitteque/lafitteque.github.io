@@ -1,0 +1,70 @@
+---
+import coursData from "../data/cours.json"; // Importation du fichier JSON
+import "../styles/global.css"; // Importe le CSS global
+
+// Extraction des tags uniques
+const tags = ["Tous", ...new Set(coursData.flatMap((cours) => cours.tags))];
+---
+
+<aside id="sidebar" class="sidebar">
+  <!-- Sidebar content -->
+  <div class="tags-container">
+    <h6>Filtres</h6>
+    {tags.map((tag) => (
+      <button class="tag-btn" data-tag={tag}>{tag}</button>
+    ))}
+  </div>
+  <br/>
+  <nav class="cours-nav">
+    <ul>
+      {coursData.map((cours) => (
+        <li class="cours" data-tags={cours.tags.join(",")}>
+          <a href={cours.url}>{cours.titre}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</aside>
+
+<!-- Bouton pour basculer la sidebar -->
+<button id="toggleSidebar" class="toggle-btn toggle-main">←</button>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  // Sélectionner les éléments nécessaires
+  const sidebar = document.querySelector(".sidebar");
+  const mainContentWrapper = document.querySelector(".main-content-wrapper");
+  const toggleButton = document.getElementById("toggleSidebar");
+  const tagButtons = document.querySelectorAll(".tag-btn"); // Boutons de tag
+  const coursItems = document.querySelectorAll(".cours"); // Éléments de cours
+
+  let sidebarVisible = true;
+
+  const toggleSidebar = () => {
+    sidebarVisible = !sidebarVisible;
+    sidebar.classList.toggle("hidden", !sidebarVisible);
+    mainContentWrapper.classList.toggle("sidebar-hidden", !sidebarVisible);
+    toggleButton.textContent = sidebarVisible ? "←" : "→";
+  };
+
+  toggleButton.addEventListener("click", toggleSidebar);
+
+  // Filtrer les cours en fonction des tags
+  tagButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const selectedTag = button.getAttribute("data-tag");
+
+      // Ajouter la classe active au bouton sélectionné
+      tagButtons.forEach(btn => btn.classList.remove("active")); // Retirer active des autres
+      button.classList.add("active"); // Ajouter active au bouton cliqué
+
+      // Filtrer les éléments de cours en fonction du tag sélectionné
+      coursItems.forEach(item => {
+        const itemTags = item.getAttribute("data-tags").split(",");
+        item.style.display = (selectedTag === "Tous" || itemTags.includes(selectedTag)) ? "" : "none";
+      });
+    });
+  });
+});
+
+</script>

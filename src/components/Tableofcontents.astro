@@ -64,3 +64,60 @@ import "../styles/global.css"; // Assurez-vous que le style est correctement imp
     });
   });
 </script>
+
+<style>
+.toc-container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 90%; /* Largeur maximale */
+}
+
+.toc {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  width: 100%;
+  max-width: 800px;
+  text-align: left;
+}
+
+.toc ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.toc li {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.toc-item a {
+  text-decoration: none;
+  color: #007acc;
+  font-weight: bold;
+}
+
+.toc-item a:hover {
+  text-decoration: underline;
+}
+
+.toc-item.level-2 {
+  margin: 0.5rem 0rem;
+  font-size: 124px;
+  padding-left: 0rem; /* Indentation de 20px pour les sous-sections */
+}
+
+.toc-item.level-3 {
+  margin: 0.25rem 0rem;
+  font-size: 20px;
+  padding-left: 4rem; /* Indentation de 40px pour les sous-sous-sections */
+}
+
+.toc-item.level-4 {
+  padding-left: 60px; /* Indentation de 60px pour le niveau 4, etc. */
+}
+</style>

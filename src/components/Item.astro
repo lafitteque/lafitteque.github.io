@@ -69,3 +69,49 @@ const itemText = textValues[type];
 </div>
 <br>
 
+<style> 
+
+
+.item-container .item-number::before {
+  content: counter(item-counter); /* Affiche la valeur actuelle du compteur */
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  line-height: 25px;
+  border: 1px solid black;
+  border-radius: 50%;
+  text-align: center;
+  margin-right: 10px;
+  margin-left: 5px;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: black;
+}
+
+.item-header {
+  padding: 3px 0px; /* Augmente l'espace autour du texte */
+  min-height: 30px; /* Définit une hauteur minimale */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item-number {
+  display: inline-block;
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.item-body {
+  padding: 10px;
+  background-color: #fafafa;
+}
+
+</style>
