@@ -13,6 +13,7 @@ const macros = {
   "\\U": "\\mathbb{U}",
   "\\K": "\\mathbb{K}",
   "\\L": "\\mathbb{L}",
+  "\\indicatrice": "\\mathbb{1}",
 
   "\\cA": "\\mathscr{A}",
   "\\cB": "\\mathscr{B}",

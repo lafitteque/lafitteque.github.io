@@ -1,0 +1,377 @@
+---
+title: "Applications et relations binaires"
+tag: "autre"
+---
+
+import Base from '../layouts/Base.astro'
+import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
+import Item from '../components/Item.astro'
+import Tableofcontents from '../components/Tableofcontents.astro'
+import Katex from '../components/Katex.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
+
+<Base>
+# Chapitre 4 - Applications et relations binaires
+
+<Tableofcontents></Tableofcontents>
+
+## Applications
+
+### Définitions et généralités
+
+<Item type='definition' titre='application'>
+
+Soient $E$ et $F$ deux ensembles. Une application $f$ de $E$ dans $F$ associe un élément de $F$ à chaque élément de $E$.
+
+On appelle $E$ le domaine de définition de $f$ parfois noté $\cD_f$
+
+L'ensemble des donctions de $E$ dans $F$ est noté $\cF(E \v F)$ ou encore $F^E$.
+</Item>
+
+<Remarque titre=' Hors Programme'>
+
+Il n'y a aucun attendu au programme sur cette définition. On peut en fait décrire formellement une fonction comme un ensemble $f$ de couples $(a \v b) \in (E\v F)$ tel que, si $(a_1 \v b_1) \in f$ et $(a_2\v b_2) \in f$, alors $a_1 = a_2 \Rightarrow b_1 = b_2$ (à un antécédent n'est associée qu'une seule image).
+</Remarque>
+
+
+<Hideable type='exemple' titre='différentes fonctions et différentes manières de les introduire'>
+
+1) Définitir en descrivant : soit $f$ la fonction qui à un réel assossie son carré.
+
+2) Définir par le calcul : soit $f$ la fonction définie sur $\defoo{2}{7}$ telle que $f(x) = \dfrac{1}{(x-2)(x-7)}$.
+
+3) Définir en tant qu'application : Soit $f : \begin{cases} \deffo{-1}{1} \rightarrow \R \\[-0.5em] \\ x \mapsto \dfrac{\sqrt{1+x}}{x-1} \end{cases}$
+
+
+**Attention :** définir une fonction c'est donner son ensemble de définition $\cD_f$ __ET__ l'association des éléments de $\cD_f$ à d'autres éléments dans un domaine d'arrivée (qui lui peut être implicitement donné par définition). 
+
+Il faut d'ailleurs prendre garde au domaine de définition. Dans le cas (3) par exemple, le calcul donné pourraît être effectué pour $x = 2$. Cependant, la fonction n'y existe pas. Et même si elle y existait, rien ne pourrait assurer que le calcul n'y serait pas différent.
+
+</Hideable> 
+
+<Remarque titre=''>
+En pratique, le domaine de définition est donné par :
+
+- l'énoncé
+
+- le contexte pratique selon le phénomène étudié (intensité, tension, hauteur, temps, ...)
+</Remarque>
+
+
+<Item type='definition' titre='égalité de fonctions'>
+
+On dit que deux fonctions $f$ et $g$ définies de $E$ dans $F$ sont égales et on note $f = g$ si :
+
+$$\forall x \in E \v f(x) = g(x)$$
+</Item>
+
+<Item type='definition' titre="restriction d'une fonction">
+
+Soient $G$ un sous-ensemble de $E$, $F$ un ensemble et $f$ une fonction de $G$ dans $F$. 
+
+On note $f_{|A} : \begin{cases} G \rightarrow F \\ x \mapsto f(x) \end{cases}$. On dit que l'on restreint $f$ à $G$.
+</Item>
+
+<Item type='definition' titre="prolongement d'une fonction">
+
+Soient $E$ et $F$ deux ensembles, $A$ un ensemble tel que $E \subset A$ et $f$ une fonction de $E$ dans $f$. On dit que $g$ définie de $A$ dans $F$ est un prolongement de $f$ si $g_{|E} = f$.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+Soit $f$ la fonction définie sur $\defff{0}{1}$ telle que $f(x) = x(x-1)$. On peut prolonger $f$ sur $\R$ par exemple par la fonction $g$ définie sur $\R$ comme suit : $g(x) = \begin{cases}  f(x) \text{ si } x \in \defff{0}{1} \\ 0 \text{ sinon} \end{cases}$
+
+Inversement, $f$ est une restriction de la fonction $g$.
+</Hideable>
+
+<Hideable type='exemple' titre='fonctions usuelles'>
+
+- La fonction carré : $f : \begin{cases}  \R \rightarrow  \R \\ x \mapsto  x^2 \end{cases}$
+
+- La fonction cube : $ f : \begin{cases} \R \rightarrow \R \\ x \mapsto x^3 \end{cases} $
+
+- La fonction inverse : $ f : \begin{cases} \R^* \rightarrow \R \\ x \mapsto \dfrac{1}{x} \end{cases} $
+
+- La fonction racine carrée : $ f : \begin{cases} \R_+  \rightarrow \R \\ x \mapsto \sqrt{x} \end{cases} $
+
+- La fonction identité de $E$ : $ id_E : \begin{cases} E \rightarrow E \\ x \mapsto x \end{cases} $. Elle peut sembler inutile mais elle est en fait essentielle car on essaie souvent de s'y ramener.
+
+- La fonction exponentielle : $ exp : \begin{cases} \R \rightarrow \R \\ x \mapsto e^x \end{cases} $
+
+- La fonction logarithme népérien : $ \ln : \begin{cases} \R_+^*  \rightarrow \R  \\ x \mapsto \ln(x) \end{cases} $
+</Hideable>
+
+<Item type='definition' titre='composition'>
+Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E\v F$ et $G$ sont trois ensembles. On définit la composée de $g$ et $f$ dite "$f$ rond $g$" ainsi :
+
+$ g \circ f : \begin{cases} E \rightarrow  G \\ x \mapsto \Big(g \circ f\Big) (x) = g\Big( f(x) \Big) \end{cases} $
+</Item>
+
+<Exercice titre=''>
+
+1) Donner l'expression littérale ainsi que le domaine de définition de $f \circ g$ où $f(x) = 3x - 2\v \forall x \in \defoo{-7}{8}$ et $g(x) = x^2 + x \v \forall x \in \deffo{2}{5}$.
+
+2) Donner le domaine de définition $\cD_f$ et $\cD_g$ de $f$ et de $g$  où $f(x) = x^2 - 6x +1$ et $g(x) = \ln(3x - 1)$ tel que $g \circ f$ ait le domaine de définition le plus grand possible.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1) Soit $x \in \deffo{2}{5}$, on a $f\Big( g(x) \Big) = f( x^2 + x) = 3(x^2 + x) - 2$ Donc $f \circ g$ est la fonction $ f\circ g : \begin{cases}   \deffo{2}{5} \rightarrow  \R \\ x \mapsto 3x^2 + 3x - 2 \end{cases} $
+
+2) $\ln$ est définie sur $\R_+^*$ mais donc $\ln(3x-1)$ n'a de sens que si $3x-1 > 0$ d'où $x > \dfrac{1}{3}$. 
+Soit $x \in \D_f$, on note $y = f(x)$. $g(y)$ existe ssi. $y > \dfrac{1}{3}$. D'où $x^2 - 6x + 1 > \dfrac{1}{3} \ssi x^2 - 6x + \dfrac{2}{3} > 0$, on factorise donc $x^2 - 6x + \dfrac{2}{3}$ en calculant le discriminant que l'on note $\Delta$.
+
+**Calcul de $\Delta$ et des racines :** $\Delta = 6^2 - 4\times 1 \times \dfrac{2}{3} = 36 - \dfrac{8}{3} = \dfrac{100}{3}$.
+
+On en déduit que les racines de $x^2 - 6x + \dfrac{2}{3}$ sont $x_{\pm} = \dfrac{6 \pm \dfrac{10}{\sqrt{3}}}{2}$.
+
+**Conclusion :** On en déduit que $f(x) > \dfrac{1}{3}$ ssi. $x \in \defoo{- \infty}{x_-} \bigcup \defoo{x_+}{+ \infty}$. Cet ensemble est donc $\cD_{g\circ f}$. D'où $\cD_f = \defoo{- \infty}{x_-} \bigcup \defoo{x_+}{+ \infty}$ et $\cD_g = \defoo{\dfrac{1}{3}}{+ \infty}$
+
+
+</Hideable>
+
+### Fonction caractéristique et ses propriétés 
+
+<Item type='definition' titre='fonction caractéristique'>
+
+Soit $A$ un sous-ensemble de $E$. On pose la fonction suivante nomée fonction caractéristique de $A$ sur $E$ :
+
+$$\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 0 \text{ si } x \notin A \\ 1 \text{ sinon} \end{cases} \end{cases}$$
+</Item>
+
+<Remarque titre=''>
+La plupart du temps, l'ensemble $E$ n'est pas précisé car il se déduit implicitement du contexte.
+</Remarque>
+
+
+<Item type='proposition' titre='intersection, réunion, produit cartésien'>
+Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
+
+- $\indicatrice_{A \bigcup B} = \indicatrice_{A} + \indicatrice_{B} - \indicatrice_{A}.\indicatrice_{B}$
+
+- $\indicatrice_{A \bigcap B} = \indicatrice_{A}.\indicatrice_{B}$
+
+- $\indicatrice{A \setminus B} = \indicatrice{A} - \indicatrice{A}\indicatrice{B}$
+
+- On travaille dans $E\times E$ donc $A \times B$ est un sous-ensemble.
+ $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) \indicatrice{B} (y)$ 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
+<Indent>
+
+- Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \bigcup B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 + 0 - 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+- Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \bigcup B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 0 + 1 - 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+- Cas 3 : $x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
+
+- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 + 1 - 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+</Indent>
+
+**Deuxième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \bigplus A \Bigcap B$
+<Indent>
+
+- Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \bigcap B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+- Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \bigcap B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+- Cas 3 :$x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
+
+- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+</Indent>
+
+
+**Troisième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \bigplus A \Bigcap B$
+<Indent>
+
+- Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 - 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+- Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 0 - 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+- Cas 3 : $x \in A \setminus B$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{A} = 1$ et $\indicatrice_{B} = 0$. L'égalité dans ce cas est donc $1 = 1 - 0 \times 1$ qui est vraie puisque $1 = 1$.
+
+- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, $\indicatrice_{A \setminus B} = 0$ et $\indicatrice_{A} = \indicatrice_{B} = 1$. L'égalité donne donc $0 = 1 - 1 \times 1$ ce qui est vrai puisque $0 = 0$.
+</Indent>
+
+**Quatrième égalité :** $ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \1_A(x) = 1$ et $\1_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice{B} (y) = 1$. D'où l'égalité.
+
+</Hideable>
+
+
+<Item type='proposition' titre="caractérisation d'un ensemble par sa fonction caractéristique">
+Soient $A$ et $B$ deux sous-ensembles de $E$.
+
+$$A = B \ssi \1_A = \1_B$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+En effet, montrons le résultat par équivalence : $x \in A \ssi \1_A(x) = 1 \ssi \1_B(x) = 1 \ssi x \in B$. D'où $A = B$.
+</Hideable>
+
+<Remarque titre=''>
+On peut ainsi démontrer les propriétés telles que $(A \bigcap B) \bigcup C = (A \bigcup C) \bigcap (B \bigcup C)$ en développant les fonctions caractéristiques du membre de gauche et de droite. Comme le développement est le même, les fonctions sont égales et les ensembles le sont donc aussi.
+
+Cela en fait un outil apprécié car il évite de toujours faire appel à des disjonctions de cas.
+</Remarque>
+
+
+### Injectivité, surjectivité et bijectivité
+Dans cette sous-section $E$ et $F$ désigneront deux ensembles (supposés d'arrivée et de départ d'une fonction).
+
+<Item type='definition' titre='injectivité'>
+Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **injective** si et seulement si :
+
+$$\forall (x \v y) \in E^2 \v \Bigg( f(x) = f(y) \Rightarrow x = y \Bigg) $$
+</Item>
+
+En clair, être injectif c'est ne pas parcourir deux fois la même valeur de l'ensemble d'arrivée.
+
+<Hideable type='exemple' titre=''>
+- La fonction définie par $f(x) = x$ sur $\R$ est injective. En effet, si $f(x) = f(y)$, alors $x = f(x) = f(y) = y$ et donc $x = y$.
+
+- La fonction $g : \begin{cases} \R \rightarrow \R \\ x \mapsto x^2 \end{cases}$ n'est pas injective mais sa restriction à $\R_+$ l'est. En effet, si $g(x) = g(y)$ et que $x,y \geqslant 0$, alors $x^2 = y^2$ et donc $x^2 - y^2 = 0$ puis $(x-y)(x+y)=0$. On en déduit que $x-y = 0$ ou $x+y = 0$. Donc $x = y$ ou $x = -y$. Mais si $x = -y$, comme $x,y \geqslant 0$, on a $0 \leqslant x = -y \leqslant 0$ d'où $x = -y = 0$ et donc $x = y$. Dans tous les cas, on a bien $x = y$
+
+- La fonction définie sur $\{0 \v 1 \}$ par $h(0) = 1$ et $h(1) = 0$ est injective. En effet, si $h(x) = h(y)$, alors soit $h(x) = 1 = h(y)$ et donc $x = y = 0$ par définition de $h$ soit $h(x) = h(y) = 0$ et donc $x = y = 1$ par définition de $h$. 
+</Hideable>
+
+<Item type='definition' titre='surjective'>
+Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **surjective** si et seulement si :
+
+$$\forall y \in F \v \exists x \in E \mid f(x) = y$$
+</Item>
+
+En clair, être surjectif c'est balayer toutes les valeurs de l'ensemble d'arrivée.
+
+<Hideable type='exemple' titre=''>
+La fonction $f : x \mapsto x^3$ définie sur $\R$ est surjective. La fonction $\begin{cases} \defoo{-1}{1} \rightarrow \R \\ x \mapsto \dfrac{x}{(x-1)(x+1)} \end{cases}$ est surjective. En effet, si $y \in \R$, alors $\sqrt[3]{y}$ est un antécédent de $y$ par $f$.
+</Hideable>
+
+<Remarque titre=''>
+On remarquera que cette définition dépend du contexte. Par exemple, la fonction définie par $f(x) = 1$ sur $\R$ et à valeurs dans $\R$ n'est pas surjective car $2$ n'est jamais atteint et pourtant il fait partie de l'ensemble d'arrivée. Cependant, si l'on définit $f$ ainsi : $f : \begin{cases} \R \rightarrow \{1\} \\ x \mapsto 1 \end{cases}$ alors elle est surjective. 
+
+La notion de surjectivité dépend du contexte. Il est donc très important de bien lire les énoncés et exercices et de s'assurer d'avoir bien compris le contexte et les objets en jeu.
+</Remarque>
+
+<Item type='definition' titre='bijective'>
+On dit d'une fonction $f$ qu'elle est bijective si et seulement si elle est à la fois injective et surjective
+</Item>
+
+En clair, être bijectif c'est associer une et une seule valeur de l'ensemble de départ à chacun des éléments de l'ensemble d'arrivée. C'est une correspondance terme à terme.
+
+<Hideable type='exemple' titre=''>
+
+La fonction cube et la fonction identité sont bijectives.
+</Hideable>
+
+### Fonction réciproque
+Dans cette sous-section $E$ et $F$ désigneront deux ensembles (supposés d'arrivée et de départ d'une fonction).
+
+<Item type='definition' titre="image d'un ensemble par une fonction">
+
+Soit $f$ une fonction de $E$ dans $f$ et $A$ un sous-ensemble de $E$. On appelle image de $A$ par $f$ l'ensemble suivant : 
+
+$$f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x) = y \Big) \}$$
+</Item>
+
+
+<Item type='definition' titre="image réciproque d'un ensemble par une fonction">
+
+Soit $f$ une fonction de $E$ dans $f$ et $B$ un sous-ensemble de $F$. On appelle image réciproque de $B$ par $f$ l'ensemble suivant : 
+
+$$f^{-1}(B) = \{ x \in E \mid f(x) \in B \}$$
+</Item>
+
+
+<Item type='defprop' titre='fonction réciproque'>
+
+Si $f$ est une fonction bijective de $E$ dans $F$, on dit qu'elle est inversible. Dans ce cas, il existe une unique fonction de $F$ dans $E$ que l'on appelle $f^{-1}$ telle que $f \circ f^{-1} = id_F$ et telle que $f^{-1}\circ f = id_E$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Pour tout $y \in F \v \exists x \in E \mid f(x) = y$. Ce $x$ est unique : en effet, s'il y avait $\tilde{x} \in E$ tel que $f(\tilde{x}) = y$, comme $f(x)= f(\tilde{x})$, comme $f$ est injective, $x = \tilde{x}$. Comme ce $x$ est entièrement déterminé par $y$, on le note $x_y$.
+Soit $f^{-1}$ qui est définie ainsi : $ f^{-1} : \begin{cases} F \rightarrow E \\ y \mapsto x_y \end{cases} $. On vérifie les deux affirmations de la propriété :
+
+**$f^{-1} \circ f$ :** Soit $x \in E$, on pose $y = f(x)$. $f^{-1}(f(x)) = f(y) = x_y$. Mais $f(x_y) = y = f(x)$ donc, comme $f$ est injective, $x_y = x$. D'où $f^{-1}(f(x)) = x = id_E (x)\v \forall x \in E$. Finalement $f^{-1} \circ f = id_E$.
+
+**$f \circ f^{-1} :$** Soit $y \in F$. $f(f^{-1}(y)) = f(x_y) = y$. D'où $f(f^{-1}(y)) = y = id_F (y)\v \forall y \in F$. Finalement $f \circ f^{-1} = id_F$.
+
+</Hideable>
+
+<Item type='proposition' titre='axe de symétrie des applications inversibles'>
+
+Soit $f$ une fonction de $I \subset \R$ dans $\R$. Les courbes représentatives $\cC_f$ et $\cC_{f^-1}$ sont le symétrique l'une de l'autre par l'axe de symétrie $y = x$. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\Point{x}{y} \in \cC_f \ssi \Point{y}{x} \in \cC_{f^-1}$. L'application $\phi : \Point{x}{y} \in \R^2 \mapsto \Point{y}{x}$ transforme par symétrie axiale d'axe $y = x$ les points du plan. D'où le résultat.
+</Hideable>
+
+
+<Item type='proposition' titre='images directes et réciproques'>
+Soient $A$ et $B$ deux sous-ensembles de $E$, $C$ et $D$ deux sous-ensembles de $F$ et $f$ une application de $E$ dans $F$. On a :
+
+- $f(A \bigcap B) \subset f(A) \bigcap f(B)$. On a égalité si $f$ est injective (condition non nécessaire).
+
+- $f(A \bigcup B) = f(A) \bigcup f(B) $
+
+- $f^{-1}(A \bigcap B) = f^{-1}(A) \bigcap f^{-1}(B)$
+
+- $f^{-1}(A \bigcup B) = f^{-1}(A) \bigcup f^{-1}(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+<Item type='proposition' titre='propriétés de la composition'>
+Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E$, $F$ et $G$ sont des enesmbles.
+
+- Si $f$ et $g$ sont injectives, $g \circ f$ l'est aussi 
+
+- Si $f$ et $g$ sont surjectives, $g \circ f$ l'est aussi
+
+- Si $f$ et $g$ sont bijectives, $g \circ f$ l'est aussi
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+
+### Monotonie
+
+<Item type='definition' titre='monotonie'>
+Soit $f$ une fonction définie sur $I \subset \R$ et à valeurs dans $\R$. On dit que :
+
+- $f$ est croissante (resp. strictement croissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y)$
+</Item>
+
+
+<Item type='proposition' titre=''>
+
+</Item>
+
+
+## Relations binaires
+
+### Relation binaire et propriétés
+
+
+
+### Relation d'équialence
+
+
+
+### Relation d'ordre
+
+
+
+</Base>

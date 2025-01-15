@@ -10,7 +10,7 @@ import Katex from '../components/Katex.astro'
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mon Site de Cours</title>
+    <title>Suplémaths - Les maths du supérieur</title>
     <link
   rel="stylesheet"
   href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
@@ -37,23 +37,5 @@ import Katex from '../components/Katex.astro'
         </main>
       </div>
     </div>
-
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const sidebar = document.getElementById("sidebar");
-        const mainContentWrapper = document.getElementById("mainContentWrapper");
-        const toggleButton = document.getElementById("toggleSidebar");
-
-        let sidebarVisible = true;
-
-        const toggleSidebar = () => {
-          sidebarVisible = !sidebarVisible;
-          sidebar.classList.toggle("hidden", !sidebarVisible);
-          mainContentWrapper.classList.toggle("sidebar-hidden", !sidebarVisible);
-        };
-
-        toggleButton.addEventListener("click", toggleSidebar);
-      });
-    </script>
   </body>
 </html>

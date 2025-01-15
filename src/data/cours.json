@@ -13,6 +13,11 @@
       "titre": "Chapitre 3 - Nombres complexes", 
       "url": "/mpsi_nombres_complexes", 
       "tags": ["Analyse"] 
+    },
+    { 
+      "titre": "Chapitre 4 - Applications et relations binaires", 
+      "url": "/mpsi_applications_relations", 
+      "tags": ["Analyse"] 
     }
   ]
   
