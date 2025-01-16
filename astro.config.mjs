@@ -25,6 +25,7 @@ const macros = {
   "\\cN": "\\mathscr{N}",
   "\\cP": "\\mathscr{P}",
   "\\cT": "\\mathscr{T}",
+  "\\cR": "\\mathscr{R}",
 
   "\\Point": "\\Big( { #1 } \\v { #2 } \\Big)",
 

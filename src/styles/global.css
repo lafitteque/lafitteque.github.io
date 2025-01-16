@@ -20,32 +20,21 @@ h1, .heading-h1 {
   margin: 1rem 10rem;
   text-align: center;
 }
-
 h2, .heading-h2 {
   font-size: 48px;
   margin: 2rem 8rem;
 }
-
 h3, .heading-h3 {
   font-size: 32px;
   margin: 1rem 4rem;
 }
-
 h4, .heading-h4 {
   font-size: 28px;
 }
 
-h5, .heading-h5 {
-  font-size: 24px;
-}
-
-h6, .heading-h6 {
-  font-size: 16px;
-  margin-bottom: 10px;
-}
 
 /* ==========================
-   Numérotation automatique des titres (h2, h3 et h4)
+   Numérotation automatique
 ========================== */
 
 h2 {
@@ -53,188 +42,47 @@ h2 {
   counter-increment: section-counter; /* Incrémente le compteur de section */
   
 }
-
 h2::before {
   content: counter(section-counter) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
-
 h3 {
   counter-reset: subsubsection-counter;
   counter-increment: subsection-counter; /* Incrémente le compteur de sous-section */
 }
-
 h3::before {
   content: counter(section-counter) "." counter(subsection-counter, upper-alpha) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
-
 h4 {
   counter-increment: subsubsection-counter; /* Incrémente le compteur de sous-sous-section */
 }
-
 h4::before {
   content: counter(section-counter) "." counter(subsection-counter, upper-alpha) "." counter(subsubsection-counter) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
-
-
-/* ==========================
-   Numérotation automatique des items et exercices
-========================== */
-
 .item-container {
   counter-increment: item-counter; /* Incrémente le compteur pour chaque item */
 }
-
 .exercice-header {
   counter-increment: exercice-counter; /* Réinitialisation du compteur global */
 }
-
 .exercice-number::after {
   content: counter(section-counter) "." counter(exercice-counter);
   font-weight: bold;
 }
 
-/* ==========================
-   Sidebar
-========================== */
-
-/* Sidebar */
-.sidebar {
-  position: fixed; /* Fixe la sidebar */
-  top: 0;
-  left: 0;
-  width: 250px;
-  height: 100vh; /* Hauteur de la sidebar pour qu'elle occupe toute la hauteur */
-  background-color: #f8f9fa;
-  padding: 1rem;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-  z-index: 10; /* Assure qu'elle est au-dessus du contenu */
-  overflow-y: auto; /* Permet à la sidebar de défiler si nécessaire */
-}
-
-/* Sidebar cachée */
-.sidebar.hidden {
-  transform: translateX(-85%); /* Cache la sidebar en la déplaçant vers la gauche */
-}
-
-/* Quand la sidebar est cachée, le wrapper du contenu doit occuper toute la largeur */
-.main-content-wrapper.sidebar-hidden {
-  width: 100%; /* Lorsque la sidebar est cachée, le contenu occupe toute la largeur */
-  margin-left: 0; /* Enlever la marge gauche de 250px */
-  transition: width 0.3s ease; /* Transition fluide de la largeur */
-}
-
-/* Le bouton de bascule doit toujours être visible et fonctionnel, même quand la sidebar est cachée */
-.toggle-btn {
-  position: fixed;
-  top: 10px;
-  left: 250px; /* À ajuster en fonction de la largeur de votre sidebar */
-  background-color: #007bff;
-  color: white;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  z-index: 1000; /* Assurez-vous que le bouton est au-dessus de tout le reste */
-  transition: left 0.3s ease;
-}
-
-.tags-container {
-  margin-bottom: 1rem;
-  margin-top: -2rem;
-}
-
-.tags-container button {
-  margin: 0.2rem;
-  padding: 0.4rem 0.8rem;
-  background-color: #e9ecef;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.tags-container button.active {
-  background-color: #007bff;
-  color: white;
-}
-
-.cours-nav ul {
-  list-style: none;
-  padding: 0;
-}
-
-.cours-nav li {
-  margin: 0.5rem 0;
-}
-
-.cours-nav a {
-  text-decoration: none;
-  color: #333;
-}
-
-/* ==========================
-   Mise en page (Base)
-========================== */
-
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* Assurez-vous que le body prend toute la hauteur de la fenêtre */
-  overflow-x: hidden; /* Empêche les débordements horizontaux */
-}
 
 
-
-/* ==========================
-   Contenu principal
-========================== */
-
-/* Wrapper du contenu principal, assurez-vous qu'il prend toute la largeur restante */
-.main-content-wrapper {
-  margin-left: 250px; /* Largeur de la sidebar */
-  width: calc(100% - 250px); /* Largeur restante */
-  height: 100vh; /* Hauteur de l'écran */
-  overflow-y: auto; /* Permet de faire défiler le contenu principal */
-  padding-left: 7%;
-  padding-right: 7%;
-  padding-top: 5%;
-  box-sizing: border-box;
-  position: relative;
-}
-
-/* Contenu principal, où le défilement doit avoir lieu */
-.main-content {
-  padding: 1rem;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  position: relative;
-  width: 100%;
-  box-sizing: border-box;
-  min-height: 100%; /* Assurez-vous que le contenu a au moins la hauteur de la fenêtre */
-  overflow-y: auto; /* Permet de faire défiler uniquement le contenu */
-}
-
-
-/* Quand la sidebar est cachée */
-.main-content-wrapper.full-width {
-  margin-left: 0;
-  width: 100%;
-}
-
-
-/* Ajouter des bordures aux tableaux */
 table {
   border-collapse: collapse; /* Fusionner les bordures des cellules */
 }
-
 table, th, td {
   border: 1px solid black; /* Bordure noire autour des cellules */
 }
-
 th, td {
   padding: 8px; /* Espacement autour du texte */
   text-align: center; /* Centrer le contenu */
