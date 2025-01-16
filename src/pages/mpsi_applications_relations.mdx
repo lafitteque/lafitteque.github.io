@@ -1,6 +1,6 @@
 ---
 title: "Applications et relations binaires"
-tag: "autre"
+tag: ["autre"]
 ---
 
 import Base from '../layouts/Base.astro'
@@ -154,10 +154,10 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 
 - $\indicatrice_{A \bigcap B} = \indicatrice_{A}.\indicatrice_{B}$
 
-- $\indicatrice{A \setminus B} = \indicatrice{A} - \indicatrice{A}\indicatrice{B}$
+- $\indicatrice_{A \setminus B} = \indicatrice_{A} - \indicatrice_{A}\indicatrice_{B}$
 
 - On travaille dans $E\times E$ donc $A \times B$ est un sous-ensemble.
- $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) \indicatrice{B} (y)$ 
+ $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) \indicatrice_{B} (y)$ 
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -171,10 +171,10 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 
 - Cas 3 : $x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
 
-- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 + 1 - 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+- Cas 4 : $x \in A \bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 + 1 - 1 \times 1$ ce qui est vrai puisque $1 = 1$.
 </Indent>
 
-**Deuxième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \bigplus A \Bigcap B$
+**Deuxième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
 <Indent>
 
 - Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \bigcap B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 \times 0$ ce qui est vrai car $0 = 0$.
@@ -183,11 +183,11 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 
 - Cas 3 :$x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
 
-- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+- Cas 4 : $x \in A \bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 \times 1$ ce qui est vrai puisque $1 = 1$.
 </Indent>
 
 
-**Troisième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \bigplus A \Bigcap B$
+**Troisième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
 <Indent>
 
 - Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 - 0 \times 0$ ce qui est vrai car $0 = 0$.
@@ -196,10 +196,10 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 
 - Cas 3 : $x \in A \setminus B$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{A} = 1$ et $\indicatrice_{B} = 0$. L'égalité dans ce cas est donc $1 = 1 - 0 \times 1$ qui est vraie puisque $1 = 1$.
 
-- Cas 4 : $x \in A \Bigcap B$. Dans ce cas, $\indicatrice_{A \setminus B} = 0$ et $\indicatrice_{A} = \indicatrice_{B} = 1$. L'égalité donne donc $0 = 1 - 1 \times 1$ ce qui est vrai puisque $0 = 0$.
+- Cas 4 : $x \in A \bigcap B$. Dans ce cas, $\indicatrice_{A \setminus B} = 0$ et $\indicatrice_{A} = \indicatrice_{B} = 1$. L'égalité donne donc $0 = 1 - 1 \times 1$ ce qui est vrai puisque $0 = 0$.
 </Indent>
 
-**Quatrième égalité :** $ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \1_A(x) = 1$ et $\1_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice{B} (y) = 1$. D'où l'égalité.
+**Quatrième égalité :** $ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \indicatrice_A(x) = 1$ et $\indicatrice_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice{B} (y) = 1$. D'où l'égalité.
 
 </Hideable>
 
@@ -207,11 +207,11 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 <Item type='proposition' titre="caractérisation d'un ensemble par sa fonction caractéristique">
 Soient $A$ et $B$ deux sous-ensembles de $E$.
 
-$$A = B \ssi \1_A = \1_B$$
+$$A = B \ssi \indicatrice_A = \indicatrice_B$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-En effet, montrons le résultat par équivalence : $x \in A \ssi \1_A(x) = 1 \ssi \1_B(x) = 1 \ssi x \in B$. D'où $A = B$.
+En effet, montrons le résultat par équivalence : $x \in A \ssi \indicatrice_A(x) = 1 \ssi \indicatrice_B(x) = 1 \ssi x \in B$. D'où $A = B$.
 </Hideable>
 
 <Remarque titre=''>
@@ -279,6 +279,13 @@ Soit $f$ une fonction de $E$ dans $f$ et $A$ un sous-ensemble de $E$. On appelle
 $$f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x) = y \Big) \}$$
 </Item>
 
+<Item type='proposition' titre=''>
+Soient $A$ et $B$ deux ensembles. Si $A \subset B$, alors $f(A) \subset f(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Si $x \in A$ alors $f(x) \in f(A)$, mais $x \in A \subset B$ donc $f(x) \in f(B)$.
+</Hideable>
 
 <Item type='definition' titre="image réciproque d'un ensemble par une fonction">
 
@@ -286,6 +293,17 @@ Soit $f$ une fonction de $E$ dans $f$ et $B$ un sous-ensemble de $F$. On appelle
 
 $$f^{-1}(B) = \{ x \in E \mid f(x) \in B \}$$
 </Item>
+
+
+<Item type='proposition' titre=''>
+
+Soient $A$ et $B$ deux ensembles. Si $A \subset B$, alors $f^{-1}(A) \subset f^{-1}(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in f^{-1}(A)$, $f(x) \in A \subset B$. Mais donc $f(x) \in f(B)$ d'où $x \in f^{-1}(B)$.
+</Hideable>
 
 
 <Item type='defprop' titre='fonction réciproque'>
@@ -329,7 +347,44 @@ Soient $A$ et $B$ deux sous-ensembles de $E$, $C$ et $D$ deux sous-ensembles de 
 
 <Hideable type='démonstration' titre=''>
 
+**Première relation :**
+<Indent>
+Soit $x \in A \Bigcap B$. On a $x \in A$ donc $f(x) \in f(A)$ mais $x \in B$ donc $f(x) \in f(B)$
+
+On peut également montrer que l'inclusion inverse n'est pas vraie à l'aide d'un contre-exemple : soit $f$ de $\{0 \pv 1\}$ dans $\{0 \pv 1\}$.où $f(0) = 0$ et $f(1) = 0$. $f(\{0\}) = {0} \v f({1}) = {0}$ et donc $f(\{0\})\bigcap f(\{1\}) = \{0\} $ mais $f(\{0\}\bigcap \{1\}) = f(\empty) = \empty$. D'où la non inclusion inverse.
+</Indent>
+
+**Deuxième relation :** montrons le résultat par double inclusion.
+<Indent>
+Montrons que $f(A \bigcup B)  \subset f(A) \bigcup f(B)$ :
+
+ Soit $x \in A \bigcup B$, soit $x \in A$ auquel cas $f(x) \in f(A) \subset f(A) \bigcup f(B)$ soit $x \in B$ auquel cas $f(x) \in f(B) \subset f(A) \bigcup f(B)$. On a donc bien $f(A \bigcup B)  \subset f(A) \bigcup f(B)$.
+
+
+
+Montrons maintenant que $ f(A) \bigcup f(B) \subset  f(A \bigcup B)$. Soit $y \in f(A) \bigcup f(B)$, alors soit il existe $x$ tel que $y = f(x)$ où $x \in A \subset A \bigcup B$, soit il existe $x$ tel que $y = f(x)$ où $x \in B \subset A \bigcup B$. Dans tous les cas $y = f(x) \in f(A \bigcup B)$. D'où l'inclusion voulue
+</Indent>
+
+**Troisième égalité :** Montrons le résultat par double inclusion.
+<Indent>
+
+Montrons d'abord que $f^{-1}(A \bigcap B) \subset f^{-1}(A) \bigcap f^{-1}(B)$. Soit $x \in f^{-1}(A \bigcap B)$, alors $f(x) \in A \bigcap B$ donc $f(x) \in A$ d'où $x \in f^{-1}(A)$ et $f(x) \in B$ d'où $x \in f^{-1}(B)$. Au final $x \in f^{-1}(A) \bigcap f^{-1}(B)$
+
+Montrons l'autre inclusion. Soit $f^{-1}(A) \subset f^{-1}(A \bigcap B)$ et $ \bigcap f^{-1}(B) \subset f^{-1}(A \bigcap B)$. On a donc l'inclusion voulue.
+</Indent>
+
+
+**Quatrième égalité :** Montrons l'égalité par double inclusion.
+<Indent>
+
+Montrons d'abord que $f^{-1}(A \bigcup B) \subset f^{-1}(A) \bigcup f^{-1}(B)$. Soit $x \in f^{-1}(A \bigcup B) $, $f(x) \in A \bigcup B$. Donc $f(x) \in A \bigcup B$ et donc soit  $f(x) \in B$ et $x \in f^{-1}{B}$, soit $f(x) \in A$ et $x \in f^{-1}(A)$. Donc $x \in A \bigcup B$.
+
+Montrons l'autre inclusion. Soit $x \in f^{-1}(A) \bigcup f^{-1}(B)$, alors soit $x \in f^{-1}(A) $ d'où $f(x) \in A$ soit $x \in f^{-1}(B)$ d'où $f(x) \in B$. Donc $f(x) \in A \bigcup B$ et finalement $x \in f^{-1}(A \bigcup B)$.
+</Indent>
+
+**Montrons que si $f$ est injective, alors la première relation est une égalité :** Soit $y \in f(A) \bigcap f(B)$. Il existe un unique $x \in E$ tel que $y = f(x)$. Mais $f(x) \in f(A) \bigcap f(B)$ donc $x \in A$ __ET__ $x \in B$ donc $x \in A \bigcap B$.  d'où $y = f(x) \in f(A \bigcap B)$. c.q.f.d. 
 </Hideable>
+
 
 <Item type='proposition' titre='propriétés de la composition'>
 Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E$, $F$ et $G$ sont des enesmbles.
@@ -342,7 +397,12 @@ Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E$, $F$ et
 </Item>
 
 <Hideable type='démonstration' titre=''>
+ 
+ - Supposons $x\v y \in E$ tels que $g \circ f (x) = g \circ f (y)$, alors $g\Big(f(x) \Big) = g\Big(f(y) \Big)$ donc $f(x) = f(y) $ car $g$ est injective. Puis, par injectivité de $f$, $x = y$. D'où l'injectivité de $g$.
 
+ - Soit $t \in H$, par surjectivité de $g$, il existe $y \in G$ tel que $g(y) = t$. Mais par surjectivité de $f$ il existe $x \in E$ tel que $f(x) = y$. D'où $t = g\Big(f(x)\Big) = g \circ f (x)$.
+
+ - En appliquant les deux résultats précédents, puisque $f$ et $g$ sont injectives __ET__ surjectives, $g \circ f$ est injective __ET__ surjective. Elle est donc bijective.
 </Hideable>
 
 
@@ -351,27 +411,257 @@ Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E$, $F$ et
 <Item type='definition' titre='monotonie'>
 Soit $f$ une fonction définie sur $I \subset \R$ et à valeurs dans $\R$. On dit que :
 
-- $f$ est croissante (resp. strictement croissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y)$
+- $f$ est croissante (resp. strictement croissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y)$ (resp. $f(x) < f(y)$)
+
+- $f$ est décroissante (resp. strictement décroissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \geqslant f(y)$ (resp. $f(x) > f(y)$)
+
+Si une fonction est croissante (resp. strictement décroissante) ou bien si elle est décroissante (resp. strictement croissante), on dit qu'elle est monotone (resp. strictement monotone).
 </Item>
 
+<Remarque titre=''>
+
+On remarquera que $\Bigg( \forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y) \Bigg) $ si et seulement si $ \Bigg(\forall (x\v y) \in I^2, x > y \Rightarrow f(x) \geqslant f(y) \Bigg)$
+</Remarque>
 
 <Item type='proposition' titre=''>
+Soient $f$ et $g$ deux fonctions définies sur $\R$ et à valeurs dans $\R$.
 
+- Si $f$ est croissante, alors $-f$ est décroissante.
+
+- Si $f$ et $g$ sont de même monotonie, alors $g \cir f$ est croissante .
+
+- Si $f$ et $g$ sont de monotonie opposées, alors $f \circ g$ est décroissante
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+**Première affirmation :** Soient $f$ croissante et $x < y$ deux réels. $f(x) \leqslant f(y) mais par décroissance de la fonction $x \mapsto -x$ définie sur $\R$, $-f(x) \geqslant -f(y)$. $-f$ est donc décroissante.
+
+**Deuxième affirmation :** 
+
+<Indent>
+
+- Si $f$ et $g$ sont croissantes, $x < y \Rightarrow f(x) \leqslant f(y) \Rightarrow g\Big( f(x) \Big) \leqslant g\Big( f(y) \Big) \Rightarrow g\ricr f (x) \leqslant g \circ f (y) $ et donc la composée est croissante.
+
+- Si les deux sont décroissantes, $x < y \Rightarrow f(x) \geqslant f(y) \Rightarrow g\Big( f(x) \Big) \leqslant g\Big( f(y) \Big) \Rightarrow g\ricr f (x) \leqslant g \circ f (y) $ et donc la composée est croissante.
+
+</Indent>
+
+**Troisième affirmation :** 
+<Indent>
+
+- Si $f$ est décroissante et $g$ est croissante, $x < y \Rightarrow f(x) \geqslant f(y) \Rightarrow g\Big( f(x) \Big) \geqslant g\Big( f(y) \Big) \Rightarrow g\ricr f (x) \geqslant g \circ f (y) $ et donc la composée est décroissante.
+
+- Si $f$ est croissante et $g$ est décroissante, $x < y \Rightarrow f(x) \leqslant f(y) \Rightarrow g\Big( f(x) \Big) \geqslant g\Big( f(y) \Big) \Rightarrow g\ricr f (x) \geqslant g \circ f (y) $ et donc la composée est décroissante.
+
+</Indent>
+
+
+Les démonstrations sont identiques pour la stricte monotonie en échangeant les symbôles $\leqslant$ par $<$ et les symboles $\geqslant$ par $>$.
+</Hideable>
+
+<Item type='proposition' titre=''>
+Une fonction strictement monotone est injective.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On suppose que $f$ est strictement croissante. En  effet, sinon, il suffit de considérer $g =-f$ qui est strictement croissante.
+
+Soient $x\v y \in \cD_f \subset \R$ tels que $f(x) = f(y)$. Raisonnons par l'absurde en supposant que $x \neq y$.
+
+- Cas 1 : $x < y$ auquel cas $f(x) < f(y)$ par stricte croissance de $f$. Ce qui est absurde puisque $f(x) = f(y)$.
+
+- Cas 2 : $x > y$ auquel cas $f(x) > f(y)$ par stricte croissance de $f$. Ce qui est absurde puisque $f(x) = f(y)$.
+
+Nécessairement $x = y$ et $f$ est injective.
+</Hideable>
+
+<Hideable type='exemple' titre=' Contre-Exemple'>
+
+Une fonction peut être injective sans être strictement monotone. C'est le cas de la fonction $f$ définie sur $\{0 \v 1 \v 2\}$ telle que $f(0) = 1 \v f(1) = 2 \v f(2) = 0$ qui est injective mais pas monotone.
+</Hideable>
 
 ## Relations binaires
 
+
 ### Relation binaire et propriétés
 
+<Item type='definition' titre='relation binaire'>
 
+Soit $E$ un ensemble. On appelle relation binaire sur $E$ une application $ \cR : \begin{cases}  E^2 \rightarrow  \{Vrai \v Faux \} \\ (x\v y) \mapsto x \cR y  \end{cases}$
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+On note $\cR$ la relation binaire sur $\R$ telle que,si $(x\v y) \in \R^2$, on a :
+
+$ x \cR y \ssi x + y = 1$.
+
+On peut trouver des éléments en relation : $\Point{1}{0} \v \Point{10}{-9}$ par exemple puisque $1 + 0 = 1$ et $10 + (-9) = 1$. On remarque que cette relation est symétrique, c'est à dire que $x \cR y \ssi y \cR x$.
+
+Inversement, $\Point{2}{-3}$ n'est pas un couple en relation puisque $2 + (-3) = -1 \neq 1$.
+
+</Hideable>
+
+
+<Item type='definition' titre="propriétés d'une relation binaire">
+Soit $\cR$ une relation binaire sur un ensemble $E$. On dit que :
+
+- $\cR$ est **refléxive** si l'on a : $\forall x \in E \v \x \cR x$
+
+- $\cR$ est **symétrique** si l'on a : $\forall (x\v y) \in E^2 \v x \cR y \ssi y \cR x$.
+
+- $\cR$ est **antisymétrique** si l'on a : $\forall (x\v y) \in E^2 \v \Big( x \cR y$ et $y \cR x \Big) \Rightarrow x = y$ 
+
+- $\cR$ est **transitive** si l'on a : $\forall (x\v y \v z) \in E^3 \v \Big( x \cR y et y \cR z \Big) \Rightarrow x \cR z$
+</Item>
+
+<Exercice titre=''>
+Soit $\cR$ la relation sur $\N$ telle que $n \cR m \ssi  n$ divise $m$.
+
+Quelles propriétés sont vérifiées par $\cR$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+Cette relation est :
+
+- reflexive car $a = 1 \times a$ donc $a$ divise $a$.
+
+- pas symétrique car $1$ divise $2$ mais pas l'inverse (contre-exemple).
+
+- antisymétrique car si $a$ divise $b$ et $b$ divise $a$ alors on a à la fois $a \leqslant b$ et $b \leqslant a$ donc $a = b$
+
+- transitive car si $a$ divise $b$ et $b$ divise $c$ alors il existe $k \in \N$ tel que $b = k.a$ et il existe $l$ tel que $c = l.b$ et donc $c = (k.l).a$ d'où $a$ divise $c$.
+</Hideable>
 
 ### Relation d'équialence
 
+<Item type='definition' titre="relation d'équivalence">
+On dit qu'une relation binaire est une relation d'équivalence si elle est refléxive, symétrique et transitive.
+</Item>
+
+<Hideable type='exemple' titre="Relations d'équivalence usuelles">
+
+- L'égalité de Nombres.
+
+- L'égalité d'ensembles.
+
+- L'égalité de vecteurs.
+
+- La relation de congruence modulo un certain nombre.
+</Hideable>
+
+<Item type='definition' titre='divisibilité'>
+Soient $n$ et $m$ deux entiers. On dit que $n$ divise $m$ (que l'on note souvent $n \mid m$) si :
+
+$$\exists k \in \Z \mid m = k.n$$
+</Item>
+
+<Item type='consequence' titre='inégalité dans les positifs'>
+
+Si $(n\v m) \in N^2$, alors $n \mid m \Rightarrow n \leqslant m$
+</Item>
+
+<Item type='definition' titre='congruence dans les entiers'>
+Soient $n\v m \v q$ trois entiers relatifs où $q \neq 0$. On dit que $n$ est congru à $m$ modulo $q$ s'il existe $k \in \Z$ tel que :
+
+$$  m-n = k.q$$
+
+C'est à dire si $q$ divise $m-n$.
+</Item>
+
+<Item type='definition' titre='congruence dans les réels'>
+Soient $a\v b \v x$ trois réels où $x \neq 0$. On dit que $a$ est congru à $b$ modulo $x$ s'il existe $k \in \Z$ tel que :
+
+$$  b-a = k.x$$
+
+C'est à dire si $x$ divise $b-a$.
+</Item>
+
+<Item type='definition' titre="classes d'équivalence">
+
+Soit $\cR$ une relation d'équivalence sur $E$. Si $x \in E$, on appelle classe d'équivalence de $x$ l'ensemble $\cC_x = \{ y \in E \mid x \cR y\}$ 
+</Item>
+
+<Remarque titre=''>
+
+La classe d'équivalence de zéro pour la relation déquivalence de congruence modulo $a$ dans $\R$ est notée $a\Z$. 
+
+Par exemple $2\Z$ est l'ensemble des multiples de deux et $2\pi \Z$ est l'ensemble des multiples de $2\pi$.
+</Remarque>
+
+<Item type='proposition' titre="propriété sur la classe d'équivalence">
+
+Soit $\cR$ une classe d'équivalence sur $E$. Soient $x,y$ deux éléments de $E$, $x \cR y \ssi \cC_x = \cC_y$. 
+
+Si deux éléments ne sont pas en relation, alors leurs classes d'équivalence sont disjointes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+- Sens direct : supposons $x$ et $y$ sont en relation. Par transitivité, tout élément en relation avec $x$ est en relation avec $y$ et inversement. D'où le sens direct de l'implication.
+
+- Sens réciproque : par définition des classes d'équivalence et comme $x \in \cC_x \cC_y$, alors $x$ est en relation avec $y$.
+
+- Si les éléments ne sont pas en relation : $x$ et $y$ ne sont pas en relation. s'il existe $z \in \cC_x \bigcap \cC_y$, alors $x \cR z $ et $z \cR y$ d'où $x \cR y$ ce qui est absurde par hypothèse. Les ensembles sont donc disjoints.
+</Hideable>
+
+<Item type='proposition' titre="partition par ensembles d'équivalence">
+
+Soit $\cR$ une relation d'équivalence sur $E$. Les classes d'équivalence de $\cR$. Elles forment une partition de $E$. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $X$ un ensemble contenant un élément par classe d'équivalence distincte. 
+
+D'une part, $\bigcup \limits^{x \in X} \cC_x \subset E$.
+
+D'autre part, si $y \in E$,$y \in \cC_y$ et $\cC_y$ est une classe d'équivalence donc elle est représentée par un $x \in X$. D'où l'inclusion inverse.
+
+Finalement, si $(x\v y) \in \X^2$, alors $\cC_x \neq \cC_y \Rightarrow \cC_x \bigcap \cC_y = \empty$ d'où la réunion disjointe.
+</Hideable>
 
 
 ### Relation d'ordre
 
+<Item type='definition' titre="relation d'ordre">
+On appelle relation d'ordre une relation binaire refléxive, antisymétrique et transitive.
+</Item>
 
+<Item type='definition' titre="relation d'ordre totale">
+On dit qu'une relation d'ordre sur $E$ est totale si :
+
+$$\forall (x \v y) \in E^2 \v x \cR y \text ou y \cR x$$
+</Item>
+
+
+<Exercice titre=''>
+Pour chaque relation ci-dessous, dire s'il s'agit d'une relation d'ordre (préciser si elle est totale), d'équivalence ou aucun des deux.
+
+- La relation $<$ sur $\R$
+
+- La relation $\subset$ entre ensembles
+
+- La relation $\geqslant$ sur $\R$
+</Exercice>
+
+
+<Hideable type='solution' titre=''>
+- Aucun des deux car elle n'est pas refléxive.
+
+- Relation d'équivalence.
+
+- Relation d'ordre totale.
+</Hideable>
+
+{/*
+    Elements manquants :
+        - Exos et exemples
+
+    Idées de colles :
+        - étude de R_f où $f$ fonction 
+        - relation d'ordre sur \C compatible avec la multiplication
+*/}
 
 </Base>
+
