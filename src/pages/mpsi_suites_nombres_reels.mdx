@@ -71,24 +71,117 @@ Donner la borne sup et la borne inf (si elles existent) des ensembles suivants :
 
 ### Définition, modes de définition d'une suite
 
+<Item type='definition' titre='suite'>
+
+On appelle suite une application de $E \subset \N$ dans $F$ où $F$ est un ensemble.
+
+En particulier, on appelle suite numérique une suite dont l'ensemble d'arrivée est dans $\C$ (ou $\R$).
+
+L'ensemble des suites réelles est $\R^{\N}$ (cf. cours sur les applications)
+</Item>
+
+<Remarque titre=''>
+
+La suite dont les termes sont $u_0 \v u_1 \v u_2 \v \dotsm$ est notée $u$, $(u_n)$ ou bien $(u_n)_{n \in \N}$. Cette dernière version est préférable et il faut la absolument la privilégier. En effet, l'utilisation des deux premières notations peut vous être reprochée car elles ne précisent pas l'ensemble de définition ($\N$).
+</Remarque>
+
+**Différents modes de définition :**
+
+<Fil>
+On a plusieurs manières de définir une suite.
+
+- Explicitement : soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $(u_n)_{n \in \N}$ par la relation $u_n = f(n)$.
+
+- Par récurrence : soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $(u_n)_{n \in \N}$ par la relation $u_{n+1} = f(u_n)$.
+
+- Implicitement : chaque terme $u_n$ suit une certaine relation. Par exemple, on définit $u_n$ comme la seule racine réelle du polynôme $x^3 -nx^2 +x -n$. Dans cet exemple, comme $x^3 -nx^2 +x -n = (x-n)(x^2+1)$, on en déduit aisément que $u_n = n$ ce qui explicite le terme général de la suite.
+</Fil>
 
 ### Monotonie et propriétés
 
 <Item type='definition' titre='monotonie'>
 
+Soit $(u_n)_{n \in \N}$ une suite réelle. On dit qu'elle est :
+
+- croissante (resp. strictement croissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \leqslant u_m$ (resp. $u_n < _um $)
+
+- décroissante (resp. strictement décroissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \geqslant u_m$ (resp. $u_n > _um $)
+
+Si elle est croissante ou bien décroissante, on dit qu'elle est monotone (idem pour strictement monotone).
 </Item>
 
 <Item type='proposition' titre='monotonie et opérations'>
+Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles.
 
+- Si $(u_n)_{n \in \N}$ est croissante, alors $(-u_n)_{n \in \N}$ est décroissante. (résultat analogue avec la décroissance et les versions strictes)
+
+- Si les deux suites sont (resp. strictement) croissantes, alors leur somme est (resp. strictement) croissante. (le résultat est analogue avec la décroissance)
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première propriété :** 
+<Indent>
+
+Si $(u_n)_{n \in \N}$ est croissante, $n < m \Rightarrow u_n \leqslant u_m \Rightarrow\limits_{\text{par croissance de } -id_{\R}} -u_n \geqslant -u_m$. Les autres versions de la démonstration sont quasiment identiques.
+</Indent>
+
+**Seconde propriété :**
+<Indent>
+
+Si $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ sont croissantes, $n < m \Rightarrow u_n \leqslant (u_m \$ et $v_n < v_m ) \Rightarrow u_n + v_n \leqslant u_m + v_m$. Les autres versions de la démonstration sont quasiment identiques.
+</Indent>
+</Hideable>
 
 <Item type='proposition' titre='critères de monotonie'>
+Soit $(u_n)_{n \in \N}$ une suite réelle.
 
+- Elle est croissante (resp. décroissante) si et seulement si : $\forall n \in \N  u_{n+1} - u_n \geqslant 0$ (resp $u_{n+1} - u_n \leqslant 0$). Le résultat est analogue pour la monotonie stricte avec l'inégalité stricte.
+
+- Si $(u_n)_{n \in \N}$ est de signe constant et ne s'annule pas , $(u_n)_{n \in \N}$ est croissante (resp. décroissante) si et seulement si $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$ (resp. $\dfrac{u_{n+1}}{u_n} \leqslant 1$). Le résultat est analogue avec la monotonie stricte mais avec une inégalité stricte.
 </Item>
 
-<Item type='proposition' titre='monotonie et fonctions'>
-f(Un)
+<Hideable type='démonstration' titre=''>
+
+**Première propriété :** Il est évident (avec $m = n+1$) que si la suite est croissante, alors on a le résultat. Intéressons nous à la réciproque
+
+<Indent>
+
+On suppose que : $\forall n \in \N  u_{n+1} - u_n \geqslant 0$. Soient $n$ et $m$ deux entiers positifs. 
+
+$u_m - u_n = \somme{i = 0}{m-n-1} (u_{n+i+1} - u_{n+i})$ par télescopage. Mais chaque terme de la somme est supérieur ou égal à $0$. D'où $u_m - u_n \geqslant 0$. c.q.f.d. 
+
+On pouvait églement procéder par récurrence et montrer à partir de l'hypothèse que $u_{n+k} - u_n \geqslant 0$ si $k \geqslant 0$. 
+</Indent>
+
+
+**Seconde propriété :** Si la suite est croissante, le résultat est évident (comme pour la première propriété, prendre $m = n+1$).
+
+<Indent>
+
+Supposons que $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$.
+
+Soient $n$ et $m$ deux entiers positifs. $\dfrac{u_m}{u_n} = \produit{i = 0}{m-n-1} \dfrac{u_{n+1}}{u_n}$ et chaque facteur est plus grand ou égal à $1$ par hypothèse. Donc $\dfrac{u_m}{u_n} \geqslant 1$ puis $u_m \geqslant u_n$ en multipliant par $u_n$ de part et d'autre. D'où le résultat
+</Indent>
+
+</Hideable>
+
+<Item type='proposition' titre='monotonie et suite récurrente'>
+
+Soit $f$ une fonction de $\R$ dans $\R$. Soit $(u_n)_{n \in \N}$ définie par récurrence ainsi : $\begin{cases} u_{n+1} = f(u_n) \\ u_0 = a \in \R\ens{cases}$. 
+
+Si $f-id$ est positive (resp. négative), alors  la suite est croissante (resp. décroissante).
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n$ un entier naturel. Si $f-id$ est positive, alors $(f-id)(u_n) \geqslant 0$ d'où $f(u_n) - u_n \geqslant 0$ puis $u_{n+1}
+- u_n \geqslant 0$. La suite est donc croissante. 
+</Hideable>
+
+<Remarque titre=''>
+Il est intéressant d'étudier $f-id$ pour comprendre la suite définie par $u_{n+1} = f(u_n)$.
+</Remarque>
 
 ### Suites bornées
 
@@ -130,7 +223,7 @@ f(Un)
 
 </Item>
 
-<Item type='proposition' titre=''>
+<Item type='proposition' titre='théorème des gendarmes'>
 
 </Item>
 
@@ -149,16 +242,52 @@ f(Un)
 
 </Item>
 
-<Item type='proposition' titre=''>
+<Item type='proposition' titre='encadrement par des suites adjacentes'>
 
 </Item>
 
 ### Limites usuelles
 
+<Item type='proposition' titre='limites de fonctions usuelles'>
 
+</Item>
 
+<Item type='proposition' titre='croissances comparées'>
+
+</Item>
+
+<Item type='methode' titre='calcul par le nombre dérivé (classique)'>
+Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(U_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
+
+$$\limite{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
+</Item>
+ 
 ### Densité
 
+<Item type='proposition' titre='caractérisation de la densité'>
+
+</Item>
+
+<Remarque titre=''>
+C'est en fait la définition de la densite valable même pour $\C$.
+</Remarque>
+
+
+## Suites particulières et études particulières
+
+### Suites arithmétiques, géométriques et arithmético-géométriques
+
+
+### Suites récurrentes : cas linéaire d'ordre 2 
+
+
+### Suites récurrentes : cas général
+
+#### Généralités
+
+
+
+#### Etudes de point fixes
 
 
 
