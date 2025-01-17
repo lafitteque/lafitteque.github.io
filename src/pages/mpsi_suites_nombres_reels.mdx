@@ -23,6 +23,7 @@ import Fil from '../components/Fil.astro'
 ## Notions préliminaires sur les nombres réels
 
 ### Droite réelle et intervalles 
+
 <Item type='definition' titre='intervalle'>
 
 </Item>
@@ -63,8 +64,6 @@ Donner la borne sup et la borne inf (si elles existent) des ensembles suivants :
 
 2) $B = \{\dfrac{1}{n}\v n \in \N^*\}$
 </Exercice>
-
-
 
 
 ## Suites, définitions et propriétés fondamentales
@@ -168,14 +167,14 @@ Soient $n$ et $m$ deux entiers positifs. $\dfrac{u_m}{u_n} = \produit{i = 0}{m-n
 
 <Item type='proposition' titre='monotonie et suite récurrente'>
 
-Soit $f$ une fonction de $\R$ dans $\R$. Soit $(u_n)_{n \in \N}$ définie par récurrence ainsi : $\begin{cases} u_{n+1} = f(u_n) \\ u_0 = a \in \R\ens{cases}$. 
+Soit $f$ une fonction de $\R$ dans $\R$. Soit $(u_n)_{n \in \N}$ définie par récurrence ainsi : $\begin{cases} u_{n+1} = f(u_n) \\ u_0 = a \in \R\end{cases}$. 
 
 Si $f-id$ est positive (resp. négative), alors  la suite est croissante (resp. décroissante).
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $n$ un entier naturel. Si $f-id$ est positive, alors $(f-id)(u_n) \geqslant 0$ d'où $f(u_n) - u_n \geqslant 0$ puis $u_{n+1}
+Soit $n$ un entier naturel. Si $f-id$ est positive, alors $(f-id)(u_n) \geqslant 0$ d'où $f(u_n) - u_n \geqslant 0$ puis $u_{n+1}$
 - u_n \geqslant 0$. La suite est donc croissante. 
 </Hideable>
 
@@ -259,7 +258,7 @@ Il est intéressant d'étudier $f-id$ pour comprendre la suite définie par $u_{
 <Item type='methode' titre='calcul par le nombre dérivé (classique)'>
 Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(U_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
 
-$$\limite{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
+$$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
 </Item>
  
 ### Densité
