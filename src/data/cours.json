@@ -17,7 +17,12 @@
     { 
       "titre": "Chapitre 4 - Applications et relations binaires", 
       "url": "/mpsi_applications_relations", 
-      "tags": ["Analyse"] 
+      "tags": ["Analyse","Algèbre"] 
+    },
+    {
+      "titre": "Chapitre 5 - mpsi_suites_nombres_reels",
+      "url": "mpsi_suites_nombres_reels",
+      "tags": ["Analyse"]
     }
   ]
   
