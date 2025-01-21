@@ -1,32 +1,37 @@
 ---
 import "../styles/global.css"; // Importe le CSS global
 
-import { suid } from '../libs/utils';
-
+import { suid } from "../libs/utils";
+interface Props {
+  type: string;
+  titre: string;
+}
 const { type, titre } = Astro.props;
-const type_upper = type.charAt(0).toUpperCase() + String(type).slice(1)
-
-const uniqueId = suid();
+const typeUpper = type.charAt(0).toUpperCase() + type.slice(1);
 ---
 
 <details>
-  <summary> {type_upper} : {titre} </summary>
-  <slot/>
+  <summary> {typeUpper} : {titre} </summary>
+  <div class="content">
+    <slot />
+  </div>
 </details>
-
+<script></script>
 <style>
+  .content {
+    padding: 8px;
+  }
   details {
     margin-bottom: 2rem;
-    margin-left: 5rem; 
+    margin-left: 5rem;
     background-color: #fafafa;
+    transition: margin 1s;
   }
-  
+
   details[open] {
-    padding: 10px 15px;
-    background-color: #fafafa;
-    transition: max-height 5s ease, opacity 5s ease; /* Transition fluide */
+    /* background-color: #fafafa; */
+    /* transition: max-height 5s ease; Transition fluide */
   }
-    
   summary {
     padding: 10px 15px; /* Augmente l'espace autour du texte */
     font-size: 20px;

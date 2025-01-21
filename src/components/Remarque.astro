@@ -1,50 +1,68 @@
 ---
 //import "../styles/global.css"; // Importe le CSS global
-import { suid } from '../libs/utils';
+import { suid } from "../libs/utils";
 
-const uniqueId = suid();  // Générer un uniqueId pour chaque instance du composant
+const uniqueId = suid(); // Générer un uniqueId pour chaque instance du composant
 const { title, content } = Astro.props;
+
+const params = {};
+
+// générer le svg
+
+//
+// const svg = `url(data:image/svg+xml,<svg viewBox="0 0 100 100"
+// xmlns="http://www.w3.org/2000/svg"><path fill="transparent" stroke="dark"
+// //  d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 Z "></path></svg>)`;
+
+const svg = `url('data:image/svg+xml,<svg viewBox="50 50 150 150" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="blue" stroke-width="10" d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 "></path></svg>')`;
 ---
 
-<style>
+<style define:vars={{ svg }}>
   .wave-block {
-    display:flex;
+    display: flex;
     align-items: stretch;
     color: black;
     margin-left: 2rem;
+    background: red;
   }
 
   .wave {
-    flex: 0 0 auto;
+    min-width: 16px;
+    /* height: 100%; */
+    /* min-height: 30px; */
+    background-image: var(--svg);
+    background-repeat: repeat-y;
+    /* flex: 0 0 auto;
     width: 12px;
     align-items: center;
     position: relative;
-    color: black;
+    color: black; */
   }
 
-  .wave svg {
+  /* .wave svg {
     display: block;
     width: 100%;
     color: black;
+  } */
+
+  .content {
+    /* background: red; */
   }
-
 </style>
-
-
 
 <div class="wave-block" id={`wave-block-${uniqueId}`}>
   <div class="wave" style="padding: 0rem 0.5rem;">
     <!-- Ajout du uniqueId dans l'ID de l'élément SVG -->
-    <svg class="dynamic-wave" id={`dynamic-wave-${uniqueId}`} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg>
+    <!-- <svg class="dynamic-wave" id={`dynamic-wave-${uniqueId}`} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg> -->
   </div>
-  <div class="content" id={`content-${uniqueId}`} >
+  <div class="content" id={`content-${uniqueId}`}>
     <b> Remarque : </b>
-    <slot/>
+    <slot />
   </div>
 </div>
 
 <!-- Charger le script côté client -->
-<script type="module">
+<!-- <script type="module">
   import generateWave from '/scripts/dynamicWave.js';
   document.addEventListener("DOMContentLoaded", () => {
   requestAnimationFrame(() => {
@@ -69,5 +87,4 @@ const { title, content } = Astro.props;
     });
   });
 });
-</script>
-
+</script> -->

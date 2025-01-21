@@ -2,6 +2,7 @@ import rehypeKatex from 'rehype-katex';
 import remarkMath from 'remark-math';
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
+import solidJs from '@astrojs/solid-js';
 
 const macros = {
   "\\N": "\\mathbb{N}",
@@ -52,16 +53,25 @@ const macros = {
   "\\pv": "; \\;",
   "\\v": ", \\;",
 
+  "\\floor": "\\lfloor {#1} \\rfloor",
+  "\\ceil": "\\lceil {#1} \\rceil",
+
   "\\somme": "\\sum \\limits_{#1}^{#2}",
   "\\produit": "\\prod \\limits_{#1}^{#2}",
   "\\integ": "\\int \\limits_{#1}^{#2}",
 
   "\\limm": "\\lim \\limits_{ {#1} }",
+  "\\limto":"\\mathop{\\longrightarrow}\\limits_{ {#1} \\to {#2}}",
+  "\\limton":"\\mathop{\\longrightarrow}\\limits_{n \\to \\infty}",
+  "\\suitedef":"({#1})_{n \\in {#2}}",
+  "\\suitedefN":"({#1})_{n \\in \\N}",
 
   "\\Re": "\\operatorname{Re}",
   "\\Im": "\\operatorname{Im}",
   "\\Arg": "\\operatorname{Arg}",
   "\\Ker": "\\operatorname{Ker}",
+  "\\sup": "\\operatorname{sup}",
+  "\\inf": "\\operatorname{inf}",
 };
 
 export default defineConfig({
@@ -71,6 +81,7 @@ export default defineConfig({
       wrap: false,
     }
   },
+  server: { host: true },
   site: 'https://lafitteque.github.io',
   integrations: [
     mdx({
@@ -85,5 +96,6 @@ export default defineConfig({
         ]
       ]
     }),
+    solidJs()
   ],
 });

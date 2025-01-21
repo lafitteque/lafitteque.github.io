@@ -7,7 +7,7 @@ export default function generateWavePath(height, amplitude, frequency) {
     }
     return path;
   }
-  console.log("Coucou, je debugg la vaguelette")
+  // console.log("Coucou, je debugg la vaguelette")
   document.addEventListener("DOMContentLoaded", () => {
     const headers = document.querySelectorAll('.wave-block');
 
@@ -16,9 +16,9 @@ export default function generateWavePath(height, amplitude, frequency) {
       const content = document.querySelector(`#content-${uniqueId}`);
       const waveSvg = document.querySelector(`#dynamic-wave-${uniqueId}`);
 
-      console.log("avant la condition")
+      // console.log("avant la condition")
       if (content && waveSvg) {
-        console.log("la vaguelette est créée")
+        // console.log("la vaguelette est créée")
         const rect = content.getBoundingClientRect();
         const height = rect.height;
     
