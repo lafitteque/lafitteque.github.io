@@ -8,13 +8,7 @@ const { title, content } = Astro.props;
 const params = {};
 
 // générer le svg
-
-//
-// const svg = `url(data:image/svg+xml,<svg viewBox="0 0 100 100"
-// xmlns="http://www.w3.org/2000/svg"><path fill="transparent" stroke="dark"
-// //  d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 Z "></path></svg>)`;
-
-const svg = `url('data:image/svg+xml,<svg viewBox="50 50 150 150" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="blue" stroke-width="10" d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 "></path></svg>')`;
+const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="black" stroke-width="10" d="M 0,0 C 0,50,50,50,50,100 C 50,150,0,150,0,200 "></path></svg>')`;
 ---
 
 <style define:vars={{ svg }}>
@@ -23,34 +17,36 @@ const svg = `url('data:image/svg+xml,<svg viewBox="50 50 150 150" xmlns="http://
     align-items: stretch;
     color: black;
     margin-left: 2rem;
-    background: red;
   }
 
   .wave {
     min-width: 16px;
-    /* height: 100%; */
-    /* min-height: 30px; */
     background-image: var(--svg);
     background-repeat: repeat-y;
-    /* flex: 0 0 auto;
-    width: 12px;
-    align-items: center;
-    position: relative;
-    color: black; */
   }
-
-  /* .wave svg {
-    display: block;
-    width: 100%;
-    color: black;
-  } */
 
   .content {
     /* background: red; */
   }
+  /*
+<Content>
+
+
+
+
+
+
+  <Remarque>blablablalablaba</Remarque>
+  <SectionBite>blablablalablaba</SectionBite>
+  <Remarque>blablablalablaba</Remarque>
+  <Remarque>blablablalablaba</Remarque>
+  <Remarque>blablablalablaba</Remarque>
+  <Remarque>blablablalablaba</Remarque>
+  </Content>
+  */
 </style>
 
-<div class="wave-block" id={`wave-block-${uniqueId}`}>
+<div class="wave-block mb-4" id={`wave-block-${uniqueId}`}>
   <div class="wave" style="padding: 0rem 0.5rem;">
     <!-- Ajout du uniqueId dans l'ID de l'élément SVG -->
     <!-- <svg class="dynamic-wave" id={`dynamic-wave-${uniqueId}`} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg> -->
