@@ -4,6 +4,8 @@ import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
 import solidJs from '@astrojs/solid-js';
 
+import tailwind from "@astrojs/tailwind";
+
 const macros = {
   "\\N": "\\mathbb{N}",
   "\\Z": "\\mathbb{Z}",
@@ -83,19 +85,16 @@ export default defineConfig({
   },
   server: { host: true },
   site: 'https://lafitteque.github.io',
-  integrations: [
-    mdx({
-      remarkPlugins: [remarkMath],
-      rehypePlugins: [
-        [
-          rehypeKatex,
-          {
-            output: 'html',  // Désactiver MathML
-            macros: macros,  // Ajouter tes macros ici
-          }
-        ]
+  integrations: [mdx({
+    remarkPlugins: [remarkMath],
+    rehypePlugins: [
+      [
+        rehypeKatex,
+        {
+          output: 'html',  // Désactiver MathML
+          macros: macros,  // Ajouter tes macros ici
+        }
       ]
-    }),
-    solidJs()
-  ],
+    ]
+  }), solidJs(), tailwind()],
 });

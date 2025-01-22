@@ -43,9 +43,10 @@
 .toc-1 {
   margin: 0.25rem 0rem;
   font-size: 20px;
-  padding-left: 4rem; /* Indentation de 40px pour les sous-sous-sections */
+  padding-left: 2rem; /* Indentation de 40px pour les sous-sous-sections */
 }
 
 .toc-2 {
-  padding-left: 60px; /* Indentation de 60px pour le niveau 4, etc. */
+  font-size: 16px;
+  padding-left: 4rem; /* Indentation de 60px pour le niveau 4, etc. */
 }

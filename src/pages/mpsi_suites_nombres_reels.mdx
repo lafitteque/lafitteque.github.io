@@ -367,13 +367,13 @@ Soit $(u_n)_{n \in \N}$ une suite complexe convergeante de limite $l$. On pose $
 
 Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites complexes convergeantes de limites respectives $l_1$ et $l_2$. Alors :
 
-- Si $\lambda \in \C$, alors $\limm{n \to + \infty} \lambda . u_n = \lambda . l_1$
+- Si $\lambda \in \C$, alors $\limm{n \to + \infty} \lambda . u_n = \lambda. \limm{n \to + \infty} u_n = \lambda.l_1$
 
-- $\limm{n \to + \infty} u_n + v_n = l_1 + l_2$
+- $\limm{n \to + \infty} (u_n + v_n) = \limm{n \to + \infty} u_n + \limm{n \to + \infty} v_n = l_1 + l_2$
 
-- $\limm{n \to + \infty} u_n . v_n = l_1 . l_2$
+- $\limm{n \to + \infty} u_n . v_n = \Big( \limm{n \to + \infty} u_n \Big) \times \Big( \limm{n \to + \infty} v_n \Big) = l_1 . l_2$
 
-- Si $l_2 \neq 0$ et que $v_n \neq 0 \forall n \in \N$, $\limm{n \to + \infty} \dfrac{u_n}{v_n} = \dfrac{l_1}{l_2}$
+- Si $l_2 \neq 0$ et que $v_n \neq 0 \forall n \in \N$, $\limm{n \to + \infty} \dfrac{u_n}{v_n} = \dfrac{\limm{n \to + \infty} u_n}{\limm{n \to + \infty} v_n} = \dfrac{l_1}{l_2}$
 
 </Item>
 
@@ -486,20 +486,48 @@ Soit $(u_n)_{n \in \N}$ une suite réelle croissante (resp. décroissante). Soit
 
 Soit $k \in \N^*$, on a les limites suivantes.
 
-| $u_n$ | $n$ | $n^k$ | $\dfrac{1}{n^k}$ | $\sqrt{n}$ | $\ln(n)$ | $e^n$ |$\sin(n)$ | $\cos(n)$ | 
-|---|---|---|---|---|---|---|---|---| 
-| limite en $+ \infty$ | $+ \infty$ | $+ \infty$ | $0$ | $+ \infty$ | $+ \infty$ | $+ \infty$ | Diverge | Diverge |
-
+| $u_n$ | $n$ | $n^k$ | $\dfrac{1}{n^k}$ | $\sqrt{n}$ | $e^n$ | $e^{-n}$ | $\ln(n)$ |$\sin(n)$ | $\cos(n)$ | $q^n$ , $q > 1$ | $q^n$ , $-1 < q < 1$ |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| limite en $+ \infty$ | $+ \infty$ | $+ \infty$ | $0$ | $+ \infty$ | $+ \infty$ | $0$ | $+ \infty$ | Diverge | Diverge | $+ \infty$ |$0$ |
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $A \in \R$ et $\epsilon > 0$. Il suffit de trouver un $N \in \N$ convenant pour la définition dans chaque cas.
+
+**$u_n = n^k$ :** dans ce cas, $N = A$ convient par croissance de $\suitedefN{u_n}$.
+
+**$u_n = \dfrac{1}{n^k}$ :** ici, $N = \ceil{\dfrac{1}{\epsilon}}$ convient car : $0 < \dfrac{1}{n^k} \leqslant \dfrac{1}{n}$ et $\dfrac{1}{n} \leqslant \epsilon$ si $n \geqslant \ceil{\dfrac{1}{\epsilon}}$ par décroissance de $\suitedefN{u_n}$.
+
+**$u_n = \sqrt{n}$ :** ce cas se traite comme précedemment mais avec $N = \dfrac{1}{\sqrt{\epsilon}}$ puisqu'un passage à la racine carrée est nécessaire sur l'inégalité précédente (la racine carrée est croissante).
+
+**$u_n = e^n$ et $u_n = e^{-n}$ :** admis
+
+
+**$u_n = \ln(n)$ :** la fonction exponentielle est croissante donc comme $\ln$ est sa fonction réciproque, elle est croissante également, d'où la croissance de $\suitedef{u_n}$. Cette suite est donc convergeante ou bien de limite infinie. 
+
+Mais si elle était convergeante de limite $l \in \R$, alors elle serait majorée par $l$ et il n'existerait pas de point $\Point{x}{y}$ tel que $y \geqslant l$ et $\Point{x}{y} \in \cC_{\ln}$ (car s'il en existait un, il suffirait deprendre $n = \ceil{x}$ pour contredire la majoration par $l$). Mais cela est absurde car il existe bien un point d'abscisse $y$ dans $\cC_{exp}$ et d'ordonnée $x = e^y$. On en conclut que la limite est infinie
+
+
+**$u_n = \cos(n)$ :** le cercle trigonométrique a un périmètre de $2\pi > 6 $. Mais, comme $n$ s'incrémente de $1$ en $1$, on est certains qu'il existe une infinité de $n \in \N$ tels que leur reste dans la division euclidienne par $2\pi$ soit dans $\defff{0}{1}$ et idem pour $\defff{2}{3}$. Mais dans le premier cas $0 < \cos(1) \leqsalnt \cos(n) \leqslant \cos(0)$ et dans le second cas $0 > \cos(2) \geqsalnt \cos(n) \geqslant \cos(3) \geqslant -1$. D'après le théorème de Bolzano-Weierstrass, il existe deux suites extraites de $\suitedefN{u_n}$ convergeantes. Comme ces limites sont nécessairement distinctes par encadrement, on en conclut que $\suitedefN{u_n}$ n'est pas convergeante.
+
+**$u_n = \sin(n)$ :** raisonnement analogue à $u_n = \cos(n)$.
+
+**$u_n = q^n$ , cas divergeant :** Soit $n \in \N$. Si $q > 1$, alors, $u_{n+1} - u_n = q^n(q - 1) \geqslant (1-q)$. Par télescopage, on a $u_n - u_0 \geqslant n.(1-q) \limton + \infty$ d'où la divergeance de $\suitedefN{u_n}$.
+
+**$u_n = q^n$ , cas convergeant :** Soit $n \in \N$. Si $|q| < 1$, alors, en multipliant par $|s^n|$, on a $|q|^n < 1$ et $|q|^{n+1} < |q|^n$. Donc $\suitedefN{|q|^n}$ est strictement décroissante et elle est bornée car positive et majorée par $1$. Elle est donc convergeante. 
+
+</Hideable>
 
 <Item type='proposition' titre='croissances comparées'>
 
-Soit $k \in \N^*$, on a les limites suivantes.
+Soient $k \in \N^*$ et $a \in \R_+^*$, on a les limites suivantes.
 
-| $u_n$ | $\dfrac{e^n}{n^k}$ | $\dfrac{\ln(n)}{n}$ | 
-|---|---|---|
-| limite en $+ \infty$ | $+ \infty$ | $0$ |
+| $u_n$ | $\dfrac{e^n}{n^k}$ | $\dfrac{\ln^k(n)}{n}$ | $\dfrac{a^n}{n!}$|
+|---|---|---|---|
+| limite en $+ \infty$ | $+ \infty$ | $0$ | $0$ |
 </Item>
+
 
 <Item type='methode' titre='calcul par le nombre dérivé (classique)'>
 
@@ -515,6 +543,7 @@ $$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
 Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in \R$, il existe $\suitedefN{u} \in A^{\N}$ telle que $u_n \limton x$.
 </Item>
 
+
 <Remarque titre=''>
 C'est en fait la définition de la densite valable même dans $\C$.
 </Remarque>
@@ -525,12 +554,131 @@ C'est en fait la définition de la densite valable même dans $\C$.
 ### Suites arithmétiques, géométriques et arithmético-géométriques
 
 
+<Item type='definition' titre='suite arithmétique'>
+
+Une suite $\suitedefN{u_n}$ est dite arithmétique si : $\exists! r \in \R \mid \forall n \in \N\v u_{n+1} = u_n + r$. L'unique réel $r$ vérifiant cela est appelé raison de la suite $\suitedefN{u_n}$.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation'>
+
+Une suite $\suitedefN{u_n}$ est arithmétique ssi.  $\exists! r \in \R \mid \forall n \in \N\v u_{n+1} -  u_n = r$
+</Item>
+
+
+<Item type='proposition' titre='formule explicite'>
+
+Soit $\suitedefN{u_n}$ une suite arithmétique de raison $r \in \R$. On a : $u_n = u_0 + n.r$ et $u_{n+p} = u_n + p.r$ si $n$ et $p$ sont dans $\N$.
+</Item>
+
+
+<Item type='proposition' titre="monotonie d'une suite arithmétique">
+
+Une suite arithmétique est croissante (resp. décroissante) ssi sa raison est positive (resp. négative). Le résultat est analogue pour la stricte monotonie.
+</Item>
+
+
+<Item type='proposition' titre='suite arithmétique et opérations'>
+
+La somme de deux suites arithmétiques est une suite arithmétique.
+</Item>
+
+
+<Item type='definition' titre='suite géométrique'>
+
+Une suite $\suitedefN{u_n}$ est dite géométrique si : $\exists! q \in \R \mid \forall n \in \N\v u_{n+1} = q.u_n$. L'unique réel $q$ vérifiant cela est appelé raison de la suite $\suitedefN{u_n}$.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation'>
+
+Une suite $\suitedefN{u_n}$ est géométrique ne s'annulant pas ssi.  $\exists! q \in \R \mid \forall n \in \N\v \dfrac{u_{n+1}}{u_n} = q$
+</Item>
+
+
+<Item type='proposition' titre='formule explicite'>
+
+Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$. On a : $u_n = u_0.q^n$ et $u_{n+p} = u_n.q^p$ si $n$ et $p$ sont dans $\N$.
+</Item>
+
+
+<Item type='proposition' titre="monotonie d'une suite géométrique">
+
+Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$. 
+
+- Si $ 0 \leqslant q \leqslant 1$ et que $u_0 \geqslant 0$, alors $\suitedefN{u_n}$ est décroissante.
+
+- Si $ 1 \leqslant q $ et que $u_0 \geqslant 0$, alors $\suitedefN{u_n}$ est croissante.
+
+Pour les mêmes critères mais avec $u_0 \leqslant 0$, la monotonie est inversée
+</Item>
+
+
+<Item type='proposition' titre='suite géométrique et opérations'>
+
+Le produit de deux suites géométriques est une suite géométriques.
+</Item>
+
+
+<Item type='definition' titre='suite arithmético-géométrique'>
+
+Une suite $\suitedefN{u_n}$ est arithmético-géométrique si : $\exists (q\v r) \in \R^2 \mid \forall n \in \N \v u_{n+1} = q.u_n + r$.
+</Item>
+
+
+<Item type='methode' titre="étude d'une suite arithmético-géométrique">
+
+Soit $\suitedefN{u_n}$ une suite arithmético-géométrique et $(q\v r) \in \R^2$ tels que : $\forall n \in \N \v u_{n+1} = q.u_n + r$. En d'autres termes, $u_{n+1} = f(u_n)$ où $ f : \begin{cases} \R \rightarrow \R \\ x \mapsto qx + r \end{cases} $
+
+**Recherche d'un point fixe de $f$ :** supposons qu'il existe $\tilde{x}$ tel que $f(\tilde{x}) = \tilde{x}$. On a $\tilde{x} = q\tilde{x} + r$ puis $\tilde{x} - q\tilde{x} = r$ et donc $\tilde{x}(1-q) = r$. On peut supposer $q \neq 1$ car si $q = 1$ la suite est arithmétique et son étude est simple. On a donc $\tilde{x} = \dfrac{r}{1-q}$ un point fixe de $f$. 
+
+**Etude de la différence entre la suite et le point fixe :** posons $\suitedefN{v_n}$ la suite telle que pour $n \in \N$, $v_n = u_n - \tilde{x}$. On a $v_{n+1} = u_{n+1} - \dfrac{r}{1-q} = q.u_n + r - \dfrac{r}{1-q} = \dfrac{q.u_n - q^2.u_n \cancel{+ r} -qr \cancel{- r}}{1-q} = \dfrac{q.u_n - q^2.u_n -qr}{1-q} = q. \dfrac{u_n - q.u_n - r}{1-q}$. Mais $v_n = u_n -\dfrac{r}{1-q} = \dfrac{u_n - q.u_n + r}{1-q}$. Donc $v_{n+1} = q. \underbrace{\dfrac{u_n - q.u_n - r}{1-q}}_{ = \displaystyle v_n} = q.v_n$. Mais donc $\suitedefN{v}$ est donc géométrique.
+
+**Conclusion :** toute suite arithmético-géométrique est, à une constante près (qui est son point fixe), une suite arithmétique. On en déduit qu'il suffit d'étudier $\suitedefN{v_n}$ pour connaître $\suitedefN{u_n}$. On a en particulier : $\limm{n \to +\infty} u_n = \limm{n \to +\infty} v_n + \tilde{x}$. La monotonie de $\suitedefN{v_n}$ est la même que celle de $\suitedefN{u_n}$.
+</Item>
+
 ### Suites récurrentes : cas linéaire d'ordre 2 
 
+<Item type='definition' titre="suite récurrente linéaire d'ordre k">
 
-### Suites récurrentes : cas général
+On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
+
+$$ a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N $$
+</Item>
+
+
+<Item type='proposition' titre='équation complexes du second degré'>
+
+Soit $(E) : ax^2 + bx + c = 0$ une équation complexe du second degré où $a\v b $ et $c$ sont des complexes et $a \neq 0$. On pose $\Delta = b^2 - 4ac$ appelé le discriminant de $(E)$.
+
+- Si $\Delta = 0$ alors $(E)$ n'admet qu'une seule solution : $z = \dfrac{-b}{2a}$
+
+- Si $\Delta \neq 0$ alors $(E)$ admet exactement deux solutions : $z_{\pm} = \dfrac{-b \pm \sqrt{\Delta}}{2a}$. En particulier, si $a\v b$ et $c$ sont réels et que $\Delta < 0$, alors $z_+ = \overline{z_-}$.
+</Item>
+
+
+<Item type='proposition' titre='formules explicites' tag="admis">
+
+Soit $\suitedefN{u_n}$ est linéaire d'ordre $2$ telle que $u_{n+2} = a.u_{n+1} + b.u_n$ pour tout $n \in \N$ et où $a$ et $b$ sont des réels.
+
+On appelle $(E) : r^2 = ar + b$ l'équation quaractéristique de la suite $\suitedefN{u_n}$.
+
+- si $(E)$ a deux racines réelles $r_1$ et $r_2$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = \lambda r_1^n + \mu r_2^n$ pour tout $n$ entier.
+
+- si $(E)$ a une seule racine réelle $r$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = (\lambda.n + \mu )r^n$ pour tout $n$ entier.
+
+- si $(E)$ a deux racines complexes $r.e^{i\alpha}$ et $r.e^{-i\alpha}$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = \lambda.r^n \cos(\alpha . n) + \mu.r^n \cos(\alpha . n)$ pour tout $n$ entier.
+</Item>
+
+<Exercice titre='suite de fibonacci'>
+
+Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{cases} u_{n+2} = u_{n+1} + u_n \\ u_0 = u_1 = 1\end{cases}$
+</Exercice>
+
+### Suites récurrentes : exemples et applications
 
 #### Généralités
+
 
 
 #### Etudes de point fixes
