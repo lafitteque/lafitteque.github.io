@@ -12,6 +12,7 @@
     "@astrojs/mdx": "^4.0.2",
     "@astrojs/solid-js": "^5.0.3",
     "@astrojs/tailwind": "^5.1.5",
+    "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.0.9",
     "astro-remote": "^0.3.3",
     "katex": "^0.16.18",
@@ -21,6 +22,7 @@
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.8",
     "daisyui": "^4.12.23"
   }
 }

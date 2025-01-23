@@ -8,7 +8,7 @@ const {titre} = Astro.props;
   <div class="exercice-header">
     <strong class="encadre">Exercice <span class="exercice-number"></span></strong><span>&nbsp {titre}</span>
   </div>
-  <div class="exercice-body">
+  <div class="exercice-body border-l-solid border-t-solid border-black">
     <div style="margin: 0 5px;"><slot /></div> <!-- Le contenu de l'item -->
   </div>
 </div>
@@ -30,10 +30,6 @@ const {titre} = Astro.props;
 
 .exercice-body{
   margin-left: 5rem;
-  border-top-style: none;
-  border-right-style: none;
-  border-bottom-style: solid;
-  border-left-style: solid;
 }
 
 </style>

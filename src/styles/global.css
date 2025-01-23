@@ -2,6 +2,10 @@
    Styles globaux
 ========================== */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Police par défaut - Computer Modern */
 body {
   font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
