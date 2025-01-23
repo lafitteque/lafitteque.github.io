@@ -21,23 +21,23 @@ import coursData from "../data/cours.json"; // Importation du fichier JSON
   </head>
   <body>
     <!-- Zone fixe pour Filiere -->
-    <header>
+    <header class="flex" >
+      <div href="#" id="openBtn" class="open , active">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </div>
+      <div id="closeBtn" href="#" class="close">
+        <b style="font-size: 40px;">×</b>
+      </div>
+      
       <Filiere />
     </header>
 
     <div class="container">
       <aside>
-        <div href="#" id="openBtn" class="open , active">
-          <span class="burger-icon">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-        </div>
-        <div id="closeBtn" href="#" class="close">
-          <b style="font-size: 40px;">×</b>
-        </div>
-
         <div class="sidebar" id="sidebar">
           {coursData.map((cours) => <a href={cours.url}>{cours.titre}</a>)}
         </div>

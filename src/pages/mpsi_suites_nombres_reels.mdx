@@ -457,6 +457,95 @@ $\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant
 </Hideable>
 
 
+<Item type='definition' titre='suites adjacentes'>
+
+Deux suites $\suitedefN{a_n}$ et $\suitedefN{b_n}$ sont dites adjacentes si :
+
+- elles sont monotones de monotonie opposées.
+
+- $|b_n - a_n| \limton 0$
+</Item>
+
+<Item type='proposition' titre='encadrement par des suites adjacentes'>
+
+Deux suites adjacentes convergent et ont même limite. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On reprend les notations précédentes pour les suites adjacentes en supposant $\suitedefN{a_n}$ croissante et $\suitedefN{b_n}$ décroissante sans perte de généralité.
+
+Par croissance et décroissance des suites, chacune est soit convergente soit de limite infinie (négative dans le cas $b$). Mais dans le cas où au moins l'une des deux est infinie, alors $|b_n - a_n| \limton +\infty$ ce qui est absurde. Donc les deux suites sont convergentes de limites $l_1 \in \R$ pour $a$ et $l_2 \in \R$ pour $b$. 
+
+Par passage à la limite $b_n - a_n \limton l_2 - l_1 = 0$ d'où $l_1 = l_2$.
+</Hideable>
+
+### Suites extraites
+
+<Item type='definition' titre='extractrice'>
+
+Une fonction de $\N$ dans $\N$ est dite extractrice si elle est strictement croissante.
+</Item>
+
+<Item type='definition' titre='suite extraite'>
+
+Soit $\suitedefN{u_n}$ une suite réelle et $\phi$ une extractrice. On dit que $\suitedefN{u_{\phi(n)}}$ est une suite extraite de $\suitedefN{u_n}$.
+</Item>
+
+<Item type='proposition' titre='suites extraites et convergence'>
+
+Si $\suitedefN{u_n}$ est convergente de limite $l \in \R$, alors toute suite extraite de $\suitedefN{u_n}$ converge également vers $l$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. Soit $\epsilon > 0$, par définition de la convergence,  $ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon$. Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ (on peut le démontrer par récurrence) et donc $n \geqslant N \Rightarrow \phi(n) \geqslant N$. Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
+</Hideable>
+
+<Item type='theoreme' titre='Bolzano-Weirestrass'>
+
+Soit $\suitedefN{u_n}$ une suite réelle bornée. Il existe une suite extraite de $\suitedefN{u_n}$ convergente.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+**Cette démonstration est très importante!**
+
+Nous allons raisonner par dichotomie, raisonnement qui consiste à couper en deux de manière répétée.
+
+Construisons une extractrice $\phi$ telle que $\suitedefN{u_{\phi(n)}}$ converge. Pour cela, nous allons montrer qu'il existe une suite $\suitedefN{a_n}$ et une suite $\suitedefN{b_n}$ adjacentes telles que : $\forall n \in \N\v a_n \leqslant u_{\phi(n)} \leqslant b_n$ et $\limm{n \to + \infty} a_n = \limm{n \to + \infty} b_n $.
+
+Raisonnons par récurrence pour montrer sur $\N$ la propriété $\cP(n) : $ il existe $\suitedefN{a_n}$, $\suitedefN{b_n}  et $\phi$ une extractrice tels que pour tout $ i \in \defentiers{0}{n}$, 
+
+$\begin{cases} a_i \leqslant u_{\phi(i)} \leqslant b_i \\
+ |b_i - a_i| = |b_0 - a_0|.2^{-i} \\
+ A \bigcap \defff{a_i}{b_i} \text{ est infini}
+ \end{cases}$
+
+où $A = \{u_n \v n \in \N\}$.
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, $\phi(0) = 0$ convient et $a_0 = \inf(A)$ et $b_0 = \sup(A)$. 
+
+On a bien $A \bigcap \defff{a_i}{b_i} = A$ qui est infini, $a_0 \leqslant u_{\phi(0)} \leqslant b_0$ et $|b_0 - a_0| = |b_0 - a_0|.2^{-0}$ d'où $\cP(0)$.
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$. Par hypothèse de récurrence, $\phi$, $a$ et $b$ sont définies sur $\defentiers{0}{n}$. Il suffit donc de définir le rang $n+1$.
+
+On pose $c = \dfrac{a_n + b_n}{2}$. Comme $A \bigcap \defff{a_i}{b_i}$ est infini, soit $A \bigcap \defff{a_i}{c_i}$ est infini, soit $A \bigcap \defff{c_i}{b_i}$ l'est (éventuellement les deux). 
+
+__CAS 1 :__ $A \bigcap \defff{a_i}{c_i}$ et on pose $a_{n+1} = a_n$ et $b_{n+1} = c$ 
+
+__Cas 2 :__ $A \bigcap \defff{c_i}{b_i}$ et on pose $a_{n+1} = c$ et $b_{n+1} = b_n$
+
+On choisit un élément $e$ de $A \bigcap \defff{a_{n+1}}{b_{n+1}}$ qui ait un rang $p$ strictement supérieur à $\phi(n)$ (l'ensemble contient une infinité d'éléments donc il y a des rangs aussi grand que l'on souhaite). On pose $\phi(n+1) = p$
+
+Les trois propriétés sont vérifiées car :
+- le segment $\defff{a_{n+1}}{b_{n+1}}$ est moitié moins grand que le précédent (car $c$ est le milieu du segment précédent). Donc $|b_{n+1} - a_{n+1}| = 2^{-1}|b_n - a_n| \leqslant 2^{-1}|b_0 - a_0|.2^{-n} = |b_0 - a_0|.2^{-(n+1)}$ par hypothèse de récurrence.
+- le nouveau segment contient une infinité d'éléments par construction.
+- $\phi(n+1)$ est bien dans $\defff{a_{n+1}}{b_{n+1}}$ par construction.
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N$
+</Hideable>
+
+
 ### Lien avec la monotonie
 
 
@@ -472,13 +561,6 @@ Soit $(u_n)_{n \in \N}$ une suite réelle croissante (resp. décroissante). Soit
 **Cas 2 : $(u_n)_{n \in \N}$ diverge -** Dans ce cas, pour tout $l \in \R$, on a : $\exists \epsilon > 0 \mid \forall N \in \N \v (\exists n \geqslant N \mid  |u_n - l| > \epsilon)$. Essayons de nous ramener à la définition de la limite infinie : $(\exists n \geqslant N \mid  |u_n - l| > \epsilon) \Rightarrow (\exists n \geqslant N \mid u_n \geqslant > l + \epsilon > l) \Rightarrow (\exists n  \geqslant N \mid u_n \geqslant > l)$. On a donc : $(u_n)_{n \in \N}$ diverge $\Rightarrow \forall l \in \R \v \exists n \geqslant N \mid u_n \geqslant l$ ce qui est la définition d'une limite infinie.
 </Hideable>
 
-<Item type='definition' titre='suites adjacentes'>
-
-</Item>
-
-<Item type='proposition' titre='encadrement par des suites adjacentes'>
-
-</Item>
 
 ### Limites usuelles
 
@@ -515,9 +597,31 @@ Mais si elle était convergeante de limite $l \in \R$, alors elle serait majoré
 
 **$u_n = q^n$ , cas divergeant :** Soit $n \in \N$. Si $q > 1$, alors, $u_{n+1} - u_n = q^n(q - 1) \geqslant (1-q)$. Par télescopage, on a $u_n - u_0 \geqslant n.(1-q) \limton + \infty$ d'où la divergeance de $\suitedefN{u_n}$.
 
-**$u_n = q^n$ , cas convergeant :** Soit $n \in \N$. Si $|q| < 1$, alors, en multipliant par $|s^n|$, on a $|q|^n < 1$ et $|q|^{n+1} < |q|^n$. Donc $\suitedefN{|q|^n}$ est strictement décroissante et elle est bornée car positive et majorée par $1$. Elle est donc convergeante. 
+**$u_n = q^n$ , cas convergeant :** Soit $n \in \N$. Si $|q| < 1$, alors $\ln(|q|) < 0$ et donc $n\ln(|q|) = \ln(|a|^n) \limton - \infty$. 
+
+Soit $\epsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqslant N$, alors $\ln(|q|^n) \leqslant A$. Mais donc, par croissance de l'exponentielle, $|q|^n \leqslant e^A$. En posant $\tilde{A} = \ln(\epsilon)$, on conclut que $|q|^n \leqslant \epsilon$ si $n \geqslant N$.
 
 </Hideable>
+
+
+<Item type='methode' titre='calcul par le nombre dérivé (classique)'>
+
+Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(u_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
+
+$$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
+</Item>
+
+<Exercice titre=''>
+
+Calculer la limite de la suite définie par $u_n = (1 + \dfrac{1}{n})^n\v \forall n \in \N$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Soit $n \in \N$,
+$u_n = (1 + \dfrac{1}{n})^n = e^{n \ln(1 + \dfrac{1}{n})} = e^{\dfrac{\ln(1 + \dfrac{1}{n}) - \ln( 1 + 0)}{\dfrac{1}{n} - 0} }$ mais $\dfrac{\ln(1 + \dfrac{1}{n}) - \ln( 1 + 0)}{\dfrac{1}{n} - 0}  \limton 1$ d'où $u_n \limton e^1 = e$
+</Hideable>
+
 
 <Item type='proposition' titre='croissances comparées'>
 
@@ -528,13 +632,18 @@ Soient $k \in \N^*$ et $a \in \R_+^*$, on a les limites suivantes.
 | limite en $+ \infty$ | $+ \infty$ | $0$ | $0$ |
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='methode' titre='calcul par le nombre dérivé (classique)'>
+**Croissance comparée avec l'exponentielle :** $\dfrac{e^n}{n^k} = \Big( \dfrac{e^{\frac{n}{k}}}{n} \Big)^k$. 
 
-Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(u_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
+On pose donc $m = \dfrac{n}{k}$ et on s'intéresse à $\dfrac{1}{k^k} \Big(\dfrac{e^m}{m} \Big)^k$. Concentrons nous sur la suite définie par $u_m = \dfrac{e^m}{m}$ pour $m \in \N$.
 
-$$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
-</Item>
+Soit $n \in \N$, $u_{n+1} - u_n = \dfrac{n.e^{n+1} - (n+1)e^n}{n(n+1)} = e^n\dfrac{n.e - (n+1)}{n(n+1)} = \dfrac{e^n}{n} . (\dfrac{n.e}{n+1} - 1)$. Mais $ne \geqslant 2n \geqslant n+1$ si $n \geqslant 1$. On a donc $u_{n+1} - u_n \geqslant u_n$ d'où $u_{n+1} \geqslant 2.u_n$. Par récurrence immédiate, on a $u_n \geqslant 2^{n-1}.u_1 \limton + \infty$ d'où $u_n \limton + \infty$.
+
+
+**Croissance comparée avec le logarithme :** Soit $n \in \N$ $\exp(\dfrac{\ln(n)}{n}) = \dfrac{n}{e^n} \limton 0$ donc 
+</Hideable>
+
  
 ### Densité
 
@@ -543,15 +652,28 @@ $$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
 Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in \R$, il existe $\suitedefN{u} \in A^{\N}$ telle que $u_n \limton x$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+**Sens direct :** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul, $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. Construisons une suite $\suitedef{x_n} \in \A^{\N}$ qui converge vers $x$. 
+
+On choisit donc $x_n \in A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}}$, donc $ x - \dfrac{1}{n} \leqslant x_n \leqslant x + \dfrac{1}{n}$. Par encadrement et passage à la limite, la suite converge vers $x$.
+
+**Sens réciproque :** Soient $a,b$ des réels strictemement ordonnés, montrons que $A \bigcap \defoo{a}{b} \neq \empty$.
+Soit $x \in \defoo{a}{b}$ et soit $\suitedef{x_n} \in \A^{\N}$ qui converge vers $x$. 
+
+Soit $\epsilon = \dfrac{\min(x-a \v b-x)}{2}$. Il existe $N \in \N$ tel que $n \geqslant N \Rightarrow |x_n - x| \leqslant \epsilon$ et donc $x_n \in A \bigcap \defoo{a}{b}$.
+</Hideable>
 
 <Remarque titre=''>
-C'est en fait la définition de la densite valable même dans $\C$.
+C'est en fait la définition de la densite valable même dans $\C$ ou dans un sous-ensemble de $\C$.
 </Remarque>
 
 
 ## Suites particulières et études particulières
 
 ### Suites arithmétiques, géométriques et arithmético-géométriques
+
+Les démonstrations de cette sous-section seront traitées de manière très superficielle car elles sont majoritairement au programme de lycée.
 
 
 <Item type='definition' titre='suite arithmétique'>
@@ -565,10 +687,19 @@ Une suite $\suitedefN{u_n}$ est dite arithmétique si : $\exists! r \in \R \mid 
 Une suite $\suitedefN{u_n}$ est arithmétique ssi.  $\exists! r \in \R \mid \forall n \in \N\v u_{n+1} -  u_n = r$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Obtenu en soustrayant $u_n$ de part et d'autre de l'égalité.
+</Hideable>
 
 <Item type='proposition' titre='formule explicite'>
 
 Soit $\suitedefN{u_n}$ une suite arithmétique de raison $r \in \R$. On a : $u_n = u_0 + n.r$ et $u_{n+p} = u_n + p.r$ si $n$ et $p$ sont dans $\N$.
+</Item>
+
+<Item type='proposition' titre=''>
+
+Obtenu par récurrence ou simplement par télescopage à l'aide de la caractérisation précédente.
 </Item>
 
 
@@ -577,12 +708,20 @@ Soit $\suitedefN{u_n}$ une suite arithmétique de raison $r \in \R$. On a : $u_n
 Une suite arithmétique est croissante (resp. décroissante) ssi sa raison est positive (resp. négative). Le résultat est analogue pour la stricte monotonie.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+S'obtient grâce à la caractérisation de la monotonie par différence de deux termes consécutifs.
+</Hideable>
 
 <Item type='proposition' titre='suite arithmétique et opérations'>
 
 La somme de deux suites arithmétiques est une suite arithmétique.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites arithmétiques. Il existe $r_1$ et $r_2$ des réels tels que $u_n = nr_1 + u_0$ et $v_n = n.r_2 + v_0$. Alors $u_n + v_n = n(r_1 + r_2) + u_0 + v_0$. La somme est donc une suite arithmétique.
+</Hideable>
 
 <Item type='definition' titre='suite géométrique'>
 
@@ -595,12 +734,22 @@ Une suite $\suitedefN{u_n}$ est dite géométrique si : $\exists! q \in \R \mid 
 Une suite $\suitedefN{u_n}$ est géométrique ne s'annulant pas ssi.  $\exists! q \in \R \mid \forall n \in \N\v \dfrac{u_{n+1}}{u_n} = q$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Obtenu par passage au quotient à partir de la définition.
+</Hideable>
 
 <Item type='proposition' titre='formule explicite'>
 
 Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$. On a : $u_n = u_0.q^n$ et $u_{n+p} = u_n.q^p$ si $n$ et $p$ sont dans $\N$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Obtenu soit par récurrence soit par télescopage (version produit) à partir de la caractérisation précédente. 
+
+Si on utilise le télescopage, il faut traiter à part le cas où la suite s'annule, auquel cas on peut montrer que, soit $u_0 = 0$ soir $q = 0$. Pour cela, on peut supposer que la suite s'annule et donc que $A = \{n \in \N \mid u_n = 0\}$ est non vide. Mais $A \subset \N$ donc $A$ admet un minimum que l'on note $n_0$. On a donc : soit $n_0 = 0$, auquel cas $u_0 = 0$, soit $u_{n_0} = 0 = q.u_{n_0 - 1}$ et donc $q = 0$ car $n_0 - 1 \notin A$ puisque cela contredirait la minimalité de $n_0$. Ainsi, on peut conclure sur le cas d'annulation.
+</Hideable>
 
 <Item type='proposition' titre="monotonie d'une suite géométrique">
 
@@ -613,11 +762,20 @@ Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$.
 Pour les mêmes critères mais avec $u_0 \leqslant 0$, la monotonie est inversée
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+On applique la caractérisation de la monotonie par quotient.
+</Hideable>
 
 <Item type='proposition' titre='suite géométrique et opérations'>
 
 Le produit de deux suites géométriques est une suite géométriques.
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$u_n = u_0.q_1^n$ et $v_n = v_0.q_2^n$ donne $u_n.v_n = (u_0.v_0).(q_1.q_2)^n$ d'où le résultat.
+</Hideable>
 
 
 <Item type='definition' titre='suite arithmético-géométrique'>
@@ -653,9 +811,24 @@ Soit $(E) : ax^2 + bx + c = 0$ une équation complexe du second degré où $a\v 
 
 - Si $\Delta = 0$ alors $(E)$ n'admet qu'une seule solution : $z = \dfrac{-b}{2a}$
 
-- Si $\Delta \neq 0$ alors $(E)$ admet exactement deux solutions : $z_{\pm} = \dfrac{-b \pm \sqrt{\Delta}}{2a}$. En particulier, si $a\v b$ et $c$ sont réels et que $\Delta < 0$, alors $z_+ = \overline{z_-}$.
+- Si $\Delta \neq 0$, on note $\delta$ une racine complexe de $\Delta$. $(E)$ admet exactement deux solutions : $z_{\pm} = \dfrac{-b \pm \delta}{2a}$. En particulier, si $a\v b$ et $c$ sont réels et que $\Delta < 0$, alors $z_+ = \overline{z_-}$. 
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$ax^2 + bx + c = 0 \ssi a(x^2 + \dfrac{b}{a}x) + c = 0$. 
+On a $x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \dfrac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}$. En injectant ce résultat dans le premier, on a :
+
+$ax^2 + bx + c = 0 \ssi a\Big((x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}\Big) + c = 0 \ssi a(x + \dfrac{b}{2a})^2 - \cancel{a}.\dfrac{b^2}{4\cancel{a}.a} + c = 0 \ssi (x + \dfrac{b}{2a})^2 = \dfrac{b^2 - 4ac}{4a^2} $.
+
+Le seul élément ayant une seule racine carrée est $0$, donc,
+
+- soit le terme de droite vaut $0$ et $\Delta = b^2 - 4ac$ vaut $0$, auquel cas $x + \dfrac{b}{2a} = 0$ puis $x = - \dfrac{b}{2a}$
+
+- soit le terme de droite ne vaut pas $0$, auquel cas, $\delta$ et $-\delta$ sont distinctes et sont deux racines de $\Delta$, on a donc  $ax^2 + bx + c = 0 \ssi x + \dfrac{b}{2a} = \pm \dfrac{\delta}{2a}$ d'où le résultat.
+
+Dans le cas où $a\v b \v c \in \R$, on a $a\overline{z}^2 + b\overline{z} + c = az^2 + bz + c$ si $z \in \C$. Donc, si $z$ est racine de $(E)$ alors $\overline{z}$ est racine de $(E)$, ce qui nous donne deux racines à condition que $z \in \C \setminus \R$ car dans ce cas $\overline{z} \neq z$.
+</Hideable>
 
 <Item type='proposition' titre='formules explicites' tag="admis">
 
@@ -684,5 +857,11 @@ Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{
 #### Etudes de point fixes
 
 
+
+<!-- 
+Manque :
+    - composition et limite
+    - passage à l'exponentielle / logarithme
+ -->
 
 </Base>
