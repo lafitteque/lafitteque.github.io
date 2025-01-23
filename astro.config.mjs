@@ -96,5 +96,5 @@ export default defineConfig({
         }
       ]
     ]
-  }), solidJs(), tailwind()],
+  }), solidJs()],
 });
