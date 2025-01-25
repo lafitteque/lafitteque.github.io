@@ -5,6 +5,7 @@ module.exports = {
 				light: {
 					primary: '#ffffff',
 					secondary: "#fafafa",
+					tertiary: "#cccccc",
 					result: "#ede6af",
 					methode: "#e0e0e0",
 					definition:"#ccf5cc",

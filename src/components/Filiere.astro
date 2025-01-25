@@ -1,57 +1,14 @@
 ---
 const filieres = ["MPSI", "MP", "PCSI", "PC", "PTSI", "PT"];
-const actifs = [true, false, false, false, false, false]; // Liste de booléens pour activer/désactiver les liens
 import "../styles/global.css"; // Importe le CSS global
 ---
-
-<div class="filieres-container">
-  {filieres.map((filiere, index) => (
-    <button class="filiere-button" disabled={!actifs[index]}>
-      {actifs[index] ? (
-        <a href={`../pages/${filiere}`} class="filiere-link">
-          {filiere}
-        </a>
-      ) : (
-        <span>{filiere}</span> // Texte non cliquable si le lien est désactivé
-      )}
-    </button>
-  ))}
-</div>
-<style>
-.filieres-container {
-  top: 20px; /* Ajuste la distance par rapport au haut de l'écran */
-  left: 50%;
-  transform: translateX(-50%); /* Centre horizontalement */
-  display: flex;
-  gap: 10px;
-}
-
-.filiere-button {
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.filiere-button:hover {
-  background-color: #45a049;
-}
-
-.filiere-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-.filiere-link {
-  color: white;
-  text-decoration: none;
-}
-
-.filiere-link:hover {
-  text-decoration: underline;
-}
-
-</style>
+<ul class="menu menu-horizontal px-1">
+  <li>
+    <details>
+      <summary>Filière</summary>
+      <ul class="p-2">
+        {filieres.map(filiere => <li ><a href={`../pages/${filiere}`}>{filiere.toUpperCase()}</a></li>)}
+      </ul>
+    </details>
+  </li>
+</ul>

@@ -7,7 +7,7 @@ interface Props {
 const { type, titre } = Astro.props;
 const typeUpper = type.charAt(0).toUpperCase() + type.slice(1);
 ---
-
+<!-- BUG : Les themes custom de daisyui ne s'appliquent pas -->
 <div tabindex="0" class="collapse bg-definition">
   <input type="checkbox" />
   <div class="collapse-title items-start font-bold cursor-pointer text-base ml-20 mb-8 mt-[-1rem] p-2"> {typeUpper} : {titre} </div>

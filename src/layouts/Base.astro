@@ -1,11 +1,23 @@
 ---
+import { type CollectionEntry, getCollection } from "astro:content";
+
 import "../styles/global.css"; // Importe le CSS global
+
 import Filiere from "../components/Filiere.astro";
+import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
+import SearchBar from "../components/SearchBar.astro";
+import HamburgerButton from "../components/HamburgerButton.astro";
+import LiveTableOfContents from "../components/LiveTableOfContents.astro";
 
 import coursData from "../data/cours.json"; // Importation du fichier JSON
+
+console.log(Astro.props);
+const headings = [];
 ---
 
+<!-- BUG : Theme custom de daisyui ne s'applique pas -->
+<!-- Amélioration : afficher la page avant que tout ne soit chargé (temps d'attente trop long) -->
 <!doctype html>
 <html lang="fr" data-theme="light">
   <head>
@@ -20,118 +32,59 @@ import coursData from "../data/cours.json"; // Importation du fichier JSON
     />
   </head>
   <body>
-    <!-- Zone fixe pour Filiere -->
-    <header class="flex" >
-      <div href="#" id="openBtn" class="open , active">
-        <span class="burger-icon">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </div>
-      <div id="closeBtn" href="#" class="close">
-        <b style="font-size: 40px;">×</b>
-      </div>
-      
-      <Filiere />
-    </header>
-
-    <div class="container">
-      <aside>
-        <div class="sidebar" id="sidebar">
-          {coursData.map((cours) => <a href={cours.url}>{cours.titre}</a>)}
+    <div class="drawer">
+      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+      <div class="drawer-content">
+  
+        
+        <div class="fixed navbar bg-tertiary z-10">
+          <div class="navbar-start">
+            <HamburgerButton />
+          </div>
+          <div class="navbar-center lg:flex">
+            <Filiere />
+            <SearchBar />
+          </div>
+          <Options />
         </div>
-      </aside>
+        
+        <aside class="sticky top-20">
+          <div class="">
+            <LiveTableOfContents headings={headings}/>
+          </div>
+        </aside>
 
-      <div class="main-content-wrapper , full" id="wrapper">
-        <main class="main-content flex flex-col gap-1">
-          <Katex />
-          <slot />
-        </main>
+        <div class="main-content-wrapper" id="wrapper">
+          <main class="main-content flex flex-col gap-1">
+            <Katex />
+            <slot />
+          </main>
+        </div> 
+
       </div>
-    </div>
+      <div class="drawer-side">
+        <ul class="pl-2 text-base-content min-h-full w-80 p-4 ">
+          <!-- Sidebar content here -->
+          {coursData.map((cours) => <li><a class="block decoration-none" href={cours.url}>{cours.titre}</a></li>)}
+        </ul>
+      </div>
+    </div>  
   </body>
-
-  <script>
-    var sidenav = document.getElementById("sidebar");
-    var openBtn = document.getElementById("openBtn");
-    var closeBtn = document.getElementById("closeBtn");
-    var main = document.getElementById("wrapper");
-
-    openBtn.onclick = openNav;
-    closeBtn.onclick = closeNav;
-
-    /* Set the width of the side navigation to 250px */
-    function openNav() {
-      console.log("open");
-      sidenav.classList.add("active");
-      openBtn.classList.remove("active");
-      closeBtn.classList.add("active");
-      main.classList.remove("full");
-    }
-
-    /* Set the width of the side navigation to 0 */
-    function closeNav() {
-      console.log("close");
-      sidenav.classList.remove("active");
-      openBtn.classList.add("active");
-      closeBtn.classList.remove("active");
-      main.classList.add("full");
-    }
-  </script>
   <style>
-    aside {
-      position: fixed;
-      left: 5px;
-      top: 5px;
-      z-index: 1;
-    }
 
-    .open {
-      display: none;
-    }
-    .open.active {
-      display: flex;
-      background-color: #f1f1f1;
-      width: 100%;
-    }
-
-    .close {
-      display: none;
-    }
-    .close.active {
-      display: flex;
-      background-color: #f1f1f1;
-      width: 100%;
-    }
-
-    .open:hover,
-    .close:hover {
-      background-color: #555;
-      color: white;
-    }
-
-    /* The side navigation menu */
-    .sidebar {
-      margin: 0;
-      padding: 0;
-      width: 200px;
-      left: -200px;
-      background-color: #f1f1f1;
-      position: fixed;
-      height: 100%;
-      overflow: auto;
-      transition: left 0.5s ease;
-    }
-
-    /* Sidebar links */
-    a {
-      display: block;
-      color: black;
-      padding: 16px;
-      text-decoration: none;
-    }
-
+.drawer-side{
+  pointer-events: none;
+  position: fixed;
+  top: 200px;
+  align-items: flex-start;
+  justify-items: start;
+  margin:5px;
+  padding: 0;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  transition: left 0.5s ease;
+}
     /* Active/current link */
     a.active {
       background-color: #04aa6d;
@@ -163,9 +116,6 @@ import coursData from "../data/cours.json"; // Importation du fichier JSON
       height: 100%;
     }
 
-    .main-content-wrapper.full {
-      margin-left: 0px;
-    }
 
     .main-content {
       margin: auto;

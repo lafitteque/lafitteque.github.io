@@ -54,12 +54,15 @@ const itemWidth = borderWidths[type];
 const itemText = textValues[type];
 ---
 
+<!-- BUG : Tailwind ne s'applique pas correctement -->
+<!-- Amélioration : Ajouter espace auto-fill entre titre et tag -->
 <div
   class="item-container"
   style={`border: ${itemWidth}px solid ${borderColor};border-radius: 5px;border-top: none;border-right: none;border-bottom: none`}
 >
-  <div class="item-header" style={`background-color: ${itemColor};`}>
-    <span class="item-number"></span>
+  <div class="item-header p-1
+    min-h-8 flex items-center text-lg font-semibold" style={`background-color: ${itemColor};`}>
+    <span class="text-base w-8 h-8 text-center rounded-full mr-4 inline-block"></span>
     <strong>{itemText} : {titre}</strong>
     <span class="ellipsis"></span>
     <span style="align-content: right;">
@@ -70,14 +73,14 @@ const itemText = textValues[type];
       >
     </span>
   </div>
-  <div class="item-body">
-    <div style="margin: 0 5px;"><slot /></div>
-    <!-- Le contenu de l'item -->
+  <div class="item-body p-4 bg-secondary">
+    <div style="margin: 0 5px;">
+      <slot />
+    </div>
   </div>
 </div>
 
 <style>
-
   .item-container .item-number::before {
     content: counter(item-counter); /* Affiche la valeur actuelle du compteur */
     display: inline-block;
@@ -91,31 +94,5 @@ const itemText = textValues[type];
     margin-left: 5px;
     font-weight: bold;
     color: black;
-  }
-
-  .item-header {
-    padding: 3px 0px; /* Augmente l'espace autour du texte */
-    min-height: 30px; /* Définit une hauteur minimale */
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    font-size: 20px;
-    font-weight: bold;
-  }
-
-  .item-number {
-    display: inline-block;
-    font-size: 14px;
-    width: 30px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    border-radius: 50%;
-    margin-right: 10px;
-  }
-
-  .item-body {
-    padding: 10px;
-    background-color: #fafafa;
   }
 </style>
