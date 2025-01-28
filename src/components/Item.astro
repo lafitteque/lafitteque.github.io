@@ -54,7 +54,6 @@ const itemWidth = borderWidths[type];
 const itemText = textValues[type];
 ---
 
-<!-- BUG : Tailwind ne s'applique pas correctement -->
 <!-- Amélioration : Ajouter espace auto-fill entre titre et tag -->
 <div
   class="item-container"
@@ -62,7 +61,7 @@ const itemText = textValues[type];
 >
   <div class="item-header p-1
     min-h-8 flex items-center text-lg font-semibold bg-red" style={`background-color: ${itemColor};`}>
-    <span class="text-base w-8 h-8 text-center rounded-full mr-4 inline-block"></span>
+    <span class="item-number text-base w-8 h-8 text-center rounded-full mr-4 inline-block"></span>
     <strong>{itemText} : {titre}</strong>
     <span class="ellipsis"></span>
     <span style="align-content: right;">

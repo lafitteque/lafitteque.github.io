@@ -1,19 +1,5 @@
 ---
-
-interface Heading {
-  depth: number; // The heading level (h1 = 1, h2 = 2, etc)
-  slug: string; // The ID of the heading for linking
-  text: string; // The text content of the heading
-}
-
-interface Props {
-  headings: Heading[]; // Array of headings from your markdown content
-  levels?: 1 | 2 | 3; // How many levels of headers to show in TOC (default: 2)
-}
-
-// Filter headings to only show up to the specified level
-const {headings, levels} = Astro.props as Props;
-
+const {headings} = Astro.props;
 ---
 
 <div class="rounded-sm border border-base-400 p-3 text-sm leading-tight">
@@ -36,8 +22,6 @@ const {headings, levels} = Astro.props as Props;
   </ul>
 </div>
 <script>
-  console.log(Astro.props.headings);
-  
   // Wrapper for Blog post content
   let wrappingElement: Element | null;
   let observeHeaderTags: IntersectionObserver;

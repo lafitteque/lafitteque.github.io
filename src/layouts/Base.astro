@@ -12,7 +12,11 @@ import LiveTableOfContents from "../components/LiveTableOfContents.astro";
 
 import coursData from "../data/cours.json"; // Importation du fichier JSON
 
-const headings = [];
+type Props = {
+  title: string;
+}
+
+const {headings, title} = Astro.props;
 ---
 
 <!-- BUG : Theme custom de daisyui ne s'applique pas -->

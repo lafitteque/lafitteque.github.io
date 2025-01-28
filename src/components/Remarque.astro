@@ -5,7 +5,7 @@ import "../styles/global.css"; // Importe le CSS global
 const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="black" stroke-width="10" d="M 0,0 C 0,50,50,50,50,100 C 50,150,0,150,0,200 "></path></svg>')`;
 ---
 
-<!-- BUG : le style tailwind des divs ne s'applique pas (cf. bg-red) --><!-- Amélioration : save le svg dans src/assets/ -->
+<!-- Amélioration : save le svg dans src/assets/ -->
 <style define:vars={{ svg }}>
   .wave {
     background-image: var(--svg);
