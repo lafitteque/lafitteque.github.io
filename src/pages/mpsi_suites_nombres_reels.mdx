@@ -514,7 +514,7 @@ Nous allons raisonner par dichotomie, raisonnement qui consiste à couper en deu
 
 Construisons une extractrice $\phi$ telle que $\suitedefN{u_{\phi(n)}}$ converge. Pour cela, nous allons montrer qu'il existe une suite $\suitedefN{a_n}$ et une suite $\suitedefN{b_n}$ adjacentes telles que : $\forall n \in \N\v a_n \leqslant u_{\phi(n)} \leqslant b_n$ et $\limm{n \to + \infty} a_n = \limm{n \to + \infty} b_n $.
 
-Raisonnons par récurrence pour montrer sur $\N$ la propriété $\cP(n) : $ il existe $\suitedefN{a_n}$, $\suitedefN{b_n}  et $\phi$ une extractrice tels que pour tout $ i \in \defentiers{0}{n}$, 
+Raisonnons par récurrence pour montrer sur $\N$ la propriété $\cP(n) : $ il existe $\suitedefN{a_n}$, $\suitedefN{b_n}$  et $\phi$ une extractrice tels que pour tout $ i \in \defentiers{0}{n}$, 
 
 $\begin{cases} a_i \leqslant u_{\phi(i)} \leqslant b_i \\
  |b_i - a_i| = |b_0 - a_0|.2^{-i} \\
@@ -586,12 +586,12 @@ Soient $A \in \R$ et $\epsilon > 0$. Il suffit de trouver un $N \in \N$ convenan
 **$u_n = e^n$ et $u_n = e^{-n}$ :** admis
 
 
-**$u_n = \ln(n)$ :** la fonction exponentielle est croissante donc comme $\ln$ est sa fonction réciproque, elle est croissante également, d'où la croissance de $\suitedef{u_n}$. Cette suite est donc convergeante ou bien de limite infinie. 
+**$u_n = \ln(n)$ :** la fonction exponentielle est croissante donc comme $\ln$ est sa fonction réciproque, elle est croissante également, d'où la croissance de $\suitedefN{u_n}$. Cette suite est donc convergeante ou bien de limite infinie. 
 
 Mais si elle était convergeante de limite $l \in \R$, alors elle serait majorée par $l$ et il n'existerait pas de point $\Point{x}{y}$ tel que $y \geqslant l$ et $\Point{x}{y} \in \cC_{\ln}$ (car s'il en existait un, il suffirait deprendre $n = \ceil{x}$ pour contredire la majoration par $l$). Mais cela est absurde car il existe bien un point d'abscisse $y$ dans $\cC_{exp}$ et d'ordonnée $x = e^y$. On en conclut que la limite est infinie
 
 
-**$u_n = \cos(n)$ :** le cercle trigonométrique a un périmètre de $2\pi > 6 $. Mais, comme $n$ s'incrémente de $1$ en $1$, on est certains qu'il existe une infinité de $n \in \N$ tels que leur reste dans la division euclidienne par $2\pi$ soit dans $\defff{0}{1}$ et idem pour $\defff{2}{3}$. Mais dans le premier cas $0 < \cos(1) \leqsalnt \cos(n) \leqslant \cos(0)$ et dans le second cas $0 > \cos(2) \geqsalnt \cos(n) \geqslant \cos(3) \geqslant -1$. D'après le théorème de Bolzano-Weierstrass, il existe deux suites extraites de $\suitedefN{u_n}$ convergeantes. Comme ces limites sont nécessairement distinctes par encadrement, on en conclut que $\suitedefN{u_n}$ n'est pas convergeante.
+**$u_n = \cos(n)$ :** le cercle trigonométrique a un périmètre de $2\pi > 6 $. Mais, comme $n$ s'incrémente de $1$ en $1$, on est certains qu'il existe une infinité de $n \in \N$ tels que leur reste dans la division euclidienne par $2\pi$ soit dans $\defff{0}{1}$ et idem pour $\defff{2}{3}$. Mais dans le premier cas $0 < \cos(1) \leqslant \cos(n) \leqslant \cos(0)$ et dans le second cas $0 > \cos(2) \geqslant \cos(n) \geqslant \cos(3) \geqslant -1$. D'après le théorème de Bolzano-Weierstrass, il existe deux suites extraites de $\suitedefN{u_n}$ convergeantes. Comme ces limites sont nécessairement distinctes par encadrement, on en conclut que $\suitedefN{u_n}$ n'est pas convergeante.
 
 **$u_n = \sin(n)$ :** raisonnement analogue à $u_n = \cos(n)$.
 
@@ -654,12 +654,12 @@ Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in
 
 <Hideable type='démonstration' titre=''>
 
-**Sens direct :** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul, $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. Construisons une suite $\suitedef{x_n} \in \A^{\N}$ qui converge vers $x$. 
+**Sens direct :** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul, $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. Construisons une suite $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
 
-On choisit donc $x_n \in A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}}$, donc $ x - \dfrac{1}{n} \leqslant x_n \leqslant x + \dfrac{1}{n}$. Par encadrement et passage à la limite, la suite converge vers $x$.
+On choisit donc $x_n \in A \bigcap \defoo{x - \dfrac{1}{n} }{x + \dfrac{1}{n}}$, donc $ x - \dfrac{1}{n} \leqslant x_n \leqslant x + \dfrac{1}{n}$. Par encadrement et passage à la limite, la suite converge vers $x$.
 
 **Sens réciproque :** Soient $a,b$ des réels strictemement ordonnés, montrons que $A \bigcap \defoo{a}{b} \neq \empty$.
-Soit $x \in \defoo{a}{b}$ et soit $\suitedef{x_n} \in \A^{\N}$ qui converge vers $x$. 
+Soit $x \in \defoo{a}{b}$ et soit $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
 
 Soit $\epsilon = \dfrac{\min(x-a \v b-x)}{2}$. Il existe $N \in \N$ tel que $n \geqslant N \Rightarrow |x_n - x| \leqslant \epsilon$ et donc $x_n \in A \bigcap \defoo{a}{b}$.
 </Hideable>
@@ -790,20 +790,25 @@ Soit $\suitedefN{u_n}$ une suite arithmético-géométrique et $(q\v r) \in \R^2
 
 **Recherche d'un point fixe de $f$ :** supposons qu'il existe $\tilde{x}$ tel que $f(\tilde{x}) = \tilde{x}$. On a $\tilde{x} = q\tilde{x} + r$ puis $\tilde{x} - q\tilde{x} = r$ et donc $\tilde{x}(1-q) = r$. On peut supposer $q \neq 1$ car si $q = 1$ la suite est arithmétique et son étude est simple. On a donc $\tilde{x} = \dfrac{r}{1-q}$ un point fixe de $f$. 
 
-**Etude de la différence entre la suite et le point fixe :** posons $\suitedefN{v_n}$ la suite telle que pour $n \in \N$, $v_n = u_n - \tilde{x}$. On a $v_{n+1} = u_{n+1} - \dfrac{r}{1-q} = q.u_n + r - \dfrac{r}{1-q} = \dfrac{q.u_n - q^2.u_n \cancel{+ r} -qr \cancel{- r}}{1-q} = \dfrac{q.u_n - q^2.u_n -qr}{1-q} = q. \dfrac{u_n - q.u_n - r}{1-q}$. Mais $v_n = u_n -\dfrac{r}{1-q} = \dfrac{u_n - q.u_n + r}{1-q}$. Donc $v_{n+1} = q. \underbrace{\dfrac{u_n - q.u_n - r}{1-q}}_{ = \displaystyle v_n} = q.v_n$. Mais donc $\suitedefN{v}$ est donc géométrique.
+**Etude de la différence entre la suite et le point fixe :** posons $\suitedefN{v_n}$ la suite telle que pour $n \in \N$, $v_n = u_n - \tilde{x}$. On a $v_{n+1} = u_{n+1} - \dfrac{r}{1-q} = q.u_n + r - \dfrac{r}{1-q} = \dfrac{q.u_n - q^2.u_n \cancel{+ r} -qr \cancel{- r}}{1-q} = \dfrac{q.u_n - q^2.u_n -qr}{1-q} = q. \dfrac{u_n - q.u_n - r}{1-q}$. Mais $v_n = u_n -\dfrac{r}{1-q} = \dfrac{u_n - q.u_n + r}{1-q}$. Donc $v_{n+1} = q. \underbrace{\dfrac{u_n - q.u_n - r}{1-q}}_{ = \displaystyle v_n} = q.v_n$. Mais donc $\suitedefN{v}$ est géométrique.
 
 **Conclusion :** toute suite arithmético-géométrique est, à une constante près (qui est son point fixe), une suite arithmétique. On en déduit qu'il suffit d'étudier $\suitedefN{v_n}$ pour connaître $\suitedefN{u_n}$. On a en particulier : $\limm{n \to +\infty} u_n = \limm{n \to +\infty} v_n + \tilde{x}$. La monotonie de $\suitedefN{v_n}$ est la même que celle de $\suitedefN{u_n}$.
 </Item>
 
 ### Suites récurrentes : cas linéaire d'ordre 2 
 
-<Item type='definition' titre="suite récurrente linéaire d'ordre k">
+<Item type='definition' titre="suite récurrente linéaire homogène d'ordre k">
 
-On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
+On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire homogène d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
 
 $$ a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N $$
 </Item>
 
+
+<Hideable type='exemple' titre='suite récurrente linéaire non homogène'>
+
+La suite définie par $(u_0\v u_1) \in \R^2$ et $u_{n+2} = \sqrt{n}.u_{n+1} + n.u_n\v \forall n \in \N$ est récurrente linéaire d'ordre $2$ mais n'est pas homogène car les coefficients ne sont pas constants.
+</Hideable>
 
 <Item type='proposition' titre='équation complexes du second degré'>
 
@@ -850,18 +855,50 @@ Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{
 
 ### Suites récurrentes : exemples et applications
 
-#### Généralités
+<Item type='proposition' titre='point fixe et limite'>
 
+Soit $f : \R \rightarrow \R$ continue et une suite vérifiant la relation de récurrence $u_{n+1} = f(u_n)\v \forall n \in \N$. Si $\suitedefN{u_n}$ converge vers $l \in \R$, alors $f(l) = l$.
+</Item>
 
+<Hideable type='démonstration' titre=''>
 
-#### Etudes de point fixes
+On admet que, comme $f$ est continue, $f(u_n) \limton f(l)$, ce que nous démontrerons dans le chapitre sur la continuité.
 
+Comme $u_{n+1} = f(u_n)$, par passage à la limite, $l = f(l)$.
+</Hideable>
 
+<Item type='methode' titre='étude des suites récurrentes'>
 
-<!-- 
+Soit $f : \R \rightarrow \R$ et une suite vérifiant la relation de récurrence $u_{n+1} = f(u_n)\v \forall n \in \N$.
+
+- L'étude de $g : x \mapsto f(x) - x$ sur $\R$ permet de déterminer le signe de $u_{n+1} - u_n$ car $u_{n+1} - u_n = f(u_n) - u_n$. Si l'étude de $g$ montre qu'elle est par exemple positive sur $\defff{a}{b}$, alors il est intéressant de montrer (si c'est le cas) que $u_0 \in \defff{a}{b} \Rightarrow \forall n \in \N, u_n \in \defff{a}{b}$, ce qui signifie que $u$ est monotone et que l'on peut conclure par le théorème de la limite monotone. Il en va de même pour le cas décroissant.
+
+- La limite éventuelle est trouvée à l'aide du (ou des) point fixe de $f$.
+
+- Si l'on n'arrive pas à conclure mais que $f$ est monotone sur $J$ et que $f(J) \subset J$ ($J$ est stable par $f$).
+
+<Indent>
+
+    - si $f$ est croissante sur $J$, on montre par récurrence que, si $u_0 \in J$, alors $u$ est monotone.
+
+    - si $f$ est décroissante, on considère les suites extraites $u_{2n}$ et $u_{2n+1}$ qui sont toutes deux liées par la relation de récurrence $v_{n+1} = f \circ f (v_n)$ et $f \circ f$ est croissante. On peut donc se ramener au cas précédent à condition que $(u_0 \v u_1) \in J$
+</Indent>
+</Item>
+
+<Exercice titre='études de suites'>
+
+Etudier les suites définies comme suit :
+
+1) $\suitedefN{u_n}$ telle que $u_{n+1} = u_n^2$ et $u_0 \geqslant 0$.
+
+2) $\suitedefN{}$
+
+</Exercice>
+
+{/*
 Manque :
     - composition et limite
     - passage à l'exponentielle / logarithme
- -->
+*/}
 
 </Base>

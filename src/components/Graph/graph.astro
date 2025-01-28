@@ -1,312 +1,14 @@
-<!-- BUG : quand j'appelle une méthode, le canvas devient blanc (même le test) -->
 <div>
     <div id="sketch-holder"></div>
 </div>
-<script is:inline>
-    class mathFunction {
-        constructor(f, deleteDataTimer = 0, visualizationType = "") {
-            this.f = f;
-            this.visualizationType = visualizationType;
-        }
-
-        plot(info) {
-            var minX = info.minX;
-            var maxX = info.maxX;
-            var maxY = info.maxY;
-            var resolution = info.resolution;
-            var unitStepX = info.unitStepX;
-            var unitStepY = info.unitStepY;
-            var origin = info.origin;
-
-            const step = (maxX - minX) / resolution;
-
-            var xPosPrev = origin[0] + minX * unitStepX;
-            var yPosPrev = origin[1] - this.f(minX) * unitStepY;
-            for (let x = 1; x <= resolution; x++) {
-                var xValue = minX + x * step;
-                var xPos = origin[0] + xValue * unitStepX;
-                var yPos = origin[1] - this.f(xValue) * unitStepY;
-                if (this.f(xValue) > maxY) {
-                    continue;
-                }
-                line(xPos, yPos, xPosPrev, yPosPrev);
-                xPosPrev = xPos;
-                yPosPrev = yPos;
-            }
-        }
-
-        visualisationContinuite(info, graph, a, color = "red") {
-            a =
-                min(info.maxX, max(info.minX, a)) ||
-                (info.minX + info.maxX) / 2;
-
-            var epsilon = 1.0;
-            var delta = 1 / info.unitStepX;
-            var xCount = 0.01;
-            var ref = this.f(a);
-            while (
-                Math.abs(this.f(a - xCount) - ref) < epsilon &&
-                Math.abs(this.f(a + xCount) - ref) < epsilon
-            ) {
-                xCount += delta;
-                graph.plotPoint(a + xCount, this.f(a + xCount), ".", color, 10);
-                graph.plotPoint(a - xCount, this.f(a - xCount), ".", color, 10);
-            }
-            graph.plotInterval(a - epsilon, a + epsilon, color, 2);
-        }
-    }
-    class Graph {
-        constructor(info) {
-            this.info = info;
-            this.functions = [];
-        }
-
-        coordToGraph(x, y) {
-            return (
-                this.info.origin[0] + x * this.info.unitStepX,
-                this.info.origin[1] - y * this.info.unitStepY
-            );
-        }
-
-        graphToCoord(x, y) {
-            return (
-                (x - this.info.origin[0]) / this.info.unitStepX,
-                -(y + this.info.origin[1]) / this.info.unitStepY
-            );
-        }
-
-        plotPoint(x, y, pointStyle = "x", color = "white", weight = "2") {
-            var newCoords = this.coordToGraph(x, y);
-            push();
-            stroke(color);
-            console.log("passe dans plotPoint", pointStyle);
-            if (pointStyle === "x") {
-                line(
-                    newCoords.x - 5,
-                    newCoords.y - 5,
-                    newCoords.x + 5,
-                    newCoords.y + 5,
-                );
-                line(
-                    newCoords.x + 5,
-                    newCoords.y + 5,
-                    newCoords.x - 5,
-                    newCoords.y - 5,
-                );
-            } else if (pointStyle === ".") {
-                strokeWeight(weight);
-                console.log("Plot au bon endroit :", newCoords.x, newCoords.y);
-                point(newCoords);
-            } else if (pointStyle === "[") {
-                line(
-                    newCoords.x,
-                    newCoords.y - 3,
-                    newCoords.x,
-                    newCoords.y + 3,
-                );
-                line(
-                    newCoords.x,
-                    newCoords.y - 3,
-                    newCoords.x + 2,
-                    newCoords.y - 3,
-                );
-                line(
-                    newCoords.x,
-                    newCoords.y + 3,
-                    newCoords.x + 2,
-                    newCoords.y + 3,
-                );
-            } else if (pointStyle === "]") {
-                line(
-                    newCoords.x,
-                    newCoords.y - 3,
-                    newCoords.x,
-                    newCoords.y + 3,
-                );
-                line(
-                    newCoords.x,
-                    newCoords.y - 3,
-                    newCoords.x - 2,
-                    newCoords.y - 3,
-                );
-                line(
-                    newCoords.x,
-                    newCoords.y + 3,
-                    newCoords.x - 2,
-                    newCoords.y + 3,
-                );
-            }
-            pop();
-        }
-
-        plotInterval(xBegin, xEnd, color = "red", weight = 2) {
-            var graphPosBegin = this.coordToGraph(xBegin, 0)[0];
-            var graphPosEnd = this.coordToGraph(xEnd, 0)[0];
-            push();
-            stroke(color);
-            line(graphPosBegin, this.origin.y, graphPosEnd, this.origin.y);
-            this.plotPoint(xBegin, 0, (pointStyle = "["), color, weight);
-            this.plotPoint(xEnd, 0, (pointStyle = "]"), color, weight);
-            pop();
-        }
-
-        plotFunction(f, color = "blue") {
-            var mathF = new mathFunction(f);
-            push();
-            stroke(color);
-            mathF.plot(info);
-            pop();
-            if (!this.functions.includes(mathF)) {
-                this.functions.push(mathF);
-            }
-        }
-
-        drawGraphAxes() {
-            var info = this.info;
-            var minX = info.minX;
-            var maxX = info.maxX;
-            var minY = info.minY;
-            var maxY = info.maxY;
-            var offset = info.offset;
-            var tickOffset = info.tickOffset;
-            var gridSubdivision = info.gridSubdivision;
-            var width2 = info.width2;
-            var height2 = info.height2;
-            var unitStepX = info.unitStepX;
-            var unitStepY = info.unitStepY;
-            var origin = info.origin;
-
-            push();
-            stroke(255);
-            strokeWeight(2);
-            //Axis
-            line(offset, origin[1], width2 + offset, origin[1]);
-            line(origin[0], offset, origin[0], height2 + offset);
-            // Arrows
-            line(width2 + offset, origin[1], width2, origin[1] + 5);
-            line(width2 + offset, origin[1], width2, origin[1] - 5);
-            line(origin[0], offset, origin[0] + 5, 2 * offset);
-            line(origin[0], offset, origin[0] - 5, 2 * offset);
-            pop();
-
-            const tickLength = 5;
-            for (let i = minX; i <= maxX; i++) {
-                if (i === 0) {
-                    continue;
-                }
-                var xPos = origin[0] + i * unitStepX;
-                stroke(255);
-                strokeWeight(2);
-                line(
-                    xPos,
-                    origin[1] - tickLength,
-                    xPos,
-                    origin[1] + tickLength,
-                );
-                strokeWeight(1);
-                text(i.toString(), xPos - 5, origin[1] + tickLength + 15);
-            }
-            for (let i = minY; i <= maxY; i++) {
-                if (i === 0) {
-                    continue;
-                }
-                var yPos = origin[1] - i * unitStepY;
-                stroke(255);
-                strokeWeight(2);
-                line(
-                    origin[0] - tickLength,
-                    yPos,
-                    origin[0] + tickLength,
-                    yPos,
-                );
-                strokeWeight(1);
-                text(i.toString(), origin[0] - tickLength - 15, yPos);
-            }
-
-            if (gridSubdivision === 0) {
-                return;
-            }
-
-            var subUnitStepX =
-                (width2 - 2 * tickOffset) / ((maxX - minX) * gridSubdivision);
-            var subUnitStepY =
-                (height2 - 2 * tickOffset) / ((maxY - minY) * gridSubdivision);
-
-            for (
-                let i = minX * gridSubdivision;
-                i <= maxX * gridSubdivision;
-                i++
-            ) {
-                if (i === 0) {
-                    continue;
-                }
-                var xPos = origin[0] + i * subUnitStepX;
-                stroke(150);
-                strokeWeight(1);
-                line(xPos, tickOffset, xPos, height - tickOffset);
-            }
-            for (
-                let i = minY * gridSubdivision;
-                i <= maxY * gridSubdivision;
-                i++
-            ) {
-                if (i === 0) {
-                    continue;
-                }
-                var yPos = origin[1] - i * subUnitStepY;
-                stroke(150);
-                strokeWeight(1);
-                line(tickOffset, yPos, width - tickOffset, yPos);
-            }
-        }
-    }
-
-    class GraphInfo {
-        constructor(
-            minX,
-            maxX,
-            minY,
-            maxY,
-            offset,
-            tickOffset,
-            gridSubdivision,
-        ) {
-            this.minX = minX;
-            this.maxX = maxX;
-            this.minY = minY;
-            this.maxY = maxY;
-
-            this.offset = offset;
-            this.tickOffset = tickOffset;
-            this.gridSubdivision = gridSubdivision;
-
-            this.resolution = Math.floor(window.innerWidth / 2);
-            this.width2 = width - 2 * offset;
-            this.height2 = height - 2 * offset;
-            this.unitStepX = (this.width2 - 2 * tickOffset) / (maxX - minX);
-            this.unitStepY = (this.height2 - 2 * tickOffset) / (maxY - minY);
-
-            this.origin = Array(2).fill(0);
-            this.origin[0] =
-                offset +
-                tickOffset +
-                (Math.abs(minX) / (maxX - minX)) *
-                    (this.width2 - 2 * tickOffset);
-            this.origin[1] =
-                height -
-                (offset +
-                    tickOffset +
-                    (Math.abs(minY) / (maxY - minY)) *
-                        (this.height2 - 2 * tickOffset));
-        }
-    }
-
+<script type="module" is:inline>
+    import {Graph, MathFunction, GraphInfo} from "/scripts/graphClasses.js";
     var myGraph;
     var info;
+    var epsilon = 0.5;
 
     function setup() {
         var canvasDOM = createCanvas(200, 40);
-        // document.getElementById("sketch-holder").appendChild(canvas);
         var holder = document.getElementById("sketch-holder");
         holder.appendChild(canvas);
         canvasDOM.mouseClicked(customMouseClicked);
@@ -317,6 +19,8 @@
 
     function customMouseClicked() {
         var firstTime = height === 40;
+        var a = firstTime ? 2 : myGraph.graphToCoord(mouseX, mouseY)[0];
+
         resizeCanvas(
             min(Math.floor((window.innerWidth * 0.7) / 2) * 2, 900),
             400,
@@ -326,126 +30,29 @@
         info = new GraphInfo(-1, 5, -1, 5, 10, 20, 2);
         myGraph = new Graph(info);
 
+        noStroke();
+        fill(100,100,100)
+        rect(
+            info.offset + info.tickOffset,
+            myGraph.coordToGraph(0,carre(a) + epsilon)[1],
+            info.width2 - info.tickOffset,
+            info.unitStepY * 2 * epsilon
+        )
+
         myGraph.drawGraphAxes();
         myGraph.plotFunction(carre);
 
-        var a = firstTime ? 2 : myGraph.graphToCoord(mouseX, mouseY).x;
+        
         myGraph.functions.map((f) =>
-            f.visualisationContinuite(info, myGraph, a),
+            f.visualisationContinuite(info, myGraph, a, epsilon),
         );
+
+        console.log('valeur de a :', a );
     }
 
     function carre(x) {
         return x * x;
     }
 
-    // function drawFunction(f, info) {
-    //     var minX = info.minX;
-    //     var maxX = info.maxX;
-    //     var maxY = info.maxY;
-    //     var resolution = info.resolution;
-    //     var unitStepX = info.unitStepX;
-    //     var unitStepY = info.unitStepY;
-    //     var origin = info.origin;
-
-    //     const step = (maxX - minX) / resolution;
-
-    //     for (x = 0; x < resolution; x++) {
-    //         var xValue = minX + x * step;
-    //         var xPos = origin[0] + xValue * unitStepX;
-    //         var yPos = origin[1] - f(xValue) * unitStepY;
-
-    //         if (f(xValue) > maxY) {
-    //             continue;
-    //         }
-    //         var xValueNext = minX + (x + 1) * step;
-    //         var xPosNext = origin[0] + xValueNext * unitStepX;
-    //         var yPosNext = origin[1] - f(xValueNext) * unitStepY;
-
-    //         stroke("blue");
-    //         strokeWeight(2);
-    //         line(xPos, yPos, xPosNext, yPosNext);
-    //     }
-    // }
-
-    // function drawGraphAxes(info) {
-    //     console.log(info);
-    //     var minX = info.minX;
-    //     var maxX = info.maxX;
-    //     var minY = info.minY;
-    //     var maxY = info.maxY;
-    //     var offset = info.offset;
-    //     var tickOffset = info.tickOffset;
-    //     var gridSubdivision = info.gridSubdivision;
-    //     var width2 = info.width2;
-    //     var height2 = info.height2;
-    //     var unitStepX = info.unitStepX;
-    //     var unitStepY = info.unitStepY;
-    //     var origin = info.origin;
-
-    //     push();
-    //     stroke(255);
-    //     strokeWeight(2);
-    //     //Axis
-    //     line(offset, origin[1], width2 + offset, origin[1]);
-    //     line(origin[0], offset, origin[0], height2 + offset);
-    //     // Arrows
-    //     line(width2 + offset, origin[1], width2, origin[1] + 5);
-    //     line(width2 + offset, origin[1], width2, origin[1] - 5);
-    //     line(origin[0], offset, origin[0] + 5, 2 * offset);
-    //     line(origin[0], offset, origin[0] - 5, 2 * offset);
-    //     pop();
-
-    //     const tickLength = 5;
-    //     for (let i = minX; i <= maxX; i++) {
-    //         if (i === 0) {
-    //             continue;
-    //         }
-    //         var xPos = origin[0] + i * unitStepX;
-    //         stroke(255);
-    //         strokeWeight(2);
-    //         line(xPos, origin[1] - tickLength, xPos, origin[1] + tickLength);
-    //         strokeWeight(1);
-    //         text(i.toString(), xPos - 5, origin[1] + tickLength + 15);
-    //     }
-    //     for (let i = minY; i <= maxY; i++) {
-    //         if (i === 0) {
-    //             continue;
-    //         }
-    //         var yPos = origin[1] - i * unitStepY;
-    //         stroke(255);
-    //         strokeWeight(2);
-    //         line(origin[0] - tickLength, yPos, origin[0] + tickLength, yPos);
-    //         strokeWeight(1);
-    //         text(i.toString(), origin[0] - tickLength - 15, yPos);
-    //     }
-
-    //     if (gridSubdivision === 0) {
-    //         return;
-    //     }
-
-    //     var subUnitStepX =
-    //         (width2 - 2 * tickOffset) / ((maxX - minX) * gridSubdivision);
-    //     var subUnitStepY =
-    //         (height2 - 2 * tickOffset) / ((maxY - minY) * gridSubdivision);
-
-    //     for (let i = minX * gridSubdivision; i <= maxX * gridSubdivision; i++) {
-    //         if (i === 0) {
-    //             continue;
-    //         }
-    //         var xPos = origin[0] + i * subUnitStepX;
-    //         stroke(150);
-    //         strokeWeight(1);
-    //         line(xPos, tickOffset, xPos, height - tickOffset);
-    //     }
-    //     for (let i = minY * gridSubdivision; i <= maxY * gridSubdivision; i++) {
-    //         if (i === 0) {
-    //             continue;
-    //         }
-    //         var yPos = origin[1] - i * subUnitStepY;
-    //         stroke(150);
-    //         strokeWeight(1);
-    //         line(tickOffset, yPos, width - tickOffset, yPos);
-    //     }
-    // }
+    window.setup = setup;
 </script>

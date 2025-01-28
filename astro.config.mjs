@@ -78,9 +78,6 @@ const macros = {
 };
 
 export default defineConfig({
-  vite: {
-    plugins: [tailwindcss()],
-  },
   markdown: {
     shikiConfig: {
       theme: "dracula",
@@ -100,5 +97,5 @@ export default defineConfig({
         }
       ]
     ]
-  }), solidJs(), tailwind()],
+  }), solidJs(), tailwindcss(), tailwind()],
 });
