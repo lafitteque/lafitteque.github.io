@@ -25,7 +25,7 @@ import Fil from '../components/Fil.astro'
 <Item type="definition" titre="proposition"> On appelle proposition (ou assertion) un énoncé mathématique qui a une valeur de vérité donnée : soit vrai soit faux. </Item>
 
 
-<Hideable type="exemple" titre=" proposition"> 
+<Hideable type="exemple"> 
   $ \cP_1 $ : "tout entier naturel est pair" est fausse.
   
   $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
@@ -99,12 +99,14 @@ On a les propriétés suivantes :
 </Item>
 
 
-<Hideable type='démonstration' titre=' Commutativité'>
+<Hideable type='démonstration'>
 
 **Commutativité :**
 La table de vérité de "A et B" est la même que celle de "B et A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A et de B.
 
 Il en va de même pour "A ou B".
+
+<br/>
 
 **Associativité de la conjonction :** On dresse une table de vérité :
 
@@ -120,6 +122,8 @@ Il en va de même pour "A ou B".
 | Faux | Faux | Faux || Faux | Faux | Faux | Faux |
 
 Les tables de vérités de "(A et B) et C" et de "A et (B et C)" coïncident et donc ces affirmations ont même valeur de vérité.
+
+<br/>
 
 **Associativité de la disjonction :** On dresse une table de vérité :
 
@@ -144,7 +148,7 @@ Les tables de vérités de "(A ou B) et C" et de "A ou (B ou C)" coïncident et 
 - "non(A ou B)" a la même valeur de vérité que "(non A) et (non B)"
 </Item>
 
-<Hideable type='démonstration' titre=' Négation des conjonctions et des disjonctions'>
+<Hideable type='démonstration' >
 On dresse la table de vérité des propositions :
 
 | A  | B || non A  | non B || A et B | non (A et B) | (non A) ou (non B) || A ou B | non(A ou B) | (non A) et (non B) |
@@ -166,7 +170,7 @@ Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident a
 </Item>
 
 
-<Hideable type='démonstration' titre=' Distributivité de la conjonction sur la disjonction (et réciproquement)'>
+<Hideable type='démonstration'>
 Dressons la table de vérité des propositions.
 
 **Etudions d'abord "(A et B) ou C" :**
@@ -181,6 +185,8 @@ Dressons la table de vérité des propositions.
 | Faux | Vrai | Faux || Faux | Faux || Faux | Vrai | Faux |
 | Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai | Vrai |
 | Faux | Faux | Faux || Faux | Faux || Faux | Faux | Faux |
+
+<br/>
 
 **Etudions maintenant "(A ou B) et C" :**
 
@@ -203,7 +209,7 @@ Les tables de vérité coïncident comme indiqué dans la propriété.
 
 Soient A et B deux propositions.
 - On note "A $ \Rightarrow $ B" l'affirmation "A implique B"
-- On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (aussi abrégé en ssi)
+- On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (aussi.abrégé en ssi)
 
 On les définit par leurs tables de vérité :
 
@@ -214,7 +220,7 @@ On les définit par leurs tables de vérité :
 | Faux | Vrai || Vrai | Faux |
 | Faux | Faux || Vrai | Vrai |
 
-Autrement dit, "A $\Rightarrow B$" signifie que dès que A est vrai, B l'est aussi (et peu importe ce qu'il se passe quand A est faux) 
+Autrement dit, "A $\Rightarrow$ B" signifie que dès que A est vrai, B l'est aussi.(et peu importe ce qu'il se passe quand A est faux) 
 et "A $ \ssi $ B" signifie que A et B ont la même table de vérité.
 </Item>
 
@@ -238,14 +244,21 @@ Donc "A $ \Rightarrow $ B" et  "(non A) ou B" ont la même table de vérité. Ce
 
 
 <Exercice titre="">
-Donner la négation de "non (A $\Rightarrow$ B)" et celle de "non (A $\ssi$ B)" en n'utilisant que des disjonctions, des conjonctions et des négations.
+Donner la négation de "(A $\Rightarrow$ B)" et celle de "(A $\ssi $ B)" en n'utilisant que des disjonctions, des conjonctions et des négations.
 </Exercice>
 
 <Hideable type="solution" titre=''>
-- A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $ et donc, en passant à la négation et en développant, 
-on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($non (non A) $\Big)$ et (non B)" qui a même valeur de vérité que "A et (non B)" 
 
-- A partir de la table de vérité de "A $\ssi$ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( non A) et (non B) $\Big)$ ou (A et B)" 
+**Négation de "(A $\Rightarrow$ B)" :** 
+
+A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi  \Big( $ (non A) ou B $ \Big) $ et donc, en passant à la négation et en développant, 
+on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($ non (non A) $\Big)$ et (non B)" qui a même valeur de vérité que "A et (non B)"
+
+<br/>
+
+**Négation de "(A $\ssi $ B)" :** 
+
+A partir de la table de vérité de "A $\ssi $ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( non A) et (non B) $\Big)$ ou (A et B)" 
 ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en déduit, en passant à la négation que, 
 en développant puis en simplifiant , on obtient "$\Big($ A et (non B) $\Big)$ ou $\Big($ (non A) et B $\Big)$"
 </Hideable>
@@ -255,17 +268,17 @@ Si $A \Rightarrow B$, on dit que $A$ est une condition suffisante pour avoir $B$
 
 Si $A \Leftarrow B$, on dit que $A$ est une condition nécessaire pour avoir $B$ (en effet, s'il y a $B$, alors il y a $A$).
 
-Si $A \ssi B$, on dit que $A$ est une condition nécessaire et suffisante pour avoir $B$.
+Si $A \ssi  B$, on dit que $A$ est une condition nécessaire et suffisante pour avoir $B$.
 </Remarque>
 
 <Item type='propriete' titre='raisonnement par double implication'>
-Soient A et B deux propositions. (A $\ssi$ B) ssi  $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
+Soient A et B deux propositions. (A $\ssi $ B) ssi. $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
 </Item>
 
-<Hideable type='démonstration' titre=' Raisonnement par double implication'>
+<Hideable type='démonstration' >
 On dresse la table de vérité des deux propositions :
 
-| A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) et (B $\Rightarrow$ A) | A $\ssi$ B |
+| A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) et (B $\Rightarrow$ A) | A $\ssi $ B |
 |---|---|---|---|---|---|---|
 | Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
 | Vrai | Faux || Faux | Vrai | Faux | Faux |
@@ -281,20 +294,20 @@ Les tables de vérité sont identiques pour les deux propositions souhaitées.
 <Item type='propriete' titre='transitivité des implications et des équivalences'>
 Soient A, B et C trois propositions.
 - "$\Big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ C) $\Big)$" $\Rightarrow$ "(A $\Rightarrow$ C)"
-- "$\Big($ (A $\ssi$ B) et (B $\ssi$ C) $\Big)$" $\Rightarrow$ "(A $\ssi$ C)"
+- "$\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$" $\Rightarrow$ "(A $\ssi $ C)"
 </Item>
 
-<Hideable type='démonstration' titre=' Transitivité des implications et des équivalences'>
-- "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" ssi  "$\big($ B ou (non A) $\big)$  et  $\big($ C ou (non B) $\big)$" ssi 
-"(B et C) ou (B et (non B)) ou ((non A) et C) ou ((non A) et (non B))" ssi 
+<Hideable type='démonstration' >
+- "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" ssi. "$\big($ B ou (non A) $\big)$  et  $\big($ C ou (non B) $\big)$" ssi.
+"(B et C) ou (B et (non B)) ou ((non A) et C) ou ((non A) et (non B))" ssi.
 "(B et C) ou ((non A) et C) ou ((non A) et (non B))" mais donc, si cette proposition est vraie, alors "C ou (non A) ou (non A)" est vraie également 
 (on peut faire une table de vérité si besoin, mais cela est évident en regardant chacun des termes de la disjonction).
 On en déduit donc que si "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" est vraie, alors "C ou (non A)" l'est également. Cela conclut la démonstration du premier point.
 On remarquera qu'il est possible de faire des démonstrations en logique sans table de vérité.
 
-- $\Big($ (A $\ssi$ B) et (B $\ssi$ C) $\Big)$ ssi "(A $\Rightarrow$ B) et (B $\Rightarrow$ C) et (B $\Rightarrow$ A) et (C $\Rightarrow$ B)". 
+- $\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$ ssi."(A $\Rightarrow$ B) et (B $\Rightarrow$ C) et (B $\Rightarrow$ A) et (C $\Rightarrow$ B)". 
 Si cette proposition est vraie, alors on a bien "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" qui est vraie également et 
-"(B $\Rightarrow$ A) et (C $\Rightarrow$ B)" qui est aussi vraie.
+"(B $\Rightarrow$ A) et (C $\Rightarrow$ B)" qui est aussi.vraie.
 On applique le résultat précédent pour avoir une implication "A $\Rightarrow$ C". Puis on l'applique en inversant les rôles de A et de B 
 pour avoir l'autre implication "C $\Rightarrow$ A". Comme on a les deux implications, on a l'équivalence.
 </Hideable>
@@ -309,15 +322,16 @@ Soient A et B et la proposition $\cP$ : "A $\Rightarrow$ B". On appelle :
 
 <Item type='propriete' titre='raisonnement par contraposée'>
 Soient A et B deux propositions.
-On a (A $\Rightarrow$ B) ssi (non B) $\Rightarrow$ (non A).
+On a "(A $\Rightarrow$ B)" ssi. "(non B) $\Rightarrow$ (non A)".
 </Item>
 
-<Hideable type='démonstration' titre=' Raisonnement par contraposée'>
-"A $\Rightarrow$ B" ssi "B ou (non A)" ssi "(non A) ou B" ssi "(non B) $\Rightarrow$ (non A)"
+<Hideable type='démonstration'>
+"A $\Rightarrow$ B" ssi."B ou (non A)" ssi."(non A) ou B" ssi."(non B) $\Rightarrow$ (non A)"
 </Hideable>
 
 
 <Exercice titre=""> 
+
 On suppose que $x \in \R$. Donner la contraposée de $\cP$ : "$x<0 \Rightarrow x^3 < 0$"
 </Exercice>
 
@@ -335,31 +349,50 @@ Les quantificateurs sont des symbôles mathématiques permettant d'énoncer des 
 |---|---|---|
 | $\exists$ | Il existe | $\exists x \in \R$|
 | $\forall$ | Pour tout | $\forall x \in \R, \; x^2 \geqslant 0$|
-| \| | Tel que | $\exists x \in \R \mid 2x^2 + 3 = 0$ |
+| \| | Tel que | $\exists x \in \R \mid x^2 - 1 = 0$ |
 | $\exists !$ | Il existe un unique | $\exists ! x \in \R \mid \; x^2 + 4x + 4 = 0$ |
 | $\nexists $ | Il n'existe pas | $\nexists x \in \R \mid \; x^2 < 0$ |
 </Item>
 
 <Exercice titre="">
+
 Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
-- $\forall n \in E, n^2 \in E$
-- $\exists x \in E \mid x \times x = 0$
-- $\forall x \in E, \forall y \in E, x \times y = y \times x$
-- $\exists a > 0 \mid \forall x,y \in \defff{1}{2}, |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
+<br/>
+
+i) $\forall n \in E, n^2 \in E$
+<br/>
+
+ii) $\exists x \in E \mid x \times x = 0$
+<br/>
+
+iii) $\forall x \in E, \forall y \in E, x \times y = y \times x$
+<br/>
+
+iv) $\exists a > 0 \mid \forall x,y \in \defff{1}{2}, |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
 </Exercice>
 
 <Hideable type="solution" titre="">
-Dans l'ordre, on a :
-- $\exists n \in E, n^2 \notin E$
-- $\forall x \in E, x \times x \neq 0$
-- $\exists x \in E, \exists y \in E \mid x \times y \neq y \times x$
-- $\forall a > 0, \exists x,y \in \defff{1}{2} \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
+
+i) $\exists n \in E, n^2 \notin E$
+<br />
+
+ii) $\forall x \in E, x \times x \neq 0$
+<br />
+
+iii) $\exists x \in E, \exists y \in E \mid x \times y \neq y \times x$
+<br />
+
+iv) $\forall a > 0, \exists x,y \in \defff{1}{2} \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
 </Hideable>
 
 ### Les différents modes de raisonnement
 
 <Item type='definition' titre='Les différents modes de raisonnement'>
+
 On utilise plusieurs modes de raisonnement en mathématiques dont voici les plus courants :
+
+<br/>
+
 - Le raisonnement par implication qui consiste à chainer des implications.
 - Le raisonnement par équivalence qui consiste à chainer des équivalences.
 - Le raisonnement par contraposée qui consiste à aborder une implication par sa contraposée (cela peut être plus simple).
@@ -375,12 +408,29 @@ On utilise plusieurs modes de raisonnement en mathématiques dont voici les plus
 
 <Indent>
 
-Dans cette partie, on va chercher à tâtons. D'abord, on suppose qu'il existe $f_p$ (resp. $f_i$) paire (resp. impaire) tel que $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$.
-Comme l'étude de la parité consiste à évaluer en $-x$, on peut évaluer $f$ en $-x$ : $f(-x) = f_p(-x) + f_i(-x), \; \forall x \in \R$.
-Mais donc $f(-x) = f_p(x) - f_i(x), \; \forall x \in \R$. Ce qui nous donne une deuxième équation en plus de $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$.
-Avec deux équations, on peut effectuer des combinaisons linéaires et obtenir $f(x) + f(-x) = 2f_p(x)$ par somme mais aussi $f(x) - f(-x) = 2f_i(x)$ par différence et ce pour tout $x $ dans $\R$.
+Cette partie consiste à chercher à tâtons la forme de la solution. 
 
-On en déduit donc que, si $f_p$ et $f_i$ existent, ces deux fonctions vérifient $f_p(x) = \dfrac{f(x) + f(-x)}{2}$ et $f_i(x) = \dfrac{f(x)- f(-x)}{2}$ et ce pour tout $x$ dans $\R$.
+D'abord, on suppose qu'il existe $f_p$ (resp. $f_i$) paire (resp. impaire) telles que 
+
+$$
+f(x) = f_p(x) + f_i(x), \; \forall x \in \R
+$$
+
+Comme l'étude de la parité consiste à évaluer en $-x$, on peut évaluer $f$ en $-x$ : 
+
+$$
+f(-x) = f_p(-x) + f_i(-x), \; \forall x \in \R
+$$
+
+Mais donc $f(-x) = f_p(x) - f_i(x), \; \forall x \in \R$. Ce qui nous donne une deuxième équation.
+
+Avec deux équations, on peut effectuer des combinaisons linéaires et obtenir $f(x) + f(-x) = 2f_p(x)$ par somme mais aussi.$f(x) - f(-x) = 2f_i(x)$ par différence et ce pour tout $x $ dans $\R$.
+
+On en déduit donc que, si $f_p$ et $f_i$ existent, ces deux fonctions vérifient 
+
+$$
+\forall x \in \R\v f_p(x) = \dfrac{f(x) + f(-x)}{2} \, \text{ et }\, f_i(x) = \dfrac{f(x)- f(-x)}{2}
+$$ 
 </Indent>
 
 
@@ -388,17 +438,34 @@ On en déduit donc que, si $f_p$ et $f_i$ existent, ces deux fonctions vérifien
 
 <Indent>
 
-Dans cette partie, on va vérifier que nos prétendants trouvés précédemment vérifient bel et bien la propriété voulue (On était partis du principe que $f_p$ et $f_i$ existaient, cela pourrait être faux et mener à des absurdités. Il faut donc vérifier.) 
+Cette partie consiste à vérifier que nos prétendants trouvés précédemment vérifient la propriété voulue. 
 
-Soient $f_p : x \longrightarrow \dfrac{f(x) + f(-x)}{2}$ et $f_i : x \longrightarrow \dfrac{f(x) - f(-x)}{2}$. Nous devons vérifier que :
-- $f_p$ est paire
-- $f_i$ est impaire
-- $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$
+Soient $f_p : x \mapsto \dfrac{f(x) + f(-x)}{2}$ et $f_i : x \mapsto \dfrac{f(x) - f(-x)}{2}$ toutes deux définies sur $\R$. 
+
+<br/>
+Nous devons vérifier que :
+
+- (A) : $f_p$ est paire
+- (B) : $f_i$ est impaire
+- (C) : $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$
+
+<br/>
 
 En effet : 
-- $f_p(-x) = \dfrac{f(-x) + f(x)}{2} = f_p(x), \; \forall x \in \R$ et donc $f_p$ est paire.
-- $f_i(-x) = \dfrac{f(-x) - f(x)}{2} = -f_i(x), \; \forall x \in \R$ et donc $f_p$ est impaire.
-- $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x)}{2} + \dfrac{f(x) - f(-x)}{2} = \dfrac{f(x) + f(-x) + f(x) - f(-x)}{2} = \dfrac{2f(x)}{2} = f(x), \; \forall x \in \R$
+
+**(A) :** $f_p(-x) = \dfrac{f(-x) + f(x)}{2} = f_p(x), \; \forall x \in \R$ et donc $f_p$ est paire.
+
+<br/>
+
+**(B) :** $f_i(-x) = \dfrac{f(-x) - f(x)}{2} = -f_i(x), \; \forall x \in \R$ et donc $f_p$ est impaire.
+
+<br/>
+
+**(C) :** $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x)}{2} + \dfrac{f(x) - f(-x)}{2} $ 
+
+d'où $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x) + f(x) - f(-x)}{2} = \dfrac{2f(x)}{2} = f(x), \; \forall x \in \R$
+<br/>
+
 </Indent>
 
 **Conclusion** : La propriété est donc vraie.
@@ -409,8 +476,12 @@ En effet :
 Un ensemble est une collection d'objets.
 </Item>
 
-<Hideable type="exemple" titre=" Ensemble">
-$\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
+<Hideable type="exemple">
+
+$\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms, c'est donc un ensemble. 
+
+$\{8 \v -6 \v \pi \v i \}$ est un ensemble de nombres.
+
 </Hideable> 
 
 ### Rappel : les ensembles usuels
@@ -425,15 +496,10 @@ $\{ Maud ,\, Ben ,\, Mathilde\}$ est une collection de noms.
 | $\D$ | Nombres décimaux | $\dfrac{15}{10^{13}}$ ou -6.2 | $\{d \in \R \mid  \exists a \in \Z, \exists n \in \N , d = \dfrac{a}{10^n}  \}$ |
 | $\Q$ | Nombres rationnels | $\dfrac{51}{13}$ ou 100 | $\{q \in \R \mid  \exists a \in \Z, \exists b \in \N^* , q = \dfrac{a}{b}  \}$ |
 | $\R$ | Nombres réels | $\pi$ ou -44 | Hors programme |
-| $\C$ | Nombres complexes | $2 + 3i$ | Hors programme |
+| $\C$ | Nombres complexes | $2 + 3i$ | Hors programme (mais pas compliqué) |
 | $\defentiers{n}{m}$ | Entiers entre $n$ et $m$ | / | $\{ k \in \Z \mid n \leqslant k \leqslant m \}$ |
 
-On note $A^*$ l'ensemble des éléments non nuls de $A$
-</Item>
-
-
-<Item type='propriete' titre='(admis) existence des minimums dans les naturels'>
-Tout ensemble non vide de $\N$ admet un minimum.
+On note $A^*$ l'ensemble des éléments non nuls de $A$. (Attention, même si cette notation est très courante, elle est en conflit avec une autre qui est hors programme mais qui est souvent présente dans les concours X-ENS)
 </Item>
 
 
@@ -441,85 +507,135 @@ Tout ensemble non vide de $\N$ admet un minimum.
 ### Opérations usuelles
 
 <Item type="definition" titre="notations ensemblistes">
+
 | Notation | Nom | Exemple | Description à l'aide de quantificateurs| 
 |---|---|---|---|
 | $x \in A$ | Appartient à | $2 \in \{-5 \v 8 \v 2 \}$ | / |
 | $x \notin A$ | N'appartient pas à | $\pi \notin \{-5 \v 8 \v 2 \}$ | / |
-| $A \subset B$ | A est un sous-ensemble de B | $\{-5 \v 8 \v 2 \} \subset \{-5 \v 12 \v 2 \v 8 \v 42 \}$ | $A \subset B$ ssi $a \in A \Rightarrow a \in B$ |
+| $A \subset B$ | A est un sous-ensemble de B | $\{-5 \v 8 \v 2 \} \subset \{-5 \v 12 \v 2 \v 8 \v 42 \}$ | $A \subset B$ ssi. $a \in A \Rightarrow a \in B$ |
 | $A \bigcup B$ | Réunion (ou Union) de A et B | $\{3 \v 1 \} \bigcap \{ 6\} = \{3 \v 1 \v 6\}$ | $\{ x \mid (x \in A$ ou $x \in B)\}$ |
 | $A \bigcap B$ | Intersection de A et B | $\{4 \v 1 \v 55 \} \bigcap \{ 2 \v 4 \v 1\} = \{4 \v 1 \}$ | $\{ x \mid (x \in A$ et $x \in B)\}$ |
 </Item>
 
 <Item type="definition" titre="égalité d'enembles">
-On dit que deux ensembles $A$ et $B$ sont égaux s'il contiennent les mêmes éléments c'est-à-dire si $x \in A \ssi x \in B$
+On dit que deux ensembles $A$ et $B$ sont égaux s'il contiennent les mêmes éléments c'est-à-dire si :
+
+$$
+\text{Pour tout } x \in A \bigcup B \v  \Big( x \in A \ssi x \in B \Big)
+$$
 </Item>
 
 <Item type='propriete' titre='double inclusion'>
-Soient $A$ et $B$ deux ensembles. $A = B \ssi (A \subset B $ et $ B \subset A) $
+Soient $A$ et $B$ deux ensembles. 
+
+$$
+A = B \ssi (A \subset B \, \text{ et }\, B \subset A) 
+$$
 </Item>
 
 
-<Hideable type='démonstration' titre=' Double inclusion'>
+<Hideable type='démonstration'>
+Dans cette démonstration, $x$ désigne un élément de $A \bigcup B$.
+
 $A = B \ssi (x \in A \ssi x \in B) \ssi \big( (x \in A \Rightarrow x \in B) $ et $ (x \in B \Rightarrow x \in A)\big) \ssi (A \subset B$ et $ B \subset A)$ 
 </Hideable>
 
 
 <Item type='definition' titre='ensembles disjoints et partitions'>
-On dit que $A$ et $B$ sont des ensembles disjoints si $A \bigcap B = \empty$. La réunion d'ensembles disjoints peut parfois se noter $A \bigsqcup B$ ou encore $A \biguplus B$ 
+
+On dit que $A$ et $B$ sont des ensembles disjoints si $A \bigcap B = \empty$. 
+
+La réunion d'ensembles disjoints peut parfois se noter $A \bigsqcup B$ ou encore $A \biguplus B$ 
 mais il n'y a pas de notation officielle. Il est donc grandement conseillé de rappeler à chaque fois quelle notation on emploie et sa signification. Dans tous les cours, 
 la réunion disjointe sera notée $A \biguplus B$.
 
-Soit $E$ un ensemble et $A_1, \, A_2 , \, \dotsm , \, A_n$ des sous-ensembles de $E$ et où $n \in \N^*$. On dit que $A_1, \, A_2 , \, \dotsm , \, A_n$ forme une partition de $E$ si
+<br/>
+Soit $E$ un ensemble et $A_1, \, A_2 , \, \dotsm , \, A_n$ des sous-ensembles de $E$ et où $n \in \N^*$. On dit que $A_1, \, A_2 , \, \dotsm , \, A_n$ forment une partition de $E$ si
 
 $$
-E = A_1 \biguplus A_2 \biguplus \dotsm \biguplus A_n
+E = A_1 \biguplus A_2 \biguplus \dotsm \biguplus A_n = \biguplus \limits_{i = 1}^{n} A_i
 $$
 </Item>
 
 
 <Item type='definition' titre='Complémentaire et exclusion'>
-Soit E un ensemble et A un sous-ensemble de E. On appelle complémentaire de $A$ dans $E$ l'ensemble $\complement_E^A = \{ x \in E \mid x \notin A\} $. 
+Soit E un ensemble et A un sous-ensemble de E. 
+
+On appelle complémentaire de $A$ dans $E$ l'ensemble $\complement_E^A = \{ x \in E \mid x \notin A\} $. 
+
+<br/>
 Il peut également être noté $\overline{A}$ ou encore $E \setminus A$ qui se lit "$E$ privé de $A$".
 </Item>
 
 <Item type='propriete' titre="complémentaire de la réunion et de l'intersection">
-Soit $E$ un ensemble et $A$, $B$ deux sous ensenbles de $E$. On a :
+Soit $E$ un ensemble et $A$, $B$ deux sous ensembles de $E$. On a :
 - $\overline{A \bigcap B} = \overline{A} \bigcup \overline{B}$
 - $\overline{A \bigcup B} = \overline{A} \bigcap \overline{B}$
 </Item>
 
-<Hideable type='démonstration' titre=" Complémentaire de la réunion et de l'intersection">
-- Montrons que $\overline{A \bigcap B} = \overline{A} \bigcup \overline{B}$: $x \in \overline{A \bigcap B} \ssi (x \notin A \bigcap B) \ssi $ non $\big((x \in A )$ et $(x \in B)\big)$ puis en développant la négation : 
+<Hideable type='démonstration'>
+
+**Complémentaire de l'intersection :** 
+
+$x \in \overline{A \bigcap B} \ssi (x \notin A \bigcap B) \ssi $ non $\big((x \in A )$ et $(x \in B)\big)$ puis en développant la négation : 
+
 $x \in \overline{A \bigcap B} \ssi \big( ($non $x \in A)$ ou $ ( $non $x \in B) \big) \ssi (x \in \overline{A} \bigcup \overline{B})$
-- Montrons que $\overline{A \bigcup B} = \overline{A} \bigcap \overline{B}$ : c'est exactement la même démonstration où l'on remplace les "et" par des "ou" et inversement.
+
+<br/>
+
+**Complémentaire de la réunion :** c'est exactement la même démonstration où l'on remplace les "et" par des "ou" et vice versa.
 </Hideable>
 
 <Item type="definition" titre="parties d'un ensemble">
-Soit $E$ un ensemble. On note $\cP(E)$ l'ensemble des parties de $E$ : $\cP(E) = \{ A \mid A \subset E \} $
+Soit $E$ un ensemble. On note $\cP(E)$ l'ensemble des parties de $E$ : 
+
+$$
+\cP(E) = \{ A \mid A \subset E \} 
+$$
 </Item>
 
 ### Produit cartésien
 
 
 <Item type="definition" titre="produit cartésien">
-Soient $E$ et $F$ deux ensembles. On appelle produit cartésien l'ensemble suivant : $E \times F = \{ (x \v y) | (x \in E $ et $ x \in F) \}$.
+
+Soient $E$ et $F$ deux ensembles. On appelle produit cartésien de $E$ et $F$ l'ensemble suivant : 
+
+$$
+E \times F = \{ (x \v y) \mid   (x \in E \, \text{ et }\, x \in F) \}
+$$
+
 Il s'agit de l'ensemble des couples d'éléments de $E$ (en première coordonnée) et $F$ (en seconde coodonnée).
 
-Soient $E_1, \, E_2 , \, \dotsm ,\, E_n$ des ensembles où $n \in \N^*$. On note $\prod_{i=1}^n E_i$ l'ensemble $\{ (x_1,\, x_2 ,\, \dotsm ,\, x_n) \mid x_1 \in E_1 $ et $ x_2 \in E_2 $ et ... et $x_n \in E_n \}$.
+<br/>
 
-En particulier, $\prod_{i=1}^n E $ est noté $ E^n$.
+Soient $E_1, \, E_2 , \, \dotsm ,\, E_n$ des ensembles où $n \in \N^*$. On note $\produit{i=1}{n} E_i$ l'ensemble $\{ (x_1,\, x_2 ,\, \dotsm ,\, x_n) \mid x_1 \in E_1 $ et $ x_2 \in E_2 $ et ... et $x_n \in E_n \}$.
+
+<br/>
+En particulier, $\produit{i=1}{n} E $ est noté $ E^n$.
 </Item>
 
 
 <Exercice titre="">
+
 Soit $E = \deffo{0}{+ \infty} \times \R_+$. 
-- 1) Proposer $x$ tel que $x \in E$ et $y$ tel que $y \notin E$.
-- 2) Décrire l'ensemble $\complement_{\R^2}^E$ comme une réunion de produits cartésiens.
+
+<br/>
+
+1\) Proposer $x$ tel que $x \in E$ et $y$ tel que $y \notin E$.
+
+<br/>
+
+2\) Décrire l'ensemble $\complement_{\R^2}^E$ comme une réunion de produits cartésiens.
 </Exercice>
 
 <Hideable type="solution" titre="">
-- 1) On peut proposer $x = (1 ,\, 1)$ et $y = (-1 ,\, 1)$
-- 2) $\complement_{\R^2}^E = (\defoo{- \infty}{0} \times \R) \bigcup (\deffo{0{+ \infty} \times \defoo{- \infty}{0} )$. En effet, 
+
+1\) On peut proposer $x = (1 ,\, 1)$ et $y = (-1 ,\, 1)$
+
+<br/>
+
+2\) $\complement_{\R^2}^E = (\defoo{- \infty}{0} \times \R) \bigcup (\deffo{0}{+ \infty} \times \defoo{- \infty}{0} )$. En effet, 
 être dans le complémentaire de $E$, c'est avoir une première coordonnée qui ne coïncide pas avec la définition de $E$ ou bien une seconde 
 coordonnée qui ne coïncide pas avec la définition de $E$.
 </Hideable>
@@ -528,15 +644,23 @@ coordonnée qui ne coïncide pas avec la définition de $E$.
 ### Extremûms
 
 <Item type="definition" titre="majorants et minorants">
-Soit $E \subset \R$ un ensemble non vide. On appelle **minorant** de $E$ (resp. **majorant** de $E$) un élément $a$ de $\R$ tel que :
-$\forall x \in E, a \leqslant x$ (resp. $\forall x \in E, a \geqslant x$)
+
+Soit $E \subset \R$ un ensemble non vide. 
+
+On appelle **minorant** de $E$ (resp. **majorant** de $E$) un élément $a$ de $\R$ tel que :
+
+$$
+\forall x \in E, a \leqslant x \; ( \text{resp. } \forall x \in E, a \geqslant x)
+$$
 
 Quand $E$ admet un minorant __ET__ un majorant, on dit que $E$ est **borné**
 </Item>
 
 
 <Item type="definition" titre="extremûms">
-Soit $E \subset \R$ un ensemble non vide. Le **minimum** de $E$, s'il existe, est noté $min \; E$. C'est l'élément $a$ de $E$ tel que :
+Soit $E \subset \R$ un ensemble non vide.
+
+Le **minimum** de $E$, s'il existe, est noté $min \; E$. C'est l'élément $a$ de $E$ tel que :
 
 $$ 
 \forall x \in E, x \leqslant E
@@ -567,3 +691,9 @@ Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appar
 | majorants | $8 \v 424 \, 242 \v \dotsm$| $1 \v \pi \v \dotsm$| n'en a pas |
 
 </Hideable>
+
+
+<Item type='propriete' titre='(admis) existence des minimums dans les naturels'>
+Tout ensemble non vide de $\N$ admet un minimum.
+</Item>
+
