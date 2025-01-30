@@ -14,18 +14,19 @@ import coursData from "../data/cours.json"; // Importation du fichier JSON
 
 type Props = {
   title: string;
-};
+}
 
-const { headings, title } = Astro.props;
+const {headings, title} = Astro.props;
 ---
 
-<!-- BUG : Theme custom de daisyui ne s'applique pas --><!-- Amélioration : afficher la page avant que tout ne soit chargé (temps d'attente trop long) --><!doctype html>
+<!-- BUG : Theme custom de daisyui ne s'applique pas -->
+<!-- Amélioration : afficher la page avant que tout ne soit chargé (temps d'attente trop long) -->
+<!doctype html>
 <html lang="fr" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js" -->
-    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <title>Suplémaths - Les maths du supérieur</title>
     <link
       rel="stylesheet"
@@ -38,6 +39,8 @@ const { headings, title } = Astro.props;
     <div class="drawer">
       <input id="my-drawer" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content">
+  
+        
         <div class="fixed navbar bg-tertiary z-10">
           <div class="navbar-start">
             <HamburgerButton />
@@ -48,7 +51,7 @@ const { headings, title } = Astro.props;
           </div>
           <Options />
         </div>
-
+        
         <aside class="sticky top-20">
           <div class="">
             <!-- <LiveTableOfContents headings={headings}/> -->
@@ -58,83 +61,77 @@ const { headings, title } = Astro.props;
         <div class="main-content-wrapper" id="wrapper">
           <main class="main-content flex flex-col gap-1">
             <Katex />
+            </br>
+            </br>
+            <slot />
           </main>
-        </div>
-        <slot />
-        <br />
-        <br />
+        </div> 
+
       </div>
-    </div>
+      <div class="drawer-side">
+        <ul class="pl-2 text-base-content min-h-full w-80 p-4 ">
+          <!-- Sidebar content here -->
+          {coursData.map((cours) => <div><a class="block decoration-none" href={cours.url}>{cours.titre}</a></div>)}
+        </ul>
+      </div>
+    </div>  
   </body>
-  <div class="drawer-side">
-    <ul class="pl-2 text-base-content min-h-full w-80 p-4">
-      <!-- Sidebar content here -->
-      {
-        coursData.map((cours) => (
-          <div>
-            <a class="block decoration-none" href={cours.url}>
-              {cours.titre}
-            </a>
-          </div>
-        ))
-      }
-    </ul>
-  </div>
-</html>
+  <style>
 
-<style>
-  .drawer-side {
-    pointer-events: none;
-    position: fixed;
-    top: 200px;
-    align-items: flex-start;
-    justify-items: start;
-    margin: 5px;
-    padding: 0;
-    width: 200px;
-    position: fixed;
-    height: 100%;
-    transition: left 0.5s ease;
-  }
-  /* Active/current link */
-  a.active {
-    background-color: #04aa6d;
-    color: white;
-  }
-
-  /* Links on mouse-over */
-  a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-  }
-
-  .sidebar.active {
-    left: 0px;
-  }
-
-  /* Icône burger */
-  .burger-icon span {
-    display: block;
-    width: 35px;
-    height: 5px;
-    background-color: black;
-    margin: 6px 0;
-  }
-
-  .main-content-wrapper {
-    margin-left: 200px;
-    padding: 1px 16px;
-    height: 100%;
-  }
-
-  .main-content {
-    margin: auto;
-    max-width: 1100px;
-  }
-
-  @media only (min-width: 600px) {
-    .main-content-wrapper {
-      margin-left: 0px;
+.drawer-side{
+  pointer-events: none;
+  position: fixed;
+  top: 200px;
+  align-items: flex-start;
+  justify-items: start;
+  margin:5px;
+  padding: 0;
+  width: 200px;
+  position: fixed;
+  height: 100%;
+  transition: left 0.5s ease;
+}
+    /* Active/current link */
+    a.active {
+      background-color: #04aa6d;
+      color: white;
     }
-  }
-</style>
+
+    /* Links on mouse-over */
+    a:hover:not(.active) {
+      background-color: #555;
+      color: white;
+    }
+
+    .sidebar.active {
+      left: 0px;
+    }
+
+    /* Icône burger */
+    .burger-icon span {
+      display: block;
+      width: 35px;
+      height: 5px;
+      background-color: black;
+      margin: 6px 0;
+    }
+
+    .main-content-wrapper {
+      margin-left: 200px;
+      padding: 1px 16px;
+      height: 100%;
+    }
+
+
+    .main-content {
+      margin: auto;
+      max-width: 1100px;
+    }
+
+    @media only (min-width: 600px) {
+      .main-content-wrapper {
+        margin-left: 0px;
+      }
+    }
+  </style>
+</html>
