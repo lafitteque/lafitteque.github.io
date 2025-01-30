@@ -69,7 +69,7 @@ h2::before {
 
 h3 {
   counter-reset: subsubsection-counter;
-  counter-increment: subsection-counter exercice-counter;
+  counter-increment: subsection-counter;
   /* Incrémente le compteur de sous-section */
 }
 
@@ -106,8 +106,9 @@ h4::before {
 }
 
 table {
+  align-items: center;
   border-collapse: collapse;
-  /* Fusionner les bordures des cellules */
+  margin: 0.5rem;
 }
 
 table,
@@ -128,4 +129,8 @@ td {
 li:before { 
   content: "-";
   padding-right: 0.5rem;
+}
+
+li{
+  margin-bottom: 0.5rem;
 }
