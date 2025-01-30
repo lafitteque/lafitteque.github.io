@@ -1,6 +1,7 @@
 ---
 title: "Cours de logique"
 tag: ["autre"]
+layout: '../layouts/Base.astro'
 ---
 
 import Base from '../layouts/Base.astro'
@@ -12,8 +13,6 @@ import Tableofcontents from '../components/Tableofcontents.astro'
 import Katex from '../components/Katex.astro'
 import Indent from '../components/Indent.astro'
 import Fil from '../components/Fil.astro'
-
-<Base>
 
 # Chapitre 1  - Logique et ensembles
 
@@ -27,19 +26,22 @@ import Fil from '../components/Fil.astro'
 
 
 <Hideable type="exemple" titre=" proposition"> 
-  Regardons les deux propositions suivantes : $ \cP_1 $ : "tout entier naturel est pair" est fausse. $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
+  $ \cP_1 $ : "tout entier naturel est pair" est fausse.
+  
+  $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
 </Hideable>
 
-<Item type="definition" titre="table de vérité"> On appelle table de vérité un tableau à double entrée définissant la valeur d'une fonction logique
-pour chacune des combinaisons possibles des entrées. </Item>
+{/*<Item type="definition" titre="table de vérité"> On appelle table de vérité un tableau à double entrée définissant la valeur d'une fonction logique
+pour chacune des combinaisons possibles des entrées. </Item>*/}
 
 <Item type="definition" titre="conjonction, disjonction et négation"> 
+
 Soient A et B deux propositions. On appelle : 
 - "A et B" la conjonction de A et de B
 - "A ou B" la disjonction de A et de B
 - "non A" la négation de A
 
-La table de vérité ci-dessous définit ces opérations selon la valeur de vérité de A et de B.
+La **table de vérité** ci-dessous définit ces opérations selon la valeur de vérité de A et de B.
 
 | A  | B | A et B |  A ou B |
 |---|---|---|---|
@@ -435,7 +437,9 @@ la réunion disjointe sera notée $A \biguplus B$.
 
 Soit $E$ un ensemble et $A_1, \, A_2 , \, \dotsm , \, A_n$ des sous-ensembles de $E$ et où $n \in \N^*$. On dit que $A_1, \, A_2 , \, \dotsm , \, A_n$ forme une partition de $E$ si
 
-$$E = A_1 \biguplus A_2 \biguplus \dotsm \biguplus A_n$$
+$$
+E = A_1 \biguplus A_2 \biguplus \dotsm \biguplus A_n
+$$
 </Item>
 
 
@@ -500,11 +504,15 @@ Quand $E$ admet un minorant __ET__ un majorant, on dit que $E$ est **borné**
 <Item type="definition" titre="extremûms">
 Soit $E \subset \R$ un ensemble non vide. Le **minimum** de $E$, s'il existe, est noté $min \; E$. C'est l'élément $a$ de $E$ tel que :
 
-$$ \forall x \in E, x \leqslant E$$
+$$ 
+\forall x \in E, x \leqslant E
+$$
 
 De même, le **maximum** de $E$, s'il existe, est l'élément $b$ (noté $max \;E$) tel que :
 
-$$ \forall x \in E, x \geqslant E$$
+$$ 
+\forall x \in E, x \geqslant E
+$$
 
 Le minimum et le maximum d'un ensemble, quand ils existent, sont appelés les **extremûms** de cet ensemble.
 </Item>
@@ -525,5 +533,3 @@ Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appar
 | majorants | $8 \v 424 \, 242 \v \dotsm$| $1 \v \pi \v \dotsm$| n'en a pas |
 
 </Hideable>
-</Base>
-

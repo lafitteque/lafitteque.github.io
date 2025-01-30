@@ -1,90 +1,21 @@
 ---
-//import "../styles/global.css"; // Importe le CSS global
-import { suid } from "../libs/utils";
-
-const uniqueId = suid(); // Générer un uniqueId pour chaque instance du composant
-const { title, content } = Astro.props;
-
-const params = {};
+import "../styles/global.css"; // Importe le CSS global
 
 // générer le svg
-
-//
-// const svg = `url(data:image/svg+xml,<svg viewBox="0 0 100 100"
-// xmlns="http://www.w3.org/2000/svg"><path fill="transparent" stroke="dark"
-// //  d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 Z "></path></svg>)`;
-
-const svg = `url('data:image/svg+xml,<svg viewBox="50 50 150 150" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="blue" stroke-width="10" d=" M50,0 c 50,0,50,50,0,50 c -50,0,-50,50,0,50 "></path></svg>')`;
+const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="black" stroke-width="10" d="M 0,0 C 0,50,50,50,50,100 C 50,150,0,150,0,200 "></path></svg>')`;
 ---
 
+<!-- Amélioration : save le svg dans src/assets/ -->
 <style define:vars={{ svg }}>
-  .wave-block {
-    display: flex;
-    align-items: stretch;
-    color: black;
-    margin-left: 2rem;
-    background: red;
-  }
-
   .wave {
-    min-width: 16px;
-    /* height: 100%; */
-    /* min-height: 30px; */
     background-image: var(--svg);
-    background-repeat: repeat-y;
-    /* flex: 0 0 auto;
-    width: 12px;
-    align-items: center;
-    position: relative;
-    color: black; */
-  }
-
-  /* .wave svg {
-    display: block;
-    width: 100%;
-    color: black;
-  } */
-
-  .content {
-    /* background: red; */
   }
 </style>
 
-<div class="wave-block" id={`wave-block-${uniqueId}`}>
-  <div class="wave" style="padding: 0rem 0.5rem;">
-    <!-- Ajout du uniqueId dans l'ID de l'élément SVG -->
-    <!-- <svg class="dynamic-wave" id={`dynamic-wave-${uniqueId}`} xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"></svg> -->
-  </div>
-  <div class="content" id={`content-${uniqueId}`}>
+<div class="flex items-stretch stroke-primary ml-8 mb-4">
+  <div class="wave min-w-[16px] repeat-y"></div>
+  <div>
     <b> Remarque : </b>
     <slot />
   </div>
 </div>
-
-<!-- Charger le script côté client -->
-<!-- <script type="module">
-  import generateWave from '/scripts/dynamicWave.js';
-  document.addEventListener("DOMContentLoaded", () => {
-  requestAnimationFrame(() => {
-    const headers = document.querySelectorAll('.wave-block');
-    headers.forEach(header => {
-      const uniqueId = header.id.slice(11);
-      const content = document.querySelector(`#content-${uniqueId}`);
-      const waveSvg = document.querySelector(`#dynamic-wave-${uniqueId}`);
-
-      if (content && waveSvg) {
-        const rect = content.getBoundingClientRect();
-        const height = rect.height;
-
-        const amplitude = 10;
-        const frequency = 2.5;
-        const pathData = generateWave(height, amplitude, frequency);
-
-        waveSvg.setAttribute('viewBox', `-${amplitude} 0 ${2 * amplitude} ${height}`);
-        waveSvg.setAttribute('height', height);
-        waveSvg.innerHTML = `<path d="${pathData}" fill="none" stroke="#707070" stroke-width="2" />`;
-      }
-    });
-  });
-});
-</script> -->

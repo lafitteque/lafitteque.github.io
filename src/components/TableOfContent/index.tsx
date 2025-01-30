@@ -23,14 +23,11 @@ class Prefixer {
   counts: number[] = []; // [1,1.A,1.A.1,   1]
 
   getPrefix(depth = 0) {
-    console.log("Depth : ", depth);
     if (!this.counts[depth]) {
       this.counts.push(0);
-      console.log("pushed 0 ");
     }
 
     this.counts[depth] += 1;
-    console.log("current counts : ", this.counts.join(", "));
     this.counts = this.counts.slice(0, depth + 1);
     return this.counts.map(getInput).join(".") + " ";
   }

@@ -1,0 +1,58 @@
+<div>
+    <div id="sketch-holder"></div>
+</div>
+<script type="module" is:inline>
+    import {Graph, MathFunction, GraphInfo} from "/scripts/graphClasses.js";
+    var myGraph;
+    var info;
+    var epsilon = 0.5;
+
+    function setup() {
+        var canvasDOM = createCanvas(200, 40);
+        var holder = document.getElementById("sketch-holder");
+        holder.appendChild(canvas);
+        canvasDOM.mouseClicked(customMouseClicked);
+        background(0);
+        fill(255);
+        text("Cliquer pour voir le graphique", 20, 25);
+    }
+
+    function customMouseClicked() {
+        var firstTime = height === 40;
+        var a = firstTime ? 2 : myGraph.graphToCoord(mouseX, mouseY)[0];
+
+        resizeCanvas(
+            min(Math.floor((window.innerWidth * 0.7) / 2) * 2, 900),
+            400,
+        );
+        background(0);
+
+        info = new GraphInfo(-1, 5, -1, 5, 10, 20, 2);
+        myGraph = new Graph(info);
+
+        noStroke();
+        fill(100,100,100)
+        rect(
+            info.offset + info.tickOffset,
+            myGraph.coordToGraph(0,carre(a) + epsilon)[1],
+            info.width2 - info.tickOffset,
+            info.unitStepY * 2 * epsilon
+        )
+
+        myGraph.drawGraphAxes();
+        myGraph.plotFunction(carre);
+
+        
+        myGraph.functions.map((f) =>
+            f.visualisationContinuite(info, myGraph, a, epsilon),
+        );
+
+        console.log('valeur de a :', a );
+    }
+
+    function carre(x) {
+        return x * x;
+    }
+
+    window.setup = setup;
+</script>

@@ -1,7 +1,5 @@
 ---
 import "../styles/global.css"; // Importe le CSS global
-
-import { suid } from "../libs/utils";
 interface Props {
   type: string;
   titre: string;
@@ -9,34 +7,12 @@ interface Props {
 const { type, titre } = Astro.props;
 const typeUpper = type.charAt(0).toUpperCase() + type.slice(1);
 ---
-
-<details>
-  <summary> {typeUpper} : {titre} </summary>
-  <div class="content">
+<div tabindex="0" class="collapse ml-8 w-auto">
+  <input type="checkbox" />
+  <div class="collapse-title bg-secondary font-bold cursor-pointer text-lg  rounded-none hover:bg-tertiary"> {typeUpper} : {titre} </div>
+  <div class="collapse-content bg-secondary text-lg ">
     <slot />
   </div>
-</details>
+</div>
 <script></script>
-<style>
-  .content {
-    padding: 8px;
-  }
-  details {
-    margin-bottom: 2rem;
-    margin-left: 5rem;
-    background-color: #fafafa;
-    transition: margin 1s;
-  }
 
-  details[open] {
-    /* background-color: #fafafa; */
-    /* transition: max-height 5s ease; Transition fluide */
-  }
-  summary {
-    padding: 10px 15px; /* Augmente l'espace autour du texte */
-    font-size: 20px;
-    align-items: left;
-    font-weight: bold;
-    cursor: pointer;
-  }
-</style>

@@ -1,6 +1,7 @@
 ---
 title: "Nombres complexes et trigonométrie"
 tag: ["autre"]
+layout: '../layouts/Base.astro'
 ---
 import Base from '../layouts/Base.astro'
 import Hideable from '../components/Hideable.astro'
@@ -11,8 +12,6 @@ import Tableofcontents from '../components/Tableofcontents.astro'
 import Katex from '../components/Katex.astro'
 import Indent from '../components/Indent.astro'
 import Fil from '../components/Fil.astro'
-
-<Base>
 
 # Chapitre 3 - Nombres complexes et trigonométrie
 
@@ -34,7 +33,9 @@ Autrement dit, $(x \v y ) \in \R^2$ appartient au cercle unité si et seulement 
 
 Soit $\Point{x}{y}$ un point du cercle trigonométrique. Si l'on note $\theta$ la longueur de l'arc de cercle partant de $\Point{1}{0}$ et allant jusqu'au point $\Point{x}{y}$ en s'enroulant dans le sens trigonométrique (anti-horaire), on note :
 
-$$ \begin{cases} x = \cos(\theta) \\ y = \sin(\theta) \end{cases}$$
+$$ 
+\begin{cases} x = \cos(\theta) \\ y = \sin(\theta) \end{cases}
+$$
 
 </Item> 
 
@@ -50,7 +51,9 @@ La définition rigoureuse d'un angle n'est pas au programme d'aucune filière de
 
 <Item type='consequence' titre='somme des carrés des fonctions trigonométriques'>
 
-$$ \forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1$$
+$$ 
+\forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -61,7 +64,9 @@ Soit $\theta \in \R$, $\Point{\cos(\theta)}{\sin(\theta)}$ est un point du cercl
 <Item type='definition' titre="périodicité d'une fonction">
 Soit $f$ une fonction définie sur $\R$ et $T \in \R^*$. On dit que $f$ est $T$-périodique si :
 
-$$\forall x \in \R \v f(x+T) = f(x) $$
+$$
+\forall x \in \R \v f(x+T) = f(x) 
+$$
 
 On dit qu'une fonction $f$ est périodique s'il existe $T \in \R^*$ tel que $f$ soit $T$-périodique.
 </Item>
@@ -199,7 +204,9 @@ Soit $\theta \in \R$, on a :
 
 Soient $\omega \in \R$ et $(a,b) \in \R^2$. Il existe $A \in \R$ et $\phi \in \R$ tels que :
 
-$$\forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$$
+$$
+\forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )
+$$
 
 
 **Méthode :**
@@ -271,7 +278,9 @@ L'élément crucial est la démonstration de la première limite qui se fait de 
 
 Soit $x \in \deftan $, on définit la fonction tangente sur ce même ensemble ainsi :
 
-$$ \tan(x) = \dfrac{\sin(x)}{\cos(x)}$$
+$$ 
+\tan(x) = \dfrac{\sin(x)}{\cos(x)}
+$$
 
 </Item>
 
@@ -580,7 +589,9 @@ D'où les inégalités de la proposition. Les cas d'égalités correspondent aux
 <Item type='proposition' titre='module et conjugaison'>
 Soit $z \in \C$, on a :
 
-$$ z \overline{z} = |z|^2$$
+$$ 
+z \overline{z} = |z|^2
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -589,7 +600,9 @@ $$ z \overline{z} = |z|^2$$
 
   Soit $z \in \C$, on pose $a = \Re{z}$ et $b = \Im{z}$.
 
-  $$ z \overline{z} = (a + ib)(a - ib) = a^2 -(ib)^2 = a^2 + b^2 = |z|^2$$
+  $$ 
+  z \overline{z} = (a + ib)(a - ib) = a^2 -(ib)^2 = a^2 + b^2 = |z|^2
+  $$
 </Hideable>
 
 <Item type='definition' titre='liés et positivement liés'>
@@ -599,7 +612,9 @@ On dit que $z$ et $z'$ deux complexes sont liés (resp. positivement liés) s'il
 <Item type='theoreme' titre='inégalité triangulaire'>
 Soient $z$ et $z'$ deux complexes. On a :
 
-$$ \mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|$$
+$$ 
+\mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|
+$$
 
 Il y a égalité à droite (resp. à gauche) si et seulement si $z$ et $z'$ sont positivement liés (resp. négativement liés).
 </Item>
@@ -649,7 +664,9 @@ Par disjonction de cas, on a trouvé toutes les solutions aux cas d'égalité, d
 <Item type='proposition' titre='inégalité triangulaire généralisée'>
 Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. On a :
 
-$$\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $$
+$$
+\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| 
+$$
 
 Avec égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient positivement liés à $z_i$ pour $k  \in \defentiersn$.
 </Item>
@@ -690,7 +707,9 @@ Mais $z_{n+1}$ et $\Lambda z_k$ sont positivement liés. Comme on a supposé que
 <Item type='defprop' titre='forme trigonométrique'>
 Soit $z \in \C$. Il existe $\theta \in \R$ tel que :
 
-$$z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big) $$
+$$
+z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big) 
+$$
 
 Cette écriture de $z$ est une **forme trigonométrique** de $z$.
 </Item>
@@ -707,7 +726,9 @@ $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$
 <Item type='proposition' titre='identification par forme trigonométrique'>
 Soient $z$ et $z'$ deux complexes dont une éxriture sous forme trigonométrique est $z = |z| \Big( \cos(\theta_1) + i \sin(\theta_1) \Big)$ et $z' = |z'| \Big( \cos(\theta_2) + i \sin(\theta_2) \Big)$. On a :
 
-$$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$$
+$$ 
+z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -764,7 +785,9 @@ Soit $z \in \C$ et $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$ où $\t
 <Item type='proposition' titre='identification par forme exponentielle'>
 Soient $z$ et $z'$ deux complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| e^{i \theta_2}$. On a :
 
-$$ z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$$
+$$ 
+z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -823,12 +846,16 @@ Par somme on déduit la première égalité et par différence on déduit la sec
 <Item type='definition' titre='exponentielle complexe'>
 Soit $z \in \C$, on définit $e^z$ comme suit :
 
-$$e^z = e^{|z|}e^{i\Arg(z)}$$
+$$
+e^z = e^{|z|}e^{i\Arg(z)}
+$$
 </Item>
 
 <Item type='proposition' titre="multiplicativité de l'exponentielle complexe">
 
-$$\forall (z,z') \in \C^2 \v e^{z+z'} = e^ze^{z'}$$
+$$
+\forall (z,z') \in \C^2 \v e^{z+z'} = e^ze^{z'}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -917,7 +944,9 @@ On appelle cercle unité l'ensemble $\U = \{ z \in \C \mid |z| = 1 \}$.
 <Item type='defprop' titre='racine n-ième'>
 Soit $z \in \C^*$. On appelle racine n-ième de $z$ les solutions de l'équation suivante d'inconnue $r \in \C$ :
 
-$$ r^n = z $$
+$$ 
+r^n = z 
+$$
 
 Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$
 </Item>
@@ -978,7 +1007,9 @@ On a bien montré que tout élément de $\U_n$ était dans $\U_m$ d'où $\U_n \s
 
 Soient $\omega_1 \v \omega_2 \v \dotsm \v \omega_n$ les racines n-ièmes de l'unité où $n \in \N \v n \geqslant 2$. On a :
 
-$$\somme{i = 1}{n} \omega_i = 0$$
+$$
+\somme{i = 1}{n} \omega_i = 0
+$$
 </Item>
 
 <Hideable type='dmonstration' titre=''>
@@ -1021,6 +1052,3 @@ De par l'ordre des priorités opératoires, la translation est appliquée après
    -min( (a-b)/(1+ab)) <= tan(pi/n) où a,b dans un ensemble à n > 2 éléments
    - noyau de dirichlet et fejer
 */}
-
-</Base>
-

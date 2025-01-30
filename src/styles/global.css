@@ -2,11 +2,18 @@
    Styles globaux
 ========================== */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 /* Police par défaut - Computer Modern */
 body {
-  font-family: 'CMU Serif', 'Computer Modern', serif; /* Utilisation de Computer Modern */
-  font-size: 1.2rem; /* Vous pouvez ajuster la taille si nécessaire */
-  counter-reset: section-counter; /* Réinitialisation du compteur global */
+  font-family: 'CMU Serif', 'Computer Modern', serif;
+  /* Utilisation de Computer Modern */
+  font-size: 1.2rem;
+  /* Vous pouvez ajuster la taille si nécessaire */
+  counter-reset: section-counter;
+  /* Réinitialisation du compteur global */
 }
 
 
@@ -15,20 +22,30 @@ body {
 ========================== */
 
 /* Taille des titres */
-h1, .heading-h1 {
-  font-size: 64px;
-  margin: 1rem 10rem;
-  text-align: center;
-}
-h2, .heading-h2 {
+h1,
+.heading-h1 {
   font-size: 48px;
-  margin: 2rem 8rem;
+  margin: 1rem 1rem;
+  text-align: center;
+  font-weight: bolder;
 }
-h3, .heading-h3 {
-  font-size: 32px;
-  margin: 1rem 4rem;
+
+h2,
+.heading-h2 {
+  font-size: 36px;
+  margin: 1rem 0rem;
+  font-weight: bold;
 }
-h4, .heading-h4 {
+
+h3,
+.heading-h3 {
+  font-size: 28px;
+  margin: 1rem 2rem;
+  font-weight: bold;
+}
+
+h4,
+.heading-h4 {
   font-size: 28px;
 }
 
@@ -38,51 +55,77 @@ h4, .heading-h4 {
 ========================== */
 
 h2 {
-  counter-reset: subsection-counter  exercice-counter;
-  counter-increment: section-counter; /* Incrémente le compteur de section */
-  
+  counter-reset: subsection-counter exercice-counter;
+  counter-increment: section-counter;
+  /* Incrémente le compteur de section */
+
 }
+
 h2::before {
   content: counter(section-counter) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
+
 h3 {
   counter-reset: subsubsection-counter;
-  counter-increment: subsection-counter; /* Incrémente le compteur de sous-section */
+  counter-increment: subsection-counter exercice-counter;
+  /* Incrémente le compteur de sous-section */
 }
+
 h3::before {
   content: counter(section-counter) "." counter(subsection-counter, upper-alpha) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
+
 h4 {
-  counter-increment: subsubsection-counter; /* Incrémente le compteur de sous-sous-section */
+  counter-increment: subsubsection-counter;
+  /* Incrémente le compteur de sous-sous-section */
 }
+
 h4::before {
   content: counter(section-counter) "." counter(subsection-counter, upper-alpha) "." counter(subsubsection-counter) ") ";
   font-weight: bold;
   margin-right: 10px;
 }
+
 .item-container {
-  counter-increment: item-counter; /* Incrémente le compteur pour chaque item */
+  counter-increment: item-counter;
+  /* Incrémente le compteur pour chaque item */
 }
+
 .exercice-header {
-  counter-increment: exercice-counter; /* Réinitialisation du compteur global */
+  counter-increment: exercice-counter;
+  /* Réinitialisation du compteur global */
 }
+
 .exercice-number::after {
   content: counter(section-counter) "." counter(exercice-counter);
   font-weight: bold;
 }
 
 table {
-  border-collapse: collapse; /* Fusionner les bordures des cellules */
-}
-table, th, td {
-  border: 1px solid black; /* Bordure noire autour des cellules */
-}
-th, td {
-  padding: 8px; /* Espacement autour du texte */
-  text-align: center; /* Centrer le contenu */
+  border-collapse: collapse;
+  /* Fusionner les bordures des cellules */
 }
 
+table,
+th,
+td {
+  border: 1px solid black;
+  /* Bordure noire autour des cellules */
+}
+
+th,
+td {
+  padding: 8px;
+  /* Espacement autour du texte */
+  text-align: center;
+  /* Centrer le contenu */
+}
+
+li:before { 
+  content: "-";
+  padding-right: 0.5rem;
+}
