@@ -106,8 +106,9 @@ h4::before {
 }
 
 table {
+  align-items: center;
   border-collapse: collapse;
-  /* Fusionner les bordures des cellules */
+  margin: 0.5rem;
 }
 
 table,

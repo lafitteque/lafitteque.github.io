@@ -43,12 +43,12 @@ Soient A et B deux propositions. On appelle :
 
 La **table de vérité** ci-dessous définit ces opérations selon la valeur de vérité de A et de B.
 
-| A  | B | A et B |  A ou B |
-|---|---|---|---|
-| Vrai | Vrai | Vrai | Vrai |
-| Vrai | Faux | Faux | Vrai |
-| Faux | Vrai | Faux | Vrai |
-| Faux | Faux | Faux | Faux |
+| A  | B || A et B |  A ou B |
+|---|---|---|---|---|
+| Vrai | Vrai || Vrai | Vrai |
+| Vrai | Faux || Faux | Vrai |
+| Faux | Vrai || Faux | Vrai |
+| Faux | Faux || Faux | Faux |
 </Item>
 
 <Remarque>
@@ -76,20 +76,21 @@ Donner la table de vérité de (A et B) ou C où A, B et C sont trois propositio
 
 Répondre à la question c'est dire si "A et B" est vrai ou bien si C est vrai. Pour cela, on a besoin de leur table de vérité.
 
-| A  | B | C | A et B | (A et B) ou C | Explication
-|---|---|---|---|---|---|
-| Vrai | Vrai | Vrai | Vrai | Vrai |  Ici, A et B est vrai, il n'y a même pas besoin de vérifier C pour avoir (A et B) ou C. | 
-| Vrai | Vrai | Faux | Vrai | Vrai | idem |
-| Vrai | Faux | Vrai | Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également.|
-| Vrai | Faux | Faux | Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
-| Faux | Vrai | Vrai | Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
-| Faux | Vrai | Faux | Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
-| Faux | Faux | Vrai | Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
-| Faux | Faux | Faux | Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| A  | B | C || A et B | (A et B) ou C | Explication
+|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai |  Ici, A et B est vrai, il n'y a même pas besoin de vérifier C pour avoir (A et B) ou C. | 
+| Vrai | Vrai | Faux || Vrai | Vrai | idem |
+| Vrai | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également.|
+| Vrai | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| Faux | Vrai | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
+| Faux | Vrai | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| Faux | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
+| Faux | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
 </Hideable>
 
 
 <Item type='proposition' titre='commutativité et associativité de la conjonction ainsi que de la disjonction'> 
+
 On a les propriétés suivantes : 
 - "A et B" a la même valeur de vérité que "B et A"
 - "A ou B" a la même valeur de vérité que "B ou A"
@@ -99,9 +100,41 @@ On a les propriétés suivantes :
 
 
 <Hideable type='démonstration' titre=' Commutativité'>
+
+**Commutativité :**
 La table de vérité de "A et B" est la même que celle de "B et A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A et de B.
 
 Il en va de même pour "A ou B".
+
+**Associativité de la conjonction :** On dresse une table de vérité :
+
+| A | B | C || A et B | B et C| (A et B) et C | A et (B et C) |
+|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Faux | Faux | Faux |
+| Vrai | Faux | Vrai || Faux | Faux | Faux | Faux |
+| Vrai | Faux | Faux || Faux | Faux | Faux | Faux |
+| Faux | Vrai | Vrai || Faux | Vrai | Faux | Faux |
+| Faux | Vrai | Faux || Faux | Faux | Faux | Faux |
+| Faux | Faux | Vrai || Faux | Faux | Faux | Faux |
+| Faux | Faux | Faux || Faux | Faux | Faux | Faux |
+
+Les tables de vérités de "(A et B) et C" et de "A et (B et C)" coïncident et donc ces affirmations ont même valeur de vérité.
+
+**Associativité de la disjonction :** On dresse une table de vérité :
+
+| A | B | C || A ou B | B ou C || (A ou B) ou C | A ou (B ou C) |
+|---|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Vrai || Vrai | Vrai |
+| Vrai | Faux | Vrai || Vrai | Faux || Vrai | Vrai |
+| Vrai | Faux | Faux || Vrai | Vrai || Vrai | Vrai |
+| Faux | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai |
+| Faux | Vrai | Faux || Vrai | Vrai || Vrai | Vrai |
+| Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai |
+| Faux | Faux | Faux || Faux | Faux || Faux | Faux |
+
+Les tables de vérités de "(A ou B) et C" et de "A ou (B ou C)" coïncident et donc ces affirmations ont même valeur de vérité.
 </Hideable>
 
 
@@ -136,7 +169,7 @@ Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident a
 <Hideable type='démonstration' titre=' Distributivité de la conjonction sur la disjonction (et réciproquement)'>
 Dressons la table de vérité des propositions.
 
-Etudions d'abord "(A et B) ou C" :
+**Etudions d'abord "(A et B) ou C" :**
 
 | A  | B | C || A et B | (A et B) ou C || A ou C | B ou C | (A ou c) et (B ou C) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -149,7 +182,7 @@ Etudions d'abord "(A et B) ou C" :
 | Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai | Vrai |
 | Faux | Faux | Faux || Faux | Faux || Faux | Faux | Faux |
 
-Etudions maintenant "(A ou B) et C" :
+**Etudions maintenant "(A ou B) et C" :**
 
 | A  | B | C || A ou B | (A ou B) et C || A et C | B et C | (A et c) ou (B et C) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -163,10 +196,11 @@ Etudions maintenant "(A ou B) et C" :
 | Faux | Faux | Faux || Faux | Faux || Faux | Faux | Faux |
 
 
-Les tables de vérité coïncident comme indiqué dans la propriété, c.q.f.d.
+Les tables de vérité coïncident comme indiqué dans la propriété.
 </Hideable>
 
 <Item type='definition' titre='implication et équivalence'>
+
 Soient A et B deux propositions.
 - On note "A $ \Rightarrow $ B" l'affirmation "A implique B"
 - On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (aussi abrégé en ssi)
