@@ -65,7 +65,9 @@ En pratique, le domaine de définition est donné par :
 
 On dit que deux fonctions $f$ et $g$ définies de $E$ dans $F$ sont égales et on note $f = g$ si :
 
-$$\forall x \in E \v f(x) = g(x)$$
+$$
+\forall x \in E \v f(x) = g(x)
+$$
 </Item>
 
 <Item type='definition' titre="restriction d'une fonction">
@@ -139,7 +141,9 @@ On en déduit que les racines de $x^2 - 6x + \dfrac{2}{3}$ sont $x_{\pm} = \dfra
 
 Soit $A$ un sous-ensemble de $E$. On pose la fonction suivante nomée fonction caractéristique de $A$ sur $E$ :
 
-$$\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 0 \text{ si } x \notin A \\ 1 \text{ sinon} \end{cases} \end{cases}$$
+$$
+\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 0 \text{ si } x \notin A \\ 1 \text{ sinon} \end{cases} \end{cases}
+$$
 </Item>
 
 <Remarque titre=''>
@@ -207,7 +211,9 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 <Item type='proposition' titre="caractérisation d'un ensemble par sa fonction caractéristique">
 Soient $A$ et $B$ deux sous-ensembles de $E$.
 
-$$A = B \ssi \indicatrice_A = \indicatrice_B$$
+$$
+A = B \ssi \indicatrice_A = \indicatrice_B
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -227,7 +233,9 @@ Dans cette sous-section $E$ et $F$ désigneront deux ensembles (supposés d'arri
 <Item type='definition' titre='injectivité'>
 Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **injective** si et seulement si :
 
-$$\forall (x \v y) \in E^2 \v \Bigg( f(x) = f(y) \Rightarrow x = y \Bigg) $$
+$$
+\forall (x \v y) \in E^2 \v \Bigg( f(x) = f(y) \Rightarrow x = y \Bigg) 
+$$
 </Item>
 
 En clair, être injectif c'est ne pas parcourir deux fois la même valeur de l'ensemble d'arrivée.
@@ -243,7 +251,9 @@ En clair, être injectif c'est ne pas parcourir deux fois la même valeur de l'e
 <Item type='definition' titre='surjective'>
 Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **surjective** si et seulement si :
 
-$$\forall y \in F \v \exists x \in E \mid f(x) = y$$
+$$
+\forall y \in F \v \exists x \in E \mid f(x) = y
+$$
 </Item>
 
 En clair, être surjectif c'est balayer toutes les valeurs de l'ensemble d'arrivée.
@@ -276,7 +286,9 @@ Dans cette sous-section $E$ et $F$ désigneront deux ensembles (supposés d'arri
 
 Soit $f$ une fonction de $E$ dans $f$ et $A$ un sous-ensemble de $E$. On appelle image de $A$ par $f$ l'ensemble suivant : 
 
-$$f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x) = y \Big) \}$$
+$$
+f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x) = y \Big) \}
+$$
 </Item>
 
 <Item type='proposition' titre=''>
@@ -291,7 +303,9 @@ Si $x \in A$ alors $f(x) \in f(A)$, mais $x \in A \subset B$ donc $f(x) \in f(B)
 
 Soit $f$ une fonction de $E$ dans $f$ et $B$ un sous-ensemble de $F$. On appelle image réciproque de $B$ par $f$ l'ensemble suivant : 
 
-$$f^{-1}(B) = \{ x \in E \mid f(x) \in B \}$$
+$$
+f^{-1}(B) = \{ x \in E \mid f(x) \in B \}
+$$
 </Item>
 
 
@@ -554,7 +568,9 @@ On dit qu'une relation binaire est une relation d'équivalence si elle est refl�
 <Item type='definition' titre='divisibilité'>
 Soient $n$ et $m$ deux entiers. On dit que $n$ divise $m$ (que l'on note souvent $n \mid m$) si :
 
-$$\exists k \in \Z \mid m = k.n$$
+$$
+\exists k \in \Z \mid m = k.n
+$$
 </Item>
 
 <Item type='consequence' titre='inégalité dans les positifs'>
@@ -565,7 +581,9 @@ Si $(n\v m) \in N^2$, alors $n \mid m \Rightarrow n \leqslant m$
 <Item type='definition' titre='congruence dans les entiers'>
 Soient $n\v m \v q$ trois entiers relatifs où $q \neq 0$. On dit que $n$ est congru à $m$ modulo $q$ s'il existe $k \in \Z$ tel que :
 
-$$  m-n = k.q$$
+$$  
+m-n = k.q
+$$
 
 C'est à dire si $q$ divise $m-n$.
 </Item>
@@ -573,7 +591,9 @@ C'est à dire si $q$ divise $m-n$.
 <Item type='definition' titre='congruence dans les réels'>
 Soient $a\v b \v x$ trois réels où $x \neq 0$. On dit que $a$ est congru à $b$ modulo $x$ s'il existe $k \in \Z$ tel que :
 
-$$  b-a = k.x$$
+$$  
+b-a = k.x
+$$
 
 C'est à dire si $x$ divise $b-a$.
 </Item>
@@ -631,7 +651,9 @@ On appelle relation d'ordre une relation binaire refléxive, antisymétrique et 
 <Item type='definition' titre="relation d'ordre totale">
 On dit qu'une relation d'ordre sur $E$ est totale si :
 
-$$\forall (x \v y) \in E^2 \v x \cR y \text ou y \cR x$$
+$$
+\forall (x \v y) \in E^2 \v x \cR y \text ou y \cR x
+$$
 </Item>
 
 

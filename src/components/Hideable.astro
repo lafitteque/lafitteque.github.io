@@ -7,10 +7,10 @@ interface Props {
 const { type, titre } = Astro.props;
 const typeUpper = type.charAt(0).toUpperCase() + type.slice(1);
 ---
-<div tabindex="0" class="collapse ml-20 w-auto">
+<div tabindex="0" class="collapse ml-8 w-auto">
   <input type="checkbox" />
-  <div class="collapse-title bg-secondary font-bold cursor-pointer text-base  rounded-none "> {typeUpper} : {titre} </div>
-  <div class="collapse-content bg-secondary text-base ">
+  <div class="collapse-title bg-secondary font-bold cursor-pointer text-lg  rounded-none hover:bg-tertiary"> {typeUpper} : {titre} </div>
+  <div class="collapse-content bg-secondary text-lg ">
     <slot />
   </div>
 </div>

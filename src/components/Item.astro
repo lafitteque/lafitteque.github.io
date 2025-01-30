@@ -56,23 +56,19 @@ const itemText = textValues[type];
 
 <!-- Amélioration : Ajouter espace auto-fill entre titre et tag -->
 <div
-  class="item-container"
+  class="item-container mt-2"
   style={`border: ${itemWidth}px solid ${borderColor};border-radius: 5px;border-top: none;border-right: none;border-bottom: none`}
 >
-  <div class="item-header p-1
-    min-h-8 flex items-center text-lg font-semibold bg-red" style={`background-color: ${itemColor};`}>
-    <span class="item-number text-base w-8 h-8 text-center rounded-full mr-4 inline-block"></span>
+  <div class=" p-1 
+    min-h-10 text-lg font-semibold bg-red" style={`background-color: ${itemColor};`}>
+    <div class="float-left"><span class=" item-number text-base w-8 h-8 text-center rounded-full mr-4 "></span>
     <strong>{itemText} : {titre}</strong>
-    <span class="ellipsis"></span>
-    <span style="align-content: right;">
-      <span
-        style=`border: solid ${tagweight}px #ff4545; margin-right: 1rem;border-radius: 10%;`
-      >
-        {tag}</span
-      >
-    </span>
   </div>
-  <div class="item-body p-4 bg-secondary">
+    <div class="float-right" style=`border: solid ${tagweight}px #ff4545; margin-right: 1rem;border-radius: 10%;`>
+        {tag}
+    </div>
+  </div>
+  <div class="item-body p-4 overflow-x-auto bg-secondary">
     <div style="margin: 0 5px;">
       <slot />
     </div>

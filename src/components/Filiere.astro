@@ -3,11 +3,11 @@ const filieres = ["MPSI", "MP", "PCSI", "PC", "PTSI", "PT"];
 import "../styles/global.css"; // Importe le CSS global
 ---
 <ul class="menu menu-horizontal px-1">
-  <li>
+  <li class=" before:content-[]">
     <details>
       <summary>Filière</summary>
       <ul class="p-2">
-        {filieres.map(filiere => <li ><a href={`../pages/${filiere}`}>{filiere.toUpperCase()}</a></li>)}
+        {filieres.map(filiere => <li class=" before:content-[]" ><a href={`../pages/${filiere}`}>{filiere.toUpperCase()}</a></li>)}
       </ul>
     </details>
   </li>

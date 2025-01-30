@@ -4,7 +4,7 @@ const { titre } = Astro.props;
 ---
 
 <div>
-  <div class="ml-8 p-0 mb-0">
+  <div class="ml-8 p-0 mb-0 mt-2">
     <strong class="">
       Exercice
       <span class="exercice-number"></span></strong
@@ -12,7 +12,5 @@ const { titre } = Astro.props;
   </div>
   <div class="ml-20 border-l-4 border-b-4 p-1 border-antiprimary">
     <div class="p-1"><slot /></div>
-    <!-- Le contenu de l'item -->
   </div>
 </div>
-<br />

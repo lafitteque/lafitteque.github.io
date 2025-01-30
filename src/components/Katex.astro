@@ -31,9 +31,7 @@ const macros = {
 const formula = await Astro.slots.render('default') || '';
 const html = katex.renderToString(formula.trim(), {
   throwOnError: false,
-  macros,
-  displayMode: false,  // Assurez-vous que ce paramètre est défini sur false pour un rendu inline
-});
+  macros});
 
 ---
 

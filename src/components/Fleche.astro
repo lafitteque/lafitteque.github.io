@@ -1,0 +1,53 @@
+---
+const { b, e, mono } = Astro.props;
+---
+
+<span>
+    {
+    mono === "+" ? (
+        <div class="inline-block h-6 align-bottom mr-1">{b}</div>
+        <svg
+            class="inline-block h-16"
+            fill="#000000"
+            height="40px"
+            width="40px"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 347.341 347.341"
+            xml:space="preserve"
+        >
+            <polygon style="stroke-width:1" points="347.341,107.783 347.339,0 239.559,0.002 282.843,43.285 0,326.128 21.213,347.341 304.056,64.498 " />
+        </svg>
+        <div class="inline-block  h-1 align-top ml-1">{e}</div>
+    ) : (
+        <div class="inline-block  h-1 align-top mr-1">{b}</div>
+        <svg
+            class="inline-block h-16"
+            fill="#000000"
+            height="40px"
+            width="40px"
+            version="1.1"
+            id="Layer_1"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            viewBox="0 0 347.341 347.341"
+            xml:space="preserve"
+        >
+            <polygon
+                points="247.487,347.341 347.341,347.34 347.34,247.487 317.34,247.487 317.34,296.127 21.213,0 0,21.213 296.127,317.34 
+            247.487,317.341 "
+            />
+        </svg>
+        <div class="inline-block h-6 align-bottom ml-1">{e}</div>
+    )
+}
+</span>
+<style>
+    .inline-block {
+    display: inline-block;
+    zoom: 1;
+    *display: inline;
+}
+</style>

@@ -98,7 +98,9 @@ $I \subset \R$ est un intervalle de $\R$ si et seumement si : $\forall (a,b) \in
 
 Soit $A \subset \R$. On dit que $A$ est dense dans $\R$ si :
 
-$$\forall (a\v b) \in \R^2\v a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \empty$$
+$$
+\forall (a\v b) \in \R^2\v a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \empty
+$$
 </Item>
 
 
@@ -106,7 +108,9 @@ $$\forall (a\v b) \in \R^2\v a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \emp
 
 Soit $x \in \R$. On définit $\floor{x}$ comme l'unique entier vérifiant :
 
-$$ \floor{x} \leqslant x < \floor{x} + 1$$
+$$ 
+\floor{x} \leqslant x < \floor{x} + 1
+$$
 
 On définit ainsi $\ceil{x} = \floor{x} + 1$ et $\{x\}$ le nombre $x - \floor{x}$.
 </Item>
@@ -396,7 +400,11 @@ On pose $\tilde{\epsilon} = \dfrac{\epsilon}{2}$ pour conclure.
 
 __ASTUCE A CONNAITRE :__ le fait que $u_n.v_n - l_1 . l_2$ lie les deux suites nous gène. On préfèrerair $u_n.l_2 - l_1 . l_2$ car il suffirait de factoriser par $l_2$ pour conclure. Et bien ajoutons et soustrayons $u_n.l_2$ : 
 
-$$u_n.v_n - l_1 . l_2 = u_n.v_n - u_n.l_2 + u_n.l_2 - l_1.l_2 = u_n(v_n - l_2) + l_2.(u_n - l_1)$$. On en déduit donc que $|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\epsilon + |l_2|.\epsilon$ mais $(|u_n|)_{n \in \N}$ est majorée par un $M \in \R$ car $(u_n)_{n \in \N}$ est convergeante. On a donc $|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\epsilon + |l_2|.\epsilon = \epsilon (M + |l2|)$. En posant $\tilde{\epsilon} = \defrac{\epsilon}{M + |l2|}$, on peut conclure.
+$$
+u_n.v_n - l_1 . l_2 = u_n.v_n - u_n.l_2 + u_n.l_2 - l_1.l_2 = u_n(v_n - l_2) + l_2.(u_n - l_1)
+$$ 
+
+On en déduit donc que $|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\epsilon + |l_2|.\epsilon$ mais $(|u_n|)_{n \in \N}$ est majorée par un $M \in \R$ car $(u_n)_{n \in \N}$ est convergeante. On a donc $|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\epsilon + |l_2|.\epsilon = \epsilon (M + |l2|)$. En posant $\tilde{\epsilon} = \defrac{\epsilon}{M + |l2|}$, on peut conclure.
 
 **Quotient :** Montrons que $\limm{n \to \infty} \dfrac{1}{v_n} = \dfrac{1}{l_2}$. Pour des raisons pratiques, on suppose $l_2 > 0$ (le cas négatif est analogue).
 
@@ -415,7 +423,9 @@ En considérant la suite $(\dfrac{1}{v_n})_{n \in \N}$, on peut appliquer le ré
 
 Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles convergeantes de limites respectives $l_1$ et $l_2$ telles que : $\forall n \in \N \v u_n \leqslant v_n$. Alors,
 
-$$l_1 \leqslant l_2$$
+$$
+l_1 \leqslant l_2
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -500,6 +510,18 @@ Si $\suitedefN{u_n}$ est convergente de limite $l \in \R$, alors toute suite ext
 <Hideable type='démonstration' titre=''>
 
 Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. Soit $\epsilon > 0$, par définition de la convergence,  $ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon$. Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ (on peut le démontrer par récurrence) et donc $n \geqslant N \Rightarrow \phi(n) \geqslant N$. Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
+</Hideable>
+
+<Item type='proposition' titre='cas pairs / impairs'>
+
+Soit $\suitedefN{u_n} \in \R^{\N}$. Si $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n+1}}$ sont convergentes de même limite $l \in \R$, alors $\suitedefN{u_n}$ est convergente de limite $l$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$, il existe $(N_1\v N_2) \in \N^2$ tels que, si $n \geqslant N = max(N_1 \v N_2)$, alors $|u_{2n} - l|\leqslant \epsilon$ et $|u_{2n+1} - l|\leqslant \epsilon$. Mais pour tout $m \geqslant 2N$, la division euclidienne de $n$ par $2$ donne $m = 2k$ ou $m = 2k+1$ où $k \geqslant \dfrac{m}{2} \geqslant N$, d'où le résultat en appliquant l'une des inégalités précédentes selon la parité de $m$.
+
+i.e. $\forall \epsilon > 0\v \exists \tilde{N} \in \N \mid n \geqslant \tilde{N} \Rightarrow |u_n - l| \leqslant \epsilon $ avec $\tilde{N} = 2N$.
 </Hideable>
 
 <Item type='theoreme' titre='Bolzano-Weirestrass'>
@@ -608,7 +630,9 @@ Soit $\epsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqsl
 
 Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(u_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
 
-$$\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)$$
+$$
+\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)
+$$
 </Item>
 
 <Exercice titre=''>
@@ -641,7 +665,13 @@ On pose donc $m = \dfrac{n}{k}$ et on s'intéresse à $\dfrac{1}{k^k} \Big(\dfra
 Soit $n \in \N$, $u_{n+1} - u_n = \dfrac{n.e^{n+1} - (n+1)e^n}{n(n+1)} = e^n\dfrac{n.e - (n+1)}{n(n+1)} = \dfrac{e^n}{n} . (\dfrac{n.e}{n+1} - 1)$. Mais $ne \geqslant 2n \geqslant n+1$ si $n \geqslant 1$. On a donc $u_{n+1} - u_n \geqslant u_n$ d'où $u_{n+1} \geqslant 2.u_n$. Par récurrence immédiate, on a $u_n \geqslant 2^{n-1}.u_1 \limton + \infty$ d'où $u_n \limton + \infty$.
 
 
-**Croissance comparée avec le logarithme :** Soit $n \in \N$ $\exp(\dfrac{\ln(n)}{n}) = \dfrac{n}{e^n} \limton 0$ donc 
+**Croissance comparée avec le logarithme :** Ce résultat se déduit aisément du premier à condition d'avoir des résultats que nous verrons avec les limites de fonctions.
+
+**Croissance comparée avec la factorielle :**Si $n > N = 2\ceil{a}+1$,  $\dfrac{a^n}{n!} = \underbrace{\dfrac{a^N}{N!}}{= \alpha} . \dfrac{a^{n-N}}{(N+1)(N+2) \dotsm n}$
+
+Mais $\dfrac{a^{n-N}}{(N+1)(N+2)...n} = \underbrace{\dfrac{a}{N+1}}_{\leqslant \frac{1}{2}} . \underbrace{\dfrac{a}{N+2}}_{\leqslant \frac{1}{2}}\dotsm \underbrace{\dfrac{a}{n}}_{\leqslant \frac{1}{2}} \leqslant \dfrac{1}{2^(n-N)}$
+
+Mais donc si $n \geqslant N$, $0 \leqslant \dfrac{a^n}{n!} \leqslant \alpha \dfrac{1}{2^(n-N)} \limton 0$ d'où le résultat.
 </Hideable>
 
  
@@ -801,7 +831,9 @@ Soit $\suitedefN{u_n}$ une suite arithmético-géométrique et $(q\v r) \in \R^2
 
 On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire homogène d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
 
-$$ a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N $$
+$$ 
+a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N 
+$$
 </Item>
 
 
@@ -871,7 +903,7 @@ Comme $u_{n+1} = f(u_n)$, par passage à la limite, $l = f(l)$.
 
 Soit $f : \R \rightarrow \R$ et une suite vérifiant la relation de récurrence $u_{n+1} = f(u_n)\v \forall n \in \N$.
 
-- L'étude de $g : x \mapsto f(x) - x$ sur $\R$ permet de déterminer le signe de $u_{n+1} - u_n$ car $u_{n+1} - u_n = f(u_n) - u_n$. Si l'étude de $g$ montre qu'elle est par exemple positive sur $\defff{a}{b}$, alors il est intéressant de montrer (si c'est le cas) que $u_0 \in \defff{a}{b} \Rightarrow \forall n \in \N, u_n \in \defff{a}{b}$, ce qui signifie que $u$ est monotone et que l'on peut conclure par le théorème de la limite monotone. Il en va de même pour le cas décroissant.
+- L'étude de $g$ permet de déterminer le signe de $u_{n+1} - u_n$ car $u_{n+1} - u_n = f(u_n) - u_n$. Si l'étude de $g$ montre qu'elle est par exemple positive sur $\defff{a}{b}$ __ET__ que $f(\defff{a}{b}) \subset \defff{a}{b}$, alors il est intéressant de montrer (si c'est le cas) que $u_0 \in \defff{a}{b} \Rightarrow \forall n \in \N, u_n \in \defff{a}{b}$, ce qui signifie que $u$ est monotone et que l'on peut conclure par le théorème de la limite monotone. Il en va de même pour le cas décroissant.
 
 - La limite éventuelle est trouvée à l'aide du (ou des) point fixe de $f$.
 
@@ -885,18 +917,89 @@ Soit $f : \R \rightarrow \R$ et une suite vérifiant la relation de récurrence 
 </Indent>
 </Item>
 
-<Exercice titre='études de suites'>
+<Exercice titre='études de suites 1'>
 
-Etudier les suites définies comme suit :
-
-1) $\suitedefN{u_n}$ telle que $u_{n+1} = u_n^2$ et $u_0 \geqslant 0$.
-
-2) $\suitedefN{}$
-
+Soit $\suitedefN{u_n}$ la suite réelle telle que $u_{n+1} = u_n^2$ et $u_0 \geqslant 0$. Etudier la suite.
 </Exercice>
+
+<Hideable type='solution' titre=''>
+
+On pose $f : x \mapsto x^2$ sur $\R$. On a $u_{n+1} = f(u_n)$. On étudie donc $g : x \mapsto f(x) - x$ sur $\R_+$. 
+
+$g'(x) = 2x - 1$ et donc $g'(x) > 0 \ssi x > \dfrac{1}{2}$. On dresse donc le tableau de variation de $g$ :
+
+D'après les variations de $g$, comme $g(0) = 0$, $g(1) = 0$ et $\limm{x \to + \infty} g(x) = + \infty$ et comme $g$ est continue, on a $g(x) \leqslant 0 \, \forall x \in \defff{0}{1}$ et $g(x) \geqslant 0 \v \forall x \in \deffo{1}{+ \infty}$. 
+
+<Indent>
+
+**Cas 1 :** Si $u_0 \in \defff{0}{1}$, on montre par récurrence que $u_n \in \defff{0}{1}$ également pour tout $n \in \N$. (on peut aussi suivre la méthode et montrer que $f(\defff{0}{1}) \subset \defff{0}{1}$ et en déduire que $u_n \in \defff{0}{1}$ pour tout $n$)
+
+**Initialisation :** On vérifie $\cP(0)$ car $1 \leqslant u_0 \leqslant 1$ par hypothèse.
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
+
+$u_{n+1} = u_n^2$ mais comme $0 \leqslant u_n \leqslant 1$ par hypothèse de récurrence, on a bien $0 \leqslant u_{n+} \leqslant 1$ par croissance de $x \mapsto x$^sur $\R_+^*$. D'où $u_{n+1} \in \defff{0}{1}$ 
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+
+Maintenant, il suffit de remarquer que $g(x) \leqslant 0$ si $x \in \defff{0}{1}$ pour montrer que la suite est décroissante car $u_{n+1} - u_n = g(u_n)$.
+
+La suite est décroissante et minorée donc convergente. Sa limite est notée $l$ est est un point fixe de $f$ d'où $f(l) = l$ et donc $l^2 = l$ et $l \in \{ 0 \v 1\}$. Mais la suite est en faite strictement décroissante sur $\defoo{0}{1}$ car $g$ y est strictement négative. Donc, soit $u_0 = 1$ et dans ce cas $l = 1$, soit $u_0 < 1$ et alors $l = 0$.
+
+**Cas 2 :** Si $u_0 > 1$. La preuve de $\suitedefN{u_n}$ est analogue au cas précédent en montrant que $u_0 > 1 \Rightarrow u_n > 1 \forall n \in \N$ et en concluant à la croissance de la suite. On en déduit que la suite est soit convergente soit elle tend vers $+ \infty$. 
+
+Mais $u_n > u_0 > 1 \v \forall n \in \N$ par croissance de la suite. En passant à la limite et en supposant que la suite est convergente, la limité est strictement supérieure à $1$ ce qui est impossible car les points fixes de $f$ sont $0$ et $1$. La suite tend donc vers $+ \infty$.
+</Indent>
+
+</Hideable>
+
+<Exercice titre='études de suites 2 (Mins-Ponts)'>
+
+Soit $\suitedefN{s_n}$ la suite réelle telle que $s_{n+1} = 1 - s_n^2$ et $s_0 = \dfrac{1}{2}$. Etudier la suite.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+On pose $f : x \mapsto 1-x^2$ sur $\R$. On pose $g : x \mapsto 1 - x^2 - x$ . 
+
+Etudions $g$ pour connaître son signe : On note $\Delta$ le discriminant de $g$. $\Delta = 1 + 4\times 1 = 5$ d'où $g(x) = 0 \ssi x = \dfrac{-1 \pm \sqrt{5}}{2}$. 
+
+$f$ n'est pas stable sur les intervalles où $g$ est de signe constant. 
+
+Comme $f$ est décroissante, on s'intéresse à $u : n \mapsto s_{2n}$ et $v : n \mapsto s_{2n+1}$ sur $\N$. Ces deux suites vérifient la même relation de récurrence : $u_{n+1} = f\circ f(u_n)$ et $v_{n+1} = f\circ f(v_n)$. On peut montrer que si une suite $w$ vérifie cette relation de récurrence, alors elle est monotone de monotonie déterminée par $f(w_0) - w_0$.
+
+On suppose que $0 \leqslant w_0 \leqslant 1$. Montrons sur $\N$ la propriété $\cP(n) : w_{n+1} - w_n$ est de même signe que $w_1 - w_0$ .
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, $w_1 - w_0$ est de même signe que $w_1 - w_0$.
+
+**Hérédité :** Soit $ n \in \N$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
+
+Déjà, $f \circ f (x) = 1-(1-x^2)^2 = 1 - 1 + 2x^2 -x^4 = 2x^2 - x^4 \v \forall x\in \R$
+
+$w_{n+2} - w_{n+1} = 2w_{n+1}^2 - w_{n+1}^4 - 2 w_n^2 + w_n^4 = 2(w_{n+1}^2 - w_n^2) - (w_{n+1}^4 - w_n^4)$
+
+$w_{n+2} - w_{n+1} = 2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1}^2 - w_n^2)(w_{n+1}^2 + w_n^2) = 2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1} - w_n)(w_{n+1} + w_n)(w_{n+1}^2 + w_n^2)$
+
+On factorise : $w_{n+2} - w_{n+1} = (w_{n+1} - w_n)(w_{n+1} + w_n)\Big( 2 - (w_{n+1}^2 + w_n^2) \Big)$. 
+
+En effet, $ 0 \leqslant x \leqslant 1 \Rightarrow  0 \leqslant x^2 \leqslant 1 \Rightarrow 0 \geqslant -x^2 \geqslant -1 \Rightarrow 1 \geqslant 1-x^2 \geqslant 0$. Donc $\defff{0}{1}$ est stable par $f$. Par récurrence immédiate (en utilisant la stabilité de $\deff{0}{1}$ par $f$), $0 \leqslant w_n \leqslant 1\v \forall n \in \N$ d'où $w_{n+1}^2 + w_n^2 \leqslant 2$.
+
+Donc $(w_{n+1} + w_n)\Big( 2 - (w_{n+1}^2 + w_n^2) \Big) \geqslant 0$ et on en conclut que $w_{n+1} + w_n$ et $w_{n+2} - w_{n+1}$ ont même signe. Mais par hytpothèse de récurrence, $w_{n+1} + w_n$ et $w_1 + w_0$ ont même signe. D'où le résultat.
+
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N$
+
+On remarque en particulier que l'on pouvait conclure au signe strict de $w_{n+1} - w_n$ à condition que $w_0 \in \defoo{0}{1}$.
+
+On a montré que $u$ et $v$ sont monotones. Le calcul des premiers termes montre que $u$ est croissante et que $v$ est décroissante.  Les deux suites ayant la même relation de récurrence, elles ont les mêmes points fixes. Mais elles sont toutes deux monotones et bornées et donc convergentes. 
+
+Mais si $l$ est la limite de $u$, $l = 2l^2 - l^4$ d'où $l^4 - 2l^2 + l = 0$ puis $l(l^3 - 2l + 1) = 0$. On trouve une racine évidente : $1$. D'où $l(l-1)(l^2 -l -1) = 0$ et en calculant le discriminant de $l^2 -l -1 = 0$, on trouve $l(l-1)(l- x_-)(l - x_+) = 0$ où $x_{\pm} = \dfrac{-1 \pm \sqrt{5}}{2}$. Nécessairement, $l \neq x_-$ car $l geqslant 0$. Mais on peut également écarter les cas $0$ et $1$ car on peut montrer par récurrence que $u_0 \leqslant v_n \leqslant v_0 $ et $v_0 \geqslant u_n \geqslant u_0$ sur $\N$ et on en déduit par passage à la limite que aucune de ces deux suites ne peut converger ni vers $0$ ni vers $1$. 
+
+On conclut : $u$ et $v$ sont convergentes vers l'un de leurs points fixes. Mais le seul qui soit possible est $\dfrac{-1 + \sqrt{5}}{2}$. On en déduit que $s_n \limton \dfrac{-1 + \sqrt{5}}{2}$
+</Hideable>
 
 {/*
 Manque :
     - composition et limite
-    - passage à l'exponentielle / logarithme
 */}

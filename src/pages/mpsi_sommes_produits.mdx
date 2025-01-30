@@ -39,7 +39,9 @@ $\somme{i \in \emptyset}{} a_i = 0 $
 <Item type='proposition' titre='linéarité de la somme'>
 Soient $\alpha$ et $\beta$ des complexes, $n$ un entier strictement positif, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{n-1} \v b_n)$ des éléments de $\C$. On a la relation suivante :
 
-$$\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k$$
+$$
+\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -54,9 +56,13 @@ Finalement, $\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k
 <Item type='proposition' titre='sommes des entiers et de leurs carrés'>
 Soit $n \in \N$. On a :
 
-$$ \somme{k=1}{n} k = \dfrac{n(n+1)}{2}$$
+$$ 
+\somme{k=1}{n} k = \dfrac{n(n+1)}{2}
+$$
 
-$$ \somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} $$
+$$ 
+\somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} 
+$$
 
 </Item>
 
@@ -65,7 +71,9 @@ $$ \somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} $$
 
  On souhaite montrer la propriété suivante pour $n \in \N^*$:
 
-$$\cP(n) \, : \, "\somme{k = 1}{n} k = \dfrac{n(n+1)}{2} " $$
+$$
+\cP(n) \, : \, "\somme{k = 1}{n} k = \dfrac{n(n+1)}{2} " 
+$$
 
 **Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. En effet $\somme{k=1}{n}k = 1$ et $\dfrac{n(n+1)}{2} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
 
@@ -87,7 +95,9 @@ On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
 
  On souhaite montrer la propriété suivante pour $n \in \N^*$:
 
-$$\cP(n) \, : \, "\somme{k = 1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} " $$
+$$
+\cP(n) \, : \, "\somme{k = 1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} " 
+$$
 
 **Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. En effet $\somme{k=1}{n}k^2 = 1$ et $\dfrac{n(n+1)(2n+1)}{6} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
 
@@ -111,7 +121,9 @@ On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
 <Item type='proposition' titre='somme géométrique'>
 Soit $q \in \R\setminus\{ 1\}$.
 
-$$ \somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q}$$
+$$ 
+\somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -139,13 +151,19 @@ On a bien montré que $\cP(n) \Rightarrow \cP(n+1)$.
 
 Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :
 
-$$ \produit{i=1}{n} a_i = a_1 \times a_2 \times \dotsm \times a_{n-1} \times a_n $$
+$$ 
+\produit{i=1}{n} a_i = a_1 \times a_2 \times \dotsm \times a_{n-1} \times a_n 
+$$
 
-$$\text{ou encore } \produit{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$$
+$$
+\text{ou encore } \produit{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n
+$$
 
 Par convention, on pose 
 
-$$\produit{i \in \emptyset}{} a_i = 1 $$
+$$
+\produit{i \in \emptyset}{} a_i = 1 
+$$
 
 </Item>
 
@@ -158,7 +176,9 @@ Soient $a \in \R_+^*$ et $b \in \R$. On note $a^b$ la quantité $e^{b \ln(a)}$
 <Item type='proposition' titre='produits et exponentiation'>
 Soient $n \in \N$, $a_1 \v a_2 \v \dotsm \v a_n$ des éléments de $R$ et $x \in \R_+^*$. On a :
 
-$$\produit{i=1}{n} x^{a_i} = x^{\somme{i=1}{n} a_i}$$
+$$
+\produit{i=1}{n} x^{a_i} = x^{\somme{i=1}{n} a_i}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -187,7 +207,7 @@ d'indexation.
 
 Par exemple : 
 
-$$\somme{i=1}{n} a_{i-1}$$ se réexprime $$\somme{i'=0}{n-1} a_{i'}$$ en effectuant le changement d'indice $i' = i-1$. En effet, avec ce changement d'indices, 
+$somme{i=1}{n} a_{i-1}$ se réexprime $\somme{i'=0}{n-1} a_{i'}$ en effectuant le changement d'indice $i' = i-1$. En effet, avec ce changement d'indices, 
 
 - $i = 1 \ssi i' = 0$ d'où la nouvelle borne de départ
 - $i = n \ssi i' = n-1$ d'où la nouvelle borne d'arrivée.
@@ -199,7 +219,9 @@ $$\somme{i=1}{n} a_{i-1}$$ se réexprime $$\somme{i'=0}{n-1} a_{i'}$$ en effectu
 <Item type='proposition' titre='différence de puissances'>
 Soient $a,b$ des réels et $n$ un entier positif. Alors :
 
-$$a^n - b^n = (a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1}$$
+$$
+a^n - b^n = (a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1}
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -245,7 +267,9 @@ Soit $n \in \N$.
 
 Soit $(U_n)_{n \in \N}$ une suite de complexes et $m \in \N$. On a :
 
-$$ \somme{i=0}{m} U_{i+1} - U_i = U_{m+1} - U_0$$
+$$ 
+\somme{i=0}{m} U_{i+1} - U_i = U_{m+1} - U_0
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -260,7 +284,9 @@ $ \somme{i=0}{m} U_{i+1} - U_i =  U_{m+1} - U_0$
 
 Soit $(U_n)_{n \in \N}$ une suite de complexes  qui ne s'annule pas et $m \in \N$. On a :
 
-$$ \produit{i=0}{m} \dfrac{U_{i+1}}{U_i} = \dfrac{U_{m+1}}{U_0} $$
+$$ 
+\produit{i=0}{m} \dfrac{U_{i+1}}{U_i} = \dfrac{U_{m+1}}{U_0} 
+$$
 </Item>
 
 
@@ -329,7 +355,9 @@ donc très important de savoir les manipuler avec les méthodes usuelles.
 <Item type='proposition' titre='produits de sommes'>
 Soient $n$ et $m$ deux entiers strictement positifs, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{m-1} \v b_m)$ des éléments de $\C$. On a :
 
-$$ \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j = \somme{(i,j)\in I \times J}{} a_i b_j$$
+$$ 
+\Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j = \somme{(i,j)\in I \times J}{} a_i b_j
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -359,7 +387,9 @@ On a donc bien montré la propriété $\cP(n)$ pour tout $n \in \N$
 <Item type='proposition' titre='somme triangulaire'>
 Soient $n \in \N$ et $ a_{i,j} \in C^n$ où $0 \leqslant j \leqslant i \leqslant n$. On a :
 
-$$\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{j = 0}{n} \somme{i = j}{n} a_{i,j}$$
+$$
+\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{j = 0}{n} \somme{i = j}{n} a_{i,j}
+$$
 
 </Item>
 
@@ -382,7 +412,9 @@ Mais on peut aussi parcourir le tableau colonne par colonne. On lit la valeur de
 <Remarque>
 En utilisant le tableau de la démonstration précédente et ses diagonales, si l'on note $L = \{ (i \v j) \mid 0\leqslant j \leqslant i \leqslant n \; \text{et} \;  i+j = k \}$ on a également 
 
-$$\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{k = 0}{2n} \somme{ (i \v j) \in L }{} a_{i,j}$$
+$$
+\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{k = 0}{2n} \somme{ (i \v j) \in L }{} a_{i,j}
+$$
 </Remarque>
 
 ## Factorielle et coefficients binômiaux
@@ -392,7 +424,9 @@ $$\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{k = 0}{2n} \somme{ (i \v j)
 <Item type='definition' titre='factorielle'>
 Soit $n\in \N$ On appelle factorielle de $n$ et on note $n!$ la quantité suivante :
 
-$$ n! = \prod_{k=1}^{n} k$$
+$$ 
+n! = \prod_{k=1}^{n} k
+$$
 
 On remarque que $n! = 1$
 </Item>
@@ -437,7 +471,9 @@ En clair, le produit des impairs c'est le produit des entiers divisé par le pro
 <Item type='definition' titre='coefficients binomiaux'>
 Soit le couple $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$. On note $\binom{n}{k}$ (se lit "$k$ parmi $n$") la quantité suivante :
 
-$$ \binom{n}{k} = \dfrac{n!}{k!(n-k)!}$$
+$$ 
+\binom{n}{k} = \dfrac{n!}{k!(n-k)!}
+$$
 
 </Item>
 
@@ -502,7 +538,9 @@ Le triangle de pascal est le tableau contenant les coefficients binômiaux :
 <Item type='proposition' titre='binome de newton'>
 Soient $a,b$ deux complexes et $n$ un entier naturel. On a :
 
-$$(a+b)^n = \somme{k=0}{n} a^kb^{n-k} $$
+$$
+(a+b)^n = \somme{k=0}{n} a^kb^{n-k} 
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
