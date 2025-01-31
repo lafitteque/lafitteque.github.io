@@ -65,7 +65,7 @@ export default function TableOfContent(p: TableOfContentProps) {
       <For each={list()}>
         {(item) => {
           return (
-            <div class={`toc-${item.depth}`}>
+            <div class={`toc-${item.depth} hover:text-tertiary`}>
               <a
                 onclick={(e) => {
                   e.preventDefault();

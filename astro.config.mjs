@@ -55,6 +55,7 @@ const macros = {
 
   "\\pv": "; \\;",
   "\\v": ", \\;",
+  "\\cd": "\\huge \\centerdot \\,",
 
   "\\floor": "\\lfloor {#1} \\rfloor",
   "\\ceil": "\\lceil {#1} \\rceil",

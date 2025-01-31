@@ -42,27 +42,34 @@ $$
 <Remarque titre="la notion d'angle">
 La définition rigoureuse d'un angle n'est pas au programme d'aucune filière de CPGE. Cependant, il est essentiel de comprendre son interprétation géométrique et quelques propriétés :
 
-- Les angles sont orientés : $-\theta$ c'est l'angle qui est parcouru par la même longueur d'arc de cercle $\theta$ mais dans le sens anti-trigonométrique (horaire).
+$\cd$ Les angles sont orientés : $-\theta$ c'est l'angle qui est parcouru par la même longueur d'arc de cercle $\theta$ mais dans le sens anti-trigonométrique (horaire).
 
-- Les angles sont donnés à un multiple de $2\pi$ près. Les angles $\theta = \pi$ et $\phi = 5\pi$ ont la même interprétation géométrique malgré le fait que leurs valeurs soient différentes. 
+$\cd$ Les angles sont donnés à un multiple de $2\pi$ près. Les angles $\theta = \pi$ et $\phi = 5\pi$ ont la même interprétation géométrique malgré le fait que leurs valeurs soient différentes. 
 
-- On parle de mesure principale d'un angle quand on précise que l'on parle d'une valeur dans $\defof{-\pi}{\pi}$. Par mesure de simplicité et pour prendre de bonnes habitudes, on ramènera toujours une mesure d'angle à la mesure principale de l'angle. 
+$\cd$ On parle de mesure principale d'un angle quand on précise que l'on parle d'une valeur dans $\defof{-\pi}{\pi}$. Par mesure de simplicité et pour prendre de bonnes habitudes, on ramènera toujours une mesure d'angle à la mesure principale de l'angle. 
 </Remarque>
 
 <Item type='consequence' titre='somme des carrés des fonctions trigonométriques'>
 
 $$ 
-\forall \theta \in \R, \cos^2(\theta) + \sin^2(\theta) = 1
+\forall \theta \in \R \v \cos^2(\theta) + \sin^2(\theta) = 1
 $$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\theta \in \R$, $\Point{\cos(\theta)}{\sin(\theta)}$ est un point du cercle trigonométrique par définition. On a donc $\cos^2(\theta) + \sin^2(\theta) = 1$.
+Soit $\theta \in \R$, 
+
+$\Point{\cos(\theta)}{\sin(\theta)}$ est un point du cercle trigonométrique par définition. Mais sa distance à $\Point{0}{0}$ est donc $\sqrt{\cos^2(\theta) + \sin^2(\theta)} = 1$.
+
+En passant au carré, on a $\cos^2(\theta) + \sin^2(\theta) = 1$
 </Hideable>
 
 <Item type='definition' titre="périodicité d'une fonction">
-Soit $f$ une fonction définie sur $\R$ et $T \in \R^*$. On dit que $f$ est $T$-périodique si :
+
+Soit $f$ une fonction définie sur $\R$ et $T \in \R^*$. 
+
+On dit que $f$ est $T$-périodique si :
 
 $$
 \forall x \in \R \v f(x+T) = f(x) 
@@ -72,31 +79,34 @@ On dit qu'une fonction $f$ est périodique s'il existe $T \in \R^*$ tel que $f$ 
 </Item>
 
 <Item type='proposition' titre='périodicité des fonctions trigonométriques'>
+
 $\cos$ et $\sin$ sont $2\pi$-périodiques.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $x \in \R$. L'enroulement d'une corde de longueur $x+2\pi$ autour du cerle trigonométrique peut être décomposé en deux sections : un tour entier du cercle soit une longueur $2\pi$ et un enroulement de $x$. 
+Soit $x \in \R$. 
+
+L'enroulement d'une corde de longueur $x+2\pi$ autour du cerle trigonométrique peut être décomposé en deux sections : un tour entier du cercle soit une longueur $2\pi$ et un enroulement de $x$. 
 
 Comme l'enroulement de longueur $2\pi$ emène sur le point $\Point{1}{0}$, y ajouter un enroulement de longueur $x$ emène sur $\Point{\cos(x)}{{\sin(x)}}$. 
 
-D'où $\begin{cases} \cos(x + 2\pi) \\ \sin(x + 2\pi) \end{cases}$ c.q.f.d.
+D'où $\begin{cases} \cos(x + 2\pi) = \cos(x) \\ \sin(x + 2\pi) = \sin(x)  \end{cases}$
 </Hideable>
 
 <Item type='definition' titre="parité d'une fonction">
-Soit $f$ une fonction définie sur $\defoo{-A}{A}$ où $A \in \R$ (également valable si les deux bornes sont ouvertes). On dit que :
+Soit $f$ une fonction définie sur $\defoo{-A}{A}$ où $A \in \R$ (également valable si les deux bornes sont fermées). On dit que :
 
-- $f$ est paire si $\forall x \in \defoo{-A}{A}\v f(-x) = f(x)$
+$\cd$ $f$ est paire si : $\forall x \in \defoo{-A}{A}\v f(-x) = f(x)$
 
-- $f$ est impaire si $\forall x \in \defoo{-A}{A}\v f(-x) = -f(x)$
+$\cd$ $f$ est impaire si : $\forall x \in \defoo{-A}{A}\v f(-x) = -f(x)$
 </Item>
 
 <Remarque titre=''>
 
-- Une fonction est paire ssi. l'axe des ordonnées est un axe de symétrie de sa représentation graphique. 
+$\cd$ Une fonction est paire ssi. l'axe des ordonnées est un axe de symétrie de sa représentation graphique. 
 
-- Une fonction est impaire ssi. son origine est un centre de symétrie de sa représentation graphique.
+$\cd$ Une fonction est impaire ssi. son origine est un centre de symétrie de sa représentation graphique.
 </Remarque>
 
 <Item type='proposition' titre='parité des fonctions cosinus et sinus'>
@@ -104,48 +114,62 @@ La fonction $\cos$ est paire alors que la fonction $\sin$ est impaire.
 </Item>
 
 <Hideable type='démonstration' titre=''>
-La symétrie d'axe $y=0$ envoie $\Point{x}{y}$ sur $\Point{x}{-y}$. On utilise cela pour conclure :
+La symétrie d'axe $y=0$ envoie $\Point{x}{y}$ sur $\Point{x}{-y}$. L'abscisse est conservée et l'ordonnée change de signe. Par ailleurs, l'enroulement se fait dans le sens opposé quand l'on applique cette symétrie. On utilise cela pour conclure :
 
-- on en déduit que $\cos(-x) = \cos(x) \, \forall x \in \R$.
+$\cd$ on en déduit que $\cos(-\theta) = \cos(\theta) \, \forall \theta \in \R$.
 
-- on en déduit que $\sin(-x) = -\sin(x) \, \forall x \in \R$.
+$\cd$ on en déduit que $\sin(-\theta) = -\sin(\theta) \, \forall \theta \in \R$.
 </Hideable>
 
 <Item type='proposition' titre='formulaire des déphasages'>
 Pour tout $x \in \R$, on a les formules suivantes :
 
-- $\cos(x + \pi) = \cos(x - \pi) = -\cos(x)$
+$\cd$ $\cos(x + \pi) = \cos(x - \pi) = -\cos(x)$
 
-- $\sin(x + \pi) = \sin(x - \pi) = - \sin(x)$
+$\cd$ $\sin(x + \pi) = \sin(x - \pi) = - \sin(x)$
 
-- $\cos(x + \dfrac{\pi}{2}) = -\sin(x)$
+$\cd$ $\cos(x + \dfrac{\pi}{2}) = -\sin(x)$
 
-- $\sin(x + \dfrac{\pi}{2}) = \cos(x)$
+$\cd$ $\sin(x + \dfrac{\pi}{2}) = \cos(x)$
 
-- $\cos(\dfrac{\pi}{2} - x) = -\sin(x)$
+$\cd$ $\cos(\dfrac{\pi}{2} - x) = -\sin(x)$
 
-- $\sin(\dfrac{\pi}{2} - x) = \cos(x)$
+$\cd$ $\sin(\dfrac{\pi}{2} - x) = \cos(x)$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 **Déphasage de $\pi$ :**
+
 <Indent>
+
 Un déphasage de $\pi$ correspond à prendre le symétrique de $(\cos(x) \v \sin(x))$ par symétrie centrale de centre $O$. On obtient donc l'image par symétrie : $(-\cos(x) \v -\sin(x))$. 
 
 Si cela n'est pas suffisament évident, vous pouvez voir la symétrie centrale comme la succession de deux symétries axiales d'axes $x=0$ et $y=0$. La première change le signe de l'ordonnée et la seconde change le signe de l'abscisse. 
 </Indent>
 
+<br/>
+
 **Déphasage de $\dfrac{\pi}{2}$**
 <Indent>
-Un déphasage de $\dfrac{\pi}{2}$ correspond à effectuer une rotation d'un quart de tour. Une telle rotation envoie un point $\Point{x}{y}$ sur $\Point{-y}{x})$ d'où le résultat.
+
+Un déphasage de $\dfrac{\pi}{2}$ correspond à effectuer une rotation d'un quart de tour. Une telle rotation envoie un point $\Point{x}{y}$ sur $\Point{-y}{x}$ d'où le résultat. 
+
+On peut vérifier qu'il s'agit bien d'une rotation de $\dfrac{\pi}{2}$. On note $P$ un point $\Point{x}{y}$ du cercle unité. On va utiliser le fait que la droite perpendiculaire à $(OP)$ intersecte le cercle unité en deux points.
+
+On trouve les deux points d'intersection : $\Point{-y}{x}$ et $\Point{y}{-x}$. En effet, ces deux points ont $1$ pour distance à l'origine. De plus, on peut vérifier l'orthogonalité à l'aide du produit scalaire. 
+
+On peut faire un dessin pour se convaincre que le premier point est le bon. Sinon, on peut effectuer une disjonction de cas selon les signes de $x$ et $y$ et observer le signe après rotation, seul le premier point convient.
 </Indent>
+
+<br/>
 
 **Les deux dernières formules**
 <Indent>
+
 On note $A$ le point d'intersection entre le cercle trigonométrique et la droite d'équation $x=y$ qui se trouve dans le cadrant haut-droit (cadran 1).
 
-Montrons que symétrie d'axe $x=y$ envoie $\Point{\cos(x)}{\sin(x)}$ sur $\Point{\cos(\dfrac{\pi}{2} -x)}{\sin(\dfrac{\pi}{2} - x)}$ et inversement. En partant de $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$, on peut enrouler une corde de longueur $\dfrac{\pi}{4} - x$ dans les deux sens (trigonométrique et anti-trigonométrique). Comme l'axe $x=y$ est un axe de symétrie du cercle, l'enroulement de part et d'autre enmène à un point et son symétrique par la symétrie d'axe $x=y$.
+Montrons que la symétrie d'axe $x=y$ envoie $\Point{\cos(x)}{\sin(x)}$ sur $\Point{\cos(\dfrac{\pi}{2} -x)}{\sin(\dfrac{\pi}{2} - x)}$ et inversement. En partant de $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$, on peut enrouler une corde de longueur $\dfrac{\pi}{4} - x$ dans les deux sens (trigonométrique et anti-trigonométrique). Comme l'axe $x=y$ est un axe de symétrie du cercle, l'enroulement de part et d'autre emmène à un point et son symétrique par la symétrie d'axe $x=y$.
 
 Mais la symétrie envoie $(x \v y)$ sur $(y \v x)$, d'où le résultat. 
 </Indent>
@@ -156,13 +180,13 @@ Mais la symétrie envoie $(x \v y)$ sur $(y \v x)$, d'où le résultat.
 <Item type='proposition' titre='formules trigonométriques de sommes et différence des angles'>
 Soient $a$ et $b$ deux réels. On a :
 
-- $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$
+$\cd$ $\cos(a + b) = \cos(a)\cos(b) - \sin(a)\sin(b)$
 
-- $\cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b)$
+$\cd$ $\cos(a - b) = \cos(a)\cos(b) + \sin(a)\sin(b)$
 
-- $\sin(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)$
+$\cd$ $\sin(a + b) = \cos(a)\sin(b) + \sin(a)\cos(b)$
 
-- $\sin(a - b) = \cos(a)\sin(b) - \sin(a)\cos(b)$
+$\cd$ $\sin(a - b) = \cos(a)\sin(b) - \sin(a)\cos(b)$
 
 </Item>
 
@@ -181,18 +205,38 @@ Les autres formules sont des conséquences immédiates de celles-ci.
 <Item type='proposition' titre='angle double'>
 Soit $\theta \in \R$. On a :
 
-- $\cos^2(\theta) = \dfrac{1 + \cos(2 \theta)}{2}$
+$\cd$ $\cos^2(\theta) = \dfrac{1 + \cos(2 \theta)}{2}$
 
-- $\sin^2(\theta) = \dfrac{1 - \cos(2 \theta)}{2}$
+$\cd$ $\sin^2(\theta) = \dfrac{1 - \cos(2 \theta)}{2}$
 
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Soit $\theta \in \R$, on a :
+Soit $\theta \in \R$
 
-- $\cos(\theta) = \cos^2(\theta) - \sin^2(\theta) = \cos^2(\theta) - ( 1 - \cos^2(\theta)) = 2\cos^2(\theta) - 1$ d'où $\cos^2(\theta) = \dfrac{1 + \cos(2\theta)}{2}$
+<br/>
 
-- $\sin^2(\theta) = 1 - \cos^2(\theta) = 1 - \dfrac{1 + \cos(2\theta)}{2} = \dfrac{1 - \cos(2\theta)}{2}$
+**Première formule :**
+
+$$
+\cos(2\theta) = \cos(\theta + \theta) = \cos(\theta)\cos(\theta) - \sin(\theta)\sin(\theta) 
+$$
+
+Donc 
+
+$$
+\cos(2\theta) = \cos^2(\theta) - (\underbrace{ 1 - \cos^2(\theta)}_{ = \sin^2(\theta)}) = 2\cos^2(\theta) - 1
+$$ 
+
+d'où $\cos^2(\theta) = \dfrac{1 + \cos(2\theta)}{2}$
+
+<br/>
+
+**Seconde formule :**
+
+$$
+\sin^2(\theta) = 1 - \cos^2(\theta) = 1 - \dfrac{1 + \cos(2\theta)}{2} = \dfrac{1 - \cos(2\theta)}{2}
+$$
 </Hideable>
 
 
@@ -202,7 +246,9 @@ Soit $\theta \in \R$, on a :
 
 **Résultat :**
 
-Soient $\omega \in \R$ et $(a,b) \in \R^2$. Il existe $A \in \R$ et $\phi \in \R$ tels que :
+Soient $\omega \in \R$ et $(a,b) \in \R^2$. 
+
+Il existe $A \in \R$ et $\phi \in \R$ tels que :
 
 $$
 \forall t \in \R \v A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )
@@ -211,30 +257,50 @@ $$
 
 **Méthode :**
 
-En effet, soit $t \in \R$,  $a \cos( \omega t ) + b \sin ( \omega t ) = \sqrt{a^2 + b^2} + \dfrac{a}{\sqrt{a^2 + b^2}}\cos( \omega t ) + \dfrac{b}{\sqrt{a^2 + b^2}} \sin ( \omega t )$
+En effet, soit $t \in \R$, 
 
-On note $A = \sqrt{a^2 + b^2}$, $\tilde{a} = \dfrac{a}{A}$ et $\tilde{b} = \dfrac{b}{A}$. Comme $\tilde{a}^2 + \tilde{b}^2 = 1$, il existe $\psi \in \R$ tel que $\tilde{a} = \cos(\psi)$ et $\tilde{b} = \sin(\psi)$
+$$
+a \cos( \omega t ) + b \sin ( \omega t ) = \sqrt{a^2 + b^2} + \dfrac{a}{\sqrt{a^2 + b^2}}\cos( \omega t ) + \dfrac{b}{\sqrt{a^2 + b^2}} \sin ( \omega t )
+$$
 
-On a donc $a \cos( \omega t ) + b \sin ( \omega t ) = A \Big( \cos(\psi) \cos( \omega t ) + \sin(\psi) \sin ( \omega t ) \Big)$
+On note $A = \sqrt{a^2 + b^2}$, $\tilde{a} = \dfrac{a}{A}$ et $\tilde{b} = \dfrac{b}{A}$.
+
+ Comme $\tilde{a}^2 + \tilde{b}^2 = 1$, il existe $\psi \in \R$ tel que $\tilde{a} = \cos(\psi)$ et $\tilde{b} = \sin(\psi)$
+
+On a donc 
+
+$$
+a \cos( \omega t ) + b \sin ( \omega t ) = A \Big( \cos( \omega t ) \cos(\psi) + \sin ( \omega t ) \sin(\psi)  \Big)
+$$
 
 à l'aide de la formule $\cos(a)\cos(b) + \sin(a)\sin(b) = \cos(a-b)$, on a :
 
-$A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$ c.q.f.d.
+
+$$
+A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )
+$$
+
+où $\phi = - \psi$
+
 </Item>
 
 
 <Item type='proposition' titre='égalité de cosinus et de sinus'>
 
-- $\cos(x) = \cos(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv -y \; [2\pi]$
+$\cd$ $\cos(x) = \cos(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv -y \; [2\pi]$
 
-- $\sin(x) = \sin(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv \pi - y \; [2\pi]$
+$\cd$ $\sin(x) = \sin(y) \ssi x \equiv y \; [2\pi]$ ou $x \equiv \pi - y \; [2\pi]$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-- On obtient ce résultat géométriquement par symétrie du cercle d'axe $y=0$. Cette transformation correspond angulairement à $\theta \rightarrow - \theta$.
+$\cd$ On obtient ce résultat géométriquement par symétrie du cercle d'axe $y=0$. 
 
-- On obtient ce résultat géométriquement par symétrie du cercle d'axe $x=0$. Cette transformation correspond angulairement à $\theta \rightarrow \pi - \theta$.
+Cette transformation correspond angulairement à $\theta \mapsto - \theta$.
+
+$\cd$ On obtient ce résultat géométriquement par symétrie du cercle d'axe $x=0$. 
+
+Cette transformation correspond angulairement à $\theta \mapsto \pi - \theta$.
 </Hideable>
 
 ### A propos des fonctions trigonométriques
@@ -243,34 +309,46 @@ $A \cos( \omega t + \phi ) = a \cos( \omega t ) + b \sin ( \omega t )$ c.q.f.d.
 
 soit $x \in \R$,
 
-$\mid \sin(x)\mid \leqslant \mid x \mid $
+$$
+\mid \sin(x)\mid \leqslant \mid x \mid 
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 **Démonstration géométrique :**
 
-Soient $A(\cos(x) \v 0)$, $B(\cos(x) \v \sin(x))$ et $C(1 \v 0)$.  Mais $BC \leqslant |x|$ car il s'agit du chemin le plus court entre $B$ et $C$ et $x$ est la longueur d'un chemin entre $B$ et $C$. 
+Soient $A(\cos(x) \v 0)$, $B(\cos(x) \v \sin(x))$ et $C(1 \v 0)$.  
+
+On a $BC \leqslant |x|$ car il s'agit du chemin le plus court entre $B$ et $C$, et $x$ est la longueur d'un chemin entre $B$ et $C$. 
+
+<br/>
 
 D'autre part, $ABC$ est un triangle rectangle en $A$ et donc $BC \geqslant AB$ car $BC$ est l'hypothénuse du triangle rectangle. On remarque de plus que $AB = |\sin(x)|$.
 
-On en conclut que $|x| \geqslant |\sin(x)|$
+Puisque $BC \geqslant AB$, on conclut que $|x| \geqslant |\sin(x)|$
 
 </Hideable>
 
 
 <Item type='proposition' titre='dérivées des fonctions trigonométriques' tag="admis">
+
 $\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
 
-- $\cos'(x) = -\sin(x)$
-- $\sin'(x) = \cos(x)$
+$\cd$ $\cos'(x) = -\sin(x)$
+
+$\cd$ $\sin'(x) = \cos(x)$
 </Item>
 
 <Remarque titre='pistes pour la preuve géométrique'>
 
-La démonstration consiste à utiliser des formules démontrées plus tard ($\cos(a+b)$ et $\sin(a+b)$) et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
+La démonstration consiste à utiliser des formules $\cos(a+b)$ et $\sin(a+b)$ et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
 
-L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. On peut encadrer l'aire de la section de cercle d'arc $\theta$ par les aires de deux triangles rectangles et en déduire la compariason des aires (aires de deux triangles et d'une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
+<br/>
+
+L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. 
+
+On peut encadrer l'aire de la section de cercle d'arc $\theta$ par les aires de deux triangles rectangles et en déduire la compariason des aires (aires de deux triangles et d'une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
 </Remarque>
 
 
@@ -285,38 +363,69 @@ $$
 </Item>
 
 <Item type='proposition' titre='propriétés fondamentales de la fonction tangente'>
-La fonction tangente est impaire, $2\pi$-périodique et strictement croissante.
+La fonction tangente est impaire, $\pi$-périodique et strictement croissante.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-$\tan(-x) = \dfrac{\sin(-x)}{\cos(-x)} = \dfrac{-\sin(x)}{\cos(x)}$ par parité du cosinus et imparité du sinus. D'où $\tan(-x) = -\tan(x)$ et $\tan$ est donc impaire.
+**Imparité :**
+
+$\tan(-x) = \dfrac{\sin(-x)}{\cos(-x)} = \dfrac{-\sin(x)}{\cos(x)}$ par parité du cosinus et imparité du sinus. 
+
+D'où $\tan(-x) = -\tan(x)$ et $\tan$ est donc impaire.
+
+<br/>
+
+**Périodicité :**
 
 $\tan(x + \pi) = \dfrac{\sin(x  \pi)}{\cos(x + \pi)} = \dfrac{-\sin(x)}{-\cos(x)} = \tan(x)$
 
-On admet que la fonction $\tan'(x) = 1 + \tan^2(x) > 0$. La fonction tangente est donc strictement croissante.
+<br/>
+
+**Croissance :**
+
+$\tan'(x) = \dfrac{\cos^2(x) - (-\sin(x))\sin(x)}{\cos^2(x)} = \dfrac{1}{\cos^2(x)} > 0$. La fonction tangente est donc strictement croissante.
 </Hideable>
 
 <Item type='proposition' titre=''>
 
 Soient $(a,b) \in \deftan^2$. On a :
 
-- $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$ si $a+b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+$\cd$ $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$ si $a+b \not \equiv \dfrac{\pi}{2} \; [\pi]$
 
-- $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$ si $a-b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+$\cd$ $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$ si $a-b \not \equiv \dfrac{\pi}{2} \; [\pi]$
 
-- $ 1 + \tan^2(a) = \dfrac{1}{\cos^2(a)}$
+$\cd$ $ 1 + \tan^2(a) = \dfrac{1}{\cos^2(a)}$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
+**Première égalité :**
+
 $\tan(a + b) = \dfrac{\sin(a+b)}{\cos(a+b)} = \dfrac{\sin(a)\cos(b) + \sin(b)\cos(a)}{\cos(a)\cos(b) - \sin(a)\sin(b)} $
 
-En factorisant par $\cos(a)\cos(b)$, on a $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} $
+En factorisant par $\cos(a)\cos(b)$, on a 
 
-En appliquant la formule à $\tilde{a} = a$ et $\tilde{b} = -b$, la seconde égalité est immédiate par imparité de $\tan$.
+$$
+\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} 
+$$
 
-La dernière égalité est immédiate par définition de la tangente : $ 1 + \tan^2(a) = 1 + \dfrac{\sin^2(a)}{\cos^2(a)} = \dfrac{\cos^2(a) + \sin^2(a)}{\cos^2(a)} = \dfrac{1}{\cos^2(a)}$
+<br/>
+
+**Deuxième égalité :**
+
+En appliquant la formule à $\tilde{a} = a$ et $\tilde{b} = -b$. En utilisant l'imparité de $\tan$, on obtient : 
+
+$$
+\tan(\tilde{a} + \tilde{b}) = \dfrac{\tan(a) + \tan(-b)}{1 - \tan(a)\tan(-b)} =  \dfrac{\tan(a) - \tan(b)}{1 + \tan(a)\tan(b)}
+$$
+
+**Troisième égalité :**
+
+$$
+ 1 + \tan^2(a) = 1 + \dfrac{\sin^2(a)}{\cos^2(a)} = \dfrac{\cos^2(a) + \sin^2(a)}{\cos^2(a)} = \dfrac{1}{\cos^2(a)}
+$$
+
 </Hideable>
 
 
@@ -324,20 +433,40 @@ La dernière égalité est immédiate par définition de la tangente : $ 1 + \ta
 
 Soit $\theta \in \defoo{-\pi}{\pi}$. On pose $\tan(\dfrac{\theta}{2})$, on a :
 
-- $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
+$\cd$ $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
 
-- $\sin(\theta) = \dfrac{2t}{1 + t^2}$
+$\cd$ $\sin(\theta) = \dfrac{2t}{1 + t^2}$
 
-- $\tan(\theta) = \dfrac{2t}{1 + t^2}$
+$\cd$ $\tan(\theta) = \dfrac{2t}{1 - t^2}$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\theta \in \R \mid \dfrac{\theta}{2} \in \deftan$. On pose $t = \tan(\dfrac{\theta}{2})$. On a : 
+Soit $\theta \in \R \mid \dfrac{\theta}{2} \in \deftan$. On pose $t = \tan(\dfrac{\theta}{2})$. 
 
-$\cos(2 \dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) - \sin^2(\dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) (1 - t^2) = \dfrac{1 - t^2}{e + t^2}$
+<br/>
 
-$\sin(2 \dfrac{\theta}{2}) = 2\cos(\dfrac{\theta}{2})\sin(\dfrac{\theta}{2}) = 2 \cos(\dfrac{\theta}{2}) . \sin(\cos(\dfrac{\theta}{2})) . \dfrac{\cos(\dfrac{\theta}{2})}{\cos(\dfrac{\theta}{2})} = 2 \cos^2(\cos(\dfrac{\theta}{2})) . t = \dfrac{2t}{1 + t^2}$ 
+**Première égalité :**
+
+$$
+\cos(2 \dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) - \sin^2(\dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) (1 - t^2) = \dfrac{1 - t^2}{e + t^2}
+$$
+
+<br/>
+
+**Deuxième égalité :**
+
+$$
+\sin(2 \dfrac{\theta}{2}) = 2\cos(\dfrac{\theta}{2})\sin(\dfrac{\theta}{2}) = 2 \cos(\dfrac{\theta}{2}) . \sin(\cos(\dfrac{\theta}{2})) . \dfrac{\cos(\dfrac{\theta}{2})}{\cos(\dfrac{\theta}{2})} = 2 \cos^2(\cos(\dfrac{\theta}{2})) . t = \dfrac{2t}{1 + t^2}
+$$
+
+<br/>
+
+**Troisième égalité :**
+
+$$
+\tan(\theta) = \tan( \dfrac{\theta}{2} + \dfrac{\theta}{2}) = \dfrac{2t}{1 - t^2}
+$$
 
 </Hideable>
 
@@ -347,50 +476,80 @@ Soit $\cC$ le cercle unité. Y-a-t'il un nombre fini d'éléments dans $\Big(\Q 
 </Exercice>
 
 <Hideable type='solution' titre=''>
-Soit $t \in \Q$, alors $ \{ \Point{\dfrac{1 - t^2}{1 + t^2}}{\dfrac{2t}{1 + t^2}} \mid t \in \R \}$ est un ensemble contenant une infinité d'éléments du cercle puisque leurs coordonnées vérifient $x^2 + y^2 = 1$
+$ \{ \Point{\dfrac{1 - t^2}{1 + t^2}}{\dfrac{2t}{1 + t^2}} \mid t \in \Q \}$ est un ensemble contenant une infinité d'éléments du cercle puisque leurs coordonnées vérifient $x^2 + y^2 = 1$.
+
+De plus, les coordonnées des points de cet ensemble sont rationnelles. 
 </Hideable>
 
 <Item type='proposition' titre='dérivation de la fonction tangente'>
 
 Soit $x \in \deftan$,
 
-$\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
+$$
+\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $x \in \deftan$, $\tan'(x) = \dfrac{\sin'(x) \times \cos(x) - \sin(x) \times \cos'(x)}{\cos^2(x)} = \dfrac{\sin^2(x) - \cos^2(x)}{\cos^2(x)} = 1 - \tan^2(x)$
+Soit $x \in \deftan$, 
+
+$$
+\tan'(x) = \dfrac{\sin'(x) \times \cos(x) - \sin(x) \times \cos'(x)}{\cos^2(x)} = \dfrac{\sin^2(x) - \cos^2(x)}{\cos^2(x)} = 1 - \tan^2(x)
+$$
 </Hideable>
 
 ### Valeurs usuelles des fonctions trigonométriques
 
 
-| $\theta$ | $\cos(\theta)$ | $\sin(\theta)$ | $\tan(\theta)$ |
+| $\boldsymbol{\theta}$ | $\boldsymbol{\cos(\theta)}$ | $\boldsymbol{\sin(\theta)}$ | $\boldsymbol{\tan(\theta)}$ |
 |---|---|---|---|
-| $0$ | $1$ | $0$ | $0$ |
-| $\dfrac{\pi}{6}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\dfrac{1}{\sqrt{3}}$ |
-| $\dfrac{\pi}{4}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
-| $\dfrac{\pi}{3}$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\sqrt{3}$ |
-| $\dfrac{\pi}{2}$ | $0$ | $1$ | / |
+| $\boldsymbol{0}$ | $1$ | $0$ | $0$ |
+| $\boldsymbol{\dfrac{\pi}{6}}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\dfrac{1}{\sqrt{3}}$ |
+| $\boldsymbol{\dfrac{\pi}{4}}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
+| $\boldsymbol{\dfrac{\pi}{3}}$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\sqrt{3}$ |
+| $\boldsymbol{\dfrac{\pi}{2}}$ | $0$ | $1$ | / |
 
 <Hideable type='démonstration' titre=''>
 $ \sin(\theta) = \sqrt{1 - \cos^2(\theta)} $ donc la deuxième colonne se déduit de la première. La troisième se déduit des deux premières.
 
+<br/>
+
 **Cas $\theta = 0$ :** 
 <Indent>
-$\cos(0) = 1$ s'obtient par construction géométrique.
+On part de $\Point{1}{0}$ et on ne fait aucun enroulement. L'abscisse obtenue est donc $1$. D'où $\cos(0) = 1$ 
 </Indent>
+
+<br/>
 
 **Cas $\theta = \dfrac{\pi}{4}$ :** 
 <Indent>
 
-Comme $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a $\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})$ d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$.
+Comme $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a 
+
+$$
+\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})
+$$
+
+d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$
 </Indent>
+
+<br/>
 
 **Cas $\theta = \dfrac{\pi}{3}$ :** 
 <Indent>
 
-On place $A\Point{\cos(\dfrac{\pi}{3}\Big)}{\sin(\dfrac{\pi}{3})}$  et $B\Point{2\cos(\dfrac{\pi}{3}}{0}$. Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que $\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}$.
+On place $A\Point{\cos(\dfrac{\pi}{3}\Big)}{\sin(\dfrac{\pi}{3})}$  et $B\Point{2\cos(\dfrac{\pi}{3})}{0}$. 
+
+Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. 
+
+Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. 
+
+Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que 
+
+$$
+\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}
+$$
 </Indent>
 </Hideable>
 
@@ -398,32 +557,43 @@ On place $A\Point{\cos(\dfrac{\pi}{3}\Big)}{\sin(\dfrac{\pi}{3})}$  et $B\Point{
 
 <Item type='definition' titre='les nombres complexes'>
 
-On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$.
+On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$. 
 
-On peut représenter les éléments de $\C$ dans le repère orthonormé $\big(O \v \vec{i} \v \vec{j} \big)$. On dit que le complexe $z = a + ib$ a pour **affixe** $(a \v b)$.
+Si $z = a + ib\v (a\v b) \in \R^2$ on dit que $a + ib$ est la forme algébrique de $z$
+
+<br/>
+
+On peut représenter les éléments de $\C$ dans le repère orthonormé $\big(O \v \vec{i} \v \vec{j} \big)$ par le point de coordonnées $\Point{a}{b}$. 
+
+On dit que le complexe $z = a + ib$ a pour **affixe** $\Point{a}{b}$.
 </Item>
 
 
 <Item type='definition' titre='partie réelle et imaginaire'>
 
-Un nombre complexe $z \in \C$ qui s'écrit $z = a + ib$ où $a$ et $b$ sont des réels. On note :
+Soit $z \in \C$ et $z = a + ib$ sa forme algébrique. On note :
 
-- $\Re(z)$ la quantité $a$ qui est appelée "partie réelle de $z$"
-- $\Im(z)$ la quantité $b$ qui est appelée "partie imaginaire de $z$"
+$\cd$ $\Re(z)$ la quantité $a$ qui est appelée "partie réelle de $z$"
 
-Il suit que $z = \Re(z) + i\Im(z)$. Si $z \in \C^*$ et $\Re(z) = 0$, on dit que $z$ est un **imaginaire pur* 
+$\cd$ $\Im(z)$ la quantité $b$ qui est appelée "partie imaginaire de $z$"
+
+Il suit que $z = \Re(z) + i\Im(z)$. Si $z \in \C^*$ et $\Re(z) = 0$, on dit que $z$ est un **imaginaire pur** 
 </Item>
 
 <Item type='definition' titre='opérations entre complexes'>
-Soient $z = a+ib$ et $z' = c + id$ deux nombres complexes. On définit leur somme et leur produit comme suit :
+Soient $z = a+ib$ et $z' = c + id$ deux nombres complexes et leur forme algébrique. 
 
-- $z + z' = (a+c) + i(b+d)$
+On définit leur somme et leur produit comme suit :
 
-- $z \times z' = (ac - bd) + i(ad + bc)$
+$\cd$ $z + z' = (a+c) + i(b+d)$
+
+$\cd$ $z \times z' = (ac - bd) + i(ad + bc)$
 </Item>
 
 <Remarque titre=''>
 Ces opérations sont assez naturelles : l'addition est faite terme à terme en utilisant l'écriture $z = a + ib$ et $z' = c + id$ et le produit est exactement le résultat que l'on attendrait avec une double distributivité. 
+
+<br/>
 
 On remarque qu'il s'agit bien là d'une définition. On ne peut nullement déduire cela d'une double distributivité puisque cela supposerait que, pour définir le produit de complexes, on sait déjà faire le produit de complexes. On appelle ce genre de raisonnement un "raisonnement circulaire" qu'il faut à tout prix éviter.
 </Remarque>
@@ -433,49 +603,90 @@ On remarque qu'il s'agit bien là d'une définition. On ne peut nullement dédui
 ### Conjugaison et module
 
 <Item type='definition' titre='conjugaison'>
-Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle conjugué de $z$ le complexe $\overline{z} = a - ib $
+
+Soit $z \in \C$ tel que $z = a + ib$ soit sa forme algébrique. 
+
+On appelle conjugué de $z$ le complexe $\overline{z} = a - ib $
 </Item>
 
 <Item type='proposition' titre='propriétés de la conjugaison'>
 Soient $z$ et $z'$ des complexes et $\lambda$ un réel. On a :
 
-- $\overline{\big(\overline{z}\big)} = z$
+$\cd$ $\overline{\big(\overline{z}\big)} = z$
 
-- $\overline{z . z'} = \overline{z} . \overline{z'}$
+$\cd$ $\overline{z . z'} = \overline{z} . \overline{z'}$
 
-- $\overline{\Big(\dfrac{z}{z'}\Big)} = \dfrac{\;\; \overline{z}\;\; }{\overline{z'}}$
+$\cd$ $\overline{\Big(\dfrac{z}{z'}\Big)} = \dfrac{\;\; \overline{z}\;\; }{\overline{z'}}$
 
-- $\overline{z + z'} = \overline{z} + \overline{z'}$
+$\cd$ $\overline{z + z'} = \overline{z} + \overline{z'}$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
+On pose $a = \Re(z)\v b = \Im(z) \v c = \Re(z') \v d = \Im(z')$
 
+<br/>
 
 **Première égalité :** 
 <Indent>
 
-$\overline{z} = a -ib = a + i \tilde{b}$ où $\tilde{b} = -b$. Donc $\overline{\big(\overline{z}\big)} = a - i\tilde{b} = a + ib = z$
+$\overline{z} = a -ib = a + i \tilde{b}$ où $\tilde{b} = -b$. 
+
+Donc $\overline{\big(\overline{z}\big)} = a - i\tilde{b} = a + ib = z$
 </Indent>
+
+<br/>
 
 **Deuxième égalité :** 
 <Indent>
 
-$\overline{z . z'} = (ac -bd) -i(bc + ad)$ et $ \overline{z} . \overline{z'} = (a - ib)(c - id) = ac + (-ib)(-id) + (-ib)c + a(-id) = (ac -bd) -i(bc + ad)$ d'où l'égalité.
+D'une part, 
+
+$$
+\overline{z . z'} = (ac -bd) -i(bc + ad)
+$$ 
+
+D'autre part, 
+
+$$
+ \overline{z} . \overline{z'} = (a - ib)(c - id) = ac + (-ib)(-id) + (-ib)c + a(-id) = (ac -bd) -i(bc + ad)
+ $$ 
+
+d'où l'égalité.
 </Indent>
+
+<br/>
 
 **Troisième égalité :** 
 <Indent>
 
-$\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}.\dfrac{c - id}{c - id}\Big)} = \overline{\Big(\dfrac{(a+ib)(c-id)}{c^2 + d^2}\Big)}$
+$\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}\Big)}$
 
-A l'aide de la deuxième égalité, on a $\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{(a+ib)} \overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} = \dfrac{\overline{(a+ib)}}{\overline{(\overline{c+id})}}$ puisque $\overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} = \dfrac{c+id}{c^2 + d^2} = \dfrac{1}{c-id}$. 
+On multiplie et divise par $c - id$ au sein des parenthèses :
+
+$$
+\overline{\Big(\dfrac{a + ib}{c + id}.\dfrac{c - id}{c - id}\Big)} = \overline{\Big(\dfrac{(a+ib)(c-id)}{c^2 + d^2}\Big)}
+$$
+
+A l'aide de la deuxième égalité, on a $\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{(a+ib)} \overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} $
+
+mais 
+
+$$
+\overline{(a+ib)} \overline{(c-id)} \underbrace{\overline{\Big(\dfrac{1}{c^2 + d^2}\Big)}}_{\in \R} 
+= \overline{(a+ib)} . \overline{\cancel{(c-id)}} \dfrac{1}{\cancel{(c+id)} \overline{(c+id)}} 
+= \dfrac{\overline{(a+ib)}}{\overline{(\overline{c+id})}}
+$$ 
+
 </Indent>
+
+<br/>
 
 **Quatrième égalité :** 
 <Indent>
 
-$\overline{z + z'} = \overline{a + ib + c + id} = a + c - ib - id =  \overline{z} + \overline{z'}$
+$$
+\overline{z + z'} = \overline{a + ib + c + id} = a + c - ib - id =  \overline{z} + \overline{z'}
+$$
 </Indent>
 
 </Hideable>
@@ -484,107 +695,26 @@ $\overline{z + z'} = \overline{a + ib + c + id} = a + c - ib - id =  \overline{z
 <Item type='proposition' titre='lien avec la partie imaginaire et la partie réelle'>
 Soit $z \in \C$. On a :
 
-- $z + \overline{z} = 2\Re(z)$
+$\cd$ $z + \overline{z} = 2\Re(z)$
 
-- $z - \overline{z} = 2i\Im(z)$
+$\cd$ $z - \overline{z} = 2i\Im(z)$
 
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Soit $z \in \C$, on pose $a = \Re{z}\v b = \Im(z)$. On a donc :
 
-$z + \overline{z} = (a+ib) + (a-ib) = 2a$ et $z - \overline{z} = (a+ib) - (a-ib) = 2ib$. D'où le résultat.
+Soit $z \in \C$, on pose $a = \Re(z)\v b = \Im(z)$. On a donc :
+
+$z + \overline{z} = (a+ib) + (a-ib) = 2a \; $ et $ \; z - \overline{z} = (a+ib) - (a-ib) = 2ib$. D'où le résultat.
 
 </Hideable>
 
 
 <Item type='definition' titre='module'>
-Soit $z \in \C$ tel que $z = a + ib$ où $a$ et $b$ sont des réels. On appelle module de $z$ le réel $|z| = \sqrt{a^2 + b^2} $
+Soit $z \in \C$ tel que $z = a + ib$  soit sa forme algébrique. 
+
+On appelle **module** de $z$ le réel $|z| = \sqrt{a^2 + b^2} $
 </Item>
-
-
-<Item type='proposition' titre='propriétés du module'>
-Soient $z$ et $z'$ des complexes et $n$ un entier non nul. On a :
-
-- $|z| = |\overline{z}|$
-
-- $|z . z'| = |z|. |z'|$
-
-- Si $z' \neq 0$, $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$ 
-
-- $|z^n| = |z|^n$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
-
-**Première égalité :** 
-<Indent>
-
-$|z| = \sqrt{a^2 + b^2} = \sqrt{a^2 + (-b)^2} = |\overline{z}|$
-</Indent>
-
-**Deuxième égalité :** Pour éviter de manipuler les racines carrées, on étudie les carrés des quantités voulues. Cela ne pose pas problème car l'on sait que les quantités étudiées sont des réels positifs car il s'agit de distances.
-<Indent>
-$|z . z'|^2 = |(ac - bd) + i(ad +bc)|^2 = (ac - bd)^2 + (ad +bc)^2 = a^2c^2 -\cancel{2abcd} + b^2d^2 + a^2d^2 +\cancel{2abcd} + b^2c^2
-$(|z|.|z'|)^2 = (a^2 + b^2) (c^2 + d^2) = a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2$
-
-Donc $|z . z'|^2 = (|z|.|z'|)^2$ d'où $|z . z'| = |z|.|z'|$ car ces quantités sont toutes réelles et positives.
-</Indent>
-
-**Troisième égalité :** 
-<Indent>
-
-On suppose $z' \neq 0$.
-$|\dfrac{z}{z'}| = |z|\mid \dfrac{1}{z'} \mid$ d'après la deuxième égalité. Montrons donc que $\mid \dfrac{1}{z'} \mid = \dfrac{1}{|z'|}$.
-
-$\mid \dfrac{1}{z'} \mid = \mid \dfrac{1}{c+id} \dfrac{c-id}{c-id} \mid = \mid \dfrac{\overline{z'}}{c^2+d^2}  \mid = \dfrac{|\overline{z'}|}{c^2+d^2}$ d'après la deuxième formule et comme $\dfrac{1}{c^2 + d^2}$ a pour partie imaginaire $0$, son module est lui-même (puisqu'il est positif).
-
-On a donc $ \mid \dfrac{1}{z'} \mid = \dfrac{|\overline{z'}|}{c^2+d^2} = \dfrac{|z'|}{|z'|^2} = \dfrac{1}{|z'|}$. On a bien le résultat voulu.
-</Indent>
-
-**Quatrième égalité :** 
-<Indent>
-
-Soit $z \in \C$. Montrons par récurrence sur $n \in \N^*$ la propriété $\cP(n) \, : \, " |z^n| = |z|^n "$.
-
-**Initialisation :** $\cP(1)$ est trivial et on a même $\cP(2)$ d'après la deuxième formule.
-
-**Hérédité :** Supposons $\cP(n)$ vraie où $n \geqslant 3$. Montrons $\cP(n+1)$.
-
-$|z^{n+1}| = |z.z^n| = |z|.|z^n|$ d'après la deuxième formule.
-
-Ensuite, $|z^{n+1}| = |z|.|z^n|^n = |z|.|z|^n$ par hypothèse de récurrence puisque $\cP(n)$ est supposée vraie. On a donc $|z^{n+1}| = |z|^{n+1}$.
-
-**Conclusion :** On a montré $\cP(1)$. Et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
-</Indent>
-
-</Hideable>
-
-<Item type='proposition' titre='module et comparaisons'>
-Soit $z \in \C$. On a :
-
-$\begin{cases} -|z| \leqslant \Re(z) \leqslant |z| \text{ avec égalité d'un côté ssi. } z \text{ est réel}\\ -|z| \leqslant \Im(z) \leqslant |z| \text{ avec égalité d'un côté ssi. } z \text{ est imaginaire pur}\end{cases}$
-
-
-</Item>
-
-<Hideable type='démonstration' titre=''>
-Soit $z \in \C$, on pose $a = \Re(z)$ et $b = \Im(z)$. On a :
-
-$a^2 \leqslant a^2 + b^2 = |z|^2$
-
-Par croissance de $x \rightarrow x^2$ sur $\R_+$, on a donc $|a| = \sqrt{a^2} \leqslant |z|$.
-
-De même, $b^2 \leqslant a^2 + b^2 = |z|^2$ d'où, par croissance de la fonction racine carrée sur $\R_+$, $|b| = \sqrt{b^2} \leqslant |z|$.
-
-D'où les inégalités de la proposition. Les cas d'égalités correspondent aux cas 
-
-- $a^2 = a^2 + b^2$ et donc $b = 0$ d'où $z$ est réel
-
-- $b^2 = a^2 + b^2$ donc $a = 0$ d'où $z$ est imaginaire pur.
-</Hideable>
 
 <Item type='proposition' titre='module et conjugaison'>
 Soit $z \in \C$, on a :
@@ -595,8 +725,6 @@ $$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-  En réalité, cette propriété aurait pu être introduite plus tôt afin de démontrer plus facilement les propriétés ci-dessus. Cependant, il semble important de comprendre en profondeur les manipulations derrière cette propriété importante. D'où le fait que nous l'introduisions si tardivement.
-
 
   Soit $z \in \C$, on pose $a = \Re{z}$ et $b = \Im{z}$.
 
@@ -605,15 +733,144 @@ $$
   $$
 </Hideable>
 
+
+<Item type='proposition' titre='propriétés du module'>
+Soient $z$ et $z'$ des complexes et $n$ un entier non nul. On a :
+
+$\cd$ $|z| = |\overline{z}|$
+
+$\cd$ $|z . z'| = |z|. |z'|$
+
+$\cd$ Si $z' \neq 0$, $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$ 
+
+$\cd$ $|z^n| = |z|^n$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
+
+<br/>
+
+**Première égalité :** 
+<Indent>
+
+$$
+|z| = \sqrt{a^2 + b^2} = \sqrt{a^2 + (-b)^2} = |\overline{z}|
+$$
+</Indent>
+
+<br/>
+
+**Deuxième égalité :** Pour éviter de manipuler les racines carrées, on étudie les carrés des quantités voulues. Cela ne pose pas problème car l'on sait que les quantités étudiées sont des réels positifs.
+<Indent>
+
+D'une part, $|z . z'|^2 = |(ac - bd) + i(ad +bc)|^2 = (ac - bd)^2 + (ad +bc)^2 $
+
+donc 
+
+$$
+|z . z'|^2 = a^2c^2 -\cancel{2abcd} + b^2d^2 + a^2d^2 +\cancel{2abcd} + b^2c^2
+$$
+
+<br/>
+
+D'autre part, 
+$$
+(|z|.|z'|)^2 = (a^2 + b^2) (c^2 + d^2) = a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2
+$$
+
+Donc $|z . z'|^2 = (|z|.|z'|)^2$ d'où $|z . z'| = |z|.|z'|$ car toutes les quantités sont positives.
+</Indent>
+
+<br/>
+
+**Troisième égalité :** 
+<Indent>
+
+On suppose $z' \neq 0$.
+
+D'après la deuxième égalité, $\Big\lvert\dfrac{z}{z'}\Big\rvert = |z|\Big\lvert \dfrac{1}{z'} \Big\rvert$ . Montrons donc que $\Big\lvert \dfrac{1}{z'} \Big\rvert = \dfrac{1}{|z'|}$.
+
+<br/>
+
+$\Big\lvert \dfrac{1}{z'} \Big\rvert = \Big\lvert \dfrac{1}{c+id} \dfrac{c-id}{c-id} \Big\rvert = \Big\lvert \dfrac{\overline{z'}}{c^2+d^2}  \Big\rvert = |\overline{z'}|\Big\lvert\underbrace{\dfrac{1}{c^2+d^2}}_{\in \R^+}\Big\rvert$
+
+On a donc $ \Big\lvert \dfrac{1}{z'} \Big\rvert = \dfrac{|\overline{z'}|}{c^2+d^2} = \dfrac{|z'|}{|z'|^2} = \dfrac{1}{|z'|}$. On a bien le résultat voulu.
+</Indent>
+
+<br/>
+
+**Quatrième égalité :** 
+<Indent>
+
+Soit $z \in \C$. Montrons par récurrence sur $n \in \N^*$ la propriété 
+
+$$
+\cP(n) \, : \,  |z^n| = |z|^n 
+$$
+
+**Initialisation :** $\cP(1)$ est trivial et on a même $\cP(2)$ d'après la deuxième formule.
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vraie où $n \geqslant 3$. Montrons $\cP(n+1)$.
+
+$|z^{n+1}| = |z.z^n| = |z|.|z^n|$ d'après la deuxième formule.
+
+Ensuite, $|z^{n+1}| = |z|.|z^n|^n = |z|.|z|^n$ par hypothèse de récurrence puisque $\cP(n)$ est supposée vraie. 
+
+On a donc $|z^{n+1}| = |z|^{n+1}$.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$. Et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Indent>
+
+</Hideable>
+
+<Item type='proposition' titre='module et comparaisons'>
+Soit $z \in \C$. On a :
+
+$\cd$ $|z| \leqslant \Re(z) \leqslant |z|$
+avec égalité d'un côté ssi. $z$ est réel
+
+$\cd$ $|z| \leqslant \Im(z) \leqslant |z| $ avec égalité d'un ôté ssi. $z$ est imaginaire pur$
+
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $z \in \C$, on pose $a = \Re(z)$ et $b = \Im(z)$. 
+
+$a^2 \leqslant a^2 + \underbrace{b^2}_{\geqslant 0} = |z|^2$
+
+Par croissance de $x \rightarrow \sqrt{x}$ sur $\R_+$, on a donc $|a| = \sqrt{a^2} \leqslant |z|$.
+
+<br/>
+De même, $b^2 \leqslant \underbrace{a^2}_{\geqslant 0} + b^2 = |z|^2$ d'où, par croissance de la fonction racine carrée sur $\R_+$, $|b| = \sqrt{b^2} \leqslant |z|$.
+
+D'où les inégalités de la proposition.
+
+<br/>
+
+**Première inéquation (cas d'égalité) :** $a^2 = a^2 + b^2$ et donc $b = 0$ d'où $z$ est réel
+
+<br/>
+
+**Seconde inéquation (cas d'égalité) :** $b^2 = a^2 + b^2$ donc $a = 0$ d'où $z$ est imaginaire pur.
+</Hideable>
+
+
 <Item type='definition' titre='liés et positivement liés'>
-On dit que $z$ et $z'$ deux complexes sont liés (resp. positivement liés) s'il existe $\lambda \in \R$ (resp. $\R_+$) tel que $z = \lambda z'$ ou $z' = \lambda z$. 
+On dit que deux complexes $z$ et $z'$ sont liés (resp. positivement liés) s'il existe $\lambda \in \R$ (resp. $\R_+$) tel que $z = \lambda z'$ ou $z' = \lambda z$.
 </Item>
 
 <Item type='theoreme' titre='inégalité triangulaire'>
 Soient $z$ et $z'$ deux complexes. On a :
 
 $$ 
-\mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|
+\Big\lvert |z| - |z'|\Big\rvert \leqslant |z + z'| \leqslant |z| + |z'|
 $$
 
 Il y a égalité à droite (resp. à gauche) si et seulement si $z$ et $z'$ sont positivement liés (resp. négativement liés).
@@ -622,80 +879,151 @@ Il y a égalité à droite (resp. à gauche) si et seulement si $z$ et $z'$ sont
 <Hideable type='démonstration' titre=''>
 Soient $z$ et $z'$ deux complexes. Etudions les carrés des quantités comparées. 
 
+<br/>
+
 **Expression de $|z + z'|^2 :$**
 <Indent>
-$|z + z'|^2 = (z+z')\overline{(z+z')} =  (z+z')(\overline{z}+\overline{z'}) = z\overline{z} + z \overline{z'} + z'\overline{z} + z'\overline{z'}$
 
-On a donc $|z + z'|^2 = |z^2| + |z'^2| + z \overline{z'} + z'\overline{z}$. Il convient de remarquer que $z'\overline{z} = \overline{(z \overline{z'})}$. On a donc :
+$$
+|z + z'|^2 = (z+z')\overline{(z+z')} =  (z+z')(\overline{z}+\overline{z'}) = z\overline{z} + z \overline{z'} + z'\overline{z} + z'\overline{z'}
+$$
 
-$|z + z'|^2 = |z^2| + |z'^2| + 2\Re(z \overline{z'})$. Il reste maintenant à encadrer $\Re(z \overline{z'})$ pour conclure
+On a donc 
+
+$$
+|z + z'|^2 = |z^2| + |z'^2| + z \overline{z'} + z'\overline{z}
+$$ 
+
+Il convient de remarquer que $z'\overline{z} = \overline{(z \overline{z'})}$. On a donc :
+
+$$
+|z + z'|^2 = |z^2| + |z'^2| + 2\Re(z \overline{z'})
+$$
+
+Il reste maintenant à encadrer $\Re(z \overline{z'})$ pour conclure
 </Indent>
+
+<br/>
 
 **Encadrement de $|z + z'|^2$ :** 
 <Indent>
 
 Comme $ - |zz'| = -|z\overline{z'}| \leqslant \Re(z \overline{z'}) \leqslant |z\overline{z'}| = |z|.|z'|$, on a :
 
-$ (|z| - |z'|)^2= |z^2| + |z'^2|  - 2|z|.|z'| \leqslant |z + z'|^2\leqslant |z^2| + |z'^2|  + 2|z|.|z'| = (|z| + |z'|)^2$
+$$
+(|z| - |z'|)^2= |z^2| + |z'^2|  - 2|z|.|z'| \leqslant |z + z'|^2\leqslant |z^2| + |z'^2|  + 2|z|.|z'| = (|z| + |z'|)^2
+$$
 
 Comme la fonction racine carrée est croissante sur $\R_+$ et que pour tout $x \in \R$, on a $\sqrt{x^2} = |x|$, on a :
 
-$ \mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|$
+$$
+\mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|
+$$
 </Indent>
+
+<br/>
 
 **Les cas d'égalité :**
 
-Le cas d'égalité est atteint quand $\Re(z \overline{z'}) = \pm |z \overline{z'}|$ ce qui n'est vrai que si $z \overline{z'}$ est réel. Par calcul, on a :
+Le cas d'égalité est atteint quand $\Re(z \overline{z'}) = \pm |z \overline{z'}|$ ce qui n'est vrai que si $z \overline{z'}$ est réel. 
 
-$\Im(z \overline{z'}) = \Im(z)\Re(z') -\Re(z)\Im(z') = 0$ d'où $\Im(z)\Re(z') -\Re(z)\Im(z') = 0$. On reconnait $det\Big( \begin{pmatrix}\Re(z) // \Im(z)\end{pmatrix} \v \begin{pmatrix}\Re(z') // \Im(z')\end{pmatrix}\Big) = 0$ d'où le fait que les deux vecteurs soient colinéaires. On en déduit que $z$ et $z'$ sont liés.
+Par calcul, on a :
+
+$$
+\Im(z \overline{z'}) = \Im(z)\Re(z') -\Re(z)\Im(z') = 0
+$$ 
+
+d'où $\Im(z)\Re(z') -\Re(z)\Im(z') = 0$. 
+
+<br/>
+
+On reconnait $\det\Big( \begin{pmatrix}\Re(z) // \Im(z)\end{pmatrix} \v \begin{pmatrix}\Re(z') // \Im(z')\end{pmatrix}\Big) = 0$. Ces deux vecteurs sont donc colinéaires. 
+
+On en déduit que $z$ et $z'$ sont liés.
 
 <Indent>
 
-Cas 1 : $z' = \lambda z$ où $\lambda \in \R_+$. On a $|z + z'| = |(1+\lambda)z| = (1+\lambda)|z| = |z| + \lambda |z| = |z| + |\lambda z| = |z| + |z'|$. D'où l'égalité à droite.
+<br/>
 
-Cas 2 : $z' = -\lambda z$ où $\lambda \in \R_+$. On a $|z + z'| = |(1-\lambda)z| = |1-\lambda||z| = \mid (1-\lambda)|z| \mid  = \mid |z| - \lambda |z| \mid = \mid |z| - |\lambda z| \mid = \mid |z| - |z'| \mid$. D'où l'égalité à droite.
+**Cas 1 :** $z' = \lambda z$ où $\lambda \in \R_+$. 
+
+On a $|z + z'| = |(1+\lambda)z| = (1+\lambda)|z| = |z| + \lambda |z| = |z| + |\lambda z| = |z| + |z'|$
+
+D'où l'égalité à droite.
+
+<br/>
+
+**Cas 2 :** $z' = -\lambda z$ où $\lambda \in \R_+$. 
+
+On a $|z + z'| = |(1-\lambda)z| = |1-\lambda||z| = \mid (1-\lambda)|z| \mid  = \mid |z| - \lambda |z| \mid = \mid |z| - |\lambda z| \mid = \mid |z| - |z'| \mid$.
+
+D'où l'égalité à gauche.
 </Indent>
 
-Les deux cas peuvent être obtenus simultanément si et seulement si $z = 0$ ou $z' = 0$. 
+<br/>
 
-Par disjonction de cas, on a trouvé toutes les solutions aux cas d'égalité, d'où le résultat.
+Les deux cas peuvent être obtenus simultanément si et seulement si $z = 0$ ou $z' = 0$. 
 </Hideable>
 
 <Item type='proposition' titre='inégalité triangulaire généralisée'>
-Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. On a :
+Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. 
+
+On a :
 
 $$
-\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| 
+\Big\lvert \somme{i=1}{n} z_i \Big\rvert \leqslant \somme{i=1}{n} |z_i| 
 $$
 
 Avec égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient positivement liés à $z_i$ pour $k  \in \defentiersn$.
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Montrons par récurrence sur $n \in \N^*$ la propriété $\cP(n) : "\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $ et égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \defentiersn "$.
+Montrons par récurrence sur $n \in \N^*$ la propriété 
+
+$\cP(n) : "\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $ et égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \defentiersn "$.
+
+<br/>
 
 **Initialisation :** $\cP(1)$ est trivialement vérifiée et $\cP(2)$ est vérifiée par inégalité triangulaire démontrée précédemment.
 
+<br/>
 
 **Hérédité :** Supposons $\cP(n)$ vérifiée où $n\in \N^*$. Montrons $\cP(n+1)$. On considère $z_1 \v z_2 \v \dotsm \v z_{n+1}$ des complexes
 
-$\mid \somme{i=1}{n+1} z_i \mid = \mid z_{n+1} + \Big( \somme{i=1}{n} z_i \Big) \mid \leqslant  |z_{n+1}| + \mid \somme{i=1}{n} z_i \mid$ (RES. 1) par inégalité triangulaire.
+$$
+\Big\lvert \somme{i=1}{n+1} z_i \Big\rvert = \Big\lvert z_{n+1} + \Big( \somme{i=1}{n} z_i \Big) \Big\rvert \leqslant  |z_{n+1}| + \Big\lvert \somme{i=1}{n} z_i \Big\rvert
+$$ 
 
-Par hypothèse de récurrence, puisque $\cP(n)$ est supposée vérifiée, $\mid \somme{i=1}{n+1} z_i \mid \leqslant |z_{n+1}| + \somme{i=1}{n} |z_i| = \somme{i=1}{n+1} |z_i|$ (RES. 2) .
+Par hypothèse de récurrence, puisque $\cP(n)$ est supposée vérifiée, $\Big\lvert \somme{i=1}{n+1} z_i \Big\rvert \leqslant |z_{n+1}| + \somme{i=1}{n} |z_i| = \somme{i=1}{n+1} |z_i|$ (RES. 2) .
+
+<br/>
 
 Intéressons-nous maintenant aux cas d'égalité : on écarte immédiatement le cas $z_{n+1} = 0$ qui est trivial. De même, on écarté également le cas $\forall i \in \defentiers \v z_i = 0$. Supposons qu'il y a égalité dans (RES. 2).
 
 <Indent>
 
-Comme il y a égalité à (RES. 2), il y a égalité à (RES. 1). En effet, $a \leqslant b = a \Rightarrow a = b$.
+Comme il y a égalité à (RES. 2), il y a égalité à (RES. 1). (En effet, $a \leqslant b = a \Rightarrow a = b$)
 
-Quand l'on arrive à (RES. 1), on utilise l'inégalité triangulaire qui donne le fait que $z_{n+1}$ et $\somme{i=1}{n} z_i$ soient positivement liés.
+Quand l'on arrive à (RES. 1), on utilise l'inégalité triangulaire. D'où $z_{n+1}$ et $\somme{i=1}{n} z_i$ soient positivement liés.
 
-Mais en soustrayant $|z_{n+1}|$ de part et d'autre de (RES. 2), on a le cas d'égalité au de $\cP(n)$. Par hypothèse de récurrence, il existe $k \in \defentiersn$ tel que tous les $z_i$ soient positivement liés à $z_k$ si $ i \in \defentiersn$. 
+Mais en soustrayant $|z_{n+1}|$ de part et d'autre de (RES. 2), on a le cas d'égalité de $\cP(n)$. Par hypothèse de récurrence, il existe $k \in \defentiersn$ tel que tous les $z_i$ soient positivement liés à $z_k$ si $ i \in \defentiersn$. 
 
-Donc : $\forall i \in \defentiersn \v \exists \lambda \in \R_+ \mid z_i = \lambda_i z_k $. On a alors $\somme{i=1}{n} z_i = \somme{i=1}{n} \lambda_i z_k = z_k \Big( \somme{i=1}{n} \lambda_i z_k \Big) $. Si l'on pose $\Lambda = \somme{i=1}{n} \lambda_i z_k \geqslant 0$, on a $\somme{i=1}{n} z_i = \Lambda z_k$.
+Donc,
 
-Mais $z_{n+1}$ et $\Lambda z_k$ sont positivement liés. Comme on a supposé que les $z_i$ où $ 1 \leqslant i \leqslant n$ n'étaient pas tous nuls, nécessairement $z_k \neq 0$. Il existe donc $\mu \in \R_+$ tel que $z_{n+1}  = \mu \Lambda z_k$. En posant $\lambda_{n+1} = \mu \Lambda \geqslant 0$, on a $z_{n+1}  = \lambda_{n+1} z_k$. Les $z_i$ sont donc tous positivement liés à $z_k$.
+$$
+\forall i \in \defentiersn \v \exists \lambda \in \R_+ \mid z_i = \lambda_i z_k 
+$$
+
+On a alors 
+$$
+\somme{i=1}{n} z_i = \somme{i=1}{n} \lambda_i z_k = z_k \Big( \somme{i=1}{n} \lambda_i z_k \Big) 
+$$
+
+Si l'on pose $\Lambda = \somme{i=1}{n} \lambda_i z_k \geqslant 0$, on a $\somme{i=1}{n} z_i = \Lambda z_k$.
+
+Mais $z_{n+1}$ et $\Lambda z_k$ sont positivement liés. Comme on a supposé que les $z_i$ où $ 1 \leqslant i \leqslant n$ n'étaient pas tous nuls, nécessairement $z_k \neq 0$. Il existe donc $\mu \in \R_+$ tel que $z_{n+1}  = \mu \Lambda z_k$. 
+
+En posant $\lambda_{n+1} = \mu \Lambda \geqslant 0$, on a $z_{n+1}  = \lambda_{n+1} z_k$. Les $z_i$ sont donc tous positivement liés à $z_k$.
 </Indent>
 
 </Hideable>
@@ -716,15 +1044,32 @@ Cette écriture de $z$ est une **forme trigonométrique** de $z$.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $z \in \C$, si $z = 0$, on peut choisir $\theta$ quelconque.
+Soit $z \in \C$, 
 
-Sinon, on pose $A = \dfrac{\Re(z)}{|z|}$ et $B = \dfrac{\Im(z)}{|z|}$ on a $z = |z| (A + B)$. Or $A^2 + B^2 = 1$ donc il existe $\theta \in \R$ tel qye $A = \cos(\theta)$ et $B = \sin(\theta)$. D'où le résultat : 
+<br/>
 
-$z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$
+**si $z = 0$ :** on peut choisir $\theta$ quelconque.
+
+<br/>
+
+**Si $z :\neq 0$ :** on pose $A = \dfrac{\Re(z)}{|z|}$ et $B = \dfrac{\Im(z)}{|z|}$ on a $z = |z| (A + B)$. 
+
+Or $A^2 + B^2 = 1$ donc il existe $\theta \in \R$ tel que $A = \cos(\theta)$ et $B = \sin(\theta)$. D'où le résultat : 
+
+$$
+z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)
+$$
 </Hideable>
 
 <Item type='proposition' titre='identification par forme trigonométrique'>
-Soient $z$ et $z'$ deux complexes dont une éxriture sous forme trigonométrique est $z = |z| \Big( \cos(\theta_1) + i \sin(\theta_1) \Big)$ et $z' = |z'| \Big( \cos(\theta_2) + i \sin(\theta_2) \Big)$. On a :
+
+Soient $z$ et $z'$ deux complexes dont on donne des écritures trigonométriques :
+
+
+$z = |z| \Big( \cos(\theta _1) + i \sin(\theta _1) \Big) \;$ et 
+$\; z' = |z'| \Big( \cos(\theta _2) + i \sin(\theta _2) \Big)$. 
+
+On a :
 
 $$ 
 z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}
@@ -732,54 +1077,146 @@ $$
 </Item>
 
 <Hideable type='démonstration' titre=''>
+
 On écarte le cas $z = z' = 0$ qui est évident. On considère donc $z \neq 0$.
 
-$z = z' \ssi |z|\Big( \cos(\theta_1) + i \sin(\theta_1) \Big) = |z'|\Big( \cos(\theta_2) + i \sin(\theta_2) \Big) \ssi \begin{cases} |z| \cos(\theta_1) = |z'|\cos(\theta_2)  \quad (L_1) \\ |z| \sin(\theta_1) = |z'|\sin(\theta_2)   \quad (L_2)  \end{cases}$ 
+$z = z' \ssi |z|\Big( \cos(\theta_1) + i \sin(\theta_1) \Big) = |z'|\Big( \cos(\theta_2) + i \sin(\theta_2) \Big) $
 
-L'opération $L_1^2 + L_2^2$ donne $|z| = |z'|$. On a donc $z = z' \ssi \begin{cases}  \cos(\theta_1) = \cos(\theta_2) \\ \sin(\theta_1) = \sin(\theta_2) \\ |z| = |z'| \end{cases} \ssi \begin{cases} \theta_1 \equiv \pm \theta_2 \; [2\pi] \\  \theta_1 \equiv \theta_2 \; [2\pi] ou  \theta_1 \equiv \pi - \theta_2 \; [2\pi]\\ |z| = |z'| \end{cases} \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}$ 
+donc 
+$
+z = z' 
+\ssi 
+\begin{cases} 
+  |z| \cos(\theta_1) = |z'|\cos(\theta_2)  \quad (L_1) 
+  \\ 
+  |z| \sin(\theta_1) = |z'|\sin(\theta_2)   \quad (L_2)  
+\end{cases}
+$ 
 
+<br/>
+L'opération $L_1^2 + L_2^2$ donne $|z| = |z'|$. On a donc :
+
+$$
+z = z' 
+\ssi 
+\begin{cases}  
+  \cos(\theta_1) = \cos(\theta_2) 
+  \\ 
+  \sin(\theta_1) = \sin(\theta_2) \\ |z| = |z'| 
+\end{cases} 
+\ssi 
+\begin{cases} 
+  \theta_1 \equiv \pm \theta_2 \; [2\pi]
+  \\  
+  \theta_1 \equiv \theta_2 \; [2\pi] \, \text{ ou }\,  \theta_1 \equiv \pi - \theta_2 \; [2\pi]\\ |z| = |z'| 
+\end{cases} 
+$$
+
+Finalement, 
+
+$$
+z = z' \ssi 
+\begin{cases} 
+  |z| = |z'|
+  \\
+  \theta_1 \equiv \theta_2 \, [2\pi] 
+\end{cases}
+$$
 </Hideable>
 
 <Item type='definition' titre='argument'>
 
-La fonction $\Arg : \begin{cases} \C \rightarrow \big] -\pi \v \pi \big] \\ z \rightarrow \Arg(z)\\ \end{cases}$
- où $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
+La fonction 
+$
+\Arg : 
+\begin{cases} 
+\C \rightarrow \defprincipale{-\pi}{\pi}
+\\ 
+z \mapsto \Arg(z)
+\end{cases}
+$
+
+ tel que $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
 </Item>
 
 
 <Item type='proposition' titre="propriétés  de l'argument">
 Soient $(z \v z') \in \C^2$.
 
-- $\Arg(\overline{z}) = - \Arg(z)$
+$\cd$ $\Arg(\overline{z}) = - \Arg(z)$
 
-- $\Arg(z z') \equiv \Arg(z) + \Arg(z') \, [2 \pi ]$
+$\cd$ $\Arg(z z') \equiv \Arg(z) + \Arg(z') \, [2 \pi ]$
 
-- Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
+$\cd$ Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 On pose $a = \Arg(z)$ et $b = \Arg(z')$.
 
-**Première égalité :**
-$z = \cos(a) + i \sin(a)$ donc $\overline{z} = \cos(a) - i \sin(a) = \cos(-a) + i \sin(-a)$. Comme $a \in \defprincipale$, $-a \in \defprincipale$. D'où $\Arg(\overline{z}) = -a = - \Arg(z)$
+<br/>
 
+**Première égalité :**
+
+$z = \cos(a) + i \sin(a)$ donc 
+
+$$
+\overline{z} = \cos(a) - i \sin(a) = \cos(-a) + i \sin(-a)
+$$ 
+
+Mais, comme $a \in \defprincipale$, $-a \in \defprincipale$, d'où $\Arg(\overline{z}) = -a = - \Arg(z)$
+
+<br/>
 
 **Deuxième égalité :**
-$z = |z|\Big( \cos(a) + i \sin(a) \Big)$ et $z' = |z'|\Big( \cos(b) + i \sin(b) \Big)$. On a donc :
 
-$zz' = |z|\Big( \cos(a) + i \sin(a) \Big)|z'|\Big( \cos(b) + i \sin(b) \Big) = |z|.|z'|\Big( \cos(a) \cos(b) - \sin(a) \sin(b) + i(\cos(a) \sin(b) + \sin(a) \cos(b)) \Big) = |z|.|z'|\Big( \cos(a+b) + i \sin(a+b) \Big) $ d'où $\Arg(z + z') \equiv \Arg(z) + \Arg(z') \; [2\pi]$
+$z = |z|\Big( \cos(a) + i \sin(a) \Big)$ et $z' = |z'|\Big( \cos(b) + i \sin(b) \Big)$. 
+
+<br/>
+
+On a donc :
+
+$$
+zz' = |z|\Big( \cos(a) + i \sin(a) \Big) . |z'|\Big( \cos(b) + i \sin(b) \Big) 
+$$ 
+
+et ensuite, 
+
+$$
+zz' = = |z|.|z'|\Big( \cos(a) \cos(b) - \sin(a) \sin(b) + i(\cos(a) \sin(b) + \sin(a) \cos(b)) \Big)
+$$
+
+puis, 
+
+$$ 
+zz'= |z|.|z'|\Big( \cos(a+b) + i \sin(a+b) \Big) 
+$$
+
+d'où $\Arg(z + z') \equiv \Arg(z) + \Arg(z') \; [2\pi]$
+
+<br/>
 
 **Troisième égalité :**
-Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) =  \Arg(\dfrac{z\overline{z'}}{z'\overline{z'}})  \equiv \Arg(z) + \Arg(\overline{z'}) + \Arg(\dfrac{1}{z'\overline{z'}}) \; [2\pi]$. Mais le dernier terme est réel strictement positif donc son argument est $0$. D'où 
 
-$\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
+Si $z' \neq 0 \v \Arg(\dfrac{z}{z'}) =  \Arg(\dfrac{z\overline{z'}}{z'\overline{z'}})  \equiv \Arg(z) + \Arg(\overline{z'}) + \Arg({\underbrace\dfrac{1}{z'\overline{z'}}}_{\in \R_+}) \; [2\pi]$
+
+d'où 
+
+$$
+\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]
+$$
 
 </Hideable>
 
+
 <Item type='definition' titre='forme exponentielle'>
 
-Soit $z \in \C$ et $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$ où $\theta \in \R$. On note  $z = |z| e^{i \theta}$. On appelle cette écriture une **forme exponentielle** de $z$.
+Soient $z \in \C$ et $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$ où $\theta \in \R$. 
+
+<br/>
+On note  $z = |z| e^{i \theta}$. 
+
+On appelle cette écriture une **forme exponentielle** de $z$.
 </Item>
 
 <Item type='proposition' titre='identification par forme exponentielle'>
@@ -797,10 +1234,13 @@ Daprès l'identification par forme géométrique, l'équivalence est immédiate.
 <Item type='proposition' titre='propriétés de la forme exponentielle'>
 Soit $z$ et $z'$ des complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| z^{i \theta_2}$. On a :
 
-- $ zz' = |z||z'|e^{i(\theta_1 + \theta_2)}$
-- si $z' \neq 0$, $ \dfrac{z}{z'} = \dfrac{|z|}{|z'|}e^{i(\theta_1 - \theta_2)}$
-- si $n \in \Z^*$, $z^n = |z|^n e^{ni\theta}$
-- $\overline{\big(e^{i\theta}\big)} = e^{-i\theta}$
+$\cd$ $ zz' = |z||z'|e^{i(\theta_1 + \theta_2)}$
+
+$\cd$ si $z' \neq 0$, $ \dfrac{z}{z'} = \dfrac{|z|}{|z'|}e^{i(\theta_1 - \theta_2)}$
+
+$\cd$ si $n \in \Z^*$, $z^n = |z|^n e^{ni\theta}$
+
+$\cd$ $\overline{\big(e^{i\theta}\big)} = e^{-i\theta}$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -809,35 +1249,43 @@ Les deux premières formules ainsi que la dernière découlent immédiatement de
 
 La troisième propriété se montre en partie par récurrence. 
 
-Montrons sur $\N^*$ la propriété $\cP(n) : " \forall z \in \C \, z^n = |z|^n e^{ni\theta}"$.
+<br/>
+
+Montrons sur $\N^*$ la propriété $\cP(n) :  \forall z \in \C \, z^n = |z|^n e^{ni\theta}$.
+
+<br/>
 
 **Initialisation :** On vérifie $\cP(1)$. En effet, |z^1| = |z|^1. $\cP(2)$ est également vérifiée d'après la première formule.
+
+<br/>
 
 **Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
 
 $z^{n+1} = z. z^n = |z| . e^{i\theta} . |z^n| e^{i n\theta} = |z|.|z^n|e^{i\theta} .e^{i n\theta}$ d'après l'hypothèse de récurrence.
 
+<br/>
+
 Mais donc, $z^{n+1}  = |z^{n+1}| e^{i (n+1)\theta}$ d'après la première formule.
 
-**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+<br/>
 
-Pour étendre la propriété sur $\Z^*$, il suffit d'appliquer la deuxième formule puisque $z^{n} = \dfrac{z^{-n}}$.
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
 
-
+Pour étendre la propriété sur $\Z^*$, il suffit d'appliquer la deuxième formule puisque $z^{n} = \dfrac{1}{z^{-n}}$.
 </Hideable>
 
 <Item type='proposition' titre='formules de Moivre'>
 Soit $\theta \in \R$. On a :
 
-- $\cos(\theta) = \dfrac{e^{i\theta} + e^{-i\theta}}{2}$
+$\cd$ $\cos(\theta) = \dfrac{e^{i\theta} + e^{-i\theta}}{2}$
 
-- $\sin(\theta) = \dfrac{e^{i\theta} - e^{-i\theta}}{2i}$
+$\cd$ $\sin(\theta) = \dfrac{e^{i\theta} - e^{-i\theta}}{2i}$
 
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-$e^{i\theta} = \cos(\theta) + i \sin(\theta)$ et $e^{-i\theta} = \cos(-\theta) + i \sin(-\theta) = \cos(\theta) - i \sin(-\theta)$
+$e^{i\theta} = \cos(\theta) + i \sin(\theta)\; $ et $\; e^{-i\theta} = \cos(-\theta) + i \sin(-\theta) = \cos(\theta) - i \sin(-\theta)$
 
 Par somme on déduit la première égalité et par différence on déduit la seconde égalité.
 </Hideable>
@@ -856,6 +1304,7 @@ $$
 $$
 \forall (z,z') \in \C^2 \v e^{z+z'} = e^ze^{z'}
 $$
+
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -868,38 +1317,84 @@ Immédiat en appliquant les propriétés de l'exponentielle réelle et de l'expo
 <Item type='consequence' titre='formulaire sommes de fonctions trigonométriques'>
 Soient $p$ et $q$ deux réels :
 
-- $\cos(p) + \cos(q) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+$\cd$ $\cos(p) + \cos(q) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
 
-- $\cos(p) - \cos(q) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
+$\cd$ $\cos(p) - \cos(q) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
 
-- $\sin(p) + \sin(q) = -2 \cos(\dfrac{p-q}{2}) \sin(\dfrac{p+q}{2})$
+$\cd$ $\sin(p) + \sin(q) = -2 \cos(\dfrac{p-q}{2}) \sin(\dfrac{p+q}{2})$
 
-- $\sin(p) - \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
+$\cd$ $\sin(p) - \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
 </Item>
 
 
 <Hideable type='démonstration' titre=''>
 
 **Première égalité :** 
-<Indent>
-$\cos(p) + \cos(q) = \Re( e^{ip} + e^{iq}) = \Re \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big) $ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
 
-$\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) = 2\cos(\dfrac{p-q}{2}) \Re(e^{i\dfrac{p+q}{2}}) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
-</Indent>
+
+$$
+\cos(p) + \cos(q) = \Re( e^{ip} + e^{iq}) 
+$$ 
+
+On utilise la technique dite de factorisation de l'angle moitié :
+
+$$
+\cos(p) + \cos(q) = \Re \Big( e^{\textstyle i\frac{p+q}{2}} e^{\textstyle i\frac{p-q}{2}} + e^{\textstyle i\frac{p+q}{2}}e^{\textstyle -i\frac{p-q}{2}} \Big) 
+$$
+
+puis, en factorisant par $e^{\textstyle i\frac{p+q}{2}}$, on a :
+
+$$
+\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{\textstyle i\frac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\frac{p-q}{2}} + e^{\textstyle -i\frac{p-q}{2}} \Big)}_{\textstyle = 2\cos(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+d'où 
+
+$$
+\cos(p) + \cos(q) = 2\cos(\frac{p-q}{2}) \Re(e^{\textstyle i\frac{p+q}{2}}) = 2 \cos(\frac{p+q}{2})\cos(\frac{p-q}{2})
+$$
+
+<br/>
 
 **Déuxième inégalité :**
-<Indent>
-$\cos(p) - \cos(q) = \Re( e^{ip} - e^{iq} ) = \Re \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} - e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big) $ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
 
-$\cos(p) - \cos(q) = \Re \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} - e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\sin(\dfrac{p-q}{2})}\Bigg) =  \Re \Bigg( 2i\sin(\dfrac{p-q}{2}) \Big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})  \Big) \Bigg) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
-</Indent>
+$$
+\cos(p) - \cos(q) = \Re( e^{\textstyle ip} - e^{\textstyle iq} ) = \Re \Big( e^{\textstyle i\frac{p+q}{2}} e^{\textstyle i\frac{p-q}{2}} - e^{\textstyle i\frac{p+q}{2}}e^{\textstyle -i\frac{p-q}{2}} \Big) 
+$$ 
+
+puis, en factorisant par $e^{\textstyle i\frac{p+q}{2}}$, on a :
+
+$$
+\cos(p) - \cos(q) = \Re \Bigg(\Big( e^{\textstyle i\frac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\frac{\textstyle p-q}{2}} - e^{\textstyle -i\frac{p-q}{2}} \Big)}_{\textstyle = 2\sin(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+d'où :
+
+$$
+\cos(p) - \cos(q) =  2i\sin(\frac{p-q}{2}) \Re \Bigg(  \cos(-\frac{p-q}{2}) + i \sin(-\frac{p-q}{2})   \Bigg) = -2 \sin(\frac{p+q}{2})\sin(\frac{p-q}{2})
+$$
+
+<br/>
 
 **Troisième égalité :**
-<Indent>
-$\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq} ) = \Im \Big( e^{i\dfrac{p+q}{2}} e^{i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{-i\dfrac{p-q}{2}} \Big)$ puis, en factorisant par $e^{i\dfrac{p+q}{2}}$, on a :
 
-$\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{i\dfrac{p-q}{2}} + e^{-i\dfrac{p-q}{2}} \Big)}_{= 2\cos(\dfrac{p-q}{2})}\Bigg) =  \Im \Big( 2\cos(\dfrac{p-q}{2}) \big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})\big) \Big) = -2 \sin(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
-</Indent>
+$$
+\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq} ) = \Im \Big( e^{\textstyle i\dfrac{p+q}{2}} e^{\textstyle i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{\textstyle -i\dfrac{p-q}{2}} \Big)
+$$ 
+
+puis, en factorisant par $e^{\textstyle i\dfrac{p+q}{2}}$, on a :
+
+$$
+\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{\textstyle i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\dfrac{p-q}{2}} + e^{\textstyle -i\dfrac{p-q}{2}} \Big)}_{\textstyle = 2\cos(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+puis, 
+
+$$
+\sin(p) + \sin(q) =  \Im \Big( 2\cos(\dfrac{p-q}{2}) \big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})\big) \Big) = -2 \sin(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})
+$$
+
+<br/>
 
 **Quatrième égalité :** On applique la troisième égalité à $\tilde{p} = p$ et $\tilde{q} = -q$. Par imparité du sinus, on obtient le résultat.
 
@@ -908,9 +1403,12 @@ $\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{i\dfrac{p+q}{2}} \Big) \underbrace{ \Big
 <Remarque titre='retrouver les formules trigonométriques rapidement'>
 Voyons comment retrouver les formules de $\cos(a+b)$ , $\sin(a+b)$ , ... 
 
+<br/>
+
 Il suffit de regarder la partie réelle ou imaginaire d'une exponentielle : $\cos(a+b) = \Re( e^{i(a+b)}) = \Re( e^{ia}e^{ib})$. En passant à la forme trigonométrique et en développant, on obtient la formule pour le cosinus (celle pour le sinus vient de la partie imaginaire). 
 
-Attention cependant, il ne s'agit pas d'une démonstration mais d'une manière de retrouver rapidement les formules. En effet, on a démontré les propriétés de l'argument en utilisant les formules $\cos(a+b)$ et $\sin(a+b)$. On ne peut donc pas utiliser les propriétés de l'argument pour démontrer ces formules (ce serait un raisonnement circulaire)
+<br/>
+Attention cependant, il ne s'agit pas d'une démonstration mais d'une manière de retrouver rapidement les formules. Il s'agirait d'un raisonnement circulaire!
 </Remarque>
 
 ## Racines de l'unité
@@ -918,25 +1416,47 @@ Attention cependant, il ne s'agit pas d'une démonstration mais d'une manière d
 ### Cercle unité
 
 <Item type='definition' titre='cercle unité'>
-On appelle cercle unité l'ensemble $\U = \{ z \in \C \mid |z| = 1 \}$.
+
+On appelle cercle unité l'ensemble 
+
+$$
+\U = \{ z \in \C \mid |z| = 1 \}
+$$
+
 </Item>
 
 <Exercice titre='stabilité du cercle unité'>
 
-1) Est-ce que $\U$ est stable par produit?
+1\) Est-ce que $\U$ est stable par produit?
 
-2) Est-ce que $\U$ est stable par somme?
+2\) Est-ce que $\U$ est stable par somme?
 
-3) Est-ce que $\U$ est stable par exponentiation entière?
+3\) Est-ce que $\U$ est stable par exponentiation entière?
 </Exercice>
 
 <Hideable type='solution' titre=''>
 
-1) Soit le couple $(z,z') \in \U^2$. On a $|z| = |z'| = 1$ mais donc $|zz'| = |z|.|z'| = 1$ d'où $zz' \in \U$. $\U$ est donc stable par produit.
+1\) Soit le couple $(z,z') \in \U^2$. 
 
-2) En général non : par exemple $1 \in \U$ mais $1 + 1 \notin \U$.
+On a $|z| = |z'| = 1$ mais donc $|zz'| = |z|.|z'| = 1$ 
 
-3) Soit $z \in \U$. $|z| = 1$ donc pour tout $n \in \Z$, $|z^n| = |z|^n = 1^n = 1$. Donc : $  \forall n \in \Z \, z^n \in \U$. $\U$ est bien stable par exponentiation entière.
+d'où $zz' \in \U$. 
+
+$\U$ est donc stable par produit.
+
+<br/>
+
+2\) En général non : par exemple $1 \in \U$ mais $1 + 1 \notin \U$.
+
+<br/>
+
+3\) Soit $z \in \U$. 
+
+$|z| = 1$ donc pour tout $n \in \Z$, $|z^n| = |z|^n = 1^n = 1$. 
+
+Donc : $  \forall n \in \Z \, z^n \in \U$. 
+
+$\U$ est bien stable par exponentiation entière.
 </Hideable>
 
 ### Racines n-ièmes 
@@ -952,53 +1472,105 @@ Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt
 </Item>
 
 <Hideable type='démonstration' titre=''>
+
 Nous devons admettre qu'un polynôme à coefficient dans $\C$ de degré $n$ admet au plus $n$ racines. Ceci sera démontré dans le chapitre sur les polynômes.
 
-La fonction polynômiale $P(r) = z - r^n \, \forall r \in \C$ admet au plus $n$ racines car elle est de degré $n$. Mais les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$ conviennent et sont au nombre de $n$. On a donc trouvé toutes les racines de $P$ qui sont les racines n-ièmes de $z$.
+<br/>
+
+La fonction polynômiale $P(r) = z - r^n \, \forall r \in \C$ admet au plus $n$ racines car elle est de degré $n$. 
+
+Mais les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$ conviennent et sont au nombre de $n$. 
+
+On a donc trouvé toutes les racines de $P$ qui sont les racines n-ièmes de $z$.
 </Hideable>
 
 <Item type='definition' titre="racines n-ièmes de l'unité">
-Soit $n \in \N$. On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. En particulier, $\U_n \subset \U$.
+Soit $n \in \N$. 
+
+On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. 
+
+<br/>
+
+En particulier, $\U_n \subset \U$.
 </Item>
 
 
 <Exercice titre='racines n-ièmes'>
 
-1) Donner la forme algébrique des racines 3-ièmes de l'unité.
+1\) Donner la forme algébrique des racines 3-ièmes de l'unité.
 
-2) Donner les racines 4-ièmes de $1 + i\sqrt{3}$.
+2\) Donner les racines 4-ièmes de $1 + i\sqrt{3}$.
 </Exercice>
 
 <Hideable type='solution' titre=''>
 
-1) 
+1\) 
 <Indent>
 
-D'après la propriété, il s'agit de $e^{\dfrac{2i\times 0 \times \pi}{3}} \v e^{\dfrac{2i\times 1 \times \pi}{3}}$ \v $e^{\dfrac{2i\times 2 \times \pi}{3}}$. Soit $1 \v \cos(\dfrac{2i\times 1 \times \pi}{3}) + i \sin(\dfrac{2i\times 1 \times \pi}{3}) \v \cos(\dfrac{2i\times 2 \times \pi}{3}) + i \sin(\dfrac{2i\times 2 \times \pi}{3})$. 
+D'après la propriété, il s'agit de 
 
-En remplaçant par les valeurs usuelles et en utilisant la transformation $\theta \rightarrow \pi - \theta$, on obtient les racines suivantes : $1 \v \dfrac{1}{2} + i \dfrac{\sqrt{3}}{2} \v \dfrac{1}{2} - i \dfrac{\sqrt{3}}{2}$.
+$$
+e^{ \textstyle \frac{2i\times 0 \times \pi}{3}} \v e^{ \textstyle \frac{2i\times 1 \times \pi}{3}} \v e^{ \textstyle \frac{2i\times 2 \times \pi}{3}}
+$$
 
-On note usuellement $j$ la racine $3$-ième de l'unité : $\dfrac{1}{2} + i \dfrac{\sqrt{3}}{2}$. Les racines troisièmes de l'unité sont alors $\{1 \v j \v j^2\} = \{1 \v j \v \overline{j}\}$
+et autrement présenté, il s'agit de :
+
+$$
+1 \v \cos(\dfrac{2\times 1 \times \pi}{3}) + i \sin(\dfrac{2\times 1 \times \pi}{3}) \v \cos(\dfrac{2\times 2 \times \pi}{3}) + i \sin(\dfrac{2\times 2 \times \pi}{3})
+$$
+
+Mais la mesure principale de $\dfrac{2\times 2 \times \pi}{3}$ est $\dfrac{-2 \pi}{3}$ . Les racines sont donc :
+
+$$
+1 \v \dfrac{1}{2} + i \dfrac{\sqrt{3}}{2} \v \dfrac{1}{2} - i \dfrac{\sqrt{3}}{2}
+$$
+
+On note usuellement $j$ la racine $3$-ième de l'unité : $\dfrac{1}{2} + i \dfrac{\sqrt{3}}{2}$. 
+
+Les racines troisièmes de l'unité sont alors $\{1 \v j \v j^2\}$ ou encore $\{1 \v j \v \overline{j}\}$
 </Indent>
 
-2) 
+<br/>
+
+2\) 
 <Indent> 
 
-On écrit d'abord $z = 1 + i\sqrt{3}$ sous forme exponentielle en factorisant par le module $|z| = \sqrt{1^2 + \sqrt{3}^2} = 2$. D'où $z = 2\Big( \dfrac{1}{2} + i \dfrac{\sqrt{2}}{2}\Big) = 2\Big( \cos(\dfrac{\pi}{3}) + i \sin(\dfrac{\pi}{3})\Big) = 2 e^{i\dfrac{\pi}{3}}$
+On écrit d'abord $z = 1 + i\sqrt{3}$ sous forme exponentielle en factorisant par le module $|z| = \sqrt{1^2 + \sqrt{3}^2} = 2$. D'où 
 
-On en déduit les racines 4-ièmes de $z$ : $ \sqrt[4]{2} e^{\dfrac{i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{7i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{13i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{19i\pi}{12}}$. En se ramenant à la mesure d'angle principale, on a $ \sqrt[4]{2} e^{\dfrac{i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{7i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{-11i\pi}{12}} \v \sqrt[4]{2} e^{\dfrac{-5i\pi}{12}}$
+$$
+z = 2\Big( \dfrac{1}{2} + i \dfrac{\sqrt{2}}{2}\Big) = 2\Big( \cos(\dfrac{\pi}{3}) + i \sin(\dfrac{\pi}{3})\Big) = 2 e^{i\dfrac{\pi}{3}}
+$$
+
+On en déduit les racines 4-ièmes de $z$ : 
+
+$$ 
+\sqrt[4]{2} e^{\textstyle \frac{i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{7i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{13i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{19i\pi}{12}}
+$$ 
+
+En se ramenant à la mesure d'angle principale, on a 
+
+$$ 
+\sqrt[4]{2} e^{\textstyle\frac{i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{7i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{-11i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{-5i\pi}{12}}
+$$
+
 </Indent>
 </Hideable>
 
 
 <Exercice titre="inclusions des ensembles des racines de l'unité">
+
 Soit $(n\v m) \in (\N^*)^2$. Montrer que, si $n$ divise $m$, alors $\U_n \subset \U_m$.
 </Exercice>
 
 <Hideable type='solution' titre=''>
+
 Soient $n,m$ deux entiers naturels non nuls tels que $n$ divise $m$. Il existe $k \in \N^*$ tel que  $m = kn$.
 
-Soit $z \in \U_n$, il existe $a \in \defentiers{0}{n-1}$ tel que $z = e^{\dfrac{2ia\pi}{n}}$. Mais donc $z^m = e^{\dfrac{2iam\pi}{n}}$ mais $\dfrac{m}{n} = k$ d'où $z^m = e^{2iak} = 1$. Comme $z^m = 1$, $z \in \U_m$. 
+Soit $z \in \U_n$, il existe $a \in \defentiers{0}{n-1}$ tel que $z = e^{\textstyle \frac{2ia\pi}{n}}$. 
+
+Mais donc $z^m = e^{\textstyle \frac{2iam\pi}{n}}$ mais $\dfrac{m}{n} = k$ d'où $z^m = e^{2iak} = 1$. 
+
+Comme $z^m = 1$, $z \in \U_m$. 
 
 On a bien montré que tout élément de $\U_n$ était dans $\U_m$ d'où $\U_n \subset \U_m$.
 </Hideable>
@@ -1013,29 +1585,44 @@ $$
 </Item>
 
 <Hideable type='dmonstration' titre=''>
-$\somme{k = 1}{n} \omega_k = \somme{k = 0}{n-1} e^{\dfrac{2ik\pi}{n}} = \somme{k = 0}{n-1} \Big(e^{\dfrac{2i\pi}{n}}\Big)^k $.
 
-Par somme géométrique de raison $q = e^{\dfrac{2i\pi}{n}} \neq 1$, $\somme{k = 1}{n} \omega_k = \dfrac{1 - \overbrace{q^n}^{= 1 \text{ car } q \in \U_n}}{1-q} = 0$
+$$
+\somme{k = 1}{n} \omega_k = \somme{k = 0}{n-1} e^{\textstyle \frac{2ik\pi}{n}} = \somme{k = 0}{n-1} \Big(e^{\textstyle \frac{2i\pi}{n}}\Big)^k 
+$$
+
+Par somme géométrique de raison $q = e^{\textstyle \frac{2i\pi}{n}} \neq 1$, 
+
+$$
+\somme{k = 1}{n} \omega_k = \dfrac{1 - \overbrace{q^n}^{= 1}}{1-q} = 0
+$$
 </Hideable>
 
 ## Interprétations géométrique
 
 Dans cette section, on interprète les éléments de $\C$ par leur affixe et donc comme des points du plan.
 
+<br/>
+
 **Conjugaison :** La conjugaison correspond à faire une symétrie axiale dont l'axe de symétrie est l'axe des ordonnées.
+
+<br/>
 
 **Module :** Le module est la distance entre un point et l'origine. C'est littéralement la distance à zéro qui coïncide avec la définition de la valeur absolue abordée dès la seconde dans le programme actuel.
 
+<br/>
+
 **Argument :** Si $M$ est le poit d'affixe $z$, alors $\Arg(z)$ est l'angle orienté $(\vec{OI} \v \vec{OM})$.
+
+<br/>
 
 **Transormation affine :** Soit $f : z \rightarrow az + b$ définie sur $\C$ et où $a,b \in \C$.
 <Indent>
 
-- $b$ a un effet de translation
+$\cd$ $b$ a un effet de translation
 
-- l'argument de $a$ a un effet de rotation
+$\cd$ l'argument de $a$ a un effet de rotation
 
-- le module de $a$ a un effet d'homothétie (agrandissement / réduction)
+$\cd$ le module de $a$ a un effet d'homothétie (agrandissement / réduction)
 
 De par l'ordre des priorités opératoires, la translation est appliquée après l'homothétie et la rotation.
 </Indent>
@@ -1046,7 +1633,9 @@ De par l'ordre des priorités opératoires, la translation est appliquée après
     - ajouter exercice pour formules de l'argument
     - ajouter linéarisation de cos sin
     - variations et représentations graphiques des fctions trigo
+    - représentations graphiques produit, somme, arg, module
     - continuité dérivabilité de cos, tan et sin
+    - démo cos(a+b) ajouter figure
 
   Idées de colles:
    -min( (a-b)/(1+ab)) <= tan(pi/n) où a,b dans un ensemble à n > 2 éléments
