@@ -71,7 +71,7 @@ const {headings, title} = Astro.props;
 
       </div>
       <div class="drawer-side">
-        <ul class="pl-2 text-base-content min-h-full w-80 p-4 ">
+        <ul class="pl-2 text-base-content min-h-full w-80 p-4 bg-primary">
           <!-- Sidebar content here -->
           {coursData.map((cours) => <div><a class="block decoration-none" href={cours.url}>{cours.titre}</a></div>)}
         </ul>
@@ -83,12 +83,12 @@ const {headings, title} = Astro.props;
 .drawer-side{
   pointer-events: none;
   position: fixed;
-  top: 200px;
+  top: 80px;
   align-items: flex-start;
   justify-items: start;
   margin:5px;
   padding: 0;
-  width: 200px;
+  width: 300px;
   position: fixed;
   height: 100%;
   transition: left 0.5s ease;
@@ -119,7 +119,6 @@ const {headings, title} = Astro.props;
     }
 
     .main-content-wrapper {
-      margin-left: 200px;
       padding: 1px 16px;
       height: 100%;
     }

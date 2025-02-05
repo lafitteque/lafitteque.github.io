@@ -27,21 +27,71 @@ import Fil from '../components/Fil.astro'
 
 <Item type='definition' titre='borne supérieure et inferieure'>
 
-Soit $A \subset \R$ non vide. On définit la borne supérieure (resp. inférieure) de $A$ comme le le plus petit majorant (resp. le plus grand minorant) de $A$ s'il existe. Cette quantité est notée $\sup A$ (resp. $\inf A$).
+Soit $A \subset \R$ non vide. 
+
+On définit la borne supérieure (resp. inférieure) de $A$ comme le le plus petit majorant (resp. le plus grand minorant) de $A$ s'il existe. 
+
+Cette quantité est notée $\sup A$ (resp. $\inf A$).
 </Item>
+
+
+<Item type='proposition' titre='existence de la borne supérieure et inférieure' tag='admis'>
+
+Soit $A$ un sous-ensemble non vide de $\R$. 
+
+Si $A$ est majoré (resp. minoré) alors il admet une borne supérieure (resp. inférieure).
+</Item>
+
+<Remarque titre=''>
+
+On remarquera que la propriété n'est pas vraie dans $\Q$ puisqu'une borne peut être dans $\R \setminus \Q$.
+</Remarque>
+
+
+<Item type='proposition' titre='lien avec les extrêmums'>
+
+Si $A \subset \R$ admet un maximum (resp. un minimum), celui-ci est sa borne supérieure (resp. inférieure). 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Etudions uniquement le cas du maximum que l'on suppose exister et que l'on note $M$. 
+
+$M$ est bien un majorant de $A$ car c'est son maximum. 
+
+Supposons que $m$ soit un autre majorant de $A$ plus petit que $M$, alors $m < M \in A$ mais donc $m$ n'est pas un majorant.
+</Hideable>
 
 <Exercice titre=''>
 Donner la borne sup et la borne inf (si elles existent) des ensembles suivants :
 
-1) $A = \defof{ \pi }{10}$
+1\) $A = \defof{ \pi }{10}$
 
-2) $B = \{\dfrac{1}{n}\v n \in \N^*\}$
+2\) $B = \{\dfrac{1}{n}\v n \in \N^*\}$
 </Exercice>
 
-<Item type='proposition' titre='existence de la borne supérieure et inférieure' tag='admis'>
+<Hideable type='solution' titre=''>
 
-Soit $A$ un sous-ensemble non vide de $\R$. Si $A$ est majoré (resp. minoré) alors il admet une borne supérieure (resp. inférieure).
-</Item>
+1\) $10$ est un majorant atteint de $A$, c'est donc sa borne supérieure.
+
+$\pi$ est un minorant de $A$. Supposons qu'il existe $10 \geqslant m > \pi$ un minorant de $A$.
+
+On a : $\pi < \dfrac{m + \pi}{2} < m$ mais donc $\dfrac{m + \pi}{2} \in A$ . $m$ n'est donc pas un minorant.
+
+L'hypothèse est absurde et $\pi$ est donc bien le plus grand des minorants : c'est la borne inférieure.
+
+<br/>
+
+2\) $\forall n \in \N^* \v 0 < x \leqslant 1$ 
+
+Mais donc $1$ est un majorant atteind, c'est donc la borne supérieure de $B$.
+
+Supposons qu'il y ait $\epsilon > 0$ un minorant de $B$. 
+
+Pour $N \in \N^*$ assez grand, $\underbrace{\dfrac{1}{N}}_{\in B} < \epsilon$ mais donc $\epsilon$ ne serait pas un minorant. 
+
+C'est absurde et donc $0$ est le plus grand minorant : c'est la borne inférieure.
+</Hideable>
 
 
 ### Droite réelle et intervalles 
@@ -50,13 +100,15 @@ Soit $A$ un sous-ensemble non vide de $\R$. Si $A$ est majoré (resp. minoré) a
 
 Pour des raisons pratiques, on introduit deux nouveaux nombres :
 
-- $+ \infty$ qui vérifie : $\forall x \in \R, x < + \infty$.
+$\cd$ $+ \infty$ qui vérifie : $\forall x \in \R \v x < + \infty$.
 
-- $- \infty$ qui vérifie : $\forall x \in \R, - \infty < x$.
+$\cd$ $- \infty$ qui vérifie : $\forall x \in \R \v - \infty < x$.
 
 On note $\overline{\R}$ l'ensemble $\R \bigcup \{- \infty\} \bigcup \{+ \infty\}$
 
-Attention : on ne définit ni l'addition ni le produit avec d'autres nombres. Ces nombres n'intéragissent pas avec les autres et on les utilise uniquement par commodité dans ce chapitre. Si vous souhaitez les utiliser sur une copie, il faudra les définir également.
+<br/>
+
+**Attention :** on ne définit ni l'addition ni le produit avec d'autres nombres. Ces nombres n'intéragissent pas avec les autres et on les utilise uniquement par commodité dans ce chapitre. Si vous souhaitez les utiliser sur une copie, il faudra les définir également.
 </Item>
 
 
@@ -64,33 +116,79 @@ Attention : on ne définit ni l'addition ni le produit avec d'autres nombres. Ce
 
 Soient $(a,b) \in \overline{\R}$. On définit les intervalles de $\R$ comme suit :
 
-- si $(a\v b) \in \R$, $\defff{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x \leqslant b\}$. On dit que c'est un intervalle fermé.
+$\cd$ si $(a\v b) \in \R$, $\defff{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x \leqslant b\}$. On dit que c'est un **intervalle fermé**.
 
-- si $a \in \R$, $\deffo{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x < b\}$
 
-- si $b \in \R$, $\defof{a}{b}$ est l'ensemble $\{x \in \R \mid a < x \leqslant b\}$
+$\cd$ si $a \in \R$, $\deffo{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x < b\}$
 
-- $\defoo{a}{b}$ est l'ensemble $\{x \in \R \mid a < x < b\}$. On dit que c'est un intervalle ouvert.
+
+$\cd$ si $b \in \R$, $\defof{a}{b}$ est l'ensemble $\{x \in \R \mid a < x \leqslant b\}$
+
+
+$\cd$ $\defoo{a}{b}$ est l'ensemble $\{x \in \R \mid a < x < b\}$. On dit que c'est un **intervalle ouvert**.
 </Item>
 
 <Item type='proposition' titre='caractérisation des intervalles'>
 
-$I \subset \R$ est un intervalle de $\R$ si et seumement si : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$.
+$I \subset \R$ est un intervalle de $\R$ si et seumement si : 
+
+$$
+\forall (a,b) \in I^2\v \defff{a}{b} \subset I
+$$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-**Sens direct :** On suppose que $I$ est un intervalle de $\R$. Il existe $(m\v M) \in \R^2$ tels que : $x \in I \ssi m < x < M$ (on ne considère pas les autre cas que le cas ouvert car leur démonstration est analogue). Mais si $a$ et $b$ sont dans $I$, alors $m < a \leqslant b < M$ (si $a > b$, alors $\defff{a}{b} = \empty \subset I$, on considère donc $a \leqslant b$). On a donc $x \in \defff{a}{b} \Rightarrow m < a \leqslant x \leqslant b < M$ et donc $x \in I$.
+**Sens direct :** On suppose que $I$ est un intervalle de $\R$. 
 
-**Sens réciproque :** On suppose que : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$. Dans $\overline{\R}$, tout ensemble est borné par les infinis. Donc $I$ admet une borne supérieure et une borne inférieure notées $M$ et $m$ dans cet ordre. 
+Il existe $(m\v M) \in \R^2$ tels que : $x \in I \ssi m < x < M$ (on ne considère pas les autre cas que le cas ouvert car leur démonstration est analogue). 
 
-- cas 1 : si $m$ et $M$ sont dans $I$, par hypothèse, $\defff{m}{M} \subset I$ mais $I \subset \defff{m}{M}$ car $m$ est un minorant de $I$ et $M$ est un majorant de $I$. D'où l'égalité par double inclusion et $I$ est un intervalle.
+Mais si $a$ et $b$ sont dans $I$, alors $m < a \leqslant b < M$ (si $a > b$, alors $\defff{a}{b} = \empty \subset I$, on considère donc $a \leqslant b$). 
 
-- cas 2.a : si $m$ et $M$ ne sont pas dans $I$ et sont finis. Comms $I$ est non vide, il existe $\epsilon > 0$ suffisamment petit tel que $m + \epsilon \in I$ et $M - \epsilon \in I$. Donc, par hypothèse, $\defff{m + \epsilon}{M - \epsilon} \subset I$. D'où, $x \in I \Rightarrow m + \epsilon \leqslant x \leqslant M + \epsilon \forall \epsilon \in \R_+^* \Rightarrow x \in \defoo{m}{M}$. Mais $I \subset \defoo{m}{M}$ car $m$ et $M$ sont les bornes supérieure et inférieure de $I$. Par double inclusion, $I$ est un intervalle.
+On a donc $x \in \defff{a}{b} \Rightarrow m < a \leqslant x \leqslant b < M$ et donc $x \in I$.
 
-- cas 2.b : traitons le cas où $m = - \infty$. Dans ce cas, par définition de la borne inférieure, pour tout $x \in \R$, il existe un élément $m \in I$ tel que $m \leqslant x$, car sinon la borne inférieure serait finie. Soit $y \in I$, on en déduit que $\defof{- \infty}{y} \subset I$, reste à traiter $\deffo{y}{M}$. Ce cas est traité de manière analogue si $M$ est infini ou bien comme en 2.a s'il est fini. Dans tous les cas, $\defof{m}{M} \subset I \subset \defof{m}{M}$
+<br/>
 
-- autres cas : les autres cas ne seront pas traités car analogues
+**Sens réciproque :** On suppose que : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$. 
+
+Dans $\overline{\R}$, tout ensemble est borné par les infinis. 
+
+Donc $I$ admet une borne supérieure et une borne inférieure notées $M$ et $m$ dans cet ordre. 
+
+$\cd$ cas 1 : $m$ et $M$ sont dans $I$, par hypothèse, $\defff{m}{M} \subset I$ 
+
+mais $I \subset \defff{m}{M}$ car $m$ est un minorant de $I$ et $M$ est un majorant de $I$.
+
+D'où l'égalité par double inclusion et $I$ est un intervalle.
+
+$\cd$ cas 2.a : $m$ et $M$ ne sont pas dans $I$ et sont finis. 
+
+Comme $I$ est non vide, il existe $\epsilon > 0$ suffisamment petit tel que $m + \epsilon \in I$ et $M - \epsilon \in I$. 
+
+Donc, par hypothèse, $\defff{m + \epsilon}{M - \epsilon} \subset I$. 
+
+D'où, $x \in I \Rightarrow  \exists \epsilon \in \R_+^* \v m < m + \epsilon \leqslant x \leqslant M - \epsilon < M \Rightarrow x \in \defoo{m}{M}$. 
+
+Mais $I \subset \defoo{m}{M}$ car $m$ et $M$ sont les bornes supérieure et inférieure non atteintes de $I$. 
+
+Par double inclusion, $I$ est un intervalle.
+
+$\cd$ cas 2.b : traitons le cas où $m = - \infty$ et $M$ est fini et dans $I$. Soit $y \in I$.
+
+Dans ce cas, pour tout $x \in \defof{- \infty}{y}$, il existe un élément $m \in I$ tel que $m \leqslant x$.
+
+Donc $x \in \defof{- \infty}{y} \Rightarrow \exists m \in I \mid x \in \defff{m}{y} \subset I$. 
+
+Donc $\defof{- \infty}{y} \subset I$. 
+
+<br/>
+
+Il suffit de montrer que $\defff{y}{M} \subset I$. Cela se fait exactement comme en 1. .
+
+On a donc $\defof{- \infty}{M}  \subset I \subset \defof{- \infty}{M}$. La deuxième inclusion vient du fait que $M$ est un majorant.
+
+
+$\cd$ autres cas : les autres cas ne seront pas traités car analogues
 </Hideable>
 
 
@@ -99,7 +197,7 @@ $I \subset \R$ est un intervalle de $\R$ si et seumement si : $\forall (a,b) \in
 Soit $A \subset \R$. On dit que $A$ est dense dans $\R$ si :
 
 $$
-\forall (a\v b) \in \R^2\v a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \empty
+\forall (a\v b) \in \R^2\v \; a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \empty
 $$
 </Item>
 
@@ -112,52 +210,80 @@ $$
 \floor{x} \leqslant x < \floor{x} + 1
 $$
 
-On définit ainsi $\ceil{x} = \floor{x} + 1$ et $\{x\}$ le nombre $x - \floor{x}$.
+On définit ainsi $\ceil{x} = \floor{x} + 1$ et $\{x\}$ le nombre $x - \floor{x}$. On appelle $\floor{x}$ la partie entière de $x$, $\ceil{x}$ la partie entière supérieure de $x$ et $\{x\}$ la partie fractionnaire de $x$.
 </Item>
 
 <Item type='proposition' titre='sur la partie entière'>
 
 Soit $x \in \R$.
 
-- $x = \floor{x} + \{x\}$
+$\cd$ $x = \floor{x} + \{x\}$
 
-- $ 0 \leqslant \{x\} < 1$
+$\cd$ $ 0 \leqslant \{x\} < 1$
 
-- $\ceil{x}$ est l'unique entier vérifiant : $  x < \ceil{x} \leqslant x + 1$
+$\cd$ $\ceil{x}$ est l'unique entier vérifiant : $  x < \ceil{x} \leqslant x + 1$
 
 
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-La première égalité est triviale par définition de $\{x\}$.
+**Première affirmation :** découle de la définition de $\{x\}$.
 
-La deuxième égalité se montre ainsi : $x - 1 <  \floor{x} \leqslant x < \floor{x} + 1 $ donc  $ < - (x-1) > x - \floor{x} \geqslant x - x > x - (\floor{x} + 1) $ d'où  $1 > \{x\} \geqslant 0$
+<br/>
 
-Pour la troisième égalité, partons de $\floor{x} \leqslant x < \floor{x} + 1$. On peut également donner $x - 1 < \floor{x} \leqslant x$ d'où, en ajoutant $1$, on a $x < \floor{x} + 1 \leqslant x + 1$. Mais donc $x < \ceil{x} \leqslant x + 1$. Comme $\floor{x}$ est unique, $\ceil{x}$ l'est aussi.
+**Deuxième affirmation :**  $x - 1 <  \floor{x} \leqslant x < \floor{x} + 1 $ donc  $x - (x-1) > x - \floor{x} \geqslant x - x > x - (\floor{x} + 1) $ d'où  $1 > \{x\} \geqslant 0$
+
+<br/>
+
+**Troisième affirmation :** partons de $\floor{x} \leqslant x < \floor{x} + 1$. 
+
+On peut également donner $x - 1 < \floor{x} \leqslant x$ d'où, en ajoutant $1$, on a $x < \floor{x} + 1 \leqslant x + 1$. 
+
+Mais donc $x < \ceil{x} \leqslant x + 1$. 
+
+Comme $\floor{x}$ est unique, $\ceil{x}$ l'est aussi car $x \mapsto x + 1$ est bijective (car de réciproque $x \mapsto x - 1$).
 
 </Hideable>
 
 <Item type='proposition' titre='densité des rationnels et des irrationnels'>
 
-- Les décimaux ($\D$) sont denses dans les réels.
+$\cd$ Les décimaux ($\D$) sont denses dans les réels.
 
-- Les rationnels ($\Q$) sont denses dans les réels.
+$\cd$ Les rationnels ($\Q$) sont denses dans les réels.
 
-- Les irrationnels ($\R \setminus \Q$) sont denses dans les réels.
+$\cd$ Les irrationnels ($\R \setminus \Q$) sont denses dans les réels.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 **Deux premiers résultats :** on va montrer le premier résutat ce qui démontrera le second car $\D \subset \Q$. 
 
-Soient $x \in \R$ et $n \in \N$ on pose $x_n = \dfrac{\floor{x.10^n}}{10^n}$. On a :
+Soient $x \in \R$ et $n \in \N$. 
 
-$x.10^n - 1 \leqslant \floor{x.10^n} \leqslant x.10^n $ puis $x - \dfrac{1}{10^n} \leqslant \dfrac{\floor{x.10^n}}{10^n} \leqslant x$. Mais $x_n \in \D$. 
+On pose $x_n = \dfrac{\floor{x.10^n}}{10^n}$. On a :
 
-Donc, si $a$ et $b$ sont deux réels ordonnés strictement, alors il existe $x \in \defoo{a}{b}$ tel que, pour $n$ assez grand, $x - \dfrac{1}{10^n} \in \defff{a}{b}$. Soit un tel $n$, alors $x_n$ est dans $\defff{a}{b}$. Donc $\defff{a}{b} \bigcap \R \neq \empty$, c.q.f.d.
+$x.10^n - 1 \leqslant \floor{x.10^n} \leqslant x.10^n $ 
 
-**Troisième résultat :** On peut procéder par translation : $\pi + \Q \subset \R \setminus \Q$ mais $\pi + \Q$ est dense dans $\R$ d'après le résultat précédent. On a donc $\R \setminus \Q$ qui est dense dans $\R$.
+puis $x - \dfrac{1}{10^n} \leqslant \dfrac{\floor{x.10^n}}{10^n} \leqslant x$. Mais $x_n \in \D$. 
+
+<br/>
+
+Donc, si $a$ et $b$ sont deux réels ordonnés strictement, alors il existe $x \in \defoo{a}{b}$.
+
+Pour $n$ assez grand, $x - \dfrac{1}{10^n} \in \defff{a}{b}$. (on peut vérifier que $n = \ceil{\dfrac{2}{x-a}}$ convient)
+
+Soit un tel $n$, alors $x_n$ est dans $\defff{a}{b}$. Donc $\defff{a}{b} \bigcap \R \neq \empty$
+
+<br/>
+
+**Troisième résultat :** On peut procéder par translation : $\pi + \Q \subset \R \setminus \Q$. 
+
+On peut alors considérer $\tilde{a} = a - \pi$ et $\tilde{b} = b - \pi$. 
+
+Comme $\defff{\tilde{a}}{\tilde{b}} \bigcap \Q \neq \empty$ par densité de $\Q$, $\defff{a}{b} \bigcap \Big(\R \setminus \Q \Big) \neq \empty$
+
+On a donc $\R \setminus \Q$ qui est dense dans $\R$.
 </Hideable>
 
 
@@ -180,40 +306,47 @@ L'ensemble des suites réelles est $\R^{\N}$ (cf. cours sur les applications)
 
 <Remarque titre=''>
 
-La suite dont les termes sont $u_0 \v u_1 \v u_2 \v \dotsm$ est notée $u$, $(u_n)$ ou bien $(u_n)_{n \in \N}$. Cette dernière version est préférable et il faut la absolument la privilégier. En effet, l'utilisation des deux premières notations peut vous être reprochée car elles ne précisent pas l'ensemble de définition ($\N$).
+La suite dont les termes sont $u_0 \v u_1 \v u_2 \v \dotsm$ est notée $u$, $(u_n)$ ou bien $\suitedefN{u_n}$. Cette dernière version est préférable. 
+
+<br/>
+
+La suite dont les termes sont $u_4 \v u_5 \v u_6 \v \dotsm$ est notée $\suitedef{u_n}{n\geqslant 4}$
 </Remarque>
+
+
 
 **Différents modes de définition :**
 
 <Fil>
 On a plusieurs manières de définir une suite.
 
-- Explicitement : soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $(u_n)_{n \in \N}$ par la relation $u_n = f(n)$.
+$\cd$ **Explicitement :** soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $\suitedefN{u_n}$ par la relation $u_n = f(n)$.
 
-- Par récurrence : soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $(u_n)_{n \in \N}$ par la relation $u_{n+1} = f(u_n)$.
+$\cd$ **Par récurrence :** soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $\suitedefN{u_n}$ par la relation $u_{n+1} = f(u_n)$.
 
-- Implicitement : chaque terme $u_n$ suit une certaine relation. Par exemple, on définit $u_n$ comme la seule racine réelle du polynôme $x^3 -nx^2 +x -n$. Dans cet exemple, comme $x^3 -nx^2 +x -n = (x-n)(x^2+1)$, on en déduit aisément que $u_n = n$ ce qui explicite le terme général de la suite.
+$\cd$ **Implicitement :** chaque terme $u_n$ suit une certaine relation. Par exemple, on définit $u_n$ comme la seule racine réelle du polynôme $x^3 -nx^2 +x -n$. Dans cet exemple, comme $x^3 -nx^2 +x -n = (x-n)(x^2+1)$, on en déduit aisément que $u_n = n$ ce qui explicite le terme général de la suite.
 </Fil>
 
 ### Monotonie et propriétés
 
 <Item type='definition' titre='monotonie'>
 
-Soit $(u_n)_{n \in \N}$ une suite réelle. On dit qu'elle est :
+Soit $\suitedefN{u_n}$ une suite réelle. On dit qu'elle est :
 
-- croissante (resp. strictement croissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \leqslant u_m$ (resp. $u_n < _um $)
+$\cd$ **croissante** (resp. strictement croissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \leqslant u_m$ (resp. $u_n < _um $)
 
-- décroissante (resp. strictement décroissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \geqslant u_m$ (resp. $u_n > _um $)
+$\cd$ **décroissante** (resp. strictement décroissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \geqslant u_m$ (resp. $u_n > _um $)
 
-Si elle est croissante ou bien décroissante, on dit qu'elle est monotone (idem pour strictement monotone).
+Si elle est croissante ou bien décroissante, on dit qu'elle est **monotone** (idem pour strictement monotone).
 </Item>
 
 <Item type='proposition' titre='monotonie et opérations'>
-Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles.
 
-- Si $(u_n)_{n \in \N}$ est croissante, alors $(-u_n)_{n \in \N}$ est décroissante. (résultat analogue avec la décroissance et les versions strictes)
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles.
 
-- Si les deux suites sont (resp. strictement) croissantes, alors leur somme est (resp. strictement) croissante. (le résultat est analogue avec la décroissance)
+$\cd$ Si $\suitedefN{u_n}$ est croissante, alors $\suitedefN{-u_n}$ est décroissante. (résultat analogue avec la décroissance et les versions strictes)
+
+$\cd$ Si les deux suites sont (resp. strictement) croissantes, alors leur somme est (resp. strictement) croissante. (le résultat est analogue avec la décroissance)
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -221,60 +354,99 @@ Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles.
 **Première propriété :** 
 <Indent>
 
-Si $(u_n)_{n \in \N}$ est croissante, $n < m \Rightarrow u_n \leqslant u_m \mathop{\Rightarrow}\limits_{\text{par décroissance de } -id_{\R}} -u_n \geqslant -u_m$. Les autres versions de la démonstration sont quasiment identiques.
+Si $\suitedefN{u_n}$ est croissante,
+
+$$
+n < m \Rightarrow u_n \leqslant u_m \mathop{\Rightarrow}\limits_{\text{par décroissance de } -id_{\R}} -u_n \geqslant -u_m
+$$
+ 
+Les autres versions de la démonstration sont quasiment identiques.
 </Indent>
 
 **Seconde propriété :**
 <Indent>
 
-Si $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ sont croissantes, $n < m \Rightarrow (u_n \leqslant u_m $ et $v_n < v_m ) \Rightarrow u_n + v_n \leqslant u_m + v_m$. Les autres versions de la démonstration sont quasiment identiques.
+Si $\suitedefN{u_n}$ et $\suitedefN{v_n}$ sont croissantes, 
+
+$$
+n < m \Rightarrow (u_n \leqslant u_m $ et $v_n < v_m ) \Rightarrow u_n + v_n \leqslant u_m + v_m
+$$ 
+
+Les autres résultats de la démonstration s'obtienent de manière analogue.
 </Indent>
 </Hideable>
 
 <Item type='proposition' titre='critères de monotonie'>
-Soit $(u_n)_{n \in \N}$ une suite réelle.
 
-- Elle est croissante (resp. décroissante) si et seulement si : $\forall n \in \N  u_{n+1} - u_n \geqslant 0$ (resp $u_{n+1} - u_n \leqslant 0$). Le résultat est analogue pour la monotonie stricte avec l'inégalité stricte.
+Soit $\suitedefN{u_n}$ une suite réelle.
 
-- Si $(u_n)_{n \in \N}$ est de signe constant et ne s'annule pas , $(u_n)_{n \in \N}$ est croissante (resp. décroissante) si et seulement si $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$ (resp. $\dfrac{u_{n+1}}{u_n} \leqslant 1$). Le résultat est analogue avec la monotonie stricte mais avec une inégalité stricte.
+$\cd$ Elle est croissante (resp. décroissante) si et seulement si : 
+
+$$
+\forall n \in \N \v  u_{n+1} - u_n \geqslant 0
+$$ 
+
+$\cd$ Si $\suitedefN{u_n}$ est de signe constant et ne s'annule pas , $\suitedefN{u_n}$ est croissante si et seulement si 
+
+$$
+ \forall n \in \N \v \dfrac{u_{n+1}}{u_n} \geqslant 1
+$$
+
+<br/>
+
+Les résultats sont analogues pour les autres monotonies (décroissance en inversant l'ordre et stricte monotonie avec un odre strict).
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-**Première propriété :** Il est évident (avec $m = n+1$) que si la suite est croissante, alors on a le résultat. Intéressons nous à la réciproque
+**Première propriété :** En prenant $m = n+1$, si la suite est croissante, alors la on a le sens direct. Intéressons nous à la réciproque.
 
 <Indent>
 
-On suppose que : $\forall n \in \N  u_{n+1} - u_n \geqslant 0$. Soient $n$ et $m$ deux entiers positifs. 
+On suppose que : $\forall n \in \N \v u_{n+1} - u_n \geqslant 0$. Soient $n$ et $m$ deux entiers positifs. 
 
-$u_m - u_n = \somme{i = 0}{m-n-1} (u_{n+i+1} - u_{n+i})$ par télescopage. Mais chaque terme de la somme est supérieur ou égal à $0$. D'où $u_m - u_n \geqslant 0$. c.q.f.d. 
+$$
+u_m - u_n = \somme{i = 0}{m-n-1} (u_{n+i+1} - u_{n+i})
+$$
 
-On pouvait églement procéder par récurrence et montrer à partir de l'hypothèse que $u_{n+k} - u_n \geqslant 0$ si $k \geqslant 0$. 
+Chaque terme de la somme est supérieur ou égal à $0$. D'où $u_m - u_n \geqslant 0$. 
+
+<br/>
+On pouvait églement procéder par récurrence et montrer à partir de l'hypothèse que $u_{n+k} - u_n \geqslant 0$ si $k \in \N$. 
+
+<br/>
+
 </Indent>
-
 
 **Seconde propriété :** Si la suite est croissante, le résultat est évident (comme pour la première propriété, prendre $m = n+1$).
 
 <Indent>
 
-Supposons que $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$.
+Supposons que $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$. Soient $n$ et $m$ deux entiers positifs. 
 
-Soient $n$ et $m$ deux entiers positifs. $\dfrac{u_m}{u_n} = \produit{i = 0}{m-n-1} \dfrac{u_{n+1}}{u_n}$ et chaque facteur est plus grand ou égal à $1$ par hypothèse. Donc $\dfrac{u_m}{u_n} \geqslant 1$ puis $u_m \geqslant u_n$ en multipliant par $u_n$ de part et d'autre. D'où le résultat.
+$$
+\dfrac{u_m}{u_n} = \produit{i = 0}{m-n-1} \dfrac{u_{n+1}}{u_n}
+$$ 
+
+Chaque facteur est plus grand ou égal à $1$ par hypothèse. Donc $\dfrac{u_m}{u_n} \geqslant 1$ 
+
+puis $u_m \geqslant u_n$ en multipliant par $u_n$ de part et d'autre. D'où le résultat.
 </Indent>
 
 </Hideable>
 
 <Item type='proposition' titre='monotonie et suite récurrente'>
 
-Soit $f$ une fonction de $\R$ dans $\R$. Soit $(u_n)_{n \in \N}$ définie par récurrence ainsi : $\begin{cases} u_{n+1} = f(u_n) \\ u_0 = a \in \R\end{cases}$. 
+Soit $f$ une fonction de $\R$ dans $\R$. Soit $\suitedefN{u_n}$ définie par récurrence ainsi : $\begin{cases} u_{n+1} = f(u_n) \\ u_0 = a \in \R\end{cases}$. 
 
 Si $f-id$ est positive (resp. négative), alors  la suite est croissante (resp. décroissante).
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $n$ un entier naturel. Si $f-id$ est positive, alors $(f-id)(u_n) \geqslant 0$ d'où $f(u_n) - u_n \geqslant 0$ puis $u_{n+1}$
-- $u_{n+1} - u_n \geqslant 0$. La suite est donc croissante. 
+Soit $n$ un entier naturel. Si $f-id$ est positive, alors $(f-id)(u_n) \geqslant 0$ d'où $f(u_n) - u_n \geqslant 0$ 
+
+puis $u_{n+1} - u_n \geqslant 0$. La suite est donc croissante. 
 </Hideable>
 
 <Remarque titre=''>
@@ -286,41 +458,64 @@ Il est intéressant d'étudier $f-id$ pour comprendre la suite définie par $u_{
 <Item type='definition' titre='suite bornée'>
 
 
-On dit qu'une suite $(u_n)_{n \in \N}$ est majorée (resp. minorée) s'il existe $M$ (resp. $m$) un réel tel que : $\forall n \in \N \v u_n \leqslant M$  (resp. $u_n \geqslant m$).
-On dit qu'une suite est bornée si elle est à la fois majorée et minorée.
+On dit qu'une suite $\suitedefN{u_n}$ est **majorée** (resp. **minorée**) s'il existe $M$ (resp. $m$) un réel tel que : 
+
+$$
+\forall n \in \N \v u_n \leqslant M \quad (\text{resp. } u_n \geqslant m)
+$$
+
+On dit qu'une suite est **bornée** si elle est à la fois majorée et minorée.
 
 </Item>
 
 <Item type='proposition' titre='bornes et opérations'>
 
-Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles.
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles.
 
-- Si $(u_n)_{n \in \N}$ est majorée, alors $(-u_n)_{n \in \N}$ est minorée (et inversement).
+$\cd$ Si $\suitedefN{u_n}$ est majorée, alors $\suitedefN{-u_n}$ est minorée (et inversement).
 
-- Si les deux sont majorées (resp. minorées) alors $(u_n + v_n)_{n \in \N}$ est majorée (resp minorée).
-
-- Si les deux sont bornées alors $(u_n + v_n)_{n \in \N}$ est bornée
+$\cd$ Si les deux sont majorées (resp. minorées) alors $\suitedefN{u_n + v_n}$ est majorée (resp minorée).
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-**Premier résultat :** si $(u_n)_{n \in \N}$ est majorée alors il existe $M \in \R$ tel que : $\forall n \in \N \v u_n \leqslant M$. Mais par décroissance de $x \mapsto -x$ sur $\R$, $u_n \leqslant M \Rightarrow -u_n \geqslant -M$. Donc la suite $(-u_n)_{n \in \N}$ est minorée. Le cas inverse se traite de la même manière.
+**Premier résultat :** si $\suitedefN{u_n}$ est majorée alors il existe $M \in \R$ tel que : $\forall n \in \N \v u_n \leqslant M$. 
 
-**Deuxième et troisième résultats :** cela vient simplement du fait que les inégalités sont compatibles avec la somme.
+Mais par décroissance de $x \mapsto -x$ sur $\R \v u_n \leqslant M \Rightarrow -u_n \geqslant -M$. 
+
+Donc la suite $\suitedefN{-u_n}$ est minorée. Le cas inverse se traite de la même manière.
+
+<br/>
+
+**Second résultat :** cela vient simplement du fait que les inégalités sont compatibles avec la somme.
 
 </Hideable>
 
 <Item type='proposition' titre='caractérisation par la valeur absolue'>
 
-Soit $(u_n)_{n \in \N}$ une suite réelle. Elle est bornée si et seulement si $(|u_n|)_{n \in \N}$ est majorée. 
+Soit $\suitedefN{u_n}$ une suite réelle. Elle est bornée si et seulement si $\suitedefN{|u_n|}$ est majorée. 
 </Item>
 
 
 <Hideable type='démonstration' titre=''>
 
-Supposons que $(u_n)_{n \in \N}$ est bornée (sens direct). Il existe $m$ et $M$ des réels tels que : $\forall n \in \N\v $. Soit $A = \max(|m|\v |M|)$, on a : $\forall n \in \N \v -A \leqslant m \leqslant u_n \leqslant M \leqslant A$. Donc $(|u_n|){n \in \N}$ est majorée.
+$\cd$ **Sens direct :** Supposons que $\suitedefN{u_n}$ est bornée (sens direct). 
 
-Supposons que $(|u_n|){n \in \N}$ est majorée (sens réciproque). Soit $M$ un majorant, on a : $\forall n \in \N \v -M \leqslant u_n \leqslant M$, et donc $(u_n)_{n \in \N}$ est bornée.
+Il existe $m$ et $M$ des réels tels que : $\forall n \in \N\v $. 
+
+Soit $A = \max(|m|\v |M|)$, on a : 
+
+$$
+\forall n \in \N \v -A \leqslant m \leqslant u_n \leqslant M \leqslant A
+$$
+
+Donc $(|u_n|){n \in \N}$ est majorée.
+
+$\cd$ **Sens réciproque :** Supposons que $(|u_n|){n \in \N}$ est majorée (sens réciproque). 
+
+Soit $M$ un majorant, on a : $\forall n \in \N \v -M \leqslant u_n \leqslant M$
+
+donc $\suitedefN{u_n}$ est bornée.
 </Hideable>
 
 <Item type='definition' titre=''>
@@ -334,13 +529,27 @@ On dit qu'une suite complexe $(z_n)_{n \in \N}$ est bornée si $(|z_n|)_{n \in \
 
 <Item type='definition' titre='convergence'>
 
-Soit $(u_n)_{n \in \N}$ une suite réelle (ou complexe). On dit qu'elle :
+Soit $\suitedefN{u_n}$ une suite réelle (ou complexe). On dit qu'elle :
 
-- tend vers $l \in \R$ (ou $\C$) si : $\forall \epsilon > 0 \v \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon$. On note $\limm{n \to \infty} u_n = l$ ou $u_n \limton l$
+$\cd$ tend vers $l \in \R$ (ou $\C$) si : 
 
-- (cas réel uniquement) tend vers $+ \infty$ (resp. $- \infty$) si : $\forall A \in \R \v \exists N \in \N \mid n \geqslant N \Rightarrow u_n \geqslant A$ (resp. $u_n \leqslant A$). On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
+$$
+\forall \epsilon > 0 \v \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+$$
 
-S'il existe $l \in \C$ tel que $(u_n)_{n \in \N}$ tend vers $l$, on dit que $(u_n)_{n \in \N}$ est convergente de limite $l$. Sinon, on dit qu'elle diverge.
+On note $\limm{n \to \infty} u_n = l$ ou $u_n \limton l$
+
+$\cd$ (cas réel uniquement) tend vers $+ \infty$ (resp. $- \infty$) si : 
+
+$$
+\forall A \in \R \v \exists N \in \N \mid n \geqslant N \Rightarrow u_n \geqslant A (\text{resp. }u_n \leqslant A)
+$$ 
+
+On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
+
+<br/>
+
+S'il existe $l \in \C$ tel que $\suitedefN{u_n}$ tend vers $l$, on dit que $\suitedefN{u_n}$ est convergente de limite $l$. Sinon, on dit qu'elle diverge.
 </Item>
 
 
@@ -352,9 +561,38 @@ Une suite convergeante n'admet qu'une seule et unique limite.
 
 <Hideable type='démonstration' titre=''>
 
-Supposons que $(u_n)_{n \in \N}$ converge à la fois vers $l_1$ et $l_2$ deux complexes. On a : $\forall \epsilon > 0 \v \exists N_1 \in \N \mid n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon$ et $\forall \epsilon > 0 \v \exists N_2 \in \N \mid n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon$. 
+Supposons que $\suitedefN{u_n}$ converge à la fois vers $l_1$ et $l_2$ deux complexes. Soit $\epsilon > 0$, on a : 
 
-Soit $\epsilon > 0$, soit $N = max(N_1\v N_2)$. On a : $n \geqslant N \Rightarrow |u_n - l_1|\leqslant \epsilon $ et $|u_n - l_2|\leqslant \epsilon$. Donc $\begin{cases} -\epsilon \leqslant u_n - l_1 \leqslant -\epsilon \\ -\epsilon \leqslant u_n - l_2 \leqslant -\epsilon \end{cases}$ puis en faisant la différence des deux lignes, on obtient $0 \leqslant l_1 - l_2 \leqslant 0$ ce qui donne $l_1 = l_2$
+$$
+\begin{cases}
+    \exists N_1 \in \N \mid n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \\
+    \exists N_2 \in \N \mid n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon
+\end{cases}
+$$
+
+Soit $N = max(N_1\v N_2)$. On a : 
+$$
+\begin{cases}
+    n \geqslant N \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \\
+    n \geqslant N \Rightarrow |u_n - l_2| \leqslant \epsilon
+\end{cases}
+$$
+
+Donc 
+
+$$
+\begin{cases} 
+    -\epsilon \leqslant u_n - l_1 \leqslant -\epsilon 
+    \\
+    -\epsilon \leqslant u_n - l_2 \leqslant -\epsilon 
+\end{cases}
+$$
+ 
+puis en faisant la différence des deux lignes, on obtient $0 \leqslant l_1 - l_2 \leqslant 0$ 
+
+ce qui donne $l_1 - l_2 = 0$ d'où $l_1 = l_2$.
 </Hideable>
 
 <Item type='proposition' titre='convergence et bornes'>
@@ -364,56 +602,129 @@ Toute suite complexe convergeante est bornée.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $(u_n)_{n \in \N}$ une suite complexe convergeante de limite $l$. On pose $\epsilon = 1$, il existe $N \in \N$ tel que si $n \geqslant N$, alors $|u_n - l| \leqslant 1$. Mais donc si $n \geqslant N$, alors $l - \epsilon \leqslant u_n \leqslant 1 + l$. En particulier, $1 + |l|$ est un majorant de $(u_n)_{n \geqslant N}$. Mais si l'on pose $M = \max\limits_{n \in \defentiers{0}{n}}(|u_n|)$, alors $|u_n| \leqslant \max(M\v l + |l|)$. Donc la suite est bornée.
+Soit $\suitedefN{u_n}$ une suite complexe convergeante de limite $l$. On pose $\epsilon = 1$. 
+
+Il existe $N \in \N$ tel que si $n \geqslant N$, alors $|u_n - l| \leqslant 1$. 
+
+Mais donc si $n \geqslant N$, alors $l - \epsilon \leqslant u_n \leqslant 1 + l$. 
+
+En particulier, $1 + |l|$ est un majorant de $(u_n)_{n \geqslant N}$. 
+
+Mais si l'on pose $M = \max\limits_{n \in \defentiers{0}{n}}(|u_n|)$, alors $|u_n| \leqslant \max(M\v l + |l|)$. 
+
+Donc la suite est bornée.
 </Hideable>
 
 <Item type='proposition' titre='opérations et limites'>
 
-Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites complexes convergeantes de limites respectives $l_1$ et $l_2$. Alors :
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites complexes convergeantes de limites respectives $l_1$ et $l_2$. Alors :
 
-- Si $\lambda \in \C$, alors $\limm{n \to + \infty} \lambda . u_n = \lambda. \limm{n \to + \infty} u_n = \lambda.l_1$
+<br/>
 
-- $\limm{n \to + \infty} (u_n + v_n) = \limm{n \to + \infty} u_n + \limm{n \to + \infty} v_n = l_1 + l_2$
+$\cd$ Si $\lambda \in \C$, alors $\limm{n \to + \infty} \lambda . u_n = \lambda . \limm{n \to + \infty} u_n = \lambda.l_1$
 
-- $\limm{n \to + \infty} u_n . v_n = \Big( \limm{n \to + \infty} u_n \Big) \times \Big( \limm{n \to + \infty} v_n \Big) = l_1 . l_2$
+<br/>
 
-- Si $l_2 \neq 0$ et que $v_n \neq 0 \forall n \in \N$, $\limm{n \to + \infty} \dfrac{u_n}{v_n} = \dfrac{\limm{n \to + \infty} u_n}{\limm{n \to + \infty} v_n} = \dfrac{l_1}{l_2}$
+$\cd$ $\limm{n \to + \infty} (u_n + v_n) = \limm{n \to + \infty} u_n + \limm{n \to + \infty} v_n = l_1 + l_2$
+
+<br/>
+
+$\cd$ $\limm{n \to + \infty} u_n . v_n = \Big( \limm{n \to + \infty} u_n \Big) \times \Big( \limm{n \to + \infty} v_n \Big) = l_1 . l_2$
+
+<br/>
+
+$\cd$ Si $l_2 \neq 0$ et que $ \forall n \in \N \v v_n \neq 0$, $\limm{n \to + \infty} \dfrac{u_n}{v_n} = \dfrac{\limm{n \to + \infty} u_n}{\limm{n \to + \infty} v_n} = \dfrac{l_1}{l_2}$
 
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-**Produit par un scalaire :** si $\lambda \in \C$, par définition de la limité, si $\epsilon >0$ alors il existe $N\in \N$ tel que, si $n \geqslant N$, on a $|u_n - l_1| \leqslant \epsilon$. Mais donc en multipliant par $\lambda$, on a $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \epsilon$. 
+**$\cd$ Produit par un scalaire :** 
 
-Maid ce qui nous arrangerait serait d'avoir une majoration par $\epsilon$. Posons donc $\tilde{epsilon} = \dfrac{\lambda}{\epsilon}$. Par définition de la limite, il existe $\tilde{N}$ tel que , si $n \geqslant \tilde{N}$, alors $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \tilde{\epsilon} = \epsilon$. **On réutilisera cette téchnique par la suite sans détailler plus que : "en posant $\tilde{epsilon} = \dfrac{\lambda}{\epsilon}$"**
+si $\lambda \in \C$, par définition de la limité, si $\epsilon >0$ alors il existe $N\in \N$ tel que, si $n \geqslant N$, on a $|u_n - l_1| \leqslant \epsilon$. 
 
-On conclut que : $\forall \epsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant N \Rightarrow | \lambda .u_n - \lambda . l_1| \leqslant \epsilon$
+Mais donc en multipliant par $\lambda$, on a $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \epsilon$. 
 
+Mais ce qui nous arrangerait serait d'avoir une majoration par $\epsilon$. Posons donc $\tilde{epsilon} = \dfrac{\lambda}{\epsilon}$. 
 
-**Somme des limites :** par définition de la limite, si $\epsilon > 0$, il existe $N_1$ et $N_2$ des entiers tels que, si $n \geqslant N_1$, $|u_n - l_1| \leqslant \epsilon$ et si $n \geqslant N_2$, $|v_n - l_2| \leqslant \epsilon$. Mais si $n \geqslant \max(N_1\v N_2)$, on a 
-$\begin{cases} - \epsilon \leqslant u_n - l_1 \leqslant \epsilon \\ - \epsilon \leqslant v_n - l_2 \leqslant \epsilon\end{cases}$, par somme, on a $- 2\epsilon \leqslant u_n + v_n - l_1 - l_2 \leqslant 2\epsilon$ d'où $|(u_n + v_n) - (l_1 + l_2)| \leqslant 2 \epsilon$.
+Par définition de la limite, il existe $\tilde{N}$ tel que , si $n \geqslant \tilde{N}$, alors $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \tilde{\epsilon} = \epsilon$. 
+
+**On réutilisera cette téchnique par la suite sans détailler plus que : "en posant $\tilde{\epsilon} = \dfrac{\lambda}{\epsilon}$"**
+
+On conclut que : 
+
+$$
+\forall \epsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant N \Rightarrow | \lambda .u_n - \lambda . l_1| \leqslant \epsilon
+$$
+
+<br/>
+
+**$\cd$ Somme des limites :** par définition de la limite, si $\epsilon > 0$, il existe $N_1$ et $N_2$ des entiers tels que :
+
+$$
+\begin{cases}
+    n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \\
+    n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon
+\end{cases}
+$$
+
+par somme, on a $- 2\epsilon \leqslant u_n + v_n - l_1 - l_2 \leqslant 2\epsilon$ 
+
+d'où $|(u_n + v_n) - (l_1 + l_2)| \leqslant 2 \epsilon$.
 
 On pose $\tilde{\epsilon} = \dfrac{\epsilon}{2}$ pour conclure.
 
+<br/>
 
-**Produit de limites :** Soit $\epsilon > 0$, on a $N_1$ et $N_2$ à partir des limites de $(u_n)_{n \in \N}$ et de $(u_n)_{n \in \N}$. On s'intéresse à $u_n.v_n - l_1.l_2$ mais nous n'avons des informations que sur $u_n - l_1$ et sur $v_n - l_2$ que nous ne reconnaissons pas ici.
+**$\cd$ Produit de limites :** Soit $\epsilon > 0$, on a $N_1$ et $N_2$ à partir des limites de $\suitedefN{u_n}$ et de $\suitedefN{u_n}$. On s'intéresse à $u_n.v_n - l_1.l_2$ mais nous n'avons des informations que sur $u_n - l_1$ et sur $v_n - l_2$ que nous ne reconnaissons pas ici.
 
-__ASTUCE A CONNAITRE :__ le fait que $u_n.v_n - l_1 . l_2$ lie les deux suites nous gène. On préfèrerair $u_n.l_2 - l_1 . l_2$ car il suffirait de factoriser par $l_2$ pour conclure. Et bien ajoutons et soustrayons $u_n.l_2$ : 
+
+__ASTUCE A CONNAITRE :__ le fait que $u_n.v_n - l_1 . l_2$ lie les deux suites nous gène. On préfèrerair $u_n.l_2 - l_1 . l_2$ car il suffirait de factoriser par $l_2$ pour conclure. Et bien ajoutons et soustrayons $u_n.l_2$. 
+
 
 $$
 u_n.v_n - l_1 . l_2 = u_n.v_n - u_n.l_2 + u_n.l_2 - l_1.l_2 = u_n(v_n - l_2) + l_2.(u_n - l_1)
 $$ 
 
-On en déduit donc que $|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\epsilon + |l_2|.\epsilon$ mais $(|u_n|)_{n \in \N}$ est majorée par un $M \in \R$ car $(u_n)_{n \in \N}$ est convergeante. On a donc $|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\epsilon + |l_2|.\epsilon = \epsilon (M + |l2|)$. En posant $\tilde{\epsilon} = \defrac{\epsilon}{M + |l2|}$, on peut conclure.
+On en déduit donc que 
 
-**Quotient :** Montrons que $\limm{n \to \infty} \dfrac{1}{v_n} = \dfrac{1}{l_2}$. Pour des raisons pratiques, on suppose $l_2 > 0$ (le cas négatif est analogue).
+$$
+|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\epsilon + |l_2|.\epsilon
+$$ 
 
-<Indent>
+mais $\suitedefN{|u_n|}$ est majorée par un $M \in \R$ car $\suitedefN{u_n}$ est convergeante. On a donc 
 
- Soit $\epsilon > 0$, il existe $N \in \N$ tel que, si $n \geqslant N$, alors $|v_n - l_2| \leqslant \epsilon$. Supposons $N$ qui convient et $n \geqslant N$. Alors, $ -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon$ d'où  $ l_2 - \epsilon \leqslant  v_n\leqslant l_1 + \epsilon$ puis $\dfrac{1}{l_2 - \epsilon} \geqslant \dfrac{1}{v_n} \geqslant \dfrac{1}{l_2 + \epsilon}$ par décroissance de la fonction inverse. Ensuite, on a $\epsilon . \dfrac{1}{l_2(l_2-\epsilon)}= \dfrac{1}{l_2 - \epsilon} - \dfrac{1}{l_2} \geqslant \dfrac{1}{v_n} - \dfrac{1}{l_2} \geqslant 0$. 
+$$
+|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\epsilon + |l_2|.\epsilon = \epsilon (M + |l2|)
+$$
 
- Si l'on suppose que $\epsilon < \dfrac{l_2}{2}$, on trouve $ \dfrac{1}{l_2(l_2-\epsilon)} \leqslant \dfrac{2}{l_2^2}$. En posant $\tilde{\epsilon} = \epsilon . \dfrac{l_2^2}{2}$, on peut conclure. En effet, supposer $\epsilon < \dfrac{l_2}{2}$ n'est pas gênant car, si $\epsilon \geqslant \dfrac{l_2}{2}$, il suffit de prendre le $N$ trouvé pour par exemple $\epsilon = \dfrac{l_2}{4}$ et la définition sera vérifiée.
-</Indent>
+En posant $\tilde{\epsilon} = \dfrac{\epsilon}{M + |l2|}$, on peut conclure.
+
+<br/>
+
+**$\cd$ Quotient :** Montrons que $\limm{n \to \infty} \dfrac{1}{v_n} = \dfrac{1}{l_2}$. On suppose $l_2 > 0$ (quitte à considérer $-1 \times \dfrac{1}{-v_n}$ où $\suitedefN{-v_n}$ a pour limite $-l_2 > 0$).
+
+ Soit $\epsilon > 0$, 
+ 
+ il existe $N \in \N$ tel que, si $n \geqslant N$, alors $|v_n - l_2| \leqslant \epsilon$. 
+ 
+ Prenons $N$ qui convient et $n \geqslant N$. Alors, $ -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon$ 
+ 
+ d'où  $ l_2 - \epsilon \leqslant  v_n\leqslant l_1 + \epsilon$ 
+ 
+ puis $\dfrac{1}{l_2 - \epsilon} \geqslant \dfrac{1}{v_n} \geqslant \dfrac{1}{l_2 + \epsilon}$ par décroissance de la fonction inverse. 
+ 
+ ensuite, on a $\epsilon . \dfrac{1}{l_2(l_2-\epsilon)}= \dfrac{1}{l_2 - \epsilon} - \dfrac{1}{l_2} \geqslant \dfrac{1}{v_n} - \dfrac{1}{l_2} \geqslant 0$. 
+
+ Si l'on suppose que $\epsilon < \dfrac{l_2}{2}$, on trouve $ \dfrac{1}{l_2(l_2-\epsilon)} \leqslant \dfrac{2}{l_2^2}$. 
+ 
+ En posant $\tilde{\epsilon} = \epsilon . \dfrac{l_2^2}{2}$, on peut conclure. 
+ 
+ <br/>
+ 
+ En effet, supposer $\epsilon < \dfrac{l_2}{2}$ n'est pas gênant car, si $\epsilon \geqslant \dfrac{l_2}{2}$, il suffit de prendre le $N$ trouvé pour par exemple $\epsilon = \dfrac{l_2}{4}$ et la définition sera vérifiée.
+
 
 En considérant la suite $(\dfrac{1}{v_n})_{n \in \N}$, on peut appliquer le résultat pour le produit et obtenir la propriété sur le quotient.
 
@@ -421,49 +732,89 @@ En considérant la suite $(\dfrac{1}{v_n})_{n \in \N}$, on peut appliquer le ré
 
 <Item type='proposition' titre='limites et comparaisons'>
 
-Soient $(u_n)_{n \in \N}$ et $(v_n)_{n \in \N}$ deux suites réelles convergeantes de limites respectives $l_1$ et $l_2$ telles que : $\forall n \in \N \v u_n \leqslant v_n$. Alors,
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles convergeantes de limites respectives $l_1$ et $l_2$.
 
-$$
-l_1 \leqslant l_2
-$$
+Si : $\forall n \in \N \v u_n \leqslant v_n$ alors : $l_1 \leqslant l_2$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$, d'après la définition de la limite, on trouve $N_1$ et $N_2$ pour les deux suites. Supposons $n \geqslant \max(N_1\v N_2)$.
+Soit $\epsilon > 0$, d'après la définition de la limite, on trouve $N_1$ et $N_2$ pour les deux suites. 
 
-On a $|u_n - l_1| \leqslant \epsilon$ et $|v_n - l_2| \leqslant \epsilon$. D'où 
-$\begin{cases} -\epsilon \leqslant  u_n - l_1 \leqslant \epsilon \\  -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon \end{cases}$ puis 
-$\begin{cases} l1 - \epsilon \leqslant  u_n \leqslant l1 + \epsilon \\  l_2 - \epsilon \leqslant  v_n  \leqslant l_2 + \epsilon \end{cases}$ et donc
-$l1 - \epsilon \leqslant  u_n  \leqslant  v_n  \leqslant l_2 + \epsilon$ et finalement $l1 - \epsilon \leqslant l_2 + \epsilon$. Ceci étant vrai peu importe la valeur de $\epsilon > 0$ choisie, on conclut que $l1 \leqslant l_2$
+Supposons $n \geqslant \max(N_1\v N_2)$. On a $|u_n - l_1| \leqslant \epsilon$ et $|v_n - l_2| \leqslant \epsilon$. D'où 
+
+$$
+\begin{cases} 
+    -\epsilon \leqslant  u_n - l_1 \leqslant \epsilon 
+    \\  
+    -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon 
+\end{cases}
+$$ 
+
+puis 
+
+$$
+\begin{cases} 
+    l_1 - \epsilon \leqslant  u_n \leqslant l1 + \epsilon 
+    \\  
+    l_2 - \epsilon \leqslant  v_n  \leqslant l_2 + \epsilon 
+\end{cases}
+$$ 
+
+et donc $l_1 - \epsilon \leqslant  u_n  \leqslant  v_n  \leqslant l_2 + \epsilon$
+
+finalement $l_1 - \epsilon \leqslant l_2 + \epsilon$. Ceci étant vrai peu importe la valeur de $\epsilon > 0$ choisie, on conclut que $l_1 \leqslant l_2$
+</Hideable>
+
+<Item type='consequence' titre='comparaison avec un réel'>
+
+Soit $\suitedefN{u_n} \in \R^{\N}$ convergente de limite $l \in \R$ et $a \in \R$
+
+Si $\; \forall n \in \N \v u_n \geqslant a$ (rep. $u_n \leqslant a$) $\;$ alors $\; l \geqslant a$ (rep. $l \leqslant a$)
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On peut poser $\suitedefN{a}$ et appliquer le résultat précédent.
 </Hideable>
 
 <Item type='proposition' titre='limite et signe'>
 
-Soit $(u_n)_{n \in \N}$ une suite réelle convergente de limite non nulle $l \in \R_+^*$. Il existe un rang à partir duquel la suite  $(u_n)_{n \in \N}$ est strictement positive. Le résultat est analogue pour une limite négative.
+Soit $\suitedefN{u_n}$ une suite réelle convergente de limite non nulle $l \in \R_+^*$. 
+
+Il existe un rang à partir duquel la suite  $\suitedefN{u_n}$ est strictement positive. Le résultat est analogue pour une limite négative.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-On suppose sans perte de généralité que $l > 0$ (l'autre cas est analogue).
+On suppose sans perte de généralité que $l > 0$ (sinon il suffit de considérer $\suitedefN{-u_n}$).
 
 On pose $\epsilon = \dfrac{l}{2}$. Soit $N$ tel que : $n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon = \dfrac{l}{2}$.
 
 
-Supposons $n \geqslant N$. $ -\dfrac{l}{2} \leqslant  u_n - l \leqslant \dfrac{l}{2}$ d'où $ 0 < \dfrac{l}{2} \leqslant  u_n  \leqslant \dfrac{3l}{2}$ donc $u_n >0$ dès que $n \geqslant N$.
+Supposons $n \geqslant N \quad $ $ -\dfrac{l}{2} \leqslant  u_n - l \leqslant \dfrac{l}{2} \;$ d'où $ \; 0 < \dfrac{l}{2} \leqslant  u_n  \leqslant \dfrac{3l}{2}$ donc $u_n >0$ dès que $n \geqslant N$.
 </Hideable>
 
 <Item type='proposition' titre='théorème des gendarmes'>
 
-Soient $(u_n)_{n \in \N}$, $(v_n)_{n \in \N}$ et $(w_n)_{n \in \N}$ trois suites réelles telles que : $\forall n \in \N \v u_n \leqslant v_n \leqslant w_n$. Si $(u_n)_{n \in \N}$ et $(w_n)_{n \in \N}$ sont convergentes de même limite $l \in \R$ alors $v_n$ est également convergente de limite $l$.
+Soient $\suitedefN{u_n}$, $\suitedefN{v_n}$ et $\suitedefN{w_n}$ trois suites réelles telles que : $\forall n \in \N \v u_n \leqslant v_n \leqslant w_n$. Si $\suitedefN{u_n}$ et $\suitedefN{w_n}$ sont convergentes de même limite $l \in \R$ alors $v_n$ est également convergente de limite $l$.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 Soit $\epsilon > 0$ d'après la définition de la convergence pour $u$ (resp. pour $w$) on obtient $N_1$ (resp. $N_2$). 
-D'après ces définitions, si $n \geqslant N = \max(N_1\v N_2)$, alors $|u_n - l| \leqslant \epsilon$ et $|u_n - l| \leqslant \epsilon$ puis, 
-en ajoutant $l$ à chaque inégalité, on obtient $l-\epsilon \leqslant u_n \leqslant v_n \leqslant w_n \leqslant l + \epsilon$. On a donc : 
-$\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant l + \epsilon$. D'où la convergence de $(v_n)_{n \in \N}$ vers $l$
+
+D'après ces définitions, si $n \geqslant N = \max(N_1\v N_2)$, alors $|u_n - l| \leqslant \epsilon$ et $|w_n - l| \leqslant \epsilon$ 
+
+puis, en ajoutant $l$ à chaque inégalité, on obtient $l-\epsilon \leqslant u_n \leqslant v_n \leqslant w_n \leqslant l + \epsilon$. 
+
+On a donc : 
+
+$$
+\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant l + \epsilon
+$$ 
+
+D'où la convergence de $\suitedefN{v_n}$ vers $l$
 </Hideable>
 
 
@@ -471,9 +822,9 @@ $\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant
 
 Deux suites $\suitedefN{a_n}$ et $\suitedefN{b_n}$ sont dites adjacentes si :
 
-- elles sont monotones de monotonie opposées.
+$\cd$ elles sont monotones de monotonie opposées.
 
-- $|b_n - a_n| \limton 0$
+$\cd$ $|b_n - a_n| \limton 0$
 </Item>
 
 <Item type='proposition' titre='encadrement par des suites adjacentes'>
@@ -497,9 +848,31 @@ Par passage à la limite $b_n - a_n \limton l_2 - l_1 = 0$ d'où $l_1 = l_2$.
 Une fonction de $\N$ dans $\N$ est dite extractrice si elle est strictement croissante.
 </Item>
 
+<Item type='proposition' titre="comparaison avec l'identité">
+
+Soit $\phi$ un extractrice, on a :
+
+$$
+\forall n \in \N \v \phi(n) \geqslant n
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n \in \N$. 
+
+Comme $\phi$ est strictement croissante et à valeurs dans $\N$, on sait que $\phi(n+1) - \phi(n) \geqslant 1$. 
+
+Par somme télescopique, $\phi(n) = \phi(0) +  \somme{n-1}{i = 0} \phi(i+1) - \phi(i) \geqslant \phi(0) + n \geqslant n$.
+
+
+</Hideable>
+
 <Item type='definition' titre='suite extraite'>
 
-Soit $\suitedefN{u_n}$ une suite réelle et $\phi$ une extractrice. On dit que $\suitedefN{u_{\phi(n)}}$ est une suite extraite de $\suitedefN{u_n}$.
+Soit $\suitedefN{u_n}$ une suite réelle et $\phi$ une extractrice. 
+
+On dit que $\suitedefN{u_{\phi(n)}}$ est une suite extraite de $\suitedefN{u_n}$.
 </Item>
 
 <Item type='proposition' titre='suites extraites et convergence'>
@@ -509,8 +882,20 @@ Si $\suitedefN{u_n}$ est convergente de limite $l \in \R$, alors toute suite ext
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. Soit $\epsilon > 0$, par définition de la convergence,  $ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon$. Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ (on peut le démontrer par récurrence) et donc $n \geqslant N \Rightarrow \phi(n) \geqslant N$. Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
+Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. 
+
+Soit $\epsilon > 0$, par définition de la convergence,  
+
+$$
+ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+$$
+
+Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ d'où $n \geqslant N \Rightarrow \phi(n) \geqslant N$. 
+
+Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
 </Hideable>
+
+<!-- ARRET ICI STOP REPRENDRE  -->
 
 <Item type='proposition' titre='cas pairs / impairs'>
 
@@ -573,14 +958,14 @@ Les trois propriétés sont vérifiées car :
 
 <Item type='theoreme' titre='limite monotone'>
 
-Soit $(u_n)_{n \in \N}$ une suite réelle croissante (resp. décroissante). Soit $(u_n)_{n \in \N}$ est convergente, soit $\limm{n \to \infty} u_n = + \infty $ (resp. $- \infty$).
+Soit $\suitedefN{u_n}$ une suite réelle croissante (resp. décroissante). Soit $\suitedefN{u_n}$ est convergente, soit $\limm{n \to \infty} u_n = + \infty $ (resp. $- \infty$).
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-**Cas 1 : $(u_n)_{n \in \N}$ est convergente -** Dans ce cas, le résultat est évident.
+**Cas 1 : $\suitedefN{u_n}$ est convergente -** Dans ce cas, le résultat est évident.
 
-**Cas 2 : $(u_n)_{n \in \N}$ diverge -** Dans ce cas, pour tout $l \in \R$, on a : $\exists \epsilon > 0 \mid \forall N \in \N \v (\exists n \geqslant N \mid  |u_n - l| > \epsilon)$. Essayons de nous ramener à la définition de la limite infinie : $(\exists n \geqslant N \mid  |u_n - l| > \epsilon) \Rightarrow (\exists n \geqslant N \mid u_n \geqslant > l + \epsilon > l) \Rightarrow (\exists n  \geqslant N \mid u_n \geqslant > l)$. On a donc : $(u_n)_{n \in \N}$ diverge $\Rightarrow \forall l \in \R \v \exists n \geqslant N \mid u_n \geqslant l$ ce qui est la définition d'une limite infinie.
+**Cas 2 : $\suitedefN{u_n}$ diverge -** Dans ce cas, pour tout $l \in \R$, on a : $\exists \epsilon > 0 \mid \forall N \in \N \v (\exists n \geqslant N \mid  |u_n - l| > \epsilon)$. Essayons de nous ramener à la définition de la limite infinie : $(\exists n \geqslant N \mid  |u_n - l| > \epsilon) \Rightarrow (\exists n \geqslant N \mid u_n \geqslant > l + \epsilon > l) \Rightarrow (\exists n  \geqslant N \mid u_n \geqslant > l)$. On a donc : $\suitedefN{u_n}$ diverge $\Rightarrow \forall l \in \R \v \exists n \geqslant N \mid u_n \geqslant l$ ce qui est la définition d'une limite infinie.
 </Hideable>
 
 
@@ -628,7 +1013,7 @@ Soit $\epsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqsl
 
 <Item type='methode' titre='calcul par le nombre dérivé (classique)'>
 
-Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $(u_n)_{n \in \N} \in \R^{\N}$ converge vers $a$, 
+Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $\suitedefN{u_n} \in \R^{\N}$ converge vers $a$, 
 
 $$
 \limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)
@@ -1002,4 +1387,7 @@ On conclut : $u$ et $v$ sont convergentes vers l'un de leurs points fixes. Mais 
 {/*
 Manque :
     - composition et limite
+
+Idée exo :
+    - u_kp cv vers 0 pour tout p. Peut-on dire que $u$ est convergente? (ctre exple : u_p = 1 et u_n = 0 si p non premier)
 */}
