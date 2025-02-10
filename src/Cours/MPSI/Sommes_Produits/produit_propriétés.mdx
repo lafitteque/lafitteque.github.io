@@ -1,0 +1,69 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='notation produit'>
+
+Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :
+
+$$ 
+\produit{i=1}{n} a_i = a_1 \times a_2 \times \dotsm \times a_{n-1} \times a_n 
+\quad \text{\normalsize ou encore }\quad  \produit{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n
+$$
+
+Par convention, on pose $\produit{i \in \emptyset}{} a_i = 1 $
+
+</Item>
+
+
+<Item type='definition' titre='exponentiation'>
+
+Soient $a \in \R_+^*$ et $b \in \R$. On note $a^b$ la quantité $e^{b \ln(a)}$
+</Item>
+
+<Item type='proposition' titre='produits et exponentiation'>
+Soient $n \in \N$, $a_1 \v a_2 \v \dotsm \v a_n$ des éléments de $R$ et $x \in \R_+^*$. On a :
+
+$$
+\produit{i=1}{n} x^{a_i} = x^{\somme{i=1}{n} a_i}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Le produit est composé de facteurs strictement positifs, il est donc également strictement positif. 
+
+On peut donc appliquer le logarithme népérien :
+
+$\ln \Big( \produit{i=1}{n} x^{a_i} \Big) = \somme{i=1}{n} a_i \ln(x) = \ln(x)\somme{i=1}{n} a_i$ par linéarité de la somme. On a donc :
+
+$$
+\ln \Big( \produit{i=1}{n} x^{a_i} \Big) = \ln(x)\somme{i=1}{n} a_i
+$$
+
+En passant à l'exponentielle, on trouve $\produit{i=1}{n} x^{a_i} = exp\Big( \ln(x)\somme{i=1}{n} a_i \Big) = x^{\somme{i=1}{n} a_i}$
+</Hideable>
+
+<Exercice titre='Calculs de produits'>
+
+Soit $n \in \N$, 
+
+1\) Simplifier $\produit{k=1}{n} 2$
+
+<br/>
+
+2\) Simplifier $\produit{k=1}{n} 2^k$
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) Il s'agit de $2 \times 2 \times \dotsm \times 2$ avec $n$ fois le terme $2$. C'est la définition de $2^n$. Donc $\produit{k=1}{n} 2 = 2^n$
+
+<br/>
+2\) D'après la propriété précédente, $\produit{k=1}{n} 2^k = 2^{\somme{k=1}{n} k} = 2^{\dfrac{n(n+1)}{2}}$
+</Hideable>

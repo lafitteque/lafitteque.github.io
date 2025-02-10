@@ -1,0 +1,24 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='suite arithmético-géométrique'>
+
+Une suite $\suitedefN{u_n}$ est arithmético-géométrique si : $\exists (q\v r) \in \R^2 \mid \forall n \in \N \v u_{n+1} = q.u_n + r$.
+</Item>
+
+
+<Item type='methode' titre="étude d'une suite arithmético-géométrique">
+
+Soit $\suitedefN{u_n}$ une suite arithmético-géométrique et $(q\v r) \in \R^2$ tels que : $\forall n \in \N \v u_{n+1} = q.u_n + r$. En d'autres termes, $u_{n+1} = f(u_n)$ où $ f : \begin{cases} \R \rightarrow \R \\ x \mapsto qx + r \end{cases} $
+
+**Recherche d'un point fixe de $f$ :** supposons qu'il existe $\tilde{x}$ tel que $f(\tilde{x}) = \tilde{x}$. On a $\tilde{x} = q\tilde{x} + r$ puis $\tilde{x} - q\tilde{x} = r$ et donc $\tilde{x}(1-q) = r$. On peut supposer $q \neq 1$ car si $q = 1$ la suite est arithmétique et son étude est simple. On a donc $\tilde{x} = \dfrac{r}{1-q}$ un point fixe de $f$. 
+
+**Etude de la différence entre la suite et le point fixe :** posons $\suitedefN{v_n}$ la suite telle que pour $n \in \N$, $v_n = u_n - \tilde{x}$. On a $v_{n+1} = u_{n+1} - \dfrac{r}{1-q} = q.u_n + r - \dfrac{r}{1-q} = \dfrac{q.u_n - q^2.u_n \cancel{+ r} -qr \cancel{- r}}{1-q} = \dfrac{q.u_n - q^2.u_n -qr}{1-q} = q. \dfrac{u_n - q.u_n - r}{1-q}$. Mais $v_n = u_n -\dfrac{r}{1-q} = \dfrac{u_n - q.u_n + r}{1-q}$. Donc $v_{n+1} = q. \underbrace{\dfrac{u_n - q.u_n - r}{1-q}}_{ = \displaystyle v_n} = q.v_n$. Mais donc $\suitedefN{v}$ est géométrique.
+
+**Conclusion :** toute suite arithmético-géométrique est, à une constante près (qui est son point fixe), une suite arithmétique. On en déduit qu'il suffit d'étudier $\suitedefN{v_n}$ pour connaître $\suitedefN{u_n}$. On a en particulier : $\limm{n \to +\infty} u_n = \limm{n \to +\infty} v_n + \tilde{x}$. La monotonie de $\suitedefN{v_n}$ est la même que celle de $\suitedefN{u_n}$.
+</Item>

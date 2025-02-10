@@ -1,0 +1,84 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='factorielle'>
+Soit $n\in \N$ On appelle factorielle de $n$ et on note $n!$ la quantité suivante :
+
+$$ 
+n! = \prod_{k=1}^{n} k
+$$
+
+On remarque que $0! = 1$
+</Item>
+
+<Remarque>
+La factorielle est prioritaire sur l'addition et la multiplication mais pas sur l'exponentiation. Il faudra donc parenthéser correctement afin que le sens du calcul soit celui voulu.
+</Remarque>
+
+<Item type='proposition' titre='formule de récurrence de la factorielle'>
+Soit $n \in \N$, $(n+1)! = (n+1) \times n!$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+$(n+1)! = \produit{k=1}{n+1}k = (n+1)\produit{k=1}{n}k = (n+1) \times n!$
+</Hideable>
+
+<Exercice titre="Réexprimer des produits">
+Soit $n \in \N$
+
+1\) Réexprimer $\produit{k=1}{n} 2k$ et $\produit{k=0}{n} (2k+1)$ à l'aide de la factorielle
+
+<br/>
+
+2\) Exprimer $\dfrac{n!}{(n-p)!}$ à l'aide d'une seule notation produit $ (\prod ) $.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) **On s'intéresse d'abord au produit des entiers pairs :** il y a plusieurs manières de faire. 
+
+La première est de passer au logarithme et utiliser la linéarité de la somme pour montrer que 
+$\ln \Big(\produit{k=1}{n} 2k \Big) = 2n + \somme{k=1}{n} \ln(k)$, ce qui, en repassant à l'exponentielle, donne :
+
+$$
+\produit{k=1}{n} 2k = 2^n  n!
+$$
+
+La deuxième manière de faire est simplement d'écrire 
+
+$$
+\produit{k=1}{n} 2k  = (2\times 1) \times (2 \times 2) \times (2 \times 3) \times \dotsm \times (2 \times n)
+$$ 
+
+et de réorganiser les facteurs pour obtenir $2^n n!$.
+
+<br/>
+
+**Intéressons-nous maintenant au produit des entiers impairs :** 
+
+$$
+\produit{k=1}{n} (2k+1) = \dfrac{\produit{k=1}{2n+1} k}{\produit{k=1}{n} 2k}
+$$
+
+En clair, le produit des impairs c'est le produit des entiers divisé par le produit des pairs. Mais donc 
+$$
+\produit{k=1}{n} (2k+1) = \dfrac{(2n+1)!}{2^n n!}
+$$
+
+<br/>
+
+2\) 
+
+$$
+\dfrac{n!}{(n-p)!} = \dfrac{\cancel{1} \times \cancel{2} \times \dotsm \times \cancel{(n-p)} \times (n-p+1) \times \dotsm \times n}{\cancel{1} \times \cancel{2} \times \dotsm \times \cancel{(n-p)}}
+$$
+
+$$ 
+\text{donc } \dfrac{n!}{(n-p)!} = (n-p+1)\times(n-p+2) \times \dotsm \times n = \produit{k = n-p+1}{n} k 
+$$
+</Hideable>

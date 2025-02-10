@@ -1,0 +1,58 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+| $\boldsymbol{\theta}$ | $\boldsymbol{\cos(\theta)}$ | $\boldsymbol{\sin(\theta)}$ | $\boldsymbol{\tan(\theta)}$ |
+|---|---|---|---|
+| $\boldsymbol{0}$ | $1$ | $0$ | $0$ |
+| $\boldsymbol{\dfrac{\pi}{6}}$ | $\dfrac{\sqrt{3}}{2}$ | $\dfrac{1}{2}$ | $\dfrac{1}{\sqrt{3}}$ |
+| $\boldsymbol{\dfrac{\pi}{4}}$ | $\dfrac{\sqrt{2}}{2}$ | $\dfrac{\sqrt{2}}{2}$ | $1$ |
+| $\boldsymbol{\dfrac{\pi}{3}}$ | $\dfrac{1}{2}$ | $\dfrac{\sqrt{3}}{2}$ | $\sqrt{3}$ |
+| $\boldsymbol{\dfrac{\pi}{2}}$ | $0$ | $1$ | / |
+
+<Hideable type='démonstration' titre=''>
+$ \sin(\theta) = \sqrt{1 - \cos^2(\theta)} $ donc la deuxième colonne se déduit de la première. La troisième se déduit des deux premières.
+
+<br/>
+
+**Cas $\theta = 0$ :** 
+<Indent>
+On part de $\Point{1}{0}$ et on ne fait aucun enroulement. L'abscisse obtenue est donc $1$. D'où $\cos(0) = 1$ 
+</Indent>
+
+<br/>
+
+**Cas $\theta = \dfrac{\pi}{4}$ :** 
+<Indent>
+
+Comme $A \Point{\cos(\dfrac{\pi}{4})}{\sin(\dfrac{\pi}{4})}$ est sur l'axe $x=y$ (cf. formules de déphasages $\dfrac{\pi}{2}$), on a 
+
+$$
+\cos(\dfrac{\pi}{4}) = \sin(\dfrac{\pi}{4})
+$$
+
+d'où $2\cos^2(\dfrac{\pi}{4}) = 1$ ce qui donne $\cos(\dfrac{\pi}{4}) = \dfrac{\sqrt{2}}{2}$
+</Indent>
+
+<br/>
+
+**Cas $\theta = \dfrac{\pi}{3}$ :** 
+<Indent>
+
+On place $A\Point{\cos(\dfrac{\pi}{3}\Big)}{\sin(\dfrac{\pi}{3})}$  et $B\Point{2\cos(\dfrac{\pi}{3})}{0}$. 
+
+Le triangle $ABO$ est équilatéral de côté $1$. En effet, par symétrie d'axe $x = \cos(\dfrac{\pi}{3})$, on déduit l'égalité $\widehat{AOB} = \widehat{ABO}$. 
+
+Comme la somme des angles d'un triangle vaut $\pi$, on en déduit que tous les angles valent $\dfrac{\pi}{3}$. 
+
+Comme $OB = 2\cos{\dfrac{\pi}{3} \v 0}  = 1$, on en conclut que 
+
+$$
+\cos{\dfrac{\pi}{3} \v 0} = \dfrac{1}{2}
+$$
+</Indent>
+</Hideable>

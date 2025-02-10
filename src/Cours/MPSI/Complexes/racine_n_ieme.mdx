@@ -1,0 +1,146 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+import Racinesunite from "../../../components/Geogebra/U_n.astro"
+
+
+<Item type='defprop' titre='racine n-ième'>
+Soit $z \in \C^*$. On appelle racine n-ième de $z$ les solutions de l'équation suivante d'inconnue $r \in \C$ :
+
+$$ 
+r^n = z 
+$$
+
+Si $z = |z|e^{i \theta}$, les racines n-ièmes de $z$ sont les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Nous devons admettre qu'un polynôme à coefficient dans $\C$ de degré $n$ admet au plus $n$ racines. Ceci sera démontré dans le chapitre sur les polynômes.
+
+<br/>
+
+La fonction polynômiale $P(r) = z - r^n \, \forall r \in \C$ admet au plus $n$ racines car elle est de degré $n$. 
+
+Mais les $\omega_k = \sqrt[n]{|z|} e^{i\dfrac{\theta + 2k\pi}{n}}$ pour $k \in \defentiers{0}{n-1}$ conviennent et sont au nombre de $n$. 
+
+On a donc trouvé toutes les racines de $P$ qui sont les racines n-ièmes de $z$.
+</Hideable>
+
+<Item type='definition' titre="racines n-ièmes de l'unité">
+Soit $n \in \N$. 
+
+On note $\U_n$ l'ensemble $\{ z \in \C \mid z^n = 1\}$. 
+
+<br/>
+
+En particulier, $\U_n \subset \U$.
+</Item>
+
+<Racinesunite></Racinesunite>
+
+<Exercice titre='racines n-ièmes'>
+
+1\) Donner la forme algébrique des racines 3-ièmes de l'unité.
+
+2\) Donner les racines 4-ièmes de $1 + i\sqrt{3}$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) 
+<Indent>
+
+D'après la propriété, il s'agit de 
+
+$$
+e^{ \textstyle \frac{2i\times 0 \times \pi}{3}} \v e^{ \textstyle \frac{2i\times 1 \times \pi}{3}} \v e^{ \textstyle \frac{2i\times 2 \times \pi}{3}}
+$$
+
+et autrement présenté, il s'agit de :
+
+$$
+1 \v \cos(\dfrac{2\times 1 \times \pi}{3}) + i \sin(\dfrac{2\times 1 \times \pi}{3}) \v \cos(\dfrac{2\times 2 \times \pi}{3}) + i \sin(\dfrac{2\times 2 \times \pi}{3})
+$$
+
+Mais la mesure principale de $\dfrac{2\times 2 \times \pi}{3}$ est $\dfrac{-2 \pi}{3}$ . Les racines sont donc :
+
+$$
+1 \v \dfrac{1}{2} + i \dfrac{\sqrt{3}}{2} \v \dfrac{1}{2} - i \dfrac{\sqrt{3}}{2}
+$$
+
+On note usuellement $j$ la racine $3$-ième de l'unité : $\dfrac{1}{2} + i \dfrac{\sqrt{3}}{2}$. 
+
+Les racines troisièmes de l'unité sont alors $\{1 \v j \v j^2\}$ ou encore $\{1 \v j \v \overline{j}\}$
+</Indent>
+
+<br/>
+
+2\) 
+<Indent> 
+
+On écrit d'abord $z = 1 + i\sqrt{3}$ sous forme exponentielle en factorisant par le module $|z| = \sqrt{1^2 + \sqrt{3}^2} = 2$. D'où 
+
+$$
+z = 2\Big( \dfrac{1}{2} + i \dfrac{\sqrt{2}}{2}\Big) = 2\Big( \cos(\dfrac{\pi}{3}) + i \sin(\dfrac{\pi}{3})\Big) = 2 e^{i\dfrac{\pi}{3}}
+$$
+
+On en déduit les racines 4-ièmes de $z$ : 
+
+$$ 
+\sqrt[4]{2} e^{\textstyle \frac{i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{7i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{13i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle \frac{19i\pi}{12}}
+$$ 
+
+En se ramenant à la mesure d'angle principale, on a 
+
+$$ 
+\sqrt[4]{2} e^{\textstyle\frac{i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{7i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{-11i\pi}{12}} \v \sqrt[4]{2} e^{\textstyle\frac{-5i\pi}{12}}
+$$
+
+</Indent>
+</Hideable>
+
+
+<Exercice titre="inclusions des ensembles des racines de l'unité">
+
+Soit $(n\v m) \in (\N^*)^2$. Montrer que, si $n$ divise $m$, alors $\U_n \subset \U_m$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Soient $n,m$ deux entiers naturels non nuls tels que $n$ divise $m$. Il existe $k \in \N^*$ tel que  $m = kn$.
+
+Soit $z \in \U_n$, il existe $a \in \defentiers{0}{n-1}$ tel que $z = e^{\textstyle \frac{2ia\pi}{n}}$. 
+
+Mais donc $z^m = e^{\textstyle \frac{2iam\pi}{n}}$ mais $\dfrac{m}{n} = k$ d'où $z^m = e^{2iak} = 1$. 
+
+Comme $z^m = 1$, $z \in \U_m$. 
+
+On a bien montré que tout élément de $\U_n$ était dans $\U_m$ d'où $\U_n \subset \U_m$.
+</Hideable>
+
+<Item type='proposition' titre="somme des racines de l'unité">
+
+Soient $\omega_1 \v \omega_2 \v \dotsm \v \omega_n$ les racines n-ièmes de l'unité où $n \in \N \v n \geqslant 2$. On a :
+
+$$
+\somme{i = 1}{n} \omega_i = 0
+$$
+</Item>
+
+<Hideable type='dmonstration' titre=''>
+
+$$
+\somme{k = 1}{n} \omega_k = \somme{k = 0}{n-1} e^{\textstyle \frac{2ik\pi}{n}} = \somme{k = 0}{n-1} \Big(e^{\textstyle \frac{2i\pi}{n}}\Big)^k 
+$$
+
+Par somme géométrique de raison $q = e^{\textstyle \frac{2i\pi}{n}} \neq 1$, 
+
+$$
+\somme{k = 1}{n} \omega_k = \dfrac{1 - \overbrace{q^n}^{= 1}}{1-q} = 0
+$$
+</Hideable>

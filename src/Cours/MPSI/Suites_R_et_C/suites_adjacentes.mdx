@@ -1,0 +1,30 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='suites adjacentes'>
+
+Deux suites $\suitedefN{a_n}$ et $\suitedefN{b_n}$ sont dites adjacentes si :
+
+$\cd$ elles sont monotones de monotonie opposées.
+
+$\cd$ $|b_n - a_n| \limton 0$
+</Item>
+
+<Item type='proposition' titre='encadrement par des suites adjacentes'>
+
+Deux suites adjacentes convergent et ont même limite. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On reprend les notations précédentes pour les suites adjacentes en supposant $\suitedefN{a_n}$ croissante et $\suitedefN{b_n}$ décroissante sans perte de généralité.
+
+Par croissance et décroissance des suites, chacune est soit convergente soit de limite infinie (négative dans le cas $b$). Mais dans le cas où au moins l'une des deux est infinie, alors $|b_n - a_n| \limton +\infty$ ce qui est absurde. Donc les deux suites sont convergentes de limites $l_1 \in \R$ pour $a$ et $l_2 \in \R$ pour $b$. 
+
+Par passage à la limite $b_n - a_n \limton l_2 - l_1 = 0$ d'où $l_1 = l_2$.
+</Hideable>

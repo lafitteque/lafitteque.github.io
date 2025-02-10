@@ -1,0 +1,61 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type="definition" titre="majorants et minorants">
+
+Soit $E \subset \R$ un ensemble non vide. 
+
+On appelle **minorant** de $E$ (resp. **majorant** de $E$) un élément $a$ de $\R$ tel que :
+
+$$
+\forall x \in E, a \leqslant x \; ( \text{resp. } \forall x \in E, a \geqslant x)
+$$
+
+Quand $E$ admet un minorant __ET__ un majorant, on dit que $E$ est **borné**
+</Item>
+
+
+<Item type="definition" titre="extremûms">
+Soit $E \subset \R$ un ensemble non vide.
+
+Le **minimum** de $E$, s'il existe, est noté $min \; E$. C'est l'élément $a$ de $E$ tel que :
+
+$$ 
+\forall x \in E, x \leqslant E
+$$
+
+De même, le **maximum** de $E$, s'il existe, est l'élément $b$ (noté $max \;E$) tel que :
+
+$$ 
+\forall x \in E, x \geqslant E
+$$
+
+Le minimum et le maximum d'un ensemble, quand ils existent, sont appelés les **extremûms** de cet ensemble.
+</Item>
+
+
+
+<Remarque>
+Le minimum de $E$ (resp. son maximum) est un minorant (resp. majorant) qui appartient à $E$.
+</Remarque>
+
+<Hideable type="exemple" titre="">
+
+| | $E = \deffo{-2}{8}$ | $E = \{ \dfrac{1}{n} \mid n \in \N^* \}$ | $\R$ |
+|---|---|---|---|
+| minimum | $-2$ | n'en a pas | n'en a pas |
+| maximum | n'en a pas | 1 | n'en a pas |
+| minorants | $-2 \v -27 \v -9,1 \v \dotsm$ | $0 \v -20 \, 523 \v \dotsm$| n'en a pas |
+| majorants | $8 \v 424 \, 242 \v \dotsm$| $1 \v \pi \v \dotsm$| n'en a pas |
+
+</Hideable>
+
+
+<Item type='propriete' titre='(admis) existence des minimums dans les naturels'>
+Tout ensemble non vide de $\N$ admet un minimum.
+</Item>

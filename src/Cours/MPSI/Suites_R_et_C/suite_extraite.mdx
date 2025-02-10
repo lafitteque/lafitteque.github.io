@@ -1,0 +1,116 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='extractrice'>
+
+Une fonction de $\N$ dans $\N$ est dite extractrice si elle est strictement croissante.
+</Item>
+
+<Item type='proposition' titre="comparaison avec l'identité">
+
+Soit $\phi$ un extractrice, on a :
+
+$$
+\forall n \in \N \v \phi(n) \geqslant n
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n \in \N$. 
+
+Comme $\phi$ est strictement croissante et à valeurs dans $\N$, on sait que $\phi(n+1) - \phi(n) \geqslant 1$. 
+
+Par somme télescopique, $\phi(n) = \phi(0) +  \somme{n-1}{i = 0} \phi(i+1) - \phi(i) \geqslant \phi(0) + n \geqslant n$.
+
+
+</Hideable>
+
+<Item type='definition' titre='suite extraite'>
+
+Soit $\suitedefN{u_n}$ une suite réelle et $\phi$ une extractrice. 
+
+On dit que $\suitedefN{u_{\phi(n)}}$ est une suite extraite de $\suitedefN{u_n}$.
+</Item>
+
+<Item type='proposition' titre='suites extraites et convergence'>
+
+Si $\suitedefN{u_n}$ est convergente de limite $l \in \R$, alors toute suite extraite de $\suitedefN{u_n}$ converge également vers $l$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. 
+
+Soit $\epsilon > 0$, par définition de la convergence,  
+
+$$
+ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+$$
+
+Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ d'où $n \geqslant N \Rightarrow \phi(n) \geqslant N$. 
+
+Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
+</Hideable>
+
+ARRET ICI STOP REPRENDRE
+
+<Item type='proposition' titre='cas pairs / impairs'>
+
+Soit $\suitedefN{u_n} \in \R^{\N}$. Si $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n+1}}$ sont convergentes de même limite $l \in \R$, alors $\suitedefN{u_n}$ est convergente de limite $l$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$, il existe $(N_1\v N_2) \in \N^2$ tels que, si $n \geqslant N = max(N_1 \v N_2)$, alors $|u_{2n} - l|\leqslant \epsilon$ et $|u_{2n+1} - l|\leqslant \epsilon$. Mais pour tout $m \geqslant 2N$, la division euclidienne de $n$ par $2$ donne $m = 2k$ ou $m = 2k+1$ où $k \geqslant \dfrac{m}{2} \geqslant N$, d'où le résultat en appliquant l'une des inégalités précédentes selon la parité de $m$.
+
+i.e. $\forall \epsilon > 0\v \exists \tilde{N} \in \N \mid n \geqslant \tilde{N} \Rightarrow |u_n - l| \leqslant \epsilon $ avec $\tilde{N} = 2N$.
+</Hideable>
+
+<Item type='theoreme' titre='Bolzano-Weirestrass'>
+
+Soit $\suitedefN{u_n}$ une suite réelle bornée. Il existe une suite extraite de $\suitedefN{u_n}$ convergente.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+**Cette démonstration est très importante!**
+
+Nous allons raisonner par dichotomie, raisonnement qui consiste à couper en deux de manière répétée.
+
+Construisons une extractrice $\phi$ telle que $\suitedefN{u_{\phi(n)}}$ converge. Pour cela, nous allons montrer qu'il existe une suite $\suitedefN{a_n}$ et une suite $\suitedefN{b_n}$ adjacentes telles que : $\forall n \in \N\v a_n \leqslant u_{\phi(n)} \leqslant b_n$ et $\limm{n \to + \infty} a_n = \limm{n \to + \infty} b_n $.
+
+Raisonnons par récurrence pour montrer sur $\N$ la propriété $\cP(n) : $ il existe $\suitedefN{a_n}$, $\suitedefN{b_n}$  et $\phi$ une extractrice tels que pour tout $ i \in \defentiers{0}{n}$, 
+
+$\begin{cases} a_i \leqslant u_{\phi(i)} \leqslant b_i \\
+ |b_i - a_i| = |b_0 - a_0|.2^{-i} \\
+ A \bigcap \defff{a_i}{b_i} \text{ est infini}
+ \end{cases}$
+
+où $A = \{u_n \v n \in \N\}$.
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, $\phi(0) = 0$ convient et $a_0 = \inf(A)$ et $b_0 = \sup(A)$. 
+
+On a bien $A \bigcap \defff{a_i}{b_i} = A$ qui est infini, $a_0 \leqslant u_{\phi(0)} \leqslant b_0$ et $|b_0 - a_0| = |b_0 - a_0|.2^{-0}$ d'où $\cP(0)$.
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$. Par hypothèse de récurrence, $\phi$, $a$ et $b$ sont définies sur $\defentiers{0}{n}$. Il suffit donc de définir le rang $n+1$.
+
+On pose $c = \dfrac{a_n + b_n}{2}$. Comme $A \bigcap \defff{a_i}{b_i}$ est infini, soit $A \bigcap \defff{a_i}{c_i}$ est infini, soit $A \bigcap \defff{c_i}{b_i}$ l'est (éventuellement les deux). 
+
+__CAS 1 :__ $A \bigcap \defff{a_i}{c_i}$ et on pose $a_{n+1} = a_n$ et $b_{n+1} = c$ 
+
+__Cas 2 :__ $A \bigcap \defff{c_i}{b_i}$ et on pose $a_{n+1} = c$ et $b_{n+1} = b_n$
+
+On choisit un élément $e$ de $A \bigcap \defff{a_{n+1}}{b_{n+1}}$ qui ait un rang $p$ strictement supérieur à $\phi(n)$ (l'ensemble contient une infinité d'éléments donc il y a des rangs aussi grand que l'on souhaite). On pose $\phi(n+1) = p$
+
+Les trois propriétés sont vérifiées car :
+$\cd$ le segment $\defff{a_{n+1}}{b_{n+1}}$ est moitié moins grand que le précédent (car $c$ est le milieu du segment précédent). Donc $|b_{n+1} - a_{n+1}| = 2^{-1}|b_n - a_n| \leqslant 2^{-1}|b_0 - a_0|.2^{-n} = |b_0 - a_0|.2^{-(n+1)}$ par hypothèse de récurrence.
+$\cd$ le nouveau segment contient une infinité d'éléments par construction.
+$\cd$ $\phi(n+1)$ est bien dans $\defff{a_{n+1}}{b_{n+1}}$ par construction.
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N$
+</Hideable>

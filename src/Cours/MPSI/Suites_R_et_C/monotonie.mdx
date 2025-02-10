@@ -1,0 +1,113 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='monotonie'>
+
+Soit $\suitedefN{u_n}$ une suite réelle. On dit qu'elle est :
+
+$\cd$ **croissante** (resp. strictement croissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \leqslant u_m$ (resp. $u_n < _um $)
+
+$\cd$ **décroissante** (resp. strictement décroissante) si : $\forall (n\v m) \in \N^2\v n < m \Rightarrow u_n \geqslant u_m$ (resp. $u_n > _um $)
+
+Si elle est croissante ou bien décroissante, on dit qu'elle est **monotone** (idem pour strictement monotone).
+</Item>
+
+<Item type='proposition' titre='monotonie et opérations'>
+
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles.
+
+$\cd$ Si $\suitedefN{u_n}$ est croissante, alors $\suitedefN{-u_n}$ est décroissante. (résultat analogue avec la décroissance et les versions strictes)
+
+$\cd$ Si les deux suites sont (resp. strictement) croissantes, alors leur somme est (resp. strictement) croissante. (le résultat est analogue avec la décroissance)
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première propriété :** 
+<Indent>
+
+Si $\suitedefN{u_n}$ est croissante,
+
+$$
+n < m \Rightarrow u_n \leqslant u_m \mathop{\Rightarrow}\limits_{\text{par décroissance de } -id_{\R}} -u_n \geqslant -u_m
+$$
+ 
+Les autres versions de la démonstration sont quasiment identiques.
+</Indent>
+
+**Seconde propriété :**
+<Indent>
+
+Si $\suitedefN{u_n}$ et $\suitedefN{v_n}$ sont croissantes, 
+
+$$
+n < m \Rightarrow (u_n \leqslant u_m \; \text{ et }\;  v_n < v_m ) \Rightarrow u_n + v_n \leqslant u_m + v_m
+$$ 
+
+Les autres résultats de la démonstration s'obtienent de manière analogue.
+</Indent>
+</Hideable>
+
+<Item type='proposition' titre='critères de monotonie'>
+
+Soit $\suitedefN{u_n}$ une suite réelle.
+
+$\cd$ Elle est croissante (resp. décroissante) si et seulement si : 
+
+$$
+\forall n \in \N \v  u_{n+1} - u_n \geqslant 0
+$$ 
+
+$\cd$ Si $\suitedefN{u_n}$ est de signe constant et ne s'annule pas , $\suitedefN{u_n}$ est croissante si et seulement si 
+
+$$
+ \forall n \in \N \v \dfrac{u_{n+1}}{u_n} \geqslant 1
+$$
+
+<br/>
+
+Les résultats sont analogues pour les autres monotonies (décroissance en inversant l'ordre et stricte monotonie avec un odre strict).
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première propriété :** En prenant $m = n+1$, si la suite est croissante, alors la on a le sens direct. Intéressons nous à la réciproque.
+
+<Indent>
+
+On suppose que : $\forall n \in \N \v u_{n+1} - u_n \geqslant 0$. Soient $n$ et $m$ deux entiers positifs. 
+
+$$
+u_m - u_n = \somme{i = 0}{m-n-1} (u_{n+i+1} - u_{n+i})
+$$
+
+Chaque terme de la somme est supérieur ou égal à $0$. D'où $u_m - u_n \geqslant 0$. 
+
+<br/>
+On pouvait églement procéder par récurrence et montrer à partir de l'hypothèse que $u_{n+k} - u_n \geqslant 0$ si $k \in \N$. 
+
+<br/>
+
+</Indent>
+
+**Seconde propriété :** Si la suite est croissante, le résultat est évident (comme pour la première propriété, prendre $m = n+1$).
+
+<Indent>
+
+Supposons que $\dfrac{u_{n+1}}{u_n} \geqslant 1, \forall n \in \N$. Soient $n$ et $m$ deux entiers positifs. 
+
+$$
+\dfrac{u_m}{u_n} = \produit{i = 0}{m-n-1} \dfrac{u_{n+1}}{u_n}
+$$ 
+
+Chaque facteur est plus grand ou égal à $1$ par hypothèse. Donc $\dfrac{u_m}{u_n} \geqslant 1$ 
+
+puis $u_m \geqslant u_n$ en multipliant par $u_n$ de part et d'autre. D'où le résultat.
+</Indent>
+
+</Hideable>

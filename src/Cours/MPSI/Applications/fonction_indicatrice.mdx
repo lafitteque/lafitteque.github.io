@@ -1,0 +1,108 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='fonction indicatrices'>
+
+Soit $A$ un sous-ensemble de $E$. 
+
+On pose la fonction suivante nomée fonction indicatrices de $A$ sur $E$ :
+
+$$
+\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 0 \text{ si } x \notin A \\ 1 \text{ sinon} \end{cases} \end{cases}
+$$
+</Item>
+
+<Remarque titre=''>
+La plupart du temps, l'ensemble $E$ n'est pas précisé car il se déduit implicitement du contexte.
+</Remarque>
+
+
+<Item type='proposition' titre='intersection, réunion, produit cartésien'>
+Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
+
+$\cd$ $\indicatrice_{A \bigcup B} = \indicatrice_{A} + \indicatrice_{B} - \indicatrice_{A}.\indicatrice_{B}$
+
+$\cd$ $\indicatrice_{A \bigcap B} = \indicatrice_{A}.\indicatrice_{B}$
+
+$\cd$ $\indicatrice_{A \setminus B} = \indicatrice_{A} - \indicatrice_{A}\indicatrice_{B}$
+
+$\cd$ $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) \indicatrice_{B} (y)$ 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
+<Indent>
+
+$\cd$ Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \bigcup B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 + 0 - 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+$\cd$ Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \bigcup B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 0 + 1 - 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+$\cd$ Cas 3 : $x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
+
+$\cd$ Cas 4 : $x \in A \bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 + 1 - 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+</Indent>
+
+<br/>
+
+**Deuxième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
+<Indent>
+
+$\cd$ Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \bigcap B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+$\cd$ Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \bigcap B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+$\cd$ Cas 3 :$x \in A \setminus B$. Les rôles de $A$ et $B$ sont symétriques. En échangeant leurs rôles, on a le résultat sur ce cas-ci.
+
+$\cd$ Cas 4 : $x \in A \bigcap B$. Dans ce cas, toutes les évaluations valent $1$. L'égalité donne donc $1 = 1 \times 1$ ce qui est vrai puisque $1 = 1$.
+</Indent>
+
+<br/>
+
+**Troisième égalité :** Soit $x \in E$. Remarquons d'abord que $E = \overline{A \bigcup B} \biguplus B \setminus A \biguplus A \setminus B \biguplus A \bigcap B$
+<Indent>
+
+$\cd$ Cas 1 : $x \notin A \bigcup B$. Dans ce cas, $x \notin A$ et $x \notin B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{B} = \indicatrice_{A} = 0$. Auquel cas, l'égalité revient à $0 = 0 - 0 \times 0$ ce qui est vrai car $0 = 0$.
+
+$\cd$ Cas 2 : $x \in B \setminus A$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{A} = 0$ et $\indicatrice_{B} = 1$. L'égalité dans ce cas est donc $0 = 0 - 1 \times 0$ qui est vraie puisque $0 = 0$.
+
+$\cd$ Cas 3 : $x \in A \setminus B$. Dans ce cas, $x \notin A$ et $x \in B$. Donc $\indicatrice_{A \setminus B} = \indicatrice_{A} = 1$ et $\indicatrice_{B} = 0$. L'égalité dans ce cas est donc $1 = 1 - 0 \times 1$ qui est vraie puisque $1 = 1$.
+
+$\cd$ Cas 4 : $x \in A \bigcap B$. Dans ce cas, $\indicatrice_{A \setminus B} = 0$ et $\indicatrice_{A} = \indicatrice_{B} = 1$. L'égalité donne donc $0 = 1 - 1 \times 1$ ce qui est vrai puisque $0 = 0$.
+</Indent>
+
+<br/>
+
+**Quatrième égalité :** 
+
+$ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \indicatrice_A(x) = 1$ et $\indicatrice_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice{B} (y) = 1$ 
+
+D'où l'égalité.
+
+</Hideable>
+
+
+<Item type='proposition' titre="caractérisation d'un ensemble par sa fonction indicatrice">
+Soient $A$ et $B$ deux sous-ensembles de $E$.
+
+$$
+A = B \ssi \indicatrice_A = \indicatrice_B
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+En effet, montrons le résultat par équivalence : $x \in A \ssi \indicatrice_A(x) = 1 \ssi \indicatrice_B(x) = 1 \ssi x \in B$. 
+
+D'où $A = B$.
+</Hideable>
+
+<Remarque titre=''>
+On peut ainsi démontrer les propriétés telles que $(A \bigcap B) \bigcup C = (A \bigcup C) \bigcap (B \bigcup C)$ en développant les fonctions indicatrices du membre de gauche et de droite. Comme le développement est le même, les fonctions sont égales et les ensembles le sont donc aussi.
+
+Cela en fait un outil apprécié car il évite de toujours faire appel à des disjonctions de cas.
+</Remarque>

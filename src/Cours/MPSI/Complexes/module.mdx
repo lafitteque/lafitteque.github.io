@@ -1,0 +1,325 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='module'>
+Soit $z \in \C$ tel que $z = a + ib$  soit sa forme algébrique. 
+
+On appelle **module** de $z$ le réel $|z| = \sqrt{a^2 + b^2} $
+</Item>
+
+<Item type='proposition' titre='module et conjugaison'>
+Soit $z \in \C$, on a :
+
+$$ 
+z \overline{z} = |z|^2
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+  Soit $z \in \C$, on pose $a = \Re{z}$ et $b = \Im{z}$.
+
+  $$ 
+  z \overline{z} = (a + ib)(a - ib) = a^2 -(ib)^2 = a^2 + b^2 = |z|^2
+  $$
+</Hideable>
+
+
+<Item type='proposition' titre='propriétés du module'>
+Soient $z$ et $z'$ des complexes et $n$ un entier non nul. On a :
+
+$\cd$ $|z| = |\overline{z}|$
+
+$\cd$ $|z . z'| = |z|. |z'|$
+
+$\cd$ Si $z' \neq 0$, $|\dfrac{z}{z'}| = \dfrac{|z|}{|z'|}$ 
+
+$\cd$ $|z^n| = |z|^n$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $a = \Re{z}\v b = \Im(z) \v c = \Re{z'} \v d = \Im{z'}$
+
+<br/>
+
+**Première égalité :** 
+<Indent>
+
+$$
+|z| = \sqrt{a^2 + b^2} = \sqrt{a^2 + (-b)^2} = |\overline{z}|
+$$
+</Indent>
+
+<br/>
+
+**Deuxième égalité :** Pour éviter de manipuler les racines carrées, on étudie les carrés des quantités voulues. Cela ne pose pas problème car l'on sait que les quantités étudiées sont des réels positifs.
+<Indent>
+
+D'une part, $|z . z'|^2 = |(ac - bd) + i(ad +bc)|^2 = (ac - bd)^2 + (ad +bc)^2 $
+
+donc 
+
+$$
+|z . z'|^2 = a^2c^2 -\cancel{2abcd} + b^2d^2 + a^2d^2 +\cancel{2abcd} + b^2c^2
+$$
+
+<br/>
+
+D'autre part, 
+$$
+(|z|.|z'|)^2 = (a^2 + b^2) (c^2 + d^2) = a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2
+$$
+
+Donc $|z . z'|^2 = (|z|.|z'|)^2$ d'où $|z . z'| = |z|.|z'|$ car toutes les quantités sont positives.
+</Indent>
+
+<br/>
+
+**Troisième égalité :** 
+<Indent>
+
+On suppose $z' \neq 0$.
+
+D'après la deuxième égalité, $\Big\lvert\dfrac{z}{z'}\Big\rvert = |z|\Big\lvert \dfrac{1}{z'} \Big\rvert$ . Montrons donc que $\Big\lvert \dfrac{1}{z'} \Big\rvert = \dfrac{1}{|z'|}$.
+
+<br/>
+
+$\Big\lvert \dfrac{1}{z'} \Big\rvert = \Big\lvert \dfrac{1}{c+id} \dfrac{c-id}{c-id} \Big\rvert = \Big\lvert \dfrac{\overline{z'}}{c^2+d^2}  \Big\rvert = |\overline{z'}|\Big\lvert\underbrace{\dfrac{1}{c^2+d^2}}_{\in \R^+}\Big\rvert$
+
+On a donc $ \Big\lvert \dfrac{1}{z'} \Big\rvert = \dfrac{|\overline{z'}|}{c^2+d^2} = \dfrac{|z'|}{|z'|^2} = \dfrac{1}{|z'|}$. On a bien le résultat voulu.
+</Indent>
+
+<br/>
+
+**Quatrième égalité :** 
+<Indent>
+
+Soit $z \in \C$. Montrons par récurrence sur $n \in \N^*$ la propriété 
+
+$$
+\cP(n) \, : \,  |z^n| = |z|^n 
+$$
+
+**Initialisation :** $\cP(1)$ est trivial et on a même $\cP(2)$ d'après la deuxième formule.
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vraie où $n \geqslant 3$. Montrons $\cP(n+1)$.
+
+$|z^{n+1}| = |z.z^n| = |z|.|z^n|$ d'après la deuxième formule.
+
+Ensuite, $|z^{n+1}| = |z|.|z^n|^n = |z|.|z|^n$ par hypothèse de récurrence puisque $\cP(n)$ est supposée vraie. 
+
+On a donc $|z^{n+1}| = |z|^{n+1}$.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$. Et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Indent>
+
+</Hideable>
+
+<Item type='proposition' titre='module et comparaisons'>
+Soit $z \in \C$. On a :
+
+$\cd$ $|z| \leqslant \Re(z) \leqslant |z|$
+avec égalité d'un côté ssi. $z$ est réel
+
+$\cd$ $|z| \leqslant \Im(z) \leqslant |z| $ avec égalité d'un ôté ssi. $z$ est imaginaire pur$
+
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $z \in \C$, on pose $a = \Re(z)$ et $b = \Im(z)$. 
+
+$a^2 \leqslant a^2 + \underbrace{b^2}_{\geqslant 0} = |z|^2$
+
+Par croissance de $x \rightarrow \sqrt{x}$ sur $\R_+$, on a donc $|a| = \sqrt{a^2} \leqslant |z|$.
+
+<br/>
+De même, $b^2 \leqslant \underbrace{a^2}_{\geqslant 0} + b^2 = |z|^2$ d'où, par croissance de la fonction racine carrée sur $\R_+$, $|b| = \sqrt{b^2} \leqslant |z|$.
+
+D'où les inégalités de la proposition.
+
+<br/>
+
+**Première inéquation (cas d'égalité) :** $a^2 = a^2 + b^2$ et donc $b = 0$ d'où $z$ est réel
+
+<br/>
+
+**Seconde inéquation (cas d'égalité) :** $b^2 = a^2 + b^2$ donc $a = 0$ d'où $z$ est imaginaire pur.
+</Hideable>
+
+
+<Item type='definition' titre='liés et positivement liés'>
+On dit que deux complexes $z$ et $z'$ sont liés (resp. positivement liés) s'il existe $\lambda \in \R$ (resp. $\R_+$) tel que $z = \lambda z'$ ou $z' = \lambda z$.
+</Item>
+
+<Item type='theoreme' titre='inégalité triangulaire'>
+Soient $z$ et $z'$ deux complexes. On a :
+
+$$ 
+\Big\lvert |z| - |z'|\Big\rvert \leqslant |z + z'| \leqslant |z| + |z'|
+$$
+
+Il y a égalité à droite (resp. à gauche) si et seulement si $z$ et $z'$ sont positivement liés (resp. négativement liés).
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soient $z$ et $z'$ deux complexes. Etudions les carrés des quantités comparées. 
+
+<br/>
+
+**Expression de $|z + z'|^2 :$**
+<Indent>
+
+$$
+|z + z'|^2 = (z+z')\overline{(z+z')} =  (z+z')(\overline{z}+\overline{z'}) = z\overline{z} + z \overline{z'} + z'\overline{z} + z'\overline{z'}
+$$
+
+On a donc 
+
+$$
+|z + z'|^2 = |z^2| + |z'^2| + z \overline{z'} + z'\overline{z}
+$$ 
+
+Il convient de remarquer que $z'\overline{z} = \overline{(z \overline{z'})}$. On a donc :
+
+$$
+|z + z'|^2 = |z^2| + |z'^2| + 2\Re(z \overline{z'})
+$$
+
+Il reste maintenant à encadrer $\Re(z \overline{z'})$ pour conclure
+</Indent>
+
+<br/>
+
+**Encadrement de $|z + z'|^2$ :** 
+<Indent>
+
+Comme $ - |zz'| = -|z\overline{z'}| \leqslant \Re(z \overline{z'}) \leqslant |z\overline{z'}| = |z|.|z'|$, on a :
+
+$$
+(|z| - |z'|)^2= |z^2| + |z'^2|  - 2|z|.|z'| \leqslant |z + z'|^2\leqslant |z^2| + |z'^2|  + 2|z|.|z'| = (|z| + |z'|)^2
+$$
+
+Comme la fonction racine carrée est croissante sur $\R_+$ et que pour tout $x \in \R$, on a $\sqrt{x^2} = |x|$, on a :
+
+$$
+\mid |z| - |z'|\mid \leqslant |z + z'| \leqslant |z| + |z'|
+$$
+</Indent>
+
+<br/>
+
+**Les cas d'égalité :**
+
+Le cas d'égalité est atteint quand $\Re(z \overline{z'}) = \pm |z \overline{z'}|$ ce qui n'est vrai que si $z \overline{z'}$ est réel. 
+
+Par calcul, on a :
+
+$$
+\Im(z \overline{z'}) = \Im(z)\Re(z') -\Re(z)\Im(z') = 0
+$$ 
+
+d'où $\Im(z)\Re(z') -\Re(z)\Im(z') = 0$. 
+
+<br/>
+
+On reconnait $\det\Big( \begin{pmatrix}\Re(z) // \Im(z)\end{pmatrix} \v \begin{pmatrix}\Re(z') // \Im(z')\end{pmatrix}\Big) = 0$. Ces deux vecteurs sont donc colinéaires. 
+
+On en déduit que $z$ et $z'$ sont liés.
+
+<Indent>
+
+<br/>
+
+**Cas 1 :** $z' = \lambda z$ où $\lambda \in \R_+$. 
+
+On a $|z + z'| = |(1+\lambda)z| = (1+\lambda)|z| = |z| + \lambda |z| = |z| + |\lambda z| = |z| + |z'|$
+
+D'où l'égalité à droite.
+
+<br/>
+
+**Cas 2 :** $z' = -\lambda z$ où $\lambda \in \R_+$. 
+
+On a $|z + z'| = |(1-\lambda)z| = |1-\lambda||z| = \mid (1-\lambda)|z| \mid  = \mid |z| - \lambda |z| \mid = \mid |z| - |\lambda z| \mid = \mid |z| - |z'| \mid$.
+
+D'où l'égalité à gauche.
+</Indent>
+
+<br/>
+
+Les deux cas peuvent être obtenus simultanément si et seulement si $z = 0$ ou $z' = 0$. 
+</Hideable>
+
+<Item type='proposition' titre='inégalité triangulaire généralisée'>
+Soient $n \in _N$ et $z_1 \v z_2 \v \dotsm \v z_n$ des complexes. 
+
+On a :
+
+$$
+\Big\lvert \somme{i=1}{n} z_i \Big\rvert \leqslant \somme{i=1}{n} |z_i| 
+$$
+
+Avec égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient positivement liés à $z_i$ pour $k  \in \defentiersn$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Montrons par récurrence sur $n \in \N^*$ la propriété 
+
+$\cP(n) : "\mid \somme{i=1}{n} z_i \mid \leqslant \somme{i=1}{n} |z_i| $ et égalité si et seulement s'il existe $i \in \defentiersn$ tel que tous les $z_k$ soient colinéaires à $z_i$ pour $k  \in \defentiersn "$.
+
+<br/>
+
+**Initialisation :** $\cP(1)$ est trivialement vérifiée et $\cP(2)$ est vérifiée par inégalité triangulaire démontrée précédemment.
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée où $n\in \N^*$. Montrons $\cP(n+1)$. On considère $z_1 \v z_2 \v \dotsm \v z_{n+1}$ des complexes
+
+$$
+\Big\lvert \somme{i=1}{n+1} z_i \Big\rvert = \Big\lvert z_{n+1} + \Big( \somme{i=1}{n} z_i \Big) \Big\rvert \leqslant  |z_{n+1}| + \Big\lvert \somme{i=1}{n} z_i \Big\rvert
+$$ 
+
+Par hypothèse de récurrence, puisque $\cP(n)$ est supposée vérifiée, $\Big\lvert \somme{i=1}{n+1} z_i \Big\rvert \leqslant |z_{n+1}| + \somme{i=1}{n} |z_i| = \somme{i=1}{n+1} |z_i|$ (RES. 2) .
+
+<br/>
+
+Intéressons-nous maintenant aux cas d'égalité : on écarte immédiatement le cas $z_{n+1} = 0$ qui est trivial. De même, on écarté également le cas $\forall i \in \defentiers \v z_i = 0$. Supposons qu'il y a égalité dans (RES. 2).
+
+<Indent>
+
+Comme il y a égalité à (RES. 2), il y a égalité à (RES. 1). (En effet, $a \leqslant b = a \Rightarrow a = b$)
+
+Quand l'on arrive à (RES. 1), on utilise l'inégalité triangulaire. D'où $z_{n+1}$ et $\somme{i=1}{n} z_i$ soient positivement liés.
+
+Mais en soustrayant $|z_{n+1}|$ de part et d'autre de (RES. 2), on a le cas d'égalité de $\cP(n)$. Par hypothèse de récurrence, il existe $k \in \defentiersn$ tel que tous les $z_i$ soient positivement liés à $z_k$ si $ i \in \defentiersn$. 
+
+Donc,
+
+$$
+\forall i \in \defentiersn \v \exists \lambda \in \R_+ \mid z_i = \lambda_i z_k 
+$$
+
+On a alors 
+$$
+\somme{i=1}{n} z_i = \somme{i=1}{n} \lambda_i z_k = z_k \Big( \somme{i=1}{n} \lambda_i z_k \Big) 
+$$
+
+Si l'on pose $\Lambda = \somme{i=1}{n} \lambda_i z_k \geqslant 0$, on a $\somme{i=1}{n} z_i = \Lambda z_k$.
+
+Mais $z_{n+1}$ et $\Lambda z_k$ sont positivement liés. Comme on a supposé que les $z_i$ où $ 1 \leqslant i \leqslant n$ n'étaient pas tous nuls, nécessairement $z_k \neq 0$. Il existe donc $\mu \in \R_+$ tel que $z_{n+1}  = \mu \Lambda z_k$. 
+
+En posant $\lambda_{n+1} = \mu \Lambda \geqslant 0$, on a $z_{n+1}  = \lambda_{n+1} z_k$. Les $z_i$ sont donc tous positivement liés à $z_k$.
+</Indent>
+
+</Hideable>

@@ -1,0 +1,51 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='partie entière et fractionnaire'>
+
+Soit $x \in \R$. On définit $\floor{x}$ comme l'unique entier vérifiant :
+
+$$ 
+\floor{x} \leqslant x < \floor{x} + 1
+$$
+
+On définit ainsi $\ceil{x} = \floor{x} + 1$ et $\{x\}$ le nombre $x - \floor{x}$. On appelle $\floor{x}$ la partie entière de $x$, $\ceil{x}$ la partie entière supérieure de $x$ et $\{x\}$ la partie fractionnaire de $x$.
+</Item>
+
+<Item type='proposition' titre='sur la partie entière'>
+
+Soit $x \in \R$.
+
+$\cd$ $x = \floor{x} + \{x\}$
+
+$\cd$ $ 0 \leqslant \{x\} < 1$
+
+$\cd$ $\ceil{x}$ est l'unique entier vérifiant : $  x < \ceil{x} \leqslant x + 1$
+
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première affirmation :** découle de la définition de $\{x\}$.
+
+<br/>
+
+**Deuxième affirmation :**  $x - 1 <  \floor{x} \leqslant x < \floor{x} + 1 $ donc  $x - (x-1) > x - \floor{x} \geqslant x - x > x - (\floor{x} + 1) $ d'où  $1 > \{x\} \geqslant 0$
+
+<br/>
+
+**Troisième affirmation :** partons de $\floor{x} \leqslant x < \floor{x} + 1$. 
+
+On peut également donner $x - 1 < \floor{x} \leqslant x$ d'où, en ajoutant $1$, on a $x < \floor{x} + 1 \leqslant x + 1$. 
+
+Mais donc $x < \ceil{x} \leqslant x + 1$. 
+
+Comme $\floor{x}$ est unique, $\ceil{x}$ l'est aussi car $x \mapsto x + 1$ est bijective (car de réciproque $x \mapsto x - 1$).
+
+</Hideable>

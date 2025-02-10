@@ -1,0 +1,65 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="suite récurrente linéaire homogène d'ordre k">
+
+On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire homogène d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
+
+$$ 
+a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N 
+$$
+</Item>
+
+
+<Hideable type='exemple' titre='suite récurrente linéaire non homogène'>
+
+La suite définie par $(u_0\v u_1) \in \R^2$ et $u_{n+2} = \sqrt{n}.u_{n+1} + n.u_n\v \forall n \in \N$ est récurrente linéaire d'ordre $2$ mais n'est pas homogène car les coefficients ne sont pas constants.
+</Hideable>
+
+<Item type='proposition' titre='équation complexes du second degré'>
+
+Soit $(E) : ax^2 + bx + c = 0$ une équation complexe du second degré où $a\v b $ et $c$ sont des complexes et $a \neq 0$. On pose $\Delta = b^2 - 4ac$ appelé le discriminant de $(E)$.
+
+$\cd$ Si $\Delta = 0$ alors $(E)$ n'admet qu'une seule solution : $z = \dfrac{-b}{2a}$
+
+$\cd$ Si $\Delta \neq 0$, on note $\delta$ une racine complexe de $\Delta$. $(E)$ admet exactement deux solutions : $z_{\pm} = \dfrac{-b \pm \delta}{2a}$. En particulier, si $a\v b$ et $c$ sont réels et que $\Delta < 0$, alors $z_+ = \overline{z_-}$. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$ax^2 + bx + c = 0 \ssi a(x^2 + \dfrac{b}{a}x) + c = 0$. 
+On a $x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \dfrac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}$. En injectant ce résultat dans le premier, on a :
+
+$ax^2 + bx + c = 0 \ssi a\Big((x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}\Big) + c = 0 \ssi a(x + \dfrac{b}{2a})^2 - \cancel{a}.\dfrac{b^2}{4\cancel{a}.a} + c = 0 \ssi (x + \dfrac{b}{2a})^2 = \dfrac{b^2 - 4ac}{4a^2} $.
+
+Le seul élément ayant une seule racine carrée est $0$, donc,
+
+$\cd$ soit le terme de droite vaut $0$ et $\Delta = b^2 - 4ac$ vaut $0$, auquel cas $x + \dfrac{b}{2a} = 0$ puis $x = - \dfrac{b}{2a}$
+
+$\cd$ soit le terme de droite ne vaut pas $0$, auquel cas, $\delta$ et $-\delta$ sont distinctes et sont deux racines de $\Delta$, on a donc  $ax^2 + bx + c = 0 \ssi x + \dfrac{b}{2a} = \pm \dfrac{\delta}{2a}$ d'où le résultat.
+
+Dans le cas où $a\v b \v c \in \R$, on a $a\overline{z}^2 + b\overline{z} + c = az^2 + bz + c$ si $z \in \C$. Donc, si $z$ est racine de $(E)$ alors $\overline{z}$ est racine de $(E)$, ce qui nous donne deux racines à condition que $z \in \C \setminus \R$ car dans ce cas $\overline{z} \neq z$.
+</Hideable>
+
+<Item type='proposition' titre='formules explicites' tag="admis">
+
+Soit $\suitedefN{u_n}$ est linéaire d'ordre $2$ telle que $u_{n+2} = a.u_{n+1} + b.u_n$ pour tout $n \in \N$ et où $a$ et $b$ sont des réels.
+
+On appelle $(E) : r^2 = ar + b$ l'équation quaractéristique de la suite $\suitedefN{u_n}$.
+
+$\cd$ si $(E)$ a deux racines réelles $r_1$ et $r_2$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = \lambda r_1^n + \mu r_2^n$ pour tout $n$ entier.
+
+$\cd$ si $(E)$ a une seule racine réelle $r$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = (\lambda.n + \mu )r^n$ pour tout $n$ entier.
+
+$\cd$ si $(E)$ a deux racines complexes $r.e^{i\alpha}$ et $r.e^{-i\alpha}$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = \lambda.r^n \cos(\alpha . n) + \mu.r^n \cos(\alpha . n)$ pour tout $n$ entier.
+</Item>
+
+<Exercice titre='suite de fibonacci'>
+
+Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{cases} u_{n+2} = u_{n+1} + u_n \\ u_0 = u_1 = 1\end{cases}$
+</Exercice>

@@ -1,0 +1,95 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='convergence'>
+
+Soit $\suitedefN{u_n}$ une suite réelle (ou complexe). On dit qu'elle :
+
+$\cd$ tend vers $l \in \R$ (ou $\C$) si : 
+
+$$
+\forall \epsilon > 0 \v \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+$$
+
+On note $\limm{n \to \infty} u_n = l$ ou $u_n \limton l$
+
+$\cd$ (cas réel uniquement) tend vers $+ \infty$ (resp. $- \infty$) si : 
+
+$$
+\forall A \in \R \v \exists N \in \N \mid n \geqslant N \Rightarrow u_n \geqslant A (\text{resp. }u_n \leqslant A)
+$$ 
+
+On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
+
+<br/>
+
+S'il existe $l \in \C$ tel que $\suitedefN{u_n}$ tend vers $l$, on dit que $\suitedefN{u_n}$ est convergente de limite $l$. Sinon, on dit qu'elle diverge.
+</Item>
+
+
+
+<Item type='proposition' titre='unicité de la limite'>
+
+Une suite convergeante n'admet qu'une seule et unique limite.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $\suitedefN{u_n}$ converge à la fois vers $l_1$ et $l_2$ deux complexes. Soit $\epsilon > 0$, on a : 
+
+$$
+\begin{cases}
+    \exists N_1 \in \N \mid n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \\
+    \exists N_2 \in \N \mid n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon
+\end{cases}
+$$
+
+Soit $N = max(N_1\v N_2)$. On a : 
+$$
+\begin{cases}
+    n \geqslant N \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \\
+    n \geqslant N \Rightarrow |u_n - l_2| \leqslant \epsilon
+\end{cases}
+$$
+
+Donc 
+
+$$
+\begin{cases} 
+    -\epsilon \leqslant u_n - l_1 \leqslant -\epsilon 
+    \\
+    -\epsilon \leqslant u_n - l_2 \leqslant -\epsilon 
+\end{cases}
+$$
+ 
+puis en faisant la différence des deux lignes, on obtient $0 \leqslant l_1 - l_2 \leqslant 0$ 
+
+ce qui donne $l_1 - l_2 = 0$ d'où $l_1 = l_2$.
+</Hideable>
+
+<Item type='proposition' titre='convergence et bornes'>
+
+Toute suite complexe convergeante est bornée.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\suitedefN{u_n}$ une suite complexe convergeante de limite $l$. On pose $\epsilon = 1$. 
+
+Il existe $N \in \N$ tel que si $n \geqslant N$, alors $|u_n - l| \leqslant 1$. 
+
+Mais donc si $n \geqslant N$, alors $l - \epsilon \leqslant u_n \leqslant 1 + l$. 
+
+En particulier, $1 + |l|$ est un majorant de $(u_n)_{n \geqslant N}$. 
+
+Mais si l'on pose $M = \max\limits_{n \in \defentiers{0}{n}}(|u_n|)$, alors $|u_n| \leqslant \max(M\v l + |l|)$. 
+
+Donc la suite est bornée.
+</Hideable>

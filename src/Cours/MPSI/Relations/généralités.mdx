@@ -1,0 +1,61 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='relation binaire'>
+
+Soit $E$ un ensemble. On appelle relation binaire sur $E$ une application $ \cR : \begin{cases}  E^2 \rightarrow  \{Vrai \v Faux \} \\ (x\v y) \mapsto x \cR y  \end{cases}$
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+On note $\cR$ la relation binaire sur $\R$ telle que, si $(x\v y) \in \R^2$, on a :
+
+$$
+ x \cR y \ssi x + y = 1
+$$
+
+On peut trouver des éléments en relation : 
+
+$\Point{1}{0} \v \Point{10}{-9}$ par exemple puisque $1 + 0 = 1$ et $10 + (-9) = 1$. 
+
+On remarque que cette relation est symétrique, c'est à dire que $x \cR y \ssi y \cR x$.
+
+Inversement, $\Point{2}{-3}$ n'est pas un couple en relation puisque $2 + (-3) = -1 \neq 1$.
+
+</Hideable>
+
+
+<Item type='definition' titre="propriétés d'une relation binaire">
+Soit $\cR$ une relation binaire sur un ensemble $E$. On dit que :
+
+$\cd$ $\cR$ est **refléxive** si l'on a : $\forall x \in E \v x \cR x$
+
+$\cd$ $\cR$ est **symétrique** si l'on a : $\forall (x\v y) \in E^2 \v x \cR y \ssi y \cR x$.
+
+$\cd$ $\cR$ est **antisymétrique** si l'on a : $\forall (x\v y) \in E^2 \v \Big( x \cR y$ et $y \cR x \Big) \Rightarrow x = y$ 
+
+$\cd$ $\cR$ est **transitive** si l'on a : $\forall (x\v y \v z) \in E^3 \v \Big( x \cR y$ et $y \cR z \Big) \Rightarrow x \cR z$
+</Item>
+
+<Exercice titre=''>
+Soit $\cR$ la relation sur $\N$ telle que $n \cR m \ssi  n$ divise $m$.
+
+Quelles propriétés sont vérifiées par $\cR$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+Cette relation est :
+
+$\cd$ reflexive car $a = 1 \times a$ donc $a$ divise $a$.
+
+$\cd$ pas symétrique car $1$ divise $2$ mais pas l'inverse (contre-exemple).
+
+$\cd$ antisymétrique car si $a$ divise $b$ et $b$ divise $a$ alors on a à la fois $a \leqslant b$ et $b \leqslant a$ donc $a = b$
+
+$\cd$ transitive car si $a$ divise $b$ et $b$ divise $c$ alors il existe $k \in \N$ tel que $b = k.a$ et il existe $l$ tel que $c = l.b$ et donc $c = (k.l).a$ d'où $a$ divise $c$.
+</Hideable>

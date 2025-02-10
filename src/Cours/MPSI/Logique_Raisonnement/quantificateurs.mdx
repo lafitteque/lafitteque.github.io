@@ -1,0 +1,49 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type='definition' titre='Quantificateurs'>
+Les quantificateurs sont des symbôles mathématiques permettant d'énoncer des propositions. On en fait la liste dans le tableau suivant :
+
+| Symbôle | Signification | Exemple |
+|---|---|---|
+| $\exists$ | Il existe | $\exists x \in \R$|
+| $\forall$ | Pour tout | $\forall x \in \R, \; x^2 \geqslant 0$|
+| \| | Tel que | $\exists x \in \R \mid x^2 - 1 = 0$ |
+| $\exists !$ | Il existe un unique | $\exists ! x \in \R \mid \; x^2 + 4x + 4 = 0$ |
+| $\nexists $ | Il n'existe pas | $\nexists x \in \R \mid \; x^2 < 0$ |
+</Item>
+
+<Exercice titre="">
+
+Soit $E$ un ensemble tel que $E \subset \R$. Donner les négations de :
+<br/>
+
+i) $\forall n \in E, n^2 \in E$
+<br/>
+
+ii) $\exists x \in E \mid x \times x = 0$
+<br/>
+
+iii) $\forall x \in E, \forall y \in E, x \times y = y \times x$
+<br/>
+
+iv) $\exists a > 0 \mid \forall x,y \in \defff{1}{2}, |x + \dfrac{1}{x} - y - \dfrac{1}{y}| < a|x-y|$
+</Exercice>
+
+<Hideable type="solution" titre="">
+
+i) $\exists n \in E, n^2 \notin E$
+<br />
+
+ii) $\forall x \in E, x \times x \neq 0$
+<br />
+
+iii) $\exists x \in E, \exists y \in E \mid x \times y \neq y \times x$
+<br />
+
+iv) $\forall a > 0, \exists x,y \in \defff{1}{2} \mid |x + \dfrac{1}{x} - y - \dfrac{1}{y}| \geqslant a|x-y|$
+</Hideable>

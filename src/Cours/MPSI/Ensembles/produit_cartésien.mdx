@@ -1,0 +1,49 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type="definition" titre="produit cartésien">
+
+Soient $E$ et $F$ deux ensembles. On appelle produit cartésien de $E$ et $F$ l'ensemble suivant : 
+
+$$
+E \times F = \{ (x \v y) \mid   (x \in E \, \text{ et }\, x \in F) \}
+$$
+
+Il s'agit de l'ensemble des couples d'éléments de $E$ (en première coordonnée) et $F$ (en seconde coodonnée).
+
+<br/>
+
+Soient $E_1, \, E_2 , \, \dotsm ,\, E_n$ des ensembles où $n \in \N^*$. On note $\produit{i=1}{n} E_i$ l'ensemble $\{ (x_1,\, x_2 ,\, \dotsm ,\, x_n) \mid x_1 \in E_1 $ et $ x_2 \in E_2 $ et ... et $x_n \in E_n \}$.
+
+<br/>
+En particulier, $\produit{i=1}{n} E $ est noté $ E^n$.
+</Item>
+
+
+<Exercice titre="">
+
+Soit $E = \deffo{0}{+ \infty} \times \R_+$. 
+
+<br/>
+
+1\) Proposer $x$ tel que $x \in E$ et $y$ tel que $y \notin E$.
+
+<br/>
+
+2\) Décrire l'ensemble $\complement_{\R^2}^E$ comme une réunion de produits cartésiens.
+</Exercice>
+
+<Hideable type="solution" titre="">
+
+1\) On peut proposer $x = (1 ,\, 1)$ et $y = (-1 ,\, 1)$
+
+<br/>
+
+2\) $\complement_{\R^2}^E = (\defoo{- \infty}{0} \times \R) \bigcup (\deffo{0}{+ \infty} \times \defoo{- \infty}{0} )$. En effet, 
+être dans le complémentaire de $E$, c'est avoir une première coordonnée qui ne coïncide pas avec la définition de $E$ ou bien une seconde 
+coordonnée qui ne coïncide pas avec la définition de $E$.
+</Hideable>

@@ -1,0 +1,88 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='forme exponentielle'>
+
+Soient $z \in \C$ et $z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)$ où $\theta \in \R$. 
+
+<br/>
+On note  $z = |z| e^{i \theta}$. 
+
+On appelle cette écriture une **forme exponentielle** de $z$.
+</Item>
+
+<Item type='proposition' titre='identification par forme exponentielle'>
+Soient $z$ et $z'$ deux complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| e^{i \theta_2}$. On a :
+
+$$ 
+z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Daprès l'identification par forme géométrique, l'équivalence est immédiate.
+</Hideable>
+
+<Item type='proposition' titre='propriétés de la forme exponentielle'>
+Soit $z$ et $z'$ des complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| z^{i \theta_2}$. On a :
+
+$\cd$ $ zz' = |z||z'|e^{i(\theta_1 + \theta_2)}$
+
+$\cd$ si $z' \neq 0$, $ \dfrac{z}{z'} = \dfrac{|z|}{|z'|}e^{i(\theta_1 - \theta_2)}$
+
+$\cd$ si $n \in \Z^*$, $z^n = |z|^n e^{ni\theta}$
+
+$\cd$ $\overline{\big(e^{i\theta}\big)} = e^{-i\theta}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Les deux premières formules ainsi que la dernière découlent immédiatement des propriétés sur le module et l'argument. 
+
+La troisième propriété se montre en partie par récurrence. 
+
+<br/>
+
+Montrons sur $\N^*$ la propriété $\cP(n) :  \forall z \in \C \, z^n = |z|^n e^{ni\theta}$.
+
+<br/>
+
+**Initialisation :** On vérifie $\cP(1)$. En effet, |z^1| = |z|^1. $\cP(2)$ est également vérifiée d'après la première formule.
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
+
+$z^{n+1} = z. z^n = |z| . e^{i\theta} . |z^n| e^{i n\theta} = |z|.|z^n|e^{i\theta} .e^{i n\theta}$ d'après l'hypothèse de récurrence.
+
+<br/>
+
+Mais donc, $z^{n+1}  = |z^{n+1}| e^{i (n+1)\theta}$ d'après la première formule.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+Pour étendre la propriété sur $\Z^*$, il suffit d'appliquer la deuxième formule puisque $z^{n} = \dfrac{1}{z^{-n}}$.
+</Hideable>
+
+<Item type='proposition' titre='formules de Moivre'>
+Soit $\theta \in \R$. On a :
+
+$\cd$ $\cos(\theta) = \dfrac{e^{i\theta} + e^{-i\theta}}{2}$
+
+$\cd$ $\sin(\theta) = \dfrac{e^{i\theta} - e^{-i\theta}}{2i}$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$e^{i\theta} = \cos(\theta) + i \sin(\theta)\; $ et $\; e^{-i\theta} = \cos(-\theta) + i \sin(-\theta) = \cos(\theta) - i \sin(-\theta)$
+
+Par somme on déduit la première égalité et par différence on déduit la seconde égalité.
+</Hideable>

@@ -1,0 +1,342 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type="definition" titre="proposition"> On appelle proposition (ou assertion) un énoncé mathématique qui a une valeur de vérité donnée : soit vrai soit faux. </Item>
+
+
+<Hideable type="exemple"> 
+  $ \cP_1 $ : "tout entier naturel est pair" est fausse.
+  
+  $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
+</Hideable>
+
+{/*<Item type="definition" titre="table de vérité"> On appelle table de vérité un tableau à double entrée définissant la valeur d'une fonction logique
+pour chacune des combinaisons possibles des entrées. </Item>*/}
+
+<Item type="definition" titre="conjonction, disjonction et négation"> 
+
+Soient A et B deux propositions. On appelle : 
+
+$\cd$ "A et B" la conjonction de A et de B
+
+$\cd$ "A ou B" la disjonction de A et de B
+
+$\cd$ "non A" la négation de A
+
+La **table de vérité** ci-dessous définit ces opérations selon la valeur de vérité de A et de B.
+
+| A  | B || A et B |  A ou B |
+|---|---|---|---|---|
+| Vrai | Vrai || Vrai | Vrai |
+| Vrai | Faux || Faux | Vrai |
+| Faux | Vrai || Faux | Vrai |
+| Faux | Faux || Faux | Faux |
+</Item>
+
+<Remarque>
+Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux être vrais. L'opération "ou exclisif" se note généralement "XOR".
+</Remarque>
+
+<Exercice titre="">
+Montrer que "A ou (non A)" a pour valeur de vérité "Vrai" et que "A et (non A)" a pour valeur de vérité "Faux".
+</Exercice>
+
+<Hideable type="solution" titre=''>
+Dressons les tables de vérité de ces propositions.
+
+| A  | non A | | A ou (non A) | A et (non A)| 
+|---|---|---|---|---|
+| Vrai | Faux | | Vrai | Faux | 
+| Faux | Vrai | | Vrai | Faux | 
+</Hideable>
+
+<Exercice titre=""> 
+Donner la table de vérité de (A et B) ou C où A, B et C sont trois propositions. 
+</Exercice>
+
+<Hideable type="solution" titre=''>
+
+Répondre à la question c'est dire si "A et B" est vrai ou bien si C est vrai. Pour cela, on a besoin de leur table de vérité.
+
+| A  | B | C || A et B | (A et B) ou C | Explication
+|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai |  Ici, A et B est vrai, il n'y a même pas besoin de vérifier C pour avoir (A et B) ou C. | 
+| Vrai | Vrai | Faux || Vrai | Vrai | idem |
+| Vrai | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également.|
+| Vrai | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| Faux | Vrai | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
+| Faux | Vrai | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| Faux | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
+| Faux | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+</Hideable>
+
+
+<Item type='proposition' titre='commutativité et associativité de la conjonction ainsi que de la disjonction'> 
+
+On a les propriétés suivantes : 
+
+$\cd$ "A et B" a la même valeur de vérité que "B et A"
+
+$\cd$ "A ou B" a la même valeur de vérité que "B ou A"
+
+$\cd$ "(A et B) et C" a la même valeur de vérité que "A et (B et C)"
+
+$\cd$ "(A ou B) ou C"  a la même valeur de vérité que "A ou (B ou C)"
+</Item>
+
+
+<Hideable type='démonstration'>
+
+**Commutativité :**
+La table de vérité de "A et B" est la même que celle de "B et A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A et de B.
+
+Il en va de même pour "A ou B".
+
+<br/>
+
+**Associativité de la conjonction :** On dresse une table de vérité :
+
+| A | B | C || A et B | B et C| (A et B) et C | A et (B et C) |
+|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Faux | Faux | Faux |
+| Vrai | Faux | Vrai || Faux | Faux | Faux | Faux |
+| Vrai | Faux | Faux || Faux | Faux | Faux | Faux |
+| Faux | Vrai | Vrai || Faux | Vrai | Faux | Faux |
+| Faux | Vrai | Faux || Faux | Faux | Faux | Faux |
+| Faux | Faux | Vrai || Faux | Faux | Faux | Faux |
+| Faux | Faux | Faux || Faux | Faux | Faux | Faux |
+
+Les tables de vérités de "(A et B) et C" et de "A et (B et C)" coïncident et donc ces affirmations ont même valeur de vérité.
+
+<br/>
+
+**Associativité de la disjonction :** On dresse une table de vérité :
+
+| A | B | C || A ou B | B ou C || (A ou B) ou C | A ou (B ou C) |
+|---|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Vrai || Vrai | Vrai |
+| Vrai | Faux | Vrai || Vrai | Faux || Vrai | Vrai |
+| Vrai | Faux | Faux || Vrai | Vrai || Vrai | Vrai |
+| Faux | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai |
+| Faux | Vrai | Faux || Vrai | Vrai || Vrai | Vrai |
+| Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai |
+| Faux | Faux | Faux || Faux | Faux || Faux | Faux |
+
+Les tables de vérités de "(A ou B) et C" et de "A ou (B ou C)" coïncident et donc ces affirmations ont même valeur de vérité.
+</Hideable>
+
+
+<Item type='propriete' titre='négation des négations, des conjonctions et des disjonctions'>
+
+$\cd$ "non (non A)" a la même valeur de vérité que "A"
+
+$\cd$ "non(A et B)" a la même valeur de vérité que "(non A) ou (non B)"
+
+$\cd$ "non(A ou B)" a la même valeur de vérité que "(non A) et (non B)"
+</Item>
+
+<Hideable type='démonstration' >
+On dresse la table de vérité des propositions :
+
+| A  | B || non A  | non B || A et B | non (A et B) | (non A) ou (non B) || A ou B | non(A ou B) | (non A) et (non B) |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| Vrai | Vrai || Faux | Faux || Vrai | Faux | Faux || Vrai | Faux | Faux |
+| Vrai | Faux || Faux | Vrai || Faux | Vrai | Vrai || Vrai | Faux | Faux |
+| Faux | Vrai || Vrai | Faux || Faux | Vrai | Vrai || Vrai | Faux | Faux |
+| Faux | Faux || Vrai | Vrai || Faux | Vrai | Vrai || Faux | Vrai | Vrai |
+
+Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident ainsi que celles de "non(A ou B)" et de "(non A) et (non B)". La propriété
+énoncée est donc vraie.
+</Hideable>
+
+
+
+<Item type='propriete' titre='distributivité des conjonctions et disjonctions'>
+
+$\cd$ "(A et B) ou C" a la même valeur de vérité que "(A ou c) et (B ou C)"
+
+$\cd$ "(A ou B) et C" a la même valeur de vérité que "(A et C) ou (B et C)"
+</Item>
+
+
+<Hideable type='démonstration'>
+Dressons la table de vérité des propositions.
+
+**Etudions d'abord "(A et B) ou C" :**
+
+| A  | B | C || A et B | (A et B) ou C || A ou C | B ou C | (A ou c) et (B ou C) |
+|---|---|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Vrai || Vrai | Vrai | Vrai |
+| Vrai | Faux | Vrai || Faux | Vrai || Vrai | Vrai | Vrai |
+| Vrai | Faux | Faux || Faux | Faux || Vrai | Faux | Faux |
+| Faux | Vrai | Vrai || Faux | Vrai || Vrai | Vrai | Vrai |
+| Faux | Vrai | Faux || Faux | Faux || Faux | Vrai | Faux |
+| Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai | Vrai |
+| Faux | Faux | Faux || Faux | Faux || Faux | Faux | Faux |
+
+<br/>
+
+**Etudions maintenant "(A ou B) et C" :**
+
+| A  | B | C || A ou B | (A ou B) et C || A et C | B et C | (A et c) ou (B et C) |
+|---|---|---|---|---|---|---|---|---|---|
+| Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai | Vrai |
+| Vrai | Vrai | Faux || Vrai | Faux || Faux | Faux | Faux |
+| Vrai | Faux | Vrai || Vrai | Vrai || Vrai | Faux | Vrai |
+| Vrai | Faux | Faux || Vrai | Faux || Faux | Faux | Faux |
+| Faux | Vrai | Vrai || Vrai | Vrai || Faux | Vrai | Vrai |
+| Faux | Vrai | Faux || Vrai | Faux || Faux | Faux | Faux |
+| Faux | Faux | Vrai || Faux | Faux || Faux | Faux | Faux |
+| Faux | Faux | Faux || Faux | Faux || Faux | Faux | Faux |
+
+
+Les tables de vérité coïncident comme indiqué dans la propriété.
+</Hideable>
+
+<Item type='definition' titre='implication et équivalence'>
+
+Soient A et B deux propositions.
+
+$\cd$ On note "A $ \Rightarrow $ B" l'affirmation "A implique B"
+
+$\cd$ On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (aussi.abrégé en ssi)
+
+On les définit par leurs tables de vérité :
+
+| A  | B || A $ \Rightarrow $ B |  A $ \ssi $ B |
+|---|---|---|---|---|
+| Vrai | Vrai || Vrai | Vrai |
+| Vrai | Faux || Faux | Faux |
+| Faux | Vrai || Vrai | Faux |
+| Faux | Faux || Vrai | Vrai |
+
+Autrement dit, "A $\Rightarrow$ B" signifie que dès que A est vrai, B l'est aussi.(et peu importe ce qu'il se passe quand A est faux) 
+et "A $ \ssi $ B" signifie que A et B ont la même table de vérité.
+</Item>
+
+
+<Exercice titre="">
+Montrer que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $
+</Exercice>
+
+<Hideable type="solution" titre=''>
+On dresse la table de vérité de  "(non A) ou B" et on devrait tomber sur celle de "A $\Rightarrow$ B".
+
+| A  | B || non A |  (non A) ou B |
+|---|---|---|---|---|
+| Vrai | Vrai || Faux | Vrai |
+| Vrai | Faux || Faux | Faux |
+| Faux | Vrai || Vrai | Vrai |
+| Faux | Faux || Vrai | Vrai |
+
+Donc "A $ \Rightarrow $ B" et  "(non A) ou B" ont la même table de vérité. Ces deux propositions sont donc équivalentes.
+</Hideable>
+
+
+<Exercice titre="">
+Donner la négation de "(A $\Rightarrow$ B)" et celle de "(A $\ssi $ B)" en n'utilisant que des disjonctions, des conjonctions et des négations.
+</Exercice>
+
+<Hideable type="solution" titre=''>
+
+**Négation de "(A $\Rightarrow$ B)" :** 
+
+A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi  \Big( $ (non A) ou B $ \Big) $ et donc, en passant à la négation et en développant, 
+on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($ non (non A) $\Big)$ et (non B)" qui a même valeur de vérité que "A et (non B)"
+
+<br/>
+
+**Négation de "(A $\ssi $ B)" :** 
+
+A partir de la table de vérité de "A $\ssi $ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( non A) et (non B) $\Big)$ ou (A et B)" 
+ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en déduit, en passant à la négation que, 
+en développant puis en simplifiant , on obtient "$\Big($ A et (non B) $\Big)$ ou $\Big($ (non A) et B $\Big)$"
+</Hideable>
+
+<Remarque>
+Si $A \Rightarrow B$, on dit que $A$ est une condition suffisante pour avoir $B$. 
+
+Si $A \Leftarrow B$, on dit que $A$ est une condition nécessaire pour avoir $B$ (en effet, s'il y a $B$, alors il y a $A$).
+
+Si $A \ssi  B$, on dit que $A$ est une condition nécessaire et suffisante pour avoir $B$.
+</Remarque>
+
+<Item type='propriete' titre='raisonnement par double implication'>
+Soient A et B deux propositions. (A $\ssi $ B) ssi. $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
+</Item>
+
+<Hideable type='démonstration' >
+On dresse la table de vérité des deux propositions :
+
+| A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) et (B $\Rightarrow$ A) | A $\ssi $ B |
+|---|---|---|---|---|---|---|
+| Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
+| Vrai | Faux || Faux | Vrai | Faux | Faux |
+| Faux | Vrai || Vrai | Faux | Faux | Faux |
+| Faux | Faux || Vrai | Vrai | Vrai | Vrai |
+
+Les tables de vérité sont identiques pour les deux propositions souhaitées.
+</Hideable>
+
+
+
+
+<Item type='propriete' titre='transitivité des implications et des équivalences'>
+Soient A, B et C trois propositions.
+
+$\cd$ "$\Big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ C) $\Big)$" $\Rightarrow$ "(A $\Rightarrow$ C)"
+
+$\cd$ "$\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$" $\Rightarrow$ "(A $\ssi $ C)"
+</Item>
+
+<Hideable type='démonstration' >
+
+$\cd$ "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" ssi. "$\big($ B ou (non A) $\big)$  et  $\big($ C ou (non B) $\big)$" ssi.
+"(B et C) ou (B et (non B)) ou ((non A) et C) ou ((non A) et (non B))" ssi.
+"(B et C) ou ((non A) et C) ou ((non A) et (non B))" mais donc, si cette proposition est vraie, alors "C ou (non A) ou (non A)" est vraie également 
+(on peut faire une table de vérité si besoin, mais cela est évident en regardant chacun des termes de la disjonction).
+On en déduit donc que si "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" est vraie, alors "C ou (non A)" l'est également. Cela conclut la démonstration du premier point.
+On remarquera qu'il est possible de faire des démonstrations en logique sans table de vérité.
+
+$\cd$ $\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$ ssi."(A $\Rightarrow$ B) et (B $\Rightarrow$ C) et (B $\Rightarrow$ A) et (C $\Rightarrow$ B)". 
+Si cette proposition est vraie, alors on a bien "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" qui est vraie également et 
+"(B $\Rightarrow$ A) et (C $\Rightarrow$ B)" qui est aussi.vraie.
+On applique le résultat précédent pour avoir une implication "A $\Rightarrow$ C". Puis on l'applique en inversant les rôles de A et de B 
+pour avoir l'autre implication "C $\Rightarrow$ A". Comme on a les deux implications, on a l'équivalence.
+</Hideable>
+
+
+<Item type='definition' titre=' contraposée et réciproque'>
+Soient A et B et la proposition $\cP$ : "A $\Rightarrow$ B". On appelle :
+
+$\cd$ réciproque de $\cP$ la proposition "B $\Rightarrow$ A"
+
+$\cd$ contraposée de $\cP$ la proposition "(non B) $\Rightarrow$ (non A)"
+</Item>
+
+
+<Item type='propriete' titre='raisonnement par contraposée'>
+Soient A et B deux propositions.
+On a "(A $\Rightarrow$ B)" ssi. "(non B) $\Rightarrow$ (non A)".
+</Item>
+
+<Hideable type='démonstration'>
+"A $\Rightarrow$ B" ssi."B ou (non A)" ssi."(non A) ou B" ssi."(non B) $\Rightarrow$ (non A)"
+</Hideable>
+
+
+<Exercice titre=""> 
+
+On suppose que $x \in \R$. Donner la contraposée de $\cP$ : "$x<0 \Rightarrow x^3 < 0$"
+</Exercice>
+
+<Hideable type="solution" titre=''>
+Il s'agit de "$(x^3 \geqslant 0) \Rightarrow (x \geqslant 0)$"
+</Hideable>

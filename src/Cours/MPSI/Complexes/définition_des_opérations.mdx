@@ -1,0 +1,58 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+import Prod from "../../../components/Geogebra/produit_complexes.astro"
+import Somme from "../../../components/Geogebra/somme_complexes.astro"
+
+
+<Item type='definition' titre='les nombres complexes'>
+
+On appelle $\C$ l'ensemble des nombres s'écrivant sous la forme $a+ib$ où $(a,b) \in \R^2$ et où $i$ est un nombre tel que $i^2 = -1$. 
+
+Si $z = a + ib\v (a\v b) \in \R^2$ on dit que $a + ib$ est la forme algébrique de $z$
+
+<br/>
+
+On peut représenter les éléments de $\C$ dans le repère orthonormé $\big(O \v \vec{i} \v \vec{j} \big)$ par le point de coordonnées $\Point{a}{b}$. 
+
+On dit que le complexe $z = a + ib$ a pour **affixe** $\Point{a}{b}$.
+</Item>
+
+
+<Item type='definition' titre='partie réelle et imaginaire'>
+
+Soit $z \in \C$ et $z = a + ib$ sa forme algébrique. On note :
+
+$\cd$ $\Re(z)$ la quantité $a$ qui est appelée "partie réelle de $z$"
+
+$\cd$ $\Im(z)$ la quantité $b$ qui est appelée "partie imaginaire de $z$"
+
+Il suit que $z = \Re(z) + i\Im(z)$. Si $z \in \C^*$ et $\Re(z) = 0$, on dit que $z$ est un **imaginaire pur** 
+</Item>
+
+<Item type='definition' titre='opérations entre complexes'>
+Soient $z = a+ib$ et $z' = c + id$ deux nombres complexes et leur forme algébrique. 
+
+On définit leur somme et leur produit comme suit :
+
+$\cd$ $z + z' = (a+c) + i(b+d)$
+
+$\cd$ $z \times z' = (ac - bd) + i(ad + bc)$
+</Item>
+
+<Somme></Somme>
+
+<Prod></Prod>
+
+
+<Remarque titre=''>
+Ces opérations sont assez naturelles : l'addition est faite terme à terme en utilisant l'écriture $z = a + ib$ et $z' = c + id$ et le produit est exactement le résultat que l'on attendrait avec une double distributivité. 
+
+<br/>
+
+On remarque qu'il s'agit bien là d'une définition. On ne peut nullement déduire cela d'une double distributivité puisque cela supposerait que, pour définir le produit de complexes, on sait déjà faire le produit de complexes. On appelle ce genre de raisonnement un "raisonnement circulaire" qu'il faut à tout prix éviter.
+</Remarque>

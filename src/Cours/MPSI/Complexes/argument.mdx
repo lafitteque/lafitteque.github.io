@@ -1,0 +1,91 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='argument'>
+
+La fonction 
+$
+\Arg : 
+\begin{cases} 
+\C \rightarrow \defprincipale{-\pi}{\pi}
+\\ 
+z \mapsto \Arg(z)
+\end{cases}
+$
+
+ tel que $z = \, | z | \Big( \cos(\Arg(z)) + i \sin(\Arg(z)) \Big)$
+</Item>
+
+
+<Item type='proposition' titre="propriétés  de l'argument">
+Soient $(z \v z') \in \C^2$.
+
+$\cd$ $\Arg(\overline{z}) = - \Arg(z)$
+
+$\cd$ $\Arg(z z') \equiv \Arg(z) + \Arg(z') \, [2 \pi ]$
+
+$\cd$ Si $z' \neq 0$, $\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $a = \Arg(z)$ et $b = \Arg(z')$.
+
+<br/>
+
+**Première égalité :**
+
+$z = \cos(a) + i \sin(a)$ donc 
+
+$$
+\overline{z} = \cos(a) - i \sin(a) = \cos(-a) + i \sin(-a)
+$$ 
+
+Mais, comme $a \in \defprincipale$, $-a \in \defprincipale$, d'où $\Arg(\overline{z}) = -a = - \Arg(z)$
+
+<br/>
+
+**Deuxième égalité :**
+
+$z = |z|\Big( \cos(a) + i \sin(a) \Big)$ et $z' = |z'|\Big( \cos(b) + i \sin(b) \Big)$. 
+
+<br/>
+
+On a donc :
+
+$$
+zz' = |z|\Big( \cos(a) + i \sin(a) \Big) . |z'|\Big( \cos(b) + i \sin(b) \Big) 
+$$ 
+
+et ensuite, 
+
+$$
+zz' = = |z|.|z'|\Big( \cos(a) \cos(b) - \sin(a) \sin(b) + i(\cos(a) \sin(b) + \sin(a) \cos(b)) \Big)
+$$
+
+puis, 
+
+$$ 
+zz'= |z|.|z'|\Big( \cos(a+b) + i \sin(a+b) \Big) 
+$$
+
+d'où $\Arg(z + z') \equiv \Arg(z) + \Arg(z') \; [2\pi]$
+
+<br/>
+
+**Troisième égalité :**
+
+Si $z' \neq 0 \v \Arg(\dfrac{z}{z'}) =  \Arg(\dfrac{z\overline{z'}}{z'\overline{z'}})  \equiv \Arg(z) + \Arg(\overline{z'}) + \Arg({\underbrace\dfrac{1}{z'\overline{z'}}}_{\in \R_+}) \; [2\pi]$
+
+d'où 
+
+$$
+\Arg(\dfrac{z}{z'}) \equiv \Arg(z) - \Arg(z') \, [2 \pi ]
+$$
+
+</Hideable>

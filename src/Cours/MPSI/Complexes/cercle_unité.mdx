@@ -1,0 +1,51 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='cercle unité'>
+
+On appelle cercle unité l'ensemble 
+
+$$
+\U = \{ z \in \C \mid |z| = 1 \}
+$$
+
+</Item>
+
+<Exercice titre='stabilité du cercle unité'>
+
+1\) Est-ce que $\U$ est stable par produit?
+
+2\) Est-ce que $\U$ est stable par somme?
+
+3\) Est-ce que $\U$ est stable par exponentiation entière?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) Soit le couple $(z,z') \in \U^2$. 
+
+On a $|z| = |z'| = 1$ mais donc $|zz'| = |z|.|z'| = 1$ 
+
+d'où $zz' \in \U$. 
+
+$\U$ est donc stable par produit.
+
+<br/>
+
+2\) En général non : par exemple $1 \in \U$ mais $1 + 1 \notin \U$.
+
+<br/>
+
+3\) Soit $z \in \U$. 
+
+$|z| = 1$ donc pour tout $n \in \Z$, $|z^n| = |z|^n = 1^n = 1$. 
+
+Donc : $  \forall n \in \Z \, z^n \in \U$. 
+
+$\U$ est bien stable par exponentiation entière.
+</Hideable>

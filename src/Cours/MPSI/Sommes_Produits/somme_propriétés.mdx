@@ -1,0 +1,146 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='notation somme'>
+Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :
+
+$$ 
+\somme{i=1}{n} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n 
+$$
+
+ou encore $\somme{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n$
+
+Par convention, on pose $\somme{i \in \emptyset}{} a_i = 0 $
+
+</Item>
+
+<Item type='proposition' titre='linéarité de la somme'>
+Soient $\alpha$ et $\beta$ des complexes, $n$ un entier strictement positif, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{n-1} \v b_n)$ des éléments de $\C$. 
+
+On a la relation suivante :
+
+$$
+\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = (\alpha \times a_1  + \beta \times b_1 ) + (\alpha \times a_2  + \beta \times b_2 ) + \dotsm + (\alpha \times a_{ n-1} + \beta \times b_{n-1}) + (\alpha \times a_n  + \beta \times b_n)$
+
+En réorganisant les termes, on obtient $ \somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha (a_1 + a_2 + \dotsm + a_{n-1} + a_n) + \beta(b_1 + b_2 + \dotsm + b_{n-1} + b_n) $
+
+Finalement, $\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k$
+</Hideable>
+
+<Item type='proposition' titre='sommes des entiers et de leurs carrés'>
+Soit $n \in \N$. On a :
+
+$$ 
+\somme{k=1}{n} k = \dfrac{n(n+1)}{2} \quad \text{ et } \quad
+\somme{k=1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} 
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre='somme des entiers'>
+**Démontrons le premier résultat par récurrence.**
+
+ On souhaite montrer la propriété suivante pour $n \in \N^*$:
+
+$$
+\cP(n) \, : \, "\somme{k = 1}{n} k = \dfrac{n(n+1)}{2} " 
+$$
+
+**Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. 
+
+En effet $\somme{k=1}{n}k = 1$ et $\dfrac{n(n+1)}{2} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
+<br/> 
+
+**Hérédité :** On souhaite montrer que si $n \in \N*$ alors $\cP(n) \Rightarrow \cP(n+1)$. Supposons donc pour cela que $\cP(n)$ est vérifiée et où $n \in \N^*$. Montrons alors que la propriété est également vraie au rang suivant. 
+
+$\somme{k=1}{n+1}k = \somme{i=1}{n} k \; + \; n+1$
+
+Par hypothèse de récurrence, comme $\cP(n)$ est supposée vérifiée, on a $\somme{k=1}{n+1}k = \dfrac{n(n+1)}{2} \; + \; n+1$
+
+Donc $\somme{k=1}{n+1}k = \dfrac{n(n+1)}{2} \; + \; \dfrac{2(n+1)}{2} = \dfrac{n^2 + n + 2n + 2}{2} = \dfrac{n^2 + 3n + 2}{2} = \dfrac{(n+1)(n+2)}{2}$.
+
+On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
+<br/> 
+
+**Conclusion :** $\cP(1)$ est vérifiée et : $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Hideable>
+
+<Hideable type='démonstration' titre='somme des carrés'>
+**Démontrons le second résultat par récurrence.**
+
+ On souhaite montrer la propriété suivante pour $n \in \N^*$:
+
+$$
+\cP(n) \, : \, \somme{k = 1}{n} k^2 = \dfrac{n(n+1)(2n+1)}{6} 
+$$
+
+**Initialisation :** Montrons $\cP(1)$ c'est-à-dire la propriété quand $n = 1$. 
+
+En effet $\somme{k=1}{n}k^2 = 1$ et $\dfrac{n(n+1)(2n+1)}{6} = 1$ d'où l'égalité voulue. $\cP(1)$ est donc vérifiée.
+
+<br/>
+
+**Hérédité :** On souhaite montrer que si $n \in \N^*$ alors $\cP(n) \Rightarrow \cP(n+1)$. Supposons donc pour cela que $\cP(n)$ est vérifiée et où $n \in \N^*$. Montrons alors que la propriété est également vraie au rang suivant. 
+
+$\somme{k=1}{n+1}k^2 = \somme{i=1}{n} k^2 \; + \; (n+1)^2$
+
+Par hypothèse de récurrence, comme $\cP(n)$ est supposée vérifiée, on a $\somme{k=1}{n+1}k^2 = \dfrac{n(n+1)(2n+1)}{6} \; + \; (n+1)^2$
+
+Donc $\somme{k=1}{n+1}k = \dfrac{n(n+1)(2n+1)}{6} \; + \; \dfrac{6(n+1)^2}{6} = \dfrac{(n+1)\big[ n(2n+1) + 6n+6\big]}{6} $
+
+Puis $\somme{k=1}{n+1}k = \dfrac{(n+1)\big[ 2n^2 + n + 6n+6\big]}{6} = \dfrac{(n+1)\big[ \overbrace{2n^2 + 7n + 6}^{= (n+2)(2n+3)}\big]}{6}$.
+
+Finalement, $\somme{k=1}{n+1}k = \dfrac{(n+1)(n+2)(2n+3)}{6}$
+
+On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
+
+<br/>
+
+**Conclusion :** $\cP(1)$ est vérifiée et $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
+</Hideable>
+
+<Item type='proposition' titre='somme géométrique'>
+Soit $q \in \R\setminus\{ 1\}$.
+
+$$ 
+\somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Démontrons le résultat par récurrence. 
+
+Soit $\cP(n) \, : \, \somme{i=0}{n} q^i = \dfrac{1-q^{n+1}}{1-q} $ où $n \in \N$
+
+<br/>
+**Initialisation :** Montrons $\cP(0)$ : 
+
+Si $n = 0$, on a $\somme{i=0}{n} q^i = 1 = \dfrac{1-q^{0+1}}{1-q}$ d'où le résultat.
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée où $n \in \N$. Montrons donc $\cP(n+1)$.
+
+$\somme{i=0}{n+1} q^i = \somme{i=0}{n} q^i \, + \, q^{n+1}$
+
+Par hypothèse de récurrence, puisque $\cP(n)$ est supposée vraie, on a $\somme{i=0}{n+1} q^i =  \dfrac{1-q^{n+1}}{1-q} + q^{n+1}$
+
+Puis $\somme{i=0}{n+1} q^i =  \dfrac{1-q^{n+1}}{1-q} + \dfrac{q^{n+1}-q^{n+2}}{1-q} = \dfrac{1-q^{n+2}}{1-q}$
+
+On a bien montré que $\cP(n) \Rightarrow \cP(n+1)$.
+
+<br/>
+
+**Conclusion :** On a montré que $\cP(0)$ est vérifiée et que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N$. On a bien montré que $\cP(n)$ était vérifiée pour tout $n$ entier naturel.
+</Hideable>

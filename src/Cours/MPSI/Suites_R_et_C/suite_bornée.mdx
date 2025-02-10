@@ -1,0 +1,76 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='suite bornée'>
+
+
+On dit qu'une suite $\suitedefN{u_n}$ est **majorée** (resp. **minorée**) s'il existe $M$ (resp. $m$) un réel tel que : 
+
+$$
+\forall n \in \N \v u_n \leqslant M \quad (\text{resp. } u_n \geqslant m)
+$$
+
+On dit qu'une suite est **bornée** si elle est à la fois majorée et minorée.
+
+</Item>
+
+<Item type='proposition' titre='bornes et opérations'>
+
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles.
+
+$\cd$ Si $\suitedefN{u_n}$ est majorée, alors $\suitedefN{-u_n}$ est minorée (et inversement).
+
+$\cd$ Si les deux sont majorées (resp. minorées) alors $\suitedefN{u_n + v_n}$ est majorée (resp minorée).
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Premier résultat :** si $\suitedefN{u_n}$ est majorée alors il existe $M \in \R$ tel que : $\forall n \in \N \v u_n \leqslant M$. 
+
+Mais par décroissance de $x \mapsto -x$ sur $\R \v u_n \leqslant M \Rightarrow -u_n \geqslant -M$. 
+
+Donc la suite $\suitedefN{-u_n}$ est minorée. Le cas inverse se traite de la même manière.
+
+<br/>
+
+**Second résultat :** cela vient simplement du fait que les inégalités sont compatibles avec la somme.
+
+</Hideable>
+
+<Item type='proposition' titre='caractérisation par la valeur absolue'>
+
+Soit $\suitedefN{u_n}$ une suite réelle. Elle est bornée si et seulement si $\suitedefN{|u_n|}$ est majorée. 
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct :** Supposons que $\suitedefN{u_n}$ est bornée (sens direct). 
+
+Il existe $m$ et $M$ des réels tels que : $\forall n \in \N\v $. 
+
+Soit $A = \max(|m|\v |M|)$, on a : 
+
+$$
+\forall n \in \N \v -A \leqslant m \leqslant u_n \leqslant M \leqslant A
+$$
+
+Donc $(|u_n|){n \in \N}$ est majorée.
+
+$\cd$ **Sens réciproque :** Supposons que $(|u_n|){n \in \N}$ est majorée (sens réciproque). 
+
+Soit $M$ un majorant, on a : $\forall n \in \N \v -M \leqslant u_n \leqslant M$
+
+donc $\suitedefN{u_n}$ est bornée.
+</Hideable>
+
+
+<Item type='definition' titre=''>
+
+On dit qu'une suite complexe $(z_n)_{n \in \N}$ est bornée si $(|z_n|)_{n \in \N}$ est majorée.
+</Item>

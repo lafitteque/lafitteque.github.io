@@ -1,0 +1,95 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='proposition' titre='limites et comparaisons'>
+
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites réelles convergeantes de limites respectives $l_1$ et $l_2$.
+
+Si : $\forall n \in \N \v u_n \leqslant v_n$ alors : $l_1 \leqslant l_2$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$, d'après la définition de la limite, on trouve $N_1$ et $N_2$ pour les deux suites. 
+
+Supposons $n \geqslant \max(N_1\v N_2)$. On a $|u_n - l_1| \leqslant \epsilon$ et $|v_n - l_2| \leqslant \epsilon$. D'où 
+
+$$
+\begin{cases} 
+    -\epsilon \leqslant  u_n - l_1 \leqslant \epsilon 
+    \\  
+    -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon 
+\end{cases}
+$$ 
+
+puis 
+
+$$
+\begin{cases} 
+    l_1 - \epsilon \leqslant  u_n \leqslant l1 + \epsilon 
+    \\  
+    l_2 - \epsilon \leqslant  v_n  \leqslant l_2 + \epsilon 
+\end{cases}
+$$ 
+
+et donc $l_1 - \epsilon \leqslant  u_n  \leqslant  v_n  \leqslant l_2 + \epsilon$
+
+finalement $l_1 - \epsilon \leqslant l_2 + \epsilon$. Ceci étant vrai peu importe la valeur de $\epsilon > 0$ choisie, on conclut que $l_1 \leqslant l_2$
+</Hideable>
+
+<Item type='consequence' titre='comparaison avec un réel'>
+
+Soit $\suitedefN{u_n} \in \R^{\N}$ convergente de limite $l \in \R$ et $a \in \R$
+
+Si $\; \forall n \in \N \v u_n \geqslant a$ (rep. $u_n \leqslant a$) $\;$ alors $\; l \geqslant a$ (rep. $l \leqslant a$)
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On peut poser $\suitedefN{a}$ et appliquer le résultat précédent.
+</Hideable>
+
+<Item type='proposition' titre='limite et signe'>
+
+Soit $\suitedefN{u_n}$ une suite réelle convergente de limite non nulle $l \in \R_+^*$. 
+
+Il existe un rang à partir duquel la suite  $\suitedefN{u_n}$ est strictement positive. Le résultat est analogue pour une limite négative.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On suppose sans perte de généralité que $l > 0$ (sinon il suffit de considérer $\suitedefN{-u_n}$).
+
+On pose $\epsilon = \dfrac{l}{2}$. Soit $N$ tel que : $n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon = \dfrac{l}{2}$.
+
+
+Supposons $n \geqslant N \quad $ $ -\dfrac{l}{2} \leqslant  u_n - l \leqslant \dfrac{l}{2} \;$ d'où $ \; 0 < \dfrac{l}{2} \leqslant  u_n  \leqslant \dfrac{3l}{2}$ donc $u_n >0$ dès que $n \geqslant N$.
+</Hideable>
+
+<Item type='proposition' titre='théorème des gendarmes'>
+
+Soient $\suitedefN{u_n}$, $\suitedefN{v_n}$ et $\suitedefN{w_n}$ trois suites réelles telles que : $\forall n \in \N \v u_n \leqslant v_n \leqslant w_n$. Si $\suitedefN{u_n}$ et $\suitedefN{w_n}$ sont convergentes de même limite $l \in \R$ alors $v_n$ est également convergente de limite $l$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$ d'après la définition de la convergence pour $u$ (resp. pour $w$) on obtient $N_1$ (resp. $N_2$). 
+
+D'après ces définitions, si $n \geqslant N = \max(N_1\v N_2)$, alors $|u_n - l| \leqslant \epsilon$ et $|w_n - l| \leqslant \epsilon$ 
+
+puis, en ajoutant $l$ à chaque inégalité, on obtient $l-\epsilon \leqslant u_n \leqslant v_n \leqslant w_n \leqslant l + \epsilon$. 
+
+On a donc : 
+
+$$
+\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant l + \epsilon
+$$ 
+
+D'où la convergence de $\suitedefN{v_n}$ vers $l$
+</Hideable>
+

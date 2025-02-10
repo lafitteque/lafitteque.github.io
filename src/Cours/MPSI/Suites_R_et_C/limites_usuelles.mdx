@@ -1,0 +1,95 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='proposition' titre='limites de fonctions usuelles'>
+
+Soit $k \in \N^*$, on a les limites suivantes.
+
+| $u_n$ | $n$ | $n^k$ | $\dfrac{1}{n^k}$ | $\sqrt{n}$ | $e^n$ | $e^{-n}$ | $\ln(n)$ |$\sin(n)$ | $\cos(n)$ | $q^n$ , $q > 1$ | $q^n$ , $-1 < q < 1$ |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| limite en $+ \infty$ | $+ \infty$ | $+ \infty$ | $0$ | $+ \infty$ | $+ \infty$ | $0$ | $+ \infty$ | Diverge | Diverge | $+ \infty$ |$0$ |
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $A \in \R$ et $\epsilon > 0$. Il suffit de trouver un $N \in \N$ convenant pour la définition dans chaque cas.
+
+**$u_n = n^k$ :** dans ce cas, $N = A$ convient par croissance de $\suitedefN{u_n}$.
+
+**$u_n = \dfrac{1}{n^k}$ :** ici, $N = \ceil{\dfrac{1}{\epsilon}}$ convient car : $0 < \dfrac{1}{n^k} \leqslant \dfrac{1}{n}$ et $\dfrac{1}{n} \leqslant \epsilon$ si $n \geqslant \ceil{\dfrac{1}{\epsilon}}$ par décroissance de $\suitedefN{u_n}$.
+
+**$u_n = \sqrt{n}$ :** ce cas se traite comme précedemment mais avec $N = \dfrac{1}{\sqrt{\epsilon}}$ puisqu'un passage à la racine carrée est nécessaire sur l'inégalité précédente (la racine carrée est croissante).
+
+**$u_n = e^n$ et $u_n = e^{-n}$ :** admis
+
+
+**$u_n = \ln(n)$ :** la fonction exponentielle est croissante donc comme $\ln$ est sa fonction réciproque, elle est croissante également, d'où la croissance de $\suitedefN{u_n}$. Cette suite est donc convergeante ou bien de limite infinie. 
+
+Mais si elle était convergeante de limite $l \in \R$, alors elle serait majorée par $l$ et il n'existerait pas de point $\Point{x}{y}$ tel que $y \geqslant l$ et $\Point{x}{y} \in \cC_{\ln}$ (car s'il en existait un, il suffirait deprendre $n = \ceil{x}$ pour contredire la majoration par $l$). Mais cela est absurde car il existe bien un point d'abscisse $y$ dans $\cC_{exp}$ et d'ordonnée $x = e^y$. On en conclut que la limite est infinie
+
+
+**$u_n = \cos(n)$ :** le cercle trigonométrique a un périmètre de $2\pi > 6 $. Mais, comme $n$ s'incrémente de $1$ en $1$, on est certains qu'il existe une infinité de $n \in \N$ tels que leur reste dans la division euclidienne par $2\pi$ soit dans $\defff{0}{1}$ et idem pour $\defff{2}{3}$. Mais dans le premier cas $0 < \cos(1) \leqslant \cos(n) \leqslant \cos(0)$ et dans le second cas $0 > \cos(2) \geqslant \cos(n) \geqslant \cos(3) \geqslant -1$. D'après le théorème de Bolzano-Weierstrass, il existe deux suites extraites de $\suitedefN{u_n}$ convergeantes. Comme ces limites sont nécessairement distinctes par encadrement, on en conclut que $\suitedefN{u_n}$ n'est pas convergeante.
+
+**$u_n = \sin(n)$ :** raisonnement analogue à $u_n = \cos(n)$.
+
+**$u_n = q^n$ , cas divergeant :** Soit $n \in \N$. Si $q > 1$, alors, $u_{n+1} - u_n = q^n(q - 1) \geqslant (1-q)$. Par télescopage, on a $u_n - u_0 \geqslant n.(1-q) \limton + \infty$ d'où la divergeance de $\suitedefN{u_n}$.
+
+**$u_n = q^n$ , cas convergeant :** Soit $n \in \N$. Si $|q| < 1$, alors $\ln(|q|) < 0$ et donc $n\ln(|q|) = \ln(|a|^n) \limton - \infty$. 
+
+Soit $\epsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqslant N$, alors $\ln(|q|^n) \leqslant A$. Mais donc, par croissance de l'exponentielle, $|q|^n \leqslant e^A$. En posant $\tilde{A} = \ln(\epsilon)$, on conclut que $|q|^n \leqslant \epsilon$ si $n \geqslant N$.
+
+</Hideable>
+
+
+<Item type='methode' titre='calcul par le nombre dérivé (classique)'>
+
+Soit $f$ une fonction définie sur un intervalle $I \subset \R$ à valeurs dans $\R$. Si $f$ est dérivable en $a \in I$. Si $\suitedefN{u_n} \in \R^{\N}$ converge vers $a$, 
+
+$$
+\limm{n \to + \infty} \dfrac{f(u_n) - f(a)}{u_n - a} = f'(a)
+$$
+</Item>
+
+<Exercice titre=''>
+
+Calculer la limite de la suite définie par $u_n = (1 + \dfrac{1}{n})^n\v \forall n \in \N$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Soit $n \in \N$,
+$u_n = (1 + \dfrac{1}{n})^n = e^{n \ln(1 + \dfrac{1}{n})} = e^{\dfrac{\ln(1 + \dfrac{1}{n}) - \ln( 1 + 0)}{\dfrac{1}{n} - 0} }$ mais $\dfrac{\ln(1 + \dfrac{1}{n}) - \ln( 1 + 0)}{\dfrac{1}{n} - 0}  \limton 1$ d'où $u_n \limton e^1 = e$
+</Hideable>
+
+
+<Item type='proposition' titre='croissances comparées'>
+
+Soient $k \in \N^*$ et $a \in \R_+^*$, on a les limites suivantes.
+
+| $u_n$ | $\dfrac{e^n}{n^k}$ | $\dfrac{\ln^k(n)}{n}$ | $\dfrac{a^n}{n!}$|
+|---|---|---|---|
+| limite en $+ \infty$ | $+ \infty$ | $0$ | $0$ |
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Croissance comparée avec l'exponentielle :** $\dfrac{e^n}{n^k} = \Big( \dfrac{e^{\frac{n}{k}}}{n} \Big)^k$. 
+
+On pose donc $m = \dfrac{n}{k}$ et on s'intéresse à $\dfrac{1}{k^k} \Big(\dfrac{e^m}{m} \Big)^k$. Concentrons nous sur la suite définie par $u_m = \dfrac{e^m}{m}$ pour $m \in \N$.
+
+Soit $n \in \N$, $u_{n+1} - u_n = \dfrac{n.e^{n+1} - (n+1)e^n}{n(n+1)} = e^n\dfrac{n.e - (n+1)}{n(n+1)} = \dfrac{e^n}{n} . (\dfrac{n.e}{n+1} - 1)$. Mais $ne \geqslant 2n \geqslant n+1$ si $n \geqslant 1$. On a donc $u_{n+1} - u_n \geqslant u_n$ d'où $u_{n+1} \geqslant 2.u_n$. Par récurrence immédiate, on a $u_n \geqslant 2^{n-1}.u_1 \limton + \infty$ d'où $u_n \limton + \infty$.
+
+
+**Croissance comparée avec le logarithme :** Ce résultat se déduit aisément du premier à condition d'avoir des résultats que nous verrons avec les limites de fonctions.
+
+**Croissance comparée avec la factorielle :**Si $n > N = 2\ceil{a}+1$,  $\dfrac{a^n}{n!} = \underbrace{\dfrac{a^N}{N!}}{= \alpha} . \dfrac{a^{n-N}}{(N+1)(N+2) \dotsm n}$
+
+Mais $\dfrac{a^{n-N}}{(N+1)(N+2)...n} = \underbrace{\dfrac{a}{N+1}}_{\leqslant \frac{1}{2}} . \underbrace{\dfrac{a}{N+2}}_{\leqslant \frac{1}{2}}\dotsm \underbrace{\dfrac{a}{n}}_{\leqslant \frac{1}{2}} \leqslant \dfrac{1}{2^(n-N)}$
+
+Mais donc si $n \geqslant N$, $0 \leqslant \dfrac{a^n}{n!} \leqslant \alpha \dfrac{1}{2^(n-N)} \limton 0$ d'où le résultat.
+</Hideable>

@@ -1,0 +1,83 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+Parfois, les indices des sommes ne seront pas pratiques pour les calculs que nous souhaiterons faire. Selon la situation, il pourra être intéressant de changer 
+d'indexation. 
+
+Par exemple : 
+
+$\somme{i=1}{n} a_{i-1}$ se réexprime $\somme{i'=0}{n-1} a_{i'}$ en effectuant le changement d'indice $i' = i-1$. 
+
+En effet, avec ce changement d'indices, 
+
+$\cd$ $i = 1 \ssi i' = 0$ d'où la nouvelle borne de départ
+$\cd$ $i = n \ssi i' = n-1$ d'où la nouvelle borne d'arrivée.
+$\cd$ $i-1 = i'$ d'où $a_{i-1} = a_{i'}$
+
+
+**En résumé :** changer d'indice c'est définir un nouvel indice en fonction de celui (ou ceux) déjà présents et réecrire la somme en fonction de ce nouvel indice. 
+
+<Item type='proposition' titre='différence de puissances'>
+Soient $a,b$ des réels et $n$ un entier positif. Alors :
+
+$$
+a^n - b^n = (a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $a$ et $b$ des réels et soit $n \in \N$. 
+
+$$
+(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = \sum_{k= 0}^{n-1} (a-b)a^kb^{n-k-1} = \sum_{k= 0}^{n-1} a^{k+1}b^{n-k-1} - \sum_{k= 0}^{n-1}a^kb^{n-k}
+$$
+
+On isole le dernier terme de la première somme et le premier terme de la deuxième somme, d'où :
+
+$$
+(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} =  \sum_{k= 0}^{n-2} a^{k+1}b^{n-k-1} + a^nb^0 - a^0b^n - \sum_{k= 1}^{n-1}a^kb^{n-k}
+$$
+
+Puis en posant $l = k-1$ dans la deuxième somme, on obtient :
+
+$$
+(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = a^n - b^n + \sum_{k= 0}^{n-2} a^{k+1}b^{n-k-1}  - \sum_{l= 0}^{n-2} a^{l+1}b^{n-l-1}
+$$
+
+Les deux sommes étant égales, leur différence est nulle, d'où
+
+$$
+(a-b)\sum_{k= 0}^{n-1} a^kb^{n-k-1} = a^n - b^n
+$$
+</Hideable>
+
+
+<Exercice titre='Somme des entiers (bis)'>
+Soit $n \in \N$.
+
+1\) Effectuer le changement d'indice $k = n-i+1$ sur la somme $ \somme{i = 1 }{n} i$ notée $S_n$
+
+2\) Exprimer $2S_n$ et en déduire $S_n$ 
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+**1\)** $ \somme{i = 1 }{n} i = \somme{k = n }{1} (n - k + 1) = \somme{k = 1 }{n} (n-k+1)$
+
+<br/>
+
+**2\)** $2S_n = \somme{i = 1 }{n} i + \somme{i = 1 }{n} (n-i+1)$ et par linéarité de la somme, on obtient :
+
+ $$
+ 2S_n = \somme{i = 1 }{n} (i + n -i + 1) = \somme{i = 1 }{n} (n+1) = n(n+1)
+ $$
+
+ On a donc $S_n = \dfrac{n(n+1)}{2}$
+
+</Hideable>

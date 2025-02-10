@@ -1,0 +1,19 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='theoreme' titre='limite monotone'>
+
+Soit $\suitedefN{u_n}$ une suite réelle croissante (resp. décroissante). Soit $\suitedefN{u_n}$ est convergente, soit $\limm{n \to \infty} u_n = + \infty $ (resp. $- \infty$).
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Cas 1 : $\suitedefN{u_n}$ est convergente -** Dans ce cas, le résultat est évident.
+
+**Cas 2 : $\suitedefN{u_n}$ diverge -** Dans ce cas, pour tout $l \in \R$, on a : $\exists \epsilon > 0 \mid \forall N \in \N \v (\exists n \geqslant N \mid  |u_n - l| > \epsilon)$. Essayons de nous ramener à la définition de la limite infinie : $(\exists n \geqslant N \mid  |u_n - l| > \epsilon) \Rightarrow (\exists n \geqslant N \mid u_n \geqslant > l + \epsilon > l) \Rightarrow (\exists n  \geqslant N \mid u_n \geqslant > l)$. On a donc : $\suitedefN{u_n}$ diverge $\Rightarrow \forall l \in \R \v \exists n \geqslant N \mid u_n \geqslant l$ ce qui est la définition d'une limite infinie.
+</Hideable>

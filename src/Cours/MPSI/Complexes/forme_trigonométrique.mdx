@@ -1,0 +1,99 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='defprop' titre='forme trigonométrique'>
+Soit $z \in \C$. Il existe $\theta \in \R$ tel que :
+
+$$
+z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big) 
+$$
+
+Cette écriture de $z$ est une **forme trigonométrique** de $z$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $z \in \C$, 
+
+<br/>
+
+**si $z = 0$ :** on peut choisir $\theta$ quelconque.
+
+<br/>
+
+**Si $z :\neq 0$ :** on pose $A = \dfrac{\Re(z)}{|z|}$ et $B = \dfrac{\Im(z)}{|z|}$ on a $z = |z| (A + B)$. 
+
+Or $A^2 + B^2 = 1$ donc il existe $\theta \in \R$ tel que $A = \cos(\theta)$ et $B = \sin(\theta)$. D'où le résultat : 
+
+$$
+z = | z | \Big( \cos(\theta) + i \sin(\theta) \Big)
+$$
+</Hideable>
+
+<Item type='proposition' titre='identification par forme trigonométrique'>
+
+Soient $z$ et $z'$ deux complexes dont on donne des écritures trigonométriques :
+
+
+$z = |z| \Big( \cos(\theta _1) + i \sin(\theta _1) \Big) \;$ et 
+$\; z' = |z'| \Big( \cos(\theta _2) + i \sin(\theta _2) \Big)$. 
+
+On a :
+
+$$ 
+z = z' \ssi \begin{cases} |z| = |z'|\\ \theta_1 \equiv \theta_2 \, [2\pi] \end{cases}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On écarte le cas $z = z' = 0$ qui est évident. On considère donc $z \neq 0$.
+
+$z = z' \ssi |z|\Big( \cos(\theta_1) + i \sin(\theta_1) \Big) = |z'|\Big( \cos(\theta_2) + i \sin(\theta_2) \Big) $
+
+donc 
+$
+z = z' 
+\ssi 
+\begin{cases} 
+  |z| \cos(\theta_1) = |z'|\cos(\theta_2)  \quad (L_1) 
+  \\ 
+  |z| \sin(\theta_1) = |z'|\sin(\theta_2)   \quad (L_2)  
+\end{cases}
+$ 
+
+<br/>
+L'opération $L_1^2 + L_2^2$ donne $|z| = |z'|$. On a donc :
+
+$$
+z = z' 
+\ssi 
+\begin{cases}  
+  \cos(\theta_1) = \cos(\theta_2) 
+  \\ 
+  \sin(\theta_1) = \sin(\theta_2) \\ |z| = |z'| 
+\end{cases} 
+\ssi 
+\begin{cases} 
+  \theta_1 \equiv \pm \theta_2 \; [2\pi]
+  \\  
+  \theta_1 \equiv \theta_2 \; [2\pi] \, \text{ ou }\,  \theta_1 \equiv \pi - \theta_2 \; [2\pi]\\ |z| = |z'| 
+\end{cases} 
+$$
+
+Finalement, 
+
+$$
+z = z' \ssi 
+\begin{cases} 
+  |z| = |z'|
+  \\
+  \theta_1 \equiv \theta_2 \, [2\pi] 
+\end{cases}
+$$
+</Hideable>

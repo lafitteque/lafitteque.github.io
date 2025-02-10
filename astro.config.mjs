@@ -62,7 +62,7 @@ const macros = {
 
   "\\somme": "\\sum \\limits_{#1}^{#2}",
   "\\produit": "\\prod \\limits_{#1}^{#2}",
-  "\\integ": "\\int \\limits_{#1}^{#2}",
+  "\\integ": "\\int_{#1}^{#2}",
 
   "\\limm": "\\lim \\limits_{ {#1} }",
   "\\limto":"\\mathop{\\longrightarrow}\\limits_{ {#1} \\to {#2}}",
@@ -70,6 +70,9 @@ const macros = {
   "\\suitedef":"({#1})_{{#2}}",
   "\\suitedefN":"({#1})_{n \\in \\N}",
 
+  "\\Arcsin": "\\operatorname{Arcsin}",
+  "\\Arccos": "\\operatorname{Arccos}",
+  "\\Arctan": "\\operatorname{Arctan}",
   "\\Re": "\\operatorname{Re}",
   "\\Im": "\\operatorname{Im}",
   "\\Arg": "\\operatorname{Arg}",

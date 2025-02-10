@@ -1,0 +1,104 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='consequence' titre='formulaire sommes de fonctions trigonométriques'>
+Soient $p$ et $q$ deux réels :
+
+$\cd$ $\cos(p) + \cos(q) = 2 \cos(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})$
+
+$\cd$ $\cos(p) - \cos(q) = -2 \sin(\dfrac{p+q}{2})\sin(\dfrac{p-q}{2})$
+
+$\cd$ $\sin(p) + \sin(q) = -2 \cos(\dfrac{p-q}{2}) \sin(\dfrac{p+q}{2})$
+
+$\cd$ $\sin(p) - \sin(q) = 2 \cos(\dfrac{p+q}{2}) \sin(\dfrac{p-q}{2})$
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+**Première égalité :** 
+
+
+$$
+\cos(p) + \cos(q) = \Re( e^{ip} + e^{iq}) 
+$$ 
+
+On utilise la technique dite de factorisation de l'angle moitié :
+
+$$
+\cos(p) + \cos(q) = \Re \Big( e^{\textstyle i\frac{p+q}{2}} e^{\textstyle i\frac{p-q}{2}} + e^{\textstyle i\frac{p+q}{2}}e^{\textstyle -i\frac{p-q}{2}} \Big) 
+$$
+
+puis, en factorisant par $e^{\textstyle i\frac{p+q}{2}}$, on a :
+
+$$
+\cos(p) + \cos(q) = \Re \Bigg(\Big( e^{\textstyle i\frac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\frac{p-q}{2}} + e^{\textstyle -i\frac{p-q}{2}} \Big)}_{\textstyle = 2\cos(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+d'où 
+
+$$
+\cos(p) + \cos(q) = 2\cos(\frac{p-q}{2}) \Re(e^{\textstyle i\frac{p+q}{2}}) = 2 \cos(\frac{p+q}{2})\cos(\frac{p-q}{2})
+$$
+
+<br/>
+
+**Déuxième inégalité :**
+
+$$
+\cos(p) - \cos(q) = \Re( e^{\textstyle ip} - e^{\textstyle iq} ) = \Re \Big( e^{\textstyle i\frac{p+q}{2}} e^{\textstyle i\frac{p-q}{2}} - e^{\textstyle i\frac{p+q}{2}}e^{\textstyle -i\frac{p-q}{2}} \Big) 
+$$ 
+
+puis, en factorisant par $e^{\textstyle i\frac{p+q}{2}}$, on a :
+
+$$
+\cos(p) - \cos(q) = \Re \Bigg(\Big( e^{\textstyle i\frac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\frac{\textstyle p-q}{2}} - e^{\textstyle -i\frac{p-q}{2}} \Big)}_{\textstyle = 2\sin(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+d'où :
+
+$$
+\cos(p) - \cos(q) =  2i\sin(\frac{p-q}{2}) \Re \Bigg(  \cos(-\frac{p-q}{2}) + i \sin(-\frac{p-q}{2})   \Bigg) = -2 \sin(\frac{p+q}{2})\sin(\frac{p-q}{2})
+$$
+
+<br/>
+
+**Troisième égalité :**
+
+$$
+\sin(p) + \sin(q) = \Im( e^{ip} + e^{iq} ) = \Im \Big( e^{\textstyle i\dfrac{p+q}{2}} e^{\textstyle i\dfrac{p-q}{2}} + e^{i\dfrac{p+q}{2}}e^{\textstyle -i\dfrac{p-q}{2}} \Big)
+$$ 
+
+puis, en factorisant par $e^{\textstyle i\dfrac{p+q}{2}}$, on a :
+
+$$
+\sin(p) + \sin(q) = \Im \Bigg(\Big( e^{\textstyle i\dfrac{p+q}{2}} \Big) \underbrace{ \Big( e^{\textstyle i\dfrac{p-q}{2}} + e^{\textstyle -i\dfrac{p-q}{2}} \Big)}_{\textstyle = 2\cos(\dfrac{p-q}{2})}\Bigg) 
+$$
+
+puis, 
+
+$$
+\sin(p) + \sin(q) =  \Im \Big( 2\cos(\dfrac{p-q}{2}) \big( \cos(-\dfrac{p-q}{2}) + i \sin(-\dfrac{p-q}{2})\big) \Big) = -2 \sin(\dfrac{p+q}{2})\cos(\dfrac{p-q}{2})
+$$
+
+<br/>
+
+**Quatrième égalité :** On applique la troisième égalité à $\tilde{p} = p$ et $\tilde{q} = -q$. Par imparité du sinus, on obtient le résultat.
+
+</Hideable>
+
+<Remarque titre='retrouver les formules trigonométriques rapidement'>
+Voyons comment retrouver les formules de $\cos(a+b)$ , $\sin(a+b)$ , ... 
+
+<br/>
+
+Il suffit de regarder la partie réelle ou imaginaire d'une exponentielle : $\cos(a+b) = \Re( e^{i(a+b)}) = \Re( e^{ia}e^{ib})$. En passant à la forme trigonométrique et en développant, on obtient la formule pour le cosinus (celle pour le sinus vient de la partie imaginaire). 
+
+<br/>
+Attention cependant, il ne s'agit pas d'une démonstration mais d'une manière de retrouver rapidement les formules. Il s'agirait d'un raisonnement circulaire!
+</Remarque>

@@ -1,0 +1,162 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='application'>
+
+Soient $E$ et $F$ deux ensembles. 
+
+Une application $f$ de $E$ dans $F$ associe un élément de $F$ à chaque élément de $E$.
+
+<br/>
+
+On appelle $E$ le domaine de définition de $f$ parfois noté $\cD_f$
+
+L'ensemble des fonctions de $E$ dans $F$ est noté $\cF(E \v F)$ ou encore $F^E$.
+</Item>
+
+**Illustration :**
+
+<img width="500" height="500" class="content-center mx-auto" src = "src/svgs/appli_quelconque.svg" alt="Illustration de la définition d'une application"/>
+
+<Remarque titre=' Hors Programme'>
+
+Il n'y a aucun attendu au programme sur cette définition. 
+
+On peut en fait décrire formellement une fonction comme un ensemble $f$ de couples $(a \v b) \in (E\v F)$ tel que, si $(a_1 \v b_1) \in f$ et $(a_2\v b_2) \in f$, alors $a_1 = a_2 \Rightarrow b_1 = b_2$ (à un antécédent n'est associée qu'une seule image).
+
+Si $( a \v b ) \in f$ on note $b = f(a)$
+</Remarque>
+
+
+<Hideable type='exemple' titre='différentes fonctions et différentes manières de les introduire'>
+
+1\) Définitir en descrivant : soit $f$ la fonction qui à un réel assossie son carré.
+
+<br/>
+
+2\) Définir par le calcul : soit $f$ la fonction définie sur $\defoo{2}{7}$ telle que $f(x) = \dfrac{1}{(x-2)(x-7)}$.
+
+<br/>
+
+3\) Définir en tant qu'application : Soit $f : \begin{cases} \deffo{-1}{1} \rightarrow \R \\[-0.5em] \\ x \mapsto \dfrac{\sqrt{1+x}}{x-1} \end{cases}$
+
+<br/>
+
+**Attention :** définir une fonction c'est donner son ensemble de définition $\cD_f$ __ET__ l'association des éléments de $\cD_f$ à d'autres éléments dans un domaine d'arrivée (qui lui peut être implicitement donné par définition). 
+
+<br/>
+
+Il faut d'ailleurs prendre garde au domaine de définition. Dans le cas (3) par exemple, le calcul donné pourraît être effectué pour $x = 2$. Cependant, la fonction n'y existe pas. Et même si elle y existait, rien ne pourrait assurer que le calcul n'y serait pas différent.
+
+</Hideable> 
+
+<Remarque titre=''>
+En pratique, le domaine de définition est donné par l'énoncé ou le contexte pratique selon le phénomène étudié (intensité, tension, hauteur, temps, ...)
+</Remarque>
+
+
+<Item type='definition' titre='égalité de fonctions'>
+
+On dit que deux fonctions $f$ et $g$ définies de $E$ dans $F$ sont égales et on note $f = g$ si :
+
+$$
+\forall x \in E \v f(x) = g(x)
+$$
+</Item>
+
+<Item type='definition' titre="restriction d'une fonction">
+
+Soient $G$ un sous-ensemble de $E$, $F$ un ensemble et $f$ une fonction de $G$ dans $F$. 
+
+On note $f_{|A} : \begin{cases} G \rightarrow F \\ x \mapsto f(x) \end{cases}$. On dit que l'on restreint $f$ à $G$.
+</Item>
+
+<Item type='definition' titre="prolongement d'une fonction">
+
+Soient $E$ et $F$ deux ensembles, $A$ un ensemble tel que $E \subset A$ et $f$ une fonction de $E$ dans $f$. 
+
+On dit que $g$ définie de $A$ dans $F$ est un prolongement de $f$ si $g_{|E} = f$.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+Soit $f$ la fonction définie sur $\defff{0}{1}$ telle que $f(x) = x(x-1)$.
+
+On peut prolonger $f$ sur $\R$ par exemple par la fonction $g$ définie sur $\R$ comme suit : $g(x) = \begin{cases}  f(x) \text{ si } x \in \defff{0}{1} \\ 0 \text{ sinon} \end{cases}$
+
+Inversement, $f$ est une restriction de la fonction $g$.
+</Hideable>
+
+<Hideable type='exemple' titre='fonctions usuelles'>
+
+$\cd$ La fonction carré : $f : \begin{cases}  \R \rightarrow  \R \\ x \mapsto  x^2 \end{cases}$
+
+$\cd$ La fonction cube : $ f : \begin{cases} \R \rightarrow \R \\ x \mapsto x^3 \end{cases} $
+
+$\cd$ La fonction inverse : $ f : \begin{cases} \R^* \rightarrow \R \\ x \mapsto \dfrac{1}{x} \end{cases} $
+
+$\cd$ La fonction racine carrée : $ f : \begin{cases} \R_+  \rightarrow \R \\ x \mapsto \sqrt{x} \end{cases} $
+
+$\cd$ La fonction identité de $E$ : $ id_E : \begin{cases} E \rightarrow E \\ x \mapsto x \end{cases} $. Elle peut sembler inutile mais elle est en fait essentielle car on essaie souvent de s'y ramener.
+
+$\cd$ La fonction exponentielle : $ exp : \begin{cases} \R \rightarrow \R \\ x \mapsto e^x \end{cases} $
+
+$\cd$ La fonction logarithme népérien : $ \ln : \begin{cases} \R_+^*  \rightarrow \R  \\ x \mapsto \ln(x) \end{cases} $
+</Hideable>
+
+<Item type='definition' titre='composition'>
+Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E\v F$ et $G$ sont trois ensembles. On définit la composée de $g$ et $f$ dite "$f$ rond $g$" ainsi :
+
+$ g \circ f : \begin{cases} E \rightarrow  G \\ x \mapsto \Big(g \circ f\Big) (x) = g\Big( f(x) \Big) \end{cases} $
+</Item>
+
+<Exercice titre=''>
+
+1\) Donner l'expression littérale ainsi que le domaine de définition de $f \circ g$ où :
+
+$f(x) = 3x - 2\v \forall x \in \defoo{-7}{8}$ et $g(x) = x^2 + x \v \forall x \in \deffo{2}{5}$.
+
+<br/>
+
+2\) Donner des domaines de définition les plus grands possibles de $\cD_f$ et $\cD_g$ de $f$ et de $g$  où $f(x) = x^2 - 6x +1$ et $g(x) = \ln(3x - 1)$ tel que $g \circ f$ ait un sens.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) Soit $x \in \deffo{2}{5}$, on a $f\Big( g(x) \Big) = f( x^2 + x) = 3(x^2 + x) - 2$ 
+
+donc $f \circ g$ est la fonction $ f\circ g : \begin{cases}   \deffo{2}{5} \rightarrow  \R \\ x \mapsto 3x^2 + 3x - 2 \end{cases} $
+
+<br/>
+
+2\) $\ln$ est définie sur $\R_+^*$ mais donc $\ln(3x-1)$ n'a de sens que si $3x-1 > 0$ d'où $x > \dfrac{1}{3}$. 
+
+Soit $x \in \D_f$, on note $y = f(x)$. $g(y)$ existe ssi. $y > \dfrac{1}{3}$. 
+
+Donc $x^2 - 6x + 1 > \dfrac{1}{3} \ssi x^2 - 6x + \dfrac{2}{3} > 0$, 
+
+on factorise donc $x^2 - 6x + \dfrac{2}{3}$ en calculant le discriminant que l'on note $\Delta$.
+
+<br/>
+
+**Calcul de $\Delta$ et des racines :** 
+
+$\Delta = 6^2 - 4\times 1 \times \dfrac{2}{3} = 36 - \dfrac{8}{3} = \dfrac{100}{3}$.
+
+On en déduit que les racines de $x^2 - 6x + \dfrac{2}{3}$ sont $x_{\pm} = \dfrac{6 \pm \dfrac{10}{\sqrt{3}}}{2}$.
+
+<br/>
+
+**Conclusion :** On en déduit que $f(x) > \dfrac{1}{3}$ ssi. $x \in \defoo{- \infty}{x_-} \bigcup \defoo{x_+}{+ \infty}$. 
+
+Cet ensemble est donc $\cD_{g\circ f}$. 
+
+D'où $\cD_f = \defoo{- \infty}{x_-} \bigcup \defoo{x_+}{+ \infty}$ et $\cD_g = \defoo{\dfrac{1}{3}}{+ \infty}$
+
+
+</Hideable>

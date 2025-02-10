@@ -1,0 +1,201 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='proposition' titre='inégalité usuelle'>
+
+soit $x \in \R$,
+
+$$
+\mid \sin(x)\mid \leqslant \mid x \mid 
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Démonstration géométrique :**
+
+Soient $A(\cos(x) \v 0)$, $B(\cos(x) \v \sin(x))$ et $C(1 \v 0)$.  
+
+On a $BC \leqslant |x|$ car il s'agit du chemin le plus court entre $B$ et $C$, et $x$ est la longueur d'un chemin entre $B$ et $C$. 
+
+<br/>
+
+D'autre part, $ABC$ est un triangle rectangle en $A$ et donc $BC \geqslant AB$ car $BC$ est l'hypothénuse du triangle rectangle. On remarque de plus que $AB = |\sin(x)|$.
+
+Puisque $BC \geqslant AB$, on conclut que $|x| \geqslant |\sin(x)|$
+
+</Hideable>
+
+
+<Item type='proposition' titre='dérivées des fonctions trigonométriques' tag="admis">
+
+$\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
+
+$\cd$ $\cos'(x) = -\sin(x)$
+
+$\cd$ $\sin'(x) = \cos(x)$
+</Item>
+
+<Remarque titre='pistes pour la preuve géométrique'>
+
+La démonstration consiste à utiliser des formules $\cos(a+b)$ et $\sin(a+b)$ et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
+
+<br/>
+
+L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. 
+
+On peut encadrer l'aire de la section de cercle d'arc $\theta$ par les aires de deux triangles rectangles et en déduire la compariason des aires (aires de deux triangles et d'une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
+</Remarque>
+
+
+<Item type='definition' titre='fonction tangente'>
+
+Soit $x \in \deftan $, on définit la fonction tangente sur ce même ensemble ainsi :
+
+$$ 
+\tan(x) = \dfrac{\sin(x)}{\cos(x)}
+$$
+
+</Item>
+
+<Item type='proposition' titre='propriétés fondamentales de la fonction tangente'>
+La fonction tangente est impaire, $\pi$-périodique et strictement croissante.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Imparité :**
+
+$\tan(-x) = \dfrac{\sin(-x)}{\cos(-x)} = \dfrac{-\sin(x)}{\cos(x)}$ par parité du cosinus et imparité du sinus. 
+
+D'où $\tan(-x) = -\tan(x)$ et $\tan$ est donc impaire.
+
+<br/>
+
+**Périodicité :**
+
+$\tan(x + \pi) = \dfrac{\sin(x  \pi)}{\cos(x + \pi)} = \dfrac{-\sin(x)}{-\cos(x)} = \tan(x)$
+
+<br/>
+
+**Croissance :**
+
+$\tan'(x) = \dfrac{\cos^2(x) - (-\sin(x))\sin(x)}{\cos^2(x)} = \dfrac{1}{\cos^2(x)} > 0$. La fonction tangente est donc strictement croissante.
+</Hideable>
+
+<Item type='proposition' titre=''>
+
+Soient $(a,b) \in \deftan^2$. On a :
+
+$\cd$ $\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 -\tan(a) \tan(b)}$ si $a+b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+
+$\cd$ $\tan(a - b) = \dfrac{\tan(a) - \tan(b)}{1 +\tan(a) \tan(b)}$ si $a-b \not \equiv \dfrac{\pi}{2} \; [\pi]$
+
+$\cd$ $ 1 + \tan^2(a) = \dfrac{1}{\cos^2(a)}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première égalité :**
+
+$\tan(a + b) = \dfrac{\sin(a+b)}{\cos(a+b)} = \dfrac{\sin(a)\cos(b) + \sin(b)\cos(a)}{\cos(a)\cos(b) - \sin(a)\sin(b)} $
+
+En factorisant par $\cos(a)\cos(b)$, on a 
+
+$$
+\tan(a + b) = \dfrac{\tan(a) + \tan(b)}{1 - \tan(a)\tan(b)} 
+$$
+
+<br/>
+
+**Deuxième égalité :**
+
+En appliquant la formule à $\tilde{a} = a$ et $\tilde{b} = -b$. En utilisant l'imparité de $\tan$, on obtient : 
+
+$$
+\tan(\tilde{a} + \tilde{b}) = \dfrac{\tan(a) + \tan(-b)}{1 - \tan(a)\tan(-b)} =  \dfrac{\tan(a) - \tan(b)}{1 + \tan(a)\tan(b)}
+$$
+
+**Troisième égalité :**
+
+$$
+ 1 + \tan^2(a) = 1 + \dfrac{\sin^2(a)}{\cos^2(a)} = \dfrac{\cos^2(a) + \sin^2(a)}{\cos^2(a)} = \dfrac{1}{\cos^2(a)}
+$$
+
+</Hideable>
+
+
+<Item type='proposition' titre="formules de l'angle moitié">
+
+Soit $\theta \in \defoo{-\pi}{\pi}$. On pose $\tan(\dfrac{\theta}{2})$, on a :
+
+$\cd$ $\cos(\theta) = \dfrac{1-t^2}{1 + t^2}$
+
+$\cd$ $\sin(\theta) = \dfrac{2t}{1 + t^2}$
+
+$\cd$ $\tan(\theta) = \dfrac{2t}{1 - t^2}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\theta \in \R \mid \dfrac{\theta}{2} \in \deftan$. On pose $t = \tan(\dfrac{\theta}{2})$. 
+
+<br/>
+
+**Première égalité :**
+
+$$
+\cos(2 \dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) - \sin^2(\dfrac{\theta}{2}) = \cos^2(\dfrac{\theta}{2}) (1 - t^2) = \dfrac{1 - t^2}{e + t^2}
+$$
+
+<br/>
+
+**Deuxième égalité :**
+
+$$
+\sin(2 \dfrac{\theta}{2}) = 2\cos(\dfrac{\theta}{2})\sin(\dfrac{\theta}{2}) = 2 \cos(\dfrac{\theta}{2}) . \sin(\cos(\dfrac{\theta}{2})) . \dfrac{\cos(\dfrac{\theta}{2})}{\cos(\dfrac{\theta}{2})} = 2 \cos^2(\cos(\dfrac{\theta}{2})) . t = \dfrac{2t}{1 + t^2}
+$$
+
+<br/>
+
+**Troisième égalité :**
+
+$$
+\tan(\theta) = \tan( \dfrac{\theta}{2} + \dfrac{\theta}{2}) = \dfrac{2t}{1 - t^2}
+$$
+
+</Hideable>
+
+<Exercice titre='Des éléments rationnels du cercle'>
+
+Soit $\cC$ le cercle unité. Y-a-t'il un nombre fini d'éléments dans $\Big(\Q \times \Q \Big) \bigcap \cC$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+$ \{ \Point{\dfrac{1 - t^2}{1 + t^2}}{\dfrac{2t}{1 + t^2}} \mid t \in \Q \}$ est un ensemble contenant une infinité d'éléments du cercle puisque leurs coordonnées vérifient $x^2 + y^2 = 1$.
+
+De plus, les coordonnées des points de cet ensemble sont rationnelles. 
+</Hideable>
+
+<Item type='proposition' titre='dérivation de la fonction tangente'>
+
+Soit $x \in \deftan$,
+
+$$
+\tan'(x) = \dfrac{\cos^2(x) - \sin^2(x)}{\cos^2(x)} = 1 - \tan^2(x)
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in \deftan$, 
+
+$$
+\tan'(x) = \dfrac{\sin'(x) \times \cos(x) - \sin(x) \times \cos'(x)}{\cos^2(x)} = \dfrac{\sin^2(x) - \cos^2(x)}{\cos^2(x)} = 1 - \tan^2(x)
+$$
+</Hideable>

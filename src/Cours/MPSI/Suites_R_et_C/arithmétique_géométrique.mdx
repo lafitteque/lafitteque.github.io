@@ -1,0 +1,112 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+Les démonstrations de cette sous-section seront traitées de manière très superficielle car elles sont majoritairement au programme de lycée.
+
+
+<Item type='definition' titre='suite arithmétique'>
+
+Une suite $\suitedefN{u_n}$ est dite arithmétique si : $\exists! r \in \R \mid \forall n \in \N\v u_{n+1} = u_n + r$. L'unique réel $r$ vérifiant cela est appelé raison de la suite $\suitedefN{u_n}$.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation'>
+
+Une suite $\suitedefN{u_n}$ est arithmétique ssi.  $\exists! r \in \R \mid \forall n \in \N\v u_{n+1} -  u_n = r$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Obtenu en soustrayant $u_n$ de part et d'autre de l'égalité.
+</Hideable>
+
+<Item type='proposition' titre='formule explicite'>
+
+Soit $\suitedefN{u_n}$ une suite arithmétique de raison $r \in \R$. On a : $u_n = u_0 + n.r$ et $u_{n+p} = u_n + p.r$ si $n$ et $p$ sont dans $\N$.
+</Item>
+
+<Item type='proposition' titre=''>
+
+Obtenu par récurrence ou simplement par télescopage à l'aide de la caractérisation précédente.
+</Item>
+
+
+<Item type='proposition' titre="monotonie d'une suite arithmétique">
+
+Une suite arithmétique est croissante (resp. décroissante) ssi sa raison est positive (resp. négative). Le résultat est analogue pour la stricte monotonie.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+S'obtient grâce à la caractérisation de la monotonie par différence de deux termes consécutifs.
+</Hideable>
+
+<Item type='proposition' titre='suite arithmétique et opérations'>
+
+La somme de deux suites arithmétiques est une suite arithmétique.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $\suitedefN{u_n}$ et $\suitedefN{v_n}$ deux suites arithmétiques. Il existe $r_1$ et $r_2$ des réels tels que $u_n = nr_1 + u_0$ et $v_n = n.r_2 + v_0$. Alors $u_n + v_n = n(r_1 + r_2) + u_0 + v_0$. La somme est donc une suite arithmétique.
+</Hideable>
+
+<Item type='definition' titre='suite géométrique'>
+
+Une suite $\suitedefN{u_n}$ est dite géométrique si : $\exists! q \in \R \mid \forall n \in \N\v u_{n+1} = q.u_n$. L'unique réel $q$ vérifiant cela est appelé raison de la suite $\suitedefN{u_n}$.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation'>
+
+Une suite $\suitedefN{u_n}$ est géométrique ne s'annulant pas ssi.  $\exists! q \in \R \mid \forall n \in \N\v \dfrac{u_{n+1}}{u_n} = q$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Obtenu par passage au quotient à partir de la définition.
+</Hideable>
+
+<Item type='proposition' titre='formule explicite'>
+
+Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$. On a : $u_n = u_0.q^n$ et $u_{n+p} = u_n.q^p$ si $n$ et $p$ sont dans $\N$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Obtenu soit par récurrence soit par télescopage (version produit) à partir de la caractérisation précédente. 
+
+Si on utilise le télescopage, il faut traiter à part le cas où la suite s'annule, auquel cas on peut montrer que, soit $u_0 = 0$ soir $q = 0$. Pour cela, on peut supposer que la suite s'annule et donc que $A = \{n \in \N \mid u_n = 0\}$ est non vide. Mais $A \subset \N$ donc $A$ admet un minimum que l'on note $n_0$. On a donc : soit $n_0 = 0$, auquel cas $u_0 = 0$, soit $u_{n_0} = 0 = q.u_{n_0 - 1}$ et donc $q = 0$ car $n_0 - 1 \notin A$ puisque cela contredirait la minimalité de $n_0$. Ainsi, on peut conclure sur le cas d'annulation.
+</Hideable>
+
+<Item type='proposition' titre="monotonie d'une suite géométrique">
+
+Soit $\suitedefN{u_n}$ une suite géométrique de raison $q \in \R$. 
+
+$\cd$ Si $ 0 \leqslant q \leqslant 1$ et que $u_0 \geqslant 0$, alors $\suitedefN{u_n}$ est décroissante.
+
+$\cd$ Si $ 1 \leqslant q $ et que $u_0 \geqslant 0$, alors $\suitedefN{u_n}$ est croissante.
+
+Pour les mêmes critères mais avec $u_0 \leqslant 0$, la monotonie est inversée
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On applique la caractérisation de la monotonie par quotient.
+</Hideable>
+
+<Item type='proposition' titre='suite géométrique et opérations'>
+
+Le produit de deux suites géométriques est une suite géométriques.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$u_n = u_0.q_1^n$ et $v_n = v_0.q_2^n$ donne $u_n.v_n = (u_0.v_0).(q_1.q_2)^n$ d'où le résultat.
+</Hideable>
+

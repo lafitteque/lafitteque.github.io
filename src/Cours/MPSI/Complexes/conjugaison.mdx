@@ -1,0 +1,115 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='conjugaison'>
+
+Soit $z \in \C$ tel que $z = a + ib$ soit sa forme algébrique. 
+
+On appelle conjugué de $z$ le complexe $\overline{z} = a - ib $
+</Item>
+
+<Item type='proposition' titre='propriétés de la conjugaison'>
+Soient $z$ et $z'$ des complexes et $\lambda$ un réel. On a :
+
+$\cd$ $\overline{\big(\overline{z}\big)} = z$
+
+$\cd$ $\overline{z . z'} = \overline{z} . \overline{z'}$
+
+$\cd$ $\overline{\Big(\dfrac{z}{z'}\Big)} = \dfrac{\;\; \overline{z}\;\; }{\overline{z'}}$
+
+$\cd$ $\overline{z + z'} = \overline{z} + \overline{z'}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On pose $a = \Re(z)\v b = \Im(z) \v c = \Re(z') \v d = \Im(z')$
+
+<br/>
+
+**Première égalité :** 
+<Indent>
+
+$\overline{z} = a -ib = a + i \tilde{b}$ où $\tilde{b} = -b$. 
+
+Donc $\overline{\big(\overline{z}\big)} = a - i\tilde{b} = a + ib = z$
+</Indent>
+
+<br/>
+
+**Deuxième égalité :** 
+<Indent>
+
+D'une part, 
+
+$$
+\overline{z . z'} = (ac -bd) -i(bc + ad)
+$$ 
+
+D'autre part, 
+
+$$
+ \overline{z} . \overline{z'} = (a - ib)(c - id) = ac + (-ib)(-id) + (-ib)c + a(-id) = (ac -bd) -i(bc + ad)
+ $$ 
+
+d'où l'égalité.
+</Indent>
+
+<br/>
+
+**Troisième égalité :** 
+<Indent>
+
+$\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{\Big(\dfrac{a + ib}{c + id}\Big)}$
+
+On multiplie et divise par $c - id$ au sein des parenthèses :
+
+$$
+\overline{\Big(\dfrac{a + ib}{c + id}.\dfrac{c - id}{c - id}\Big)} = \overline{\Big(\dfrac{(a+ib)(c-id)}{c^2 + d^2}\Big)}
+$$
+
+A l'aide de la deuxième égalité, on a $\overline{\Big(\dfrac{z}{z'}\Big)} = \overline{(a+ib)} \overline{(c-id)} \overline{\Big(\dfrac{1}{c^2 + d^2}\Big)} $
+
+mais 
+
+$$
+\overline{(a+ib)} \overline{(c-id)} \underbrace{\overline{\Big(\dfrac{1}{c^2 + d^2}\Big)}}_{\in \R} 
+= \overline{(a+ib)} . \overline{\cancel{(c-id)}} \dfrac{1}{\cancel{(c+id)} \overline{(c+id)}} 
+= \dfrac{\overline{(a+ib)}}{\overline{(\overline{c+id})}}
+$$ 
+
+</Indent>
+
+<br/>
+
+**Quatrième égalité :** 
+<Indent>
+
+$$
+\overline{z + z'} = \overline{a + ib + c + id} = a + c - ib - id =  \overline{z} + \overline{z'}
+$$
+</Indent>
+
+</Hideable>
+
+
+<Item type='proposition' titre='lien avec la partie imaginaire et la partie réelle'>
+Soit $z \in \C$. On a :
+
+$\cd$ $z + \overline{z} = 2\Re(z)$
+
+$\cd$ $z - \overline{z} = 2i\Im(z)$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $z \in \C$, on pose $a = \Re(z)\v b = \Im(z)$. On a donc :
+
+$z + \overline{z} = (a+ib) + (a-ib) = 2a \; $ et $ \; z - \overline{z} = (a+ib) - (a-ib) = 2ib$. D'où le résultat.
+
+</Hideable>
+

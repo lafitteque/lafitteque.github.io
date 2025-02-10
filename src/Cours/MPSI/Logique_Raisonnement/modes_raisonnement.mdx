@@ -1,0 +1,98 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type='definition' titre='Les différents modes de raisonnement'>
+
+On utilise plusieurs modes de raisonnement en mathématiques dont voici les plus courants :
+
+<br/>
+
+$\cd$ Le raisonnement par implication qui consiste à chainer des implications.
+
+$\cd$ Le raisonnement par équivalence qui consiste à chainer des équivalences.
+
+$\cd$ Le raisonnement par contraposée qui consiste à aborder une implication par sa contraposée (cela peut être plus simple).
+
+$\cd$ Le raisonnement par l'absurde qui consiste à faire l'hypothèse qu'une proposition est vraie et à trouver une absurdité. Cela montre que l'hypothèse était fausse. 
+
+$\cd$ Le raisonnement par double implication qui consiste à montrer deux implications pour en déduire une équivalence.
+
+$\cd$ Le raisonnement par récurrence.
+
+$\cd$ Le raisonnement par analyse-synthèse qui consiste à chercher les caractéristiques d'une solution à un problème en supposant qu'elle existe jusqu'à trouver une (ou des) potentielle solution (analyse) puis à vérifier que la solution convient (synthèse).
+</Item>
+
+**Exemple classique** : raisonnement par analyse-synthèse. Montrons que toute fonction $f$ de $\R$ dans $\R$ peut s'écrire comme la somme d'une fonction paire et d'une fonction impaire.
+<Fil>
+**Analyse** : 
+
+<Indent>
+
+Cette partie consiste à chercher à tâtons la forme de la solution. 
+
+D'abord, on suppose qu'il existe $f_p$ (resp. $f_i$) paire (resp. impaire) telles que 
+
+$$
+f(x) = f_p(x) + f_i(x), \; \forall x \in \R
+$$
+
+Comme l'étude de la parité consiste à évaluer en $-x$, on peut évaluer $f$ en $-x$ : 
+
+$$
+f(-x) = f_p(-x) + f_i(-x), \; \forall x \in \R
+$$
+
+Mais donc $f(-x) = f_p(x) - f_i(x), \; \forall x \in \R$. Ce qui nous donne une deuxième équation.
+
+Avec deux équations, on peut effectuer des combinaisons linéaires et obtenir $f(x) + f(-x) = 2f_p(x)$ par somme mais aussi.$f(x) - f(-x) = 2f_i(x)$ par différence et ce pour tout $x $ dans $\R$.
+
+On en déduit donc que, si $f_p$ et $f_i$ existent, ces deux fonctions vérifient 
+
+$$
+\forall x \in \R\v f_p(x) = \dfrac{f(x) + f(-x)}{2} \, \text{ et }\, f_i(x) = \dfrac{f(x)- f(-x)}{2}
+$$ 
+</Indent>
+
+
+**Synthèse** : 
+
+<Indent>
+
+Cette partie consiste à vérifier que nos prétendants trouvés précédemment vérifient la propriété voulue. 
+
+Soient $f_p : x \mapsto \dfrac{f(x) + f(-x)}{2}$ et $f_i : x \mapsto \dfrac{f(x) - f(-x)}{2}$ toutes deux définies sur $\R$. 
+
+<br/>
+Nous devons vérifier que :
+
+$\cd$ (A) : $f_p$ est paire
+
+$\cd$ (B) : $f_i$ est impaire
+
+$\cd$ (C) : $f(x) = f_p(x) + f_i(x), \; \forall x \in \R$
+
+<br/>
+
+En effet : 
+
+**(A) :** $f_p(-x) = \dfrac{f(-x) + f(x)}{2} = f_p(x), \; \forall x \in \R$ et donc $f_p$ est paire.
+
+<br/>
+
+**(B) :** $f_i(-x) = \dfrac{f(-x) - f(x)}{2} = -f_i(x), \; \forall x \in \R$ et donc $f_p$ est impaire.
+
+<br/>
+
+**(C) :** $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x)}{2} + \dfrac{f(x) - f(-x)}{2} $ 
+
+d'où $f_p(x) + f_i(x) = \dfrac{f(x) + f(-x) + f(x) - f(-x)}{2} = \dfrac{2f(x)}{2} = f(x), \; \forall x \in \R$
+<br/>
+
+</Indent>
+
+**Conclusion** : La propriété est donc vraie.
+</Fil>

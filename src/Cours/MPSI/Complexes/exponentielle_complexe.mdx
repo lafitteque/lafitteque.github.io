@@ -1,0 +1,27 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='exponentielle complexe'>
+Soit $z \in \C$, on définit $e^z$ comme suit :
+
+$$
+e^z = e^{|z|}e^{i\Arg(z)}
+$$
+</Item>
+
+<Item type='proposition' titre="multiplicativité de l'exponentielle complexe">
+
+$$
+\forall (z,z') \in \C^2 \v e^{z+z'} = e^ze^{z'}
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Immédiat en appliquant les propriétés de l'exponentielle réelle et de l'exponentielle d'imaginaires purs ($e^{i(a+b)} = e^{ia}e^{ib}$).
+</Hideable>

@@ -1,0 +1,56 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='densité'>
+
+Soit $A \subset \R$. On dit que $A$ est dense dans $\R$ si :
+
+$$
+\forall (a\v b) \in \R^2\v \; a < b \Rightarrow \defff{a}{b} \bigcap \R \neq \empty
+$$
+</Item>
+
+<Item type='proposition' titre='densité des rationnels et des irrationnels'>
+
+$\cd$ Les décimaux ($\D$) sont denses dans les réels.
+
+$\cd$ Les rationnels ($\Q$) sont denses dans les réels.
+
+$\cd$ Les irrationnels ($\R \setminus \Q$) sont denses dans les réels.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Deux premiers résultats :** on va montrer le premier résutat ce qui démontrera le second car $\D \subset \Q$. 
+
+Soient $x \in \R$ et $n \in \N$. 
+
+On pose $x_n = \dfrac{\floor{x.10^n}}{10^n}$. On a :
+
+$x.10^n - 1 \leqslant \floor{x.10^n} \leqslant x.10^n $ 
+
+puis $x - \dfrac{1}{10^n} \leqslant \dfrac{\floor{x.10^n}}{10^n} \leqslant x$. Mais $x_n \in \D$. 
+
+<br/>
+
+Donc, si $a$ et $b$ sont deux réels ordonnés strictement, alors il existe $x \in \defoo{a}{b}$.
+
+Pour $n$ assez grand, $x - \dfrac{1}{10^n} \in \defff{a}{b}$. (on peut vérifier que $n = \ceil{\dfrac{2}{x-a}}$ convient)
+
+Soit un tel $n$, alors $x_n$ est dans $\defff{a}{b}$. Donc $\defff{a}{b} \bigcap \R \neq \empty$
+
+<br/>
+
+**Troisième résultat :** On peut procéder par translation : $\pi + \Q \subset \R \setminus \Q$. 
+
+On peut alors considérer $\tilde{a} = a - \pi$ et $\tilde{b} = b - \pi$. 
+
+Comme $\defff{\tilde{a}}{\tilde{b}} \bigcap \Q \neq \empty$ par densité de $\Q$, $\defff{a}{b} \bigcap \Big(\R \setminus \Q \Big) \neq \empty$
+
+On a donc $\R \setminus \Q$ qui est dense dans $\R$.
+</Hideable>

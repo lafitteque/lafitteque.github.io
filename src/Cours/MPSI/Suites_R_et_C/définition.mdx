@@ -1,0 +1,39 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='suite'>
+
+On appelle suite une application de $E \subset \N$ dans $F$ où $F$ est un ensemble.
+
+En particulier, on appelle suite numérique une suite dont l'ensemble d'arrivée est dans $\C$ (ou $\R$).
+
+L'ensemble des suites réelles est $\R^{\N}$ (cf. cours sur les applications)
+</Item>
+
+<Remarque titre=''>
+
+La suite dont les termes sont $u_0 \v u_1 \v u_2 \v \dotsm$ est notée $u$, $(u_n)$ ou bien $\suitedefN{u_n}$. Cette dernière version est préférable. 
+
+<br/>
+
+La suite dont les termes sont $u_4 \v u_5 \v u_6 \v \dotsm$ est notée $\suitedef{u_n}{n\geqslant 4}$
+</Remarque>
+
+
+
+**Différents modes de définition :**
+
+<Fil>
+On a plusieurs manières de définir une suite.
+
+$\cd$ **Explicitement :** soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $\suitedefN{u_n}$ par la relation $u_n = f(n)$.
+
+$\cd$ **Par récurrence :** soit $f$ une fonction de $\R$ dans $\R$, on définit la suite $\suitedefN{u_n}$ par la relation $u_{n+1} = f(u_n)$.
+
+$\cd$ **Implicitement :** chaque terme $u_n$ suit une certaine relation. Par exemple, on définit $u_n$ comme la seule racine réelle du polynôme $x^3 -nx^2 +x -n$. Dans cet exemple, comme $x^3 -nx^2 +x -n = (x-n)(x^2+1)$, on en déduit aisément que $u_n = n$ ce qui explicite le terme général de la suite.
+</Fil>

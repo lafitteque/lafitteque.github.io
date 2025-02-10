@@ -1,0 +1,84 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+Une somme double  est une somme de la forme 
+$$
+\somme{i \in I}{} \somme{j \in J}{} a_{i,j} 
+$$
+ où $I$ et $J$ sont des ensembles et les $a_{i,j}$ sont des complèxes indéxés dans $I\times J$.
+
+De telles sommes apparaissent régulièrement en combinatoire et en probabilités mais pas uniquement. En analyse, elles sont très courantes aussi. Il est 
+donc très important de savoir les manipuler avec les méthodes usuelles.
+
+<Item type='proposition' titre='produits de sommes'>
+Soient $n$ et $m$ deux entiers strictement positifs, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{m-1} \v b_m)$ des éléments de $\C$. On a :
+
+$$ 
+\Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j = \somme{(i,j)\in I \times J}{} a_i b_j
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons par récurrence sur $n \in \N$ la propriété $\cP(n)$ : $ \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j $
+
+**Initialisation :** $\cP(0)$ est vérifiée immédiatement les deux côtés de l'égalité sont nuls dans ce cas puisque la somme se fait sur un ensemble vide.
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée pour un certain $n \in \N$. Montrons $\cP(n+1)$
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \Big( \somme{i=1}{n} a_i \, + \, a_{n+1} \Big) \Big( \somme{j=1}{m} b_i \Big) $
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \Big( \somme{i=1}{n} a_i \Big) \Big( \somme{j=1}{m} b_i \Big)  +  a_{n+1} \Big( \somme{j=1}{m} b_i \Big)  $
+
+Or, par hypothèse de récurrence, puisque $\cP(n)$ est supposée vraie,
+
+$ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n} \somme{j=1}{m} a_i b_j  +  \somme{j=1}{m} a_{n+1}  b_i  $
+
+Finalement, $ \Big( \somme{i=1}{n+1} a_i \Big) \Big( \somme{i=1}{m} b_i \Big) = \somme{i=1}{n+1} \somme{j=1}{m} a_i b_j$
+
+<br/>
+
+**Conclusion :** On a montré que $\cP(0)$ était vérifiée ainsi que l'implication $\cP(n) \Rightarrow \cP(n+1)$ pour $n \in \N$. 
+On a donc bien montré la propriété $\cP(n)$ pour tout $n \in \N$
+
+</Hideable>
+
+<Item type='proposition' titre='somme triangulaire'>
+Soient $n \in \N$ et $ a_{i,j} \in C^n$ où $0 \leqslant j \leqslant i \leqslant n$. On a :
+
+$$
+\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{j = 0}{n} \somme{i = j}{n} a_{i,j}
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Plus qu'une démonstration, il s'agit d'une explication. En fait, on parcourt chaque combinaison $(i,j)$ du tableau suivant :
+
+| i / j | 0 | 1 | 2 | ... | n |
+|---|---|---|---|---|---|
+| 0 | (0,0) | / | / | ... | /|
+| 1 | (1,0) | (1,1) | / | ... | /|
+| 2 | (2,0) | (2,1) | (2,2) | ... | /|
+| ... | ... | ... | ... | ... | ...|
+| n | (n,0) | (n,1) | (n,2) | ... | (n,n)|
+
+On peut parcourir les éléments de ce tableau ligne par ligne. Cela signifie que l'on lit d'abord la valeur de $i$ et on regarde ensuite les valeurs de $j$ qui conviennent.
+
+Mais on peut aussi parcourir le tableau colonne par colonne. On lit la valeur de $j$ puis on regarde les valeurs de $i$ qui conviennent. En fait, à $j$ fixé, les valeurs de $i$ qui conviennent sont celles dans $\defentiers{j}{n}$. D'où la propriété.
+</Hideable>
+
+<Remarque>
+En utilisant le tableau de la démonstration précédente et ses diagonales, si l'on note $L_k = \{ (i \v j) \mid 0\leqslant j \leqslant i \leqslant n \; \text{et} \;  i+j = k \}$ on a également 
+
+$$
+\somme{i = 0}{n} \somme{j = 0}{i} a_{i,j} = \somme{k = 0}{2n} \somme{ (i \v j) \in L_k }{} a_{i,j}
+$$
+</Remarque>

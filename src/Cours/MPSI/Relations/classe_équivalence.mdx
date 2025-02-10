@@ -1,0 +1,75 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="classes d'équivalence">
+
+Soient $\cR$ une relation d'équivalence sur $E$ et $x \in E$.
+
+On appelle classe d'équivalence de $x$ l'ensemble 
+
+$$
+\cC_x = \{ y \in E \mid x \cR y\}
+$$ 
+</Item>
+
+<Remarque titre=''>
+
+La classe d'équivalence de zéro pour la relation déquivalence de congruence modulo $a$ dans $\R$ qui est l'ensemble $\{a.k \mid k \in \Z \}$ est notée $a.\Z$. 
+
+Par exemple $2.\Z$ est l'ensemble des multiples de deux et $2\pi. \Z$ est l'ensemble des multiples de $2\pi$
+</Remarque>
+
+<Item type='proposition' titre="propriété sur la classe d'équivalence">
+
+Soit $\cR$ une classe d'équivalence sur $E$. Soient $x,y$ deux éléments de $E$. 
+
+Les trois propriétés suivantes sont équivalentes
+
+$\cd$ i\) $x \cR y$
+
+$\cd$ ii\) $\cC_x = \cC_y$ 
+
+$\cd$ iii\) $\cC_x \bigcap \cC_y \neq \empty$
+
+
+Si deux éléments ne sont pas en relation, alors leurs classes d'équivalence sont disjointes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $i \Rightarrow ii$ : supposons $x$ et $y$ sont en relation. Par transitivité, tout élément en relation avec $x$ est en relation avec $y$ et inversement. D'où le sens direct de l'implication.
+
+$\cd$ $ii \Rightarrow iii$  : c'est évident car $x \in \cC_x$ donc $\cC_x \bigcap \cC_y = \cC_x \neq \empty$
+
+$\cd$ $iii \Rightarrow i$ : Si $\cC_x \bigcap \cC_y \neq \empty$, il existe $z \in \cC_x \bigcap \cC_y$. Donc $x \cR z $ et $z \cR y$ d'où $x \cR y$ par transitivité.
+
+</Hideable>
+
+<Item type='proposition' titre="partition par ensembles d'équivalence">
+
+Soit $\cR$ une relation d'équivalence sur $E$. Les classes d'équivalence de $\cR$ forment une partition de $E$. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $X$ un ensemble contenant un élément par classe d'équivalence distincte. 
+
+<br/>
+
+D'une part, $\bigcup \limits_{x \in X} \cC_x \subset E$ car pour tout $x$, $\cC_x \subset X$.
+
+<br/>
+
+D'autre part, si $y \in E$,$y \in \cC_y$ et $\cC_y$ est une classe d'équivalence donc elle est représentée par un $x \in X$. D'où l'inclusion inverse.
+
+<br/>
+
+Finalement, si $(x\v y) \in X^2$, alors $\cC_x \neq \cC_y \Rightarrow \cC_x \bigcap \cC_y = \empty$ 
+
+D'où le résultat.
+</Hideable>

@@ -1,0 +1,113 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='monotonie'>
+Soit $f$ une fonction définie sur $I \subset \R$ et à valeurs dans $\R$. On dit que :
+
+$\cd$ $f$ est croissante (resp. strictement croissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y) \; $ (resp. $f(x) < f(y)$)
+
+$\cd$ $f$ est décroissante (resp. strictement décroissante) si : $\forall (x\v y) \in I^2, x < y \Rightarrow f(x) \geqslant f(y) \; $ (resp. $f(x) > f(y)$)
+
+Si une fonction est croissante (resp. strictement décroissante) ou bien si elle est décroissante (resp. strictement croissante), on dit qu'elle est monotone (resp. strictement monotone).
+</Item>
+
+<Remarque titre=''>
+
+On remarquera que $\Big( \forall (x\v y) \in I^2, x < y \Rightarrow f(x) \leqslant f(y) \Big) $ si et seulement si $ \Big(\forall (x\v y) \in I^2, x > y \Rightarrow f(x) \geqslant f(y) \Big)$
+
+L'important est qu'une fonction croissante conserve l'ordre alors qu'une fonction décroissante inverse l'ordre.
+</Remarque>
+
+<Item type='proposition' titre=''>
+Soient $f$ et $g$ deux fonctions définies sur $\R$ et à valeurs dans $\R$.
+
+$\cd$ Si $f$ est croissante, alors $-f$ est décroissante.
+
+$\cd$ Si $f$ et $g$ sont de même monotonie, alors $g \circ f$ est croissante .
+
+$\cd$ Si $f$ et $g$ sont de monotonie opposées, alors $f \circ g$ est décroissante
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première affirmation :** Soient $f$ croissante et $x < y$ deux réels. 
+
+$f(x) \leqslant f(y)$ mais par décroissance de la fonction $x \mapsto -x$ définie sur $\R$, $-f(x) \geqslant -f(y)$. 
+
+$-f$ est donc décroissante.
+
+<br/>
+
+**Deuxième affirmation :** 
+
+<Indent>
+
+$\cd$ Si $f$ et $g$ sont croissantes, 
+
+$x < y \Rightarrow f(x) \leqslant f(y) \Rightarrow g\Big( f(x) \Big) \leqslant g\Big( f(y) \Big) \Rightarrow g\circ f (x) \leqslant g \circ f (y) $ et donc la composée est croissante.
+
+$\cd$ Si les deux sont décroissantes, 
+
+$x < y \Rightarrow f(x) \geqslant f(y) \Rightarrow g\Big( f(x) \Big) \leqslant g\Big( f(y) \Big) \Rightarrow g\circ f (x) \leqslant g \circ f (y) $ et donc la composée est croissante.
+
+</Indent>
+
+<br/>
+
+**Troisième affirmation :** 
+<Indent>
+
+$\cd$ Si $f$ est décroissante et $g$ est croissante, 
+
+$x < y \Rightarrow f(x) \geqslant f(y) \Rightarrow g\Big( f(x) \Big) \geqslant g\Big( f(y) \Big) \Rightarrow g\circ f (x) \geqslant g \circ f (y) $ et donc la composée est décroissante.
+
+$\cd$ Si $f$ est croissante et $g$ est décroissante, 
+
+$x < y \Rightarrow f(x) \leqslant f(y) \Rightarrow g\Big( f(x) \Big) \geqslant g\Big( f(y) \Big) \Rightarrow g\circ f (x) \geqslant g \circ f (y) $ et donc la composée est décroissante.
+
+</Indent>
+
+<br/>
+
+Les démonstrations sont identiques pour la stricte monotonie en échangeant les symbôles $\leqslant$ par $<$ et les symboles $\geqslant$ par $>$.
+</Hideable>
+
+<Item type='proposition' titre=''>
+Une fonction strictement monotone est injective.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On suppose que $f$ est strictement croissante. En  effet, sinon, il suffit de considérer $g =-f$ qui est strictement croissante.
+
+<br/>
+
+Soient $x\v y \in \cD_f \subset \R$ tels que $f(x) = f(y)$. 
+
+Raisonnons par l'absurde en supposant que $x \neq y$.
+
+<br/>
+
+**Cas 1 :** $x < y$ auquel cas $f(x) < f(y)$ par stricte croissance de $f$. Ce qui est absurde puisque $f(x) = f(y)$.
+
+<br/>
+
+**Cas 2 :** $x > y$ auquel cas $f(x) > f(y)$ par stricte croissance de $f$. Ce qui est absurde puisque $f(x) = f(y)$.
+
+<br/>
+
+Nécessairement $x = y$ et $f$ est injective.
+
+</Hideable>
+
+<Hideable type='exemple' titre=' Contre-Exemple'>
+
+Une fonction peut être injective sans être strictement monotone. 
+
+C'est le cas de la fonction $f$ définie sur $\{0 \v 1 \v 2\}$ telle que $f(0) = 1 \v f(1) = 2 \v f(2) = 0$ qui est injective mais pas monotone.
+</Hideable>

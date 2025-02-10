@@ -1,0 +1,63 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="relation d'équivalence">
+On dit qu'une relation binaire est une **relation d'équivalence** si elle est refléxive, symétrique et transitive.
+</Item>
+
+<Hideable type='exemple' titre="Relations d'équivalence usuelles">
+
+$\cd$ L'égalité de Nombres.
+
+$\cd$ L'égalité d'ensembles.
+
+$\cd$ L'égalité de vecteurs.
+
+$\cd$ La relation de congruence modulo un certain nombre.
+
+$\cd$ L'équivalence entre propriétés.
+</Hideable>
+
+<Item type='definition' titre='divisibilité'>
+Soient $n$ et $m$ deux entiers. 
+
+On dit que $n$ divise $m$ (que l'on note souvent $n \mid m$) si :
+
+$$
+\exists k \in \Z \mid m = k.n
+$$
+</Item>
+
+<Item type='consequence' titre='inégalité dans les positifs'>
+
+Si $(n\v m) \in \N^2$, alors $n \mid m \Rightarrow n \leqslant m$
+</Item>
+
+<Item type='definition' titre='congruence dans les entiers'>
+Soient $n\v m \v q$ trois entiers relatifs où $q \neq 0$. 
+
+On dit que $n$ est congru à $m$ modulo $q$ s'il existe $k \in \Z$ tel que :
+
+$$  
+m-n = k.q
+$$
+
+C'est à dire si $q$ divise $m-n$.
+</Item>
+
+<Item type='definition' titre='congruence dans les réels'>
+Soient $a\v b \v x$ trois réels où $x \neq 0$. 
+
+On dit que $a$ est congru à $b$ modulo $x$ s'il existe $k \in \Z$ tel que :
+
+$$  
+b-a = k.x
+$$
+
+C'est à dire si $x$ divise $b-a$.
+</Item>

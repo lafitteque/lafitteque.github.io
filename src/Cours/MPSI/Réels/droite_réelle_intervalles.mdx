@@ -1,0 +1,102 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='droite réelle achevée'>
+
+Pour des raisons pratiques, on introduit deux nouveaux nombres :
+
+$\cd$ $+ \infty$ qui vérifie : $\forall x \in \R \v x < + \infty$.
+
+$\cd$ $- \infty$ qui vérifie : $\forall x \in \R \v - \infty < x$.
+
+On note $\overline{\R}$ l'ensemble $\R \bigcup \{- \infty\} \bigcup \{+ \infty\}$
+
+<br/>
+
+**Attention :** on ne définit ni l'addition ni le produit avec d'autres nombres. Ces nombres n'intéragissent pas avec les autres et on les utilise uniquement par commodité dans ce chapitre. Si vous souhaitez les utiliser sur une copie, il faudra les définir également.
+</Item>
+
+
+<Item type='definition' titre='intervalle'>
+
+Soient $(a,b) \in \overline{\R}$. On définit les intervalles de $\R$ comme suit :
+
+$\cd$ si $(a\v b) \in \R$, $\defff{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x \leqslant b\}$. On dit que c'est un **intervalle fermé**.
+
+
+$\cd$ si $a \in \R$, $\deffo{a}{b}$ est l'ensemble $\{x \in \R \mid a \leqslant x < b\}$
+
+
+$\cd$ si $b \in \R$, $\defof{a}{b}$ est l'ensemble $\{x \in \R \mid a < x \leqslant b\}$
+
+
+$\cd$ $\defoo{a}{b}$ est l'ensemble $\{x \in \R \mid a < x < b\}$. On dit que c'est un **intervalle ouvert**.
+</Item>
+
+<Item type='proposition' titre='caractérisation des intervalles'>
+
+$I \subset \R$ est un intervalle de $\R$ si et seumement si : 
+
+$$
+\forall (a,b) \in I^2\v \defff{a}{b} \subset I
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Sens direct :** On suppose que $I$ est un intervalle de $\R$. 
+
+Il existe $(m\v M) \in \R^2$ tels que : $x \in I \ssi m < x < M$ (on ne considère pas les autre cas que le cas ouvert car leur démonstration est analogue). 
+
+Mais si $a$ et $b$ sont dans $I$, alors $m < a \leqslant b < M$ (si $a > b$, alors $\defff{a}{b} = \empty \subset I$, on considère donc $a \leqslant b$). 
+
+On a donc $x \in \defff{a}{b} \Rightarrow m < a \leqslant x \leqslant b < M$ et donc $x \in I$.
+
+<br/>
+
+**Sens réciproque :** On suppose que : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$. 
+
+Dans $\overline{\R}$, tout ensemble est borné par les infinis. 
+
+Donc $I$ admet une borne supérieure et une borne inférieure notées $M$ et $m$ dans cet ordre. 
+
+$\cd$ cas 1 : $m$ et $M$ sont dans $I$, par hypothèse, $\defff{m}{M} \subset I$ 
+
+mais $I \subset \defff{m}{M}$ car $m$ est un minorant de $I$ et $M$ est un majorant de $I$.
+
+D'où l'égalité par double inclusion et $I$ est un intervalle.
+
+$\cd$ cas 2.a : $m$ et $M$ ne sont pas dans $I$ et sont finis. 
+
+Comme $I$ est non vide, il existe $\epsilon > 0$ suffisamment petit tel que $m + \epsilon \in I$ et $M - \epsilon \in I$. 
+
+Donc, par hypothèse, $\defff{m + \epsilon}{M - \epsilon} \subset I$. 
+
+D'où, $x \in I \Rightarrow  \exists \epsilon \in \R_+^* \v m < m + \epsilon \leqslant x \leqslant M - \epsilon < M \Rightarrow x \in \defoo{m}{M}$. 
+
+Mais $I \subset \defoo{m}{M}$ car $m$ et $M$ sont les bornes supérieure et inférieure non atteintes de $I$. 
+
+Par double inclusion, $I$ est un intervalle.
+
+$\cd$ cas 2.b : traitons le cas où $m = - \infty$ et $M$ est fini et dans $I$. Soit $y \in I$.
+
+Dans ce cas, pour tout $x \in \defof{- \infty}{y}$, il existe un élément $m \in I$ tel que $m \leqslant x$.
+
+Donc $x \in \defof{- \infty}{y} \Rightarrow \exists m \in I \mid x \in \defff{m}{y} \subset I$. 
+
+Donc $\defof{- \infty}{y} \subset I$. 
+
+<br/>
+
+Il suffit de montrer que $\defff{y}{M} \subset I$. Cela se fait exactement comme en 1. .
+
+On a donc $\defof{- \infty}{M}  \subset I \subset \defof{- \infty}{M}$. La deuxième inclusion vient du fait que $M$ est un majorant.
+
+
+$\cd$ autres cas : les autres cas ne seront pas traités car analogues
+</Hideable>

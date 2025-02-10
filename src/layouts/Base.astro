@@ -19,14 +19,14 @@ type Props = {
 const {headings, title} = Astro.props;
 ---
 
-<!-- BUG : Theme custom de daisyui ne s'applique pas -->
-<!-- Amélioration : afficher la page avant que tout ne soit chargé (temps d'attente trop long) -->
+<!-- Amélioration : Sidebar ne doit pas empecher le scroll -->
 <!doctype html>
 <html lang="fr" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
     <title>Suplémaths - Les maths du supérieur</title>
     <link
       rel="stylesheet"
@@ -78,6 +78,10 @@ const {headings, title} = Astro.props;
       </div>
     </div>  
   </body>
+  <script>
+  var ks = document.querySelectorAll(".katex-display");
+  ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
+  </script>
   <style>
 
 .drawer-side{

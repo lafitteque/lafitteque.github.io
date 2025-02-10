@@ -1,0 +1,180 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='coefficients binomiaux'>
+Soit le couple $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$. 
+
+On note $\binom{n}{k}$ (se lit "$k$ parmi $n$") la quantité suivante :
+
+$$ 
+\binom{n}{k} = \dfrac{n!}{k!(n-k)!}
+$$
+
+</Item>
+
+<Remarque titre='convention'>
+
+Par convention, si $k \in \Z$ et $k \notin \defentiers{0}{n}$, on pose $\binom{n}{k} = 0$. 
+
+La raison étant que cela permet de conserver la propriété de somme qui sera présentée ultérieurement.
+</Remarque>
+
+<Item type='corollaire' titre='formules usuelles'>
+Soit $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$
+
+$\cd$ $\binom{n}{0} = \binom{n}{n} = 1$
+
+$\cd$ $\binom{n}{k} = \binom{n}{n-k}$
+
+$\cd$ $\binom{n}{1} = n$
+
+$\cd$ $\binom{n}{2} = \dfrac{n(n-1)}{2}$ (ce qui n'est pas sans rappeler la somme des entiers de $1$ à $n-1$)
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Toutes les formules sont triviales en partant de la définition.
+</Hideable>
+
+
+<Item type='proposition' titre='formulaire des coefficients binômiaux'>
+Soient $k$ et $n$ des entiers tels que $0 \leqslant k \leqslant n$. On a :
+
+$\cd$ $\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}$
+$\cd$ $\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Montrons la première formule :** 
+
+$$
+\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k+1)!(n-k-1)!}
+$$
+
+puis on factorise pour obtenir :
+
+$$
+\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k-1)!}\Big( \dfrac{1}{k+1} + \dfrac{1}{n-k} \Big) = \dfrac{n!}{k!(n-k-1)!}\dfrac{(n+1)}{(k+1)(n-k)!}
+$$
+
+On a donc 
+
+$$
+\binom{n}{k} + \binom{n}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \binom{n+1}{k+1}
+$$
+
+
+**Montrons maintenant la seconde formule :** 
+
+$$
+\binom{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \dfrac{(n+1)\times n!}{(k+1)\times k! (n-k)!} = \dfrac{n+1}{k+1} \dfrac{n!}{k!(n-k)!} 
+$$
+
+Finalement, 
+
+$$
+\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}
+$$
+
+</Hideable>
+
+<Item type='definition' titre='triangle de Pascal'>
+Le triangle de pascal est le tableau contenant les coefficients binômiaux :
+
+| n / k | 0 | 1 | 2 | 3 | 4 | 5 | ... | n |
+|---|---|---|---|---|---|---|---|---|
+| 0 | 1 | 0 | *0* | *0* | *0* | *0* | ... | *0* |
+| 1 | 1 | 1 | *0* | *0* | *0* | *0* | ... | *0* |
+| 2 | 1 | 2 | 1 | *0* | *0* | *0* | ... | *0* |
+| 3 | 1 | 3 | 3 | 1 | *0* | *0* | ... | *0* |
+| 4 | 1 | 4 | 6 | 4 | 1 | *0* | ... | *0* |
+| 5 | 1 | 5 | 10 | 10 | 5 | 1 | ... | *0* |
+| ... | ... | ... | ... | ... | ... | ... | ... | ... |
+| n | $\binom{n}{0}$ | $\binom{n}{1}$ | $\binom{n}{2}$ | $\binom{n}{3}$ | $\binom{n}{4}$ | $\binom{n}{5}$ | ... | 1 |
+</Item>
+
+<Item type='proposition' titre='binome de newton'>
+Soient $a,b$ deux complexes et $n$ un entier naturel. On a :
+
+$$
+(a+b)^n = \somme{k=0}{n} a^kb^{n-k} 
+$$
+
+en utilisant la convention $0^0 = 1$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On démontre cela par récurrence : soit la propriété 
+
+$$
+\cP(n) \, : \, "(a+b)^n = \somme{k=0}{n} \binom{n}{k} a^kb^{n-k}, \forall (a,b) \in (\C^*)^2"
+$$
+
+où $n$ est un entier naturel.
+
+**Initialisation :** On vérifie $\cP(0)$:
+
+ $(a+b)^0 = 1$ et $\somme{k=0}{0} a^kb^{n-k} = a^0b^0 = 1$
+
+<br/>
+
+**Hérédité :** Supposons $\cP(n)$ vérifiée pour un certain $n \in \N$. Montrons $\cP(n+1)$.
+
+$(a+b)^{n+1} = (a+b)(a+b)^n$ mais par linéarité de la somme et par hypothèse de récurrence en utilisant $\cP(n)$, on a :
+
+$$
+(a+b)(a+b)^n = (a+b)\somme{k=0}{n} \binom{n}{k} a^kb^{n-k} = \somme{k=0}{n} \binom{n}{k} (a+b)a^kb^{n-k} 
+$$
+
+Puis, par linéarité de la somme :
+
+$$
+(a+b)^{n+1} = \somme{k=0}{n} \binom{n}{k} a^{k+1}b^{n-k} + \somme{k=0}{n} \binom{n}{k} a^kb^{n-k+1} 
+$$ 
+
+d'où
+
+$$
+(a+b)^{n+1} = a^{n+1}b^0 + \somme{k=0}{n-1} \binom{n}{k} a^{k+1}b^{n-k} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} 
+$$ 
+
+puis on effectue le changement d'indice $k' = k+1$ sur la somme de gauche :
+
+$$
+(a+b)^{n+1} = a^{n+1}b^0 + \somme{k'=1}{n} \binom{n}{k'-1} a^{k'}b^{n-k'+1} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} 
+$$
+
+
+$$
+(a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \underbrace{(\binom{n}{k-1} + \binom{n}{k})}_{= \binom{n+1}{k}} a^{k}b^{n-k+1}
+$$
+
+$$
+ \text{donc } (a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \binom{n+1}{k} a^{k}b^{n-k+1} = \somme{k = 0}{n+1} \binom{n+1}{k} a^{k}b^{(n+1)-k}
+$$
+
+On a bien montré $\cP(n) \Rightarrow \cP(n+1)$
+
+<br/>
+
+**Conclusion :** On a montré $\cP(0)$ et on a également montré que $\cP(n) \Rightarrow \cP(n+1)$ pour $n\in \N$. On a donc bien montré $\cP(n)$ pour tout $n \in \N$?
+
+</Hideable>
+
+<Item type='corollaire' titre=''>
+Soit $n \in \N^*$. 
+
+$$
+\somme{k = 0}{n} \binom{n}{k} = 2^n \quad \text{ et }\quad \somme{k=0}{n} \binom{n}{k}(-1)^k = 0
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On applique la formule du binôme à $(1+1)^n$ et à $(1-1)^n$.
+</Hideable>

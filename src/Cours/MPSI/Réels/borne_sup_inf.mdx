@@ -1,0 +1,75 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='borne supérieure et inferieure'>
+
+Soit $A \subset \R$ non vide. 
+
+On définit la borne supérieure (resp. inférieure) de $A$ comme le le plus petit majorant (resp. le plus grand minorant) de $A$ s'il existe. 
+
+Cette quantité est notée $\sup A$ (resp. $\inf A$).
+</Item>
+
+
+<Item type='proposition' titre='existence de la borne supérieure et inférieure' tag='admis'>
+
+Soit $A$ un sous-ensemble non vide de $\R$. 
+
+Si $A$ est majoré (resp. minoré) alors il admet une borne supérieure (resp. inférieure).
+</Item>
+
+<Remarque titre=''>
+
+On remarquera que la propriété n'est pas vraie dans $\Q$ puisqu'une borne peut être dans $\R \setminus \Q$.
+</Remarque>
+
+
+<Item type='proposition' titre='lien avec les extrêmums'>
+
+Si $A \subset \R$ admet un maximum (resp. un minimum), celui-ci est sa borne supérieure (resp. inférieure). 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Etudions uniquement le cas du maximum que l'on suppose exister et que l'on note $M$. 
+
+$M$ est bien un majorant de $A$ car c'est son maximum. 
+
+Supposons que $m$ soit un autre majorant de $A$ plus petit que $M$, alors $m < M \in A$ mais donc $m$ n'est pas un majorant.
+</Hideable>
+
+<Exercice titre=''>
+Donner la borne sup et la borne inf (si elles existent) des ensembles suivants :
+
+1\) $A = \defof{ \pi }{10}$
+
+2\) $B = \{\dfrac{1}{n}\v n \in \N^*\}$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) $10$ est un majorant atteint de $A$, c'est donc sa borne supérieure.
+
+$\pi$ est un minorant de $A$. Supposons qu'il existe $10 \geqslant m > \pi$ un minorant de $A$.
+
+On a : $\pi < \dfrac{m + \pi}{2} < m$ mais donc $\dfrac{m + \pi}{2} \in A$ . $m$ n'est donc pas un minorant.
+
+L'hypothèse est absurde et $\pi$ est donc bien le plus grand des minorants : c'est la borne inférieure.
+
+<br/>
+
+2\) $\forall n \in \N^* \v 0 < x \leqslant 1$ 
+
+Mais donc $1$ est un majorant atteind, c'est donc la borne supérieure de $B$.
+
+Supposons qu'il y ait $\epsilon > 0$ un minorant de $B$. 
+
+Pour $N \in \N^*$ assez grand, $\underbrace{\dfrac{1}{N}}_{\in B} < \epsilon$ mais donc $\epsilon$ ne serait pas un minorant. 
+
+C'est absurde et donc $0$ est le plus grand minorant : c'est la borne inférieure.
+</Hideable>

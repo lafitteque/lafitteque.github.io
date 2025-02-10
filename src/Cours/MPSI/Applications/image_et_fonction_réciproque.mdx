@@ -1,0 +1,226 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="image réciproque d'un ensemble par une fonction">
+
+Soit $f$ une fonction de $E$ dans $F$ et $B$ un sous-ensemble de $F$. On appelle image réciproque de $B$ par $f$ l'ensemble suivant : 
+
+$$
+f^{-1}(B) = \{ x \in E \mid f(x) \in B \}
+$$
+</Item>
+
+
+<Item type='proposition' titre=''>
+
+Soient $A$ et $B$ deux sous-ensembles de $F$. 
+
+Si $A \subset B$, alors $f^{-1}(A) \subset f^{-1}(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in f^{-1}(A)$, $f(x) \in A \subset B$. Mais donc $f(x) \in B$ d'où $x \in f^{-1}(B)$.
+</Hideable>
+
+
+<Item type='defprop' titre='fonction réciproque'>
+
+Si $f$ est une fonction bijective de $E$ dans $F$, on dit qu'elle est inversible. 
+
+Dans ce cas, il existe une unique fonction de $F$ dans $E$ que l'on appelle $f^{-1}$ telle que $f \circ f^{-1} = id_F$ et $f^{-1}\circ f = id_E$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$ \forall y \in F \v \exists! x \in E \mid f(x) = y$ car $f$ est bijective. 
+
+Soit $y \in F$ et $x \in E$ tel que $f(x) = f$. Comme ce $x$ est entièrement déterminé par $y$, on le note $x_y$.
+
+Soit $f^{-1}$ qui est définie ainsi : 
+$ f^{-1} : 
+\begin{cases} 
+F \rightarrow E 
+\\ 
+y \mapsto x_y 
+\end{cases} 
+$. On vérifie les deux affirmations de la propriété :
+
+<br/>
+
+**$\cd$ Montrons que $f^{-1} \circ f = id_E$ :** Soit $x \in E$, 
+
+on pose $y = f(x)$. $f^{-1}(f(x)) = f^{-1}(y) = x_y = x$ d'où $f^{-1}\circ f =  id_E$. 
+
+<br/>
+
+**$\cd$ Montrons que $f \circ f^{-1}  = id_F$ :** Soit $y \in F$. 
+
+$f(f^{-1}(y)) = f(x_y) = y$ d'où $f \circ f^{-1} = id_F$
+
+</Hideable>
+
+
+<Item type='proposition' titre='axe de symétrie des applications inversibles'>
+
+Soit $f$ une fonction de $I \subset \R$ dans $\R$. Les courbes représentatives $\cC_{\textstyle f}$ et $\cC_{\textstyle f^{-1}}$ sont le symétrique l'une de l'autre par l'axe de symétrie $y = x$. 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\Point{x}{y} \in \cC_{\textstyle f} \ssi \Point{y}{x} \in \cC_{\textstyle f^{ -1}}$. 
+
+L'application $\phi : \Point{x}{y} \in \R^2 \mapsto \Point{y}{x}$ transforme par symétrie axiale d'axe $y = x$ les points du plan. D'où le résultat.
+</Hideable>
+
+
+<Item type='proposition' titre='images directes et réciproques'>
+Soient $A$ et $B$ deux sous-ensembles de $E$, $C$ et $D$ deux sous-ensembles de $F$ et $f$ une application de $E$ dans $F$. On a :
+
+$\cd$ $f(A \bigcap B) \subset f(A) \bigcap f(B)$. On a égalité si $f$ est injective (condition non nécessaire).
+
+$\cd$ $f(A \bigcup B) = f(A) \bigcup f(B) $
+
+$\cd$ $f^{-1}(A \bigcap B) = f^{-1}(A) \bigcap f^{-1}(B)$
+
+$\cd$ $f^{-1}(A \bigcup B) = f^{-1}(A) \bigcup f^{-1}(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Première relation :**
+<Indent>
+Soit $x \in A \bigcap B$. 
+
+On a $x \in A$ donc $f(x) \in f(A)$ mais $x \in B$ donc $f(x) \in f(B)$
+
+<br/>
+
+On peut également montrer que l'inclusion inverse n'est pas vraie à l'aide d'un contre-exemple : 
+
+soit $f$ de $\{0 \pv 1\}$ dans $\{0 \pv 1\}$ où $f(0) = 0$ et $f(1) = 0$. 
+
+<br/>
+
+$f(\{0\}) = {0} \v f({1}) = {0}$ et donc $f(\{0\})\bigcap f(\{1\}) = \{0\} $ mais $f(\{0\}\bigcap \{1\}) = f(\empty) = \empty$. D'où la non inclusion inverse.
+</Indent>
+
+<br/>
+
+**Deuxième relation :** montrons le résultat par double inclusion.
+<Indent>
+
+$\cd$ Montrons que $f(A \bigcup B)  \subset f(A) \bigcup f(B)$ :
+
+ Soit $x \in A \bigcup B$, 
+ 
+ soit $x \in A$ auquel cas $f(x) \in f(A) \subset f(A) \bigcup f(B)$ soit $x \in B$ auquel cas $f(x) \in f(B) \subset f(A) \bigcup f(B)$. 
+ 
+ On a donc bien $f(A \bigcup B)  \subset f(A) \bigcup f(B)$.
+
+<br/>
+
+$\cd$ Montrons maintenant que $ f(A) \bigcup f(B) \subset  f(A \bigcup B)$. 
+
+Soit $y \in f(A) \bigcup f(B)$. 
+
+Soit il existe $x$ tel que $y = f(x)$ où $x \in A \subset A \bigcup B$, 
+
+soit il existe $x$ tel que $y = f(x)$ où $x \in B \subset A \bigcup B$. 
+
+Dans tous les cas $y = f(x) \in f(A \bigcup B)$. D'où l'inclusion voulue
+</Indent>
+
+<br/>
+
+**Troisième égalité :** Montrons le résultat par double inclusion.
+<Indent>
+
+$\cd$ Montrons d'abord que $f^{-1}(A \bigcap B) \subset f^{-1}(A) \bigcap f^{-1}(B)$. 
+
+Soit $x \in f^{-1}(A \bigcap B)$.
+
+$f(x) \in A \bigcap B$ donc $f(x) \in A$ d'où $x \in f^{-1}(A)$ et $f(x) \in B$ d'où $x \in f^{-1}(B)$. 
+
+Au final $x \in f^{-1}(A) \bigcap f^{-1}(B)$
+
+<br/>
+
+$\cd$ Montrons l'autre inclusion. Soit $x \in f^{-1}(A) \bigcap f^{-1}(B)$. 
+
+$f(x) \in A$ et $f(x) \in B$ donc $f(x) \in A \bigcap B$. 
+
+On en conclut que $x \in f^{-1}(A \bigcap B)$
+</Indent>
+
+<br/>
+
+**Quatrième égalité :** Montrons l'égalité par double inclusion.
+<Indent>
+
+$\cd$ Montrons d'abord que $f^{-1}(A \bigcup B) \subset f^{-1}(A) \bigcup f^{-1}(B)$. Soit $x \in f^{-1}(A \bigcup B) $, 
+
+$f(x) \in A \bigcup B$. Donc soit  $f(x) \in B$ auquel cas $x \in f^{-1}{B}$, 
+
+soit $f(x) \in A$ auquel cas $x \in f^{-1}(A)$. Donc $x \in A \bigcup B$.
+
+<br/>
+
+$\cd$ Montrons l'autre inclusion. Soit $x \in f^{-1}(A) \bigcup f^{-1}(B)$.
+
+Soit $x \in f^{-1}(A) $ d'où $f(x) \in A$ soit $x \in f^{-1}(B)$ d'où $f(x) \in B$. 
+
+Donc $f(x) \in A \bigcup B$ et finalement $x \in f^{-1}(A \bigcup B)$.
+</Indent>
+
+<br/>
+
+**Montrons que si $f$ est injective, alors la première relation est une égalité :** 
+
+Soit $y \in f(A) \bigcap f(B)$. 
+
+Il existe un unique $x \in E$ tel que $y = f(x)$. Mais $f(x) \in f(A) \bigcap f(B)$ 
+
+donc $x \in A$ __ET__ $x \in B$ donc $x \in A \bigcap B$
+
+d'où $y = f(x) \in f(A \bigcap B)$. c.q.f.d. 
+</Hideable>
+
+
+<Item type='proposition' titre='propriétés de la composition'>
+Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E$, $F$ et $G$ sont des enesmbles.
+
+$\cd$ Si $f$ et $g$ sont injectives, $g \circ f$ l'est aussi 
+
+$\cd$ Si $f$ et $g$ sont surjectives, $g \circ f$ l'est aussi
+
+$\cd$ Si $f$ et $g$ sont bijectives, $g \circ f$ l'est aussi
+</Item>
+
+<Hideable type='démonstration' titre=''>
+ 
+ $\cd$ Supposons $x\v y \in E$ tels que $g \circ f (x) = g \circ f (y)$, 
+ 
+ $g\Big(f(x) \Big) = g\Big(f(y) \Big)$ donc $f(x) = f(y) $ car $g$ est injective. 
+ 
+ Puis, par injectivité de $f$, $x = y$. D'où l'injectivité de $g$.
+
+<br/>
+
+ $\cd$ Soit $t \in H$, 
+ 
+ par surjectivité de $g$, il existe $y \in G$ tel que $g(y) = t$. 
+ 
+ Mais par surjectivité de $f$ il existe $x \in E$ tel que $f(x) = y$. 
+ 
+ D'où $t = g\Big(f(x)\Big) = g \circ f (x)$.
+
+<br/>
+
+ $\cd$ En appliquant les deux résultats précédents, puisque $f$ et $g$ sont injectives __ET__ surjectives, $g \circ f$ est injective __ET__ surjective. Elle est donc bijective.
+</Hideable>

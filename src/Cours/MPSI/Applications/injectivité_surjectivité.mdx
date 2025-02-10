@@ -1,0 +1,115 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='injectivité'>
+Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **injective** si et seulement si :
+
+$$
+\forall (x \v y) \in E^2 \v \Bigg( f(x) = f(y) \Rightarrow x = y \Bigg) 
+$$
+</Item>
+
+**Illustration :**
+
+<img width="500" height="500" class="content-center mx-auto" src = "src/svgs/appli_injective.svg" alt="Illustration de la définition d'une application injective"/>
+
+
+En clair, être injectif c'est ne pas passer deux fois par la même valeur de l'ensemble d'arrivée.
+
+<Hideable type='exemple' titre=''>
+
+$\cd$ La fonction définie par $f(x) = x$ sur $\R$ est injective. 
+
+En effet, si $f(x) = f(y)$, alors $x = f(x) = f(y) = y$ et donc $x = y$.
+
+$\cd$ La fonction $g : \begin{cases} \R \rightarrow \R \\ x \mapsto x^2 \end{cases}$ n'est pas injective mais sa restriction à $\R_+$ l'est. 
+
+En effet, si $g(x) = g(y)$ et que $x,y \geqslant 0$, alors $x^2 = y^2$ et donc $x^2 - y^2 = 0$ puis $(x-y)(x+y)=0$. 
+
+On en déduit que $x-y = 0$ ou $x+y = 0$. 
+
+Donc $x = y$ ou $x = -y$. Mais si $x = -y$, comme $x,y \geqslant 0$, on a $0 \leqslant x = -y \leqslant 0$ d'où $x = -y = 0$ et donc $x = y$. 
+
+Dans tous les cas, on a bien $x = y$
+
+$\cd$ La fonction définie sur $\{0 \v 1 \}$ par $h(0) = 1$ et $h(1) = 0$ est injective. 
+
+En effet, si $h(x) = h(y)$, alors soit $h(x) = 1 = h(y)$ et donc $x = y = 0$ par définition de $h$ soit $h(x) = h(y) = 0$ et $x = y = 1$ par définition de $h$. 
+</Hideable>
+
+<Item type='definition' titre='surjective'>
+Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **surjective** si et seulement si :
+
+$$
+\forall y \in F \v \exists x \in E \mid f(x) = y
+$$
+</Item>
+
+**Illustration :**
+
+<img width="500" height="500" class="content-center mx-auto" src = "src/svgs/appli_surjective.svg" alt="Illustration de la définition d'une application surjective"/>
+
+En clair, être surjectif c'est balayer toutes les valeurs de l'ensemble d'arrivée.
+
+<Hideable type='exemple' titre=''>
+
+La fonction $f : x \mapsto x^3$ définie sur $\R$ est surjective. La fonction $\begin{cases} \defoo{-1}{1} \rightarrow \R \\ x \mapsto \dfrac{x}{(x-1)(x+1)} \end{cases}$ est surjective. 
+
+En effet, si $y \in \R$, alors $\sqrt[3]{y}$ est un antécédent de $y$ par $f$.
+</Hideable>
+
+<Remarque titre=''>
+
+On remarquera que cette définition dépend du contexte. Par exemple, la fonction définie par $f(x) = 1$ sur $\R$ et à valeurs dans $\R$ n'est pas surjective car $2$ n'est jamais atteint et pourtant il fait partie de l'ensemble d'arrivée. 
+
+Cependant, si l'on définit $f$ ainsi : $f : \begin{cases} \R \rightarrow \{1\} \\ x \mapsto 1 \end{cases}$ alors elle est surjective. 
+
+<br/>
+
+La notion de surjectivité dépend du contexte. Il est donc très important de bien lire les énoncés et exercices et de s'assurer d'avoir bien compris le contexte et les objets en jeu.
+</Remarque>
+
+<Item type='definition' titre='bijective'>
+
+On dit d'une fonction $f$ qu'elle est bijective si et seulement si elle est à la fois injective et surjective
+</Item>
+
+**Illustration :**
+
+<img width="500" height="500" class="content-center mx-auto" src = "src/svgs/appli_bijective.svg" alt="Illustration de la définition d'une application bijective"/>
+
+En clair, être bijectif c'est associer une et une seule valeur de l'ensemble de départ à chacun des éléments de l'ensemble d'arrivée. C'est une correspondance terme à terme.
+
+<Hideable type='exemple' titre=''>
+
+La fonction cube et la fonction identité sont bijectives.
+</Hideable>
+
+### Fonction réciproque
+Dans cette sous-section $E$ et $F$ désigneront deux ensembles (supposés d'arrivée et de départ d'une fonction).
+
+<Item type='definition' titre="image d'un ensemble par une fonction">
+
+Soit $f$ une fonction de $E$ dans $f$ et $A$ un sous-ensemble de $E$. 
+
+On appelle image de $A$ par $f$ l'ensemble suivant : 
+
+$$
+f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x) = y \Big) \}
+$$
+</Item>
+
+<Item type='proposition' titre=''>
+Soient $A$ et $B$ deux ensembles. 
+
+Si $A \subset B$, alors $f(A) \subset f(B)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Si $x \in A$ alors $f(x) \in f(A)$, mais $x \in A \subset B$ donc $f(x) \in f(B)$.
+</Hideable>

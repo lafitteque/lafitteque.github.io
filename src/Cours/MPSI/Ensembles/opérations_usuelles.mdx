@@ -1,0 +1,97 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type="definition" titre="notations ensemblistes">
+
+| Notation | Nom | Exemple | Description à l'aide de quantificateurs| 
+|---|---|---|---|
+| $x \in A$ | Appartient à | $2 \in \{-5 \v 8 \v 2 \}$ | / |
+| $x \notin A$ | N'appartient pas à | $\pi \notin \{-5 \v 8 \v 2 \}$ | / |
+| $A \subset B$ | A est un sous-ensemble de B | $\{-5 \v 8 \v 2 \} \subset \{-5 \v 12 \v 2 \v 8 \v 42 \}$ | $A \subset B$ ssi. $a \in A \Rightarrow a \in B$ |
+| $A \bigcup B$ | Réunion (ou Union) de A et B | $\{3 \v 1 \} \bigcap \{ 6\} = \{3 \v 1 \v 6\}$ | $\{ x \mid (x \in A$ ou $x \in B)\}$ |
+| $A \bigcap B$ | Intersection de A et B | $\{4 \v 1 \v 55 \} \bigcap \{ 2 \v 4 \v 1\} = \{4 \v 1 \}$ | $\{ x \mid (x \in A$ et $x \in B)\}$ |
+</Item>
+
+<Item type="definition" titre="égalité d'enembles">
+On dit que deux ensembles $A$ et $B$ sont égaux s'il contiennent les mêmes éléments c'est-à-dire si :
+
+$$
+\text{Pour tout } x \in A \bigcup B \v  \Big( x \in A \ssi x \in B \Big)
+$$
+</Item>
+
+<Item type='propriete' titre='double inclusion'>
+Soient $A$ et $B$ deux ensembles. 
+
+$$
+A = B \ssi (A \subset B \, \text{ et }\, B \subset A) 
+$$
+</Item>
+
+
+<Hideable type='démonstration'>
+Dans cette démonstration, $x$ désigne un élément de $A \bigcup B$.
+
+$A = B \ssi (x \in A \ssi x \in B) \ssi \big( (x \in A \Rightarrow x \in B) $ et $ (x \in B \Rightarrow x \in A)\big) \ssi (A \subset B$ et $ B \subset A)$ 
+</Hideable>
+
+
+<Item type='definition' titre='ensembles disjoints et partitions'>
+
+On dit que $A$ et $B$ sont des ensembles disjoints si $A \bigcap B = \empty$. 
+
+La réunion d'ensembles disjoints peut parfois se noter $A \bigsqcup B$ ou encore $A \biguplus B$ 
+mais il n'y a pas de notation officielle. Il est donc grandement conseillé de rappeler à chaque fois quelle notation on emploie et sa signification. Dans tous les cours, 
+la réunion disjointe sera notée $A \biguplus B$.
+
+<br/>
+Soit $E$ un ensemble et $A_1, \, A_2 , \, \dotsm , \, A_n$ des sous-ensembles de $E$ et où $n \in \N^*$. On dit que $A_1, \, A_2 , \, \dotsm , \, A_n$ forment une partition de $E$ si
+
+$$
+E = A_1 \biguplus A_2 \biguplus \dotsm \biguplus A_n = \biguplus \limits_{i = 1}^{n} A_i
+$$
+</Item>
+
+
+<Item type='definition' titre='Complémentaire et exclusion'>
+Soit E un ensemble et A un sous-ensemble de E. 
+
+On appelle complémentaire de $A$ dans $E$ l'ensemble $\complement_E^A = \{ x \in E \mid x \notin A\} $. 
+
+<br/>
+Il peut également être noté $\overline{A}$ ou encore $E \setminus A$ qui se lit "$E$ privé de $A$".
+</Item>
+
+<Item type='propriete' titre="complémentaire de la réunion et de l'intersection">
+
+Soit $E$ un ensemble et $A$, $B$ deux sous ensembles de $E$. On a :
+
+$\cd$ $\overline{A \bigcap B} = \overline{A} \bigcup \overline{B}$
+
+$\cd$ $\overline{A \bigcup B} = \overline{A} \bigcap \overline{B}$
+</Item>
+
+<Hideable type='démonstration'>
+
+**Complémentaire de l'intersection :** 
+
+$x \in \overline{A \bigcap B} \ssi (x \notin A \bigcap B) \ssi $ non $\big((x \in A )$ et $(x \in B)\big)$ puis en développant la négation : 
+
+$x \in \overline{A \bigcap B} \ssi \big( ($non $x \in A)$ ou $ ( $non $x \in B) \big) \ssi (x \in \overline{A} \bigcup \overline{B})$
+
+<br/>
+
+**Complémentaire de la réunion :** c'est exactement la même démonstration où l'on remplace les "et" par des "ou" et vice versa.
+</Hideable>
+
+<Item type="definition" titre="parties d'un ensemble">
+Soit $E$ un ensemble. On note $\cP(E)$ l'ensemble des parties de $E$ : 
+
+$$
+\cP(E) = \{ A \mid A \subset E \} 
+$$
+</Item>

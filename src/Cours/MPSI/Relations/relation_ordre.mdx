@@ -1,0 +1,41 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="relation d'ordre">
+
+On appelle **relation d'ordre** une relation binaire refléxive, antisymétrique et transitive.
+</Item>
+
+<Item type='definition' titre="relation d'ordre totale">
+
+On dit qu'une relation d'ordre sur $E$ est totale si :
+
+$$
+\forall (x \v y) \in E^2 \v x \cR y \;\text{ ou }\; y \cR x
+$$
+</Item>
+
+
+<Exercice titre=''>
+Pour chaque relation ci-dessous, dire s'il s'agit d'une relation d'ordre (préciser si elle est totale), d'équivalence ou aucun des deux.
+
+$\cd$ La relation $<$ sur $\R$
+
+$\cd$ La relation $\subset$ entre ensembles
+
+$\cd$ La relation $\geqslant$ sur $\R$
+</Exercice>
+
+
+<Hideable type='solution' titre=''>
+$\cd$ Aucun des deux car elle n'est pas refléxive.
+
+$\cd$ Relation d'équivalence.
+
+$\cd$ Relation d'ordre totale.
+</Hideable>
