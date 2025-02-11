@@ -513,6 +513,83 @@ Mais $\Big[(F \circ \phi)'(t)\Big]_a^b = F(\phi(b)) - F(\phi(a)) = \integ{\phi(a
 
 ### Méthodes usuelles
 
+#### Fractions rationnelles
+
+<Fil>
+On s'intéresse d'abord aux fractions du type : $F : x \mapsto \dfrac{P(x)}{(a_1X + b_1)(a_2X + b_2) \dotsm (a_nX + b_n)}$ définie sur un intervalle de $\R$ convenable et où $P$ est une fonction polynômiale. On suppose également qu'aucun facteur du dénominateur n'a de racine en commun avec des autres facteurs.
+
+<br />
+
+Il faut systématiquement chercher une forme plus simple de $F$ du type : $Q(x) + \dfrac{\alpha_1}{a_1X + b_1} + \dfrac{\alpha_2}{a_2X + b_2} + \dotsm + \dfrac{\alpha_n}{a_nX + b_n} $
+</Fil>
+
+<Hideable type='exemple' titre=''>
+
+Réexprimons $\dfrac{6x^2 - 4x + 1}{2x^2-x -6}$ plus simplement.
+
+<br />
+
+$\dfrac{6x^2 - 4x + 1}{2x^2-x -6} =  \dfrac{(6x^2 - 3x - 18) + 19 - x}{2x^2-x -6} = 3 + \dfrac{-x + 19}{(2x + 3) (x - 2)}$
+
+Ensuite, $\dfrac{-x + 19}{(2x + 3) (x - 2)} = \dfrac{a}{(2x + 3)} + \dfrac{b}{(x - 2)}$
+
+Mais donc $\dfrac{a(x -2) + b(2x+3)}{(2x + 3)(x-2)} = \dfrac{-x + 19}{(2x + 3) (x - 2)}$ d'où $a(x -2) + b(2x+3) = x(2b + a) + (3b - 2a) = -x + 19$
+
+Par identification, $\begin{cases} -1 = 2b + a \\ 19 = 3b - 2a \end{cases}$ 
+
+On en déduit que $\begin{cases} -1 = 2b + a \\ 17 = 7b \end{cases}$
+
+Finalement, $\begin{cases} - \dfrac{41}{7} = a \\ b = \dfrac{17}{7} \end{cases}$
+
+<br />
+
+**Conclusion :** $\dfrac{6x^2 - 4x + 1}{2x^2-x -6} = 3 + \dfrac{- \dfrac{41}{7}}{(2x + 3)} + \dfrac{\dfrac{17}{7}}{(x - 2)}$
+</Hideable>
+
+<Remarque titre=''>
+
+En général, si les facteurs du dénominateur ont des racines en commun, l'expression est différente. Il faut donc bien faire attention car par exemple $\dfrac{x^{13} + 9}{(x-2)^4(1-3x)}$ n'aura pas une forme aussi simple.
+
+<br />
+
+Il existe une généralisation pour ces cas mais nous ne la verrons pas dans ce chapitre.
+</Remarque>
+
+<Exercice titre=''>
+
+Calculer $\integ{3}{7} \dfrac{6x^2 - x + 7}{(5x+4)(3x - 1)} dx$
+</Exercice>
+
+<Item type='methode' titre='cas particulier'>
+
+
+
+Voyons comment calculer 
+$$
+\integ{}{} \dfrac{1}{ax^2 + bx + c} dx
+$$ 
+
+(on laisse les bornes d'intégration vide car seule la méthode nous intéresse).
+
+$\cd$ Si le trinôme a deux racines, on se ramène à la méthode ci-dessus.
+
+$\cd$ Si le trinôme a une seule racine, alors on reconnait une dérivée de la forme $-\dfrac{u'}{u^2}$ qui se primitive en $\dfrac{1}{u}$.
+
+$\cd$ Si le trinôme n'a pas de racine, alors on se ramène à une forme $\dfrac{1}{1 + u^2}$ qui est la dérivée de $\Arctan$ :
+
+Pour cela, mettons sous forme cannonique $ax^2 + bx + c$ : $ax^2 + bx + c = a (x - \alpha)^2  + \beta $. 
+
+On a ensuite $ax^2 + bx + c = \beta \Big( a (\dfrac{x - \alpha}{\sqrt{\beta}})^2  + 1 \Big)$
+
+On a donc reformulé notre intégrale ainsi : 
+
+$$
+\beta \integ{}{} \dfrac{1}{(\dfrac{x - \alpha}{\sqrt{\beta}})^2 + 1} dx
+$$ 
+
+Le changement de variable $u = \dfrac{x - \alpha}{\sqrt{\beta}}$ permet de conclure en se ramenant à la dérivée de $\Arctan$.
+</Item>
+
 #### Intégrales avec des fonctions trigonométriques
 
 <Item type='methode' titre='polynôme en des fonctions trigonométriques'>
@@ -600,11 +677,13 @@ IPP 2 fois pour trouver équation en I
 
 ## Equations différentielles
 
+Dans cette section, $n$ est un élément de $\N^*$ et $I$ est un intervalle de $\R$.
+
 ### Définition et généralités
 
 <Item type='definition' titre='équation différentielle'>
 
-Soit $n \in \N^*$. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle d'ordre $n$ s'il existe $f$ une fonction de $I^n$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
+. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle d'ordre $n$ s'il existe $f$ une fonction de $I^n$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
 
 $$
 f(y\v y^{(1)}\v y^{(2)}\v \dotsm \v y^{(n)}) = g
@@ -615,10 +694,10 @@ On dit que l'équation différentielle est **homogène** si $g = 0$
 
 <Item type='definition' titre="équation différentielle linéaire d'ordre n">
 
-Soit $n \in \N^*$. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle linéaire d'ordre $n$ s'il existe $u_1 \v \dotsm \v u_n$ des fonctions de $I$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
+Soit $n \in \N^*$. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle linéaire d'ordre $n$ s'il existe $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
 
 $$
-u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g
+y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g
 $$
 </Item>
 
@@ -638,24 +717,225 @@ $\cd$ Soit $f : t \rightarrow \dfrac{1}{t}$. $f'(t) = -f^2(t)$ donc $f$ est solu
 
 <Item type='propdef' titre='equation homogène'>
 
-Soit $ (E) \; :\; u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g$ une équation différentielle linéaire d'ordre $n$. On appelle équation homogène de $(E)$ l'équation :
+Soit $ (E) \; :\; y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g$ une équation différentielle linéaire d'ordre $n$. On appelle équation homogène de $(E)$ l'équation :
 
 $$
 (H) \; :\; u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
 $$
 
-Si $y$ est solution de $(H)$ et $z$ est solution de $(E)$, alors $y + z$ est solution de $(E)$
+Si $y$ est solution de $(H)$ et $z$ est solution de $(E)$ dite **solution particulière**, alors $y + z$ est solution de $(E)$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+ $u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0$
+
+ et $u_n.z^{(n)} + u_{n-1}.z^{(n-1)} + \dotsm + u_1.z^{(1)} + u_0.z = g$
+
+ Par somme des deux équations et par linéarité de la dérivation : 
+
+$u_n.(y+z)^{(n)} + u_{n-1}.(y+z)^{(n-1)} + \dotsm + u_1.(y+z)^{(1)} + u_0.(y+z) = 0$
+
+</Hideable>
+
+<Item type='proposition' titre="linéarité des solutions d'une équation homogène">
+
+Soient $f$ et $g$ deux solutions d'une même équation linéaire homogène d'ordre $n$ notée $(H)$ et $(\lambda\v \mu) \in \R^2 $.
+
+$\lambda . f + \mu .g $ est également solution de $(H)$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il s'agit d'une combinaison linéaire de deux équations : on multiplie par $\lambda$ l'équation vérifiée par $f$ et par $\mu$ celle vérifiée par $g$. On obitent par somme le résultat.
+</Hideable>
+
+<Item type='definition' titre='problème de Cauchy'>
+
+Soient $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$, $x_0 \v \dotsm \v x_{n-1}$ des éléments de $I$ et $y_0 \v \dotsm \v y_{n-1}$ des éléments de $\R$. 
+
+On appelle **problème de Cauchy** d'ordre $n$ un système d'inconnu $y \in \cC^n{I\v \R}$ de la forme suivante :
+
+$$
+\begin{cases}
+y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
+\\
+y(x_0) = y_0
+\\
+...
+\\
+y(x_{n-1}) = y_{n-1}
+\end{cases}
+$$
+
+</Item>
 
 
 ### Equations différentielles linéaires d'ordre 1
 
+On considère dans cette sous-section $a$ et $g$ des fonctions de $I$ dans $\R$.
 
+<Item type='proposition' titre="problème de cauchy d'ordre 1">
+
+Un problème de Cauchy de la forme :
+
+$$
+(\cC) : \begin{cases}
+y' + a.y = g
+\\
+y(x_0) = y_0
+\end{cases}
+$$
+
+admet une seule et unique solution
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $A$ une primitive de $a$.
+
+$y $ vérifie $\cC  \ssi \forall x \in I \v y'(x) + a(x).y(x) = g(x) \ssi \forall x \in I \v y'(x).e^{A(x)} + a(x).e^{A(x)}.y(x) = g(x).e^{A(x)}$
+
+Donc 
+$ y $ vérifie $\cC \ssi (y.e^A)' = g.e^A$ et $y(x_0) = y_0$ où $e^A$ désigne $ x \mapsto e^{A(x)}$ et $y(x_0) = y_0$
+
+D'après le théorème fondamental de l'analyse, il existe une unique fonction $F$ de $I$ dans $\R$ telle que $F' = g.e^A$ et $F(x_0) = y(x_0).e^{A(x_0)}$.
+
+D'où : 
+$ y $ vérifie $\cC \ssi y.e^A = F \ssi y = F.e^{-A}$ où $e^{-A} : x \mapsto e^{-A(x)}$
+</Hideable>
+
+<Item type='consequence' titre="equation homogène d'ordre 1" tag="par coeur">
+
+L'équation différentielle homogène $y' + ay = 0$ admet pour solution toute fonction de la forme 
+
+$$
+y : x \mapsto \lambda . e^{-A(x)}\; \v \lambda \in \R
+$$
+</Item>
+
+<Item type='methode' titre='variation de la constante' tag="par coeur">
+
+Cette méthode consiste à rechercher une solution particulière à $y' + a.y = g$.
+
+<br/>
+
+On trouve d'abord la forme de la solution à l'équation homogène qui est  $x \mapsto \lambda . e^{-A(x)}$. Ensuite, on remplace la constante $\lambda$ par une fonction $\lambda : x \mapsto \lambda(x)$ de classe $\cC^1$. Cela donne : 
+
+$(\lambda . e^{-A})' + a . (\lambda . e^{-A}) = g$ puis $\lambda' . e^{-A}  -a . \lambda . e^{-A} + a . \lambda . e^{-A} = g$
+
+<br/>
+On a donc finalement : $\lambda' . e^{-A} = g$ puis $\lambda' = g.e^A$. 
+
+Il reste à primitiver $g.e^A$ pour trouver $\lambda$ et donc avoir une solution particulière $x \mapsto \lambda . e^{-A}$. 
+
+<br/>
+
+Notre raisonnement suppose qu'une telle fonction $\lambda$ existe, il est donc impératif de vérifier que la solution trouvée convient!
+
+<br/>
+
+Attention : il faut systématiquement refaire toutes les étapes de la méthode, aucun résultat intermédiaire n'est au programme, seule la méthode l'est.
+</Item>
+
+<Remarque titre=''>
+
+En général, il faut privilégier la recherche de solution particulière plus instinctive.
+
+Pour une équation différentielle faisant intervenir des fonctions trigonométriques, essayer d'abord rapidement des fonctions de la forme $\exp . \cos$ ou $\exp . \sin$ ou simplement $\sin$ et $\cos$.
+
+<br />
+
+Il faut avoir le réflexe de tester rapidement des solutions simples. Il ne faut par contre pas s'éterniser à chercher à taton et rapidement passer à l'application de la méthode.
+</Remarque>
+
+<Exercice titre=''>
+
+Trouver une solution particulière à $y' + y = \exp$ où $\exp : x \mapsto e^x$.
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Les solutions de l'équation homogène sont de la forme $x \mapsto \lambda . e^{-x}$ où $\lambda \in \R$.
+
+Mais donc considérons, en suivant la méthode de la variation de la constante, $\lambda : x \mapsto \lambda(x)$ une fonction de $\R$ dans $\R$ de classe $\cC^1$.
+
+<br />
+
+$\lambda'(x) . e^{-x} - \lambda(x).e^{-x} + \lambda . e^{-x} = e^x$ 
+
+ensuite, $\lambda'(x) . e^{-x}= e^x$ d'où $\lambda' = e^x$
+
+puis, $\lambda'(x) = e^{2x}$ d'où $\lambda(x) = C + \dfrac{1}{2}e^{2x}$ où $C \in \R$
+
+<br />
+
+**On vérifie :** Soit $f : x \mapsto (C + \dfrac{1}{2}e^{2x}).e^{-x} = C.e^{-x} + \dfrac{1}{2}e^x$,
+
+$f' + f = \Big( -C. e^{-x} + \dfrac{1}{2}e^x \Big)  + \Big( C.e^{-x} + \dfrac{1}{2}e^x \Big) = e^x$
+
+$f$ est donc bien une solution particulière de l'équation $y' + y = \exp$.
+
+</Hideable>
+
+<Item type='methode' titre="résolution d'une équation différentielle linéaire d'ordre 1">
+
+1\) Résoudre l'équation homogène. 
+
+2\) Trouver une solution particèlière à l'équation générale soit rapidement à tâton soit par la méthode de la variation de la constante.
+
+Les solutions sont de la forme $y + z$ où $y$ est solution de l'équation homogène et $z$ est une solution particulière.
+</Item>
 
 ### Equations différentielles linéaires d'ordre 2
 
+<Item type='proposition' titre="problème de cauchy d'ordre 1" tag="admis">
 
+Un problème de Cauchy de la forme :
 
+$$
+(\cC) : \begin{cases}
+y'' + a.y + b.y = g
+\\
+y(x_0) = y_0
+\\
+y'(x_1) = y_1
+\end{cases}
+$$
 
+admet une seule et unique solution
+</Item>
 
+<Item type='proposition' titre="solutions de l'équation homogène d'ordre 2" tag="admis">
+
+Soit $(H) : y'' + a.y' + b.y = 0$ où $(a \v b) \in \R^2$
+
+On appelle équation caractéristique de $(H)$ l'équation $ (E) : x^2 + ax + b$.
+
+$\cd$ Si $(E)$ admet exactement deux solutions $\alpha$ et $\beta$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto \lambda . e^{\alpha x} + \mu . e^{\beta . x}
+$$
+
+$\cd$ Si $(E)$ admet exactement une solution $\alpha$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto (\lambda . x + \mu) e^{\alpha x} 
+$$
+
+$\cd$ Si $(E)$ admet exactement deux solutions non réelles $\alpha$ et $\beta$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto \lambda . \cos(\alpha x) + \mu . \sin(\beta . x)
+$$
+
+</Item>
+
+<Remarque titre=''>
+
+On remarquera la forte similarité avec les suites récurrentes d'ordre 2. Cette similarité vient de l'aspect linéaire des deux problèmes qui se résolvent de la même manière.
+.
+</Remarque>
