@@ -1,0 +1,41 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='logarithme en base a'>
+
+On définit la fonction logarithme en base $a > 1$ comme suit :
+
+$$
+ \log_a : \begin{cases} \R_+^* \rightarrow  \R \\ x \mapsto \dfrac{\ln(x)}{\ln(a)} \end{cases} 
+$$
+</Item>
+
+<Item type='proposition' titre='propriétés du logarithme en base a'>
+
+Soit $a \in \R_+^*$. Soient $(x\v y) \in (\R_+^*)^2$. On a :
+
+$\cd$ $\log_a(x . y) = \log_a(x) + \log_a(y)$
+
+$\cd$ $\log_a(\dfrac{x}{y}) = \log_a(x) - \log_a(y)$
+
+$\cd$ $\log_a(x^n) = n.\log_a(x)$
+
+$\cd$ $\log_a(a^n) = n$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de multiplier chaque résultat par $\ln(a)$ pour retomber sur les propriétés du logarithme népérien.
+</Hideable>
+
+<Remarque titre=''>
+
+Le logarithme en base $10$ est particulièrement utile en physique. 
+
+Ceux en base $2$, $3$ et $16$ ont des applications en algorithmique.
+</Remarque>

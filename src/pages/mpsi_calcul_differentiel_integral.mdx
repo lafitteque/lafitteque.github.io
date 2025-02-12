@@ -14,6 +14,29 @@ import Indent from '../components/Indent.astro'
 import Fil from '../components/Fil.astro'
 
 
+import Extremums from "../Cours/MPSI/Fonctions/extremums.mdx"
+import FonctionsHyperboliques from "../Cours/MPSI/Fonctions/fonctions_hyperboliques.mdx"
+import FonctionsTrigoReciproques from "../Cours/MPSI/Fonctions/fonctions_trigonométriques_réciproques.mdx"
+import LogBaseA from "../Cours/MPSI/Fonctions/logarithme_base_a.mdx"
+
+import Derivation from "../Cours/MPSI/Dérivation/dérivée_n_ieme.mdx"
+import DeriveesSuccessives from "../Cours/MPSI/Dérivation/dérivée.mdx"
+import Formulaire from "../Cours/MPSI/Dérivation/formulaire.mdx"
+import EtudeFonctions from "../Cours/MPSI/Dérivation/étude_fonctions.mdx"
+
+import Primitive from "../Cours/MPSI/Intégration/primitive_lien_intégrale.mdx"
+import ProprietesIntegrale from "../Cours/MPSI/Intégration/propriétés_intégrale.mdx"
+import IPP from "../Cours/MPSI/Intégration/intégration_par_parties.mdx"
+import ChangementVariable from "../Cours/MPSI/Intégration/changement_variable.mdx"
+import IntegraleTrigo from "../Cours/MPSI/Intégration/méthode_intégrale_trigo.mdx"
+import FractionRationnelle from "../Cours/MPSI/Intégration/fraction_rationnelle.mdx"
+import Astuces from "../Cours/MPSI/Intégration/astuces.mdx"
+
+import EquaDiffs from "../Cours/MPSI/Equations_Différentielles/généralités.mdx"
+import Ordre1 from "../Cours/MPSI/Equations_Différentielles/ordre_1.mdx"
+import Ordre2 from "../Cours/MPSI/Equations_Différentielles/ordre_2.mdx"
+
+
 # Chapitre 6 - Dérivation, primitives et équations différentielle
 
 <Tableofcontents/>
@@ -23,107 +46,10 @@ Dans ce chapitre, $A$ désigne un sous-ensemble de $\R$.
 ## Généralités
 
 ### Extrêmums
-
-
-
-<Item type='definition' titre='majorant et minorant'>
-
-Soit $f$ une fonction définie sur $A$. On dit que $M \in \R$ (resp. $m \in \R$) est un majorant (resp. minorant) de $f$ si :
-
-$$
-\forall x \in A \v f(x) \leqslant M (\text{resp. } m \leqslant f(x))
-$$
-
-Si $f$ admet un majorant __ET__ un minorant, on dit que $f$ est bornée.
-
-</Item> 
-
-
-<Item type='definition' titre='extremûm'>
-
-Soit $f$ une fonction définie sur $A$. On dit que $M \in \R$ (resp. $m \in \R$) est un maximum (resp. minimum) de $f$ si :
-
-$$
-\begin{cases}
-	\forall x \in A \v f(x) \leqslant M (\text{resp. } m \leqslant f(x))
-	\\
-	\exists a \in A \mid f(a) = M
-\end{cases}
-$$
-
-On appelle **extrêmum de $f$** un nombre qui est soit un maximum soit un minimum de $f$. 
-
-</Item> 
-
-
+<Extremums />
 
 ### Fonctions trigonométriques réciproques
-
-<Item type='definition' titre='Arcsin'>
-
-On définir la fonction suivante :
-
-$$
-\Arcsin : 
-\begin{cases}
-	\defff{-1}{1} \rightarrow \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}
-	\\
-	x \mapsto y  \mid \sin(y) = x 
-\end{cases}
-$$
-
-Cette fonction est bien définie car $\sin_{\mid \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
-</Item> 
-
-
-
-<Item type='definition' titre='Arccos'>
-
-On définir la fonction suivante :
-
-$$
-Arccos: 
-\begin{cases}
-	\defff{-1}{1} \rightarrow \defff{0}{\pi}
-	\\
-	x \mapsto y  \mid \cos(y) = x 
-\end{cases}
-$$
-
-Cette fonction est bien définie car $cos_{\mid \defff{0}{\pi}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
-</Item> 
-
-
-<Item type='definition' titre='Arctan'>
-
-On définir la fonction suivante :
-
-$$
-\Arctan : 
-\begin{cases}
-	\defoo{-\infty}{+\infty} \rightarrow \defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}
-	\\ 
-	x \mapsto y  \mid tan(y) = x 
-\end{cases}
-$$
-
-Cette fonction est bien définie car $cos_{\defoo{ -\dfrac{\pi}{2}}{\dfrac{\pi}{2}} }$ à valeurs dans $\defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$ est bijective.
-</Item> 
-
-
-<Item type='proposition' titre="argument d'un complexe">
-
-Soit $z \in \C$ tel que $z \notin i\R$.
-
-On a $\Arg(z) \equiv  \dfrac{\Im(z)}{\Re(z)} \; [\pi]$
-</Item>
-
-
-<Remarque titre=''>
-
-Cette propriété est très utile en physique. Retenez-la!
-</Remarque>
-
+<FonctionsTrigoReciproques />
 
 <Item type='proposition' titre='formule avec Arctan'>
 
@@ -138,135 +64,14 @@ $$
 </Item>
 
 
-
 ### Fonctions hyperboliques et logarithmiques
-
-<Item type='definition' titre='cosinus, sinus et tangente hyperbolique'>
-
-On définit les fonctions cosinus hyperbolique, sinus hyperbolique et tangente hyperbolique comme suit :
-
-$$ 
-\ch : \begin{cases} \R  \rightarrow  \R_+^* \\ x \mapsto \dfrac{e^x + e^{-x}}{2}  \end{cases} 
-\qquad
-\sh : \begin{cases} \R  \rightarrow \R \\ x \mapsto \dfrac{e^x - e^{-x}}{2} \end{cases} 
-\qquad
-\th : \begin{cases} \R \rightarrow \defoo{-1}{1} \\ x \mapsto  \dfrac{e^x - e^{-x}}{e^x + e^{-x}} \end{cases} 
-$$
-</Item>
-
-<Item type='proposition' titre='parité des fonctions hyperboliques'>
-
-$\ch$ est paire. 
-
-$\sh$ et $\th$ sont impaires.
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-$\cd$ $\ch(-x) = \dfrac{e^{-x} + e^{-(-x)}}{2} = \dfrac{e^{-x} + e^{x}}{2} = \ch(x)$
-
-$\cd$ $\sh(-x) = \dfrac{e^{-x} - e^{-(-x)}}{2} = \dfrac{e^{-x} - e^{x}}{2} = -\sh(x)$
-
-$\cd$ $\th(-x) = \dfrac{\sh(-x)}{\ch(-x)} = \dfrac{-\sh(x)}{\ch(x)} = -\th(x)$
-</Hideable>
-
-
-<Item type='proposition' titre='carrés des fonctions hyperboliques'>
-
-$$
-ch^2 - sh^2 = 1
-$$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-$$
-ch(x)^2 - sh(x)^2 = \left(\dfrac{e^{x} + e^{x}}{2}\right)^2 - \left(\dfrac{e^{x} - e^{-x}}{2}\right)^2
-$$
-
-$$
-ch(x)^2 - sh(x)^2 = \dfrac{e^{2x} + 2 +  e^{-2x}}{4} - \dfrac{e^{2x} - 2 +  e^{-2x}}{4}
-$$
-
-$$
-ch(x)^2 - sh(x)^2 = \dfrac{2 + 2}{4} = 1
-$$
-</Hideable>
-
-<Item type='definition' titre='logarithme en base a'>
-
-On définit la fonction logarithme en base $a > 1$ comme suit :
-
-$$
- \log_a : \begin{cases} \R_+^* \rightarrow  \R \\ x \mapsto \dfrac{\ln(x)}{\ln(a)} \end{cases} 
-$$
-</Item>
-
-<Item type='proposition' titre='propriétés du logarithme en base a'>
-
-Soit $a \in \R_+^*$. Soient $(x\v y) \in (\R_+^*)^2$. On a :
-
-$\cd$ $\log_a(x . y) = \log_a(x) + \log_a(y)$
-
-$\cd$ $\log_a(\dfrac{x}{y}) = \log_a(x) - \log_a(y)$
-
-$\cd$ $\log_a(x^n) = n.\log_a(x)$
-
-$\cd$ $\log_a(a^n) = n$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-Il suffit de multiplier chaque résultat par $\ln(a)$ pour retomber sur les propriétés du logarithme népérien.
-</Hideable>
-
-<Remarque titre=''>
-
-Le logarithme en base $10$ est particulièrement utile en physique. 
-
-Ceux en base $2$, $3$ et $16$ ont des applications en algorithmique.
-</Remarque>
 
 ## Dérivation
 
 Dans cette section, on considère $I$ un intervalle de $\R$ et $f$ définie sur $I$ à valeurs dans $\R$.
 
 ### Définition et généralités
-
-
-<Item type='definition' titre="dérivée d'une fonction en un point">
-
-On dit que $f$ est dérivable en $a \in I$ si la quantité $\dfrac{f(x+h) - f(x)}{h}$ converge quand $h$ tend vers $0$.
-
-On note alors $f'(a) = \limm{h \to 0} \dfrac{f(x+h) - f(x)}{h}$ le nombre dérivé de $f$ en $a$.
-
-<br/>
-
-Si $f$ est dérivable en tout point de $I$, on dit que $f$ est dérivable sur $I$. On appelle alors dérivée de $f$ la fonction $f' : x \mapsto f'(x)$ définie sur $I$.
-
-</Item>
-
-
-
-<Item type='definition' titre='tangente à la courbe'>
-
-Si $f$ est dérivable en $a \in I$, on appelle tangente à la courbe représentative $\cC_f$ ( ou simplement à $f$) en $a$ la droite d'équation :
-
-$$
-y = f'(a)(x-a) + f(x)
-$$ 
-</Item>
-
-
-<Remarque titre=''>
-
- localement, la tangente est une approximation de la courbe. 
-Cela peut être très utile en physique par exemple pour l'étude d'oscillations avec l'approximation en $0$ : $sin(x) \approx x$.
-
-On verra de meilleures approximations par des polynômes de plus haut degré plus tard dans l'année.
-</Remarque>
-
-
+<Derivation />
 
 <Item type='definition' titre="classe d'une fonction">
 
@@ -279,43 +84,10 @@ On pose $\cC^1(I \v \R) = \{ f \in \R^{I} \mid f \text{ est de classe } \cC^1 \}
 
 
 ### Application à l'étude de fonctions
+<EtudeFonctions />
 
 ### Formulaire 
-
-Soient $n \in \Z^*$, $\lambda \in \R$, $u$ et $v$ définies de $I$ dans $I$ toutes deux dérivables sur $I$.
-
-<div class="content-center">
-
-<div class="float-start" >
-| $f(x)$ || $f'(x)$ |
-|---|---|---|
-| $\lambda$ || $0$ |
-| $x^n$ || $nx^{n-1}$ |
-| $e^x$ || $e^x$ |
-| $\sin(x)$ || $\cos(x)$ |
-| $\cos(x)$ || $-\sin(x)$ |
-| $\tan(x)$ || $1 + tan^2(x)$ |
-| $\Arcsin(x)$ || $\dfrac{1}{\sqrt{1 - x^2}}$ |
-| $\Arccos(x)$ || $-\dfrac{1}{\sqrt{1 - x^2}}$ |
-| $\Arctan(x)$ || $\dfrac{1}{1 + x^2}$ |
-| $\ln(x)$ || $\dfrac{1}{x}$ |
-</div>
-<div class="float-start w-8 p-8"></div>
-<div class="float-start">
-| $f$ || $f'$ |
-|---|---|---|
-| $\lambda. u$ || $\lambda. u'$ |
-| $u + v$ || $u' + v'$ |
-| $u . v$ || $u' . v + u . v'$ |
-| $\dfrac{u}{v}$ || $\dfrac{u'.v - v'.u}{v^2}$ |
-| $u^n$ || $n.u'.u^{n-1}$ |
-| $e^u$ || $u'.e^{u}$ |
-| $\ln(|u|)$ || $\dfrac{u'}{u}$ |
-| $u \circ v$ || $v' . u' \circ v$ |
-</div>
-
-</div>
-
+<Formulaire />
 
 ### Généralisations
 
@@ -330,25 +102,7 @@ f'(a) = g'(a) + i.h'(a)
 $$
 </Item>
 
-<Item type='definition' titre="dérivées d'ordre supérieur">
-
-On dit que $f$ admet une dérivée seconde si $f$ est dérivable et que $f'$ est dérivable. On a alors $f'' = (f')'$ qui est dite dérivée seconde de $f$ et qui se note également $f^{(2)}$.
-
-<br/> 
-
-En général, on dit que $f$ est dérivable $k$ fois si $f \v f^{(1)} \v \dotsm \v f^{(k-1)}$ existent toutes et sont toutes dérivables. On note $f^{(k)}$ la fonction $\big(f^{(k-1)}\big)'$.
-
-<br/> 
-
-On note $\cD^k(I\v \R)$ l'ensemble des fonctions de $I$ dans $\R$ dérivables $k$ fois.
-
-</Item>
-
-<Remarque titre=''>
-
- $f^{(0)}$ est la fonction $f$
-</Remarque>
-
+<DeriveesSuccessives />
 
 <Item type='definition' titre='classes k-ièmes'>
 
@@ -362,16 +116,6 @@ On note $\cC^k(I\v \R) = \{f \in \cD^k(I\v \R) \mid f{(k)} \text{ est continue} 
 Les fonctions $\cC^0$ sont les fonctions continues.
 </Remarque>
 
-<Item type='proposition' titre='formule de newton'>
-
-
-Soient $f$ et $g$ deux fonctions dérivables de $I$ dans $\R$.
-
-$$
-(f.g)^{(n)} = \somme{i=0}{n} \begin{pmatrix} n \\ k \end{pmatrix} f^{(k)}.g^{(n-k)}
-$$
-</Item>
-
 
 
 
@@ -380,240 +124,25 @@ $$
 Dans cette section, on considère $I$ un intervalle de $\R$ et $f$ définie sur $I$ à valeurs dans $\C$.
 
 ### Définition et généralités
-
-<Item type='definition' titre='primitive de $f$'>
-
-On dit qu'une fonction $F$ définie et dérivable sur $I$ et à valeurs dans $\R$ est une primitive de $f$ si :
-
-$$
-F' = f
-$$
-</Item>
-
-
-<Item type='theoreme' titre=" fondamental de l'analyse">
-
-On suppose $f$ continue et $a \in I$. On pose :
-
-$$ 
-F : x \mapsto \integ{a}{x} f(t)dt
-$$
-
-$F$ est l'unique primitive de $f$ s'annulant en $a$.
-</Item>
-
-<Item type='proposition' titre="les primitives diffèrent d'une constante">
-
-Soient $F$ et $G$ deux primitives de $f$. $F-G$ est une fonction constante.
-</Item>
-
-L'intégrale entre $a$ et $b$ d'une fonction positive est l'aire sous sa courbe et entre les axes $x = a$ et $x = b$.
-
-Ajouter graphique
-
-<Item type='proposition' titre="lien avec l'intégrale">
-
-Soit $F$ une primitive de $f$ et $a$ et $b$ des éléments de $I$. 
-
-$$
-\integ{a}{b} f(t) dt = F(b) - F(a)
-$$
-
-La quantité $F(b) - F(a)$ est notée $\Big[ F(t) \Big]_a^b$. 
-</Item>
+<Primitive />
 
 
 ### Propriétés de l'intégrale
-
-<Item type='proposition' titre="linéarité de l'intégrale">
-
-Soient $\lambda$ et $\mu$ deux scalaires, $(a \v b) \in I^2$ et $g$ une fonction continue définie sur $I$ à valeurs dans $\C$. On a :
-
-$$
-\integ{a}{b} \lambda . f(x) + \mu . g(x) dx = \lambda . \integ{a}{b} f(x) + \mu . \integ{a}{b} g(x) dx
-$$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-Soit $F$ une primitive 
-</Hideable>
-
-<Item type='proposition' titre='relation de chasles'>
-
-Soient $a\v b $ et $c$ des éléments de $I$, 
-
-$$
-\integ{a}{c} f(x) dx = \integ{a}{b} f(x) + \integ{b}{c} f(x)
-$$
-</Item>
+<ProprietesIntegrale />
 
 ### Intégration par partie
-
-<Item type='theoreme' titre='intégration par partie'>
-
-Soient $f$ et $g$ deux fonctions de classe $\cC^1$ sur $I$ et à valeurs dans $\C$ et $(a\v b) \in I^2$. On a :
-
-$$
-\integ{a}{b} f(t).g'(t)dt = \Big[ f(t) . g(t) \Big]_a^b - \integ{a}{b} f'(t).g(t)dt
-$$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-On part de $(f.g)' = f'.g + f.g'$.
-
-Par intégration entre $a$ et $b$, $\integ{a}{b}(f.g)(t) dt = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
-
-Ensuite, $\Big[ (f.g) (t)\Big]_a^b = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
-
-Enfin, $\Big[ (f.g) (t)\Big]_a^b  - \integ{a}{b}(f.g')(t) = \integ{a}{b}(f'.g)(t)$
-</Hideable>
-
-
-<Exercice titre=''>
-
-Soit $x \in \R_+^*$. En utilisant une intégration par partie, calculer $\integ{1}{x} \ln(t) dt$.
-</Exercice>
-
-<Hideable type='solution' titre=''>
-
-$$
-\integ{1}{x} \ln(t) dt = \integ{1}{x} 1 \times \ln(t) dt  \mathop{=} \limits_{\substack{ \text{par IPP} \\ u(t) = t \v u'(t) = 1 \\ v(t) = \ln(t) \v v'(t) = \dfrac{1}{t}}} \Big[t . \ln(t) \Big]_1^x - \integ{1}{x} \underbrace{t \times \dfrac{1}{t}}_{= 1} dt
-$$
-
-Cette intégration est correcte car $u$ et $v$ sont $\cC^1$ sur $\R_+^*$. Il suit que :
-
-$$
-\integ{1}{x} \ln(t) dt = x.\ln(x) - 1.\ln(1) - [t]_1^x = x.\ln(x) - x + 1
-$$
-</Hideable>
+<IPP />
 
 ### Changement de variable
-
-
-<Item type='theoreme' titre='changement de variable'>
-
-Soit $\phi$ une fonction de classe $\cC^1$ définie sur $\defff{a}{b}$ et à valeurs dans $I$. On a :
-
-$$
-\integ{a}{b} (f \circ \phi)(t) . \phi'(t) dt = \integ{\phi(a)}{\phi(b)} f(u) du
-$$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-On part de $(F \circ \phi)' = \phi' . f \circ \phi$. 
-
-Par intégration entre $a$ et $b$, $\integ{a}{b} (F \circ \phi)'(t) dt = \integ{a}{b} \phi'(t) . (f \circ \phi) (t) dt$
-
-Il suit que $\Big[(F \circ \phi)'(t)\Big]_a^b = \integ{a}{b} \phi'(t) . (f \circ \phi) (t) dt$
-
-Mais $\Big[(F \circ \phi)'(t)\Big]_a^b = F(\phi(b)) - F(\phi(a)) = \integ{\phi(a)}{\phi(b)} f$
-</Hideable>
+<ChangementVariable />
 
 ### Méthodes usuelles
 
 #### Fractions rationnelles
-
-<Fil>
-On s'intéresse d'abord aux fractions du type : $F : x \mapsto \dfrac{P(x)}{(a_1X + b_1)(a_2X + b_2) \dotsm (a_nX + b_n)}$ définie sur un intervalle de $\R$ convenable et où $P$ est une fonction polynômiale. On suppose également qu'aucun facteur du dénominateur n'a de racine en commun avec des autres facteurs.
-
-<br />
-
-Il faut systématiquement chercher une forme plus simple de $F$ du type : $Q(x) + \dfrac{\alpha_1}{a_1X + b_1} + \dfrac{\alpha_2}{a_2X + b_2} + \dotsm + \dfrac{\alpha_n}{a_nX + b_n} $
-</Fil>
-
-<Hideable type='exemple' titre=''>
-
-Réexprimons $\dfrac{6x^2 - 4x + 1}{2x^2-x -6}$ plus simplement.
-
-<br />
-
-$\dfrac{6x^2 - 4x + 1}{2x^2-x -6} =  \dfrac{(6x^2 - 3x - 18) + 19 - x}{2x^2-x -6} = 3 + \dfrac{-x + 19}{(2x + 3) (x - 2)}$
-
-Ensuite, $\dfrac{-x + 19}{(2x + 3) (x - 2)} = \dfrac{a}{(2x + 3)} + \dfrac{b}{(x - 2)}$
-
-Mais donc $\dfrac{a(x -2) + b(2x+3)}{(2x + 3)(x-2)} = \dfrac{-x + 19}{(2x + 3) (x - 2)}$ d'où $a(x -2) + b(2x+3) = x(2b + a) + (3b - 2a) = -x + 19$
-
-Par identification, $\begin{cases} -1 = 2b + a \\ 19 = 3b - 2a \end{cases}$ 
-
-On en déduit que $\begin{cases} -1 = 2b + a \\ 17 = 7b \end{cases}$
-
-Finalement, $\begin{cases} - \dfrac{41}{7} = a \\ b = \dfrac{17}{7} \end{cases}$
-
-<br />
-
-**Conclusion :** $\dfrac{6x^2 - 4x + 1}{2x^2-x -6} = 3 + \dfrac{- \dfrac{41}{7}}{(2x + 3)} + \dfrac{\dfrac{17}{7}}{(x - 2)}$
-</Hideable>
-
-<Remarque titre=''>
-
-En général, si les facteurs du dénominateur ont des racines en commun, l'expression est différente. Il faut donc bien faire attention car par exemple $\dfrac{x^{13} + 9}{(x-2)^4(1-3x)}$ n'aura pas une forme aussi simple.
-
-<br />
-
-Il existe une généralisation pour ces cas mais nous ne la verrons pas dans ce chapitre.
-</Remarque>
-
-<Exercice titre=''>
-
-Calculer $\integ{3}{7} \dfrac{6x^2 - x + 7}{(5x+4)(3x - 1)} dx$
-</Exercice>
-
-<Item type='methode' titre='cas particulier'>
-
-
-
-Voyons comment calculer 
-$$
-\integ{}{} \dfrac{1}{ax^2 + bx + c} dx
-$$ 
-
-(on laisse les bornes d'intégration vide car seule la méthode nous intéresse).
-
-$\cd$ Si le trinôme a deux racines, on se ramène à la méthode ci-dessus.
-
-$\cd$ Si le trinôme a une seule racine, alors on reconnait une dérivée de la forme $-\dfrac{u'}{u^2}$ qui se primitive en $\dfrac{1}{u}$.
-
-$\cd$ Si le trinôme n'a pas de racine, alors on se ramène à une forme $\dfrac{1}{1 + u^2}$ qui est la dérivée de $\Arctan$ :
-
-Pour cela, mettons sous forme cannonique $ax^2 + bx + c$ : $ax^2 + bx + c = a (x - \alpha)^2  + \beta $. 
-
-On a ensuite $ax^2 + bx + c = \beta \Big( a (\dfrac{x - \alpha}{\sqrt{\beta}})^2  + 1 \Big)$
-
-On a donc reformulé notre intégrale ainsi : 
-
-$$
-\beta \integ{}{} \dfrac{1}{(\dfrac{x - \alpha}{\sqrt{\beta}})^2 + 1} dx
-$$ 
-
-Le changement de variable $u = \dfrac{x - \alpha}{\sqrt{\beta}}$ permet de conclure en se ramenant à la dérivée de $\Arctan$.
-</Item>
+<FractionRationnelle />
 
 #### Intégrales avec des fonctions trigonométriques
-
-<Item type='methode' titre='polynôme en des fonctions trigonométriques'>
-
-Il faut linéariser les puissances de $\sin$, $\cos$ et $\tan$ comme vu dans le chapitre sur les complexes.
-</Item>
-
-
-<Item type='methode' titre='règles de Bioche'>
-
-Si $f$ est un quotient faisant intervenir des polynômes de fonctions trigonométriques, on peut, pour claculer $\integ{a}{b} f(t) dt$ :
-
-$\cd$ Si $f(-t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \cos(u)$
-
-$\cd$ Si $f(\pi-t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \sin(u)$
-
-$\cd$ Si $f(\pi + t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \tan(u)$
-
-</Item>
-
-<Remarque titre=''>
-Si aucun critère n'est rempli, il reste encore la possibilité de poser $t = \tan(\dfrac{u}{2})$ et d'utiliser les formules de l'angle moitié.
-</Remarque>
-
+<IntegraleTrigo />
 
 <Exercice titre='en lien avec la géométrie'>
 
@@ -625,317 +154,17 @@ Si aucun critère n'est rempli, il reste encore la possibilité de poser $t = \t
 
 
 #### Astuces courantes
-
-<Item type='methode' titre='utiliser les symétries de la courbe'>
-
-$\cd$ Si $f$ est paire, $\integ{0}{x} f(t) dt = \integ{-x}{0} f(t) dt$ (par changement de variable $u = -t).
-
-$\cd$ Si $f$ est impaire, $\integ{0}{x} f(t) dt = -\integ{-x}{0} f(t) dt$ (par changement de variable $u = -t).
-</Item>
-
-<Hideable type='exemple' titre=''>
-
-$$
-\integ{-1}{1} \sin^{27}(t) dt = \integ{-1}{0} \sin^{27}(t) dt + \integ{0}{1} \sin^{27}(t) dt = 0
-$$
-</Hideable>
-
-
-<Item type='methode' titre='ajouter et soustraire'>
-
-Il peut être intéressant d'ajouter et soustraire une même quantité pour faire apparaître une forme connue.
-
-Parfois, il peut aussi être utile de multiplier et diviser par une quantité bien choisie.
-</Item>
-
-<Hideable type='exemple' titre=''>
-
-Calculons $\integ{1}{2} \dfrac{u^2}{u^2 + 1} du$
-
-$$
-\integ{1}{2} \dfrac{u^2}{u^2 + 1} du = \integ{1}{2} \dfrac{u^2 + 1 - 1}{u^2 + 1} du =  \integ{1}{2} 1 - \dfrac{1}{u^2 + 1} du 
-$$
-
-<div class="p-2"></div>
-
-$$
-\integ{1}{2} \dfrac{u^2}{u^2 + 1} du =  \integ{1}{2} 1 - \integ{1}{2}\dfrac{1}{u^2 + 1} du = [u]_1^2 - [\Arctan(u)]_1^2 
-$$
-
-Au final, on obtient 
-
-$$
-\integ{1}{2} \dfrac{u^2}{u^2 + 1} du = (1 - 0) - (\Arctan(2) - \Arctan(1)) = 1 + \dfrac{\pi}{4} - \Arctan(2)
-$$
-</Hideable>
-
-
-IPP 2 fois pour trouver équation en I
-
-
-
+<Astuces />
 
 ## Equations différentielles
 
 Dans cette section, $n$ est un élément de $\N^*$ et $I$ est un intervalle de $\R$.
 
 ### Définition et généralités
-
-<Item type='definition' titre='équation différentielle'>
-
-. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle d'ordre $n$ s'il existe $f$ une fonction de $I^n$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
-
-$$
-f(y\v y^{(1)}\v y^{(2)}\v \dotsm \v y^{(n)}) = g
-$$
-
-On dit que l'équation différentielle est **homogène** si $g = 0$ 
-</Item>
-
-<Item type='definition' titre="équation différentielle linéaire d'ordre n">
-
-Soit $n \in \N^*$. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle linéaire d'ordre $n$ s'il existe $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
-
-$$
-y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g
-$$
-</Item>
-
-<Remarque titre=''>
-
-On peut parfois trouver des relations entre des fonctions et leurs dérivées. 
-</Remarque>
-
-<Hideable type='exemple' titre=''>
-
-$\cd$ $exp' = exp$ donc $exp$ est solution de l'équation différentielle linéaire d'ordre $1$ : $y' - y = 0$ 
-
-$\cd$ $\sin'' = -\sin$ donc $\sin'' + \sin = 0$. Ce qui signifie que $\sin$ est solution de l'équation différentielle linéaire d'ordre 2 : $y'' + y = 0$. $\cos$ est également solution de cette équation différentielle, il n'y a pas unicité de la solution.
-
-$\cd$ Soit $f : t \rightarrow \dfrac{1}{t}$. $f'(t) = -f^2(t)$ donc $f$ est solution de l'équation différentielle **non linéaire** d'ordre $1$ : $y' + y^2 = 0$.
-</Hideable>
-
-<Item type='propdef' titre='equation homogène'>
-
-Soit $ (E) \; :\; y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g$ une équation différentielle linéaire d'ordre $n$. On appelle équation homogène de $(E)$ l'équation :
-
-$$
-(H) \; :\; u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
-$$
-
-Si $y$ est solution de $(H)$ et $z$ est solution de $(E)$ dite **solution particulière**, alors $y + z$ est solution de $(E)$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
- $u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0$
-
- et $u_n.z^{(n)} + u_{n-1}.z^{(n-1)} + \dotsm + u_1.z^{(1)} + u_0.z = g$
-
- Par somme des deux équations et par linéarité de la dérivation : 
-
-$u_n.(y+z)^{(n)} + u_{n-1}.(y+z)^{(n-1)} + \dotsm + u_1.(y+z)^{(1)} + u_0.(y+z) = 0$
-
-</Hideable>
-
-<Item type='proposition' titre="linéarité des solutions d'une équation homogène">
-
-Soient $f$ et $g$ deux solutions d'une même équation linéaire homogène d'ordre $n$ notée $(H)$ et $(\lambda\v \mu) \in \R^2 $.
-
-$\lambda . f + \mu .g $ est également solution de $(H)$
-
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-Il s'agit d'une combinaison linéaire de deux équations : on multiplie par $\lambda$ l'équation vérifiée par $f$ et par $\mu$ celle vérifiée par $g$. On obitent par somme le résultat.
-</Hideable>
-
-<Item type='definition' titre='problème de Cauchy'>
-
-Soient $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$, $x_0 \v \dotsm \v x_{n-1}$ des éléments de $I$ et $y_0 \v \dotsm \v y_{n-1}$ des éléments de $\R$. 
-
-On appelle **problème de Cauchy** d'ordre $n$ un système d'inconnu $y \in \cC^n{I\v \R}$ de la forme suivante :
-
-$$
-\begin{cases}
-y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
-\\
-y(x_0) = y_0
-\\
-...
-\\
-y(x_{n-1}) = y_{n-1}
-\end{cases}
-$$
-
-</Item>
-
+<EquaDiffs />
 
 ### Equations différentielles linéaires d'ordre 1
-
-On considère dans cette sous-section $a$ et $g$ des fonctions de $I$ dans $\R$.
-
-<Item type='proposition' titre="problème de cauchy d'ordre 1">
-
-Un problème de Cauchy de la forme :
-
-$$
-(\cC) : \begin{cases}
-y' + a.y = g
-\\
-y(x_0) = y_0
-\end{cases}
-$$
-
-admet une seule et unique solution
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-Soit $A$ une primitive de $a$.
-
-$y $ vérifie $\cC  \ssi \forall x \in I \v y'(x) + a(x).y(x) = g(x) \ssi \forall x \in I \v y'(x).e^{A(x)} + a(x).e^{A(x)}.y(x) = g(x).e^{A(x)}$
-
-Donc 
-$ y $ vérifie $\cC \ssi (y.e^A)' = g.e^A$ et $y(x_0) = y_0$ où $e^A$ désigne $ x \mapsto e^{A(x)}$ et $y(x_0) = y_0$
-
-D'après le théorème fondamental de l'analyse, il existe une unique fonction $F$ de $I$ dans $\R$ telle que $F' = g.e^A$ et $F(x_0) = y(x_0).e^{A(x_0)}$.
-
-D'où : 
-$ y $ vérifie $\cC \ssi y.e^A = F \ssi y = F.e^{-A}$ où $e^{-A} : x \mapsto e^{-A(x)}$
-</Hideable>
-
-<Item type='consequence' titre="equation homogène d'ordre 1" tag="par coeur">
-
-L'équation différentielle homogène $y' + ay = 0$ admet pour solution toute fonction de la forme 
-
-$$
-y : x \mapsto \lambda . e^{-A(x)}\; \v \lambda \in \R
-$$
-</Item>
-
-<Item type='methode' titre='variation de la constante' tag="par coeur">
-
-Cette méthode consiste à rechercher une solution particulière à $y' + a.y = g$.
-
-<br/>
-
-On trouve d'abord la forme de la solution à l'équation homogène qui est  $x \mapsto \lambda . e^{-A(x)}$. Ensuite, on remplace la constante $\lambda$ par une fonction $\lambda : x \mapsto \lambda(x)$ de classe $\cC^1$. Cela donne : 
-
-$(\lambda . e^{-A})' + a . (\lambda . e^{-A}) = g$ puis $\lambda' . e^{-A}  -a . \lambda . e^{-A} + a . \lambda . e^{-A} = g$
-
-<br/>
-On a donc finalement : $\lambda' . e^{-A} = g$ puis $\lambda' = g.e^A$. 
-
-Il reste à primitiver $g.e^A$ pour trouver $\lambda$ et donc avoir une solution particulière $x \mapsto \lambda . e^{-A}$. 
-
-<br/>
-
-Notre raisonnement suppose qu'une telle fonction $\lambda$ existe, il est donc impératif de vérifier que la solution trouvée convient!
-
-<br/>
-
-Attention : il faut systématiquement refaire toutes les étapes de la méthode, aucun résultat intermédiaire n'est au programme, seule la méthode l'est.
-</Item>
-
-<Remarque titre=''>
-
-En général, il faut privilégier la recherche de solution particulière plus instinctive.
-
-Pour une équation différentielle faisant intervenir des fonctions trigonométriques, essayer d'abord rapidement des fonctions de la forme $\exp . \cos$ ou $\exp . \sin$ ou simplement $\sin$ et $\cos$.
-
-<br />
-
-Il faut avoir le réflexe de tester rapidement des solutions simples. Il ne faut par contre pas s'éterniser à chercher à taton et rapidement passer à l'application de la méthode.
-</Remarque>
-
-<Exercice titre=''>
-
-Trouver une solution particulière à $y' + y = \exp$ où $\exp : x \mapsto e^x$.
-
-</Exercice>
-
-<Hideable type='solution' titre=''>
-
-Les solutions de l'équation homogène sont de la forme $x \mapsto \lambda . e^{-x}$ où $\lambda \in \R$.
-
-Mais donc considérons, en suivant la méthode de la variation de la constante, $\lambda : x \mapsto \lambda(x)$ une fonction de $\R$ dans $\R$ de classe $\cC^1$.
-
-<br />
-
-$\lambda'(x) . e^{-x} - \lambda(x).e^{-x} + \lambda . e^{-x} = e^x$ 
-
-ensuite, $\lambda'(x) . e^{-x}= e^x$ d'où $\lambda' = e^x$
-
-puis, $\lambda'(x) = e^{2x}$ d'où $\lambda(x) = C + \dfrac{1}{2}e^{2x}$ où $C \in \R$
-
-<br />
-
-**On vérifie :** Soit $f : x \mapsto (C + \dfrac{1}{2}e^{2x}).e^{-x} = C.e^{-x} + \dfrac{1}{2}e^x$,
-
-$f' + f = \Big( -C. e^{-x} + \dfrac{1}{2}e^x \Big)  + \Big( C.e^{-x} + \dfrac{1}{2}e^x \Big) = e^x$
-
-$f$ est donc bien une solution particulière de l'équation $y' + y = \exp$.
-
-</Hideable>
-
-<Item type='methode' titre="résolution d'une équation différentielle linéaire d'ordre 1">
-
-1\) Résoudre l'équation homogène. 
-
-2\) Trouver une solution particèlière à l'équation générale soit rapidement à tâton soit par la méthode de la variation de la constante.
-
-Les solutions sont de la forme $y + z$ où $y$ est solution de l'équation homogène et $z$ est une solution particulière.
-</Item>
+<Ordre1 />
 
 ### Equations différentielles linéaires d'ordre 2
-
-<Item type='proposition' titre="problème de cauchy d'ordre 1" tag="admis">
-
-Un problème de Cauchy de la forme :
-
-$$
-(\cC) : \begin{cases}
-y'' + a.y + b.y = g
-\\
-y(x_0) = y_0
-\\
-y'(x_1) = y_1
-\end{cases}
-$$
-
-admet une seule et unique solution
-</Item>
-
-<Item type='proposition' titre="solutions de l'équation homogène d'ordre 2" tag="admis">
-
-Soit $(H) : y'' + a.y' + b.y = 0$ où $(a \v b) \in \R^2$
-
-On appelle équation caractéristique de $(H)$ l'équation $ (E) : x^2 + ax + b$.
-
-$\cd$ Si $(E)$ admet exactement deux solutions $\alpha$ et $\beta$, alors les solutions de $(H)$ sont de la forme 
-
-$$
-y : x \mapsto \lambda . e^{\alpha x} + \mu . e^{\beta . x}
-$$
-
-$\cd$ Si $(E)$ admet exactement une solution $\alpha$, alors les solutions de $(H)$ sont de la forme 
-
-$$
-y : x \mapsto (\lambda . x + \mu) e^{\alpha x} 
-$$
-
-$\cd$ Si $(E)$ admet exactement deux solutions non réelles $\alpha$ et $\beta$, alors les solutions de $(H)$ sont de la forme 
-
-$$
-y : x \mapsto \lambda . \cos(\alpha x) + \mu . \sin(\beta . x)
-$$
-
-</Item>
-
-<Remarque titre=''>
-
-On remarquera la forte similarité avec les suites récurrentes d'ordre 2. Cette similarité vient de l'aspect linéaire des deux problèmes qui se résolvent de la même manière.
-.
-</Remarque>
+<Ordre2 />

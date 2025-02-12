@@ -1,0 +1,40 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="dérivée d'une fonction en un point">
+
+On dit que $f$ est dérivable en $a \in I$ si la quantité $\dfrac{f(x+h) - f(x)}{h}$ converge quand $h$ tend vers $0$.
+
+On note alors $f'(a) = \limm{h \to 0} \dfrac{f(x+h) - f(x)}{h}$ le nombre dérivé de $f$ en $a$.
+
+<br/>
+
+Si $f$ est dérivable en tout point de $I$, on dit que $f$ est dérivable sur $I$. On appelle alors dérivée de $f$ la fonction $f' : x \mapsto f'(x)$ définie sur $I$.
+
+</Item>
+
+
+
+<Item type='definition' titre='tangente à la courbe'>
+
+Si $f$ est dérivable en $a \in I$, on appelle tangente à la courbe représentative $\cC_f$ ( ou simplement à $f$) en $a$ la droite d'équation :
+
+$$
+y = f'(a)(x-a) + f(x)
+$$ 
+</Item>
+
+
+<Remarque titre=''>
+
+ localement, la tangente est une approximation de la courbe. 
+Cela peut être très utile en physique par exemple pour l'étude d'oscillations avec l'approximation en $0$ : $sin(x) \approx x$.
+
+On verra de meilleures approximations par des polynômes de plus haut degré plus tard dans l'année.
+</Remarque>
+

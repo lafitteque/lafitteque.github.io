@@ -1,0 +1,82 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Fil>
+On s'intéresse d'abord aux fractions du type : $F : x \mapsto \dfrac{P(x)}{(a_1X + b_1)(a_2X + b_2) \dotsm (a_nX + b_n)}$ définie sur un intervalle de $\R$ convenable et où $P$ est une fonction polynômiale. On suppose également qu'aucun facteur du dénominateur n'a de racine en commun avec des autres facteurs.
+
+<br />
+
+Il faut systématiquement chercher une forme plus simple de $F$ du type : $Q(x) + \dfrac{\alpha_1}{a_1X + b_1} + \dfrac{\alpha_2}{a_2X + b_2} + \dotsm + \dfrac{\alpha_n}{a_nX + b_n} $
+</Fil>
+
+<Hideable type='exemple' titre=''>
+
+Réexprimons $\dfrac{6x^2 - 4x + 1}{2x^2-x -6}$ plus simplement.
+
+<br />
+
+$\dfrac{6x^2 - 4x + 1}{2x^2-x -6} =  \dfrac{(6x^2 - 3x - 18) + 19 - x}{2x^2-x -6} = 3 + \dfrac{-x + 19}{(2x + 3) (x - 2)}$
+
+Ensuite, $\dfrac{-x + 19}{(2x + 3) (x - 2)} = \dfrac{a}{(2x + 3)} + \dfrac{b}{(x - 2)}$
+
+Mais donc $\dfrac{a(x -2) + b(2x+3)}{(2x + 3)(x-2)} = \dfrac{-x + 19}{(2x + 3) (x - 2)}$ d'où $a(x -2) + b(2x+3) = x(2b + a) + (3b - 2a) = -x + 19$
+
+Par identification, $\begin{cases} -1 = 2b + a \\ 19 = 3b - 2a \end{cases}$ 
+
+On en déduit que $\begin{cases} -1 = 2b + a \\ 17 = 7b \end{cases}$
+
+Finalement, $\begin{cases} - \dfrac{41}{7} = a \\ b = \dfrac{17}{7} \end{cases}$
+
+<br />
+
+**Conclusion :** $\dfrac{6x^2 - 4x + 1}{2x^2-x -6} = 3 + \dfrac{- \dfrac{41}{7}}{(2x + 3)} + \dfrac{\dfrac{17}{7}}{(x - 2)}$
+</Hideable>
+
+<Remarque titre=''>
+
+En général, si les facteurs du dénominateur ont des racines en commun, l'expression est différente. Il faut donc bien faire attention car par exemple $\dfrac{x^{13} + 9}{(x-2)^4(1-3x)}$ n'aura pas une forme aussi simple.
+
+<br />
+
+Il existe une généralisation pour ces cas mais nous ne la verrons pas dans ce chapitre.
+</Remarque>
+
+<Exercice titre=''>
+
+Calculer $\integ{3}{7} \dfrac{6x^2 - x + 7}{(5x+4)(3x - 1)} dx$
+</Exercice>
+
+<Item type='methode' titre='cas particulier'>
+
+
+
+Voyons comment calculer 
+$$
+\integ{}{} \dfrac{1}{ax^2 + bx + c} dx
+$$ 
+
+(on laisse les bornes d'intégration vide car seule la méthode nous intéresse).
+
+$\cd$ Si le trinôme a deux racines, on se ramène à la méthode ci-dessus.
+
+$\cd$ Si le trinôme a une seule racine, alors on reconnait une dérivée de la forme $-\dfrac{u'}{u^2}$ qui se primitive en $\dfrac{1}{u}$.
+
+$\cd$ Si le trinôme n'a pas de racine, alors on se ramène à une forme $\dfrac{1}{1 + u^2}$ qui est la dérivée de $\Arctan$ :
+
+Pour cela, mettons sous forme cannonique $ax^2 + bx + c$ : $ax^2 + bx + c = a (x - \alpha)^2  + \beta $. 
+
+On a ensuite $ax^2 + bx + c = \beta \Big( a (\dfrac{x - \alpha}{\sqrt{\beta}})^2  + 1 \Big)$
+
+On a donc reformulé notre intégrale ainsi : 
+
+$$
+\beta \integ{}{} \dfrac{1}{(\dfrac{x - \alpha}{\sqrt{\beta}})^2 + 1} dx
+$$ 
+
+Le changement de variable $u = \dfrac{x - \alpha}{\sqrt{\beta}}$ permet de conclure en se ramenant à la dérivée de $\Arctan$.
+</Item>

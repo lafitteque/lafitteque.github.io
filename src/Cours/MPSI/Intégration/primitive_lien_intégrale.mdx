@@ -1,0 +1,48 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='primitive de $f$'>
+
+On dit qu'une fonction $F$ définie et dérivable sur $I$ et à valeurs dans $\R$ est une primitive de $f$ si :
+
+$$
+F' = f
+$$
+</Item>
+
+
+<Item type='theoreme' titre=" fondamental de l'analyse">
+
+On suppose $f$ continue et $a \in I$. On pose :
+
+$$ 
+F : x \mapsto \integ{a}{x} f(t)dt
+$$
+
+$F$ est l'unique primitive de $f$ s'annulant en $a$.
+</Item>
+
+<Item type='proposition' titre="les primitives diffèrent d'une constante">
+
+Soient $F$ et $G$ deux primitives de $f$. $F-G$ est une fonction constante.
+</Item>
+
+L'intégrale entre $a$ et $b$ d'une fonction positive est l'aire sous sa courbe et entre les axes $x = a$ et $x = b$.
+
+Ajouter graphique
+
+<Item type='proposition' titre="lien avec l'intégrale">
+
+Soit $F$ une primitive de $f$ et $a$ et $b$ des éléments de $I$. 
+
+$$
+\integ{a}{b} f(t) dt = F(b) - F(a)
+$$
+
+La quantité $F(b) - F(a)$ est notée $\Big[ F(t) \Big]_a^b$. 
+</Item>

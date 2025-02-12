@@ -1,0 +1,54 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='methode' titre='utiliser les symétries de la courbe'>
+
+$\cd$ Si $f$ est paire, $\integ{0}{x} f(t) dt = \integ{-x}{0} f(t) dt$ (par changement de variable $u = -t).
+
+$\cd$ Si $f$ est impaire, $\integ{0}{x} f(t) dt = -\integ{-x}{0} f(t) dt$ (par changement de variable $u = -t).
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+$$
+\integ{-1}{1} \sin^{27}(t) dt = \integ{-1}{0} \sin^{27}(t) dt + \integ{0}{1} \sin^{27}(t) dt = 0
+$$
+</Hideable>
+
+
+<Item type='methode' titre='ajouter et soustraire'>
+
+Il peut être intéressant d'ajouter et soustraire une même quantité pour faire apparaître une forme connue.
+
+Parfois, il peut aussi être utile de multiplier et diviser par une quantité bien choisie.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+Calculons $\integ{1}{2} \dfrac{u^2}{u^2 + 1} du$
+
+$$
+\integ{1}{2} \dfrac{u^2}{u^2 + 1} du = \integ{1}{2} \dfrac{u^2 + 1 - 1}{u^2 + 1} du =  \integ{1}{2} 1 - \dfrac{1}{u^2 + 1} du 
+$$
+
+<div class="p-2"></div>
+
+$$
+\integ{1}{2} \dfrac{u^2}{u^2 + 1} du =  \integ{1}{2} 1 - \integ{1}{2}\dfrac{1}{u^2 + 1} du = [u]_1^2 - [\Arctan(u)]_1^2 
+$$
+
+Au final, on obtient 
+
+$$
+\integ{1}{2} \dfrac{u^2}{u^2 + 1} du = (1 - 0) - (\Arctan(2) - \Arctan(1)) = 1 + \dfrac{\pi}{4} - \Arctan(2)
+$$
+</Hideable>
+
+
+IPP 2 fois pour trouver équation en I
+

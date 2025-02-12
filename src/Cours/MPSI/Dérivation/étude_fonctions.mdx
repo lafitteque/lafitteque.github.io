@@ -1,0 +1,51 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+<Item type='proposition' titre='monotonie et dérivée' tag="admis">
+
+Soit $f$ une fonction dérivable.
+
+$f'$ est de signe constant si et seulement si $f$ est monotone. 
+</Item>
+
+Cette propriété nécessite d'avoir vu la notion de limite pour les fonctions, ce que nous n'avons pas encore fait.
+
+<Item type='proposition' titre='monotonie stricte et dérivée'>
+
+Soit $f$ une fonction dérivable.
+
+Si $f'$ est strictement positive (resp. strictement négative), alors $f$ est strictement croissante (resp. strictement décroissante). 
+</Item>
+
+<Remarque titre=''>
+
+Attention ! La réciproque est fausse et un contre-exemple très classique est la fonction $x \mapsto x^3$ qui a une dérivée s'annulant en $0$ et pourtant elle est strictement croissante. 
+</Remarque>
+
+<Item type='proposition' titre='inégalités classiques'>
+
+Soit$n \in \N^*$.
+
+$\cd$ $e^x \geqslant 1 + x \quad \v \forall x \in \R$
+
+$\cd$ $\ln(1+x) \leqslant x \quad \v \forall x \in \R_+$
+
+$\cd$ $(1+x)^n \geqslant 1 + nx \quad \v \forall x \in \R_+$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Première inégalité :** On pose $f : x \mapsto e^x - x - 1$ sur $\R$. Sa dérivée est $f' : x \mapsto e^x - 1$ qui est positive sur $\R_+$. On en déduit que $f$ est décroissante sur $\R_-$ et croissante sur $\R^+$ et qu'elle atteint son minimum en $0$ et celui-ci est $0$. 
+
+Donc $f \geqslant 0$ d'où le résultat.
+
+$\cd$ **Deuxième inégalité :** Par croissance de $\ln$, on applique l'inégalité précédente si $x \geqslant 0$ (en réalité, c'est également valable si $x > -1$).
+
+$\cd$ **Troisième inégalité :** On peut procéder avec le binôme de Newton : $(1+x)^n = \somme{k=0}{n}\begin{pmatrix} n \\ k \end{pmatrix} x^k = 1 + nx + \somme{k=2}{n}\begin{pmatrix} n \\ k \end{pmatrix} x^k$
+
+Comme le dernier terme est positif, $(1+x)^n \geqslant 1 + nx$
+</Hideable>

@@ -1,0 +1,58 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+On considère dans cette sous-section $a$, $b$ et $g$ des fonctions de $I$ dans $\R$.
+
+
+<Item type='proposition' titre="problème de cauchy d'ordre 1" tag="admis">
+
+Un problème de Cauchy de la forme :
+
+$$
+(\cC) : \begin{cases}
+y'' + a.y + b.y = g
+\\
+y(x_0) = y_0
+\\
+y'(x_1) = y_1
+\end{cases}
+$$
+
+admet une seule et unique solution
+</Item>
+
+<Item type='proposition' titre="solutions de l'équation homogène d'ordre 2" tag="admis">
+
+Soit $(H) : y'' + a.y' + b.y = 0$ où $(a \v b) \in \R^2$
+
+On appelle équation caractéristique de $(H)$ l'équation $ (E) : x^2 + ax + b$.
+
+$\cd$ Si $(E)$ admet exactement deux solutions $\alpha$ et $\beta$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto \lambda . e^{\alpha x} + \mu . e^{\beta . x}
+$$
+
+$\cd$ Si $(E)$ admet exactement une solution $\alpha$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto (\lambda . x + \mu) e^{\alpha x} 
+$$
+
+$\cd$ Si $(E)$ admet exactement deux solutions non réelles $\alpha + i \beta$ et $\alpha - i\beta$, alors les solutions de $(H)$ sont de la forme 
+
+$$
+y : x \mapsto \lambda . e^{\alpha x}\cos(\beta x) + \mu .e^{\alpha x} \sin(\beta . x)
+$$
+
+</Item>
+
+<Remarque titre=''>
+
+On remarquera la forte similarité avec les suites récurrentes d'ordre 2. Cette similarité vient de l'aspect linéaire des deux problèmes qui se résolvent de la même manière.
+.
+</Remarque>

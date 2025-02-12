@@ -1,0 +1,46 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='theoreme' titre='intégration par partie'>
+
+Soient $f$ et $g$ deux fonctions de classe $\cC^1$ sur $I$ et à valeurs dans $\C$ et $(a\v b) \in I^2$. On a :
+
+$$
+\integ{a}{b} f(t).g'(t)dt = \Big[ f(t) . g(t) \Big]_a^b - \integ{a}{b} f'(t).g(t)dt
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On part de $(f.g)' = f'.g + f.g'$.
+
+Par intégration entre $a$ et $b$, $\integ{a}{b}(f.g)(t) dt = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
+
+Ensuite, $\Big[ (f.g) (t)\Big]_a^b = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
+
+Enfin, $\Big[ (f.g) (t)\Big]_a^b  - \integ{a}{b}(f.g')(t) = \integ{a}{b}(f'.g)(t)$
+</Hideable>
+
+
+<Exercice titre=''>
+
+Soit $x \in \R_+^*$. En utilisant une intégration par partie, calculer $\integ{1}{x} \ln(t) dt$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$$
+\integ{1}{x} \ln(t) dt = \integ{1}{x} 1 \times \ln(t) dt  \mathop{=} \limits_{\substack{ \text{par IPP} \\ u(t) = t \v u'(t) = 1 \\ v(t) = \ln(t) \v v'(t) = \dfrac{1}{t}}} \Big[t . \ln(t) \Big]_1^x - \integ{1}{x} \underbrace{t \times \dfrac{1}{t}}_{= 1} dt
+$$
+
+Cette intégration est correcte car $u$ et $v$ sont $\cC^1$ sur $\R_+^*$. Il suit que :
+
+$$
+\integ{1}{x} \ln(t) dt = x.\ln(x) - 1.\ln(1) - [t]_1^x = x.\ln(x) - x + 1
+$$
+</Hideable>

@@ -1,0 +1,29 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='methode' titre='polynôme en des fonctions trigonométriques'>
+
+Il faut linéariser les puissances de $\sin$, $\cos$ et $\tan$ comme vu dans le chapitre sur les complexes.
+</Item>
+
+
+<Item type='methode' titre='règles de Bioche'>
+
+Si $f$ est un quotient faisant intervenir des polynômes de fonctions trigonométriques, on peut, pour claculer $\integ{a}{b} f(t) dt$ :
+
+$\cd$ Si $f(-t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \cos(u)$
+
+$\cd$ Si $f(\pi-t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \sin(u)$
+
+$\cd$ Si $f(\pi + t) = f(t) \v \forall t \in \defff{a}{b}$, poser le changement de variable $t = \tan(u)$
+
+</Item>
+
+<Remarque titre=''>
+Si aucun critère n'est rempli, il reste encore la possibilité de poser $t = \tan(\dfrac{u}{2})$ et d'utiliser les formules de l'angle moitié.
+</Remarque>

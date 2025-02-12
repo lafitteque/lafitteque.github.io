@@ -1,0 +1,59 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='cosinus, sinus et tangente hyperbolique'>
+
+On définit les fonctions cosinus hyperbolique, sinus hyperbolique et tangente hyperbolique comme suit :
+
+$$ 
+\ch : \begin{cases} \R  \rightarrow  \R_+^* \\ x \mapsto \dfrac{e^x + e^{-x}}{2}  \end{cases} 
+\qquad
+\sh : \begin{cases} \R  \rightarrow \R \\ x \mapsto \dfrac{e^x - e^{-x}}{2} \end{cases} 
+\qquad
+\th : \begin{cases} \R \rightarrow \defoo{-1}{1} \\ x \mapsto  \dfrac{e^x - e^{-x}}{e^x + e^{-x}} \end{cases} 
+$$
+</Item>
+
+<Item type='proposition' titre='parité des fonctions hyperboliques'>
+
+$\ch$ est paire. 
+
+$\sh$ et $\th$ sont impaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $\ch(-x) = \dfrac{e^{-x} + e^{-(-x)}}{2} = \dfrac{e^{-x} + e^{x}}{2} = \ch(x)$
+
+$\cd$ $\sh(-x) = \dfrac{e^{-x} - e^{-(-x)}}{2} = \dfrac{e^{-x} - e^{x}}{2} = -\sh(x)$
+
+$\cd$ $\th(-x) = \dfrac{\sh(-x)}{\ch(-x)} = \dfrac{-\sh(x)}{\ch(x)} = -\th(x)$
+</Hideable>
+
+
+<Item type='proposition' titre='carrés des fonctions hyperboliques'>
+
+$$
+ch^2 - sh^2 = 1
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$$
+ch(x)^2 - sh(x)^2 = \left(\dfrac{e^{x} + e^{x}}{2}\right)^2 - \left(\dfrac{e^{x} - e^{-x}}{2}\right)^2
+$$
+
+$$
+ch(x)^2 - sh(x)^2 = \dfrac{e^{2x} + 2 +  e^{-2x}}{4} - \dfrac{e^{2x} - 2 +  e^{-2x}}{4}
+$$
+
+$$
+ch(x)^2 - sh(x)^2 = \dfrac{2 + 2}{4} = 1
+$$
+</Hideable>

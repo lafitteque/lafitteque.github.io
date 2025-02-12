@@ -1,0 +1,72 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='Arcsin'>
+
+On définir la fonction suivante :
+
+$$
+\Arcsin : 
+\begin{cases}
+	\defff{-1}{1} \rightarrow \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}
+	\\
+	x \mapsto y  \mid \sin(y) = x 
+\end{cases}
+$$
+
+Cette fonction est bien définie car $\sin_{\mid \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
+</Item> 
+
+
+
+<Item type='definition' titre='Arccos'>
+
+On définir la fonction suivante :
+
+$$
+Arccos: 
+\begin{cases}
+	\defff{-1}{1} \rightarrow \defff{0}{\pi}
+	\\
+	x \mapsto y  \mid \cos(y) = x 
+\end{cases}
+$$
+
+Cette fonction est bien définie car $cos_{\mid \defff{0}{\pi}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
+</Item> 
+
+
+<Item type='definition' titre='Arctan'>
+
+On définir la fonction suivante :
+
+$$
+\Arctan : 
+\begin{cases}
+	\defoo{-\infty}{+\infty} \rightarrow \defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}
+	\\ 
+	x \mapsto y  \mid tan(y) = x 
+\end{cases}
+$$
+
+Cette fonction est bien définie car $cos_{\defoo{ -\dfrac{\pi}{2}}{\dfrac{\pi}{2}} }$ à valeurs dans $\defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$ est bijective.
+</Item> 
+
+
+<Item type='proposition' titre="argument d'un complexe">
+
+Soit $z \in \C$ tel que $z \notin i\R$.
+
+On a $\Arg(z) \equiv  \dfrac{\Im(z)}{\Re(z)} \; [\pi]$
+</Item>
+
+
+<Remarque titre=''>
+
+Cette propriété est très utile en physique. Retenez-la!
+</Remarque>

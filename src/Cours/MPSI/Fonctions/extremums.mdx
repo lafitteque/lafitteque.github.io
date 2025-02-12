@@ -1,0 +1,37 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+
+<Item type='definition' titre='majorant et minorant'>
+
+Soit $f$ une fonction définie sur $A$. On dit que $M \in \R$ (resp. $m \in \R$) est un majorant (resp. minorant) de $f$ si :
+
+$$
+\forall x \in A \v f(x) \leqslant M (\text{resp. } m \leqslant f(x))
+$$
+
+Si $f$ admet un majorant __ET__ un minorant, on dit que $f$ est bornée.
+
+</Item> 
+
+
+<Item type='definition' titre='extremûm'>
+
+Soit $f$ une fonction définie sur $A$. On dit que $M \in \R$ (resp. $m \in \R$) est un maximum (resp. minimum) de $f$ si :
+
+$$
+\begin{cases}
+	\forall x \in A \v f(x) \leqslant M (\text{resp. } m \leqslant f(x))
+	\\
+	\exists a \in A \mid f(a) = M
+\end{cases}
+$$
+
+On appelle **extrêmum de $f$** un nombre qui est soit un maximum soit un minimum de $f$. 
+
+</Item> 

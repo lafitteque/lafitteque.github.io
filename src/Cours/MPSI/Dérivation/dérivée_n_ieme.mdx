@@ -1,0 +1,36 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre="dérivées d'ordre supérieur">
+
+On dit que $f$ admet une dérivée seconde si $f$ est dérivable et que $f'$ est dérivable. On a alors $f'' = (f')'$ qui est dite dérivée seconde de $f$ et qui se note également $f^{(2)}$.
+
+<br/> 
+
+En général, on dit que $f$ est dérivable $k$ fois si $f \v f^{(1)} \v \dotsm \v f^{(k-1)}$ existent toutes et sont toutes dérivables. On note $f^{(k)}$ la fonction $\big(f^{(k-1)}\big)'$.
+
+<br/> 
+
+On note $\cD^k(I\v \R)$ l'ensemble des fonctions de $I$ dans $\R$ dérivables $k$ fois.
+
+</Item>
+
+<Remarque titre=''>
+
+ $f^{(0)}$ est la fonction $f$
+</Remarque>
+
+<Item type='proposition' titre='formule de newton'>
+
+
+Soient $f$ et $g$ deux fonctions dérivables $n$ fois de $I$ dans $\R$.
+
+$$
+(f.g)^{(n)} = \somme{i=0}{n} \begin{pmatrix} n \\ k \end{pmatrix} f^{(k)}.g^{(n-k)}
+$$
+</Item>

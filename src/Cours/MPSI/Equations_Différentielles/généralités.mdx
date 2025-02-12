@@ -1,0 +1,97 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='équation différentielle'>
+
+On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle d'ordre $n$ s'il existe $f$ une fonction de $I^n$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
+
+$$
+f(y\v y^{(1)}\v y^{(2)}\v \dotsm \v y^{(n)}) = g
+$$
+
+On dit que l'équation différentielle est **homogène** si $g = 0$ 
+</Item>
+
+<Item type='definition' titre="équation différentielle linéaire d'ordre n">
+
+Soit $n \in \N^*$. On dit que $y : I \rightarrow \R$ de classe $\cC^n$ vérifie une équation différentielle linéaire d'ordre $n$ s'il existe $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$ et $g$ de $I$ dans $\R$ telles que :
+
+$$
+y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g
+$$
+</Item>
+
+<Remarque titre=''>
+
+On peut parfois trouver des relations entre des fonctions et leurs dérivées. 
+</Remarque>
+
+<Hideable type='exemple' titre=''>
+
+$\cd$ $exp' = exp$ donc $exp$ est solution de l'équation différentielle linéaire d'ordre $1$ : $y' - y = 0$ 
+
+$\cd$ $\sin'' = -\sin$ donc $\sin'' + \sin = 0$. Ce qui signifie que $\sin$ est solution de l'équation différentielle linéaire d'ordre 2 : $y'' + y = 0$. $\cos$ est également solution de cette équation différentielle, il n'y a pas unicité de la solution.
+
+$\cd$ Soit $f : t \rightarrow \dfrac{1}{t}$. $f'(t) = -f^2(t)$ donc $f$ est solution de l'équation différentielle **non linéaire** d'ordre $1$ : $y' + y^2 = 0$.
+</Hideable>
+
+<Item type='propdef' titre='equation homogène'>
+
+Soit $ (E) \; :\; y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = g$ une équation différentielle linéaire d'ordre $n$. On appelle équation homogène de $(E)$ l'équation :
+
+$$
+(H) \; :\; u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
+$$
+
+Si $y$ est solution de $(H)$ et $z$ est solution de $(E)$ dite **solution particulière**, alors $y + z$ est solution de $(E)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+ $u_n.y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0$
+
+ et $u_n.z^{(n)} + u_{n-1}.z^{(n-1)} + \dotsm + u_1.z^{(1)} + u_0.z = g$
+
+ Par somme des deux équations et par linéarité de la dérivation : 
+
+$u_n.(y+z)^{(n)} + u_{n-1}.(y+z)^{(n-1)} + \dotsm + u_1.(y+z)^{(1)} + u_0.(y+z) = 0$
+
+</Hideable>
+
+<Item type='proposition' titre="linéarité des solutions d'une équation homogène">
+
+Soient $f$ et $g$ deux solutions d'une même équation linéaire homogène d'ordre $n$ notée $(H)$ et $(\lambda\v \mu) \in \R^2 $.
+
+$\lambda . f + \mu .g $ est également solution de $(H)$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il s'agit d'une combinaison linéaire de deux équations : on multiplie par $\lambda$ l'équation vérifiée par $f$ et par $\mu$ celle vérifiée par $g$. On obitent par somme le résultat.
+</Hideable>
+
+<Item type='definition' titre='problème de Cauchy'>
+
+Soient $u_1 \v \dotsm \v u_{n-1}$ des fonctions de $I$ dans $\R$, $x_0 \v \dotsm \v x_{n-1}$ des éléments de $I$ et $y_0 \v \dotsm \v y_{n-1}$ des éléments de $\R$. 
+
+On appelle **problème de Cauchy** d'ordre $n$ un système d'inconnu $y \in \cC^n{I\v \R}$ de la forme suivante :
+
+$$
+\begin{cases}
+y^{(n)} + u_{n-1}.y^{(n-1)} + \dotsm + u_1.y^{(1)} + u_0.y = 0
+\\
+y(x_0) = y_0
+\\
+...
+\\
+y(x_{n-1}) = y_{n-1}
+\end{cases}
+$$
+
+</Item>

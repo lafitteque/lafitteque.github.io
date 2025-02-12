@@ -1,0 +1,29 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='proposition' titre="linéarité de l'intégrale">
+
+Soient $\lambda$ et $\mu$ deux scalaires, $(a \v b) \in I^2$ et $g$ une fonction continue définie sur $I$ à valeurs dans $\C$. On a :
+
+$$
+\integ{a}{b} \lambda . f(x) + \mu . g(x) dx = \lambda . \integ{a}{b} f(x) + \mu . \integ{a}{b} g(x) dx
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $F$ une primitive 
+</Hideable>
+
+<Item type='proposition' titre='relation de chasles'>
+
+Soient $a\v b $ et $c$ des éléments de $I$, 
+
+$$
+\integ{a}{c} f(x) dx = \integ{a}{b} f(x) + \integ{b}{c} f(x)
+$$
+</Item>
