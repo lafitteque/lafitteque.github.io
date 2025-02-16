@@ -65,7 +65,7 @@ const macros = {
   "\\integ": "\\int_{#1}^{#2}",
 
   "\\limm": "\\lim \\limits_{ {#1} }",
-  "\\limto":"\\mathop{\\longrightarrow}\\limits_{ {#1} \\to {#2}}",
+  "\\limto":"\\mathop{\\longrightarrow}\\limits_{ {#1} }",
   "\\limton":"\\mathop{\\longrightarrow}\\limits_{n \\to \\infty}",
   "\\suitedef":"({#1})_{{#2}}",
   "\\suitedefN":"({#1})_{n \\in \\N}",

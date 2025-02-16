@@ -1,0 +1,205 @@
+---
+title: "Applications et relations binaires"
+tag: ["autre"]
+layout: '../layouts/Base.astro'
+---
+import Tableofcontents from '../components/Tableofcontents.astro'
+
+import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
+import Item from '../components/Item.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
+
+
+# Chapitre 7 - Continuité et dérivabilité
+
+<Tableofcontents />
+
+## Limite et continuité
+
+
+### Limite : définition et généralité
+
+Dans cette sous-séction, $f$ et $g$ désignent des fonctions définies sur $I$ un intervalle de $\R$. $a$ désigne un élément de $I$
+
+<Item type='definition' titre='limite finie en un point'>
+
+On dit que $f$ admet une limite $l$ en $a$ si :
+
+$$
+\forall \epsilon > 0 \v \exists \eta \in \R \mid \forall x \in I \v \Big( |x - a| < \eta \Rightarrow |f(x)  - l| < \epsilon \Big)
+$$
+
+Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a} l $. 
+
+</Item>
+
+<Item type='definition' titre='limite infinie en un point'>
+
+On suppose que $I$ a un bord ouvert en le point $b$.
+
+On dit que $f$ tend vers $+ \infty$ en $b$ si :
+
+$$
+\forall A > 0 \v \exists \eta \in \R \mid \forall x \in I \v \Big( |x - b| < \eta \Rightarrow f(x) > A \Big)
+$$
+
+Dans ce cas, on note $ \limm{x \to b} f(x) = + \infty$ ou encore $ f(x) \limto{x \to + b} + \infty$
+
+<br />
+
+Le cas $- \infty$ est analogue en remplaçant $A > 0$ par $A < 0$ mais également $f(x) > A$ par $f(x) < A$
+</Item>
+
+<Exercice titre=''>
+
+1\) Démontrer que $x^2$ admet une limite en $3$ à l'aide de la définition.
+
+
+2\) Démontrer que $\dfrac{x^2 - 1}{x-1}$ admet une limite en $1$ à l'aide de la définition.
+</Exercice>
+
+
+<Item type='definition' titre="limites en l'infini">
+
+Si $I$ est non majoré, on dit que $f$ admet une limite $l$ en $+ \infty$ si :
+
+$$
+\forall \epsilon > 0 \v \exists A \in \R \mid \forall x \in I \v \Big( x > A \Rightarrow |f(x) - l| < \epsilon \Big)
+$$
+
+
+on dit que $f$ tend vers $+ \infty$ en $+ \infty$ si :
+
+$$
+\forall A > 0 \v \exists B \in \R \mid \forall x \in I \v \Big( x > B \Rightarrow f(x) > A \Big)
+$$
+</Item>
+
+<Item type='proposition' titre='unicité de la limite'>
+
+Si $f$ admet en $a$ pour limite $l$ et $l'$, alors $l = l'$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$. Il existe $\eta _1$ et $\eta _2$ des réels tels que :
+
+$\cd$ $x \in I $ et $ |x - a| < \eta _1 \Rightarrow |f(x) - l| < \epsilon$ 
+
+$\cd$ $x \in I $ et $ |x - a| < \eta _2 \Rightarrow |f(x) - l'| < \epsilon$ 
+
+Soit $\eta = \min( \eta_1 \v \eta_2)$ et soit $x \in I$ tel que $|x-a| < \eta$. 
+
+On a : $\begin{cases} |f(x) - l| < \epsilon \\ |f(x) - l'| < \epsilon\end{cases}$
+
+Mais donc $\begin{cases} - \epsilon < f(x) - l < \epsilon \\ - \epsilon  f(x) - l'< \epsilon\end{cases}$
+
+Par différence, $ - 2 \epsilon < l - l' < 2 \epsilon$. Ceci étant vrai pour tout $\epsilon > 0$, on en conclut que $l' = l$.
+</Hideable>
+
+<Item type='proposition' titre='linéarité de la limite'>
+
+Soient $\lambda$ et $\mu$ deux réels. Si $\limm{x \to a} f(x) = l$ et $\limm{x \to a} g(x) = l'$, on a :
+
+$$
+\limm{x \to a} \Big(\lambda . f(x) + \mu . g(x) \Big) = \lambda . \limm{x \to a} f(x) + \mu . \limm{x \to a} g(x)
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$ , il existe $\eta_1$ et $\eta_2$ convenant pour les limites de $f$ en $a$ et $g$ en $a$ dans cet ordre.
+
+On pose $\eta = \min(\eta_1 \v \eta_2)$. On a donc, si $x \in I$ et $|x - a| < \eta$ : 
+
+$$
+|(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| \leqslant |\lambda| . |f(x) - l| + |\mu| . |g(x) - l'| < |\lambda| . \epsilon + |\mu| . \epsilon  = (|\lambda| + |\mu| ) . \epsilon \quad \text{(In. 1)}
+$$
+
+Soit $\tilde{\epsilon} = \dfrac{\epsilon}{|\lambda| + |\mu|}$ (ou $1$ si $\lambda = \mu = 0$). 
+
+Par définition de la convergence, il existe $\tilde{\eta_1}$ et $\tilde{\eta_2}$ tels que : 
+
+$$
+\begin{cases}
+\forall x \in I \v \Big( |x - a| < \tilde{\eta_1} \Rightarrow |f(x) - l| < \tilde{\epsilon} \Big)
+\\
+\forall x \in I \v \Big( |x - a| < \tilde{\eta_2} \Rightarrow |g(x) - l'| < \tilde{\epsilon} \Big)
+\end{cases}
+$$
+
+Mais donc, avec $\tilde{\eta} = \min(\tilde{\eta_1}\v \tilde{\eta_2})$, et en appliquant l'inégalité (In. 1), on a :
+
+$\forall x \in I \v \Big( |x - a| < \tilde{\eta} \Rightarrow |(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| < \epsilon  \Big)$
+</Hideable>
+
+
+
+<Item type='proposition' titre='opérations et limites'>
+
+ Si $\limm{x \to a} f(x) = l$ et $\limm{x \to a} g(x) = l'$, on a :
+
+ $\cd$ $\limm{x \to a} f(x) . g(x) = l . l' $
+
+ $\cd$ si $l' \neq 0$ : $\limm{x \to a} \dfrac{f(x)}{g(x)} = \dfrac{l}{l'}$
+</Item>
+
+
+<Item type='proposition' titre='limite et composition'>
+
+Si $h$ est définie sur $J$ un intervalle de $\R$ tel que $l \in J$, que $\limm{x \to a} f(x) = l$ et que Si $\limm{x \to l} g(x) = l'$, alors :
+
+$$
+\limm{x \to a} g \circ f (x)  = l'
+$$
+</Item>
+
+
+<Item type='proposition' titre='limites et inégalités'>
+
+</Item>
+
+<Item type='consequence' titre='inégalité avec une constante'>
+
+</Item>
+
+<Item type='consequence' titre='encadrement et limites'>
+
+</Item>
+
+<Item type='proposition' titre='caractérisation séquentielle'>
+
+</Item>
+
+### Continuité en un point
+
+<Item type='definition' titre='continuité en un point'>
+
+</Item>
+
+<Item type='proposition' titre='existence de la limite et continuité'>
+
+</Item>
+
+<Item type='proposition' titre='continuité et bornes'>
+
+</Item>
+
+### Continuité sur un intervalle
+
+
+### Fonctions complexes
+
+
+## Dérivabilité
+
+### Définition et généralités
+
+
+### Dérivation et optimisation
+
+
+### Théorème de Rolle et conséquences
