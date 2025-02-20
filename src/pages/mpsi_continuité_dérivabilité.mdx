@@ -19,22 +19,31 @@ import Fil from '../components/Fil.astro'
 
 ## Limite et continuité
 
+Dans cette séction, $f$ et $g$ désignent des fonctions définies sur $I$ un intervalle de $\R$. $a$ désigne un élément de $I$ ou bien au bord de $I$ et $b$ un élément au bord de $I$ (supposé ouvert dans ce cas).
 
 ### Limite : définition et généralité
 
-Dans cette sous-séction, $f$ et $g$ désignent des fonctions définies sur $I$ un intervalle de $\R$. $a$ désigne un élément de $I$
+
 
 <Item type='definition' titre='limite finie en un point'>
 
 On dit que $f$ admet une limite $l$ en $a$ si :
 
 $$
-\forall \epsilon > 0 \v \exists \eta \in \R \mid \forall x \in I \v \Big( |x - a| < \eta \Rightarrow |f(x)  - l| < \epsilon \Big)
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \v \Big( |x - a| < \eta \Rightarrow |f(x)  - l| < \epsilon \Big)
 $$
 
 Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a} l $. 
 
 </Item>
+
+<Remarque titre=''>
+
+Dans la définition, on peut remplacer $|f(x)  - l| < \epsilon$ par $|f(x)  - l| \leqslant \epsilon$. On peut faire de même pour $|x - a| < \eta$. 
+
+**Attention cependant :** $\eta$ et $\epsilon$ doivent être **__STRICTEMENT__** positifs.
+ 
+</Remarque>
 
 <Item type='definition' titre='limite infinie en un point'>
 
@@ -43,10 +52,10 @@ On suppose que $I$ a un bord ouvert en le point $b$.
 On dit que $f$ tend vers $+ \infty$ en $b$ si :
 
 $$
-\forall A > 0 \v \exists \eta \in \R \mid \forall x \in I \v \Big( |x - b| < \eta \Rightarrow f(x) > A \Big)
+\forall A > 0 \v \exists \eta > 0 \mid \forall x \in I \v \Big( |x - b| < \eta \Rightarrow f(x) > A \Big)
 $$
 
-Dans ce cas, on note $ \limm{x \to b} f(x) = + \infty$ ou encore $ f(x) \limto{x \to + b} + \infty$
+Dans ce cas, on note $ \limm{x \to b} f(x) = + \infty$ ou encore $ f(x) \limto{x \to b} + \infty$
 
 <br />
 
@@ -85,7 +94,7 @@ Si $f$ admet en $a$ pour limite $l$ et $l'$, alors $l = l'$.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$. Il existe $\eta _1$ et $\eta _2$ des réels tels que :
+Soit $\epsilon > 0$. Il existe $\eta _1 > 0$ et $\eta _2 > 0$ tels que :
 
 $\cd$ $x \in I $ et $ |x - a| < \eta _1 \Rightarrow |f(x) - l| < \epsilon$ 
 
@@ -160,38 +169,286 @@ $$
 
 <Item type='proposition' titre='limites et inégalités'>
 
+Soit $J \subset I$ un intervalle ouvert contenant $a$. On suppose que $\limm{x \to a} f(x) = l \in \R$ et que $\limm{x \to a} g(x) = l' \in \R$.
+
+Si : $\forall x \in J \v f(x) \leqslant g(x)$, alors $l \leqslant l'$
+
 </Item>
 
 <Item type='consequence' titre='inégalité avec une constante'>
 
+Soient $M \in \R$ et  $J \subset I$ un intervalle ouvert contenant $a$. On suppose que $\limm{x \to a} f(x) = l \in \R$.
+
+Si : $\forall x \in J \v f(x) \leqslant M$, alors $l \leqslant M$
 </Item>
 
-<Item type='consequence' titre='encadrement et limites'>
+
+<Hideable type='démonstration' titre=''>
+
+Il s'agit de la propriété précédente appliquée à $g : x \mapsto M$ définie sur $I$.
+</Hideable>
+
+
+<Item type='proposition' titre='encadrement et limites'>
+
+Soit $J \subset I$ un intervalle ouvert contenant $a$ et $h$ définie sur $I$. On suppose que $\limm{x \to a} f(x) = l \in \R$ et que $\limm{x \to a} h(x) = l$.
+
+Si : $\forall x \in J \v f(x) \leqslant g(x) \leqslant h(x)$, alors $g(x)$ tend vers $l$ quand $x$ tend vers $a$.
 
 </Item>
 
-<Item type='proposition' titre='caractérisation séquentielle'>
+<Item type='proposition' titre='limite infinie et comparaison'>
 
+Supposons que $b$ est au bord de $I$, que $\limm{x \to b} f(x) = + \infty$ et que : $f(x) \leqslant g(x) \v \forall x \in I$. 
+
+On a : $\limm{x \to b} g(x) = + \infty$
 </Item>
+
+<Remarque titre=''>
+
+Les propriétés vues jusqu'à maintenant en le point $a$ restent valables en $\pm \infty$.
+</Remarque>
+
+
+<Item type='theoreme' titre='limite monotone'>
+
+On suppose que $I = \R$
+
+Si $f$ est croissante alors, soit $\limm{x \to + \infty} = + \infty$, soit il existe $l \in \R$ tel que $f$ converge en $+ \infty$ et $\limm{x \to + \infty} = l$.
+</Item>
+
+
 
 ### Continuité en un point
 
 <Item type='definition' titre='continuité en un point'>
 
+On dit que $f$ est continue en $a$ si $f$ converge en $a$ et si :
+
+$$
+\limm{x \to a} f(x) = f(a)
+$$
 </Item>
+
+
+<Item type='proposition' titre='continuité et opérations'>
+
+Si $f$ et $g$ sont continues en $a$ alors :
+
+$\cd$ si $\lambda$ et $\mu$ sont des réels, $\lambda . f + \mu . g$ est également continue en $a$
+
+$\cd$ $f . g$ est également continue en $a$
+
+$\cd$ si $g$ ne s'annule pas, alors $\dfrac{f}{g}$ est également continue en $a$
+
+</Item>
+
+
+<Item type='proposition' titre='continuité et composition'>
+
+Supposons $f$ continue en $a$ et $h$ définie sur un intervalle $J$ de $\R$ contenant $f(a)$. 
+
+Si $h$ est continue en $f(a)$, on a $g \circ f$ qui est continue en $a$
+</Item>
+
 
 <Item type='proposition' titre='existence de la limite et continuité'>
 
+Supposons que $f$ est continue en $a$.
+
+S'il existe $l \in \R$ tel que $\limm{x \to a} f(x) = l$, alors $l = f(a)$
 </Item>
+
 
 <Item type='proposition' titre='continuité et bornes'>
 
+Si $f$ est continue en $a$, il existe un intervalle ouvert $J \subset I$ contenant $a$ tel que $f_{\mid J}$ soit bornée.
+
+On dit que $f$ est bornée au voisinage de $a$.
 </Item>
+
+
+<Item type='proposition' titre='caractérisation séquentielle'>
+
+On a l'équivalence entre les deux propriétés suivantes :
+
+$\cd$ i\) $f$ est continue en $a$
+
+$\cd$ ii\) pour toute suite $\suitedefN{u_n} \in I^{\N}$ convergeant vers $a$, $\limton f(u_n) = f(a)$
+</Item>
+
+<Remarque titre=''>
+
+$\cd$ "ii $\Rightarrow$ i" est souvent utilisé pour l'étude de suites. Il convient donc d'introduire une fonction plus pratique à étudier.
+
+Nous avons d'ailleurs utilise cette propriété en l'admetant dans le chapitre sur les suites.
+
+$\cd$ " non ii $\Rightarrow$ non ii" peut s'avérer pratique également pour montrer qu'une fonction n'est pas continue en un point.
+
+</Remarque>
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases} \R_+^*  \rightarrow \defff{-1}{1}  \\ x \mapsto  \cos(\dfrac{1}{x}) \end{cases} $.
+
+$f$ est-elle continue en $0$?
+</Exercice>
+
+<Item type='definition' titre='continuité à gauche et à droite'>
+
+$\cd$ On dit que $f$ est continue à droite en $a$ s'il existe $l \in \R$ tel que : 
+
+$$
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \geqslant a \in I \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
+$$
+
+On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{x \to a^+} f(x) = l$ 
+
+$\cd$ On dit que $f$ est continue à gauche en $a$ s'il existe $l \in \R$ tel que : 
+
+$$
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \leqslant a \in I \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
+$$
+
+On note $\limm{\substack{ x \to a \\ x \leqslant a}} f(x) = l$ ou encore $\limm{x \to a^-} f(x) = l$ 
+
+</Item>
+
+
 
 ### Continuité sur un intervalle
 
+<Item type='definition' titre='continuité sur un intervalle'>
+
+On dit que $f$ est continue sur $I$ si elle est continue en tout point de $I$.
+
+<br />
+On dit que $f$ est continue si elle l'est sur son ensemble de définition, c'est à dire en tout point de son ensemble de définition.
+</Item>
+
+
+<Item type='proposition' titre="image d'un intervalle par une fonction continue">
+
+L'image d'un intervalle par une fonction continue est un intervalle.
+</Item>
+
+
+<Item type='theoreme' titre='valeurs intermédiaires'>
+
+Soient $(a \v b ) \in I^2$. Si $f$ est continue, alors $\defff{f(a)}{f(b)} \subset f(I)$ 
+</Item>
+
+<Item type='theoreme' titre='bornes atteintes'>
+
+Une fonction continue sur un segment est bornée et atteint ses bornes.
+</Item>
+
+<Item type='consequence' titre="image d'un segment">
+
+L'image d'un segment par une application continue est un segment.
+</Item>
+
+
+<Item type='proposition' titre=''>
+
+Supposons que $I = \deffo{m}{+ \infty}$. 
+
+Si $f$ est continue sur $I$ et que $f$ converge en $+ \infty$, alors $f$ est bornée sur $I$.
+</Item>
+
+
+<Item type='proposition' titre='continuité et injectivité'>
+
+Si $f$ est continue et injective sur l'intervalle $I$, alors $f$ est strictement monotone. 
+</Item>
+
+<Remarque titre=''>
+
+On remarquera que, sans supposer que la fonction est définie sur un intervalle, la propriété ne vaut plus.
+</Remarque>
+
+
+<Item type='proposition' titre='continuité, stricte monotonie et réciproque'>
+
+Si $f$ est continue et strictement monotone sur l'intervalle $I$, alors $f$ est inversible de réciproque $f^{-1}$. De plus :
+
+$\cd$ $f^{-1}$ est continue sur $f(I)$
+
+$\cd$ $f^{-1}$ a même monotonie que $f$
+
+</Item>
+
+
+
+### Prolongement par continuité
+
+<Item type='definition' titre='prolongement par continuité'>
+
+Soit $J$ tel que $I \subset J$. On dit que $f$ est prolongeable par continuité sur $J$ s'il existe $g$ continue définie sur $J$ telle que $g_{\mid I} = f$.
+
+En clair $f$ admet un prolongement continu sur $J$.
+</Item>
+
+
+<Item type='proposition' titre='bornes sur un intervalle ouvert'>
+
+On suppose que $I$ est un intervalle ouvert de la forme $\defoo{m}{M}$ où $(m \v M) \in \R^2\v m < M$. 
+
+Si $f$ est continue sur $I$ et que $f$ admet une limite finie en $m$ et en $M$, alors $f$ est prolongeable par continuité sur $\defff{m}{M}$.
+</Item>
+
+<Remarque titre=''>
+
+Cela peur présenter un intérêt pour montrer qu'une fonction est bornée même si elle n'est pas définie sur un segment.
+</Remarque>
 
 ### Fonctions complexes
+
+<Item type='definition' titre='continuité'>
+
+On dit que $f : \C \rightarrow \C$ est continue en $a \in \C$ si : 
+
+$$
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in \C \v \Big( |x - a| < \eta \Rightattow |f(x) - f(a)| < \epsilon \Big)
+$$
+</Item>
+
+
+<Item type='proposition' titre=''>
+
+Une fonction complexe est continue en $a$ si et seulement si sa partie imaginaire et sa partie réelle sont toutes deux continues en $a$.
+</Item>
+
+<Fil>
+Les résultats sur les fonctions réelles valent aussi sur les fonctions complexes en grande partie.
+
+**Points communs :**
+
+$\cd$ La limite est unique.
+
+$\cd$ Le produit, quotient, somme et la multiplication par un scalaire valent également.
+
+$\cd$ Si la limite existe et que la fonction est continue en $a$. Alors la valeur en $a$ coïncide avec la limite
+
+$\cd$ Une fonction continue en $a$ est bornée au voisinage de $a$.
+
+<br/>
+
+**Différences majeures :**
+
+$\cd$ Le théorème des valeurs intérmédiaires ne s'applique pas car $f(0) = -1$ et $f(1) = 1$ ne signifie pas que $f$ s'annule sur $\defoo{0}{1}$.
+
+Néanmoins, la notion intuitive de la continuité qui est de dire que le tracé se fait sans lever le stylo est conservé. Par exemple, on ne peut pas passer de $-i$ à $i$ sans passer par la droite réelle si la fonction est continue.
+
+$\cd$ On ne peut pas dire d'une fonction complexe qu'elle tend vers $\pm \infty$. A la limite, on peut dire que son module tend vers $\pm \infty$.
+
+<br/>
+
+**Extensions pour plus tard :** certaines extensions existent mais nécessitent des notions supplémentaires.
+
+</Fil>
 
 
 ## Dérivabilité
@@ -203,3 +460,5 @@ $$
 
 
 ### Théorème de Rolle et conséquences
+
+### taylor young?

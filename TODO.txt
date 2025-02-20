@@ -1,0 +1,6 @@
+
+- Version mobile bof
+- Guillemets = c'est la merde (chap 1)
+- Ajouter pop définition quand au dessus d'un mot clé
+- Sidebar empêche les interactions avec la page
+- Ajouter thème

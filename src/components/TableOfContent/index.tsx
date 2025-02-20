@@ -29,7 +29,7 @@ class Prefixer {
 
     this.counts[depth] += 1;
     this.counts = this.counts.slice(0, depth + 1);
-    return this.counts.map(getInput).join(".") + " ";
+    return this.counts.map(getInput).join(".") + ") ";
   }
 }
 interface TitleContent {

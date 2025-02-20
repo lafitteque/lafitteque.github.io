@@ -35,10 +35,14 @@ La **table de vérité** ci-dessous définit ces opérations selon la valeur de 
 | Vrai | Faux || Faux | Vrai |
 | Faux | Vrai || Faux | Vrai |
 | Faux | Faux || Faux | Faux |
+
+<br/>
+
+En clair, une table de vérité permet de définir de nouvelles propositions à partir de propositions déjà existantes.
 </Item>
 
 <Remarque>
-Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux être vrais. L'opération "ou exclisif" se note généralement "XOR".
+Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux être vrais. L'opération "ou exclisif" se note généralement "xor".
 </Remarque>
 
 <Exercice titre="">
@@ -132,7 +136,7 @@ Les tables de vérités de "(A ou B) et C" et de "A ou (B ou C)" coïncident et 
 </Hideable>
 
 
-<Item type='propriete' titre='négation des négations, des conjonctions et des disjonctions'>
+<Item type='propriete' titre='lois de Morgan'>
 
 $\cd$ "non (non A)" a la même valeur de vérité que "A"
 
@@ -206,7 +210,7 @@ Soient A et B deux propositions.
 
 $\cd$ On note "A $ \Rightarrow $ B" l'affirmation "A implique B"
 
-$\cd$ On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (aussi.abrégé en ssi)
+$\cd$ On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (au ssi. abrégé en ssi)
 
 On les définit par leurs tables de vérité :
 
@@ -218,7 +222,7 @@ On les définit par leurs tables de vérité :
 | Faux | Faux || Vrai | Vrai |
 
 Autrement dit, "A $\Rightarrow$ B" signifie que dès que A est vrai, B l'est aussi.(et peu importe ce qu'il se passe quand A est faux) 
-et "A $ \ssi $ B" signifie que A et B ont la même table de vérité.
+et "A $ \ssi $ B" signifie que A et B ont la même valeur de vérité.
 </Item>
 
 
@@ -269,7 +273,10 @@ Si $A \ssi  B$, on dit que $A$ est une condition nécessaire et suffisante pour 
 </Remarque>
 
 <Item type='propriete' titre='raisonnement par double implication'>
-Soient A et B deux propositions. (A $\ssi $ B) ssi. $\big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\big)$ 
+
+Soient A et B deux propositions. 
+
+(A $\ssi $ B) est vraie ssi. $\Big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\Big)$ est vraie.
 </Item>
 
 <Hideable type='démonstration' >
