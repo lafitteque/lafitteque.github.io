@@ -17,9 +17,11 @@ import Fil from '../components/Fil.astro'
 
 <Tableofcontents />
 
+Dans ce chapitre, $f$ et $g$ désignent des fonctions définies sur $I$ un intervalle de $\R$. $a$ désigne un élément de $I$ ou bien au bord de $I$ et $b$ un élément au bord de $I$ (supposé ouvert dans ce cas).
+
+
 ## Limite et continuité
 
-Dans cette séction, $f$ et $g$ désignent des fonctions définies sur $I$ un intervalle de $\R$. $a$ désigne un élément de $I$ ou bien au bord de $I$ et $b$ un élément au bord de $I$ (supposé ouvert dans ce cas).
 
 ### Limite : définition et généralité
 
@@ -411,7 +413,7 @@ Cela peur présenter un intérêt pour montrer qu'une fonction est bornée même
 On dit que $f : \C \rightarrow \C$ est continue en $a \in \C$ si : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in \C \v \Big( |x - a| < \eta \Rightattow |f(x) - f(a)| < \epsilon \Big)
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in \C \v \Big( |x - a| < \eta \Rightarrow |f(x) - f(a)| < \epsilon \Big)
 $$
 </Item>
 
@@ -455,10 +457,300 @@ $\cd$ On ne peut pas dire d'une fonction complexe qu'elle tend vers $\pm \infty$
 
 ### Définition et généralités
 
+#### En un point
+
+<Item type='definition' titre='dérivabilité en un point'>
+
+On pose $\Delta_a (h) = \dfrac{f(a+h) - f(a)}{h}$ pour $h \neq 0$ et tel que $h + a \in I$.
+
+On dit que $f$ est dérivable en $a$ si $Delta_a (h)$ converge en $0$.
+
+Dans ce cas, on appel nombre dérivé en $a$ de $f$ et on note $f'(a)$ la quantité suivante :
+
+$$
+f'(a) = \limm{h \to 0} \dfrac{f(a+h) - f(a)}{h}
+$$
+</Item>
+
+Interprétation : vitesse / pente
+
+<Item type='definition' titre='dérivabilité à gauche / droite'>
+
+On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\dfrac{f(a+h) - f(a)}{h}$ converge à gauche (resp. à droite) en $0$.
+</Item>
+
+
+
+<Item type='proposition' titre='caractérisation de la dérivabilité'>
+
+avec epsilon(h) -> 0
+</Item>
+
+
+<Item type='proposition' titre='dérivabilité et opérations'>
+
+</Item>
+
+
+<Item type='proposition' titre='dérivabilité et composition'>
+
+</Item>
+
+
+<Item type='proposition' titre='dérivabilité et continuité'>
+
+Si $f$ est dérivable en $a$, alor $f$ est continue en $a$.
+</Item>
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases}  \R_+^* \rightarrow \R  \\ x \mapsto  x^2 . \sin(\dfrac{1}{x}) \end{cases} $.
+
+<br/>
+
+1\) Montrer que $f$ est prolongeable par continuité sur $\R_+$
+
+2\) Montrer que $f$ est dérivable en $0$
+
+3\) Montrer que $f'$ n'est pas continue en $0$.
+</Exercice>
+
+
+#### Généralisations
+
+<Item type='definition' titre='dérivabilité sur un intervalle'>
+
+On dit que $f$ est dérivable sur $I$ si elle est dérivable en tout point de $I$.
+</Item>
+
+
+<Item type='definition' titre='fonction complexe'>
+
+On dit qu'une fonction complexe est dérivable en $a$ so sa partie réelle ainsi que sa partie imaginaire sont toutes deux dérivables en $a$. On pose $f_r = \Re(f)$ et $f_i = \Im(f)$. 
+
+On a $f'(a) = f_r'(a) + f_i'(a)$
+</Item>
+
+
+<Item type='definition' titre='régularité (rappels)'>
+
+On dit qu'une fonction est de classe $\cC^k$ si elle est dérivable $k$ fois et que sa dérivée $k$-ième est continue.
+
+On dit qu'une fonction est de classe $\cC^{\infty}$ si elle est dérivable à tout ordre. En clair $\cC^{\infty} = \bigcup \limits_{k \in \N} \cC^k$.
+
+On note $f^{(k)}$ la dérivée $k$-ième de $f$.
+</Item>
+
+
+<Item type='proposition' titre='opérations et régularité'>
+
+Soit $k \in \N$.
+
+$\cd$ la combinaison linéaire de deux fonctions de classe $\cC^k$ est également de classe $\cC^k$
+
+$\cd$ le quotient de deux fonctions de classe $\cC^k$ dont le dénominateur ne s'annule pas est également de classe $\cC^k$.
+</Item>
+
+
+<Item type='proposition' titre='formule de Leibniz'>
+
+Si $f$ et $g$ sont de classe $\cC^n$, on a :
+
+$$
+(f.g)^{(n)} = \somme{k=0}{n} \begin{pmatrix} n \\ k \end{pmatrix}f^{(k)} . g^{(n-k)}
+$$
+</Item>
+
 
 ### Dérivation et optimisation
+
+La recherche d'extrêmums est au coeur des problématiques d'optimisation. Ceux-ci interviennent dans énormément de problèmes physiques, informatiques ou économiques comme par exemple:
+
+$\cd$ la minimisation des coûts / la maximisation des gains.
+
+$\cd$ remplir un cahier des charges imposant un ensemble de contraintes (limites dues à des raisons économiques, pratiques, matérielles ou encore de sécurité)
+
+$\cd$ l'intelligence artificielle et la maximisation d'une fonction de gains qui traduit les performances de l'IA.
+ 
+
+<Remarque titre=''>
+
+Le théorème des bornes atteintes nous permet de savoir qu'une fonction atteint son maximum ou minimum. 
+
+Cependant, il requiert l'hypothèse que le domaine de définition est un intervalle fermé. De plus, il ne donne aucune indication à propos de la position des extrêmums.
+</Remarque>
+
+
+<Item type='proposition' titre='extrêmum et dérivée'>
+
+Supposons que $a$ ne soit pas au bord de $I$ et que $f$ soit dérivable sur $I$. 
+
+Si $f$ atteint un extrêmum en $a$, alors $f'(a) = 0$
+</Item>
+
+<Hideable type='contre-exemple' titre=''>
+
+On considère $f : x \mapsto x \sin(x^2)$ définie sur $\R$.
+</Hideable>
+
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases} \defff{-1}{1} \rightarrow \R \\ x \mapsto (x^2 - x + 1)e^x \end{cases} $
+
+Trouver les extrêmums de $f$.
+</Exercice>
 
 
 ### Théorème de Rolle et conséquences
 
-### taylor young?
+<Item type='theoreme' titre='de Rolle'>
+
+On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
+
+<br/>
+
+**Si** : 
+
+$\cd$ $f(a) = f(b)$
+
+$\cd$ $f$ est continue sur $\defff{a}{b}$
+
+$\cd$ $f$ est dérivable sur $\defoo{a}{b}$
+
+**Alors**, il existe $c \in \defoo{a}{b}$ tel que $f'(c) = 0$
+
+</Item>
+
+
+
+<Item type='theoreme' titre='égalité des accroissements finis'>
+
+
+On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
+
+<br/>
+
+**Si** : 
+$\cd$ $f$ est continue sur $\defff{a}{b}$
+
+$\cd$ $f$ est dérivable sur $\defoo{a}{b}$
+
+**Alors**, il existe $c \in \defoo{a}{b}$ tel que $f'(c) = \dfrac{f(b) - f(a)}{b-a}$
+
+</Item>
+
+<Item type='definition' titre='corde'>
+
+On appelle corde de $f$ entre $a \in I$ et $b \in I$ le segment $defff{A}{B}$ où les points $A$ et $B$ sont définit comme suit : $A\Point{a}{f(a)}$ et $B \Point{b}{f(b)}$. 
+</Item>
+
+
+<Item type='definition' titre='fonction k-lipschitzienne'>
+
+Soit $k > 0$. 
+
+On dit que $f$ est $k$-lipschitzienne si : 
+
+$$
+\forall (x \v y) \in I^2 \v |f(x) - f(y)| < k . |x - y|
+$$
+
+<br/>
+
+On dit qu'une fonction $f$ est lipschitzienne s'il existe $k>0$ tel que  $f$ soit $k$-lipschitzienne.
+</Item>
+
+
+<Fil>
+
+**Interprétation en termes de corde :** $|f(x) - f(y)| < k . |x - y|$ se traduit également $\Big\lvert\dfrac{f(x) - f(y)}{x - y}\Big\rvert < k$
+
+Mais le premier terme est la pente de la corde entre $x$ et $y$. Cela signifie que la corde ne peut pas être trop pentue.
+
+<br/>
+
+**Combiner l'interprétation graphique et les accroissements finis :** les accroissements finis nous indiquent que la pente d'une corde est atteinte par la dérivée. Mais la dérivée c'est la pente.
+
+On sait donc, à condition d'étudier une fonction dérivable, qu'une fonction lipschitzienne c'est une fonction dont la pente est bornée. Il est important de savoir dire si une fonction est lipschitzienne avant de le démontrer car la preuve sera bien plus aisée. 
+</Fil>
+
+<Hideable type='exemple' titre=''>
+
+$\cd$ La fonction racine carrée n'est pas lipschitzienne et cela se voit! En $0$, la pente est aussi forte que l'on veut. On peut même la calculer et cela nous le confirme puisque sa dérivée tend vers $+ \infty$ en $0$.
+
+$\cd$ La fonction carré croît de plus en plus. Sa pente ne cesse d'augmenter. Elle n'est donc pas lipschitzienne sur $\R$.
+
+$\cd$ Les restrictions de ces fonctions peuvent être lipschitziennes. La racine carrée restreinte à $\defoo{1}{+ \infty}$ enlève le problème de $0$ et la pente ne cesse de décroître et est positive donc minorée. Cela nous permêt de savoir qu'elle est lipschitzienne. 
+
+</Hideable>
+
+
+<Item type='theoreme' titre='inégalité des accroissements finis'>
+
+On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
+
+<br/>
+
+**Si** : 
+$\cd$ $f$ est continue sur $\defff{a}{b}$
+
+$\cd$ $f$ est dérivable sur $\defoo{a}{b}$
+
+$\cd$ il existe $M$ tel que $|f'|$ soit majorée par $M$.
+
+**Alors**, $f$ est $M$-lipschitzienne.
+
+</Item>
+
+
+Appli aux suites def par réc
+
+
+
+<Item type='proposition' titre='caractérisation de la monotonie'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$\cd$ $f$ est croîssante si et seulement si $f' \geqslant 0$. 
+
+$\cd$ $f$ est décroîssante si et seulement si $f' \leqslant 0$.
+</Item>
+
+<Item type='proposition' titre='stricte monotonie'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$\cd$ Si $f' > 0$, alors $f$ est strictement croissante.
+
+$\cd$ Si $f' < 0$, alors $f$ est strictement décroissante.
+
+</Item>
+
+<Hideable type='contre-exemple' titre=''>
+
+Une fonction peut être strictement monotone mais avoir une dérivée qui s'annule. Par exemple, la fonction cube est strictement croissante mais sa dérivée s'annule en $0$.
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation des fonctions constantes'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$f$ est constante si et seulement si $f' = 0$
+</Item>
+
+<Remarque titre=''>
+
+Attention : cela ne fonctionne que sur un intervalle, pas sur une réunion d'intervalles.
+</Remarque>
+
+
+{/*
+Ajouter :
+    - Rep graphique continuité
+    - Rep graphique dérivabilité
+    - illustration accroissements finis
+    - k-lipschitzienne : approfondir
+    - suites def par récurrence
+*/}
