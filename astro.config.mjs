@@ -52,6 +52,10 @@ const macros = {
   "\\defentiers": "\\llbracket {#1} \\v {#2} \\rrbracket",
 
   "\\ssi": "\\Leftrightarrow",
+  
+  "\\ET": "**__ET__**",
+  "\\OU": "**__OU__**",
+  "\\SSI": "**__SSI__**",
 
   "\\pv": "; \\;",
   "\\v": ", \\;",
