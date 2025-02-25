@@ -533,7 +533,7 @@ $\cd$ "ii $\Rightarrow$ i" est souvent utilisé pour l'étude de suites. Il conv
 
 Nous avons d'ailleurs utilise cette propriété en l'admetant dans le chapitre sur les suites.
 
-$\cd$ " non ii $\Rightarrow$ non ii" peut s'avérer pratique également pour montrer qu'une fonction n'est pas continue en un point.
+$\cd$ "non ii $\Rightarrow$ non ii" peut s'avérer pratique également pour montrer qu'une fonction n'est pas continue en un point.
 
 </Remarque>
 
@@ -809,9 +809,17 @@ $\cd$ $f^{-1}$ a même monotonie que $f$
 
 <Hideable type='démonstration' titre=''>
 
-La seule nouveauté c'est la continuité, le reste a été démontré dans le chapitre sur les applications.
+La seule nouveauté est la continuité, le reste a été démontré dans le chapitre sur les applications.
 
+<br />
 
+Soit $\epsilon > 0$, on cherche $\eta > 0$ tel que $|y - f(a)| < \eta \Rightarrow |x - a| < \epsilon$.
+
+Puisque $f$ est continue en $a$, il existe $\eta_2$ tel que $|x - a| < \eta_2 \Rightarrow |f(x) - f(a)| < \epsilon$.
+
+On pose $J = \defoo{a - \dfrac{\eta_2}{2}}{a + \dfrac{\eta_2}{2}}$. 
+
+On a : $\forall x \in J \v f(a) - \epsilon \leqslant f(a - \dfrac{\eta_2}{2}) \leqslant f(x) \leqslant f(a + \dfrac{\eta_2}{2}) \leqslant f(a) + \epsilon$
 </Hideable>
 
 ### Prolongement par continuité
