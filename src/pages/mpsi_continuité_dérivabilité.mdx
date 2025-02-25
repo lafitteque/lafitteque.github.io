@@ -12,6 +12,7 @@ import Item from '../components/Item.astro'
 import Indent from '../components/Indent.astro'
 import Fil from '../components/Fil.astro'
 
+import IllustrationContinuite from '../components/Graph/continuité.astro'
 
 # Chapitre 7 - Continuité et dérivabilité
 
@@ -38,6 +39,8 @@ $$
 Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a} l $. 
 
 </Item>
+
+<IllustrationContinuite/>
 
 <Remarque titre=''>
 
@@ -66,12 +69,40 @@ Le cas $- \infty$ est analogue en remplaçant $A > 0$ par $A < 0$ mais égalemen
 
 <Exercice titre=''>
 
-1\) Démontrer que $x^2$ admet une limite en $3$ à l'aide de la définition.
+1\) Démontrer que la fonction $f$ définie sur $\R$ par $f(x) = \dfrac{x^2 - 1}{x-1}$ si $x \neq 1$ et par $f(1) = 2$ admet une limite en $1$ à l'aide de la définition.
 
+2\) Démontrer que $g : x \mapsto x^2$ définie sur $\R$ admet une limite en $3$ à l'aide de la définition.
 
-2\) Démontrer que la fonction $f$ définie sur $\R$ par $f(x) = \dfrac{x^2 - 1}{x-1}$ si $x \neq 1$ et par $f(1) = 2$ admet une limite en $1$ à l'aide de la définition.
 </Exercice>
 
+<Hideable type='solution' titre=''>
+
+1/)
+Remarquons déjà que si $x \neq 1$ , alors $f(x) = \dfrac{(x-1)(x+1)}{x-1} = x+1$. 
+
+**Analyse :** Supposons qu'il y ait un $\eta$ qui convienne.
+
+$\cd$ si $x \neq 1$, $|f(x) - f(1)| = |x+1 - 2| = |x-1| < \eta \leqsalnt \epsilon$
+
+**Synthèse :** on vérifie que $\eta = \epsilon$ permet d'obtenir l'inégalité voulue par les mêmes calculs.
+
+**Conclusion :** $f$ est continue en $1$.
+
+
+<br/>
+2\) Soit $\epsilon > 0$. 
+
+On souhaite trouver un $\eta$ qui vérifie que : $|x-3| <  \eta \Rightarrow |g(x) - g(3)| = |x^2 - 9| < \epsilon$
+
+**Analyse :** si l'on suppose que l'on a un tel $\eta$, alors $|x^2 - 9| = |x-3| . |x + 3| \leqslant \eta . \underbrace{|x + 3|}_{= |x-3 + 3 + 3|} \leqslant \eta^2 . 6$.
+
+Mais alors $\eta^2 . 6 \leqslant \epsilon$ d'où $\eta \leqslant \sqrt{\dfrac{\epsilon}{6}}$ par croissance de la racine carrée.
+
+**Synthèse :** on vérifie par les mêmes inégalités que $\eta = \sqrt{\dfrac{\epsilon}{6}}$ convient.
+
+**Conclusion :** $g$ est continue en $3$.
+
+</Hideable>
 
 <Item type='definition' titre="limites en l'infini">
 
@@ -148,6 +179,23 @@ $\forall x \in I \v \Big( |x - a| < \tilde{\eta} \Rightarrow |(\lambda . f(x) - 
 </Hideable>
 
 
+<Item type='proposition' titre='limite et bornes'>
+
+Si $f$ est continue en $a$, il existe un intervalle ouvert $J \subset I$ contenant $a$ tel que $f_{\mid J}$ soit bornée.
+
+On dit que $f$ est bornée au voisinage de $a$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon = 1$. 
+
+Il existe $\eta>0$ tel que $f(\defoo{a- \eta}{ a+ \eta}) \subset \defff{f(a)-1}{f(a)+1}$. 
+
+Donc $f$ est bornée (par $f(a)-1$ et $f(a) + 1$) sur $\defoo{a- \eta}{ a+ \eta}$ et $a \in \defoo{a- \eta}{ a+ \eta}$.
+
+D'où le résultat
+</Hideable>
 
 <Item type='proposition' titre='opérations et limites'>
 
@@ -158,15 +206,75 @@ $\forall x \in I \v \Big( |x - a| < \tilde{\eta} \Rightarrow |(\lambda . f(x) - 
  $\cd$ si $l' \neq 0$ : $\limm{x \to a} \dfrac{f(x)}{g(x)} = \dfrac{l}{l'}$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Démonstration pour le produit :** Nous allons réutiliser une astuce importante qu'il faut connaître : celle d'ajouter et soustraire un terme qui nous arrange!
+
+Soit $\epsilon > 0$ et soient $\eta_f$ et $\eta_g$ convenant pour la continuité de $f$ et $g$ en $a$.
+
+$|f(x).g(x) - l.l'| = |f(x).g(x) - f(x) . l' + f(x) . l' - l.l'| \leqslant |f(x).g(x) - f(x) . l'| + |f(x) . l' - l.l'| $
+
+Mais donc $|f(x).g(x) - l.l'| \leqslant |f(x)| . |g(x) - l'| + |l'| . |f(x) - l|$.
+
+On considère les intervalles ouverts $J_f$ et $J_g$ contenant $a$ tels que $f$ et $g$ y soient bornés dans cet ordre. On pose $J = J_f \bigcap J_g$ qui est également un intervalle ouvert contenant $a$. On note alors $M$ ($M > 0$) un majorant de $|f|$ __ET__ de $|g|$ sur $J$.
+
+Soit $\eta > 0$ tel que $\defoo{a-\eta}{a+\eta} \subset J \bigcap \defoo{a-\eta_f}{a+\eta_f} \bigcap \defoo{a-\eta_g}{a+\eta_g}$ (on rappelle qu'une intersection d'intervalles est un intervalle, on peut également vérifier que $J \bigcap \defoo{a-\eta_f}{a+\eta_f} \bigcap \defoo{a-\eta_g}{a+\eta_g}$ est ouvert).
+
+On a alors $|x - a| < \eta \Rightarrow |f(x).g(x) - l . l'| \leqslant |f(x)| . |g(x) - l'| + |l'| . |f(x) - l| \leqsalnt M . \epsilon + |l'|. M = \epsilon . (M + |l'|)$
+
+On pose $\tilde{\epsilon} = \dfrac{\epsilon}{M + |l'|}$, ce qui permet de conclure.
+
+
+$\cd$ **Démonstration pour le quotient :** en réalité, il suffit de démontrer la continuité de $\dfrac{1}{g}$ en $a$ car le quotient peut être vu comme un produit.
+
+Soient $\dfrac{l'}{2} \geqslant \epsilon > 0$ et $\eta$ convenant pour la continuité de $g$ en $a$. On pose $x \in I$ tel que $|x-a| < \eta$. On suppose que $l' > 0$ (le cas négatif est analogue).
+
+$|g(x) - l'| \leqslant \epsilon$ donc :
+
+$-\epsilon \leqslant g(x) - l' \leqslant \epsilon$ 
+
+puis $-\epsilon + l' \leqslant g(x)  \leqslant \epsilon + l'$
+
+ensuite, $\dfrac{1}{\epsilon + l'} \leqslant \dfrac{1}{g(x)}  \leqslant \dfrac{1}{-\epsilon + l'}$ par décroissance de la fonction inverse sur $\R_+^*$.
+
+mais en soustrayant $\dfrac{1}{l'}$, on a $\dfrac{1}{\epsilon + l'} - \dfrac{1}{l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{1}{-\epsilon + l'} - \dfrac{1}{l'}$
+
+ensuite, $\dfrac{- \epsilon}{(\epsilon + l').l'} = \dfrac{l' - \epsilon - l'}{(\epsilon + l').l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{l' + \epsilon - l'}{(-\epsilon + l').l'} = \dfrac{ \epsilon }{(-\epsilon + l').l'} $
+
+Mais $\dfrac{1}{(-\epsilon + l').l'} \v \dfrac{1}{(\epsilon + l').l'} \leqslant \dfrac{1}{l'.\dfrac{l'}{2}}$. 
+
+On pose $M = \dfrac{1}{l'.\dfrac{l'}{2}}$ d'où $-M.\epsilon \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant M.\epsilon $
+
+En considérant $\tilde{\epsilon} = \dfrac{\epsilon}{M}$, on conclut.
+
+On remarque que l'hypothèse de majoration de $\epsilon$ importe peu. En effet, si $\epsilon > l'/2$, il suffit de prendre $\epsilon_2 = l'/2$ et le $\eta$ en découlant conviendra. 
+</Hideable>
+
 
 <Item type='proposition' titre='limite et composition'>
 
-Si $h$ est définie sur $J$ un intervalle de $\R$ tel que $l \in J$, que $\limm{x \to a} f(x) = l$ et que Si $\limm{x \to l} g(x) = l'$, alors :
+Si $h$ est définie sur $J$ un intervalle de $\R$ tel que $l \in J$, que $\limm{x \to a} f(x) = l$ et que Si $\limm{x \to l} h(x) = l'$, alors :
 
 $$
-\limm{x \to a} g \circ f (x)  = l'
+\limm{x \to a} h \circ f (x)  = l'
 $$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $\epsilon_f > 0$, $\epsilon_h > 0$, $\eta_f$ et $\eta_h$ convenant pour la continuité de $f$ en $a$ et la continuité de $h$ en $l$. On considère $x \in I$ tel que $|x - a| \leqslant \eta_f$
+
+$$
+\begin{cases}
+|f(x) - l| \leqslant \epsilon_f
+\\
+|f(x) - l| < \eta_h \Rightarrow |h(f(x)) - l'| < \epsilon_h
+\end{cases}
+$$
+
+On remarque que choisit $\epsilon_f = \eta_h$ convient. D'où le résultat.
+
+</Hideable>
 
 
 <Item type='proposition' titre='limites et inégalités'>
@@ -176,6 +284,49 @@ Soit $J \subset I$ un intervalle ouvert contenant $a$. On suppose que $\limm{x \
 Si : $\forall x \in J \v f(x) \leqslant g(x)$, alors $l \leqslant l'$
 
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $\epsilon > 0$, il existe $\eta_f$ et $\eta_g$ convenant pour la limite de $f$ et de $g$ en $a$.
+
+On pose $\eta = \min(\eta_f \v \eta_g)$
+
+On a donc, si $x \in I$ tel que $|x - a| < \eta$
+
+$$
+\begin{cases}
+|f(x) - l| \leqslant \epsilon
+\\
+|g(x) - l'| \leqslant \epsilon
+\end{cases}
+$$
+
+mais donc,
+
+$$
+\begin{cases}
+    -\epsilon \leqslant f(x) - l \leqslant \epsilon
+    \\
+    -\epsilon \leqslant g(x) - l' \leqslant \epsilon
+\end{cases}
+$$
+
+puis, 
+
+$$
+\begin{cases}
+    l -\epsilon \leqslant f(x) \leqslant l + \epsilon
+    \\
+    l' -\epsilon \leqslant g(x) \leqslant l' + \epsilon
+\end{cases}
+$$
+
+donc $l - \epsilon \leqslant f(x) \leqslant g(x) \leqslant l' + \epsilon $.
+
+Mais comme ceci vaut pour tout $\epsilon > 0$, on a bien $l \leqslant l'$
+
+</Hideable>
+
 
 <Item type='consequence' titre='inégalité avec une constante'>
 
@@ -193,22 +344,60 @@ Il s'agit de la propriété précédente appliquée à $g : x \mapsto M$ défini
 
 <Item type='proposition' titre='encadrement et limites'>
 
-Soit $J \subset I$ un intervalle ouvert contenant $a$ et $h$ définie sur $I$. On suppose que $\limm{x \to a} f(x) = l \in \R$ et que $\limm{x \to a} h(x) = l$.
+Soit $J \subset I$ un intervalle ouvert contenant $a$ et $h$ définie sur $I$. On suppose que $\limm{x \to a} f(x) = \limm{x \to a} h(x) = l \in \R$.
 
 Si : $\forall x \in J \v f(x) \leqslant g(x) \leqslant h(x)$, alors $g(x)$ tend vers $l$ quand $x$ tend vers $a$.
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+**Montrons qu'il y a convergence :** Soit $\epsilon > 0$ et soient $\eta_f$ et $\eta_h$ convenant pour la limite de $f$ et de $h$ en $a$.
+
+On pose $\eta = \min(\eta_f \v \eta_h)$. Soit $x \in I$ tel que $|x-a| < \eta$,
+
+$$
+\begin{cases}
+-\epsilon \leqslant f(x) - l \leqslant \epsilon
+\\
+-\epsilon \leqslant h(x) - l \leqslant \epsilon
+\end{cases}
+$$
+
+puis,
+
+$$
+\begin{cases}
+    l -\epsilon \leqslant f(x) \leqslant l + \epsilon
+    \\
+    l -\epsilon \leqslant h(x) \leqslant l + \epsilon
+\end{cases}
+$$
+
+On a donc : $l -\epsilon \leqslant f(x) \leqslant g(x) \leqslant h(x) \leqslant l + \epsilon$
+
+On a bien l'encadrement voulu, d'où : $\limm{x \to a} g(x) = l$
+
+</Hideable>
+
+
 <Item type='proposition' titre='limite infinie et comparaison'>
 
-Supposons que $b$ est au bord de $I$, que $\limm{x \to b} f(x) = + \infty$ et que : $f(x) \leqslant g(x) \v \forall x \in I$. 
+Supposons que $\limm{x \to b} f(x) = + \infty$ et que : $f(x) \leqslant g(x) \v \forall x \in I$. 
 
 On a : $\limm{x \to b} g(x) = + \infty$
+
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $A \in \R$, il existe $B$ tel que, si $x \in I$ et $x > B$, alors $f(x) > A$. Mais donc $g(x) \geqslant f(x) > A$ d'où $\limm{x \to b} g(x) = + \infty$
+
+</Hideable>
 
 <Remarque titre=''>
 
-Les propriétés vues jusqu'à maintenant en le point $a$ restent valables en $\pm \infty$.
+Les propriétés vues jusqu'à maintenant en le point $b$ restent valables en $\pm \infty$.
 </Remarque>
 
 
@@ -216,16 +405,50 @@ Les propriétés vues jusqu'à maintenant en le point $a$ restent valables en $\
 
 On suppose que $I = \R$
 
-Si $f$ est croissante alors, soit $\limm{x \to + \infty} = + \infty$, soit il existe $l \in \R$ tel que $f$ converge en $+ \infty$ et $\limm{x \to + \infty} = l$.
+Si $f$ est croissante alors une et une seule des deux propriétés est vraie:
+
+$\cd$ $\limm{x \to + \infty} = + \infty$
+
+$\cd$ $f$ converge en $+ \infty$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+On procède par disjonction de cas :
+
+$\cd$ **Cas 1 - $f$ est majorée :** on note $l$ la quantité $\sup_{x \in \R}(f(x))$.
+
+Par caractérisation de la borne supérieure, il existe $\suitedefN{x_n} \in \R^{\N}$ telle que $f(x_n) \limton l$.
+
+Soit $\epsilon > 0 $, il existe $N \in \N$ tel que, si $n > N$, alors $|f(x_n) - l| < \epsilon$. 
+
+Mais donc, si $x > x_n$, $l - \epsilon \leqslant f(x_n) \leqslant f(x) \leqslant l$.
+
+On a donc $A = x_n$ qui convient pour la définition de la limite en $+ \infty$.
+
+$\cd$ **Cas 2 - $f$ n'est pas majorée :** la définition de la majoration s'écrit : $\exists M \in \R \mid \forall x \in \R \v f(x) \leqslant M$.
+
+Sa négation donne donc $\forall M \in \R \v \exists x \in \R \mid f(x) > M$
+
+Soit $A > 0$, il existe $x_0 \in \R$ tel que $f(x_0) > A$. Mais donc, par croissance de $f$, si $x > x_0$, $A < f(x_0) \leqslant f(x)$. On a donc $B = x_0$ qui convient pour la définition de la limite infine en $+ \infty$.
+
+
+</Hideable>
+
+
+<Item type='consequence' titre=''>
+
+On suppose que $I = \R$
+
+Si $f$ est croissante et majorée, alors $f$ converge en $+ \infty$.
+</Item>
 
 
 ### Continuité en un point
 
 <Item type='definition' titre='continuité en un point'>
 
-On dit que $f$ est continue en $a$ si $f$ converge en $a$ et si :
+On dit que $f$ est continue en $a \in I$ si $f$ converge en $a$ et que :
 
 $$
 \limm{x \to a} f(x) = f(a)
@@ -261,23 +484,48 @@ Supposons que $f$ est continue en $a$.
 S'il existe $l \in \R$ tel que $\limm{x \to a} f(x) = l$, alors $l = f(a)$
 </Item>
 
+<Remarque titre=''>
 
-<Item type='proposition' titre='continuité et bornes'>
+Ceci est donné par la définition de la continuité.
 
-Si $f$ est continue en $a$, il existe un intervalle ouvert $J \subset I$ contenant $a$ tel que $f_{\mid J}$ soit bornée.
+Cependant, on peut considérer une définition alternative de la continuité et équivalente : $f$ est continue en $a \in I$ si elle y admet une limite finie. Les deux définitions sont équivalentes et la propriété tient toujours ce qui la rend un tout petit peu plus intéressante. 
+</Remarque>
 
-On dit que $f$ est bornée au voisinage de $a$.
-</Item>
-
-
-<Item type='proposition' titre='caractérisation séquentielle'>
+<Item type='proposition' titre='caractérisation séquentielle' tag="important">
 
 On a l'équivalence entre les deux propriétés suivantes :
 
 $\cd$ i\) $f$ est continue en $a$
 
-$\cd$ ii\) pour toute suite $\suitedefN{u_n} \in I^{\N}$ convergeant vers $a$, $\limton f(u_n) = f(a)$
+$\cd$ ii\) pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton a$, $ f(u_n) \limton f(a)$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **i\) $\Rightarrow$ ii\) :** supposons que $f$ est continue en $a$ et $\suitedefN{u_n}$ une suite de $I^{\N}$ convergent vers $a$.
+
+Soient $\epsilon > 0$ et $\eta$ convenant pour la limite de $f$ en $a$.
+
+Soit $\eta > 0$, par convergence de $u$ : $\exists N \in \N \mid \forall n > N \v |u_n - a| \leqslant \eta$.
+
+Mais donc, par continuité en $a$, $|u_n - a| \leqslant \eta \Rightarrow |f(u_n) - f(a)| \leqslant \epsilon$ d'où $f(u_n) \limton f(a)$
+
+
+$\cd$ **ii\) $\Rightarrow$ i\) :** supposons que pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton a$ on ait $f(u_n) \limton f(a)$. 
+
+Raisonnons par l'absurde en supposant que i\) n'est pas vérifiée. 
+
+La négation de i\) donne : $\exists \epsilon > 0 \mid \forall \eta > 0 \v \exists x \in I \mid |x-a|< \eta \ET |f(x) - f(a)| > \epsilon $.
+
+Soit un tel $\epsilon > 0$, on pose $\eta_n = \dfrac{1}{n}$ et $x_n \in I $ tel que : $|x-a|< \eta \ET |f(x) - f(a)| > \epsilon $ (d'après l'hypothèse "$\NON$ \i").
+
+Mais donc $x_n \limton a$ car $|x_n - a| < \eta_n = \dfrac{1}{n}$. Cependant, $\suitedefN{f(x_n)}$ ne converge pas vers $f(a)$ car $\in I \mid |x-a|< \eta \ET |f(x_n) - f(a)| > \epsilon $ et on rappelle que $\epsilon$ est ici une constante strictement positive.
+
+En effet, si l'on avait $f(x_n) \limton l$, alors $|f(x_n) - f(a)| > \epsilon $ donnerait, par passage à la limite : $|l - f(a)| > \epsilon $ ce qui veut dire que $l$ et $f(a)$ ne sont pas identiques car distants d'au moins $\epsilon$.
+
+On en conclut donc que l'hypothèse $\NON$ i\) est absurde d'où i\) $\Rightarrow$ ii\).
+
+</Hideable>
 
 <Remarque titre=''>
 
@@ -291,26 +539,36 @@ $\cd$ " non ii $\Rightarrow$ non ii" peut s'avérer pratique également pour mon
 
 <Exercice titre=''>
 
-Soit $ f : \begin{cases} \R_+^*  \rightarrow \defff{-1}{1}  \\ x \mapsto  \cos(\dfrac{1}{x}) \end{cases} $.
+Soit $ f : \begin{cases} \R_+^*  \rightarrow \defff{-1}{1}  \\ x \mapsto  \cos(\dfrac{1}{x}) \end{cases} $ que l'on prolonge en $0$ par $f(0) = 0.
 
 $f$ est-elle continue en $0$?
 </Exercice>
 
+<Hideable type='solution' titre=''>
+
+Il suffit de trouver une suite $\suitedefN{u_n} \in \R_+^{\N}$ bien choisie qui converge vers $0$ mais telle que $f(u_n)$ ne converge pas vers $0$.
+
+On peut prendre par exemple la suite $u$ définie sur $\N$ par : $\forall n \in \N\v u_n = \dfrac{1}{2n\pi}$. On a donc $f(u_n) = \cos(2n\pi) = 1 \limton 1$ alors que $u_n \limton 0$.  
+
+On en conclut que $f$ n'est pas continue en $0$.
+</Hideable>
+
 <Item type='definition' titre='continuité à gauche et à droite'>
 
-$\cd$ On dit que $f$ est continue à droite en $a$ s'il existe $l \in \R$ tel que : 
+$\cd$ On dit que $f$ est continue à droite en $a$ 
+si : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \geqslant a \in I \v 
-\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \geqslant a  \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - f(a)| \leqslant \epsilon \Big)
 $$
 
-On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{x \to a^+} f(x) = l$ 
+On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{x \to a^+} f(x) = f(a)$ 
 
 $\cd$ On dit que $f$ est continue à gauche en $a$ s'il existe $l \in \R$ tel que : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \leqslant a \in I \v 
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \leqslant a \v 
 \Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
 $$
 
@@ -318,6 +576,37 @@ On note $\limm{\substack{ x \to a \\ x \leqslant a}} f(x) = l$ ou encore $\limm{
 
 </Item>
 
+<Remarque titre=''>
+
+
+On pourra trouver d'autres notations comme $\limm{\substack{ x \to a \\ x > a}} f(x)$ ou $\limm{\substack{ x \to a \\ x < a}} f(x)$ mais attention car celles-ci ont une signification qui diffère des définitions données ici!
+</Remarque>
+
+
+<Item type='proposition' titre='caractérisation par la restriction'>
+
+$f$ est continue à gauche (resp. à droite) en $a$ si et seulement si $f_{\mid I \Bigcap \defof{- \infty}{a}}$ (resp. $f_{\mid I \Bigcap \deffo{a}{+ \infty}}$) est continue en $a$
+</Item>
+
+<Remarque titre=''>
+
+On peut donc adapter immédiatement tous les résultats sur la continuité à condition de se restreindre à l'intervalle $\mid I \Bigcap \defof{- \infty}{a}$
+</Remarque>
+
+
+<Item type='proposition' titre=''>
+
+$f$ est continue en $a$ si et seulement si elle est continue à gauche et à droite en $a$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de montrer que la limite à gauche est la même que la limite à droite.
+
+Pour cela, il suffit d'utiliser la caractérisation séquentielle et l'unicité de la limite. On note $l_g$ la limite à gauche et $l_d$ la limite à droite : 
+
+$l_g = \limm{n \to + \infty} f(a) = l_g$ puisque la suite $\suitedefN{a}$ a tous ses éléments dans $I \Bigcap \defof{- \infty}{a}$ mais également dans $I \Bigcap \deffo{a}{+ \infty}$
+</Hideable>
 
 
 ### Continuité sur un intervalle
@@ -336,21 +625,120 @@ On dit que $f$ est continue si elle l'est sur son ensemble de définition, c'est
 L'image d'un intervalle par une fonction continue est un intervalle.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+On note $I$ l'intervalle de départ.
+
+On se place dans $\overline{\R}$ où $f(I)$ est borné et donc admet une borne supérieure et inférieure.
+
+On note $m$ la borne inférieure de $f(I)$ et $M$ la borne supérieure de $f(I)$. 
+
+<br/>
+
+Montrons que $\defoo{m}{M} \subset E$, ce qui suffira à montrer que $E$ est un intervalle car dans ce cas, $\defoo{m}{M} \subset E \subset \defff{m}{M}$.
+
+Pour simplifier, on utilise la caractérisation d'un intervalle par les segments et on considère $a$ et $b$ des réels ordonnés tels que $\defff{a}{b} \subset \defoo{m}{M}$
+
+<br/>
+
+Soit $y \in \defff{a}{b}$, nous allons montrer que $y \in E$. On va raisonner par dichotomie et construire une suite $\suitedefN{a_n}$ et une suite $\suitedefN{b_n}$ adjacentes et telles que $\limm{n \to + \infty} f(u_n) = \limm{n \to + \infty} f(v_n) = y$.
+
+On suppose, sans perte de généralité, que $f(a) < f(b)$ quitte à considérer $g = -f$.
+
+On pose $a_0 = a$ et $b_0 = b$.
+
+On définit ces suites par récurrence ainsi :
+
+soit $n \in \N$ et soit $c_n = \dfrac{a_n + b_n}{2}$. Si $f(a) \leqslant  y \leqslant f(c)$, alors on pose $a_{n+1} = a_n$ et $b_{n+1} = c_n$. Sinon, on pose $a_{n+1} = c_n$ et $b_{n+1} = b_n$
+
+<br />
+
+Montrons sur $\N$ la propriété $\cP(n) : 0 \leqslant b_n - a_n \leqslant 2^{-n}(b-a)$.
+
+**Initialisation :** On vérifie $\cP(0)$. 
+
+En effet, par construction et comme $a_0 = a \leqslant b = b_0$ et donc $0 \leqslant b _0 - a_0 $, 
+
+De plus, on a $b_0 - a_0 = 2^0(b - a)$. D'où l'inégalité.
+
+<br/>
+
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+par hypothèse de récurrence, $a_n \leqslant b_n$ et $b_n - a_n \leqslant 2^{-n}(b-a)$ mais donc, 
+
+$b_{n+1} - a_{n+1} = \dfrac{b_n - a_n}{2} \leqslant 2^{-1}. (b_n - a_n) \leqslant 2^{-(n+1)(b-a)}$.
+
+De plus, soit $\dfrac{\overbrace{b_n - a_n}^{\geqslant 0}}{2} \geqslant 0$. D'où le résultat.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+<br />
+
+Maintenant, on peut remarquer que soit : $\forall n \in \N \v a_{n+1} - a_n = 0$, soit $\forall n \in \N \v a_{n+1} - a_n = \dfrac{b_n - a_n}{2} \geqslant 0$. Mais donc $\suitedefN{a_n}$ est croissante. De même, $\sutedefN{b_n}$ est décroissante. 
+
+Les deux suites sont donc adjacentes.
+
+<br />
+
+Ainsi, les suites $\suitedefN{a_n}$ et $\suitedefN{b_n}$ convergent vers une même valeur $x \in \defff{a}{b}$.
+
+De plus, $f(a_n) \leqslant y \leqslant f(b_n)$ par construction. Mais donc, par caractérisation séquentielle,
+
+$f(x) \leqslant y \leqslant f(x)$ et donc $y \in f(I)$.
+</Hideable>
+
 
 <Item type='theoreme' titre='valeurs intermédiaires'>
 
-Soient $(a \v b ) \in I^2$. Si $f$ est continue, alors $\defff{f(a)}{f(b)} \subset f(I)$ 
+Soient $(a \v b ) \in I^2$ et $f(a) \leqslant y \leqslant f(b). 
+
+Si $f$ est continue, il existe $x \in \defff{a}{b}$ tel que $f(x) = y$ 
 </Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+c'est une application immédiate de la proposition précédente.
+</Hideable>
+
 
 <Item type='theoreme' titre='bornes atteintes'>
 
 Une fonction continue sur un segment est bornée et atteint ses bornes.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+On note $I = \defff{a}{b}$ un segment de $\R$.
+
+Soit $M = \sup_{x \in I}(f(x)) \in \overline{\R}$. Il existe une suite $\suitedefN{x_n} \in I^{\N}$ telle que $f(x_n) \limton M$. 
+
+Mais $\suitedefN{x_n}$ est bornée, donc d'après le théorème de Bolzano-Weirestrass, il existe une extractrice $\phi$ et un réel $x$ tels que : $x_{\phi(n)} \limton x$. 
+
+Mais alors, par continuité de $f$ en $x$ et en appliquant la caractérisation séquentielle, $f(x_{\phi(n)} )\limton f(x)$.
+
+Mais comme $f(x_n) \limton M$ et qu'il y a unicité de la limité, $f(x) = M$ et donc $M \in \R$ ($M$ est fini). 
+
+De plus, $a \leqslant x_{\phi(n)} \leqslant b$ et donc, par passage à la limite, $a \leqslant x \leqslant b$. Donc $x \in I$.
+
+Le maximum est bien atteint. On peut considérer $g = -f$ et appliquer ce résultat pour obtenir $m$ le maximum de $g$ atteint en $x'$. $f$ atteint son minimum en $-x'$ et celui-ci vaut $-m$.
+</Hideable>
+
+
 <Item type='consequence' titre="image d'un segment">
 
 L'image d'un segment par une application continue est un segment.
 </Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+C'est l'application successive des résultats précédents.
+</Hideable>
 
 
 <Item type='proposition' titre=''>
@@ -360,15 +748,52 @@ Supposons que $I = \deffo{m}{+ \infty}$.
 Si $f$ est continue sur $I$ et que $f$ converge en $+ \infty$, alors $f$ est bornée sur $I$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Soit $l\in \R$ la limite de $f$ en $+ \infty$. Par convergence, il existe $M > 0$ tel que : $\forall x > M \v |f(x) - l| \leqslant 1$ (on prend $\epsilon = 1$).
+
+Mais donc $f$ est bornée sur $\defoo{M}{+ \infty}$ car dessus, $l - 1 \leqslant f(x) \leqslant l+ 1$.
+
+Mais $f$ est également bornée sur $\defff{m}{M}$ car c'est un segment et que $f$ est continue.
+
+En clair, $f$ est bornée sur $I = \defff{m}{M} \biguplus \defoo{M}{+ \infty}$.
+</Hideable>
+
 
 <Item type='proposition' titre='continuité et injectivité'>
 
 Si $f$ est continue et injective sur l'intervalle $I$, alors $f$ est strictement monotone. 
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Soit $f$ continue et injective. Supposons par l'absurde qu'elle ne soit pas strictement monotone. 
+
+Il existe existe $x < y < z$ tels que $f(x) < f(y)$ et $f(y) > f(z)$ (ou les inégalités inverses mais auquel cas, on peut considérer $g = -f$).
+
+On pose $A = \max(f(x) \v f(z))$ et $B = \dfrac{f(y) + B}{2}$. 
+
+Comme $f$ est continue et que $f(x) \leqslant B \leqslant f(y)$. D'après le théorème des valeurs intermédiaires, il existe $c_1 \in \defff{x}{y}$ tel que $f(c_1) = B$. 
+
+De même, il existe $c_2 \in \defff{y}{z}$ tel que $f(c_2) = B$.
+
+Mais remarquons $que c_1 \neq c_2$ puisque sinon ils seraient dans $ \defff{x}{y} \bigcap \defff{y}{z} = \{ y\}$ ce qui est absurde car $f(c_1) = B \neq f(y)$.
+
+On a donc $f(c_1) = f(c_2)$ ce qui contredit l'injectivité. C'est absurde!
+</Hideable>
+
 <Remarque titre=''>
 
 On remarquera que, sans supposer que la fonction est définie sur un intervalle, la propriété ne vaut plus.
+</Remarque>
+
+<Remarque titre='à propos de la démonstration'>
+
+On a affirmé ceci : Il existe existe $x < y < z$ tels que $f(x) < f(y)$ et $f(y) > f(z)$. 
+
+En fait, dire qu'il n'y a pas stricte monotonie, c'est dire qu'il y a $x<y$ tels que $f(x) < f(y)$ et $z < t$ tels que $f(z) > f(t)$. 
+
+Mais on peut se ramener à l'affirmation précédente car, entre $x$ et $t$, la fonction $f$ passe par une valeur plus haute que $f(x) et $f(t)$ (soit $f(y)$ , soit $f(z)$, soit il faut utiliser le T.V.I. selon la configuration). On obtient alors trois points ordonnés comme voulu.
 </Remarque>
 
 
@@ -382,7 +807,12 @@ $\cd$ $f^{-1}$ a même monotonie que $f$
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
+La seule nouveauté c'est la continuité, le reste a été démontré dans le chapitre sur les applications.
+
+
+</Hideable>
 
 ### Prolongement par continuité
 
@@ -753,4 +1183,6 @@ Ajouter :
     - illustration accroissements finis
     - k-lipschitzienne : approfondir
     - suites def par récurrence
+    - pauffiner IllustrationContinuite
+    - changer A et B par M et x_0
 */}
