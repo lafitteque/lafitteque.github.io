@@ -813,13 +813,14 @@ La seule nouveauté est la continuité, le reste a été démontré dans le chap
 
 <br />
 
-Soit $\epsilon > 0$, on cherche $\eta > 0$ tel que $|y - f(a)| < \eta \Rightarrow |x - a| < \epsilon$.
+Soit $\epsilon > 0$, on cherche $\eta > 0$ tel que $|y - f(a)| < \eta \Rightarrow |x - a| < \epsilon$. On suppose ici que $f$ est strictement croissante (sinon, on n'a qu'à considérer $g = -f$).
 
-Puisque $f$ est continue en $a$, il existe $\eta_2$ tel que $|x - a| < \eta_2 \Rightarrow |f(x) - f(a)| < \epsilon$.
+Par croissance stricte de $f$ et comme l'image d'un intervalle par une fonction continue est un intervalle, on a $f(\defoo{a - \epsilon}{a + \epsilon}) = \defoo{f(a - \epsilon)}{f(a + \epsilon)}$.  
 
-On pose $J = \defoo{a - \dfrac{\eta_2}{2}}{a + \dfrac{\eta_2}{2}}$. 
+On choisit $\eta > 0$ (par exemple $\eta = \min(f(a) - f(a - \epsilon)\v f(a + \epsilon) - f(a))$ convient) tel que $\defoo{f(a) - \eta}{f(a) + \eta} \subset \defoo{f(a - \epsilon)}{f(a + \epsilon)}$
 
-On a : $\forall x \in J \v f(a) - \epsilon \leqslant f(a - \dfrac{\eta_2}{2}) \leqslant f(x) \leqslant f(a + \dfrac{\eta_2}{2}) \leqslant f(a) + \epsilon$
+On a donc : $|f(x) - f(a)| < \eta \Rightarrow |x-a|< \epsilon$
+
 </Hideable>
 
 ### Prolongement par continuité
@@ -839,10 +840,19 @@ On suppose que $I$ est un intervalle ouvert de la forme $\defoo{m}{M}$ où $(m \
 Si $f$ est continue sur $I$ et que $f$ admet une limite finie en $m$ et en $M$, alors $f$ est prolongeable par continuité sur $\defff{m}{M}$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Si l'on pose $l_g = \limm{x \to m} f(x)$ et $l_d = \limm{x \to M} f(x)$, il suffit de considérer la fonction $g$ définie sur $\defff{m}{M}$ telle que : $g(x) = f(x)$ si $m<x<M$ ; $g(m) = l_g$ et $g(M) = l_d$.
+
+Cette fonction est continue sur $\defff{m}{M}$ et prolonge $f$.
+</Hideable>
+
 <Remarque titre=''>
 
 Cela peur présenter un intérêt pour montrer qu'une fonction est bornée même si elle n'est pas définie sur un segment.
 </Remarque>
+
+
 
 ### Fonctions complexes
 
@@ -860,6 +870,23 @@ $$
 
 Une fonction complexe est continue en $a$ si et seulement si sa partie imaginaire et sa partie réelle sont toutes deux continues en $a$.
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $f$ une fonction complexe définie sur $\C$.
+
+$\cd$ **Supposons que $f$ est continue en $a$ :** Soit $\epsilon > 0$, il existe $\eta > 0$. Considérons $x$ tel que $|x-a| < \eta$.
+
+On a $|f(x) - f(a)| < \epsilon$ mais $ \Re(f(x)) - \Re(f(a))  = \Re(f(x) - f(a)) \leqslant |f(x) - f(a)|  \leqsalnt \epsilon$ et les mêmes inégalités valent également pour la partie imaginaire. D'où la continuité de celles-ci en $a$
+
+
+$\cd$ **Supposons que $\Re(f)$ et $\Im(f)$ sont continues en $a$ :** Soit $\epsilon > 0$, il existe $\eta_r$ et $\eta_i$ convenant pour la continuité de la partie réelle et de la partie imaginaire en $a$. On pouse $\eta = \min(\eta_r\v \eta_i)$. 
+
+Soit $x$ tel que $|x-a| < \eta$. On a $|f(x) - f(a)| \leqslant |\Re(f(x)) - \Re(f(a))| + |\Im(f(x)) - \Im(f(a))| \leqslant 2 \epsilon$ par inégalité triangulaire.
+
+Il suffit donc de considérer $\tilde{\epsilon} = \dfrac{\epsilon}{2}$ pour conclure.
+
+</Hideable>
 
 <Fil>
 Les résultats sur les fonctions réelles valent aussi sur les fonctions complexes en grande partie.
@@ -906,33 +933,54 @@ On dit que $f$ est dérivable en $a$ si $Delta_a (h)$ converge en $0$.
 Dans ce cas, on appel nombre dérivé en $a$ de $f$ et on note $f'(a)$ la quantité suivante :
 
 $$
-f'(a) = \limm{h \to 0} \dfrac{f(a+h) - f(a)}{h}
+f'(a) = \limm{\substack{h \to 0 \\ h \neq 0}} \dfrac{f(a+h) - f(a)}{h}
 $$
 </Item>
 
-Interprétation : vitesse / pente
+AF : Interprétation : vitesse / pente
+
+<Item type='definition' titre='tangente'>
+
+On appelle tangente à $\cC_f$ (ou simplement tangente à $f$) en $a$ la droite d'équation :
+
+$$
+y = f'(a).(x-a) + f(a)
+$$
+</Item>
+
+AF : illustration : pente, retard de $a$, valeur après le retard
+
 
 <Item type='definition' titre='dérivabilité à gauche / droite'>
 
-On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\dfrac{f(a+h) - f(a)}{h}$ converge à gauche (resp. à droite) en $0$.
+On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\limm{\substack{h \to 0 \\ h < 0}} \dfrac{f(a+h) - f(a)}{h}$ converge (resp. à droite $f'(a) = \limm{\substack{h \to 0 \\ h > 0}} \dfrac{f(a+h) - f(a)}{h}$).
 </Item>
-
 
 
 <Item type='proposition' titre='caractérisation de la dérivabilité'>
 
-avec epsilon(h) -> 0
+$f$ est dérivable en $a$ si et seulement si il existe $C \in \R$ et une fonction $\epsilon$ définie sur $J\setminus \{ 0\} $ (où $J$ est un intervalle ouvert contenant $0$) et telle que $\limm{\substack{x \to 0 \\ x \neq 0}} \epsilon(h) = 0$ et : $\forall x \in J\setminus \{ 0\} \v f(a + h) = f(a) + C.h + h.\epsilon(h)$
+
 </Item>
 
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Montrons d'abord le sens réciproque : on a $f(a + h) = f(a) + C.h + h.\epsilon(h)$ puis $\dfrac{f(a + h) - f(a)}{h} = C + \epsilon(h) \limto{h \to 0} C$ d'où la dérivabilité de $f$ en $a$
+
+$\cd$ Supposons que $f$ est dérivable en $a$. On pose $C = f'(a)$ et $\epsilon$ telle que $\epsilon(h) = \dfrac{f(a + h) - f(a)}{h} - C$ définie sur $J \setminus \{ 0\}$ où $J$ est un intervalle ouvert contenant $0$ (il suffit d'en prendre un dans $I$).
+
+</Hideable>
 
 <Item type='proposition' titre='dérivabilité et opérations'>
 
+La somme, le produit, le quotient de fonctions dérivables en $a$ reste dérivable en $a$. Il en va de même pour le produit par un scalaire.
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='proposition' titre='dérivabilité et composition'>
-
-</Item>
+Cela découle directement des propriétés sur les limites.
+</Hideable>
 
 
 <Item type='proposition' titre='dérivabilité et continuité'>
@@ -940,18 +988,47 @@ avec epsilon(h) -> 0
 Si $f$ est dérivable en $a$, alor $f$ est continue en $a$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Comme $f$ est dérivable en $a$, il existe une fonction $\epsilon$ définie sur $J \setminus \{0\}$ où $J$ est un ouvert contenant $0$ telle que : $f(a + h) = f(a) + h.f'(a) + h.\epsilon(h)$. 
+
+En effectuant le changement de variable $x = a+h$, on a $f(x) = f(a) + (x-a).f'(a) + (x-a). \epsilon(x-a) \limto{x \to a} f(a)$ d'où la continuité de $f$ en $a$.
+</Hideable>
+
 <Exercice titre=''>
 
 Soit $ f : \begin{cases}  \R_+^* \rightarrow \R  \\ x \mapsto  x^2 . \sin(\dfrac{1}{x}) \end{cases} $.
 
 <br/>
 
-1\) Montrer que $f$ est prolongeable par continuité sur $\R_+$
+1\) Montrer que $f$ est prolongeable par continuité sur $\R_+$ par une fonction $g$ à préciser
 
-2\) Montrer que $f$ est dérivable en $0$
+2\) Montrer que $g$ est dérivable en $0$
 
-3\) Montrer que $f'$ n'est pas continue en $0$.
+3\) Montrer que $g'$ n'est pas continue en $0$.
 </Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) $-x^2 \leqslant f(x) \leqslant x^2$ sur $\R_+^*$. Par passage à la limite en $0$, $0 \leqslant \limm{x \to 0} f(x) \leqslant 0$. On peut donc poser $g$ la fonction définie sur $\R_+$ telle que $g_{\mid \R_+^*} = f$ et $g(0) = 0$
+qui est le prolongement par continuité de $f$ sur $\R_+^*$.
+
+<br/>
+
+2\) Soit $h > 0$, $\dfrac{f(h)-f(0)}{h} = \dfrac{h^2 . \sin(\dfrac{1}{h}) - 0}{h} = h.\sin(\dfrac{1}{h}) \limto{x \to \infty} 0$ car $-h \leqslant h.\sin(\dfrac{1}{h}) \leqslant h$, ce qui permet de conclure par passage à la limite. On en déduit que $g$ est dérivable en $0$ et que $g'(0) = 0$
+
+<br/>
+
+3\) Soit $x > 0$, $g'(x) = 2x . \sin(\dfrac{1}{x}) + x^2 . \dfrac{-1}{x^2} . {\cos(\dfrac{1}{x})}$.
+
+D'où $g'(x) = \underbrace{2x . \sin(\dfrac{1}{x})}_{\limto{x \to 0} 0} - \cos(\dfrac{1}{x})$.
+
+Si $g'$ convergeait en $0$ vers $l \in \R$, alors $\cos(\dfrac{1}{x})$ convergerait en $0$, ce qui est absurde puisque par exemple $\cos(\dfrac{1}{(\dfrac{1}{n\pi})}) = (-1)^n$ et donc diverge (il y a deux suites extraites de limites distinctes). Ce qui contredit la caractérisation séquentielle.
+
+$g'$ n'est donc pas continue en $0$.
+
+</Hideable>
+
 
 
 #### Généralisations
@@ -989,6 +1066,11 @@ $\cd$ la combinaison linéaire de deux fonctions de classe $\cC^k$ est égalemen
 $\cd$ le quotient de deux fonctions de classe $\cC^k$ dont le dénominateur ne s'annule pas est également de classe $\cC^k$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+cela se démontre bien par récurrence sur $k$ en exploitant les propriétés déjà données sur les combinaisons linéaires, quotients et produits de deux fonctions dérivables et continues.
+</Hideable>
+
 
 <Item type='proposition' titre='formule de Leibniz'>
 
@@ -998,6 +1080,12 @@ $$
 (f.g)^{(n)} = \somme{k=0}{n} \begin{pmatrix} n \\ k \end{pmatrix}f^{(k)} . g^{(n-k)}
 $$
 </Item>
+
+<Remarque titre=''>
+
+Ceci a été démontré dans le chapitre sur le calcul de dérivées et d'intégrales.
+</Remarque>
+
 
 
 ### Dérivation et optimisation
@@ -1026,6 +1114,22 @@ Supposons que $a$ ne soit pas au bord de $I$ et que $f$ soit dérivable sur $I$.
 Si $f$ atteint un extrêmum en $a$, alors $f'(a) = 0$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Soit $a$ tel que $f$ y atteigne un extrêmum. 
+
+$\limm{\substack{h \to 0 \\ h < 0}} \dfrac{f(a + h) - f(a)}{h} = f'(a) = \limm{\substack{h \to 0 \\ h > 0}} \dfrac{f(a + h) - f(a)}{h}$
+
+mais donc $\dfrac{f(a + h) - f(a)}{h} \geqslant 0$ si $h<0$ et $\dfrac{f(a + h) - f(a)}{h} \leqslant 0$ si $h > 0$. 
+
+On en conclut que $0 \leqslant f'(a) \leqslant 0$ d'où $f'(a) = 0$
+</Hideable>
+
+<Remarque titre=''>
+
+On a d'autres manières de démontrer ce résultat, dont le raisonnement par l'absurde. Comme $f(a+h) \approx f(a) + h.f'(a)$ (reprendre la caractérisation de la dérivabilité en $a$), on pourrait, selon le signe de $f'(a)$, trouver un élément plus petit **__ET__** un élément plus grand de part et d'autre de $a$.
+</Remarque>
+
 <Hideable type='contre-exemple' titre=''>
 
 On considère $f : x \mapsto x \sin(x^2)$ définie sur $\R$.
@@ -1038,6 +1142,7 @@ Soit $ f : \begin{cases} \defff{-1}{1} \rightarrow \R \\ x \mapsto (x^2 - x + 1)
 
 Trouver les extrêmums de $f$.
 </Exercice>
+
 
 
 ### Théorème de Rolle et conséquences
@@ -1060,10 +1165,24 @@ $\cd$ $f$ est dérivable sur $\defoo{a}{b}$
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$f$ est continue sur le segment $\defff{a}{b}$ et y atteint donc ses bornes qui sont ses extrêmums.
+
+Deux cas se présentent :
+
+$\cd$ $f$ est constante, auquel cas $f'=0$ et donc tout élément $c$ tel que $a < c < b$ convient.
+
+$\cd$ $f$ n'est pas constante. Au moins un extremum (maximum ou minimum) est atteint sur $\defoo{a}{b}$. 
+
+En effet, sinon, le maximum **__ET__** le minimum de $f$ doivent tout deux être atteints en $a$ et $b$. Mais dans ce cas, $f$ serait constante puisqu'elle serait majorée et minorée par une même valeur, ce qui n'est pas le cas ici puisque $f$ n'est pas constante.
+
+On en conclut qu'il existe $c$ tel que $a < c < b$ et $f$ atteint un extrêmum en $c$. D'où $f'(c) = 0$
+
+</Hideable>
 
 
 <Item type='theoreme' titre='égalité des accroissements finis'>
-
 
 On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
 
@@ -1077,6 +1196,25 @@ $\cd$ $f$ est dérivable sur $\defoo{a}{b}$
 **Alors**, il existe $c \in \defoo{a}{b}$ tel que $f'(c) = \dfrac{f(b) - f(a)}{b-a}$
 
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $g : x \mapsto  f(x) - (x-a) . \dfrac{f(b) - f(a)}{b-a}$.
+
+$g(a) = g(b) = f(a)$. 
+
+En tant que combinaison linéaire de fonctions continues sur $\defff{a}{b}$ et dérivables sur $\defoo{a}{b}$, $g$ est également dérivable sur l'intervalle ouvert et continue sur l'intervalle fermé.
+
+ On applique le théorème de Rolle, d'où : il existe $a <c <b$ tel que $g'(c) = 0$. On a donc :
+
+$$
+g'(c) = f'(c) - \dfrac{f(b) - f(a)}{b-a} = 0
+$$
+
+d'où le résultat.
+
+</Hideable>
+
 
 <Item type='definition' titre='corde'>
 
@@ -1099,6 +1237,7 @@ $$
 On dit qu'une fonction $f$ est lipschitzienne s'il existe $k>0$ tel que  $f$ soit $k$-lipschitzienne.
 </Item>
 
+AF : représentation graphique
 
 <Fil>
 
@@ -1108,7 +1247,7 @@ Mais le premier terme est la pente de la corde entre $x$ et $y$. Cela signifie q
 
 <br/>
 
-**Combiner l'interprétation graphique et les accroissements finis :** les accroissements finis nous indiquent que la pente d'une corde est atteinte par la dérivée. Mais la dérivée c'est la pente.
+**Combiner l'interprétation graphique et les accroissements finis :** les accroissements finis nous indiquent que la pente d'une corde est atteinte par la dérivée.
 
 On sait donc, à condition d'étudier une fonction dérivable, qu'une fonction lipschitzienne c'est une fonction dont la pente est bornée. Il est important de savoir dire si une fonction est lipschitzienne avant de le démontrer car la preuve sera bien plus aisée. 
 </Fil>
@@ -1141,8 +1280,13 @@ $\cd$ il existe $M$ tel que $|f'|$ soit majorée par $M$.
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-Appli aux suites def par réc
+C'est une application directe de l'égalité des accroissements finis.
+</Hideable>
+
+
+AF : Appli aux suites def par réc
 
 
 
@@ -1155,6 +1299,21 @@ $\cd$ $f$ est croîssante si et seulement si $f' \geqslant 0$.
 $\cd$ $f$ est décroîssante si et seulement si $f' \leqslant 0$.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Si $f$ est décroissante, il suffit de considérer $g = -f$ qui est croissante.
+
+$\cd$ **Supposons que $f$ est croissante :** Soit $x \in I$, si $h$ est négatif, $f(x+h) - f(x)\leqslant 0$ et si $h$ est positif, $f(x+h) - f(x) \geqslant 0$ par croissance de $f$.
+
+Donc $ \dfrac{f(x+h) - f(x)}{h} \geqslant 0$ et par passage à la limite, $f'(x) \geqslant 0$.
+
+$\cd$ **Supposons que $f' \geqslant 0$ :** soient $(x \v y) \in I^2$ tels que $x <y$, comme $f$ est dérivable (donc continue) sur $\defff{x}{y}$, il existe $x < c < y$ tel que $f'(c) = \dfrac{f(y)- f(x)}{y-x} \geqslant 0$ d'après le théorème des accroisements finis (égalité). 
+
+Mais donc $f(y)- f(x) \geqslant 0$ puis $f(y) \geqslant f(x)$, d'où la croissance de $f$.
+
+</Hideable>
+
+
 <Item type='proposition' titre='stricte monotonie'>
 
 On suppose que $f$ est dérivable sur l'intervalle $I$.
@@ -1164,6 +1323,17 @@ $\cd$ Si $f' > 0$, alors $f$ est strictement croissante.
 $\cd$ Si $f' < 0$, alors $f$ est strictement décroissante.
 
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $f$ est décroissante, il suffit de considérer $g = -f$ qui est croissante.
+
+Soient $(x \v y) \in I^2$ tels que $x <y$, comme $f$ est dérivable (donc continue) sur $\defff{x}{y}$, il existe $x < c < y$ tel que $f'(c) = \dfrac{f(y)- f(x)}{y-x} > 0$ d'après le théorème des accroisements finis (égalité). 
+
+Mais donc $f(y)- f(x) > 0$ puis $f(y) > f(x)$, d'où la croissance de $f$.
+
+</Hideable>
+
 
 <Hideable type='contre-exemple' titre=''>
 
@@ -1178,9 +1348,14 @@ On suppose que $f$ est dérivable sur l'intervalle $I$.
 $f$ est constante si et seulement si $f' = 0$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$f$ est constante $\ssi$ $f$ est à la fois croissante et décroissante $\ssi$ $f' \leqslant 0 \ET f' \geqslant 0$ \ssi $f' = 0$  
+</Hideable>
+
 <Remarque titre=''>
 
-Attention : cela ne fonctionne que sur un intervalle, pas sur une réunion d'intervalles.
+Attention : cela ne fonctionne que sur un intervalle, pas sur une réunion d'intervalles ou autres cas exotiques.
 </Remarque>
 
 
@@ -1193,4 +1368,7 @@ Ajouter :
     - suites def par récurrence
     - pauffiner IllustrationContinuite
     - changer A et B par M et x_0
+
+    Exo :
+        - y a t il unicité du prolongement par continuité (cas où on part d'un intervalle ouvert et sur ses frontières + cas général)
 */}
