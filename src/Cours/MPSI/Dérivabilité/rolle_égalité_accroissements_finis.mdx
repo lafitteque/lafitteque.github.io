@@ -1,0 +1,75 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='theoreme' titre='de Rolle'>
+
+On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
+
+<br/>
+
+**Si** : 
+
+$\cd$ $f(a) = f(b)$
+
+$\cd$ $f$ est continue sur $\defff{a}{b}$
+
+$\cd$ $f$ est dérivable sur $\defoo{a}{b}$
+
+**Alors**, il existe $c \in \defoo{a}{b}$ tel que $f'(c) = 0$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$f$ est continue sur le segment $\defff{a}{b}$ et y atteint donc ses bornes qui sont ses extrêmums.
+
+Deux cas se présentent :
+
+$\cd$ $f$ est constante, auquel cas $f'=0$ et donc tout élément $c$ tel que $a < c < b$ convient.
+
+$\cd$ $f$ n'est pas constante. Au moins un extremum (maximum ou minimum) est atteint sur $\defoo{a}{b}$. 
+
+En effet, sinon, le maximum **__ET__** le minimum de $f$ doivent tout deux être atteints en $a$ et $b$. Mais dans ce cas, $f$ serait constante puisqu'elle serait majorée et minorée par une même valeur, ce qui n'est pas le cas ici puisque $f$ n'est pas constante.
+
+On en conclut qu'il existe $c$ tel que $a < c < b$ et $f$ atteint un extrêmum en $c$. D'où $f'(c) = 0$
+
+</Hideable>
+
+
+<Item type='theoreme' titre='égalité des accroissements finis'>
+
+On suppose que $I = \defff{a}{b}$ où $(a \v b) \in \R^2$ et $a < b$. 
+
+<br/>
+
+**Si** : 
+$\cd$ $f$ est continue sur $\defff{a}{b}$
+
+$\cd$ $f$ est dérivable sur $\defoo{a}{b}$
+
+**Alors**, il existe $c \in \defoo{a}{b}$ tel que $f'(c) = \dfrac{f(b) - f(a)}{b-a}$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $g : x \mapsto  f(x) - (x-a) . \dfrac{f(b) - f(a)}{b-a}$.
+
+$g(a) = g(b) = f(a)$. 
+
+En tant que combinaison linéaire de fonctions continues sur $\defff{a}{b}$ et dérivables sur $\defoo{a}{b}$, $g$ est également dérivable sur l'intervalle ouvert et continue sur l'intervalle fermé.
+
+ On applique le théorème de Rolle, d'où : il existe $a <c <b$ tel que $g'(c) = 0$. On a donc :
+
+$$
+g'(c) = f'(c) - \dfrac{f(b) - f(a)}{b-a} = 0
+$$
+
+d'où le résultat.
+
+</Hideable>

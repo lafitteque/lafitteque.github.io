@@ -1,0 +1,112 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='dérivabilité en un point'>
+
+On pose $\Delta_a (h) = \dfrac{f(a+h) - f(a)}{h}$ pour $h \neq 0$ et tel que $h + a \in I$.
+
+On dit que $f$ est dérivable en $a$ si $Delta_a (h)$ converge en $0$.
+
+Dans ce cas, on appel nombre dérivé en $a$ de $f$ et on note $f'(a)$ la quantité suivante :
+
+$$
+f'(a) = \limm{\substack{h \to 0 \\ h \neq 0}} \dfrac{f(a+h) - f(a)}{h}
+$$
+</Item>
+
+AF : Interprétation : vitesse / pente
+
+<Item type='definition' titre='tangente'>
+
+On appelle tangente à $\cC_f$ (ou simplement tangente à $f$) en $a$ la droite d'équation :
+
+$$
+y = f'(a).(x-a) + f(a)
+$$
+</Item>
+
+AF : illustration : pente, retard de $a$, valeur après le retard
+
+
+<Item type='definition' titre='dérivabilité à gauche / droite'>
+
+On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\limm{\substack{h \to 0 \\ h < 0}} \dfrac{f(a+h) - f(a)}{h}$ converge (resp. à droite $f'(a) = \limm{\substack{h \to 0 \\ h > 0}} \dfrac{f(a+h) - f(a)}{h}$).
+</Item>
+
+
+<Item type='proposition' titre='caractérisation de la dérivabilité'>
+
+$f$ est dérivable en $a$ si et seulement si il existe $C \in \R$ et une fonction $\epsilon$ définie sur $J\setminus \{ 0\} $ (où $J$ est un intervalle ouvert contenant $0$) et telle que $\limm{\substack{x \to 0 \\ x \neq 0}} \epsilon(h) = 0$ et : $\forall x \in J\setminus \{ 0\} \v f(a + h) = f(a) + C.h + h.\epsilon(h)$
+
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Montrons d'abord le sens réciproque : on a $f(a + h) = f(a) + C.h + h.\epsilon(h)$ puis $\dfrac{f(a + h) - f(a)}{h} = C + \epsilon(h) \limto{h \to 0} C$ d'où la dérivabilité de $f$ en $a$
+
+$\cd$ Supposons que $f$ est dérivable en $a$. On pose $C = f'(a)$ et $\epsilon$ telle que $\epsilon(h) = \dfrac{f(a + h) - f(a)}{h} - C$ définie sur $J \setminus \{ 0\}$ où $J$ est un intervalle ouvert contenant $0$ (il suffit d'en prendre un dans $I$).
+
+</Hideable>
+
+<Item type='proposition' titre='dérivabilité et opérations'>
+
+La somme, le produit, le quotient de fonctions dérivables en $a$ reste dérivable en $a$. Il en va de même pour le produit par un scalaire.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Cela découle directement des propriétés sur les limites.
+</Hideable>
+
+
+<Item type='proposition' titre='dérivabilité et continuité'>
+
+Si $f$ est dérivable en $a$, alor $f$ est continue en $a$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Comme $f$ est dérivable en $a$, il existe une fonction $\epsilon$ définie sur $J \setminus \{0\}$ où $J$ est un ouvert contenant $0$ telle que : $f(a + h) = f(a) + h.f'(a) + h.\epsilon(h)$. 
+
+En effectuant le changement de variable $x = a+h$, on a $f(x) = f(a) + (x-a).f'(a) + (x-a). \epsilon(x-a) \limto{x \to a} f(a)$ d'où la continuité de $f$ en $a$.
+</Hideable>
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases}  \R_+^* \rightarrow \R  \\ x \mapsto  x^2 . \sin(\dfrac{1}{x}) \end{cases} $.
+
+<br/>
+
+1\) Montrer que $f$ est prolongeable par continuité sur $\R_+$ par une fonction $g$ à préciser
+
+2\) Montrer que $g$ est dérivable en $0$
+
+3\) Montrer que $g'$ n'est pas continue en $0$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) $-x^2 \leqslant f(x) \leqslant x^2$ sur $\R_+^*$. Par passage à la limite en $0$, $0 \leqslant \limm{x \to 0} f(x) \leqslant 0$. On peut donc poser $g$ la fonction définie sur $\R_+$ telle que $g_{\mid \R_+^*} = f$ et $g(0) = 0$
+qui est le prolongement par continuité de $f$ sur $\R_+^*$.
+
+<br/>
+
+2\) Soit $h > 0$, $\dfrac{f(h)-f(0)}{h} = \dfrac{h^2 . \sin(\dfrac{1}{h}) - 0}{h} = h.\sin(\dfrac{1}{h}) \limto{x \to \infty} 0$ car $-h \leqslant h.\sin(\dfrac{1}{h}) \leqslant h$, ce qui permet de conclure par passage à la limite. On en déduit que $g$ est dérivable en $0$ et que $g'(0) = 0$
+
+<br/>
+
+3\) Soit $x > 0$, $g'(x) = 2x . \sin(\dfrac{1}{x}) + x^2 . \dfrac{-1}{x^2} . {\cos(\dfrac{1}{x})}$.
+
+D'où $g'(x) = \underbrace{2x . \sin(\dfrac{1}{x})}_{\limto{x \to 0} 0} - \cos(\dfrac{1}{x})$.
+
+Si $g'$ convergeait en $0$ vers $l \in \R$, alors $\cos(\dfrac{1}{x})$ convergerait en $0$, ce qui est absurde puisque par exemple $\cos(\dfrac{1}{(\dfrac{1}{n\pi})}) = (-1)^n$ et donc diverge (il y a deux suites extraites de limites distinctes). Ce qui contredit la caractérisation séquentielle.
+
+$g'$ n'est donc pas continue en $0$.
+
+</Hideable>

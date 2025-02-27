@@ -1,0 +1,75 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='proposition' titre='caractérisation de la monotonie'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$\cd$ $f$ est croîssante si et seulement si $f' \geqslant 0$. 
+
+$\cd$ $f$ est décroîssante si et seulement si $f' \leqslant 0$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $f$ est décroissante, il suffit de considérer $g = -f$ qui est croissante.
+
+$\cd$ **Supposons que $f$ est croissante :** Soit $x \in I$, si $h$ est négatif, $f(x+h) - f(x)\leqslant 0$ et si $h$ est positif, $f(x+h) - f(x) \geqslant 0$ par croissance de $f$.
+
+Donc $ \dfrac{f(x+h) - f(x)}{h} \geqslant 0$ et par passage à la limite, $f'(x) \geqslant 0$.
+
+$\cd$ **Supposons que $f' \geqslant 0$ :** soient $(x \v y) \in I^2$ tels que $x <y$, comme $f$ est dérivable (donc continue) sur $\defff{x}{y}$, il existe $x < c < y$ tel que $f'(c) = \dfrac{f(y)- f(x)}{y-x} \geqslant 0$ d'après le théorème des accroisements finis (égalité). 
+
+Mais donc $f(y)- f(x) \geqslant 0$ puis $f(y) \geqslant f(x)$, d'où la croissance de $f$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='stricte monotonie'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$\cd$ Si $f' > 0$, alors $f$ est strictement croissante.
+
+$\cd$ Si $f' < 0$, alors $f$ est strictement décroissante.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $f$ est décroissante, il suffit de considérer $g = -f$ qui est croissante.
+
+Soient $(x \v y) \in I^2$ tels que $x <y$, comme $f$ est dérivable (donc continue) sur $\defff{x}{y}$, il existe $x < c < y$ tel que $f'(c) = \dfrac{f(y)- f(x)}{y-x} > 0$ d'après le théorème des accroisements finis (égalité). 
+
+Mais donc $f(y)- f(x) > 0$ puis $f(y) > f(x)$, d'où la croissance de $f$.
+
+</Hideable>
+
+
+<Hideable type='contre-exemple' titre=''>
+
+Une fonction peut être strictement monotone mais avoir une dérivée qui s'annule. Par exemple, la fonction cube est strictement croissante mais sa dérivée s'annule en $0$.
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation des fonctions constantes'>
+
+On suppose que $f$ est dérivable sur l'intervalle $I$.
+
+$f$ est constante si et seulement si $f' = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$f$ est constante $\ssi$ $f$ est à la fois croissante et décroissante $\ssi$ $f' \leqslant 0 \ET f' \geqslant 0 \ssi f' = 0$  
+</Hideable>
+
+<Remarque titre=''>
+
+Attention : cela ne fonctionne que sur un intervalle, pas sur une réunion d'intervalles ou autres cas exotiques.
+</Remarque>

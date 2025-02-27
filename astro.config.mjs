@@ -52,10 +52,11 @@ const macros = {
   "\\defentiers": "\\llbracket {#1} \\v {#2} \\rrbracket",
 
   "\\ssi": "\\Leftrightarrow",
-  
-  "\\ET": "**__ET__**",
-  "\\OU": "**__OU__**",
-  "\\SSI": "**__SSI__**",
+
+  "\\ET": "\\; \\footnotesize  \\mathbf{ET} \\normalsize \\;",
+  "\\OU": "\\; \\footnotesize  \\mathbf{OU} \\normalsize \\;",
+  "\\SSI": "\\; \\footnotesize  \\mathbf{SSI} \\normalsize \\;",
+  "\\NON": "\\footnotesize  \\mathbf{NON} \\normalsize \\;",
 
   "\\pv": "; \\;",
   "\\v": ", \\;",
@@ -69,10 +70,10 @@ const macros = {
   "\\integ": "\\int_{#1}^{#2}",
 
   "\\limm": "\\lim \\limits_{ {#1} }",
-  "\\limto":"\\mathop{\\longrightarrow}\\limits_{ {#1} }",
-  "\\limton":"\\mathop{\\longrightarrow}\\limits_{n \\to \\infty}",
-  "\\suitedef":"({#1})_{{#2}}",
-  "\\suitedefN":"({#1})_{n \\in \\N}",
+  "\\limto": "\\mathop{\\longrightarrow}\\limits_{ {#1} }",
+  "\\limton": "\\mathop{\\longrightarrow}\\limits_{n \\to \\infty}",
+  "\\suitedef": "({#1})_{{#2}}",
+  "\\suitedefN": "({#1})_{n \\in \\N}",
 
   "\\Arcsin": "\\operatorname{Arcsin}",
   "\\Arccos": "\\operatorname{Arccos}",

@@ -1,0 +1,60 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+La recherche d'extrêmums est au coeur des problématiques d'optimisation. Ceux-ci interviennent dans énormément de problèmes physiques, informatiques ou économiques comme par exemple:
+
+$\cd$ la minimisation des coûts / la maximisation des gains.
+
+$\cd$ remplir un cahier des charges imposant un ensemble de contraintes (limites dues à des raisons économiques, pratiques, matérielles ou encore de sécurité)
+
+$\cd$ l'intelligence artificielle et la maximisation d'une fonction de gains qui traduit les performances de l'IA.
+ 
+
+<Remarque titre=''>
+
+Le théorème des bornes atteintes nous permet de savoir qu'une fonction atteint son maximum ou minimum. 
+
+Cependant, il requiert l'hypothèse que le domaine de définition est un intervalle fermé. De plus, il ne donne aucune indication à propos de la position des extrêmums.
+</Remarque>
+
+
+<Item type='proposition' titre='extrêmum et dérivée'>
+
+Supposons que $a$ ne soit pas au bord de $I$ et que $f$ soit dérivable sur $I$. 
+
+Si $f$ atteint un extrêmum en $a$, alors $f'(a) = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $a$ tel que $f$ y atteigne un extrêmum. 
+
+$\limm{\substack{h \to 0 \\ h < 0}} \dfrac{f(a + h) - f(a)}{h} = f'(a) = \limm{\substack{h \to 0 \\ h > 0}} \dfrac{f(a + h) - f(a)}{h}$
+
+mais donc $\dfrac{f(a + h) - f(a)}{h} \geqslant 0$ si $h<0$ et $\dfrac{f(a + h) - f(a)}{h} \leqslant 0$ si $h > 0$. 
+
+On en conclut que $0 \leqslant f'(a) \leqslant 0$ d'où $f'(a) = 0$
+</Hideable>
+
+<Remarque titre=''>
+
+On a d'autres manières de démontrer ce résultat, dont le raisonnement par l'absurde. Comme $f(a+h) \approx f(a) + h.f'(a)$ (reprendre la caractérisation de la dérivabilité en $a$), on pourrait, selon le signe de $f'(a)$, trouver un élément plus petit **__ET__** un élément plus grand de part et d'autre de $a$.
+</Remarque>
+
+<Hideable type='contre-exemple' titre=''>
+
+On considère $f : x \mapsto x \sin(x^2)$ définie sur $\R$.
+</Hideable>
+
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases} \defff{-1}{1} \rightarrow \R \\ x \mapsto (x^2 - x + 1)e^x \end{cases} $
+
+Trouver les extrêmums de $f$.
+</Exercice>

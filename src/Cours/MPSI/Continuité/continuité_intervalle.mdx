@@ -1,0 +1,155 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='continuité sur un intervalle'>
+
+On dit que $f$ est continue sur $I$ si elle est continue en tout point de $I$.
+
+<br />
+On dit que $f$ est continue si elle l'est sur son ensemble de définition, c'est à dire en tout point de son ensemble de définition.
+</Item>
+
+
+<Item type='proposition' titre="image d'un intervalle par une fonction continue">
+
+L'image d'un intervalle par une fonction continue est un intervalle.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $I$ l'intervalle de départ.
+
+On se place dans $\overline{\R}$ où $f(I)$ est borné et donc admet une borne supérieure et inférieure.
+
+On note $m$ la borne inférieure de $f(I)$ et $M$ la borne supérieure de $f(I)$. 
+
+<br/>
+
+Montrons que $\defoo{m}{M} \subset E$, ce qui suffira à montrer que $E$ est un intervalle car dans ce cas, $\defoo{m}{M} \subset E \subset \defff{m}{M}$.
+
+Pour simplifier, on utilise la caractérisation d'un intervalle par les segments et on considère $a$ et $b$ des réels ordonnés tels que $\defff{a}{b} \subset \defoo{m}{M}$
+
+<br/>
+
+Soit $y \in \defff{a}{b}$, nous allons montrer que $y \in E$. On va raisonner par dichotomie et construire une suite $\suitedefN{a_n}$ et une suite $\suitedefN{b_n}$ adjacentes et telles que $\limm{n \to + \infty} f(u_n) = \limm{n \to + \infty} f(v_n) = y$.
+
+On suppose, sans perte de généralité, que $f(a) < f(b)$ quitte à considérer $g = -f$.
+
+On pose $a_0 = a$ et $b_0 = b$.
+
+On définit ces suites par récurrence ainsi :
+
+soit $n \in \N$ et soit $c_n = \dfrac{a_n + b_n}{2}$. Si $f(a) \leqslant  y \leqslant f(c)$, alors on pose $a_{n+1} = a_n$ et $b_{n+1} = c_n$. Sinon, on pose $a_{n+1} = c_n$ et $b_{n+1} = b_n$
+
+<br />
+
+Montrons sur $\N$ la propriété $\cP(n) : 0 \leqslant b_n - a_n \leqslant 2^{-n}(b-a)$.
+
+**Initialisation :** On vérifie $\cP(0)$. 
+
+En effet, par construction et comme $a_0 = a \leqslant b = b_0$ et donc $0 \leqslant b _0 - a_0 $, 
+
+De plus, on a $b_0 - a_0 = 2^0(b - a)$. D'où l'inégalité.
+
+<br/>
+
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+par hypothèse de récurrence, $a_n \leqslant b_n$ et $b_n - a_n \leqslant 2^{-n}(b-a)$ mais donc, 
+
+$b_{n+1} - a_{n+1} = \dfrac{b_n - a_n}{2} \leqslant 2^{-1}. (b_n - a_n) \leqslant 2^{-(n+1)(b-a)}$.
+
+De plus, soit $\dfrac{\overbrace{b_n - a_n}^{\geqslant 0}}{2} \geqslant 0$. D'où le résultat.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+<br />
+
+Maintenant, on peut remarquer que soit : $\forall n \in \N \v a_{n+1} - a_n = 0$, soit $\forall n \in \N \v a_{n+1} - a_n = \dfrac{b_n - a_n}{2} \geqslant 0$. Mais donc $\suitedefN{a_n}$ est croissante. De même, $\suitedefN{b_n}$ est décroissante. 
+
+Les deux suites sont donc adjacentes.
+
+<br />
+
+Ainsi, les suites $\suitedefN{a_n}$ et $\suitedefN{b_n}$ convergent vers une même valeur $x \in \defff{a}{b}$.
+
+De plus, $f(a_n) \leqslant y \leqslant f(b_n)$ par construction. Mais donc, par caractérisation séquentielle,
+
+$f(x) \leqslant y \leqslant f(x)$ et donc $y \in f(I)$.
+</Hideable>
+
+
+<Item type='theoreme' titre='valeurs intermédiaires'>
+
+Soient $(a \v b ) \in I^2$ et $f(a) \leqslant y \leqslant f(b). 
+
+Si $f$ est continue, il existe $x \in \defff{a}{b}$ tel que $f(x) = y$ 
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+c'est une application immédiate de la proposition précédente.
+</Hideable>
+
+
+<Item type='theoreme' titre='bornes atteintes'>
+
+Une fonction continue sur un segment est bornée et atteint ses bornes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $I = \defff{a}{b}$ un segment de $\R$.
+
+Soit $M = \sup_{x \in I}(f(x)) \in \overline{\R}$. Il existe une suite $\suitedefN{x_n} \in I^{\N}$ telle que $f(x_n) \limton M$. 
+
+Mais $\suitedefN{x_n}$ est bornée, donc d'après le théorème de Bolzano-Weirestrass, il existe une extractrice $\phi$ et un réel $x$ tels que : $x_{\phi(n)} \limton x$. 
+
+Mais alors, par continuité de $f$ en $x$ et en appliquant la caractérisation séquentielle, $f(x_{\phi(n)} )\limton f(x)$.
+
+Mais comme $f(x_n) \limton M$ et qu'il y a unicité de la limité, $f(x) = M$ et donc $M \in \R$ ($M$ est fini). 
+
+De plus, $a \leqslant x_{\phi(n)} \leqslant b$ et donc, par passage à la limite, $a \leqslant x \leqslant b$. Donc $x \in I$.
+
+Le maximum est bien atteint. On peut considérer $g = -f$ et appliquer ce résultat pour obtenir $m$ le maximum de $g$ atteint en $x'$. $f$ atteint son minimum en $-x'$ et celui-ci vaut $-m$.
+</Hideable>
+
+
+<Item type='consequence' titre="image d'un segment">
+
+L'image d'un segment par une application continue est un segment.
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+C'est l'application successive des résultats précédents.
+</Hideable>
+
+
+<Item type='proposition' titre=''>
+
+Supposons que $I = \deffo{m}{+ \infty}$. 
+
+Si $f$ est continue sur $I$ et que $f$ converge en $+ \infty$, alors $f$ est bornée sur $I$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $l\in \R$ la limite de $f$ en $+ \infty$. Par convergence, il existe $M > 0$ tel que : $\forall x > M \v |f(x) - l| \leqslant 1$ (on prend $\epsilon = 1$).
+
+Mais donc $f$ est bornée sur $\defoo{M}{+ \infty}$ car dessus, $l - 1 \leqslant f(x) \leqslant l+ 1$.
+
+Mais $f$ est également bornée sur $\defff{m}{M}$ car c'est un segment et que $f$ est continue.
+
+En clair, $f$ est bornée sur $I = \defff{m}{M} \biguplus \defoo{M}{+ \infty}$.
+</Hideable>

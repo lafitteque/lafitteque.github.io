@@ -1,0 +1,169 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='continuité en un point'>
+
+On dit que $f$ est continue en $a \in I$ si $f$ converge en $a$ et que :
+
+$$
+\limm{x \to a} f(x) = f(a)
+$$
+</Item>
+
+
+<Item type='proposition' titre='continuité et opérations'>
+
+Si $f$ et $g$ sont continues en $a$ alors :
+
+$\cd$ si $\lambda$ et $\mu$ sont des réels, $\lambda . f + \mu . g$ est également continue en $a$
+
+$\cd$ $f . g$ est également continue en $a$
+
+$\cd$ si $g$ ne s'annule pas, alors $\dfrac{f}{g}$ est également continue en $a$
+
+</Item>
+
+
+<Item type='proposition' titre='continuité et composition'>
+
+Supposons $f$ continue en $a$ et $h$ définie sur un intervalle $J$ de $\R$ contenant $f(a)$. 
+
+Si $h$ est continue en $f(a)$, on a $g \circ f$ qui est continue en $a$
+</Item>
+
+
+<Item type='proposition' titre='existence de la limite et continuité'>
+
+Supposons que $f$ est continue en $a$.
+
+S'il existe $l \in \R$ tel que $\limm{x \to a} f(x) = l$, alors $l = f(a)$
+</Item>
+
+<Remarque titre=''>
+
+Ceci est donné par la définition de la continuité.
+
+Cependant, on peut considérer une définition alternative de la continuité et équivalente : $f$ est continue en $a \in I$ si elle y admet une limite finie. Les deux définitions sont équivalentes et la propriété tient toujours ce qui la rend un tout petit peu plus intéressante. 
+</Remarque>
+
+<Item type='proposition' titre='caractérisation séquentielle' tag="important">
+
+On a l'équivalence entre les deux propriétés suivantes :
+
+$\cd$ i\) $f$ est continue en $a$
+
+$\cd$ ii\) pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton a$, $ f(u_n) \limton f(a)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **i\) $\Rightarrow$ ii\) :** supposons que $f$ est continue en $a$ et $\suitedefN{u_n}$ une suite de $I^{\N}$ convergent vers $a$.
+
+Soient $\epsilon > 0$ et $\eta$ convenant pour la limite de $f$ en $a$.
+
+Soit $\eta > 0$, par convergence de $u$ : $\exists N \in \N \mid \forall n > N \v |u_n - a| \leqslant \eta$.
+
+Mais donc, par continuité en $a$, $|u_n - a| \leqslant \eta \Rightarrow |f(u_n) - f(a)| \leqslant \epsilon$ d'où $f(u_n) \limton f(a)$
+
+
+$\cd$ **ii\) $\Rightarrow$ i\) :** supposons que pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton a$ on ait $f(u_n) \limton f(a)$. 
+
+Raisonnons par l'absurde en supposant que i\) n'est pas vérifiée. 
+
+La négation de i\) donne : $\exists \epsilon > 0 \mid \forall \eta > 0 \v \exists x \in I \mid |x-a|< \eta \ET |f(x) - f(a)| > \epsilon $.
+
+Soit un tel $\epsilon > 0$, on pose $\eta_n = \dfrac{1}{n}$ et $x_n \in I $ tel que : $|x-a|< \eta \ET |f(x) - f(a)| > \epsilon $ (d'après l'hypothèse "$\NON$ \i").
+
+Mais donc $x_n \limton a$ car $|x_n - a| < \eta_n = \dfrac{1}{n}$. Cependant, $\suitedefN{f(x_n)}$ ne converge pas vers $f(a)$ car $\in I \mid |x-a|< \eta \ET |f(x_n) - f(a)| > \epsilon $ et on rappelle que $\epsilon$ est ici une constante strictement positive.
+
+En effet, si l'on avait $f(x_n) \limton l$, alors $|f(x_n) - f(a)| > \epsilon $ donnerait, par passage à la limite : $|l - f(a)| > \epsilon $ ce qui veut dire que $l$ et $f(a)$ ne sont pas identiques car distants d'au moins $\epsilon$.
+
+On en conclut donc que l'hypothèse $\NON$ i\) est absurde d'où i\) $\Rightarrow$ ii\).
+
+</Hideable>
+
+<Remarque titre=''>
+
+$\cd$ "ii $\Rightarrow$ i" est souvent utilisé pour l'étude de suites. Il convient donc d'introduire une fonction plus pratique à étudier.
+
+Nous avons d'ailleurs utilise cette propriété en l'admetant dans le chapitre sur les suites.
+
+$\cd$ "non ii $\Rightarrow$ non ii" peut s'avérer pratique également pour montrer qu'une fonction n'est pas continue en un point.
+
+</Remarque>
+
+<Exercice titre=''>
+
+Soit $ f : \begin{cases} \R_+^*  \rightarrow \defff{-1}{1}  \\ x \mapsto  \cos(\dfrac{1}{x}) \end{cases} $ que l'on prolonge en $0$ par $f(0) = 0.
+
+$f$ est-elle continue en $0$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Il suffit de trouver une suite $\suitedefN{u_n} \in \R_+^{\N}$ bien choisie qui converge vers $0$ mais telle que $f(u_n)$ ne converge pas vers $0$.
+
+On peut prendre par exemple la suite $u$ définie sur $\N$ par : $\forall n \in \N\v u_n = \dfrac{1}{2n\pi}$. On a donc $f(u_n) = \cos(2n\pi) = 1 \limton 1$ alors que $u_n \limton 0$.  
+
+On en conclut que $f$ n'est pas continue en $0$.
+</Hideable>
+
+<Item type='definition' titre='continuité à gauche et à droite'>
+
+$\cd$ On dit que $f$ est continue à droite en $a$ 
+si : 
+
+$$
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \geqslant a  \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - f(a)| \leqslant \epsilon \Big)
+$$
+
+On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{x \to a^+} f(x) = f(a)$ 
+
+$\cd$ On dit que $f$ est continue à gauche en $a$ s'il existe $l \in \R$ tel que : 
+
+$$
+\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \leqslant a \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
+$$
+
+On note $\limm{\substack{ x \to a \\ x \leqslant a}} f(x) = l$ ou encore $\limm{x \to a^-} f(x) = l$ 
+
+</Item>
+
+<Remarque titre=''>
+
+
+On pourra trouver d'autres notations comme $\limm{\substack{ x \to a \\ x > a}} f(x)$ ou $\limm{\substack{ x \to a \\ x < a}} f(x)$ mais attention car celles-ci ont une signification qui diffère des définitions données ici!
+</Remarque>
+
+
+<Item type='proposition' titre='caractérisation par la restriction'>
+
+$f$ est continue à gauche (resp. à droite) en $a$ si et seulement si $f_{\mid I \bigcap \, ]- \infty \v a]}$ (resp. $f_{\mid I \bigcap \, [a \v + \infty[}$) est continue en $a$
+</Item>
+
+<Remarque titre=''>
+
+On peut donc adapter immédiatement tous les résultats sur la continuité à condition de se restreindre à l'intervalle $\mid I \bigcap \defof{- \infty}{a}$
+</Remarque>
+
+
+<Item type='proposition' titre=''>
+
+$f$ est continue en $a$ si et seulement si elle est continue à gauche et à droite en $a$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de montrer que la limite à gauche est la même que la limite à droite.
+
+Pour cela, il suffit d'utiliser la caractérisation séquentielle et l'unicité de la limite. On note $l_g$ la limite à gauche et $l_d$ la limite à droite : 
+
+$l_g = \limm{n \to + \infty} f(a) = l_d$ puisque la suite $\suitedefN{a}$ a tous ses éléments dans $I \bigcap \defof{- \infty}{a}$ mais également dans $I \bigcap \deffo{a}{+ \infty}$
+</Hideable>

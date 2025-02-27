@@ -1,0 +1,34 @@
+import Hideable from '../../../components/Hideable.astro'
+import Remarque from '../../../components/Remarque.astro'
+import Exercice from '../../../components/Exercice.astro'
+import Item from '../../../components/Item.astro'
+import Indent from '../../../components/Indent.astro'
+import Fil from '../../../components/Fil.astro'
+
+
+<Item type='definition' titre='prolongement par continuité'>
+
+Soit $J$ tel que $I \subset J$. On dit que $f$ est prolongeable par continuité sur $J$ s'il existe $g$ continue définie sur $J$ telle que $g_{\mid I} = f$.
+
+En clair $f$ admet un prolongement continu sur $J$.
+</Item>
+
+
+<Item type='proposition' titre='bornes sur un intervalle ouvert'>
+
+On suppose que $I$ est un intervalle ouvert de la forme $\defoo{m}{M}$ où $(m \v M) \in \R^2\v m < M$. 
+
+Si $f$ est continue sur $I$ et que $f$ admet une limite finie en $m$ et en $M$, alors $f$ est prolongeable par continuité sur $\defff{m}{M}$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si l'on pose $l_g = \limm{x \to m} f(x)$ et $l_d = \limm{x \to M} f(x)$, il suffit de considérer la fonction $g$ définie sur $\defff{m}{M}$ telle que : $g(x) = f(x)$ si $m<x<M$ ; $g(m) = l_g$ et $g(M) = l_d$.
+
+Cette fonction est continue sur $\defff{m}{M}$ et prolonge $f$.
+</Hideable>
+
+<Remarque titre=''>
+
+Cela peur présenter un intérêt pour montrer qu'une fonction est bornée même si elle n'est pas définie sur un segment.
+</Remarque>
