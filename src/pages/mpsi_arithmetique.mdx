@@ -25,39 +25,244 @@ Dans cette sous-section, $n\v m$ et $k$ désignent des entiers relatifs.
 
 <Item type='definition' titre="diviseur et multiple d'entiers relatifs">
 
+On dit que $n$ divise $m$ s'il existe $k$ tel que $m = k.n$.
+
+Dans ce cas, on dit que $n$ et $k$ sont des **diviseurs** de $m$ et que $m$ est un **multiple** de $k$ et $n$.
 </Item>
 
-<Item type='proposition' titre='transitivité de la divsibilité'>
 
+<Item type='proposition' titre="relation d'ordre">
+
+La divisibilité est une relation d'ordre sur $\N$. 
+
+<br />
+
+Ceci est faux sur $\Z$!!!
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $a$ et $b$ deux entiers naturels.
+
+$\cd$ **Reflexivité :** $a \divise a$ puisque $a = \underbrace{1}_{\in \Z}.a$
+
+$\cd$ **Antisymétrie :** Supposons qu'on a : $a \divise b \ET b \divise a$. 
+
+Il existe $k$ et $l$ deux entiers tels que $a = k.b$ et $b = l.a$ mais donc $a = k.l.a$ d'où $1 = k.l$ 
+
+mais donc $k = l = 1$ (c'est ici qu'il y a un problème sur $\Z$ puisque $k = l = -1$ convient et n'aboutit pas au résultat voulu)
+
+$\cd$ **Transitivité :** Supposons qu'on a : $a \divise b \ET b \divise c$.
+
+Il existe $k_1 \in \Z$ tel que $b = a . k_1$ et $k_2 \in \Z$ tel que $c = k_2.b$.
+
+On a donc, $c = k_2 . (k_1.a) = (k_1.k_2).a$. En posant $k = k_1 . k_2$, on a bien $c = \underbrace{k}_{\in \Z}.a$ et donc $a \divise c$.
+</Hideable>
+
+<Item type='proposition' titre='multiplicativité de la divisibilité'>
+
+Soient $(c\v d) \in \Z^2$ et supposons que $a \divise b$
+
+$\cd$ si $c \divise d$, alors $ c.a \divise d.b$ 
+
+$\cd$ en particulier, $c.a \divise c.b$ 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si on a : $a \divise b$ et $c \divise d$, alors il existe $k$ et $l$ deux entiers tels que $b = k.a$ et $d = l.c$ mais donc $d.b = (c.a).k.l$ d'où $c.a \divise d.b$. 
+
+En particulier, $c \divise c$ d'où le deuxième cas.
+</Hideable>
+
+
+<Item type='proposition' titre='divisibilité et valeur absolue'>
+
+Si $n \divise m$ alors $|n| \divise m$.
+
+De même, si $n \divise m$ alors $n \divise |m|$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $n \divise m$, alors il existe $k \in \Z$ tel que $m = k.n$ mais donc $m = (-k).(-n)$.
+
+D'où $-n \divise m \ET n \divise m$. d'où $|n| \divise m$.
+
+<br/>
+
+La deuxième affirmation vient du fait que, si $m$ est positif, $|m| = k.n$ et sinon, $|m| = (-k).n$. d'où $n \divise |m|$
+</Hideable>
+
+
+<Item type='proposition' titre='divisibilité et comparaison'>
+
+Si $n \v m > 0$ et $n \divise m$, alors $n \leqslant m$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$n \divise m$ donc il existe $k \in \Z$ tel que $m = k.n$.
+
+Mais $n \v m > 0$ donc $\dfrac{m}{n} = k \geqslant 0$. 
+
+$\cd$ Si $k = 0$ alors $m = n = 0$ d'où $m \geqslant n$.
+
+$\cd$ Sinon, $k \geqslant 1$ et donc $m = n.k \geqsalnt n$.
+</Hideable>
+
 
 <Item type='proposition' titre='égalité et divisibilité'>
 
-si positifs : égalité
+Soient $n$ et $m$ tels que $n \divise m \ET m \divise n$
 
-sinon : a = \pm b
+$\cd$ Si $n$ et $m$ sont positifs : $n = m$
+
+$\cd$ Sinon : $n = \pm b$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Comme $n \divise m \ET m \divise n$, on a $|n| \divise |m| \ET |m| \divise |n|$ mais donc $|n| \leqslant |m| \ET |m| \leqslant |n|$ d'où $|n| = |m|$.
+
+On en déduit que, si $n$ et $m$ ont même signe, $n = m$ et sinon $n = -m$
+</Hideable>
+
 
 <Item type='proposition' titre='divisibilité et combinaison linéaire'>
 
+Soient $\lambda$ et $\mu$ deux entiers relatifs. Supposons que : $n \divise a \in \Z \ET n \divise b \in \Z$. 
+
+Alors, on a : $n \divise (\lambda.a + \mu.b)$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+D'après l'hypotèse, il existe $(k_1 \v k_2) \in \Z^2$ tels que $a = k_1.n$ et $b = k_2.n$. 
+
+Donc $\lambda.a + \mu.b = \lambda.k_1.n + \mu.k_2.n = n.(\underbrace{\lambda.k_1 + \mu.k_2}_{\in \Z})$ d'où $n \divise \lambda.a + \mu.b$
+</Hideable>
+
 
 <Item type='definition' titre='parité et imparité'>
 
+On dit qu'un nombre $n$ est pair s'il existe $k \in \Z$ tel que $n = 2.k$.
+
+On dit qu'il est impair s'il existe $k \in \Z$ tel que $n = 2.k + 1$.
 </Item>
+
 
 <Item type='proposition' titre='produit et parité'>
 
+| Produit | n est pair | n est impair |
+|---|---|---|
+| m est pair | pair | pair |
+| m est impair | pair | impair |
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Si $n$ et $m$ sont pairs, alors il existe $k$ et $l$ des entiers tels que $n = 2k et $m = 2l$.
+
+Donc $n.m = 2.(\underbrace{2.k.l}_{\in \Z})$ et donc le produit est pair.
+ 
+$\cd$ Si $n$ et $m$ ont une parité opposée, il existe $k$ et $l$ des entiers tels que $n = 2k$ et $m = 2l +1$ (quitte à échanger les rôles de $n$ et $m$). 
+
+On a donc $n.m = 2.\big(\underbrace{k.(2l + 1)}_{\in \Z}\big)$ et donc le produit est pair.
+
+$\cd$ Si $n$ et $m$ sont impairs, il existe $k$ et $l$ des entiers tels que $n = 2k$ et $m = 2l +1$.
+
+On a alors $n.m = (2k+1)(2l+1) = 4k.l + 2k + 2l + 1 = 2(\underbrace{2k.l + k + l}_{\in \Z}) + 1$ et donc le produit est impair.
+
+</Hideable>
+
+<Exercice titre=''>
+
+Soient $a$ et $b$ deux entiers tels que $a \times b = 952 \, 167 \, 452 \, 384 \, 959$.
+
+Que dire de la parité de $a$ et $b$?
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+D'après la propriété précédente, le produit de deux entiers est impair si et seulement si les deux entiers sont impairs.
+
+Donc $a$ et $b$ sont tous les deux impairs.
+</Hideable>
+
 
 <Item type='theoreme' titre='division euclidienne'>
 
+On suppose $m \neq 0$. 
+Il existe un unique $q \in \Z$ et un unique $r \in \defentiers{0}{m-1}$ tels que :
+
+$$
+n = qm + r
+$$
+
+On appelle cette égalité la division euclidienne de $n$ par $m$.
+
+<br />
+
+$m$ est le **dividende** de cette division, $q$ est le **quotient** de cette division et $r$ est le **reste** de cette division
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Existence :** On pose $q = \floor{\dfrac{n}{m}}$ et $r = n - m.q$.
+
+On a bien $q \in \Z$ et donc $r \in \Z$. 
+
+On a également $\dfrac{n}{m} \leqslant \floor{\dfrac{n}{m}} < \dfrac{n}{m} + 1$ donc $n \leqslant m.\floor{\dfrac{n}{m}} < n + m$
+
+En clair, $n \leqslant m.q < n + m$ donc $0 \leqslant n-m.q = r < m$ d'où $r \in \defentiers{0}{m-1}$.
+
+On a bien vérifié toutes les propriétés voulues, donc $q$ et $r$ conviennent.
+
+$\cd$ **Unicité :** Supposons qu'il existe $(q_1\v q_2 \v r_1 \v r_2) \in \Z^2 \times \defentiers{0}{m-1}^2$ tels que $n = q_1.m + r_1 = q_2.m + r_2$.
+
+Dans ce cas, $q_1.m - q_2.m = r_2 - r_1$ et donc $m.(q_1 -q_2) = r_2 - r_1$ d'où $m \divise r_2 - r_1$ et donc $|m| \leqslant |r_2 - r_1|$ si les deux parties sont non nulles. 
+
+Mais $-m< r_2 - r_1 < m$ ce qui contredit que $|m| \leqslant |r_2 - r_1|$, mais donc l'une est partie au moins est nulle, c'est nécessairement $r_2 - r_1$ car $m \neq 0$. 
+
+D'où $m.(q_1 -q_2) = r_2 - r_1 = 0$ donc $r_1 = r_2$. Par produit nul, $q_1 -q_2 = 0$ d'où $q_1 = q_2$. 
+
+</Hideable>
+
 
 <Item type='proposition' titre='caractérisation de la divisibilité'>
 
+On suppose que : $n \neq 0$.
+
+$n \divise m$ si et seulement si le reste de la division euclidienne de $m$ par $n$ est nul.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Supposons $n \divise m$ :** il existe $k \in \Z$ tel que $m = \underbrace{k}_{\in \Z}.n + 0$ qui convient comme division euclidienne et donc le reste est nul.
+
+$\cd$ **Supposons que le reste de la division euclidienne de $m$ par $n$ soit nul :** soit $m = q.n + r$ la division euclidienne de $m$ par $n$. 
+
+Par hypothèse, $r = 0$ et donc $m = \underbrac{q}_{\in \Z} . n$ d'où $n \divise m$
+
+</Hideable>
+
+<Item type='proposition' titre='cas de la parité'>
+
+Un nombre est pair si et seulement si c'est un multiple de deux.
+
+Un nombre est impair si et seulement si ce n'est pas un multiple de deux.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n = 2q + r$ la division euclidienne de $n$ par $2$. 
+
+$n$ est pair si et seulement si $r = 0$ et donc si et seulement si $2 \divise n$ 
+
+C'est analogue pour l'imparité.
+</Hideable>
 
 ### PGCD, PPCM et propriétés
 
@@ -65,32 +270,92 @@ On abandonne maintenant les entiers négatifs et on considèrera par la suite qu
 
 <Item type='definition' titre='plus grand diviseur commun'>
 
+On appelle **plus grand diviseur commun** de $n$ et $m$ le plus grand entier $k$ tel que : $k \divise a \ET k \divise b$.
+
+On note un tel $k$ soit $PGCD(a\v b)$, soit $pgcd(a \v b)$, soit $a \gcd b$ 
 </Item>
 
+<Remarque titre=''>
 
-<Item type='proposition' titre='multiplicativité du PGCD'>
-
-</Item>
-
-
-<Item type='proposition' titre='ensemble des diviseurs de deux entiers'>
-
-</Item>
+L'ensemble des diviseurs de $a$ et de $b$ est non vide (il contient $1$), majoré et inclu dans $\Z$ donc il y a bien existence du plus grand diviseur commun.
+</Remarque>
 
 
 <Item type='proposition' titre="algorithme d'Euclide">
 
-</Item>
+Soit $n = qm + r$ la division euclidienne de $n$ par $m$. On a :
 
-
-<Item type='proposition' titre="algorithme d'Euclide pour les entiers relatifs">
-
-</Item>
-
-
-<Item type='theoreme' titre='de Bezout'>
+$$
+n \gcd m = m \gcd r
+$$
 
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $d = n \gcd m$. 
+
+$d \divise m$ et $d \divise n$ donc $d \divise n - q.m = r$. Donc $d \divise m \gcd r$.
+
+D'autre part, $m \gcd r $ divise $r$ et $m$ mais il divise donc $r + q.m = d$. D'où $ m \gcd r \divise d$ 
+
+On a donc $d = m \gcd r$
+</Hideable>
+
+
+<Item type='proposition' titre='relation de Bezout'>
+
+Soient $a$ et $b$ deux entiers naturels et $d = a \gcd b$.
+
+Il existe $(u\v v) \in \Z^2$ tels que : 
+
+$$
+au + bv = d
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+
+On pose $a_0 = a$ et $a_1 = b$. On construit Soit $n \in \N^*$ tel que $a_{n} > 0$ et $a_{n-1} = a_n.q_n + r_n$ la division euclidienne de $a_{n-1}$ par $a_n$, on pose $a_{n+1} = r_n$. Si $a_n = 0$, on pose $a_{n+1} = 0$
+
+Si $a_{n+1} > 0$ alors $a_{n+1} > a_{n+2}$ pusique le dividende est strictement supérieur au reste. Comme la suite est minorée par $0$ (un reste est positif), elle ne peut être strictement décroissante car sinon elle tendrait vers $- \infty$ ce qui contredit la minoration. 
+
+Elle est donc stationnaire et il existe $N$ minimal tel que $\forall n > N \v a_n = 0$.
+
+D'après la propriété précédente, $a_n \gcd a_{n+1} = a_{n+1} \gcd a_{n+2}$ tant qu'aucun des termes n'est nul.
+
+On remarque également que $a_N = a_N \gcd 0 = a_{N-1} \gcd a_N = \dotsm = a \gcd b$.
+
+<br/>
+
+Montrons sur $\defentiers{0}{N-1}$ la propriété $\cP(k) : \exists (u\v v)\in \Z^2 \mid a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v $
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, $a \gcd b = a_{N-0} =  1.a_{N-0}  + 0.a_{N-1}$. $u = 1$ et $v = 0$ conviennent. 
+
+<br/>
+
+**Hérédité :** Soit $ n \leqslant N-2 \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+Par hypothèse de récurrence, il existe $a$ et $b$ des entiers tels que $a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v$
+
+Mais, par construction, $a_{N-(k+2)} = {N-(k+1)}.q_{N-(k+1)} + a_{N-k} $ donc $a_{N-(k+2)} - {N-(k+1)}.q_{N-(k+1)}  =  a_{N-k} $ 
+
+On a donc $a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v = u.(a_{N-(k+2)} - a_{N-(k+1)}.q_{N-(k+1)}) + a_{N-(k+1)}.v$
+
+puis, $a \gcd b = a_{N-(k+1)}.(v-u.q_{N-(k+1)}) + a_{N-(k+2)}.u$. 
+
+$\tilde{u} = v-u.q_{N-(k+1)}$ et $\tilde{v} = u$ conviennent puisqu'ils sont dans $\Z$ et vérifient la relation voulue
+
+
+<br/>
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \defentiers{0}{N-2}$. On a donc bien montré que la propriété est vraie sur $\defentiers{0}{N-2}$
+
+
+Avec $\cP(N-1)$, on obtient le résultat voulu.
+
+</Hideable>
 
 
 methode équation diophantienne
@@ -98,13 +363,15 @@ methode équation diophantienne
 
 <Item type='definition' titre='plus petit multiple commun'>
 
+Soient $a$ et $b$ deux entiers naturels, on appelle **plus petit mulitple commun** de $a$ et $b$ le plus petit $m \in \N$ tel que $a \divise m$ et $b \divise m$.
+
+<br/>
+
+Soit un tel $m$, on note $m = a \lcm b = ppcm(a \v b) = PPCM(a \v b)$
 </Item>
 
 
-<Item type='proposition' titre='pgcd et ppcm'>
 
-pgcd * ppcm = a*b
-</Item>
 
 ## Nombres premiers et premiers entre extremums
 
@@ -112,75 +379,321 @@ pgcd * ppcm = a*b
 
 <Item type='definition' titre='nombres premiers entre eux'>
 
+Soient $n$ et $m$ des entiers naturels.
+
+On dit que $n$ et $m$ sont premiers entre eux si $n \gcd m = 1$
 </Item>
 
-<Item type='proposition' titre='caractérisation des nombres premiers entre eux'>
+<Item type='theoreme' titre='de Bezout'>
 
-bezout
+Deux entiers naturels $a$ et $b$ sont premiers entre eux si et seulement s'il existe $u$ et $v$ deux entiers relatifs tels que $au + bv = 1$
 </Item>
 
-<Item type='proposition' titre="forme irréductible d'un rationnel">
+<Hideable type='démonstration' titre=''>
 
+D'après la relation de Bezout, le sens direct est immédiat.
+
+Intéressons nous au sens réciproque :
+
+Supposons qu'il existe $u$ et $v$ tels que $au + bv = 1$ et posons $d = a \gcd b$.
+
+$d \divise a$ et $d \divise b$ donc $d \divise au + bv$ mais donc $d \divise 1$ d'où $d = 1$
+</Hideable>
+
+
+
+<Item type='definition' titre="forme irréductible d'un rationnel">
+
+Soient $a$ et $b$ deux entiers et $b > 0$.
+
+On dit qu'une fraction de la forme $\dfrac{a}{b}$ est irréductible si $a$ et $b$ sont premiers entre eux.
 </Item>
+
+<Exercice titre=''>
+
+Est-ce que les fractions suivantes sont irreductibles?
+
+1\) avec des entiers donnés
+
+2\) expression affine en $n$ au num et au dénum
+
+AF
+</Exercice>
+
 
 <Item type='lemme' titre='de Gauss'>
 
+Soient $(a \v b \v c) \in \N^3$ tels que $a \gcd b = 1$.
+
+Si $a \divise bc$, alors $a \divise c$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \gcd b = 1$ donc il existe $u$ et $v$ des entiers relatifs tels que $a.u + b.v = 1$. De plus, $a \divise bc$ donc il existe un entier positif $k$ tel que $bc = k.a$.
+
+D'où $a.u + b.v = 1$ donc $ac.u + bc.v = c$. Mais $a \divise bc$ donc $a \divise ac.u + bc.v = c$
+
+</Hideable>
+
 
 <Item type='proposition' titre=''>
 
-a et b divisent n et premiers entre eux, alors ab divise n
+Soient $a \v b$ et $n$ des entiers naturels.
+
+Si $a \divise n \v b \divise n$ et $a \gcd b = 1$, alors $ab \divise n$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \divise n$ donc il existe un entier naturel $k$ tel que $n = ak$. Mais $b \divise n = a.k$ donc $b \divise k$ d'après le lemme de Gauss.
+
+Il suit qu'il existe $l \in \N$ tel que $k = b.l$. 
+
+D'où $n = a.k = ab.l$ mais donc $ab \divise n$.
+
+
+</Hideable>
+
+
+<Item type='proposition' titre='application aux diviseurs du PGCD'>
+
+On pose $d = n \gcd m$, si $k \divise n$ et $k \divise m$, alors $k \divise d$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $d \gcd k = 1$
+
+Il existe $a$ et $b$ des entiers tels que $a.d = n$ et $b.d = m$. Mais donc $k \divise a.d$ et $k \divise b.d$.
+
+Comme $d \gcd k = 1$, d'après le lemme de Gauss, $k \divise a$ et $k \divise b$, 
+
+mais donc il existe $\alpha$ et $\beta$ des entiers tels que $n = \alpha.k.d$ et $m = \beta.k.d$ d'où $k.d \divise n$ et $k.d \divise m$ et donc $d.k = d$ par maximalité du PGCD.
+
+On en déduit que $k = 1$.
+
+<br />
+Si $d \gcd k \neq 1$, il suffit de considérer $\tilde{k} = \dfrac{k}{d \gcd k}$ et on a $d \gcd \tilde{k} = 1$ d'où $\tilde{k} = 1$ et $k = k \gcd d \divise d$.
+</Hideable>
+
+<Item type='proposition' titre='multiplicativité du PGCD'>
+
+$(k.a) \gcd (k.b) = k.(a \gcd b)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \gcd b \divise a$ et $a \gcd b \divise b$
+
+mais donc $k.(a \gcd b) \divise k.a$ et $k.(a \gcd b) \divise k.b$
+
+et on en déduit que $k.(a \gcd b) \leqslant (k.a) \gcd (k.b)$.
+
+<br/>
+
+Posons $d = (k.a) \gcd (k.b)$. Il existe $u$ et $v$ des entiers tels que $k.a = u.d$ et $k.b = v.d$
+
+Mais $k \divise d$ puisque $k \divise k.a$ et $k \divise k.b$. Donc il existe $c \in \N$ tel que $d = k.c$ d'où :
+
+$k.a = u.k.c$ et $k.b = v.k.c$ mais donc $a = u.c$ et $b = v.c$. Mais donc $c \divise a \gcd b$ d'où $c \leqslant a \gcd b$.
+
+On a donc $d \leqslant k.(a \gcd b)$
+
+<br/>
+
+Par double inégalité, on a le résultat voulu.
+</Hideable>
+
+
+<Item type='proposition' titre='pgcd et ppcm'>
+
+Soient $a$ et $b$ des entiers naturels.
+
+$$
+a.b = (a \gcd b) . (a \lcm b)
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $d = a \gcd b$ et $m = a \lcm b$.
+
+D'abord, il existe $k$ et $l$ deux entiers tels que $a = k.d$ et $b = l.d$.
+
+Mais $k.l.d = (k.d).l =  (l.d).k$ et donc c'est un multiple de $a$ et de $b$. 
+
+D'où $m \leqslant k.l.d$ par minimalité de $m$ puis $m.d \leqslant (k.d).(l.d) = a.b$
+
+<br/>
+
+$\dfrac{a}{d} \gcd \dfrac{b}{d} = 1$ mais $\dfrac{a}{d} \divise \dfrac{m}{d}$ et $\dfrac{b}{d} \divise \dfrac{m}{d}$.
+
+D'après le lemme de Gauss, $\dfrac{ab}{d^2} \divise \dfrac{m}{d}$ mais donc $ab \divise m.d$ d'où $a.b \leqslant m.d$
+
+<br />
+
+On a le résultat voulu par double inégalité.
+</Hideable>
+
+
+<Item type='proposition' titre='application aux multiples du ppcm'>
+
+Soient $a$ et $b$ des entiers naturels.
+
+Soit $k$ tel que $a \divise k$ et $b \divise k$. On a : $a \lcm b \divise k$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $m = a \lcm b$ et $d = a \gcd b$.
+
+Déjà, $m = \dfrac{ab}{d}$ 
+
+Ensuite, $\dfrac{a}{d} \divise \dfrac{k}{d}$ et $\dfrac{b}{d} \divise \dfrac{k}{d}$.
+
+Comme $\dfrac{a}{d} \gcd \dfrac{b}{d} = 1$. D'après le lemme de Gauss, $\dfrac{a}{d} . \dfrac{b}{d} \divise \dfrac{k}{d}$ d'où $m = dfrac{ab}{d} \divise k$
+</Hideable>
+
 
 <Item type='definition' titre='PGCD de plusieurs entiers'>
 
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On appelle **plus grand diviseur commun** de $n_1 \v n_2 \v \dotsm n_k$ le plus grand $d \in \N$ tel que $d \divise n_1 \v d \divise n_2 \v \dotsm \v d \divise n_k$.
+
+On note un tel $d$ ainsi : $pgcd(n_1 \v n_2 \v \dotsm n_k)$
 </Item>
 
 <Item type='definition' titre='entiers premiers entre eux dans leur ensemble'>
 
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On dit que $n_1 \v n_2 \v \dotsm n_k$ sont premiers dans leur ensemble si $pgcd(n_1 \v n_2 \v \dotsm n_k) = 1$
 </Item>
 
 <Item type='definition' titre='entiers premiers entre eux deux à deux'>
 
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On dit que $n_1 \v n_2 \v \dotsm n_k$ sont premiers deux à deux si, pour tout $(i \v j) \in \defentiers{1}{k}$ tels que $i \neq j$, on a $n_i \gcd n_j = 1$.
+
 </Item>
 
-<Item type='proposition' titre='relation de Bezout'>
 
+<Item type='proposition' titre='lien entre les deux'>
+
+Si des entiers sont premiers entre eux deux à deux, alors ils le sont dans leur ensemble.
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+Il suffit de remarquer que $pgcd(n_1 \v n_2 \v \dotsm \v n_k) \divise pgcd(n_1 \v n_2)$.
+</Hideable>
+
+
+<Item type='proposition' titre='cas général du théorème de Bezout'>
+
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels premiers entre eux dans leur ensemble.
+
+Il existe $u_1 \v u_2 \v \dotsm \v u_k$ des entiers relatifs tels que :
+
+$$
+u_1.n_1 + u_2.n_2 + \dotsm + u_k.n_k = 1
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Le résultat se montre par récurrence (que nous allons abréger ici). 
+
+L'initialisation est triviale au rang $1$ et le rang $2$ constitue le théorème de Bezout. 
+
+L'hérédité découle du fait que $pgcd(u_1 \v u_2 \v \dotsm \v u_k) = pgcd(pgcd(u_1 \v u_2) \v pgcd(u_3 \v \dotsm \v u_k))$, ce qui nous permet d'appliquer la propriété au rang $2$ (deux fois) et au rang $n-2$.
+
+</Hideable>
 
 ### Nombres premiers
 
 <Item type='definition' titre='nombre premier'>
 
-parfois , notation : \cP dans ce cours oui
+Soit $p \in \N$. On dit que $p$ est premier s'il admet exactement deux diviseurs : $1$ et lui-même.
+
+L'ensemble des nombres premiers est parfois noté $\cP$, ce que nous ferons dans ce cours.
 </Item>
 
-Crible d'Eratosthène
+AF : Crible d'Eratosthène
+
+
+<Item type='theoreme' titre='décomposition en produit de facteurs premiers'>
+
+Soit $n \in \N$. Il existe $p_1 \v \dotsm \v p_k$ des éléments de $\cP$ où $k \in \N$ tels que 
+</Item>
+
 
 <Item type='proposition' titre='cardinalité des premiers'>
 
 L'ensemble des nombres premiers est infini.
 </Item>
 
-<Item type='theoreme' titre='décomposition en produit de facteurs premiers'>
+<Hideable type='démonstration' titre=''>
 
-</Item>
+Raisonnons par l'absurde et supposons que $\cP = \{p_1 \v \dotsm \v p_n\}$ où $n \in \N^*$.
+
+On pose $A = p_1 . p_2 \dotsm p_n + 1$. 
+
+Soit $p$ un diviseur premier de $A$. Il existe $1 \leqslant i \leqslant n$ tel que $p = p_i$. 
+
+Et donc $p \divise p_1 . p_2 \dotsm p_n $ mais donc $p \divise (A - p_1 . p_2 \dotsm p_n) = 1$ d'où $p=1$.
+
+Ceci est absurde puisque $p$ est premier mais pas $1$. On en déduit que $\cP$ ne peut pas être fini.
+</Hideable>
+
+
 
 <Item type='definition' titre='valuation p-adique'>
 
+Soit $p$ un nombre premier. On appelle valuation $p$-adique de $n$ et on note $\nu_p(n)$ le plus grand entier $k$ tel que $p^k \divise n$.
+
+On a $\nu_p(n) = \max(\{ k \in \N \mid p^k \divise n\})$
 </Item>
+
 
 <Item type='proposition' titre='valuation p-adique et produit'>
 
+Si $p \in \cP$, $\nu_p(n.m) = \nu_p(n) + \nu_p(m)$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+AF
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation de la divisibilité'>
+
+$n$ divise $m$ si et seulement si $\forall p \in \cP \v \nu_p(n) \leqslant \nu_p(m)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+AF
+</Hideable>
 
 <Item type='definition' titre="indicatrice d'Euler">
 
+On appelle indicatrice d'Euler et l'on note $\phi$ l'application :
+
+$ f : \begin{cases} \N \rightarrow \N \\ n \mapsto \Card( \{ k \in \N \mid k \divise n\})  \end{cases} $
+
+<br/>
+Rappel : $\Card(E)$ désigne le cardinal de l'ensemble $E$, soit le nombre d'éléments de $E$.
 </Item>
+
 
 <Item type='proposition' titre="formules de l'indicatrice">
 
+AF
 </Item>
 
 
@@ -202,3 +715,5 @@ L'ensemble des nombres premiers est infini.
 <Item type='theoreme' titre='petit théorème de Fermat'>
 
 </Item>
+
+critères divisibilité

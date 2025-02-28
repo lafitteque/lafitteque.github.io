@@ -58,6 +58,10 @@ const macros = {
   "\\SSI": "\\; \\footnotesize  \\mathbf{SSI} \\normalsize \\;",
   "\\NON": "\\footnotesize  \\mathbf{NON} \\normalsize \\;",
 
+  "\\gcd": "\\wedge",
+  "\\lcm": "\\vee",
+  "\\divise": "\\Large \\mid \\normalsize",
+
   "\\pv": "; \\;",
   "\\v": ", \\;",
   "\\cd": "\\huge \\centerdot \\,",
@@ -84,6 +88,7 @@ const macros = {
   "\\Ker": "\\operatorname{Ker}",
   "\\sup": "\\operatorname{sup}",
   "\\inf": "\\operatorname{inf}",
+  "\\Card": "\\operatorname{Card}",
 };
 
 export default defineConfig({
