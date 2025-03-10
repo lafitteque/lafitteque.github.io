@@ -58,6 +58,10 @@ const macros = {
   "\\SSI": "\\; \\footnotesize  \\mathbf{SSI} \\normalsize \\;",
   "\\NON": "\\footnotesize  \\mathbf{NON} \\normalsize \\;",
 
+  "\\gcd": "\\wedge",
+  "\\lcm": "\\vee",
+  "\\divise": "\\Large \\mid \\normalsize",
+
   "\\pv": "; \\;",
   "\\v": ", \\;",
   "\\cd": "\\huge \\centerdot \\,",
@@ -68,7 +72,8 @@ const macros = {
   "\\somme": "\\sum \\limits_{#1}^{#2}",
   "\\produit": "\\prod \\limits_{#1}^{#2}",
   "\\integ": "\\int_{#1}^{#2}",
-
+  "\\congru": "{#1} \\equiv {#2} [{#3}]",
+  "\\binomiale": "\\begin{pmatrix} {#2} \\ {#1} \\end{pmatrix}",
   "\\limm": "\\lim \\limits_{ {#1} }",
   "\\limto": "\\mathop{\\longrightarrow}\\limits_{ {#1} }",
   "\\limton": "\\mathop{\\longrightarrow}\\limits_{n \\to \\infty}",
@@ -84,6 +89,7 @@ const macros = {
   "\\Ker": "\\operatorname{Ker}",
   "\\sup": "\\operatorname{sup}",
   "\\inf": "\\operatorname{inf}",
+  "\\Card": "\\operatorname{Card}",
 };
 
 export default defineConfig({
