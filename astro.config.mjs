@@ -53,10 +53,10 @@ const macros = {
 
   "\\ssi": "\\Leftrightarrow",
 
-  "\\ET": "\\; \\footnotesize  \\mathbf{ET} \\normalsize \\;",
-  "\\OU": "\\; \\footnotesize  \\mathbf{OU} \\normalsize \\;",
-  "\\SSI": "\\; \\footnotesize  \\mathbf{SSI} \\normalsize \\;",
-  "\\NON": "\\footnotesize  \\mathbf{NON} \\normalsize \\;",
+  "\\ET": "\\; \\scriptsize  \\textsf{\\textbf{ET}} \\normalsize \\;",
+  "\\OU": "\\; \\scriptsize  \\textsf{\\textbf{OU}} \\normalsize \\;",
+  "\\SSI": "\\; \\scriptsize  \\textsf{\\textbf{SSI}} \\normalsize \\;",
+  "\\NON": "\\scriptsize  \\textsf{\\textbf{NON}} \\normalsize \\;",
 
   "\\gcd": "\\wedge",
   "\\lcm": "\\vee",
