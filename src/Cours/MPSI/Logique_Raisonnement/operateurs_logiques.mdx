@@ -21,15 +21,15 @@ pour chacune des combinaisons possibles des entrées. </Item>*/}
 
 Soient A et B deux propositions. On appelle : 
 
-$\cd$ "A et B" la conjonction de A et de B
+$\cd$ "A $\ET$ B" la conjonction de A et de B
 
-$\cd$ "A ou B" la disjonction de A et de B
+$\cd$ "A $\OU$ B" la disjonction de A et de B
 
-$\cd$ "non A" la négation de A
+$\cd$ "$\NON$ A" la négation de A
 
 La **table de vérité** ci-dessous définit ces opérations selon la valeur de vérité de A et de B.
 
-| A  | B || A et B |  A ou B |
+| A  | B || A $\ET$ B |  A $\OU$ B |
 |---|---|---|---|---|
 | Vrai | Vrai || Vrai | Vrai |
 | Vrai | Faux || Faux | Vrai |
@@ -46,36 +46,36 @@ Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux êt
 </Remarque>
 
 <Exercice titre="">
-Montrer que "A ou (non A)" a pour valeur de vérité "Vrai" et que "A et (non A)" a pour valeur de vérité "Faux".
+Montrer que "A $\OU$ ($\NON$ A)" a pour valeur de vérité "Vrai" et que "A $\ET$ ($\NON$ A)" a pour valeur de vérité "Faux".
 </Exercice>
 
 <Hideable type="solution" titre=''>
 Dressons les tables de vérité de ces propositions.
 
-| A  | non A | | A ou (non A) | A et (non A)| 
+| A  | $\NON$ A | | A $\OU$ ($\NON$ A) | A $\ET$ ($\NON$ A)| 
 |---|---|---|---|---|
 | Vrai | Faux | | Vrai | Faux | 
 | Faux | Vrai | | Vrai | Faux | 
 </Hideable>
 
 <Exercice titre=""> 
-Donner la table de vérité de (A et B) ou C où A, B et C sont trois propositions. 
+Donner la table de vérité de (A $\ET$ B) $\OU$ C où A, B et C sont trois propositions. 
 </Exercice>
 
 <Hideable type="solution" titre=''>
 
-Répondre à la question c'est dire si "A et B" est vrai ou bien si C est vrai. Pour cela, on a besoin de leur table de vérité.
+Répondre à la question c'est dire si "A $\ET$ B" est vrai ou bien si C est vrai. Pour cela, on a besoin de leur table de vérité.
 
-| A  | B | C || A et B | (A et B) ou C | Explication
+| A  | B | C || A $\ET$ B | (A $\ET$ B) $\OU$ C | Explication
 |---|---|---|---|---|---|---|
-| Vrai | Vrai | Vrai || Vrai | Vrai |  Ici, A et B est vrai, il n'y a même pas besoin de vérifier C pour avoir (A et B) ou C. | 
+| Vrai | Vrai | Vrai || Vrai | Vrai |  Ici, A $\ET$ B est vrai, il n'y a même pas besoin de vérifier C pour avoir (A $\ET$ B) ou C. | 
 | Vrai | Vrai | Faux || Vrai | Vrai | idem |
-| Vrai | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également.|
-| Vrai | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
-| Faux | Vrai | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
-| Faux | Vrai | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
-| Faux | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A et B) ou C l'est également. |
-| Faux | Faux | Faux || Faux | Faux | Ici, (A et B) est faux mais C est également faux, donc (A et B) ou C est faux. |
+| Vrai | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A $\ET$ B) ou C l'est également.|
+| Vrai | Faux | Faux || Faux | Faux | Ici, (A $\ET$ B) est faux mais C est également faux, donc (A $\ET$ B) $\OU$ C est faux. |
+| Faux | Vrai | Vrai || Faux | Vrai | Ici, C est vrai donc  (A $\ET$ B) $\OU$ C l'est également. |
+| Faux | Vrai | Faux || Faux | Faux | Ici, (A $\ET$ B) est faux mais C est également faux, donc (A $\ET$ B) $\OU$ C est faux. |
+| Faux | Faux | Vrai || Faux | Vrai | Ici, C est vrai donc  (A $\ET$ B) $\OU$ C l'est également. |
+| Faux | Faux | Faux || Faux | Faux | Ici, (A $\ET$ B) est faux mais C est également faux, donc (A $\ET$ B) $\OU$ C est faux. |
 </Hideable>
 
 
@@ -83,28 +83,28 @@ Répondre à la question c'est dire si "A et B" est vrai ou bien si C est vrai. 
 
 On a les propriétés suivantes : 
 
-$\cd$ "A et B" a la même valeur de vérité que "B et A"
+$\cd$ "A $\ET$ B" a la même valeur de vérité que "B $\ET$ A"
 
-$\cd$ "A ou B" a la même valeur de vérité que "B ou A"
+$\cd$ "A $\OU$ B" a la même valeur de vérité que "B $\OU$ A"
 
-$\cd$ "(A et B) et C" a la même valeur de vérité que "A et (B et C)"
+$\cd$ "(A $\ET$ B) $\ET$ C" a la même valeur de vérité que "A $\ET$ (B $\ET$ C)"
 
-$\cd$ "(A ou B) ou C"  a la même valeur de vérité que "A ou (B ou C)"
+$\cd$ "(A $\OU$ B) $\OU$ C"  a la même valeur de vérité que "A $\OU$ (B $\OU$ C)"
 </Item>
 
 
 <Hideable type='démonstration'>
 
 **Commutativité :**
-La table de vérité de "A et B" est la même que celle de "B et A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A et de B.
+La table de vérité de "A $\ET$ B" est la même que celle de "B $\ET$ A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A $\ET$ de B.
 
-Il en va de même pour "A ou B".
+Il en va de même pour "A $\OU$ B".
 
 <br/>
 
 **Associativité de la conjonction :** On dresse une table de vérité :
 
-| A | B | C || A et B | B et C| (A et B) et C | A et (B et C) |
+| A | B | C || A $\ET$ B | B $\ET$ C| (A $\ET$ B) $\ET$ C | A $\ET$ (B $\ET$ C) |
 |---|---|---|---|---|---|---|---|
 | Vrai | Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
 | Vrai | Vrai | Faux || Vrai | Faux | Faux | Faux |
@@ -115,13 +115,13 @@ Il en va de même pour "A ou B".
 | Faux | Faux | Vrai || Faux | Faux | Faux | Faux |
 | Faux | Faux | Faux || Faux | Faux | Faux | Faux |
 
-Les tables de vérités de "(A et B) et C" et de "A et (B et C)" coïncident et donc ces affirmations ont même valeur de vérité.
+Les tables de vérités de "(A $\ET$ B) $\ET$ C" et de "A $\ET$ (B $\ET$ C)" coïncident et donc ces affirmations ont même valeur de vérité.
 
 <br/>
 
 **Associativité de la disjonction :** On dresse une table de vérité :
 
-| A | B | C || A ou B | B ou C || (A ou B) ou C | A ou (B ou C) |
+| A | B | C || A $\OU$ B | B $\OU$ C || (A $\OU$ B) $\OU$ C | A $\OU$ (B $\OU$ C) |
 |---|---|---|---|---|---|---|---|---|
 | Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai |
 | Vrai | Vrai | Faux || Vrai | Vrai || Vrai | Vrai |
@@ -132,30 +132,30 @@ Les tables de vérités de "(A et B) et C" et de "A et (B et C)" coïncident et 
 | Faux | Faux | Vrai || Faux | Vrai || Vrai | Vrai |
 | Faux | Faux | Faux || Faux | Faux || Faux | Faux |
 
-Les tables de vérités de "(A ou B) et C" et de "A ou (B ou C)" coïncident et donc ces affirmations ont même valeur de vérité.
+Les tables de vérités de "(A $\OU$ B) et C" et de "A $\OU$ (B $\OU$ C)" coïncident et donc ces affirmations ont même valeur de vérité.
 </Hideable>
 
 
 <Item type='propriete' titre='lois de Morgan'>
 
-$\cd$ "non (non A)" a la même valeur de vérité que "A"
+$\cd$ "$\NON$  ($\NON$  A)" a la même valeur de vérité que "A"
 
-$\cd$ "non(A et B)" a la même valeur de vérité que "(non A) ou (non B)"
+$\cd$ "$\NON$ (A $\ET$ B)" a la même valeur de vérité que "($\NON$  A) $\OU$ ($\NON$  B)"
 
-$\cd$ "non(A ou B)" a la même valeur de vérité que "(non A) et (non B)"
+$\cd$ "$\NON$ (A $\OU$ B)" a la même valeur de vérité que "($\NON$  A) $\ET$ ($\NON$  B)"
 </Item>
 
 <Hideable type='démonstration' >
 On dresse la table de vérité des propositions :
 
-| A  | B || non A  | non B || A et B | non (A et B) | (non A) ou (non B) || A ou B | non(A ou B) | (non A) et (non B) |
+| A  | B || $\NON$  A  | $\NON$  B || A $\ET$ B | $\NON$  (A $\ET$ B) | ($\NON$  A) $\OU$ ($\NON$  B) || A $\OU$ B | $\NON$ (A $\OU$ B) | ($\NON$  A) $\ET$ ($\NON$  B) |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | Vrai | Vrai || Faux | Faux || Vrai | Faux | Faux || Vrai | Faux | Faux |
 | Vrai | Faux || Faux | Vrai || Faux | Vrai | Vrai || Vrai | Faux | Faux |
 | Faux | Vrai || Vrai | Faux || Faux | Vrai | Vrai || Vrai | Faux | Faux |
 | Faux | Faux || Vrai | Vrai || Faux | Vrai | Vrai || Faux | Vrai | Vrai |
 
-Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident ainsi que celles de "non(A ou B)" et de "(non A) et (non B)". La propriété
+Les tables de vérité de "$\NON$ (A $\ET$ B)" et de "($\NON$  A) $\OU$ ($\NON$  B)" coïncident ainsi que celles de "$\NON$ (A $\OU$ B)" et de "($\NON$  A) $\ET$ ($\NON$  B)". La propriété
 énoncée est donc vraie.
 </Hideable>
 
@@ -163,18 +163,18 @@ Les tables de vérité de "non(A et B)" et de "(non A) ou (non B)" coïncident a
 
 <Item type='propriete' titre='distributivité des conjonctions et disjonctions'>
 
-$\cd$ "(A et B) ou C" a la même valeur de vérité que "(A ou c) et (B ou C)"
+$\cd$ "(A $\ET$ B) $\OU$ C" a la même valeur de vérité que "(A $\OU$ c) $\ET$ (B $\OU$ C)"
 
-$\cd$ "(A ou B) et C" a la même valeur de vérité que "(A et C) ou (B et C)"
+$\cd$ "(A $\OU$ B) $\ET$ C" a la même valeur de vérité que "(A $\ET$ C) $\OU$ (B $\ET$ C)"
 </Item>
 
 
 <Hideable type='démonstration'>
 Dressons la table de vérité des propositions.
 
-**Etudions d'abord "(A et B) ou C" :**
+**Etudions d'abord "(A $\ET$ B) $\OU$ C" :**
 
-| A  | B | C || A et B | (A et B) ou C || A ou C | B ou C | (A ou c) et (B ou C) |
+| A  | B | C || A $ET$ B | (A $ET$ B) $\OU$ C || A $\OU$ C | B $\OU$ C | (A $\OU$ C) $ET$ (B $\OU$ C) |
 |---|---|---|---|---|---|---|---|---|---|
 | Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai | Vrai |
 | Vrai | Vrai | Faux || Vrai | Vrai || Vrai | Vrai | Vrai |
@@ -187,9 +187,9 @@ Dressons la table de vérité des propositions.
 
 <br/>
 
-**Etudions maintenant "(A ou B) et C" :**
+**Etudions maintenant "(A $\OU$ B) $\ET$ C" :**
 
-| A  | B | C || A ou B | (A ou B) et C || A et C | B et C | (A et c) ou (B et C) |
+| A  | B | C || A $\OU$ B | (A $\OU$ B) $\ET$ C || A $\ET$ C | B $\ET$ C | (A $\ET$ c) $\OU$ (B $\ET$ C) |
 |---|---|---|---|---|---|---|---|---|---|
 | Vrai | Vrai | Vrai || Vrai | Vrai || Vrai | Vrai | Vrai |
 | Vrai | Vrai | Faux || Vrai | Faux || Faux | Faux | Faux |
@@ -210,7 +210,7 @@ Soient A et B deux propositions.
 
 $\cd$ On note "A $ \Rightarrow $ B" l'affirmation "A implique B"
 
-$\cd$ On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (au ssi. abrégé en ssi)
+$\cd$ On note "A $ \ssi $ B" l'affirmation "A est équivalent à B" ou encore "A si et seulement si B" (ou ssi. abrégé en ssi)
 
 On les définit par leurs tables de vérité :
 
@@ -227,20 +227,20 @@ et "A $ \ssi $ B" signifie que A et B ont la même valeur de vérité.
 
 
 <Exercice titre="">
-Montrer que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ (non A) ou B $ \Big) $
+Montrer que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi \Big( $ ($\NON$ A) $\OU$ B $ \Big) $
 </Exercice>
 
 <Hideable type="solution" titre=''>
-On dresse la table de vérité de  "(non A) ou B" et on devrait tomber sur celle de "A $\Rightarrow$ B".
+On dresse la table de vérité de  "($\NON$ A) $\OU$ B" et on devrait tomber sur celle de "A $\Rightarrow$ B".
 
-| A  | B || non A |  (non A) ou B |
+| A  | B || $\NON$ A |  ($\NON$ A) $\OU$ B |
 |---|---|---|---|---|
 | Vrai | Vrai || Faux | Vrai |
 | Vrai | Faux || Faux | Faux |
 | Faux | Vrai || Vrai | Vrai |
 | Faux | Faux || Vrai | Vrai |
 
-Donc "A $ \Rightarrow $ B" et  "(non A) ou B" ont la même table de vérité. Ces deux propositions sont donc équivalentes.
+Donc "A $ \Rightarrow $ B" et  "($\NON$ A) $\OU$ B" ont la même table de vérité. Ces deux propositions sont donc équivalentes.
 </Hideable>
 
 
@@ -252,16 +252,16 @@ Donner la négation de "(A $\Rightarrow$ B)" et celle de "(A $\ssi $ B)" en n'ut
 
 **Négation de "(A $\Rightarrow$ B)" :** 
 
-A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi  \Big( $ (non A) ou B $ \Big) $ et donc, en passant à la négation et en développant, 
-on a "non $\Big( $ (non A) ou B $ \Big)$" qui a même valeur de vérité que "$\Big($ non (non A) $\Big)$ et (non B)" qui a même valeur de vérité que "A et (non B)"
+A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi  \Big( $ ($\NON$ A) $\OU$ B $ \Big) $ et donc, en passant à la négation et en développant, 
+on a "$\NON$ $\Big( $ ($\NON$ A) $\OU$ B $ \Big)$" qui a même valeur de vérité que "$\Big($ $\NON$ ($\NON$ A) $\Big)$ $\ET$ ($\NON$ B)" qui a même valeur de vérité que "A $\ET$ ($\NON$ B)"
 
 <br/>
 
 **Négation de "(A $\ssi $ B)" :** 
 
-A partir de la table de vérité de "A $\ssi $ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( non A) et (non B) $\Big)$ ou (A et B)" 
+A partir de la table de vérité de "A $\ssi $ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( $\NON$ A) $\ET$ ($\NON$ B) $\Big)$ $\OU$ (A $\ET$ B)" 
 ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en déduit, en passant à la négation que, 
-en développant puis en simplifiant , on obtient "$\Big($ A et (non B) $\Big)$ ou $\Big($ (non A) et B $\Big)$"
+en développant puis en simplifiant , on obtient "$\Big($ A $\ET$ ($\NON$ B) $\Big)$ $\OU$ $\Big($ ($\NON$ A) $\ET$ B $\Big)$"
 </Hideable>
 
 <Remarque>
@@ -276,13 +276,13 @@ Si $A \ssi  B$, on dit que $A$ est une condition nécessaire et suffisante pour 
 
 Soient A et B deux propositions. 
 
-(A $\ssi $ B) est vraie ssi. $\Big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ A) $\Big)$ est vraie.
+(A $\ssi $ B) est vraie ssi. $\Big($ (A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ A) $\Big)$ est vraie.
 </Item>
 
 <Hideable type='démonstration' >
 On dresse la table de vérité des deux propositions :
 
-| A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) et (B $\Rightarrow$ A) | A $\ssi $ B |
+| A  | B || A $\Rightarrow$ B |  B $\Rightarrow$ A | (A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ A) | A $\ssi $ B |
 |---|---|---|---|---|---|---|
 | Vrai | Vrai || Vrai | Vrai | Vrai | Vrai |
 | Vrai | Faux || Faux | Vrai | Faux | Faux |
@@ -298,23 +298,23 @@ Les tables de vérité sont identiques pour les deux propositions souhaitées.
 <Item type='propriete' titre='transitivité des implications et des équivalences'>
 Soient A, B et C trois propositions.
 
-$\cd$ "$\Big($ (A $\Rightarrow$ B) et (B $\Rightarrow$ C) $\Big)$" $\Rightarrow$ "(A $\Rightarrow$ C)"
+$\cd$ "$\Big($ (A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ C) $\Big)$" $\Rightarrow$ "(A $\Rightarrow$ C)"
 
-$\cd$ "$\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$" $\Rightarrow$ "(A $\ssi $ C)"
+$\cd$ "$\Big($ (A $\ssi $ B) $\ET$ (B $\ssi $ C) $\Big)$" $\Rightarrow$ "(A $\ssi $ C)"
 </Item>
 
 <Hideable type='démonstration' >
 
-$\cd$ "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" ssi. "$\big($ B ou (non A) $\big)$  et  $\big($ C ou (non B) $\big)$" ssi.
-"(B et C) ou (B et (non B)) ou ((non A) et C) ou ((non A) et (non B))" ssi.
-"(B et C) ou ((non A) et C) ou ((non A) et (non B))" mais donc, si cette proposition est vraie, alors "C ou (non A) ou (non A)" est vraie également 
+$\cd$ "(A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ C)" ssi. "$\big($ B $\OU$ ($\NON$ A) $\big)$  $\ET$  $\big($ C $\OU$ ($\NON$ B) $\big)$" ssi.
+"(B $\ET$ C) $\OU$ (B $\ET$ ($\NON$ B)) $\OU$ (($\NON$ A) $\ET$ C) $\OU$ (($\NON$ A) $\ET$ ($\NON$ B))" ssi.
+"(B $\ET$ C) $\OU$ (($\NON$ A) $\ET$ C) $\OU$ (($\NON$ A) $\ET$ ($\NON$ B))" mais donc, si cette proposition est vraie, alors "C $\OU$ ($\NON$ A) $\OU$ ($\NON$ A)" est vraie également 
 (on peut faire une table de vérité si besoin, mais cela est évident en regardant chacun des termes de la disjonction).
-On en déduit donc que si "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" est vraie, alors "C ou (non A)" l'est également. Cela conclut la démonstration du premier point.
+On en déduit donc que si "(A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ C)" est vraie, alors "C $\OU$ ($\NON$ A)" l'est également. Cela conclut la démonstration du premier point.
 On remarquera qu'il est possible de faire des démonstrations en logique sans table de vérité.
 
-$\cd$ $\Big($ (A $\ssi $ B) et (B $\ssi $ C) $\Big)$ ssi."(A $\Rightarrow$ B) et (B $\Rightarrow$ C) et (B $\Rightarrow$ A) et (C $\Rightarrow$ B)". 
-Si cette proposition est vraie, alors on a bien "(A $\Rightarrow$ B) et (B $\Rightarrow$ C)" qui est vraie également et 
-"(B $\Rightarrow$ A) et (C $\Rightarrow$ B)" qui est aussi.vraie.
+$\cd$ $\Big($ (A $\ssi $ B) $\ET$ (B $\ssi $ C) $\Big)$ ssi."(A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ C) $\ET$ (B $\Rightarrow$ A) $\ET$ (C $\Rightarrow$ B)". 
+Si cette proposition est vraie, alors on a bien "(A $\Rightarrow$ B) $\ET$ (B $\Rightarrow$ C)" qui est vraie également et 
+"(B $\Rightarrow$ A) $\ET$ (C $\Rightarrow$ B)" qui est aussi.vraie.
 On applique le résultat précédent pour avoir une implication "A $\Rightarrow$ C". Puis on l'applique en inversant les rôles de A et de B 
 pour avoir l'autre implication "C $\Rightarrow$ A". Comme on a les deux implications, on a l'équivalence.
 </Hideable>
@@ -325,17 +325,17 @@ Soient A et B et la proposition $\cP$ : "A $\Rightarrow$ B". On appelle :
 
 $\cd$ réciproque de $\cP$ la proposition "B $\Rightarrow$ A"
 
-$\cd$ contraposée de $\cP$ la proposition "(non B) $\Rightarrow$ (non A)"
+$\cd$ contraposée de $\cP$ la proposition "($\NON$ B) $\Rightarrow$ ($\NON$ A)"
 </Item>
 
 
 <Item type='propriete' titre='raisonnement par contraposée'>
 Soient A et B deux propositions.
-On a "(A $\Rightarrow$ B)" ssi. "(non B) $\Rightarrow$ (non A)".
+On a "(A $\Rightarrow$ B)" ssi. "($\NON$ B) $\Rightarrow$ ($\NON$ A)".
 </Item>
 
 <Hideable type='démonstration'>
-"A $\Rightarrow$ B" ssi."B ou (non A)" ssi."(non A) ou B" ssi."(non B) $\Rightarrow$ (non A)"
+"A $\Rightarrow$ B" ssi."B $\OU$ ($\NON$ A)" ssi."($\NON$ A) $\OU$ B" ssi."($\NON$ B) $\Rightarrow$ ($\NON$ A)"
 </Hideable>
 
 

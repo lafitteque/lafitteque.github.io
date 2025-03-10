@@ -981,9 +981,9 @@ $-mn < x-y < mn$ mais le seul multiple de $mn$ dans ces bornes est $0$. Donc $x-
 
 <Item type='definition' titre="indicatrice d'Euler">
 
-On appelle indicatrice d'Euler et l'on note $\phi$ l'application :
+On appelle indicatrice d'Euler et l'on note $\varphi$ l'application :
 
-$ f : \begin{cases} \N \rightarrow \N \\ n \mapsto \Card( \{ k \in \N \mid k \gcd  n = 1\})  \end{cases} $
+$ \varphi : \begin{cases} \N \rightarrow \N \\ n \mapsto \Card( \{ k \in \N \mid k \gcd  n = 1\})  \end{cases} $
 
 <br/>
 
@@ -992,18 +992,16 @@ Rappel : $\Card(E)$ désigne le cardinal de l'ensemble $E$, soit le nombre d'él
 
 
 
-### Indicatrice d'Euler
-
 <Item type='proposition' titre="formules de l'indicatrice">
 
-$\cd$ Soient $p \in \cP$ et $n \in \N^*$. $\phi(p^n) = p^n - p^{n-1} = p^{n-1}(p-1)$ 
+$\cd$ Soient $p \in \cP$ et $n \in \N^*$. $\varphi(p^n) = p^n - p^{n-1} = p^{n-1}(p-1)$ 
 
-$\cd$ Soient $(a \v b) \in (\N^*)^2$ tels que $a \gcd b = 1$, $\phi(ab) = \phi(a) . \phi(b)$
+$\cd$ Soient $(a \v b) \in (\N^*)^2$ tels que $a \gcd b = 1$, $\varphi(ab) = \varphi(a) . \varphi(b)$
 
 $\cd$ Soit $n = p_1^{\alpha_1}.p_2^{\alpha_2}. \dotsm p_k^{\alpha_k}$ (sa décomposition en facteurs premiers). 
 
 $$
-\phi(n) = p_1^{\alpha_1-1}(p_1-1) \dotsm p_k^{\alpha_k-1}(p_k-1) = n \produit{p \mid n}{} (1 - \dfrac{1}{p})
+\varphi(n) = p_1^{\alpha_1-1}(p_1-1) \dotsm p_k^{\alpha_k-1}(p_k-1) = n \produit{p \mid n}{} (1 - \dfrac{1}{p})
 $$
 
 
@@ -1015,7 +1013,7 @@ $\cd$ **Première propriété :** Les nombres premiers avec $p^n$ et inférieurs
 
 Il y a donc $p^{n-1}$ nombres à exclure sur tous les entiers entre $1$ et $p^n$.
 
-On en déduit que $\phi(p^n) = p^n - p^{n-1}$
+On en déduit que $\varphi(p^n) = p^n - p^{n-1}$
 
 
 <br/>
@@ -1032,7 +1030,7 @@ $$
 
 D'après le théorème chinois, on sait que pour chaque couple $(p \v q)$ convenant, il y a un et un seul $n$ convenant dans l'intervalle voulu.
 
-Il y a exactement $\phi(p).\phi(q)$ tels couples, d'où le résultat.
+Il y a exactement $\varphi(p).\varphi(q)$ tels couples, d'où le résultat.
 
 
 <br/>
