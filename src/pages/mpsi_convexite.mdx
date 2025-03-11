@@ -1,0 +1,323 @@
+---
+title: "Convexité"
+tag: ["autre"]
+layout: '../layouts/Base.astro'
+---
+import Tableofcontents from '../components/Tableofcontents.astro'
+
+import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
+import Item from '../components/Item.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
+
+
+# Chapitre 9 - Convexité
+
+<Tableofcontents></Tableofcontents>
+
+Dans ce chapitre, on considère $f$ une fonction à valeurs réelles définie sur un intervalle $I$ de $\R$. $a$ désignera un élément de $I$.
+
+
+## Fonctions convexes, définition et généralités
+
+<Item type='definition' titre='convexité'>
+
+On dit que $f$ est **convexe** si : 
+
+$$
+\forall (x \v y) \in I^2\v \forall \lambda \in \defff{0}{1} \v f(\lambda x + (1- \lambda)y) \leqslant \lambda f(x) + (1- \lambda)f(y)
+$$
+
+Si l'inégalité est stricte sur $\defoo{0}{1}$, on dit que $f$ est **strictement convexe**.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation par les séquentes'>
+
+On suppose que $f$ est convexe. Soit $(d)$ une droite sécante à $f$ l'intersectant en deux points $A$ et $B$.
+
+Le segment $\defff{A}{B}$ est au-dessus de la courbe $\cC_f$. En clair, si $(x \v y) \in \defff{A}{B}$, alors $f(x) \leqslant y$. (L'inégalité est stricte en dehors de $A$ et $B$ si $f$ est strictement convexe)
+
+<br />
+
+La réciproque est vraie.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $A\Point{a}{f(a)}$ et $B\Point{b}{f(b)}$.
+
+
+$(d)$ a pour équation réduite $y = \dfrac{f(b) - f(a)}{b-a}.(x-b) + f(b)$.
+
+
+$\cd$ **Sens direct :** On considère $f$ convexe.
+
+Soit $C \in \defff{A}{B}$ d'abscisse $c$. D'après l'équation de la droite $(d)$, $C$ a pour ordonnée $y_C = \dfrac{f(b) - f(a)}{b-a}.(c-b) + f(b)$
+
+$f( \lambda.a + (1-\lambda).b) \leqslabt \lambda f(a) + (1-\lambda) f(b)$ si $0 \leqslant \lambda \leqslant 1$ ce qui est vrai pour $\lamda = \dfrac{c-b}{a-b}$ et qui donne : 
+
+$f(x) \leqslant \lambda f(a) + (1-\lambda) f(b) = f(b) + \dfrac{c-b}{a-b}(f(a) - f(b)) = y_C$. On a bien le résultat voulu.
+
+<br />
+
+$\cd$ **Réciproque :** On considère que la sécante est au-dessus de la courbe.
+
+Soit $\lambda \in \defff{0}{1}$.
+
+On pose $c = \lambda.a + (1-\lambda).b$. On a alors $y_C = \dfrac{f(b) - f(a)}{b-a}.(c-b) + f(b)$ et on pose $C\Point{c}{y_C}$. 
+
+Comme la sécante est au-dessus de la courbe, $y_C = f(b) + \dfrac{c-b}{a-b}(f(a) - f(b)) =  \lambda f(a) + (1-\lambda) f(b) \geqslant f(\lambda.a + (1-\lambda).b) = f(c)$.
+</Hideable>
+
+
+
+<Item type='proposition' titre='inégalité de Jensen (ou de convexité)'>
+
+Soient $\lambda_1 \v \dotsm \lambda_n$ des réels positifs tels que $\somme{i = 1}{n} \lambda_i = 1$ et $x_1 \v \dotsm x_n$ des éléments de $I$.
+
+Si $f$ est convexe, alors $f(\somme{i = 1}{n} \lambda_i x_i) \leqslant \somme{i = 1}{n} \lambda_i f(x_i)$
+
+<br/>
+
+Le résultat est analogue pour la convexité stricte de $f$ à condition que les $x_i$ soient distincts et qu'au moins deux des $\lambda_i$ soient non nuls.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Au rang $k \in \N^*$, on considère $x_1 \v \dotsm x_k$ et $\lambda_1 \v \dotsm \v \lambda_k$ vérifiant les hypothèses.
+
+Montrons sur $\N^*$ la propriété $\cP(n) : f(\somme{i = 1}{n} \lambda_i x_i) \leqslant \somme{i = 1}{n} \lambda_i f(x_i)$.
+
+**Initialisation :** On vérifie $\cP(1)$. En effet, $f(\lambda_1 x_1) = \lambda_1 f(x_1)$ puisque $\lambda_1 = 1$.
+
+Par ailleurs, le cas $n = 2$ est donné par la définition de la convexité et c'est lui que l'on utilisera dans la récurrence en plus de $\cP(n)$.
+
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+On pose $\Lambda = \somme{i = 1}{n} \lambda_i$. On pose également $X =  \somme{i=1}{n} \dfrac{\lambda_i}{\Lambda} x_i$.
+
+On a donc $f(\somme{i=1}{n+1} \lambda_i x_i) = f(\Lambda X + (1-\Lambda) x_{n+1}) \leqslant \Lambda f(X) + (1-\Lambda) f(x_{n+1})$ d'après $\cP(2)$.
+
+Mais par hypothèse de récurrence, comme $\somme{i=1}{n} \dfrac{\lambda_i}{\Lambda} = 1$, on a $f(X) \leqslant \somme{i=1}{n} \dfrac{\lambda_i}{\Lambda} f(x_i)$
+
+En réinjectant cela dans l'inégalité d'avant, on obtient $f(\somme{i=1}{n+1} \lambda_i x_i) \leqslant \Lambda \somme{i=1}{n} \dfrac{\lambda_i}{\Lambda} f(x_i) + (\underbrace{1-\Lambda}_{= \lambda_{n+1}}) f(x_{n+1}) = \somme{i = 1}{n+1} \lambda_i f(x_i)$
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ (et $\cP(2)$) et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+</Hideable>
+
+
+AF : applications
+
+
+<Item type='proposition' titre='inégalité des trois pentes'>
+
+$f$ est convexe si et seulement si pour tout $(x \v y \v z) \in I^3$ tels que $x < y < z$ on a :
+
+$$
+\dfrac{f(x) - f(y)}{x-y} \leqslant \dfrac{f(x) - f(z)}{x-z} \leqslant \dfrac{f(y) - f(z)}{y-z}
+$$
+
+<br/>
+On a inégalité stricte en cas de stricte convexité.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Sens direct ($\Rightarrow$) :**
+<Indent>
+
+$\cd$ Intéressons-nous à l'inégalité de droite:
+
+$f(\lambda x + (1-\lambda) z) \leqslant \lambda f(x) + (1 - \lambda) f(z) = f(z) + \lambda (f(x) - f(z))$
+
+On souhaiterait avoir des informations sur $f(y)$ mais donc résolvons $\lambda x + (1-\lambda) z = y$. Cela donne $z + \lambda(x-z) = y$ puis $\lambda = \dfrac{y-z}{x-z} \in \defff{0}{1}$. On note $c$ cette solution.
+
+On en déduit que $f(y) \leqslant f(z) + c(f(x) - f(z))$ puis que $f(y) - f(z) \leqslant \dfrac{y-z}{x-z}(f(x) - f(z))$ et enfin $\dfrac{f(y) - f(z)}{y-z} \geqslant \dfrac{f(x) - f(z)}{x-z}$ d'où la seconde inégalité. (les dénominateurs sont négatifs, d'où le changement de signe!)
+
+<br/>
+
+$\cd$ Montrons l'inégalité de gauche :
+
+Instinctivement, on peut se dire que si la variation entre $x$ et $z$ est plus faible qu'entre $y$ et $z$, cela signifie qu'il y a un "ralentissement" entre $x$ et $y$ pour compenser.
+
+En effet, $\dfrac{f(x) - f(z)}{x - z} \leqslant \dfrac{f(y) - f(z)}{y-z}$ d'après la première inégalité.
+
+Mais $\dfrac{f(x) - f(z)}{x-z} = \dfrac{f(x) - f(y) + f(y) - f(z)}{x-z}  = \dfrac{f(x) - f(y)}{x-y}.\dfrac{x-y}{x-z} + \underbrace{\dfrac{f(y) - f(z)}{y-z}}_{ \geqslant \dfrac{f(x) - f(z)}{x - z}}.\dfrac{y-z}{x-z} $ 
+
+Mais donc $ \dfrac{f(x) - f(z)}{x-z} \geqslant \dfrac{f(x) - f(y)}{x-y}.\dfrac{x-y}{x-z} + \dfrac{f(x) - f(z)}{x - z}.\dfrac{y-z}{x-z} = \dfrac{f(x) - f(y)}{x-y}$ d'où la première inégalité.
+
+</Indent>
+
+<br/>
+
+**Réciproque ($\Leftarrow$) :**
+
+Supposons que les inégalités sont respectées. Soient $x$ et $y$ deux éléments de $I$ tels que $x < y$.
+
+Pour tout $\lambda \in \defoo{0}{1} \v x < \lambda x + (1- \lambda)y < y$. 
+
+En appliquant l'inégalité des trois pentes, on a :
+
+$\dfrac{f(x) - f(\lambda x + (1- \lambda)y)}{x - (\lambda x + (1- \lambda)y)} \leqslant \dfrac{f(x) - f(y)}{x-y} \leqslant \dfrac{f(\lambda x + (1- \lambda)y) - f(y)}{\lambda x + (1- \lambda)y - y} $
+
+On a donc $\dfrac{f(x) - f(\lambda x + (1- \lambda)y)}{(1-\lambda)(x-y)} \leqslant \dfrac{f(\lambda x + (1- \lambda)y) - f(y)}{\lambda(x-y)}$
+
+En multipliant par $\lambda . (1-\lambda) . (x-y)$, on a : $\lambda (f(x) - f(\lambda x + (1- \lambda)y)) \geqslant (1-\lambda)(f(\lambda x + (1- \lambda)y) - f(y))$
+
+Il suit que $\lambda f(x) \geqslant f(\lambda x + (1- \lambda)y) - (1-\lambda)f(y) $ puis $f(\lambda x + (1- \lambda)y) \leqslant \lambda f(x) + (1-\lambda) f(y)$
+
+</Hideable>
+
+
+<Item type='proposition' titre="croissance du taux d'accroissement">
+
+
+$f$ est convexe si et seulement si pour tout $a \in I$, la fonction $ g : \begin{cases} I\setminus \{ a \} \rightarrow \R \\ x \mapsto \dfrac{f(x)-f(a)}{x-a} \end{cases} $ est croissante.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+C'est une conséquence de l'inégalité des trois pentes puisque les trois cas sont couverts. 
+
+En effet (pour le sens direct), ou bien $a < y < z$ et on prend $x = a$, ou bien $x < a < z$ et on prend $y = a$ ou bien $x < y < a$ et on prend $z = a$. 
+
+Par ailleurs (pour la réciproque), si le taux d'accroissement est croissant, on a bien la seconde inégalité. La première se déduit exactement comme dans le sens direct de la démonstration précédente. 
+</Hideable>
+
+
+<Item type='proposition' titre='convexité et maximum'>
+
+Si $f$ est convexe et que $I$ est un intervalle fermé, alors $f$ a un maximum et elle l'atteint en l'un de ses bords.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On suppose que $I = \defff{a}{b}$ où $a$ et $b$ sont deux réels.
+
+Raisonnons par contraposée et supposons que $f$ atteigne son maximum en $c \in \defoo{a}{b}$ et non en $a$ ou $b$.
+
+Dans ce cas, $f(c) > f(a)$ d'où $\dfrac{f(c) - f(a)}{c-a} > 0$.
+
+Mais $f(c) > f(b)$ d'où $\dfrac{f(c) - f(b)}{c-b} < 0$ ce qui contredit l'inégalité des trois pentes puisque $a < c < b$. On en déduit donc que $f$ n'est pas convexe.
+</Hideable>
+
+
+## Fonctions convexes et régularité
+
+<Item type='proposition' titre='caractérisation des fonctions convexes dérivables'>
+
+Si $f$ est dérivable, alors il y a équivalence entre les deux affirmations suivantes :
+
+$\cd$ i\) $f'$ est croissante.
+
+$\cd$ ii\) $f$ est convexe.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **i\) $\Rightarrow$ ii\) :** On suppose que $f'$ est croissante. Soient $x \v y$ et $z$ ds éléments de $I$ tels que $x < y < z$.
+
+Il existe $c \in \defoo{x}{y}$ tel que $f'(c) = \dfrac{f(y)-f(x)}{y-x}$ d'après l'égalité des accroissements finis.
+
+De même, il existe $d \in \defoo{y}{z}$ tel que $f'(d) = \dfrac{f(z)-f(y)}{z-y}$.
+
+Mais, par croissance de $f'$, $f'(c) \leqslant f'(d)$ donc $\dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(z)-f(y)}{z-y}$
+
+<br /> Il nous manque à ordonner la troisième pente pour arriver à la caractérisation par l'inégalité des trois pentes.
+
+Mais $\dfrac{f(z) - f(x)}{z-x} = \dfrac{f(z) - f(y) + f(y) - f(z)}{z-x} = \dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(x)}{y-x} .\dfrac{y-x}{z-x}$
+
+Or $\dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} \leqslant \dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(z) - f(y)}{z-y} .\dfrac{y-x}{z-x} = \dfrac{f(z) - f(y)}{z-y}$
+
+Et $\dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} \geqslant \dfrac{f(y) - f(x)}{y-x}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} = \dfrac{f(y) - f(z)}{y-x}$ 
+
+On a bien l'inégalité des trois pentes et par conséquent, $f$ est convexe.
+
+
+<br/>
+
+$\cd$ **ii\) $\Rightarrow$ i\) :** On suppose que $f$ est convexe. Soient $x < t$ des éléments de $I$.
+
+D'après l'inégalité des trois pentes, si $x < y < z < t$, on a :
+
+- d'une part $\dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(z)-f(y)}{z-y}$ pour $x < y < z$. 
+
+- d'autre part $\dfrac{f(z)-f(y)}{z-y} \leqslant \dfrac{f(t)-f(z)}{t-z}$ pour $y < z < t$. 
+
+On en déduit que $ \dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(t)-f(z)}{t-z}$.
+
+En faisant tendre $y$ vers $x$ et $z$ vets $t$, on en déduit que $f'(x) \leqslant f'(t)$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation par les tangentes'>
+
+On suppose que $f$ est dérivable.
+
+Dans ce cas, $f$ est  convexe si et seulement si $\cC_f$ est au-dessus de toutes ses tangentes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $a \in I$ et comparons $\cC_f$ à la tangente à $\cC_f$ en $a$ en étudiant la différence des ordonnées.
+
+On pose $g_a : x \mapsto f(x) - (f'(a) (x-a) + f(a))$
+
+$g_a'(x) = f'(x) - f'(a)$
+
+<br/>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** On suppose que $f$ est convexe. 
+
+Dans ce cas $g_a' > 0 \ssi x > a$ car $f'$ est croissante. On en déduit que $g_a$ est croissante sur $I \bigcap \defof{- \infty}{a}$ puis décroissante sur $I \bigcap \deffo{a}{ \infty}$ et atteint donc son minimum en $a$.
+
+Comme $g_a(a) = 0$, alors $g_a \geqslant 0$ d'où $f$ est au-dessus de ses tangentes.
+
+
+$\cd$ **Sens réciproque ($\Leftarrow$) :** On suppose que $f$ est au-dessus de ses tangentes et $a < b$ des éléments de $I$.
+
+Puisque $f$ est au-dessus de ses tangentes, elle est au-dessus de celle en $b$ d'équation $y = f'(b)(x-b) + f(b)$.
+
+En s'intéressant au point $a$ en particulier, $ f(a) \geqslant f'(b) (a-b) + f(b)$ mais donc $\dfrac{f(a)-f(b)}{a-b} \leqslant f'(b)$.
+
+De même en le point $b$ et par rapport à la tangente en $a$, on trouve $f(b) \geqslant f'(a) (b-a) + f(a)$ d'où $\dfrac{f(a) - f(b)}{a-b} \geqslant f'(a)$
+
+Mais donc $f'(b) \geqslant \dfrac{f(a) - f(b)}{a-b} \geqslant f'(a)$ d'où $f'(b) \geqslant f'(a)$. Finalement, $f'$ est croissante.
+
+</Hideable>
+
+
+<Item type='proposition' titre="caractérisation par l'accélération">
+
+Si $f$ est dérivable deux fois, alors on a équivalence entre les affirmations suivantes :
+
+$\cd$ i\) $f$ est convexe.
+
+$\cd$ ii\) $f'' \geqslant 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On suppose que $f$ est dérivable deux fois.
+
+$f$ est convexe $\ssi$ $f'$ est croissante $\ssi$ $f'' \geqslant 0$
+</Hideable>
+
+{/*
+    Applications :
+        - Inégalités de convexité, inégalités classiques
+        - Calculs de limites
+
+    Visualisation :
+        - Cordes, pentes
+*/}
