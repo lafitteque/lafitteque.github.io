@@ -16,30 +16,91 @@ import Fil from '../components/Fil.astro'
 
 <Tableofcontents/>
 
+Dans ce chapitre, nous allons étudier les opérations des ensembles dans le cas général (sans s'attarder sur un ensemble en particulier). 
+
+L'étude générale des opérations comme l'addition, le produit de nombres ou de matrices ou encore la composition peut paraître très abstraite. C'est en effet le chapitre le plus éloigné d'applications pratiques mais on en trouve quant même en télécommunications et en cryptographie mais également en physique quantique. 
+
 ## Loi de composition interne
 
 <Item type='definition' titre='loi de composition interne'>
 
+Soit $E$ un ensemble.
+
+On appelle loi de composition interne sur $E$ une application de $E \times E$ dans $E$. On peut aussi l'appeler "opération interne".
 </Item>
+
+<Hideable type='exemple' titre=''>
+
+$- : (x \v y) \in Z^2 \mapsto x - y $ est une loi de composition interne sur $\Z$.
+
+Cependant, sur $\N$ elle n'est pas interne car $1 - 2 \notin \N$.
+</Hideable>
+
 
 <Item type='definition' titre='partie stable'>
 
 </Item>
 
+
 <Item type='definition' titre='propriétés usuelles'>
 
-commutativité
+Soit $E$ un ensemble muni d'une loi de composition interne notée $\ast$. On considèrera $(a \v b \v c) \in E^3$ des éléments quelconques de $E$.
 
-associativité
+$\cd$ **commutativité :** $a$ et $b$ commutent si $a\ast b = b\ast a$. On dit que $E$ est commutatif si tout couple d'élément dans $E$ commute.
 
-distributivité
+$\cd$ **associativité :** il y a associativité dans $E$ si on a toujours $a\ast (b \ast c) = (a \ast b) \ast c$.
 
-élément neutre
+$\cd$ **élément neutre :** $e \in E$ est un élément neutre de $E$ si pour tout $x \in E$, on a $e \ast x = x \ast e = x$
 
-inversibilité
+$\cd$ **inversibilité :** on suppose que $E$ a un élément neutre $e$. On dit que $a$ est inversible s'il existe un élément $b$ de $E$  tel que $a \ast b = b\ast a = e$
 </Item>
 
+<Remarque titre=''>
+
+En supposant que l'inverse existe, si la loi est notée $+$, on note souvent $-a$ l'inverse de $a$. Si la loi est notée $\times \v \ast $ ou $\cdot$, on note souvent $a^{-1}$ l'inverse de $a$.
+
+De même, il arrive que pour la notation additive le neutre soit noté $0$ et que pour les notations multiplicatives, le neutre soit noté $1$.
+</Remarque>
+
+<Item type='proposition' titre="unicité du neutre">
+
+Soit $E$ muni d'une opération interne. S'il existe, le neutre est unique
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $e$ et $e'$ sont deux éléments neutres de $E$. On a $e \ast e' = e$ puis que $e'$ est un élément neutre. Mais on a aussi $e \ast e' = e'$ puisque $e$ est un élément neutre.
+
+Mais donc $e = e \ast e' = e'$ d'où $e = e'$.
+
+</Hideable>
+
+
+<Item type='proposition' titre="unicité de l'inverse">
+
+Soit $E$ muni d'une opération interne associative. Lorsqu'il existe, l'inverse est unique.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+soit $a \in E$ et $b$ et $c$ deux inverses de $a$ dans $E$. 
+
+$a \ast b \ast c = (a \ast b) \ast c = e \ast c = c$
+
+Mais on a aussi $a \ast b \ast c = (a \ast b) \ast c = (b \ast a) \ast c = b \ast (a \ast c) = b \ast e = b$
+
+Mais donc $c = a \ast b \ast c = b$ d'où $c = b$.
+
+</Hideable>
+
+
 <Exercice titre='sur le cercle unité'>
+
+On considère $\U$ le cercle unité muni du produit complexe.
+
+1\) Montrer que $\U$ des un groupe abélien (on pourra utiliser les propriétés de $\C$).
+
+2\) Soit $G$ un sous-groupe de $(\C \v \times)$ non trivial (différent de $\{0\}$). Montrer que, si $G$ est borné, alors $G \subset \U$
 
 </Exercice>
 
@@ -51,45 +112,223 @@ inversibilité
 
 <Item type='definition' titre='groupe'>
 
+On appelle groupe un ensemble $G$ muni d'une loi de composition interne que l'on note ici $+$ tel que :
+
+$\cd$ $G$ est associatif
+
+$\cd$ $G$ admet un élément neutre
+
+$\cd$ tout élément de $G$ admet un inverse
+
+On note $(G\v +)$ un tel groupe. 
+
+<br/>
+
+Si $(G \v +)$ est commutatif, on dit que le groupe est **abélien**.
 </Item>
+
+<Remarque titre=''>
+
+Attention, si on vous demande de démontrer que $(G \v \ast)$ est un groupe, il faut montrer les trois propriétés ci-dessus mais également le fait que la loi est interne ! 
+</Remarque>
+
 
 <Item type='proposition' titre='groupes usuels'>
 
-groupes additifs
+$\cd$ **groupes additifs :** $(\Z \v +) \v (\Q \v +) \v (\R \v +) \v (\C \v +)$ sont des exemples de groupes additifs.
 
-groupes multiplicatifs
+$\cd$ **groupes multiplicatifs :** $(\Q^* \v \times) \v (\R^* \v \times) \v (\C^* \v \times)$ sont des exemples de groupes multiplicatifs.
+
 </Item>
 
 
 <Item type='proposition' titre="unicité de l'élément neutre et de l'inverse">
 
+Dans un groupe, il y a unicité de l'élément neutre et de l'inverse
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='definition' titre='groupe symétrique'>
+On a vu que c'était le cas pour un ensemble $G$ qui est associatif. C'est le cas d'un groupe.
+</Hideable>
 
-permutations d'un ensemble
+
+<Item type='proposition' titre="propriétés de l'inverse">
+
+Soit $(G\v \cdot)$ un groupe et soient $(g\v h) \in G^2$. On a les propriétés suivantes :
+
+$\cd$ $\Big(g^{-1}\Big)^{-1} = g$
+
+$\cd$ $(g\cdot h)^{-1} = h^{-1}g^{-1}$
 </Item>
 
-<Item type='definition' titre='groupe produit'>
+<Hideable type='démonstration' titre=''>
 
+$\cd$ $g^{-1} \cdot g = e$ mais donc l'inverse de $g^{-1}$ est $g$. D'où $\Big(g^{-1}\Big)^{-1} = g$
+
+<br/>
+
+$\cd$ $g \cdot h \cdot h^{-1} \cdot g^{-1} = g \cdot (h \cdot h^{-1}) \cdot g^{-1} = g \cdot e \cdot g^{-1} = g \cdot g^{-1} = e$. De même $h^{-1} \cdot g^{-1} \cdot g \cdot h = e$. 
+
+On en conclut que $(g \cdog h)^{-1} = h^{-1} \cdot g^{-1}$
+</Hideable>
+
+
+<Item type='proposition' titre=''>
+
+Soit $(G \v \ast)$ un groupe et soient $g\v h$ des éléments de $G$. 
+
+$$
+g \ast h = e \ssi h \ast g = e \ssi h = g^{-1}
+$$
+
+En clair, il n'y a pas besoin de vérifier l'inversibilité à gauche et à droite, une des deux suffit.
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Soit $g \in G$. Supposons qu'il existe $h \in G$ tel que $g \ast h = e$. On veut montrer que $h = g^{-1}$
+
+Mais donc $g \ast h \ast g = g$ et par associativité, $g \ast (h \ast g) = g$.
+
+En multipliant par $g^{-1}$ à gauche, on a : $(h \ast g) = e$
+
+<br/>
+
+$\cd$ De même en supposant que $h$ est un inverse à gauche : $g \ast h \ast g  = g = (g \ast h) \ast g$ d'où $g \ast h = e$ après multiplication à droite par $g^{-1}$. $h$ est donc un inverse à droite également.
+</Hideable>
+
+
+<Item type='definition' titre='permutation'>
+
+Soit $E$ un ensemble fini. On appelle permutation de $E$ une application de $E$ dans $E$ bijective.
+
+En clair, il s'agit de changer l'ordre des éléments.
+</Item>
+
+<Item type='defprop' titre='groupe symétrique'>
+
+Soit $E$ un ensemble fini.
+
+On note $\cS(E)$ ou $\cS_E$ l'ensemble des permutations de $E$. 
+
+<br/>
+
+$(\cS_E \v \circ)$ est un groupe.
+
+<br/>
+
+En particulier, on note $\cS_n$ l'ensemble des permutations de $\defentiersn$ et $\cS_n$ est appelé groupe symétrique.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons qu'il s'agit bien d'un groupe :
+
+$\bullet$ **opération interne :** la composée de deux bijections de $E$ dans $E$ est encore une bijection de $E$ dans $E$ (cf. chapitre sur les applications).
+
+$\bullet$ **élément neutre :** l'identité $id_E : x \mapsto x$ est un élément neutre puisque, $\forall \phi \in \cS_E \v \phi \circ id_E = id_E \circ \phi = \phi$
+
+$\bullet$ **inverse :** la réciproque d'une bijection de $E$ dans $E$ est également une bijecition de $E$ dans $E$.
+
+$\bullet$ **associativité :** l'assiciativité de la composition est toujours vraie : pour toutes fonctions de $E$ dans $E$ $f\v g$ et $h$ et pour tout $x \in E$, on a : $f(g(h(x))) = (f\circ g)\Big(h(x)\Big) = f\Big(g\circ h(x)\Big)$.
+
+</Hideable>
+
+
+<Item type='defprop' titre='groupe produit'>
+
+Soient $(G \v \ast_G)$ et $(H \v \ast_H)$ deux groupes.
+
+Soit $\ast : ((g \v h) \v (g' \v h')) \in (G\times H)^2 \mapsto (g \ast_G g' \v h \ast_H h')$. 
+
+$(G \times H \v \ast)$ est un groupe et est appelé **groupe produit** de $G$ et $H$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $\ast$ est une loi de composition interne : en effet, soient $(g \v g' \v h \v h') \in G^2 \times H^2$, $(g \v h) \ast (g' \v h') \in G \times H$ puisque $g \ast_G g' \in G$ et $h \ast_H h' \in H$ car $\ast_G$ et $\ast_H$ sont des lois de composition interne.
+
+$\cd$ Soient $g_1 \v g_2 \v g_3$ des éléments de $G$ et $h_1 \v h_2 \v h_3$ des éléments de $H$.
+
+$(g_1 \v h_1) \ast \Big((g_2 \v h_2) \ast (g_3 \v h_3)\Big) =(g_1 \v h_1) \ast (g_2 \ast_G g_3 \v h_2 \ast_H h_3) = (g_1 \ast_G g_2 \ast_G g_3 \v h_1 \ast_H h_2 \ast_H h_3) $
+
+d'autre part $\Big((g_1 \v h_1) \ast (g_2 \v h_2)\Big) \ast (g_3 \v h_3) =(g_1 \ast_G g_2 \v h_1 \ast_H h_2) \ast ( g_3 \v h_3) = (g_1 \ast_G g_2 \ast_G g_3 \v h_1 \ast_H h_2 \ast_H h_3) $
+
+On rappelle que $h_1 \ast_H h_2 \ast_H h_3$ et $g_1 \ast_G g_2 \ast_G g_3$ n'ont pas besoin de parenthèses par associativité des lois internes de $G$ et $H$.
+
+On a bien $\Big((g_1 \v h_1) \ast (g_2 \v h_2)\Big) \ast (g_3 \v h_3) = (g_1 \v h_1) \ast \Big((g_2 \v h_2) \ast (g_3 \v h_3)\Big) =(g_1 \v h_1) \ast (g_2 \ast_G g_3 \v h_2 \ast_H h_3)$.
+
+$\cd$ On vérifie facilement que $(g \v h) \in G \times H$ a pour inverse $(g^{-1} \v h^{-1})$ 
+
+$\cd$ On note $e_G$ l'élément neutre de $G$ et $e_H$ le neutre de $H$.
+
+On vérifie facilement que $(e_G \v e_H)$ est le neutre de $(G \times H \v \ast)$
+
+</Hideable>
 
 
 ### Outils d'étude des groupes : sous-structures et morphismes
 
 <Item type='definition' titre='sous-groupe'>
 
+Soit $(G \v +)$ un groupe. 
+
+On dit que $(H \v +)$ est un sous groupe de $G$ si $H$ est un groupe et que $H \subset G$.
+
+<br/>
+
+Il arriver que cela soit noté $H < G$. Attention, cette notation n'est pas généralisée en CPGE.
 </Item>
 
 
 <Item type='proposition' titre='caractérisation des sous-groupes'>
 
+Soit $(G \v +)$ un groupe. 
+
+$(H \v +)$ est un sous groupe de $(G \v +)$ si et seulement si les affirmations suivantes sont vraies :
+
+$\cd$ $H \subset G$ 
+
+$\cd$ $H$ est non vide
+
+$\cd$ $\forall (h_1 \v h_2) \in H^2\v h_1 + (-h_2) \in H$ (ou $h_1.h_2^{-1} \in H$)
+
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='definition' titre='morphisme de groupe'>
+$\cd$ Supposons que $H$ soit un sous-groupe de $G$ pour la loi $+$.
 
+Dans ce cas, par définition, $H \subset G$. De plus, $H$ étant un groupe et sa loi étant interne, la troisième affirmation est également remplie. $H$ admet un neutre et est donc non vide.
+
+<br/>
+
+$\cd$ Supposons que les affirmations soient vraies. 
+
+<Indent>
+
+$\cdot$ **neutre :** D'abord, soit $h \in H$, $\underbrace{h}_{\in G} + \underbrace{(-h)}_{\in G} = e_G \in H$. Donc $H$ admet un élément neutre : $e_G$ que l'on note simplement $e$.
+
+$\cdot$ **associativité :** Ensuite, comme $G$ est associatif, $H$ l'est aussi.
+
+$\cdot$ **inversibilité :** Puis, soit $h \in H$, $\underbrace{e}_{\in H} + \underbrace{(-h)}_{\in H} = -h \in H$. Les inverses des éléments de $H$ sont dans $H$.
+
+$\cdot$ **loi interne :** La loi est interne puisque, si $h_1$ et $h_2$ sont des éléments de $H$, $-h_2 \in H$. Mais donc $h_1 + (-(-h_2)) = h_1 + h_2 \in H$
+</Indent>
+
+</Hideable>
+
+
+<Item type='definition' titre='morphisme de groupes'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes.
+
+On dit qu'une application $\varphi : G \rightarrow H$ est un morphisme de groupes si :
+
+$\cd$ $\varphi(e_G) = e_H$
+
+$\cd$ $\forall (g_1 \v g_2) \in G^2 \v \varphi(g_1 \ast g_2) = \varphi(g_1) \times \varphi(g_2)$
 </Item>
 
 <Remarque titre=''>
@@ -103,113 +342,455 @@ morphisme de groupe conserve les propriétés de l'opération du groupe
 on verra d'autres types de morphismes associés à d'autres structures. Dans chaque cas, un morphisme de **machin** conserve la structure de **machin**.
 </Remarque>
 
+<Item type='proposition' titre='inverse et morphisme  de groupes'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes. Si $g \in G$, on a $\phi(g^{-1}) = \phi(g)^{-1}$
+</Item>
+
 
 <Item type='proposition' titre='image et image réciproque'>
 
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ $(\phi(G) \v \times)$ est un sous groupe de $(H \v \times)$
+
+$\cd$ $(\phi^{-1}(H) \v \ast)$ est un sous groupe de $(G \v \ast)$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+
+$\cd$ Montrons que $(\phi(A) \v +_B)$ est un sous-groupe de $(B \v +_B)$.
+
+<Indent>
+
+$\bullet$ $\phi(A) \subset B$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ élément neutre : $\phi(e_A) = e_B$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in A^2 \v \phi(x) -_B \phi(y) = \phi( \underbrace{x -_A y}_{\in A}) \in \phi(A)$
+
+</Indent>
+
+
+<br/>
+
+$\cd$ Montrons que $(\phi^{-1}(A) \v +_A )$ est un sous-groupe de $(A \v +_A)$.
+
+<Indent>
+
+$\bullet$ $\phi^{-1}(B) \subset A$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(e_A) = e_B$ donc $e_A \in \phi^{-1}(B)$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) -_B \phi(y) = \phi(x -_A y) \in B$ donc $x -_A y \in \phi^{-1}(B)$
+
+</Indent>
+
+</Hideable>
 
 
 <Item type='definition' titre='image et noyau'>
 
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ On appelle noyau de $\phi$ l'ensemble $\Ker(\phi) = \{ g \in G \mid \phi(g) = e_H\}$
+
+$\cd$ On appelle image de $\phi$ l'ensemble $\Im(\phi) = \phi(G) = \{ h \in H \mid \exists g \in G \mid \phi(g) = h \}$
 </Item>
 
 
 <Item type='proposition' titre="caractérisations de l'injectivité et de la surjectivité">
 
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ $\phi$ est injectif si et seulement si $\Ker(\phi) = {e_G}$
+
+$\cd$ $\phi$ est surjectif si et seulement si $\Im(\phi) = H$
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='definition' titre='isomorphisme de groupes'>
+La deuxième affirmation est une caractérisation de la surjectivité vue dans le chapitre sur les applications.
+
+<br/>
+
+**Montrons la première affirmation :** 
+
+$\cd$ Supposons $\Ker(\phi) = {e_G}$ : 
+
+soient $g$ et $g'$ des éléments de $g$ tels que $\phi(g) = \phi(g')$
+
+On a alors $\phi(g) \times \phi(g')^{-1} = \phi(g) \times \phi(g'^{-1}) = \phi(g \ast g'^{-1}) = e_H$.
+
+Comme $\phi(g \ast g'^{-1}) = e_H$, on a $g \ast g'^{-1} = e_G$ mais donc $g = g'$ en multipliant par $g'$ de part et d'autre. D'où l'injectivité.
 
 
+$\cd$ Supposons que $\phi$ soit injective. Par injectivité, $\phi(g) = \underbrace{e_H}_{= \phi(e_G)} \Rightarrow  g = e_G$
+
+Donc $\Ker(\phi) = \{e_G\}$
+
+</Hideable>
+
+
+<Item type='definition' titre='morphismes de groupes particuliers'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ On dit que $\phi$ est un **automorphisme** si $G = H$ et $\ast = \times$.
+
+$\cd$ On dit que $\phi$ est un **isomorphisme** si $\phi$ est bijectif.
 </Item>
 
+<Remarque titre=''>
+
+En vulgarisé :
+
+$\cd$ isomorphisme $\rightarrow$ "même taille" (bijection)
+
+$\cd$ automorphisme $\rightarrow$ dans lui-même ($G = H$)
+
+La notion de même taille n'a plus vraiment de sens quand les ensembles sont infinis, mais c'est une manière de retenir.
+</Remarque>
 
 
 ## Anneaux
 
 ### Définitions et exemples
 
-<Item type='definition' titre=''>
+<Item type='definition' titre='distributivité'>
 
+Soit $A$ un ensemble muni de deux lois internes $+$ et $\times$.
+
+On dit que $\times$ est distributive sur $+$ si : $\forall (a \v b \v c) \in A^3 \v a\times(b+c) = a\times b + a \times c \ET (b+c)\times a = b\times a + c \times a$
 </Item>
 
-<Item type='proposition' titre='anneaux usuels'>
 
-anneau trivial 0
+<Item type='definition' titre='anneau'>
 
-anneau trivial 0 1 
+Soit $A$ un ensemble muni de deux lois de composition interne $+$ et $\times.
 
-Z Q R C 
+On dit que $(A \v + \v \times)$ est un anneau si :
+
+$\cd$ $(A\v +)$ est un groupe abélien dont le neutre est noté $0$
+
+$\cd$ $(A \v \times)$ admet un élément neutre noté $1$
+
+$\cd$ $(A \v \times)$ est associatif
+
+$\cd$ $\times$ est distributive sur $+$
+</Item>
+
+<Item type='proposition' titre='anneaux usuels' tag="admis">
+
+Voici quelques anneaux usuels :
+
+
+$\cd$ Les anneaux triviaux $(\{0\} \v + \v \times)$ et $(\{0 \v 1\} \v + \v \times)$.
+
+$\cd$ Les anneaux de nombres : $(\Z \v + \v \times) \v (\Q \v + \v \times) \v (\R \v + \v \times) \v (\C \v + \v \times)$.
+
+$\cd$ Les anneaux de fonctions : $(\cC^1(\defff{0}{1} \v \R) \v + \v \times)$ par exemple.
+
+$\cd$ L'anneau des matrices : $(\cM_n(\R) \v + \v \times)$ sur lequel nous reviendrons dans d'autres chapitres.
 </Item>
 
 <Remarque titre=''>
-la non inversibilité, la deuxième loi est plus faible que la première en ce sens
+
+On remarque qu'un anneau a une deuxième loi plus faible que la première avec en particulier l'inversibilité en moins. A cela s'ajoute la non-commutativité. 
+
+Nous donnerons un nom particulier aux anneaux qui ont la gentillesse d'avoir une deuxième loi plus sympathique (existence de l'inverse en particulier).
 </Remarque>
+
 
 <Item type='defprop' titre='groupe des inversibles'>
 
+Soit $(A \v + \v \times)$ un anneau.
+
+On note $A^{\times}$ ou $A^{*}$ l'ensemble $\{a \in A \mid \exist b \in A \v a\times b = 1 \}$. 
+
+On appelle $(A^{\times} \v \times)$ le groupe des inversibles de $A$.
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Loi interne :** d'après les propriétés sur les inverses, le produit de deux inversibles l'est encore.
+
+**Inversibilité :** par définition, tout élément de $A^{\times}$ est inversible
+
+**Neutre :** $1$ est inversible puisque $1 \times 1 = 1$. Il est donc dans $A$ et est l'élément neutre.
+
+**Associativité :** $A$ est un anneau, donc $\times$ est associative.
+</Hideable>
+
 
 <Item type='definition' titre='anneau intègre'>
 
+Soit $(A \v + \v \times)$ un anneau.
+
+On dit que $A$ est **intègre** si : 
+
+$$
+\forall (a\v b) \in A^2 \v \Big(a\times b = 0 \Rightarrow (a = 0 \OU b = 0) \Big)
+$$
 </Item>
 
-<Item type='definition' titre='corps'>
 
+<Item type='proposition' titre='simplifications dans un anneau intègre'>
+
+Soient $(a \v b \v c)$ des éléments d'un anneau intègre noté $(A \v + \v \times)$. On suppose $a \neq 0$
+
+On a :
+
+$\cd$ $a\times b = a\times c \Rightarrow b = c$
+
+$\cd$ $b \times a = c \times a \Rightarrow b = c$
 </Item>
 
-<Item type='proposition' titre='corps usuels'>
+<Hideable type='démonstration' titre=''>
 
-Q R C
-</Item>
+Dans le deux cas il s'agit de factoriser pour utiliser la propriété d'un anneau intègre.
 
-<Remarque titre=''>
+$\cd $ $a\times b = a\times c \Rightarrow a\times (b-c) = 0 \Rightarrow a = 0 \OU b = c \Rightarrow b= c$
 
-Des corps finis en lien avec les congruences modulo p^n où p premier
-</Remarque>
+$\cd $ $b\times a = c\times a \Rightarrow  (b-c)\times a = 0 \Rightarrow a = 0 \OU b = c \Rightarrow b= c$
+</Hideable>
+
 
 
 ### Calculs dans un anneau
 
+<Item type='proposition' titre="le zéro est absorbant">
+
+Le zéro d'un anneau $(A\v + \v \times)$ est absorbant, c'est à dire que $\forall x \in A \v x \times 0_A = 0_A \times x = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in A$,
+
+$0_A \times x = (1_A - 1_A) \times x = x - x = 0_A$
+
+De même $x \times 0_A = x \times (1_A - 1_A) = x - x = 0_A$
+
+
+</Hideable>
+
+
+<Item type='proposition' titre="produit et inverse pour l'addition">
+
+Soit $a \in (A \v + \v \times)$ un anneau.
+
+$$
+-a = (-1_A) \times a
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$(1_A - 1_A) \times a = 0_A$ mais donc $1_A \times a + (-1_A) \times a = 0_a$. L'inverse de $a$ est donc $-1_A \times a$.
+</Hideable>
+
+
 <Item type='proposition' titre='formule du binôme'>
 
+Soit $(A \v + \v \times)$ un anneau.
+
+Si $(a \v b) \in A^2$ commutent, on a :
+
+$$
+(a+b)^n = \somme{k=0}{n} \binomiale{k}{n} a^k \times b^{n-k}
+$$
 </Item>
+
 
 <Item type='proposition' titre='factorisation particulière'>
 
-a^n - b^n
+Soit $(A \v + \v \times)$ un anneau.
+
+Si $(a \v b) \in A^2$ commutent, on a :
+
+$$
+a^n - b^n = (a-b)\somme{k=0}{n-1} a^k \times b^{n-k-1}
+$$
 </Item>
+
+<Remarque titre=''>
+
+Les démonstrations sont identiques à celles sur $\R$ ou $\C$ présentes dans le chapitre sur les sommes.
+</Remarque>
+
 
 
 ### Outils d'étude d'un anneau
 
 <Item type='definition' titre='sous-anneau'>
 
+Soit $(A \v + \v \times)$ un anneau.
+
+On dit que $(B \v + \v \times)$ est un sous-anneau de $(A \v + \v \times)$ si :
+
+$\cd$ $(B \v + \v \times)$ est un anneau.
+
+$\cd$ $B \subset A$.
 </Item>
+
 
 <Item type='proposition' titre="caractérisation d'un sous-anneau">
 
+Soit $(A \v + \v \times)$ un anneau et $B \subset A$.
+
+$(B \v + \v \times)$ est un sous-anneau de $(A \v + \v \times)$ si et seulement si :
+
+$\cd$ i\) $1_A \in B$.
+
+$\cd$ ii\) $(a\v b) \in B^2$, alors $a - b \in A$.
+
+$\cd$ iii\) $(a\v b) \in B^2$, alors $a \times b \in A$.
+
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Supposons que $(B \v + \v \times)$ soit un sous-anneau de $(A \v + \v \times)$.
+
+Dans ce cas, comme $(B \v +)$ est un groupe abélien, la propriétés ii\) est vraie.
+
+Comme $\times$ est une loi interne, iii\) est vraie.
+
+$1_B$ est inversible et $\underbrace{1_B}_{\in A} \times \underbrace{1_B}_{\in A}^{-1} = 1_A$. Mais $1_B^{-1} = 1_B$ et $1_B \times \underbrace{1_B}_{\in B} = 1_B$ car $1_B$ est le neutre de $(B \v \times)$. On a donc $1_B = 1_A \in B$.
+
+<br/>
+
+$\cd$ Supposons que les propriétés i\) , ii\) , iii\) sont vraies.
+
+D'après la caractérisation des groupes, comme i\) et ii\) sont vraies, $(B \v +)$ est un groupe. Il est abélien puisque $+$ est commutatif sur $A$ mais $B \subset A$.
+
+La loi $\times$ est interne (dans $B$) d'après iii\).
+
+La loi $\times$ est associative et se distribue sur la loi $+$ (dans $B$) car $B \subset A$.
+</Hideable>
+
 
 <Item type='definition' titre="morphisme d'anneau et isomorphisme">
 
-morphisme
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux.
 
-isomorphisme
+On dit que $\varphi : A \rightarrow B$ est un morphisme d'anneau si :
 
-automorphisme
+$\cd$ $\varphi(1_A) = 1_B$
+
+$\cd$ $\forall (x \v y) \in A^2 \v \varphi(x +_A y) = \varphi(x) +_B \varphi(y)$
+
+$\cd$ $\forall (x \v y) \in A^2 \v \varphi(x \times y) = \varphi(x) \ast \varphi(y)$
+
+<br/>
+
+Comme pour les groupes, on dit que c'est un automorphisme si $A = B \v +_A = +_B \v \times = \ast$ (il s'agit d'égalité d'applications).
+
+On dit que c'est un automorphisme s'il est bijectif.
 </Item>
+
+
+<Item type='proposition' titre="propriétés du morphisme d'anneau">
+
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux et $\phi : A \rightarrow B$ un morphisme d'anneau.
+
+$\cd$ $\phi(0_A) = \phi(0_B)$
+
+$\cd$ Si $a \in A \v \phi(- a) = - \phi(a)$
+
+$\cd$ Si $a \in A^{\times} \v \phi(a^{-1}) = \phi(a)^{-1}$. 
+
+$\cd$ Soit $n \in \N^*$ et $a \in A$. Si l'on note $na = \underbrace{a + a + \dotsm + a}_{n\text{ fois}} $ où $a \in A$, on a $\phi(na) = n \phi(a)$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$  $\phi(0_A +_A 0_A) = \phi(0_A) +_B \phi(0_A)$. Mais donc $\phi(0_A) = \phi(0_A) +_B \phi(0_A)$.
+
+En ajoutant $-\phi(0_A)$ de part et d'autre, on a $0_B = \phi(0_A)$ 
+
+$\cd$ d'après la propriété précédente, $\phi$ est un morphisme de groupes pour les additions, d'où le résultat.
+
+$\cd$ $1_B = \phi(1_A) = \phi(a \times a^{-1}) = \phi(a) \ast \phi(a^{-1})$. Donc $\phi(a)^{-1} = \phi(a^{-1})$
+
+$\cd$ cela se montre par récurrence.
+
+</Hideable>
+
 
 <Item type='proposition' titre='image et image réciproque'>
 
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux et $\phi : A \rightarrow B$ un morphisme d'anneau.
+
+$\phi(A)$ et $\phi^{-1}(B)$ sont des anneaux.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Montrons que $(\phi(A) \v +_B \v \ast)$ est un sous-anneau de $(B \v +_B \v \ast)$.
+
+<Indent>
+
+$\bullet$ $\phi(A) \subset B$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(1_A) = 1_B$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in A^2 \v \phi(x) -_B \phi(y) = \phi( \underbrace{x -_A y}_{\in A}) \in \phi(A)$
+
+$\bullet$ stabilité du produit :  soient $(x \v y) \in A^2 \v \phi(x) \ast \phi(y) = \phi( \underbrace{x \times y}_{\in A}) \in \phi(A)$
+
+</Indent>
+
+
+<br/>
+
+$\cd$ Montrons que $(\phi^{-1}(A) \v +_A \v \times)$ est un sous-anneau de $(A \v +_A \v \times)$.
+
+<Indent>
+
+$\bullet$ $\phi^{-1}(B) \subset A$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(1_A) = 1_B$ donc $1_A \in \phi^{-1}(B)$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) -_B \phi(y) = \phi(x -_A y) \in B$ donc $x -_A y \in \phi^{-1}(B)$
+
+$\bullet$ stabilité du produit :  soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) \ast \phi(y) = \phi(x \times y) \in B$ donc $x \times y \in \phi^{-1}(B)$
+
+</Indent>
+
+
+</Hideable>
+
+### Corps
+
+<Item type='definition' titre='corps'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+Si $A^{\times} = A \setminus \{0\}$ et que $A$ est intègre, on dit que $A$ est un **corps**.
 </Item>
 
 
-{/*
+<Item type='proposition' titre='corps usuels' tag="admis">
 
+$(\Q \v + \v \times) \v (\R \v + \v \times)$ et $(\C \v + \v \times)$ sont des corps.
+</Item>
+
+<Remarque titre=''>
+
+Les corps vus ci-dessus sont infinis mais il existe des corps finis en lien avec les congruences modulo $p$ où $p$ est premier.
+</Remarque>
+
+
+
+
+{/*
+A faire :
+    - expliciter les simplifications :  'on multiplie par g^-1 à gauche'
 Ex : 
     - sous groupes bornés de C, sous groupes finis de U
-    - sous groupes de R, aZ + bZ dans le cas où a/b irrationnel
+    - sous groupes de R, aZ + bZ dans le cas où a sur b irrationnel
     - reprendre combes et sa construction de groupes par les fonctions
-/*}
+*/}

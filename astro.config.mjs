@@ -30,6 +30,8 @@ const macros = {
   "\\cP": "\\mathscr{P}",
   "\\cT": "\\mathscr{T}",
   "\\cR": "\\mathscr{R}",
+  "\\cS": "\\mathscr{S}",
+  "\\cA": "\\mathscr{A}",
 
   "\\Point": "\\Big( { #1 } \\v { #2 } \\Big)",
 
@@ -93,6 +95,13 @@ const macros = {
 };
 
 export default defineConfig({
+  vite: {
+    server: {
+      mimeTypes: {
+        'application/x-ipynb+json': ['.ipynb']
+      }
+    }
+  },
   markdown: {
     shikiConfig: {
       theme: "dracula",
@@ -101,6 +110,7 @@ export default defineConfig({
   },
   server: { host: true },
   site: 'https://lafitteque.github.io',
+  publicDir: 'public/',
   integrations: [mdx({
     remarkPlugins: [remarkMath],
     rehypePlugins: [

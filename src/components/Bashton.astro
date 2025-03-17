@@ -1,0 +1,25 @@
+---
+// Définition des props du composant
+const { dir, notebookFile, auxFiles, modulesFiles } = Astro.props;
+
+// Chemin de base où sont stockés les notebooks
+const baseDir = `https://raw.githubusercontent.com/lafitteque/lafitteque.github.io/refs/heads/bashton_relieve/public/Bashton/${dir}`;
+
+const norebookUrl = `${baseDir}/${notebookFile}`;
+var auxUrl = `&aux=${auxFiles.split(" ").map(url => `${baseDir}/${url}`).join("&aux=")}`;
+var modulesUrl = `&module=${modulesFiles.split(" ").map(url => `${baseDir}/${url}`).join("&module=")}`;
+
+auxUrl = auxUrl.endsWith("/") ? "" : auxUrl;
+modulesUrl = modulesUrl.endsWith("/") ? "" : modulesUrl;
+
+
+const fullUrl = `https://notebook.basthon.fr/?from=${norebookUrl}${modulesUrl}${auxUrl}`;
+---
+
+<!-- Composant BasthonNotebook -->
+<div class="h-full overflow-auto">
+    <!-- <h2>Notebook : {dir}</h2> -->
+
+    <iframe src={fullUrl} class="w-full h-screen" style="border: none;"
+    ></iframe>
+</div>
