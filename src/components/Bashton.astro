@@ -3,7 +3,7 @@
 const { dir, notebookFile, auxFiles, modulesFiles } = Astro.props;
 
 // Chemin de base où sont stockés les notebooks
-const baseDir = `https://raw.githubusercontent.com/lafitteque/lafitteque.github.io/refs/heads/bashton_relieve/public/Bashton/${dir}`;
+const baseDir = `https://raw.githubusercontent.com/lafitteque/lafitteque.github.io/refs/heads/main/public/Bashton/${dir}`;
 
 const norebookUrl = `${baseDir}/${notebookFile}`;
 var auxUrl = `&aux=${auxFiles.split(" ").map(url => `${baseDir}/${url}`).join("&aux=")}`;
