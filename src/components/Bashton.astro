@@ -1,0 +1,67 @@
+---
+import fs from "fs";
+import path from "path";
+
+// Définition des props du composant
+const { dir } = Astro.props;
+
+// Chemin de base où sont stockés les notebooks
+const baseDir = "public/basthon/";
+
+// Construire le chemin complet
+const fullPath = path.join(baseDir, dir);
+const normalizedPath = path.resolve(fullPath).replace(/\\/g, "/");
+console.log("Chemin normalisé :", normalizedPath);
+
+// Vérifier que le dossier existe et récupérer les fichiers
+let files: string[] = [];
+if (fs.existsSync(normalizedPath)) {
+    try {
+        files = fs.readdirSync(normalizedPath);
+        console.log("Fichiers trouvés :", files);
+    } catch (err) {
+        console.error("Erreur lors de la lecture du dossier :", err);
+    }
+} else {
+    console.warn("⚠️ Le dossier n'existe pas :", normalizedPath);
+}
+
+console.log("Chemin du dossier :", fullPath);
+
+console.log(files);
+
+// Séparer les fichiers
+const notebookFile = files.find((f) => f.endsWith(".ipynb"));
+const moduleFiles = files.filter((f) => f.endsWith(".py"));
+const auxFiles = files.filter(
+    (f) => !f.endsWith(".ipynb") && !f.endsWith(".py"),
+);
+// Construire les paramètres pour l'iframe
+const fromParam = notebookFile ? `from=/basthon/${dir}/${notebookFile}` : "";
+const moduleParams = moduleFiles
+    .map((f) => `module=/basthon/${dir}/${f}`)
+    .join("&");
+const auxParams = auxFiles.map((f) => `aux=/basthon/${dir}/${f}`).join("&");
+
+// Construire l'URL finale pour Basthon
+const notebookUrl = `https://notebook.basthon.fr/?mode=assignment&${fromParam}${moduleParams ? "&" + moduleParams : ""}${auxParams ? "&" + auxParams : ""}&extensions=linenumbers,sequenced`;
+//const notebookUrl = `/basthon/index.html?extensions=sequenced&from=examples/python3-sequenced.ipynb&module=examples/_validation.py`
+// &extensions=linenumbers,sequenced
+console.log(notebookUrl);
+---
+
+<!-- Composant BasthonNotebook -->
+<div class="h-full overflow-auto">
+    <!-- <h2>Notebook : {dir}</h2> -->
+    {
+        notebookFile ? (
+            <iframe
+                src={notebookUrl}
+                class="w-full h-screen"
+                style="border: none;"
+            />
+        ) : (
+            <p>⚠ Aucun fichier .ipynb trouvé dans ce dossier.</p>
+        )
+    }
+</div>
