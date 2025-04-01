@@ -219,7 +219,7 @@ On dit que $\lambda$ est une racine de $P$ si $(x - \lambda) \divise P$
 
 <br/>
 
-Soit $n \in \N^*$, on dit que $\lambda$ est racine de multiplicité $n$ de $P$ si $(X - \lambda)^n \divise P$
+Soit $n \in \N^*$, on dit que $\lambda$ est racine de multiplicité $n$ de $P$ si $(X - \lambda)^n \divise P$ et $(X - \lambda)^n \divisepas P$
 
 </Item>
 
@@ -418,6 +418,108 @@ $\tilde{P}(\mu) = 0 = \tilde{P_2} (\mu) . (\mu - \lambda) \neq 0$ ce qui est abs
 </Hideable>
 
 
+<Item type='consequence' titre=''>
+
+Un polynôme de $\K_n[X]$ qui admet au moins $n+1$ racines est le polynôme nul.
+</Item>
+
+
+
+### Polynôme dérivé
+
+<Item type='definition' titre='polynôme dérivé'>
+
+On appelle polynôme dérivé de $P = \somme{i = 0 }{n} a_i X^i \in \K[X]$ le polynôme suivant :
+
+$P' = \somme{i = 0 }{n-1} a_{i+1} X^i = \somme{i = 1 }{n} a_i X^{i-1}$
+
+<br/>
+
+On note le polynôme $P$ dérivé $k$ fois ainsi : $P^{(k)}$. De plus, $P^{(k)} = \somme{i = 0}{n-k} k! . a_{i+k} X^i$
+</Item>
+
+<Remarque titre=''>
+
+En fait, il s'agit du polynôme associé à $(\tilde{P}) '$ puisqu'on a la relation suivante : $(\tilde{P}) ' = \tilde{(P')}$.
+</Remarque>
+
+
+<Item type='proposition' titre='propriétés du polynôme dérivé'>
+
+Soient $P$ et $Q$ deux éléments de $\K[X]$ et $\lambda \v \mu$ des éléments de $\K$.
+
+$\cd$ $(\lambda . P + \mu . Q )' = \lambda . P' + \mu . Q'$
+
+$\cd$ $(PQ)' = P' . Q + P . Q'$
+
+$\cd$ $(PQ)^{(n)} = \somme{k = 0}{n} \binomiale{k}{n} P^{(k)} Q^{(n-k)}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+En se ramenant à la fonction polynômiale associée, on a exactement les mêmes propriétés que sur les fonctions. Par caractérisation des polynômes par leur fonction associée, les résultats valent également pour les polynômes.
+</Hideable>
+
+
+<Item type='theoreme' titre='formule de Taylor polynômiale'>
+
+Soit $P \in \K[X]$ de degré $n \in \N$.
+
+$P = \somme{k = 0}{n} \dfrac{ \tilde{P}^{(k)} (0) }{k!} X^k$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{k = 0}{n} a_k X^k$.
+
+Comme $P^{(k)} = \somme{i = 0}{n-k} k! . a_{i+k} X^i$ on a $\tilde{P^{(j)}} (0) = k! . a_k$
+
+Mais donc $a_k = \dfrac{ \tilde{P}^{(k)} (0) }{k!}$ d'où $P = \somme{k = 0}{n} \dfrac{ \tilde{P}^{(k)} (0) }{k!} X^k$.
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation des racines multiples'>
+
+Soient $\lambda \in \K \v n \in \N^*$ et $P \in \K[X]$.
+
+$\lambda$ est racine de multiplicité $n$ de $P$ si et seulement si $\tilde{P^{(0)}}(\lambda) = \tilde{P^{(1)}}(\lambda) = \dotsm = \tilde{P^{(n-1)}}(\lambda) = 0$ et $\tilde{P^{(n-1)}}(\lambda) \neq 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** supposons que $\lambda$ est racine de multiplicité $n$ de $P$. Alors il existe un polynôme $Q$ tel que $P = (X - \lambda)^n . Q$.
+
+Il convient déjà de remarquer qu'en dérivant $(X - \lambda)^n$  $k$ fois, on obtient $\dfrac{n!}{(n-k)!}(X - \lambda)^{n-k}$.
+
+D'après la formule de dérivation de Leibniz, $P^{(m)} = \somme{k = 0}{m} \binomiale{k}{m} \dfrac{n!}{(n-k)!}(X - \lambda)^{n-k} Q^{(m-k)}$ avec $m \in \defentiers{0}{n-1}$
+
+
+Mais donc $(X - \lambda)^{n-m} \divise P^{(m)}$ d'où le fait que $\lambda$ soit racine de $P^{(m)}$ si $m \in \defentiers{0}{n-1}$.
+
+De plus, $P^{(n)} = Q + \somme{k = 0}{n-1} \binomiale{k}{m} \dfrac{n!}{(n-k)!}(X - \lambda)^{n-k} Q^{(m-k)} $ en séprant le dernier terme des autres (on rappelle que pour cette formule, on pose $0^0 = 1$).
+
+En évaluant en $\lambda$ le polynôme associé, on obtient $Q(\lambda) \neq 0$. (En effet, si $\lambda$ était racien de $Q$, alors on aurait $Q = Q_2 . (X - \lambda)$ et aussi $P = (X- \lambda)^{n+1} Q_2$ ce qui contredirait le fait que $\lambda$ soit de multiplicité $n$)
+
+
+
+$\cd$ **Réciproque ($\LeftArrow$) :** Notons $k \geqslant 1$ la multiplicité de $\lambda$ qui est racine de $P$ puisque $\tilde{P}(0) = 0$.
+
+D'après le sens direct, $\forall i \in \defentiers{0}{k-1} \v \tilde{P{(i)}}(\lambda) = 0 \ET \tilde{P^{(k)}}(\lambda) \neq 0$.
+
+On sait donc que $k \geqslant n$ car sinon, on aurait $\tilde{P^{(k)}}(\lambda) = 0$.
+
+Par ailleurs, $k \leqslant n$ car sinon, on aurait $\tilde{P^{(n)}}(\lambda) \neq 0$ alors même que $n < k$.
+
+Par double inégalité, $n = k$.
+
+</Hideable>
+
+
+
+
+### Polynômes scindés
+
+
 <Item type='definition' titre='polynôme scindé'>
 
 
@@ -427,61 +529,90 @@ $$
 A (X - \lambda_1)^\alpha_1 . \dotsm . (X - \lambda_k)^\alpha_k
 $$
 
-où $A \v \lambda_1 \dotsm \lambda_k$ sont des éléments de $\K$ et $k \v \alpha_1 \v \dotsm \v \alpha_k$ sont des éléments de $\N^*$.
+où $A \v \lambda_1 \dotsm \lambda_k$ sont des éléments de $\K$ deux à deux distincts et $k \v \alpha_1 \v \dotsm \v \alpha_k$ sont des éléments de $\N^*$.
 
 <br/>
 
-On dit que le polynôme est scindé à racines simples si $\alpha_1 = \dotsm = \alpha_k = 1$, ce qui revient à dire que chacune des racines est simple
+On dit que le polynôme est **scindé à racines simples** s'il est scindé et que ses racines sont toutes simples (donc $\alpha_i \leqslant 1$ dans l'écriture ci-dessus)
 
 </Item>
 
 
 <Item type='proposition' titre='relations coefficients-racines (formules de Viète)'>
 
-Soit $P = \somme{i = 0}{n} a_i X^i \in \K[X]$
+Soit $P = \somme{i = 0}{n} a_i X^i \in \K[X]$ scindé et dont les racines sont $\lambda_1 \v \dotsm \v \lambda_n$ (comptées autant de fois que leur multiplicité)..
 
-
-</Item>
-
-
-### Polynôme dérivé
-
-<Item type='definition' titre='polynôme dérivé'>
+$ a_k = (-1)^{n-k} \somme{i_1 < \dotsm < i_{n-k} }{} \lambda_{i_1} . \dotsm . \lambda_{i_{n-k}}$
 
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
-<Item type='proposition' titre='propriétés du polynôme dérivé'>
+$P = \produit{i = 1}{n} (X - \lambda_i) = (X - \lambda_1)(X - \lambda_2) \dotsm (X - \lambda_n)$
 
-CL
+Le coefficient de degré $k$ est la somme de tous les termes développés de degré $k$ si l'on prenait le temps de développer.
 
-produit
+Quand on développe, pour obtenir un terme de degré $k$, il faut choisir $n-k$ facteurs parmi lesquels on va distribuer sur la constante (et non sur le $X$).
 
-Leibniz
-</Item>
+On obtient donc le terme $(-\lambda_{i_1}) . \dotsm (-\lambda_{i_{n-k}})X^k$. Cela vaut pour tous les choix de $\lambda_{i_j}$ possibles. On imposer l'ordre pour ne pas compter deux fois le même terme développé.
 
-
-<Item type='theoreme' titre='formule de Taylor polynômiale'>
-
-</Item>
-
-
-<Item type='proposition' titre='caractérisation des racines n-ièmes'>
-
-</Item>
-
+Au final, on a les termes de la forme $(-1)^{n-k} \lambda_{i_1} . \dotsm . \lambda_{i_{n-k}}$ où $i_1 < \dotsm < i_{n-k}$. En sommant, on a le résultat voulu.
+</Hideable>
 
 ### Interpolation
 
-Contexte (intro)
 
 <Item type='proposition' titre='polynômes de Lagrange'>
 
+Soient $(a_1 \v a_2 \v \dotsm \v a_n) \in \K^2$.
+
+Soit $i \in \defentiers{1}{n}$. 
+
+Les polynômes de Lagrange sont les $L_i = \produit{k \neq i }{\dfrac{X - a_k}{a_i - a_k}}$ où $1 \leqslant i \leqslant n$ et vérifient :
+
+$$
+\begin{cases}
+    \tilde{L_i}(a_i) = 1$ 
+    \\
+    \forall j \neq i \v \tilde{L_i}(a_j) = 0
+\end{cases}
+$$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+Les évaluations conviennent et le degré est la somme des degrés des facteurs soit $n-1$ puisque les facteurs sont de degré $1$.
+</Hideable>
+
 
 <Item type='theoreme' titre='interpolation de Lagrange'>
 
+Soient $\Point{a_1 \v b_1} \v \dotsm \Point{a_n \v b_n}$ des éléments de $\K^2$ et où $n \in \N^*$.
+
+Il existe un unique polynôme $P \in \K_{n-1}[X]$ à coefficients dans $\K$ tel que :
+
+$$
+\forall i \in \defentiersn \tilde{P}(a_i) = b_i
+$$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Existence :**
+
+On reprend les polynômes de Lagrange définis dans la propriété précédente.
+
+On pose $P = \somme{i = 1}{n} b_i . L_i$ qui convient car de degré au plus égal à $n-1$ (cf. propriétés du degré) et ses évaluations sont comme voulues.
+
+
+<br />
+
+$\cd$ **Unicité :**
+
+Supposons qu'il existe $Q$ qui convienne également, $P-Q$ vérifie : $\tilde{P - Q} (a_i) = b_i - b_i = 0$ et donc $P - Q$ a $n$ racines mais est de degré au plus $n-1$. 
+
+On a donc $P - Q = 0$ puis $P = Q$
+</Hideable>
 
 
 

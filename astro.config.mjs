@@ -63,6 +63,7 @@ const macros = {
   "\\gcd": "\\wedge",
   "\\lcm": "\\vee",
   "\\divise": "\\Large \\mid \\normalsize",
+  "\\divisepas": "\\cancel{\\Large \\mid \\normalsize}",
 
   "\\pv": "; \\;",
   "\\v": ", \\;",
