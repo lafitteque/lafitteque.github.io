@@ -93,7 +93,8 @@ const macros = {
   "\\sup": "\\operatorname{sup}",
   "\\inf": "\\operatorname{inf}",
   "\\Card": "\\operatorname{Card}",
-  "\\deg": "\\operatorname{deg}"
+  "\\deg": "\\operatorname{deg}",
+  "\\dom": "\\operatorname{dom}"
 };
 
 export default defineConfig({

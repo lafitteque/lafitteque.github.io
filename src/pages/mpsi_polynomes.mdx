@@ -25,9 +25,9 @@ Dans ce chapitre, $\K$ désigne $\R$ ou $\C$.
 
 <Item type='definition' titre='polynôme'>
 
-On appelle polynôme une suite finie (une suite qui est nulle à partir d'un certain rang) $c_0 \v \c_1 \v \dotsm \v c_N \v \dotsm$ où $\forall n > N \v c_n = 0$.
+On appelle polynôme une suite finie (une suite qui est nulle à partir d'un certain rang) $c_0 \v c_1 \v \dotsm \v c_N \v \dotsm$ où $\forall n > N \v c_n = 0$.
 
-On note cette suite $P = c_N X^n + \dotsm + c_2 X^2 + c_1 X + c_0 $. On dit que $c_0 \v \c_1 \v \dotsm \v c_N $ sont les coefficients de $P$.
+On note cette suite $P = c_N X^n + \dotsm + c_2 X^2 + c_1 X + c_0 $. On dit que $c_0 \v c_1 \v \dotsm \v c_N $ sont les coefficients de $P$.
 
 <br/>
 
@@ -55,7 +55,11 @@ $\cd$ **Composition :** $P \circ Q = \somme{i=0}{n} a_i \Big( \somme{j=0}{m} b_j
 
 <Item type='definition' titre='coefficient dominant'>
 
-On appelle coefficient dominant de $P \in \K[X]$ le coefficient non nul d'indice le plus élevé.
+On appelle coefficient dominant de $P \in \K[X]$ le coefficient non nul d'indice le plus élevé. On le note parfois $\dom(P)$
+
+<br/>
+
+Si le coefficient dominant de $P$ est $1$, on dit que $P$ est unitaire.
 </Item>
 
 <Hideable type='exemple' titre=''>
@@ -572,7 +576,7 @@ Les polynômes de Lagrange sont les $L_i = \produit{k \neq i }{\dfrac{X - a_k}{a
 
 $$
 \begin{cases}
-    \tilde{L_i}(a_i) = 1$ 
+    \tilde{L_i}(a_i) = 1
     \\
     \forall j \neq i \v \tilde{L_i}(a_j) = 0
 \end{cases}
@@ -587,7 +591,7 @@ Les évaluations conviennent et le degré est la somme des degrés des facteurs 
 
 <Item type='theoreme' titre='interpolation de Lagrange'>
 
-Soient $\Point{a_1 \v b_1} \v \dotsm \Point{a_n \v b_n}$ des éléments de $\K^2$ et où $n \in \N^*$.
+Soient $\Point{a_1}{b_1} \v \dotsm \Point{a_n}{b_n}$ des éléments de $\K^2$ et où $n \in \N^*$.
 
 Il existe un unique polynôme $P \in \K_{n-1}[X]$ à coefficients dans $\K$ tel que :
 
@@ -618,22 +622,341 @@ On a donc $P - Q = 0$ puis $P = Q$
 
 ## Arithmétique des polynômes
 
+On a vu que les polynômes se comportaient de manière similaire aux nombres entiers (divisibilité, division euclidienne). C'est sans surprise que l'on va retomber sur les théorèmes de Gauss, l'identité de Bezout et une décomposition que l'on pourra assimiler à celle en facteurs premiers.
+
+
+### Propriétés de la divisibilité
+
+<Item type='proposition' titre='transitivité'>
+
+Soient $(P \v Q \v L) \in \K[X]^3$
+
+$$
+P \divise Q \ET Q \divise L \Rightarrow P \divise L
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $P \divise Q \ET Q \divise L$. 
+
+Il existe $A$ et $B$ dans $\K[X]$ tels que $Q = A . P$ et $L = B . Q$. On a donc $L = (A.B) . P$ donc $P \divise L$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='combinaison linéaire'>
+
+Soient $\lambda$ et $\mu$ des éléments de $\K$ et $(P \v Q \v L) \in \K[X]^3$.
+
+$(P \divise Q \ET P \divise L) \Rightarrow (P \divise \lambda Q + \mu R)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $P \divise Q \ET P \divise L$.
+
+Il existe $A$ et $B$ dans $\K[X]$ tels que $Q = A . P$ et $L = B . P$.
+
+On a donc $\lambda Q + \mu L = \lambda A . P + \mu B . P = P (\lambda A + \mu B)$ donc $p \divise \lambda Q + \mu L$
+</Hideable>
+
+<Remarque titre=''>
+
+La divisibilité n'est pas une relation d'équivalence car $1 \divise 2 \ET 2 \divise 1$ et pourtant $1 \neq 2$. La relation n'est donc pas symétrique.
+</Remarque>
+
+<Item type='proposition' titre='divisibilité et degré'>
+
+Soient $(P \v Q ) \in \K[X]^2$ non nuls.
+
+$P \divise Q \Rightarrow \deg(P) \leqslant \deg(Q)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $P \divise Q$, il existe $L \in \K[X]$ tel que $Q = L . P$ auquel cas $\deg(Q) = \deg(L) + \deg(P) \geqslant \deg(P)$ car les polynômes sont non nuls et donc les degrés sont dans $\N$.
+</Hideable>
+
+
 ### PGCD et PPCM
+
+<Item type='defprop' titre='PGCD de deux polynômes'>
+
+Soient $P$ et $Q$ deux éléments de $\K[X]$ non nuls.
+
+On appelle plus grand diviseur commun de $P$ et $Q$ un polynôme noté $D$ qui vérifie :
+
+$\cd$ $D \divise P \ET D \divise Q$ 
+
+$\cd$ $\forall A \in \K[X] \v (A \divise P_1 \ET A \divise P_2 \Rightarrow A \divise D)$
+
+On a toujours existence d'un tel polynôme et il est unique si l'on impose qu'il soit unitaire.
+</Item>
+
+<Hideable type='démonstration' titre='(pas facile et peut être la considérer comme admise en première année)'>
+
+On considère $I = \{ A.P_1 + B . P_2 \mid (A \v B) \in \K[X]\}$
+
+On va montrer qu'il existe un unique polynôme unitaire $U \in \K[X]$ tel que $I = U . \K[X] = \{ U.P \mid P \in \K[X]\}$. 
+
+<br/>
+
+Prenons $D \in I$ non nul de degré minimal. Quitte à considérer $\dfrac{D}{\dom(D)} \in I$, on peut considérer que $D$ est unitaire.Procédons par l'absurde et considérons $Q$ tel que $Q \in I $ tel que $ \notin D . \K[X]$.
+
+Soit $Q = A . D + R$ la division euclidienne de $Q$ par $R$ où $R \neq 0$ car $Q \notin D . \K[X]$. 
+
+$\deg(R) < \deg(D)$ et $R = Q - A.D$. Comme  il existe des polynômes tels que $Q = A_1.P_1 + B_1 . P_2$ et $D = A_2.P_1 + B_2 . P_2$, on a $R = P_1.(A_1 - A . A_2) + P_2 . (B_1 - A . B_2) \in I$
+
+Mais cela contredit notre hypothèse puisque $D$ est censé être de degré minimal dans $I$ mais $R$ contredit cela.
+
+<br />
+
+On a montré que $I = D . \K[X]$. C'est donc l'ensemble des multiples de $D$ et on a montré que, si $D$ était unitaire, il était unique (car sinon il existerait un $Q$ comme dans l'hypothèse absurde précédente).
+
+<br/>
+
+Soit $A \in \K[X]$ tel que $A \divise P_1$ et $A \divise P_2$. Par transitivité et combinaison linéaire de la divisibilité, $A \divise D$.
+
+De même, $D \divise P_1$ et $D \divise P_2$.
+
+$D$ est donc bien un PGCD de $P_1$ et $P_2$.
+</Hideable>
+
+<Hideable type='exemple' titre=''>
+
+Si $P = (X - 1)^3(X^2 + 1)$ et $Q = (X-1)^2 X^2 (X + 1)$,
+
+on a $P \gcd Q = (X-1)^2$ 
+
+On remarque qu'il y a d'autres diviseurs communs, comme $2 (X-1)^2$ (multiplier par une constante ne change rien à la divisibilité) ou encore $(X-1)$ mais ce dernier 
+</Hideable>
+
+
+<Item type='definition' titre='PPCM de deux polynômes'>
+
+Soient $P$ et $Q$ deux éléments de $\K[X]$ non nuls.
+
+On appelle plus petit multiple commun de $P$ et $Q$ un polynôme noté $M$ qui vérifie :
+
+$\cd$ $P \divise M \ET Q \divise M$ 
+
+$\cd$ Si $A \in \K[X]$, on a $P \divise A \ET Q \divise A \Rightarrow M \divise A$
+
+<br/>
+
+Un tel polynôme existe toujours. Si de plus on impose que $M$ soit unitaire, il y a unicité du PPCM.
+</Item>
+
+<Hideable type='démonstration' titre='(schéma)'>
+
+On procède de manière analogue au PGCD en montrant qu'il existe un unique $M$ unitaire tel que :
+
+$$
+P_1 . \K[X] \bigcap P_2 . \K[X] = M. \K[X]
+$$
+
+Par l'absurde et en utilisant à nouveau la division euclidienne, on per contredire la minimalité du degré de $M$.
+
+Ensuite, il suffit de montrer que $M$ est un PPCM et on conclut.
+</Hideable>
+
+
+<Item type='proposition' titre="PGCD et division euclidienne">
+
+
+Soient $P_1$ et $P_2$ deux éléments de $\K[X]$ non nuls tels que $P_2 \divisepas P_1$.
+
+On note $P_1 = Q . P_2 + R$ la division euclidienne de $P_1$ par $P_2$.
+
+Si $L \in \K[X]$ est un PGCD de $P_1$ et $P_2$, alors $L$ est également un PGCD de $P_2$ et de $R$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $L \in \K[X]$ est un PGCD de $P_1$ et $P_2$.
+
+$L \divise P_1  \ET L \divise Q. P_2$  donc $L \divise P_1 - Q . P_2 = R$
+</Hideable>
+
 
 
 ### Pôlynômes premiers entre eux
 
 <Item type='definition' titre='polynômes premiers entre eux'>
 
+Soient $P$ et $Q$ deux polynômes à coefficients dans $\K$.
+
+On dit que $P$ et $Q$ sont premiers entre eux si $P \gcd Q = 1$
 </Item>
+
+
+<Item type='theoreme' titre='identité de Bezout'>
+
+Soient $P$ et $Q$ deux polynômes à coefficients dans $\K$ premiers entre eux.
+
+Il existe $U$ et $V$ dans $\K[X]$ tels que $U.P + V.Q = 1$.
+
+<br/>
+
+En général, si $P$ et $Q$ ne sont pas premiers entre eux, il existe $U$ et $V$ dans $\K[X]$ tels que $U.P + V.Q = (P \gcd Q)$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Version 1 :** On procède comme dans les entiers par divisions euclidiennes successives.
+
+$\cd$ **Version 2 :** On note $D = P \gcd Q$. On utilise le fait que $\{ A.P_1 + B . P_2 \mid (A \v B) \in \K[X]\} = D . \K[X]$, ce qui a été montré pour définir le PGCD. 
+
+$D$ est bien de la forme $U.P + V.Q$ mais $D = 1$ donc il existe $U$ et $V$ tels que $U.P + V.Q = 1$ 
+</Hideable>
+
 
 <Item type='lemme' titre='de Gauss'>
 
+Soient $A, B$ et $C$ trois polynômes à coefficients dans $\K$.
+
+Si $A \gcd B = 1$ et $A \divise B . C$, on a $A \divise C$
 </Item>
 
+<Hideable type='démonstration' titre=''>
 
+D'après l'identité de Bezout, il existe $U$ et $V$ tels que $AU + BV = 1$.
+
+Mais donc $A . UC + (BC) . V = C$.
+
+Comme $A \divise A . UC$ et $A \divise (BC) . V$, on a $A \divise A . UC + (BC) . V = C$.
+</Hideable>
 
 <Remarque titre=''>
 
 utile pour montrer qu'un polynôme est nul.
 </Remarque>
+
+### PGCD de plusieurs polynômes
+
+
+<Item type='defprop' titre='PGCD de plusieurs polynômes'>
+
+Soient $P_1 \v \dotsm P_n$ des éléments de $\K[X]$ non nuls.
+
+On appelle plus grand diviseur commun de $P_1 \v \dotsm P_n$ un polynôme noté $D$ qui vérifie :
+
+$\cd$ $D \divise P_1 \v \dotsm \v  D \divise P_n$ 
+
+$\cd$ $\forall A \in \K[X] \v (A \divise P_1 \v \dotsm \v  A \divise P_n \Rightarrow A \divise D)$
+
+On a toujours existence d'un tel polynôme et il est unique si l'on impose qu'il soit unitaire.
+</Item>
+
+<Hideable type='démonstration' titre='(schéma)'>
+
+On peut procéder par récurrence en montrant que $pgcd(P_1 \v P_2 \v \dotsm \v P_n) = pgcd\Big(P_1 \v pgcd(P_2 \v \dotsm \v  P_n)\Big)$.
+</Hideable>
+
+
+<Item type='definition' titre='polynômes premiers entre eux dans leur ensemble'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des polynômes à coefficients dans $\K$.
+
+On dit que $P_1 \v P_2 \v \dotsm P_k$ sont premiers dans leur ensemble si $pgcd(P_1 \v P_2 \v \dotsm P_k) = 1$
+</Item>
+
+<Item type='definition' titre='polynômes premiers entre eux deux à deux'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des entiers naturels.
+
+On dit que $P_1 \v P_2 \v \dotsm P_k$ sont premiers deux à deux si, pour tout $(i \v j) \in \defentiers{1}{k}$ tels que $i \neq j$, on a $P_i \gcd P_j = 1$.
+
+</Item>
+
+
+<Item type='proposition' titre='lien entre les deux'>
+
+Si des polynômes sont premiers entre eux deux à deux, alors ils le sont dans leur ensemble.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de remarquer que $pgcd(P_1 \v P_2 \v \dotsm \v P_k) \divise pgcd(P_i \v P_j)$.
+</Hideable>
+
+
+<Item type='proposition' titre='cas général du théorème de Bezout'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des éléments de $\K[X]$.
+
+Ils sont premiers entre eux dans leur ensemble si et seulement s'il existe $U_1 \v U_2 \v \dotsm \v U_k$ des éléments de $\K[X]$ tels que :
+
+$$
+U_1.P_1 + U_2.P_2 + \dotsm + U_k.P_k = 1
+$$
+
+</Item>
+
+
+## Polynômes irreductibles
+
+<Item type='definition' titre='polynôme irreductible'>
+
+On dit que $P \in \K[X]$ non nul est irreductible si :
+
+$$
+P = A . B \Rightarrow \deg(A) = 0 \OU \deg(B) = 0
+$$
+
+Autrement dit, $P$ est irreductible si et seulement si ses diviseurs sont les polynômes constants et ceux de la forme $\lambda . P \v \lambda \neq 0$.
+</Item>
+
+<Item type='theoreme' titre="d'Alembert-Gauss" tag="admis">
+
+Dans $\C[X]$ les polynômes irreductibles sont exactement les polynômes constants et ceux de degré 1.
+</Item>
+
+
+<Item type='proposition' titre='irreductibles (cas réel)'>
+
+Dans $\K[X]$ les polynômes irreductibles sont exactement les polynômes constants, ceux de degré $1$ et ceux de degré $2$ dont le discriminant est strictement négatif.
+</Item>
+
+
+<Item type='theoreme' titre='décomposition en produit de polynomes irreductibles' tag='admis'>
+
+
+Soit $P \in \K[X]$. Il existe $P_1 \v \dotsm \v P_k$ des éléments irréductibles de $\K[X]$ et $\alpha_1 \v \dotsm \v \alpha_k$ des entiers positifs où $k \in \N$ tels que :
+
+$$
+P = 1 . P_1^{\alpha_1}.P_2^{\alpha_2}. \dotsm P_k^{\alpha_k}
+$$
+</Item>
+
+<Item type='consequence' titre='Caractérisation de la divisibilité (cas complexe)'>
+
+Soient $P$ et $Q$ deux éléménts de $\C[X]$.
+
+Notons $\lambda_1 \v \dotsm \v \lambda_n$ les racines de $P$ et $\alpha_1 \v \dotsm \v \alpha_n$ leurs multiplicités (resp $\beta_1 \v \dotsm \beta_n$ leurs multiplicités en tant que racines éventuelles de $Q$).
+
+$P$ divise $Q$ si et seulement si $\forall i \in \defentiersn \v \alpha_i \leqslant \beta_i$.
+</Item>
+
+<Item type='consequence' titre=''>
+
+Soient $P$ et $Q$ deux éléménts de $\C[X]$.
+
+Ils sont premiers entre eux si et seulement s'ils n'ont pas de racine commune.
+</Item>
+
+
+<Item type='proposition' titre=''>
+
+Soit $P \in \R[X]$.
+
+Soit $\lambda \in \C$ tel que $\tilde{P}(\lambda) = 0$, alors $\tilde{P}(\overline{\lambda}) = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{i = 0}{n} a_i X^i$.
+
+$\tilde{P}(\overline{\lambda}) = \somme{i = 0}{n} a_i (\overline{\lambda})^i = \somme{i = 0}{n} a_i \overline{\lambda^i} = \overline{\somme{i = 0}{n} a_i \lambda^i} = \overline{\tilde{P}(\lambda)} = 0$
+</Hideable>
