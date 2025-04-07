@@ -549,6 +549,17 @@ L'ensemble des matrices symétriques est noté $\cA_n(\R)$ (ou $A_n(\R)$).
 
 <Hideable type='solution' titre=''>
 
+1\) Par antisymétrie de $A$ : $\forall 1 \leqslant i \v j\leqslant n \v a_{i,j} = -a_{j,i}$. En particulier, si $i = j$, on a :$\forall 1 \leqslant i \leqslant n \v a_{i,i} = -a_{i,i}$ 
+
+d'où $\forall 1 \leqslant i \leqslant n \v 2 a_{i,i} = 0 $.
+
+Les éléments diagonaux sont donc tous nuls.
+
+
+<br/>
+
+2\) Soient $1 \leqslant i\v j \leqslant n$. On a : $(MM^T)_{i,j} = \somme{k = 1}{p} m_{i,k} \underbrace{m_{j,k}}_{(M^T)_{k,j}}$ $ = \somme{k = 1}{p} m_{j,k} m_{i,k}  = \left((MM^T)^T\right)_{i,j}$
+
 </Hideable>
 
 
@@ -613,6 +624,16 @@ Le résultat est analogue pour des matrices rectangulaires.
 
 <Hideable type='démonstration' titre=''>
 
+Remarquons que les coefficients de $E_{i,j}$ sont les $\delta_a^i . \delta_b^j$ où $1 \leqslant a \v b \leqslant n$.
+
+On a donc : $E_{i,j} . E_{k,l}  = \left( \somme{c = 1}{n}(\delta_a^i . \delta_c^j) (\delta_c^k . \delta_b^l)\right)_{ 1 \leqslant a \v b \leqslant n }$
+
+mais $\delta_a^i . \delta_c^j . \delta_c^k . \delta_b^l \neq 0 \Rightarrow a = i \v c = j \v c = k \v b = l$.
+
+Mais donc, le produit est non nul uniquement quand $k = j$, auquel cas $\delta_a^i . \delta_c^j . \delta_c^k . \delta_b^l = 1 \ssi a = i \v  j = k \v b = l$ 
+
+On en déduit que $E_{i,j} . E_{k,l} = \delta_j^k E_{i,l}$
+
 </Hideable>
 
 ### Matrices diagonales et matrice identité
@@ -655,6 +676,70 @@ Pour toute matrice $A \in \cM_{n,p}(\R) \v I_n . A = A$
 Déterminer l'ensemble des matrices de $\cM_n(\R)$ qui commutent avec toutes les matrices de $\cM_n(\R)$.
 </Exercice>
 
+<Hideable type='solution' titre='méthode très classique'>
+
+Procédons par analyse synthèse et considérons $A \in \cM_n(\R)$ qui commute avec tout élément de $\cM_n(\R)$.
+
+$A = \somme{i = 1}{n} \somme{j = 1}{n} a_{i,j}E_{i,j}$
+
+<br/>
+
+$\cd$ **Analyse :**
+
+Regardons en particulier le produit de $A$ avec une matrice élémentaire quelconque où $1 \leqslant k \v l \leqslant n$.
+
+Par hypothèse, $A . E_{k,l} = E_{k,l} . A$, mais donc $\somme{i = 1}{n} \somme{j = 1}{n} a_{i,j}E_{i,j}.E_{k,l} = \somme{i = 1}{n} \somme{j = 1}{n} a_{i,j}E_{k,l} . E_{i,j}$
+
+On en déduit que $\somme{i = 1}{n} \somme{j = 1}{n} a_{i,j}\delta_j^k E_{i,l} = \somme{i = 1}{n} \somme{j = 1}{n} a_{i,j} \delta_l^i E_{k,j}$
+
+Puis $\somme{i = 1}{n}  a_{i,k} E_{i,l} = \somme{j = 1}{n} a_{l,j} E_{k,j}$ qui se réécrit explicitement ainsi :
+
+$$
+\begin{matrix}
+\begin{matrix} & & l & & & \\ & & \downarrow & & & \end{matrix} & & &
+\\
+\begin{pmatrix}
+0 & \dotsm & 0 & a_{1,k}& 0 & \dotsm & 0 \\ 
+0 & \dotsm & 0 & a_{2,k}& 0 & \dotsm & 0 \\ 
+\vdots & \dotsm & \vdots & a_{2,k}& 0 & \dotsm & \vdots \\ 
+0 & \dotsm & 0 & a_{n-1,k}& 0 & \dotsm & 0 \\ 
+0 & \dotsm & 0 & a_{n,k}& 0 & \dotsm & 0 \\ 
+\end{pmatrix}
+& = &
+\begin{pmatrix}
+0 & \dotsm &  & \dotsm & 0 \\ 
+0 & \dotsm &  & \dotsm & 0 \\ 
+a_{l,1} & a_{l,2} & \dotsm & a_{l,n-1} & a_{l,n} \\ 
+0 & \dotsm &  & \dotsm & 0 \\ 
+0 & \dotsm &  & \dotsm & 0 \\ 
+\end{pmatrix}
+& \begin{matrix} \\ \\ \leftarrow k\\ \\ \\ \end{matrix}
+\end{matrix}
+$$
+
+Le seul coefficient qui est éventuellement non nul à gauche et à droite est celui à l'intersection de la $l$-ième colonne et de la $k$-ième ligne.
+
+On a donc $a_{k,k} = a_{l,l}$ et $a_{i,k} = 0$ (valable pour tout $k$ et $l$) si $i \neq k$, ceci étant valable pour tout $k$, on en déduit que $A$ est diagonale et que ses coefficients diagonaux sont égaux. 
+
+On a donc un prétendant : $A = \lambda I_n$ où $\lambda \in \cM_n(\R)$
+
+<br/> 
+
+$\cd$ **Synthèse :**
+
+Soit $A = \lambda I_n \v \lambda \in \R$. Soit également $M \in \cM_n(\R)$.
+
+$AM = \lambda I_n . M = \lambda M $ et $MA = M . \lambda . I_n = \lambda . M . I_n = \lambda M$
+
+On a bien vérifié que $AM = MA$ pour toute matrice $M$.
+
+<br/>
+
+$\cd$ **Conclusion :** On a procédé par analyse synthése pour montrer que les matrices de la forme $\lambda I_n$ sont l'ensemble des matrices qui commutent avec toutes les matrices de $\cM_n(\R)$.
+
+</Hideable>
+
+
 ### Systèmes linéaires et matrices
 
 <Item type='proposition' titre='écriture matricielle'>
@@ -684,6 +769,43 @@ On dit que $AX = B$ est un système linéaire. On appelle $AX =  \begin{pmatrix}
 
 <Hideable type='démonstration' titre=''>
 
+Remarquons déjà que $AX \in \cM_{n,1}(\R)$ et donc qu'elle est entièrement déterminée par ses $n$ coefficients.
+
+$$
+\begin{cases}
+    a_{1,1}x_1 + \dotsm + a_{1,n} x_n = b_1
+    \\
+    \dotsm
+    \\
+    a_{n,1}x_n + \dotsm + a_{n,n} x_n = b_n
+\end{cases}
+
+\ssi 
+
+\begin{cases}
+    \somme{k = 1}{n} a_{1,i}x_{i,1}  = b_1
+    \\
+    \dotsm
+    \\
+    \somme{k = 1}{n} a_{n,i}x_{i,1}  = b_n
+\end{cases}
+
+\\[1em]
+
+\ssi 
+
+\begin{cases}
+    (AX)_{1,1}  = b_1
+    \\
+    \dotsm
+    \\
+    (AX)_{n,1}  = b_n
+\end{cases}
+
+\ssi
+
+AX = B
+$$
 </Hideable>
 
 
@@ -695,6 +817,13 @@ Soient $X_0$ une solution particulière du système $AX = B$ et $E$ l'ensemble d
 
 L'ensemble des solutions du système $AX = B$ est $\{ X_0 + X \mid X \in E\}$
 </Item>
+
+<Hideable type='démonstration' titre=''>
+
+$AX_0 = B$ mais donc $AY = B \ssi A(Y - X_0) = 0 \ssi Y - X_0 \in E \ssi \exists X \in E \mid Y - X_0 = X \ssi \exists X \in E \mid Y = X + X_0$
+
+</Hideable>
+
 
 <Remarque titre=''>
 
@@ -855,7 +984,7 @@ Donc $I_n .X = X = 0_{\cM_{n,1}(\R)}$, ce qui nous donne l'ensemble des solution
 
 Soit $n \in \N^* \v \big( \cM_n(\R) \v + \v \times\big) $ est un anneau dont :
 
-$\cd$ le zéro est la matrice $0_{\cM_n(\R)} = \begin{pmatrix} 0 & \dotsm & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dotsm & 0\end{pmatrix}$.
+$\cd$ le zéro est la matrice $0_{\cM_n(\R)} = \begin{pmatrix} 0 & \dotsm & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dotsm & 0\end{pmatrix}$. Il est souvent abrégé ainsi : $0$
 
 $\cd$ l'unité est $I_n$
 
@@ -866,6 +995,24 @@ $\cd$ l'unité est $I_n$
 
 <Hideable type='démonstration' titre=''>
 
+$\cd$ Les deux lois sont internes par définition.
+
+$\cd$ L'associativité des deux lois a été vue dans les propriétés de l'addition et du produit matriciel
+
+$\cd$ La distributivité du produit sur l'addition a été montrée dans les propriétés du produit et de l'addition.
+
+$\cd$ L'addition est commutative puisque l'addition sur $\R$ l'est aussi.
+
+$\cd$ **Neutre pour l'addition :** $0_{\cM_n(\R)} $ la matrice identiquement nulle convient puisque $\forall M \in \cM_n(\R) \v M + 0_{\cM_n(\R)}$.
+
+$\cd$ **Inverse pour l'addition :** soit $M \in \cM_n(\R) \v M + (-1).M = 0_{\cM_n(\R)} $. La matrice $-1.M \in \cM_n(\R)$ convient donc.
+
+$\cd$ **Neutre pour le produit :** $I_n$ convient puisque : $\forall M \in \cM_n(\R) \v I_n . M = M . I_n = M$
+
+
+<br/>
+
+La non commutativité s'obtient facilement si $n \geqslant 2$ : $E_{1,2} . E_{2,2} \neq 0$ alors que $E_{2,2} . E_{1,2} = 0$
 </Hideable>
 
 
@@ -944,16 +1091,35 @@ $\cd$ $(A^T)^{-1} = \left(A^{-1}\right)^T$
 $\cd$ $\left(AB\right)^{-1} = B^{-1}A^{-1}$
 </Item>
 
+<Hideable type='démonstration' titre=''>
+
+
+$\cd$ $A^{-1} . A = I_n$ par définition de l'inverse. Mais donc $A$ est l'inverse de $A^{-1}$. D'où $A = \left(A^{-1}\right)^{-1}$
+
+$\cd $ $A^T . \left(A^{-1} \right)^T = \left( A^{-1} . A\right)^T = I_n^T = I_n$
+
+Mais donc $A^T$ a pour inverse $\left(A^{-1} \right)^T$ d'où $(A^T)^{-1} = \left(A^{-1}\right)^T$.
+
+$\cd$ $(A B) . (B^{-1} A^{-1}) = A (B B^{-1}) A^{-1} = A I_n A^{-1} = (A I_n) A^{-1} = A A^{-1} = I_n$
+
+Donc $A B$ a pour inverse $B^{-1} A^{-1}$ d'où $\left(AB\right)^{-1} = B^{-1}A^{-1}$.
+</Hideable>
+
+
 <Item type='proposition' titre='produit par une matrice élémentaire'>
 
 Soient $A \in \GL_n(\R)$, $1 \leqslant i \v j \leqslant n$ et $\lambda \in \R^*$.
 
-$E_{i,j} . A \v T_{i,j}(\lambda). A$ et $\tau_{i,j} . A$ sont toutes les trois inversibles.
+$T_{i,j}(\lambda). A \v D_{i,j}(\lambda). A$ et $\tau_{i,j} . A$ sont toutes les trois inversibles.
 
 Le résultat est analogue quand on multiplie à droite par des matrices élémentaires ou que l'on effectue des opérations élémentaires.
 </Item>
 
 <Hideable type='démonstration' titre=''>
+
+Les matrices élémentaires sont inversibles : $\tau_{i,j} = \tau_{i,j}^{-1}$, $T_{i,j}(\lambda)^{-1} = T_{i,j}(-\lambda)$ et $D_{i,j}^{-1} = D_{i,j}(\dfrac{1}{\lambda})$.
+
+Ainsi, comme le produit de deux matrices inversibles est inversible (cf. propriétés sur les matrices inversibles), la propriété en découle.
 
 </Hideable>
 
@@ -1018,9 +1184,8 @@ On note $M = \begin{pmatrix} A_1 & B_1 \\ C_1 & D_1\end{pmatrix}$ la matrice for
 $$
 MN =  \begin{pmatrix} A_1A_2 + B_1C_2 & & A_1B_2 + B_1 D_2 \\[1em] C_1A_2 + D_1 C_2 & & C_1 B_2 + D_1D_2\end{pmatrix}
 $$
-
-
 </Item>
+
 
 {/*
     - Décomposition unique mat sym et anti sym
