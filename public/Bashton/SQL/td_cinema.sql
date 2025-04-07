@@ -2,7 +2,7 @@
 CREATE TABLE realisateur (id_realisateur INT PRIMARY KEY, nom VARCHAR(100), prenom VARCHAR(100), annee_naissance INT);
 CREATE TABLE film (id_film INT PRIMARY KEY, titre VARCHAR(255), id_realisateur INT, annee_sortie INT, note FLOAT, FOREIGN KEY(id_realisateur) REFERENCES realisateur(id_realisateur));
 CREATE TABLE salle (id_salle INT PRIMARY KEY, prix INT, nb_places INT);
-CREATE TABLE programmation (id_programmation INT PRIMARY KEY, id_film INT, id_salle INT, FOREIGN KEY(id_film) REFERENCES film(id_film), FOREIGN KEY(id_salle) REFERENCES salle(id_salle),  creneau INT);
+CREATE TABLE programmation (id_programmation INT PRIMARY KEY, id_film INT, id_salle INT, creneau INT, FOREIGN KEY(id_film) REFERENCES film(id_film), FOREIGN KEY(id_salle) REFERENCES salle(id_salle));
 
 -- Insertion des réalisateurs
 INSERT INTO realisateur (id_realisateur, nom, prenom, annee_naissance) VALUES (1, 'Delacruz', 'Jacob', 1973);
