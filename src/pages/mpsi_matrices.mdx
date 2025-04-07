@@ -1,0 +1,1027 @@
+---
+title: "Matrices"
+tag: ["autre"]
+layout: '../layouts/Base.astro'
+---
+import Tableofcontents from '../components/Tableofcontents.astro'
+
+import Hideable from '../components/Hideable.astro'
+import Remarque from '../components/Remarque.astro'
+import Exercice from '../components/Exercice.astro'
+import Item from '../components/Item.astro'
+import Indent from '../components/Indent.astro'
+import Fil from '../components/Fil.astro'
+
+# Chapitre 12 - Les Matrices
+
+<Tableofcontents/>
+
+## Introduction : les systèmes linéaires
+
+Soit $n \in \N$. Soient $x_1 \v \dotsm x_n$ des réels, $a_{1, 1} \v \dotsm a_{1, n} \v a_{2, 1} \v \dotsm \v a_{2, n} \v \dotsm \v a_{n, n}$ et $b_1 \v \dotsm \v b_n$ des réels.
+
+Le système suivant est un système dit linéaire.
+$$
+\begin{cases}
+    a_{1,1}x_1 + \dotsm + a_{1,n} x_n = b_1
+    \\
+    \dotsm
+    \\
+    a_{n,1}x_n + \dotsm + a_{n,n} x_n = b_n
+\end{cases}
+$$
+
+Pour résoudre de tels systèmes, on peut effectuer des opérations sur les lignes et les colonnes (ou bien effectuer des substitutions, ce qui peut être fait par combinaison, on ne s'y intéresse donc pas).
+
+<br/>
+
+Prenons le système suivant :
+
+$$
+S : 
+\begin{cases}
+    x + z = 1
+    \\
+    y + 2z = 4 + x
+    \\
+    x = y + z
+\end{cases}
+$$
+
+On peut, en réorganisant chaque équation, remettre ce système sous la forme générique, ce qui en fait un système linéaire :
+
+$$
+S : 
+\begin{cases}
+    1.x + 0.y + 1.z = 1
+    \\
+    -1.x + 1.y + 2.z = 4 
+    \\
+    1.x - 1.y - 1.z = 0
+\end{cases}
+$$
+
+La première ligne est notée $L_1$, la deuxième $L_2$, ...
+
+<br/>
+
+<Fil>
+
+**Résolvons ce système par la méthode du pivot de Gauss :**
+
+
+Le pivot de Gauss consiste à réduire le nombre d'inconnues des $n-1$ premières lignes à l'aide de la dernière, puis faire de même pour les $n-2$ premières lignes à l'aide de l'avant-dernière ligne, ... Quand il ne reste que la première ligne, on réduit utilise la première ligne pour simplifier celles dessous, puis la deuxième pour simplifier celles dessous, ...
+
+Nous pourrons utiliser les opérations élémentaires (introduites par l'exemple, ci-dessous) : effectuer des combinaisons linéaires de lignes ou les échanger.
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    2x -y  = 1 \qquad L_1 \leftarrow L_1 + L_3
+    \\
+    x -y  = 4  \qquad L_2 \leftarrow L_2 + 2.L_3
+    \\
+    x - y -z = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = 1 - 4 = -3   \qquad L_1 \leftarrow L_1 - L_2
+    \\
+    x -y  = 1
+    \\
+    x -y -z = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    -y  = 7 \qquad L_2 \leftarrow L_2 - L_1
+    \\
+    -y -z = 3 \qquad L_3 \leftarrow L_3 - L_1 
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    y  = -7 \qquad L_2 \leftarrow -1.L_2
+    \\
+    -y -z = 3 \qquad L_3 \leftarrow L_3 + L_2
+\end{cases}
+$$
+
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    y  = -7 
+    \\
+    -z = -4 \qquad L_3 \leftarrow -L_3 - L_2
+\end{cases}
+$$
+<br/>
+
+A chaque étape, nous avons procédé par équivalence, ce qui signifie que nous n'avons pas à vérifier que $(-3 \pv -7 \pv 4)$ est une solution.
+
+Cependant, certaines opérations peuvent faire perdre cette équivalence comme $L_1 \leftarrow L_1 - L_1$ ou d'autre cas où l'on perd l'information de la ligne d'origine. Il est donc **TOUJOURS** judicieux de vérifier que la solution convient. Cela permet en plus de vérifier ses calculs.
+
+**Vérification :**
+
+Prenons $x = -3 \pv y = -7 \pv z = 4$
+
+<br/>
+
+$$
+\begin{cases}
+    1.x + 0.y + 1.z = -3 + 4 = 1
+    \\
+    -1.x + 1.y + 2.z = 3 -7 + 8 = 4 
+    \\
+    1.x - 1.y - 1.z = -3 + 7 - 4 = 0
+\end{cases}
+$$
+
+<br/>
+
+La solution convient donc.
+</Fil>
+
+<br/>
+
+
+Pour résoudre un système, il est souvent plus pratique de ne pas utiliser le pivot de Gauss et de trouver des opérations qui vont nous donner directement la valeur d'une variable. Cependant, il est important de savoir la mettre en oeuvre afin de toujours avoir une méthode qui fonctionne.
+
+<br/>
+Voici deux autres exemples qui n'ont pas une seule et unique solution:
+
+<br/>
+
+<Hideable type='exemple' titre='Aucune solution'>
+
+
+$$
+S_1 : 
+\begin{cases}
+    -x + y = 1
+    \\
+    -2x + 2y = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S_1 : 
+\begin{cases}
+    x = 1
+    \\
+    0 = 1\qquad L_2 \leftarrow L_2 - 2.L_1
+\end{cases}
+$$
+
+<br/>
+
+On en déduit qu'il n'y a pas de solution, car supposer que $(x\v y)$ est solution aboutit à $0 = 1$.
+
+
+
+</Hideable>
+
+
+<Hideable type='exemple' titre='Infinité de solutions'>
+
+$$
+S_2 : 
+\begin{cases}
+    x + y + z = 1
+    \\
+    2x + y = 0
+\end{cases}
+$$
+
+<br/>
+
+On remarque qu'il y a en réalité une troisième ligne "cachée" : $0.x + 0.y + 0.z = 0$ ce qui en fait un système linéaire.
+
+Comme on ne peut pas réduire le nombre de variables sur la troisième et troisième ligne, on passe directement à la première.
+
+<br/>
+
+$$
+S_2 : 
+\begin{cases}
+    -x +  z = 1  \qquad L_1 \leftarrow L_1 - L_2 
+    \\
+    2x + y = 0 
+\end{cases}
+$$
+
+<br/>
+
+Soit $(x\v y \v z) \in \R$ une solution de $S_2$, on a $z = 1 + x$ et $y = -2.x$
+
+Mais donc $(x\v y \v z) = (x \v -2.x \v 1 + x) $.
+
+On vérifie que ces solutions conviennent pour tout $x \in \R$ :
+
+<br/>
+
+$$
+\begin{cases}
+    x + (-2.x) + (1 + x) = 1
+    \\
+    2x + (-2.x) = 0
+\end{cases}
+$$
+
+<br/>
+
+On remarque les solutions sont de la forme  $x.(1 \v -2 \v 1) + (0 \v 0 \v 1) $. Ces points forment une droite affine de l'espace.
+
+</Hideable>
+
+<Remarque titre=''>
+
+Le pivot de Gauss peut se commencer à la première ligne plutôt qu'à la première. Comme l'ordre des lignes peut être changé à tout moment, cela importe peu.
+</Remarque>
+
+
+On peut également échanger des lignes, ce qui se note $L_i \leftrightarrow L_j$
+
+
+
+
+
+## Matrices : définition et généralités
+
+Par la suite, $m \v n \v p $ et $q$ désignent des entiers naturels non nuls.
+
+<br/>
+
+On définit ci-dessous les matrices, mais ce qui est réellement intéressant, ce sont les opérations entre matrices.
+
+<Item type='definition' titre='matrice'>
+
+On appelle matrice à $n$ lignes et $p$ colonnes et à coefficients dans $\R$ un élément de $\R^{n.p}$ que l'on note sous la forme suivante :
+
+$$
+\begin{pmatrix}
+a_{1, 1} & a_{1, 2} & \dotsm & a_{1, p} \\
+a_{2, 1} & a_{2, 2} & \dotsm & a_{2, p} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{n, 1} & a_{n, 2} & \dotsm & a_{n, p} \\
+\end{pmatrix} = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}
+$$
+
+<br/>
+
+L'ensemble des matrices à $n$ lignes et $p$ colonnes à coefficients dans $\R$ est noté $\cM_{n, p}(\R)$. On dit que ces matrices sont rectangulaires
+
+L'ensemble des matrices carrées de taille $n$ est $\cM_n(\R) = \cM_{n,n}(\R)$.
+</Item>
+
+
+<Item type='definition' titre='addition de matrices'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$ et $B = \left(  b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$ deux éléments de $\cM_{n, p}(\R)$. On définit $A + B$ ainsi :
+
+$$
+A + B = \begin{pmatrix}
+a_{1, 1} + b_{1,1} & a_{1, 2} + b_{1, 2} & \dotsm & a_{1, p} + b_{1, p} \\
+a_{2, 1} + b_{2, 1} & a_{2, 2} + b_{2, 2} & \dotsm & a_{2, p} + b_{2, p} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{n, 1} + b_{n, 1} & a_{n, 2} + b_{n, 2} & \dotsm & a_{n, p} + b_{n, p} \\
+\end{pmatrix} = \left(  a_{i,j} + b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} 
+$$
+</Item>
+
+
+<Item type='definition' titre='produit par un scalaire'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$ et $\lambda \in \R$. On définit $\lambda . A$ ainsi :
+
+$$
+\lambda . A = \left(  \lambda . a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} 
+$$
+
+</Item>
+
+
+<Item type='definition' titre='matrices élémentaires'>
+
+On note $E_{i, j} \in \cM_{n, p}(\R)$ la matrice 
+
+$$
+E_{i,j} = 
+\begin{matrix}
+\begin{matrix} & & & j & & & \\ & & & \downarrow & & & \end{matrix} & \\
+\begin{pmatrix}
+0 &  & & \dotsm & & & 0 \\
+\vdots & \dotsm & & 0 & & \dotsm & \vdots \\[0.5em]
+0 & \dotsm & 0  & 1 & 0 & \dotsm & 0 \\
+\vdots & \dotsm & & 0 & & \dotsm & \vdots \\[0.5em]
+0 &  & & \dotsm & &  & 0\end{pmatrix} & \begin{matrix}  \\ \leftarrow i  \\ \\ \end{matrix}  
+\end{matrix}
+$$
+
+<br/>
+
+On note $\delta_i^j$ la quantité égale à $0$ si $i \neq j$ et à $1$ si $i = j$. (on peut remarquer que $\delta_i^j = \indicatrice_{ \{ (i,i) \mid i \in \defentiersn \}}$). 
+
+Ce symbôle est appelé **symbôle de Kronecker** et permet de définir $E_{i,j}$ simplement : $E_{i,j} = \left( \delta_i^j\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+</Item>
+
+<Item type='proposition' titre=' à propos de matrices élémentaires'>
+
+Toute matrice s'écrit comme combinaison linéaire des matrices élémentaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$.
+
+$A = \somme{i = 1}{n} \somme{j = 1}{p} a_{i,j} E_{i,j}$
+
+</Hideable>
+
+
+<Item type='definition' titre='produit de matrices'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$ et $B = \left(  b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{p, m}(\R)$. On définit $A B$ ainsi :
+
+$$
+A B = \left(  \somme{k = 0}{p}a_{i,k} . b_{k,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant m} 
+$$
+
+<br/>
+
+&#9888; Il est **très** rare que $AB$ donne la même matrice que $BA$.
+
+</Item>
+
+<Remarque titre=''>
+
+Il est essentiel que le nombre de colonnes de $A$ coïncide avec le nombre de lignes de $B$, sans quoi le produit n'est pas défini.
+
+On remarque que, si $n \neq m$, il est certain que le produit ne peut pas commuter puisque $BA$ n'a aucun sens.
+</Remarque>
+
+
+<Item type='proposition' titre='propriétés des produits'>
+
+Soient $(\lambda \v \mu) \in \R^2$ et $m\v n$ et $p$ trois entiers naturels.
+
+$\cd$ Si $A \in \cM_{n,p}(\R)$, on a : 
+
+$$
+\lambda . (\mu A) = (\lambda . \mu) . A = \mu . (\lambda . A)
+$$
+
+$\cd$ Soient $A \in \cM_{n,p}(\R) \v B \in \cM_{p,m}(\R) \v C \in \cM_{m,q}(\R)$. On a : 
+
+$$
+(AB).C = A.(BC)
+$$
+
+$\cd$ Si $A \in \cM_{n,p}(\R)$ et $(B \v C) \in \cM_{p, m}(\R)^2$, alors on a :
+$$
+A . (\lambda B + \mu C) = \lambda A.B + \mu A . C
+$$
+
+$\cd$ Si $(A \v B) \in \cM_{n, p}(\R)^2$ et $C \in \cM_{p,m}(\R)$, alors on a : 
+
+$$
+(\lambda A + \mu B) . C= \lambda A.C + \mu B . C
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $a_{i,j}$ les coefficients de $A$ (idem pour $B$ et $C$).
+
+$\cd$ **Première formule :** 
+
+$\lambda . (\mu A) = \lambda . \left(  \mu.a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} = \left(  (\lambda . \mu) a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} = \mu . \left(  \lambda . a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+
+Donc $\lambda . (\mu A) = (\lambda . \mu) . A = \mu . (\lambda . A)$
+
+
+<br/>
+
+$\cd$ **Deuxième formule :**
+
+On note $(AB)_{i,j}$ les coefficients de la matrice $AB$ où $1 \leqslant i \leqslant n$ et $1 \leqslant j \leqslant m$
+
+$(AB)_{i,j} = \somme{k = 1}{p}a_{i,k}b_{k,j}$
+
+
+On considère maintenant $1 \leqslant i \leqslant n$ et $1 \leqslant j \leqslant q$.
+
+Mais donc $\Big( (AB).C \Big)_{i,j} = \somme{l = 1}{m} (\somme{k = 1}{p}a_{i,k}b_{k,l}) . c_{l,j}$
+
+De même, $\Big( A.(BC) \Big)_{i,j} = \somme{l = 1}{p}  a_{i,l} . (\somme{k = 1}{m}b_{l,k}c_{k,j})$ 
+
+Mais $\somme{l = 1}{m} (\somme{k = 1}{p} a_{i,k} . b_{k,l}) . c_{l,j} =  \somme{l = 1}{m} \somme{k = 1}{p}a_{i,k} . b_{k,l} . c_{l,j}$
+
+Puis, en inversant les sommes, on obtient $ \somme{k = 1}{p} \somme{l = 1}{m} a_{i,k} . b_{k,l} . c_{l,j} = \somme{k = 1}{p} a_{i,k} .(\somme{l = 1}{m} b_{k,l} . c_{l,j})$.
+
+En renomant les indices, on a : $\somme{l = 1}{m} (\somme{k = 1}{p} a_{i,k} . b_{k,l}) . c_{l,j} = \somme{l = 1}{m} (\somme{k = 1}{p}a_{i,k}b_{k,l}) . c_{l,j}$. D'où $A.(BC) = (AB).C$
+
+
+<br/>
+
+$\cd$ **Troisième formule :**
+
+Notons $d_{i,j}$ les coefficients de $A . (\lambda B + \mu C)$.
+
+$d_{i,j} = \somme{k = 1}{p} a_{i,k} .(\lambda b_{k,j} + \mu c_{k,j}) = \lambda .\somme{k = 1}{p} a_{i,k} .b_{k,j} + \mu .\somme{k = 1}{p} a_{i,k} .c_{k,j}$ par linéarité de la somme.
+
+Mais donc $d_{i,j} = \lambda (AB)_{i,j} + \mu (AC)_{i,j}$. D'où la formule.
+
+$\cd$ **Quatrième formule :** la méthode est identique à celle ci-dessus.
+
+</Hideable>
+
+
+### Transposée
+
+<Item type='definition' titre='matrice transposée'>
+
+Soit $A = \left( a_{i,j}\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$. On appelle matrice transposée de $A$ la matrice :
+
+$$
+A^T = \left( a_{j,i}\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} =  \begin{pmatrix}
+a_{1, 1} & a_{2, 1} & \dotsm & a_{p, 1} \\
+a_{1, 2} & a_{2, 2} & \dotsm & a_{p, 2} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{1, n} & a_{2, n} & \dotsm & a_{p, n} 
+\end{pmatrix} \in \cM_{p,n}
+$$
+</Item>
+
+<Item type='proposition' titre=' propriétés de la transposée'>
+
+Soient $(\lambda \v \mu) \in \R^2$ et $(A \v B) \in \cM_{n,p}(\R)$.
+
+$\cd$ $\left(A^T \right)^T = A$
+
+$\cd$ $\left(\lambda .A + \mu B \right)^T = \lambda .A^T + \mu B^T$
+
+$\cd$ Soit $C \in \cM_{p,m}(\R)$. $(AC)^T = C^T A^T$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Première formule :** Notons $b_{i,j}$ les coefficients de $A^T$. $b_{i,j} = a_{j,i}$.
+
+Mais donc $\Big((A^T)^T\Big)_{i,j} = b_{j,i} = a_{i,j}$ d'où le résultat.
+
+
+<br/>
+
+$\cd$ **Deuxième formule :**
+
+$\left(\lambda .A + \mu B \right) = \left( \lambda a_{i,j} + \mu b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+
+Donc $\left(\lambda .A + \mu B \right)^T = \left( \lambda a_{j,i} + \mu b_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p} = \lambda . \left( a_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p}  + \mu  \left( b_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p} = \lambda .A^T + \mu B^T$
+
+
+<br/>
+
+$\cd$ **Troisième formule :**
+
+$(AC)^T$ a pour coefficients les $\somme{k=1}{n} a_{j,k}. c_{k,i} = \somme{k=1}{n} C^T_{i,k} . A^T_{k,j} = (CA)^T_{i,j}$ d'où le résultat. 
+
+</Hideable>
+
+
+<Item type='definition' titre='matrice symétrique'>
+
+On dit qu'une matrice de $\cM_n(\R)$ est symétrique si elle vérifie :
+
+$$
+A^T = A
+$$
+
+L'ensemble des matrices symétriques est noté $\cS_n(\R)$ (ou $S_n(\R)$).
+</Item>
+
+<Item type='definition' titre='matrice antisymétrique'>
+
+On dit qu'une matrice de $\cM_n(\R)$ est antisymétrique si elle vérifie :
+
+$$
+A^T = -A
+$$
+
+L'ensemble des matrices symétriques est noté $\cA_n(\R)$ (ou $A_n(\R)$).
+</Item>
+
+
+<Exercice titre=''>
+
+1\) Montrer que, si $A = \left( a_{i, j}\right)_{1 \leqslant i \v j \leqslant n } \in \cA_n(\R)$, alors : $\forall i \in \defentiersn \v a_{i,i} = 0 $.
+
+2\) Montrer que, si $M \in \cM_{n,p}(\R)$, alors $MM^T \in \cS_n(\R)$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+</Hideable>
+
+
+## Matrices et opérations élémentaires
+
+### Matrices élémentaires
+
+<Fil>
+
+Dans la suite, on utilisera la notation $(0)$ qui signifie que l'on rempli les coefficients de la matrice avec des $0$.
+
+Soit $A = \left( \begin{array}{c|c|c|c} C_1 & C_2 & \dotsm & C_n \end{array} \right) \in \cM_n(\R)$ où $C_1 \v C_2 \v \dotsm \v C_n$ sont les colonnes de $A$.
+
+$$
+\begin{matrix} & \begin{matrix}  & j &  \\   &\downarrow & \end{matrix} \\ A . E_{i,j} = & \Bigg( \begin{array}{c|c|c|c|c|c|c}
+   & & & & & & \\ 
+   (0) & \dotsm  & (0) & C_i &  (0) &  \dotsm & (0)  \\
+    & & & & & & 
+\end{array} \Bigg) \end{matrix} 
+$$
+
+<br/>
+
+
+Si $A = 
+\begin{pmatrix} L_1 \\[0.4em] \hline \\[-0.9em]
+L_2 \\[0.4em] \hline \\[-0.9em]
+\dotsm \\[0.4em] \hline \\[-0.9em]
+L_n 
+\end{pmatrix} \in \cM_n(\R)$ où $L_1 \v L_2 \v \dotsm \v L_n$ sont les lignes de $A$.
+
+$$
+\begin{matrix}  E_{i,j} . A = &  
+\begin{pmatrix}
+ (0 & \dotsm & 0) \\[0.4em] \hline \\[-0.9em]
+ & \dotsm & \\ \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0)  \\[0.4em] \hline \\[-0.9em] & & \\[-0.9em]
+ & L_j & \\[0.4em] \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0) \\[0.4em] \hline \\[-0.9em]
+ & \dotsm & \\ \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0) \\[-0.9em] & & 
+\end{pmatrix} & \begin{matrix}  \\ \leftarrow i \\ \\ \end{matrix}
+ \end{matrix} 
+$$
+
+Ceci est donc l'écriture sans la notation $(0)$.
+
+</Fil>
+
+<Item type='proposition' titre='produit de deux matrices élémentaires'>
+
+Soient $n \in \N^*$ et $1 \leqslant i \v j \v k \v l\leqslant n$.
+
+Dans $\cM_n(\R)$, on a :
+
+$$
+E_{i,j} . E_{k,l} = \delta_j^k E_{i,l}
+$$
+
+Le résultat est analogue pour des matrices rectangulaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+### Matrices diagonales et matrice identité
+
+<Item type='definition' titre='matrice diagonale'>
+
+On appelle matrice diagonale une matrice $A \in \cM_n(\R)$ telle qu'il existe $\lambda_1 \v \dotsm \v \lambda_n$ tels que :
+
+$$
+A = 
+\begin{pmatrix} 
+    \lambda_1 & 0 & \dotsm & 0 \\
+    0 & \lambda_2 & \ddots & \vdots \\
+    \vdots & \ddots & \ddots & 0 \\
+    0 & \dotsm & 0 & \lambda_n \\
+\end{pmatrix}
+$$
+
+On note $A = \diag(\lambda_1 \v \dotsm \v \lambda_n)$
+</Item>
+
+
+<Item type='defprop' titre=''>
+
+La matrice identtité de $\cM_n(\R)$ est la matrice :
+
+$$
+I_n = \diag(1 \v \dotsm \v 1)
+$$
+
+<br/>
+
+Pour toute matrice $A \in \cM_{n,p}(\R) \v I_n . A = A$
+</Item>
+
+
+<Exercice titre=''>
+
+
+Déterminer l'ensemble des matrices de $\cM_n(\R)$ qui commutent avec toutes les matrices de $\cM_n(\R)$.
+</Exercice>
+
+### Systèmes linéaires et matrices
+
+<Item type='proposition' titre='écriture matricielle'>
+
+Soit $n \in \N$. Soient $x_1 \v \dotsm x_n$ des réels, $a_{1, 1} \v \dotsm a_{1, n} \v a_{2, 1} \v \dotsm \v a_{2, n} \v \dotsm \v a_{n, n}$ et $b_1 \v \dotsm \v b_n$ des réels.
+
+On considère le système $S$ suivant :
+
+$$
+S : \begin{cases}
+    a_{1,1}x_1 + \dotsm + a_{1,n} x_n = b_1
+    \\
+    \dotsm
+    \\
+    a_{n,1}x_n + \dotsm + a_{n,n} x_n = b_n
+\end{cases}
+$$
+
+ainsi que $A = \left(  a_{i,j} \right)_{1 \leqslant i \v j \leqslant n } \v X  = \begin{pmatrix} x_1 \\ \vdots \\ x_n \end{pmatrix} \in \cM_{n,1}(\R)$ et $B  = \begin{pmatrix} b_1 \\ \vdots \\ b_n \end{pmatrix} \in \cM_{n,1}(\R)$
+
+<br/>
+
+$X$ est solution de $S$ si et seulement si $AX = B$.
+
+On dit que $AX = B$ est un système linéaire. On appelle $AX =  \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$ le système linéaire homogène associé.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+
+<Item type='proposition' titre='solutions particulières et homogènes'>
+
+Soient $X_0$ une solution particulière du système $AX = B$ et $E$ l'ensemble des solutions du système homogène associé $AX =  \begin{pmatrix} 0 \\ \vdots \\ 0 \end{pmatrix}$.
+
+<br/>
+
+L'ensemble des solutions du système $AX = B$ est $\{ X_0 + X \mid X \in E\}$
+</Item>
+
+<Remarque titre=''>
+
+On remarque la similarité très forte avec les équations différentielles qui vient de l'aspect linéaire et des bonnes propriétés de l'addition et du produit par un scalaire dans les fonctions et ceux de matrices.
+</Remarque>
+
+
+<Fil>
+
+**Interprétation matricielle du pivot de Gauss**
+
+On va simplement reproduire les opérations élémentaires sur les lignes à partir des matrices élémentaires et du produit matriciel.
+
+<br/>
+
+$\cd$ On note $\tau_{i,j}$ la matrice telle que $\tau_{i,j} . A$ résulte en la matrice $A$ mais dont les lignes $i$ et $j$ ont été échangées. 
+
+$$
+\begin{matrix}
+& \begin{array}{ccccccccccc} &  & i & & & &  & &  & j & & \\  & & \downarrow & & & &  & &  & \downarrow & & \end{array} & \\
+\tau_{i,j} = &
+\left( \begin{array}{ccccccccccc}
+1 & 0 & \dotsm &  &  &  &  &  &  & \dotsm & 0 \\
+0 & \ddots & \ddots &  &  &  &  &  &  &  & \vdots \\
+\vdots & \ddots  & 1 &  &  &  &  &  &  &  &  \\
+ &  &  & 0 & \dotsm & \dotsm & 0 & 1 &  &  &  \\
+ &  &  & \vdots & 1 &  &  & 0 &  &  &  \\
+ &  &  & \vdots &  & \ddots &  & \vdots &  &  &  \\
+ &  &  & 0 &  &  & 1 & \vdots &  &  &  \\
+ &  &  & 1 & 0 & \dotsm & \dotsm & 0 &  &  &  \\
+ &  &  &  &  &  &  &  & 1  &  \ddots & \vdots \\
+\vdots &  &  &  &  &  &  &  & \ddots & \ddots & 0 \\
+0 & \dotsm &  &  &  &  &  &  & \dotsm & 0 & 1 
+\end{array} \right) &
+\begin{matrix} \\ \\ \leftarrow i \\ \\ \\ \\ \\ \\ \leftarrow j \\ \\ \\ \end{matrix}
+\end{matrix}
+$$
+
+<br/>
+
+En particulier, $\tau_{i,j} = E_{i,j} + E_{j,i} + \somme{k \notin \{ i \v j\}}{} E_{k,k}$
+
+<br/>
+
+$\cd$ On note $T_{i,j}(\lambda)$ la matrice telle que $T_{i,j}(\lambda) . A$ résulte en la matrice $A$ ayant subi l'opération $L_i = L_i + \lambda L_j$.
+
+On a : 
+
+$$
+\begin{matrix}
+& \begin{array}{ccccccccccc} &  & & & & &  & &  & j & & & \\  & & & & & &  & &  & \downarrow & & \end{array} & \\
+T_{i,j} = & \begin{pmatrix}
+1 & 0 & \dotsm &  &  &  &  &  &  \dotsm & 0 \\
+0 & \ddots & \ddots &  &  &  &  &  &  &  \vdots \\
+\vdots & \ddots  & 1 & 0 & \dotsm & 0 & \lambda & 0 & \dotsm &  0 \\
+& & & 1 & 0& \dotsm &  &  & \dotsm &  0 \\
+& & & & \ddots & \ddots &  &  &  &   \\
+& & & & & & & & & \\
+ &  &  &  &  &  &  &  &   \ddots & \vdots \\
+\vdots &  &  &  &  &  &  &  \ddots & \ddots & 0 \\
+0 & \dotsm &  &  &  &  &  &  \dotsm & 0 & 1 
+\end{pmatrix} 
+&
+\begin{matrix} 
+\\ \\ \\ \leftarrow i \\ \\ \\ \\ \\ \\ \\ \\ \end{matrix}
+\end{matrix}
+$$
+
+<br/>
+
+En particulier, $T_{i,j}(\lambda) = I_n + \lambda E_{i,j}$
+
+<br/>
+
+Enfin, il reste l'opération $L_i \leftarrow \alpha . L_i$ qui s'obtient par le produit (à gauche) par :
+
+$$
+
+\begin{matrix}
+& \begin{matrix}
+& & & i & & & \\ & & & \downarrow & & & 
+\end{matrix} & \\
+D_i(\alpha) = &
+\begin{pmatrix} 
+1 & 0 & \dotsm & & & \dotsm & 0 \\
+0 & \ddots & \ddots & & & & \vdots \\
+\vdots & \ddots & 1 & & & & \\
+ & &  & \alpha & & & \\
+ & &  &  & 1 & \ddots & \vdots \\
+\vdots & &  &  & \ddots & \ddots & 0 \\
+0 & \dotsm &  &  & \dotsm & 0 & 1 \\
+\end{pmatrix}
+& 
+\begin{matrix}
+\\ \\ \\ \leftarrow i \\ \\ \\ \\
+\end{matrix}
+\end{matrix}
+$$
+</Fil>
+
+<Hideable type='exemple' titre=''>
+
+Reprenons le premier exemple de système en le traitant sous forme matricielle :
+
+$$
+S : 
+\begin{cases}
+    x + z = 1
+    \\
+    y + 2z = 4 + x
+    \\
+    x = y + z
+\end{cases}
+$$
+
+<br/>
+
+On pose donc $A = \begin{pmatrix} 1 & 0 & 1 \\ -1 & 1 & 2 \\ 1 & -1 & -1\end{pmatrix}$. 
+
+On cherche à résoudre le système homogène $AX = 0_{\cM_{n,1}(\R)}$, procédons en multipliant à gauche par des matrices $T_{i,j}(\lambda)$ et $\tau_{i,j}$.
+
+<br/>
+
+On procède comme sur un système :
+
+<br/>
+
+L'opération $L_3 \leftarrow L_3 + L_2$ donne: $T_{3,2}(1) . A = \begin{pmatrix} 1 & 0 & 1 \\ -1 & 2 & 0 \\ 0 & 0 & 1\end{pmatrix}$
+
+<br/>
+
+L'opération $L_2 \leftarrow L_2 + L_1$ donne : $T_{2,1}(1) . T_{3,2}(1) . A = \begin{pmatrix}  1 & 0 & 1 \\ 0 & 1 & 3\\ 0 & 0 & 1\end{pmatrix}$
+
+<br/>
+
+L'opération $L_2 \leftarrow L_2 - 3.L_3$  donne : $T_{2,3}(-3) . T_{2,1}(1) . T_{3,2}(1) . A = \begin{pmatrix}  1 & 0 & 1 \\ 0 & 1 & 0\\ 0 & 0 & 1\end{pmatrix}$
+ 
+ <br/>
+
+L'opération $L_1 \leftarrow L_1 - L_3$  donne : $T_{1,3}(-1) . T_{2,3}(-3) . T_{2,1}(1) . T_{3,2}(1) . A = \begin{pmatrix}  1 & 0 & 0 \\ 0 & 1 & 0\\ 0 & 0 & 1\end{pmatrix}$
+
+<br/>
+
+Mais, si $X$ est solution du système homogène, $\Big(T_{1,3}(-1) . T_{2,3}(-3) . T_{2,1}(1) . T_{3,2}(1) \Big). AX  = \Big(T_{1,3}(-1) . T_{2,3}(-3) . T_{2,1}(1) . T_{3,2}(1) \Big). 0_{\cM_{n,1}(\R)} = 0_{\cM_{n,1}(\R)}$
+
+D'après nos calculs précédents, $\Big(T_{1,3}(-1) . T_{2,3}(-3) . T_{2,1}(1) . T_{3,2}(1) \Big). A = I_n$ 
+
+Donc $I_n .X = X = 0_{\cM_{n,1}(\R)}$, ce qui nous donne l'ensemble des solutions homogènes : $\{0_{\cM_{n,1}(\R)} \}$
+</Hideable>
+
+
+
+## Anneau des matrices
+
+### Anneau matriciel et conséquences
+
+<Item type='proposition' titre='anneau des matrices'>
+
+Soit $n \in \N^* \v \big( \cM_n(\R) \v + \v \times\big) $ est un anneau dont :
+
+$\cd$ le zéro est la matrice $0_{\cM_n(\R)} = \begin{pmatrix} 0 & \dotsm & 0 \\ \vdots & \ddots & \vdots \\ 0 & \dotsm & 0\end{pmatrix}$.
+
+$\cd$ l'unité est $I_n$
+
+<br/>
+
+&#9888; Attention, il n'est ni commutatif, ni intègre si $n \geqslant 2$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+
+<Item type='proposition' titre='binôme de Newton (ou formule du binôme)'>
+
+Soient $A$ et $B$ deux éléments de $\cM_n(\R)$ qui commutent ($AB = BA$) ainsi que $n \in \N^*$. 
+
+On a : 
+
+$$
+(A + B)^n = \somme{k = 0}{n} \binomiale{k}{n} A^k B^{n-k}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+La démonstration est analogue à celle déjà vue sur $\R$.
+</Hideable>
+
+
+<Item type='definition' titre='matrice nimpotante'>
+
+Soit $N \in \cM_n(\R)$.
+
+On dit que $N$ est nilpotante s'il existe $k \in \N$ tel que $N^k = O_{\cM_n(\R)}$.
+
+<br/>
+
+Si $N$ est nilpotante, on appelle indice de nilpotence de $N$ le plus petit $k$ tel que $N^k = O_{\cM_n(\R)}$
+</Item>
+
+
+
+### Groupe des matrices inversibles : le groupe linéaire
+
+<Item type='definition' titre='matrice inversible'>
+
+Soient $n \in \N^*$ et $A \in \cM_n(\R)$.
+
+On dit que $A$ est inversible s'il existe $B \in \cM_n(\R)$ telle que $AB = BA = I_n$.
+
+On note l'inverse de $A$ ainsi : $A^{-1}$.
+</Item>
+
+
+<Item type='proposition' titre="unicité des inverses" tag="démontré plus tard">
+Soient $n \in \N^*$ et $A \in \cM_n(\R)$.
+
+$A$ est inversible $\ssi \exists B \in \cM_n(\R) \mid AB = I_n \ssi \exists C \in \cM_n(\R) \mid CA = I_n$
+
+De plus, $B = C$
+</Item>
+
+
+<Item type='definition' titre='groupe linéaire'>
+
+Soit $n \in \N^*$.
+
+L'ensemble $\GL_n(\R)$ est l'ensemble des matrices possédant un inverse pour le produit matriciel. On l'appelle le groupe linéaire.
+
+</Item>
+
+<Remarque titre=''>
+
+Comme son nom l'indique, $\big( \GL_n(\R) \v \times\big)$ est un groupe
+</Remarque>
+
+<Item type='proposition' titre='propriétés des matrices inversibles'>
+
+Soient $(A\v B) \in \GL_n(\R)$.
+
+$\cd$ $\left( A^{-1} \right) ^{-1} = A$
+
+$\cd$ $(A^T)^{-1} = \left(A^{-1}\right)^T$
+
+$\cd$ $\left(AB\right)^{-1} = B^{-1}A^{-1}$
+</Item>
+
+<Item type='proposition' titre='produit par une matrice élémentaire'>
+
+Soient $A \in \GL_n(\R)$, $1 \leqslant i \v j \leqslant n$ et $\lambda \in \R^*$.
+
+$E_{i,j} . A \v T_{i,j}(\lambda). A$ et $\tau_{i,j} . A$ sont toutes les trois inversibles.
+
+Le résultat est analogue quand on multiplie à droite par des matrices élémentaires ou que l'on effectue des opérations élémentaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+</Hideable>
+
+
+<Item type='methode' titre='inverser une matrice'>
+
+On va utiliser les opérations élémentaires et le pivor de Gauss pour créer un algorithme d'inversion de matrice (si elle est inversible).
+
+Montrons comment faire sur la matrice suivante : $A = \begin{pmatrix} 1 & 0 & 1 \\ -1 & 1 & 2 \\ 1 & -1 & -1\end{pmatrix}$
+
+
+Pour commencer, on place notre matrice à côté de l'identité. Ensuite, on effectue le pivot de Gauss (ou autres opérations pour transformer la matrice $A$ en l'identité) sur notre matrice et on applique les mêmes opérations sur les lignes à l'identité.
+
+$$
+\begin{matrix}
+\begin{pmatrix} 1 & 0 & 1 \\ -1 & 1 & 2 \\ 1 & -1 & -1\end{pmatrix} & 
+\quad &
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}
+\\ & & \\
+\begin{pmatrix} 2 & -1 & 0 \\ 1 & -1 & 0 \\ 1 & -1 & -1\end{pmatrix} & 
+L_1 \leftarrow L_1 + L_3  \; \text{ et } \;  L_2 \leftarrow L_2 + 2.L_3 &
+\begin{pmatrix} 1 & 0 & 1 \\ 0 & 1 & 2 \\ 0 & 0 & 1\end{pmatrix}
+\\ & & \\
+\begin{pmatrix} 1 & 0 & 0 \\ 1 & -1 & 0 \\ 1 & -1 & -1\end{pmatrix} & 
+L_1 \leftarrow L_1 - L_2 &
+\begin{pmatrix} 1 & -1 & -1 \\ 0 & 1 & 2 \\ 0 & 0 & 1\end{pmatrix}
+\\ & & \\
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & -1 & 0 \\ 0 & -1 & -1\end{pmatrix} & 
+L_2 \leftarrow L_2 - L_1 \; \text{ et } \; L_3 \leftarrow L_3 - L_1&
+\begin{pmatrix} 1 & -1 & -1 \\ -1 & 2 & 3 \\ -1 & 1 & 2\end{pmatrix}
+\\ & & \\
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\0 & -1 & -1\end{pmatrix} & 
+L_2 \leftarrow -L_2 &
+\begin{pmatrix} 1 & -1 & -1 \\ 1 & -2 & -3 \\  -1 & 1 & 2\end{pmatrix}
+\\ & & \\
+\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix} & 
+L_3 \leftarrow -L_3 - L_2 &
+\begin{pmatrix} 1 & -1 & -1 \\ 1 & -2 & -3 \\  0 & 1 & 1\end{pmatrix}
+\end{matrix}
+$$
+
+<br/>
+
+Une fois que l'on trouve l'identité à gauche, la matrice à droite est $A^{-1}$
+
+<br/>
+
+Ainsi, on a : $A^{-1} = \begin{pmatrix} 1 & -1 & -1 \\ 1 & -2 & -3 \\  0 & 1 & 1\end{pmatrix}$
+</Item>
+
+
+### Calcul matriciel par bloc
+
+<Item type='proposition' titre=''>
+
+Soient $n_1$ et $n_2$ deux entiers naturels non nuls ainsi que $(A_1\v A_2) \in \cM_{n_1, n_1}(\R) \v (B_1 \v B_2)\in \cM_{n_1, n_2}(\R) \v (C_1 \v C_2) \in \cM_{n_2, n_1}(\R) \v (D_1 \v D_2) \in \cM_{n_2, n_2}(\R) $.
+
+On note $M = \begin{pmatrix} A_1 & B_1 \\ C_1 & D_1\end{pmatrix}$ la matrice formée à partir de $A_1 \v B_1 \v C_1$ et $D_1$. On note également $N = \begin{pmatrix} A_2 & B_2 \\ C_2 & D_2\end{pmatrix}$ la matrice formée à partir de $A_2 \v B_2 \v C_2$ et $D_2$.
+
+<br/>
+
+$$
+MN =  \begin{pmatrix} A_1A_2 + B_1C_2 & & A_1B_2 + B_1 D_2 \\[1em] C_1A_2 + D_1 C_2 & & C_1 B_2 + D_1D_2\end{pmatrix}
+$$
+
+
+</Item>
+
+{/*
+    - Décomposition unique mat sym et anti sym
+*/}
