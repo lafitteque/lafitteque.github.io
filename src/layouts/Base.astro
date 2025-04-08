@@ -10,8 +10,17 @@ import SearchBar from "../components/SearchBar.astro";
 import HamburgerButton from "../components/HamburgerButton.astro";
 import Footer from "../components/Footer.astro";
 
-import coursData1 from "../data/mpsi_1.json"; // Importation du fichier JSON
-import coursData2 from "../data/mpsi_2.json"; // Importation du fichier JSON
+var filiere = "";
+
+if (Astro.url.pathname.length > 2) {
+  filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
+}
+
+if (filiere === ""){ 
+  filiere = "mpsi"
+}
+console.log(filiere);
+import coursData from "../data/liens_cours.json";
 
 type Props = {
   title: string;
@@ -96,9 +105,9 @@ const { headings, title } = Astro.props;
           </div>
           <div class="border-l-10 black leading-10 collapse-content text-lg">
             {
-              coursData1.map((cours) => (
+              coursData[`${filiere}1`].map((cours) => (
                 <div>
-                  <a class="px-2 block decoration-none z-20" href={cours.url}>
+                  <a class="px-2 block decoration-none z-20" href={`/${filiere}${cours.url}`}>
                     {cours.titre}
                   </a>
                 </div>
@@ -116,9 +125,9 @@ const { headings, title } = Astro.props;
           </div>
           <div class="border-l-10 black leading-10 collapse-content text-lg">
             {
-              coursData2.map((cours) => (
+              coursData[`${filiere}2`].map((cours) => (
                 <div>
-                  <a class="px-2 block decoration-none z-20" href={cours.url}>
+                  <a class="px-2 block decoration-none z-20" href={`/${filiere}${cours.url}`}>
                     {cours.titre}
                   </a>
                 </div>
