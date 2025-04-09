@@ -7,25 +7,38 @@ import Filiere from "../components/Filiere.astro";
 import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
-import HamburgerButton from "../components/HamburgerButton.astro";
 import Footer from "../components/Footer.astro";
 
-import coursData from "../data/cours.json"; // Importation du fichier JSON
+var filiere = "";
+
+if (Astro.url.pathname.length > 2) {
+  filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
+}
+
+if (filiere === "") {
+  filiere = "mpsi";
+}
+console.log(filiere);
+import coursData from "../data/liens_cours.json";
 
 type Props = {
   title: string;
-}
+};
 
-const {headings, title} = Astro.props;
+const { headings, title } = Astro.props;
 ---
 
-<!-- Amélioration : Sidebar ne doit pas empecher le scroll -->
-<!doctype html>
+<!-- Amélioration : Sidebar ne doit pas empecher le scroll --><!doctype html>
 <html lang="fr" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+    
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
+    ></script>
     <script src="https://www.geogebra.org/apps/deployggb.js"></script>
     <title>Suplémaths - Les maths du supérieur</title>
     <link
@@ -36,107 +49,160 @@ const {headings, title} = Astro.props;
     />
   </head>
   <body>
-    <div class="drawer">
-      <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content">
-  
-        
-        <div class="fixed navbar h-[8%] bg-tertiary z-10">
-          <div class="navbar-start">
-            <HamburgerButton />
+    <div class="navbar bg-tertiary z-10">
+      <div class="navbar-star0">
+        <!-- Début NavBar -->
+
+        <label class="btn btn-circle swap swap-rotate w-12 h-12 ">
+          <input type="checkbox" id="sidebarButton" />
+
+          <svg
+            class="swap-off fill-current absolute "
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+            ></path>
+          </svg>
+
+          <svg
+            class="swap-on fill-current absolute "
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <polygon
+              points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+            ></polygon>
+          </svg>
+        </label>
+      </div>
+      <div class="navbar-center lg:flex">
+        <!-- Milieu NavBar -->
+        <Filiere />
+        <SearchBar/>
+      </div>
+      <div class="navbar-end lg:flex"></div>
+      <!-- Fin NavBar -->
+      <Options />
+    </div>
+    <div class="max-w-[1000px] mx-auto max-h-[91vh] overflow-y-auto">
+      <Katex />
+      <slot />
+      <Footer />
+    </div>
+    <div class="sidebar">
+      <ul class="text-base-content w-80 bg-primary">
+        <!-- Sidebar content here -->
+        <div tabindex="0" class="collapse collapse-arrow w-auto">
+          <input type="checkbox" />
+          <div
+            class="collapse-title bg-secondary font-bold cursor-pointer text-lg rounded-none"
+          >
+            Semestre 1
           </div>
-          <div class="navbar-center lg:flex">
-            <!-- <Filiere />
-            <SearchBar /> -->
+          <div class="border-l-10 black leading-10 collapse-content text-lg">
+            {
+              coursData[`${filiere}1`].map((cours) => (
+                <div>
+                  <a
+                    class="px-2 block decoration-none z-20"
+                    href={`/${filiere}${cours.url}`}
+                  >
+                    {cours.titre}
+                  </a>
+                </div>
+              ))
+            }
           </div>
-          <Options />
         </div>
-        
-        <aside class="sticky top-20">
-          <div class="">
-            <!-- <LiveTableOfContents headings={headings}/> -->
+
+        <div tabindex="0" class="collapse collapse-arrow w-auto">
+          <input type="checkbox" />
+          <div
+            class="collapse-title bg-secondary font-bold cursor-pointer text-lg rounded-none"
+          >
+            Semestre 2
           </div>
-        </aside>
-
-        <div class="main-content-wrapper" id="wrapper">
-          <main class="main-content flex flex-col gap-1">
-            <Katex />
-            </br>
-            </br>
-            <slot />
-          </br>
-          </br>
-          <Footer />
-          </main>
-        </div> 
-
-      </div>
-      <div class="drawer-side">
-        <ul class="pl-2 text-base-content h-[92%] w-80 bg-primary">
-          <!-- Sidebar content here -->
-          {coursData.map((cours) => <div><a class="block decoration-none" href={cours.url}>{cours.titre}</a></div>)}
-        </ul>
-      </div>
-    </div>  
+          <div class="border-l-10 black leading-10 collapse-content text-lg">
+            {
+              coursData[`${filiere}2`].map((cours) => (
+                <div>
+                  <a
+                    class="px-2 block decoration-none z-20"
+                    href={`/${filiere}${cours.url}`}
+                  >
+                    {cours.titre}
+                  </a>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </ul>
+    </div>
   </body>
-  <script>
+</html>
+<script>
   var ks = document.querySelectorAll(".katex-display");
   ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
-  </script>
-  <style>
 
-.drawer-side{
-  pointer-events: none;
-  position: fixed;
-  top: 8%;
-  align-items: flex-start;
-  justify-items: start;
-  padding: 0;
-  width: 300px;
-  position: fixed;
-  height: 100%;
-  transition: left 0.5s ease;
-}
-    /* Active/current link */
-    a.active {
-      background-color: #04aa6d;
-      color: white;
+  var tempSidebar = document.querySelectorAll(".sidebar");
+  var sidebar = tempSidebar[0];
+
+  var hamburgerButton = document.getElementById("sidebarButton");
+  hamburgerButton.addEventListener("change", (event) => {
+    if (event.currentTarget.checked) {
+      sidebar.classList.add("active");
+    } else {
+      sidebar.classList.remove("active");
     }
+  });
+</script>
+<style>
+  .sidebar {
+    position: fixed;
+    top: 8.5%;
+    align-items: flex-start;
+    justify-items: start;
+    padding: 0;
+    width: 300px;
+    height: 100%;
+    transition: left 0.5s ease;
+    left: -350px;
+  }
+  /* Active/current link */
+  a.active {
+    background-color: #04aa6d;
+    color: white;
+  }
 
-    /* Links on mouse-over */
-    a:hover:not(.active) {
-      background-color: #555;
-      color: white;
-    }
+  /* Links on mouse-over */
+  a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
 
-    .sidebar.active {
-      left: 0px;
-    }
+  .sidebar.active {
+    left: 0px;
+  }
 
-    /* Icône burger */
-    .burger-icon span {
-      display: block;
-      width: 35px;
-      height: 5px;
-      background-color: black;
-      margin: 6px 0;
-    }
+  /* Icône burger */
+  .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
 
+  @media only (min-width: 600px) {
     .main-content-wrapper {
-      padding: 1px 16px;
-      height: 100%;
+      margin-left: 0px;
     }
-
-
-    .main-content {
-      margin: auto;
-      max-width: 1100px;
-    }
-
-    @media only (min-width: 600px) {
-      .main-content-wrapper {
-        margin-left: 0px;
-      }
-    }
-  </style>
-</html>
+  }
+</style>

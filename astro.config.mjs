@@ -102,6 +102,11 @@ const macros = {
 
 export default defineConfig({
   vite: {
+    resolve: {
+      alias: {
+        '@src': '/src',
+      }
+    },
     server: {
       mimeTypes: {
         'application/x-ipynb+json': ['.ipynb']
@@ -128,5 +133,5 @@ export default defineConfig({
         }
       ]
     ]
-  }), solidJs(), tailwindcss(), tailwind()],
+  }), solidJs(), tailwind()],
 });

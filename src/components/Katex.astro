@@ -2,30 +2,7 @@
 import katex from 'katex';
 
 // Configuration des macros globales
-const macros = {
-  "\\N": "\\mathbb{N}",
-  "\\Z": "\\mathbb{Z}",
-  "\\D": "\\mathbb{D}",
-  "\\Q": "\\mathbb{Q}",
-  "\\R": "\\mathbb{R}",
-  "\\C": "\\mathbb{C}",
-  "\\K": "\\mathbb{K}",
-  "\\L": "\\mathbb{L}",
-
-  "\\cA": "\\mathscr{A}",
-  "\\cB": "\\mathscr{B}",
-  "\\cC": "\\mathscr{C}",
-  "\\cD": "\\mathscr{D}",
-  "\\cE": "\\mathscr{E}",
-  "\\cF": "\\mathscr{F}",
-  "\\cM": "\\mathscr{M}",
-  "\\cN": "\\mathscr{N}",
-  "\\cP": "\\mathscr{P}",
-  "\\cT": "\\mathscr{T}",
-
-  "\\ssi": "\\Leftrightarrow",
-  "\\vect": "\\mathbf{#1}", // Exemple de macro avec un argument
-};
+const macros = {};
 
 // Récupération du contenu du slot par défaut
 const formula = await Astro.slots.render('default') || '';

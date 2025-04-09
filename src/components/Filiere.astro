@@ -1,13 +1,27 @@
 ---
-const filieres = ["MPSI", "MP", "PCSI", "PC", "PTSI", "PT"];
+const filieres = ["MPSI"]; //, "MP", "PCSI", "PC", "PTSI", "PT"];
 import "../styles/global.css"; // Importe le CSS global
+var urlFiliere = "";
+
+if (Astro.url.pathname.length > 2) {
+  urlFiliere = Astro.url.pathname.slice(1, 20).split("/")[0];
+}
 ---
+
 <ul class="menu menu-horizontal px-1">
-  <li class=" before:content-[]">
+  <li
+    class="before:content-[] rounded-md border-2 border-secondary"
+  >
     <details>
-      <summary>Filière</summary>
-      <ul class="p-2">
-        {filieres.map(filiere => <li class=" before:content-[]" ><a href={`../pages/${filiere}`}>{filiere.toUpperCase()}</a></li>)}
+      <summary class="bg-secondary hover:bg-tertiary">Maths de CPGE : {urlFiliere.toUpperCase()}</summary>
+      <ul class="bg-secondary pt-0">
+        {
+          filieres.map((filiere) => (
+            <li class=" before:content-[]">
+              <a href={`/${filiere.toLowerCase()}`}>{filiere.toUpperCase()}</a>
+            </li>
+          ))
+        }
       </ul>
     </details>
   </li>

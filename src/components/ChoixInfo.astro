@@ -1,0 +1,30 @@
+---
+const choix = ["IPT", "Option_Info"];
+import "../styles/global.css"; // Importe le CSS global
+var urlFiliere = "";
+
+if (Astro.url.pathname.length > 2) {
+  urlFiliere = Astro.url.pathname.slice(1, 20).split("/")[0];
+}
+---
+
+<ul class="menu menu-horizontal px-1">
+  <li class="before:content-[] rounded-md border-2 border-secondary">
+    <details>
+      <summary class="bg-secondary hover:bg-tertiary"
+        >Informatique : {urlFiliere.toUpperCase()}</summary
+      >
+      <ul class="bg-secondary pt-0">
+        {
+          choix.map((c) => (
+            <li class=" before:content-[]">
+              <a href={`/${c.toLowerCase()}`}>
+                {c.toUpperCase().replace("_", " ")}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+  </li>
+</ul>
