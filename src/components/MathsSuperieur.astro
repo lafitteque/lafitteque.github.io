@@ -18,7 +18,12 @@ if (Astro.url.pathname.length > 2) {
                 {
                     choix.map((c) => (
                         <li class=" before:content-[]">
-                            <a href={`/${c.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")}`}>
+                            <a
+                                href={`/${c
+                                    .toLowerCase()
+                                    .normalize("NFD")
+                                    .replace(/[\u0300-\u036f]/g, "")}`}
+                            >
                                 {c.toUpperCase()}
                             </a>
                         </li>

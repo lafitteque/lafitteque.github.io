@@ -18,7 +18,6 @@ if (Astro.url.pathname.length > 2) {
 if (filiere === "") {
   filiere = "mpsi";
 }
-console.log(filiere);
 import coursData from "../data/liens_cours.json";
 
 type Props = {
@@ -33,8 +32,8 @@ const { headings, title } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
@@ -53,11 +52,11 @@ const { headings, title } = Astro.props;
       <div class="navbar-star0">
         <!-- Début NavBar -->
 
-        <label class="btn btn-circle swap swap-rotate w-12 h-12 ">
+        <label class="btn btn-circle swap swap-rotate w-12 h-12">
           <input type="checkbox" id="sidebarButton" />
 
           <svg
-            class="swap-off fill-current absolute "
+            class="swap-off fill-current absolute"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
@@ -69,7 +68,7 @@ const { headings, title } = Astro.props;
           </svg>
 
           <svg
-            class="swap-on fill-current absolute "
+            class="swap-on fill-current absolute"
             xmlns="http://www.w3.org/2000/svg"
             width="32"
             height="32"
@@ -84,7 +83,7 @@ const { headings, title } = Astro.props;
       <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
         <Filiere />
-        <SearchBar/>
+        <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>
       <!-- Fin NavBar -->

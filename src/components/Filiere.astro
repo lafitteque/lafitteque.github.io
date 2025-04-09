@@ -9,11 +9,11 @@ if (Astro.url.pathname.length > 2) {
 ---
 
 <ul class="menu menu-horizontal px-1">
-  <li
-    class="before:content-[] rounded-md border-2 border-secondary"
-  >
+  <li class="before:content-[] rounded-md border-2 border-secondary">
     <details>
-      <summary class="bg-secondary hover:bg-tertiary">Maths de CPGE : {urlFiliere.toUpperCase()}</summary>
+      <summary class="bg-secondary hover:bg-tertiary"
+        >Maths de CPGE : {urlFiliere.toUpperCase()}</summary
+      >
       <ul class="bg-secondary pt-0">
         {
           filieres.map((filiere) => (

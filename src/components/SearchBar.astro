@@ -1,16 +1,8 @@
 ---
 import "../styles/global.css"; // Importe le CSS global
 
-import pagefind from 'pagefind';
-
-pagefind.init({
-  searchInput: '#search-input', // Sélecteur de la barre de recherche
-  resultsContainer: '#results-container', // Conteneur pour afficher les résultats
-  contentSelector: 'h1, h2, h3, .searchable', // Cibler les titres et éléments avec la classe .searchable
-});
-
 ---
-<div id="search"></div>
+<div class="float-start" id="search"></div>
 <script>
     window.addEventListener('DOMContentLoaded', (event) => {
         new PagefindUI({ element: "#search", showSubResults: true });

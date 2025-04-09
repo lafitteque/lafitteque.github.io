@@ -15,7 +15,6 @@ type Props = {
 };
 
 const { headings, title } = Astro.props;
-
 ---
 
 <!-- Amélioration : Sidebar ne doit pas empecher le scroll --><!doctype html>
@@ -36,15 +35,14 @@ const { headings, title } = Astro.props;
   </head>
   <body>
     <div class="navbar bg-tertiary z-10">
-      <div class="navbar-star0  mx-2">
+      <div class="navbar-star0 mx-2">
         <!-- Début NavBar -->
-        
       </div>
       <div class="navbar-center lg:flex mx-2">
         <!-- Milieu NavBar -->
-        <ChoixInfo/>
-        <Filiere/>
-        <MathsSuperieur/>
+        <!-- <ChoixInfo/> -->
+        <Filiere />
+        <!-- <MathsSuperieur/> -->
       </div>
       <div class="navbar-end lg:flex"></div>
       <!-- Fin NavBar -->
