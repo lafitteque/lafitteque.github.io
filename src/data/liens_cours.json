@@ -102,13 +102,10 @@
       ]
     }
   ],
-  "pcsi1": [
-    {
-      "titre": "Chapitre 1 - Logique et ensembles",
-      "url": "/pcsi_logique",
-      "tags": [
-        "autre"
-      ]
-    }
-  ]
+  "mp1": [],
+  "mp2": [],
+  "pcsi1": [],
+  "pcsi2": [],
+  "psi1": [],
+  "psi2": []
 }

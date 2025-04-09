@@ -11,9 +11,7 @@
   "dependencies": {
     "@astrojs/mdx": "^4.0.7",
     "@astrojs/solid-js": "^5.0.4",
-    "@astrojs/tailwind": "^5.1.5",
     "@nanostores/preact": "^0.5.2",
-    "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.1.9",
     "astro-remote": "^0.3.3",
     "katex": "^0.16.18",
@@ -21,11 +19,12 @@
     "postcss": "^8.5.1",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0",
-    "solid-js": "^1.9.4",
-    "tailwindcss": "^3.4.17"
+    "solid-js": "^1.9.4"
   },
   "devDependencies": {
+    "@astrojs/tailwind": "^6.0.2",
     "autoprefixer": "^9.8.8",
-    "daisyui": "^4.12.23"
+    "daisyui": "^5.0.17",
+    "tailwindcss": "^3.4.17"
   }
 }

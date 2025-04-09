@@ -1,0 +1,116 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import "../styles/global.css"; // Importe le CSS global
+
+import Filiere from "../components/Filiere.astro";
+import Options from "../components/Options.astro";
+import Katex from "../components/Katex.astro";
+import SearchBar from "../components/SearchBar.astro";
+import ChoixInfo from "../components/ChoixInfo.astro";
+import MathsSuperieur from "../components/MathsSuperieur.astro";
+
+type Props = {
+  title: string;
+};
+
+const { headings, title } = Astro.props;
+---
+
+<!-- Amélioration : Sidebar ne doit pas empecher le scroll --><!doctype html>
+<html lang="fr" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
+    ></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <title>Suplémaths - Les maths du supérieur</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+      integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="navbar bg-tertiary z-10">
+      <div class="navbar-star0  mx-2">
+        <!-- Début NavBar -->
+        
+      </div>
+      <div class="navbar-center lg:flex mx-2">
+        <!-- Milieu NavBar -->
+        <ChoixInfo/>
+        <Filiere/>
+        <MathsSuperieur/>
+      </div>
+      <div class="navbar-end lg:flex"></div>
+      <!-- Fin NavBar -->
+      <Options />
+    </div>
+    <div class="max-w-[1000px] mx-auto max-h-[91vh] overflow-y-auto">
+      <Katex />
+      <slot />
+    </div>
+  </body>
+</html>
+<script>
+  var ks = document.querySelectorAll(".katex-display");
+  ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
+
+  var tempSidebar = document.querySelectorAll(".sidebar");
+  var sidebar = tempSidebar[0];
+
+  var hamburgerButton = document.getElementById("sidebarButton");
+  hamburgerButton.addEventListener("change", (event) => {
+    if (event.currentTarget.checked) {
+      sidebar.classList.add("active");
+    } else {
+      sidebar.classList.remove("active");
+    }
+  });
+</script>
+<style>
+  .sidebar {
+    position: fixed;
+    top: 8.5%;
+    align-items: flex-start;
+    justify-items: start;
+    padding: 0;
+    width: 300px;
+    height: 100%;
+    transition: left 0.5s ease;
+    left: -350px;
+  }
+  /* Active/current link */
+  a.active {
+    background-color: #04aa6d;
+    color: white;
+  }
+
+  /* Links on mouse-over */
+  a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+  .sidebar.active {
+    left: 0px;
+  }
+
+  /* Icône burger */
+  .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: black;
+    margin: 6px 0;
+  }
+
+  @media only (min-width: 600px) {
+    .main-content-wrapper {
+      margin-left: 0px;
+    }
+  }
+</style>
