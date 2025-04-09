@@ -5,7 +5,7 @@ import mdx from '@astrojs/mdx';
 import solidJs from '@astrojs/solid-js';
 
 import tailwind from "@astrojs/tailwind";
-//import tailwindcss from "@tailwindcss/vite";
+import tailwindcss from "@tailwindcss/vite";
 
 const macros = {
   "\\N": "\\mathbb{N}",
