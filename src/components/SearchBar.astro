@@ -1,10 +1,26 @@
 ---
 import "../styles/global.css"; // Importe le CSS global
-
 ---
-<div class="float-start" id="search"></div>
+
+<div class="float-startw-full" id="search"></div>
 <script>
-    window.addEventListener('DOMContentLoaded', (event) => {
+    const pagefind = await import("dist/pagefind/pagefind.js");
+
+    const search = await pagefind.search("static");
+    console.log(search);
+    pagefind.init();
+    window.addEventListener("DOMContentLoaded", (event) => {
         new PagefindUI({ element: "#search", showSubResults: true });
     });
+    
 </script>
+
+
+
+<!-- 
+<div class="float-startw-full" id="search"></div>
+<script>
+    window.addEventListener("DOMContentLoaded", (event) => {
+        new PagefindUI({ element: "#search", showSubResults: true });
+    });
+</script> -->

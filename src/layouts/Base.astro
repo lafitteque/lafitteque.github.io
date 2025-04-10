@@ -8,7 +8,6 @@ import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
 import Footer from "../components/Footer.astro";
-
 var filiere = "";
 
 if (Astro.url.pathname.length > 2) {
@@ -91,10 +90,10 @@ const { headings, title } = Astro.props;
     </div>
     <div class="max-w-[1000px] mx-auto max-h-[91vh] overflow-y-auto">
       <Katex />
-      <slot />
+      <slot data-pagefind-body />
       <Footer />
     </div>
-    <div class="sidebar">
+    <div class="sidebar" data-pagefind-ignore="all">
       <ul class="text-base-content w-80 bg-primary">
         <!-- Sidebar content here -->
         <div tabindex="0" class="collapse collapse-arrow w-auto">
@@ -147,9 +146,11 @@ const { headings, title } = Astro.props;
   </body>
 </html>
 <script>
+  // --- Restyle du css pour latex --- //
   var ks = document.querySelectorAll(".katex-display");
   ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
 
+  // --- Gestion de la sidebar --- //
   var tempSidebar = document.querySelectorAll(".sidebar");
   var sidebar = tempSidebar[0];
 
@@ -160,6 +161,13 @@ const { headings, title } = Astro.props;
     } else {
       sidebar.classList.remove("active");
     }
+  });
+
+  // --- Exclusion des titres, sous-titres, etc de l'indexation de recherche --- //
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("h1, h2, h3, h4").forEach((el) => {
+      el.setAttribute("data-pagefind-ignore", "all");
+    });
   });
 </script>
 <style>

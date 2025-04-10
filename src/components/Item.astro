@@ -48,9 +48,10 @@ const textValues = {
 };
 
 var filiere = "";
-
+var chapitre = ";";
 if (Astro.url.pathname.length > 2) {
   filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
+  chapitre = Astro.url.pathname.slice(1, 20).split("/")[1];
 }
 
 const tagweight = (tag == "admis") * 2 || 0;
@@ -61,13 +62,6 @@ const itemText = textValues[type];
 ---
 
 <!-- Amélioration : Ajouter espace auto-fill entre titre et tag -->
-<div data-pagefind-body style="display: none;" aria-hidden="true">
-  <div data-pagefind-meta="titre" content={titre}>{titre}</div>
-  <div data-pagefind-meta="type" content={type}>{type}</div>
-  <div data-pagefind-meta="filiere" content={filiere}>{filiere}</div>
-  <div data-pagefind-meta="searchDesc" content={searchDesc}>{searchDesc}</div>
-</div>
-
 <div
   class="item-container mt-2"
   style={`border: ${itemWidth}px solid ${borderColor};border-radius: 5px;border-top: none;border-right: none;border-bottom: none`}
@@ -80,7 +74,22 @@ const itemText = textValues[type];
     <div class="float-left">
       <span class="item-number text-base w-8 h-8 text-center rounded-full mr-2"
       ></span>
-      <strong>{itemText} : {titre}</strong>
+      <h5
+        class="font-bold"
+        data-pagefind-id=`${filiere}-${chapitre}--${type}-${titre}`
+        id=`${filiere}-${chapitre}--${type}-${titre}`
+        data-pagefind-meta="url"
+      >
+        {itemText} : {titre}
+      </h5>
+      <!-- <div data-pagefind-body style="display: none;" aria-hidden="true">
+        <div data-pagefind-meta="titre" content={titre}>{titre}</div>
+        <div data-pagefind-meta="type" content={type}>{type}</div>
+        <div data-pagefind-meta="filiere" content={filiere}>{filiere}</div>
+        <div data-pagefind-meta="searchDesc" content={searchDesc}>
+          {searchDesc}
+        </div>
+      </div> -->
     </div>
     <div
       class="float-right"
@@ -89,7 +98,10 @@ const itemText = textValues[type];
       {tag}
     </div>
   </div>
-  <div class="item-body p-4 overflow-x-auto bg-secondary">
+  <div
+    class="item-body p-4 overflow-x-auto bg-secondary"
+    data-pagefind-ignore="all"
+  >
     <div style="margin: 0 5px;">
       <slot />
     </div>
