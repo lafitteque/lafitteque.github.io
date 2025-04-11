@@ -61,11 +61,11 @@ export default function TableOfContent(p: TableOfContentProps) {
   });
 
   return (
-    <div>
+    <div class='toc w-[100%] p-1 ' >
       <For each={list()}>
         {(item) => {
           return (
-            <div class={`toc-${item.depth} hover:text-tertiary`}>
+            <div class={`toc-${item.depth} hover:text-base-300`}>
               <a
                 onclick={(e) => {
                   e.preventDefault();

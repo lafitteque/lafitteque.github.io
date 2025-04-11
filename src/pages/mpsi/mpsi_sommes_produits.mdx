@@ -5,7 +5,7 @@ layout: '@layouts/Base.astro'
 ---
 
 import Tableofcontents from '@components/Tableofcontents.astro'
-
+import Footer from '@components/Footer.astro'
 
 import SommeProps from "@mpsi/Sommes_Produits/somme_propriétés.mdx"
 import ProduitProps from "@mpsi/Sommes_Produits/produit_propriétés.mdx"
@@ -46,6 +46,12 @@ import CoefficientBinomial from "@mpsi/Sommes_Produits/coefficient_binomial.mdx"
 ### Coefficients binômiaux
 <CoefficientBinomial />
 
+
+
+
+<Footer />
+
+
 {/*
 Eléments manquants : 
 - propriété explicite du changement d'indice
@@ -53,3 +59,4 @@ Eléments manquants :
 - Exercices pour bornes du changement d'indice
 - Exercices pour comprendre la notation somme (cf cohen / pichof qqs sommes exples)
 */}
+

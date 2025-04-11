@@ -7,7 +7,6 @@ import Filiere from "../components/Filiere.astro";
 import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
-import Footer from "../components/Footer.astro";
 var filiere = "";
 
 if (Astro.url.pathname.length > 2) {
@@ -27,13 +26,16 @@ const { headings, title } = Astro.props;
 ---
 
 <!-- Amélioration : Sidebar ne doit pas empecher le scroll --><!doctype html>
-<html lang="fr" data-theme="light">
+<html
+  lang="fr"
+  data-theme="light"
+  style="--my-base-content: var(--base-content)"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
-    <script src="/pagefind/pagefind-ui.js" is:inline></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
     ></script>
@@ -47,7 +49,7 @@ const { headings, title } = Astro.props;
     />
   </head>
   <body>
-    <div class="navbar bg-tertiary z-10">
+    <div class="navbar bg-base-300 z-10 max-h-[8vh]">
       <div class="navbar-star0">
         <!-- Début NavBar -->
 
@@ -88,22 +90,28 @@ const { headings, title } = Astro.props;
       <!-- Fin NavBar -->
       <Options />
     </div>
-    <div class="max-w-[1000px] mx-auto max-h-[91vh] overflow-y-auto">
-      <Katex />
-      <slot data-pagefind-body />
-      <Footer />
+    <div class="overflow-y-auto max-h-[90vh]">
+      <div class="max-w-[1000px] mx-auto max-h-[90vh]">
+        <Katex />
+        <slot data-pagefind-body />
+      </div>
     </div>
-    <div class="sidebar" data-pagefind-ignore="all">
-      <ul class="text-base-content w-80 bg-primary">
+    <div
+      class="sidebar top-[9vh] overflow-y-auto max-h-[90vh]"
+      data-pagefind-ignore="all"
+    >
+      <ul class="text-base-content w-[350px] bg-base-300">
         <!-- Sidebar content here -->
         <div tabindex="0" class="collapse collapse-arrow w-auto">
           <input type="checkbox" />
           <div
-            class="collapse-title bg-secondary font-bold cursor-pointer text-lg rounded-none"
+            class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none"
           >
             Semestre 1
           </div>
-          <div class="border-l-10 black leading-10 collapse-content text-lg">
+          <div
+            class="border-l-10 base-content leading-10 collapse-content text-lg"
+          >
             {
               coursData[`${filiere}1`].map((cours) => (
                 <div>
@@ -122,11 +130,13 @@ const { headings, title } = Astro.props;
         <div tabindex="0" class="collapse collapse-arrow w-auto">
           <input type="checkbox" />
           <div
-            class="collapse-title bg-secondary font-bold cursor-pointer text-lg rounded-none"
+            class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none"
           >
             Semestre 2
           </div>
-          <div class="border-l-10 black leading-10 collapse-content text-lg">
+          <div
+            class="border-l-10 base-content leading-10 collapse-content text-lg"
+          >
             {
               coursData[`${filiere}2`].map((cours) => (
                 <div>
@@ -173,14 +183,13 @@ const { headings, title } = Astro.props;
 <style>
   .sidebar {
     position: fixed;
-    top: 8.5%;
     align-items: flex-start;
     justify-items: start;
     padding: 0;
-    width: 300px;
+    width: 350px;
     height: 100%;
     transition: left 0.5s ease;
-    left: -350px;
+    left: -380px;
   }
   /* Active/current link */
   a.active {
@@ -203,7 +212,7 @@ const { headings, title } = Astro.props;
     display: block;
     width: 35px;
     height: 5px;
-    background-color: black;
+    background-color: var(--base-content);
     margin: 6px 0;
   }
 

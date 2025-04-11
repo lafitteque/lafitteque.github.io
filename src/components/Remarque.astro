@@ -2,7 +2,7 @@
 import "../styles/global.css"; // Importe le CSS global
 
 // générer le svg
-const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="black" stroke-width="10" d="M 0,0 C 0,50,50,50,50,100 C 50,150,0,150,0,200 "></path></svg>')`;
+const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://www.w3.org/2000/svg"><path fill="none" stroke="base-content" stroke-width="10" d="M 0,0 C 0,50,50,50,50,100 C 50,150,0,150,0,200 "></path></svg>')`;
 ---
 
 <!-- Amélioration : save le svg dans src/assets/ -->
@@ -12,7 +12,7 @@ const svg = `url('data:image/svg+xml,<svg viewBox="-10 0 120 200" xmlns="http://
   }
 </style>
 
-<div class="flex items-stretch stroke-primary ml-8 my-4" data-pagefind-ignore="all">
+<div class="flex items-stretch stroke-base-content ml-8 my-4" data-pagefind-ignore="all">
   <div class="wave min-w-[16px] repeat-y"></div>
   <div class="pl-2">
     <b> Remarque : </b>

@@ -6,6 +6,8 @@ import solidJs from '@astrojs/solid-js';
 
 import tailwind from "@astrojs/tailwind";
 import tailwindcss from "@tailwindcss/vite";
+import pagefind from"astro-pagefind"
+
 
 const macros = {
   "\\N": "\\mathbb{N}",
@@ -133,5 +135,10 @@ export default defineConfig({
         }
       ]
     ]
+  }),pagefind({
+    indexing: {
+      multiplePerPage: true
+    }
   }), solidJs(), tailwind()],
+  
 });

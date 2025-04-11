@@ -2,21 +2,212 @@
 import "../styles/global.css"; // Importe le CSS global
 ---
 
-<div class="float-startw-full" id="search"></div>
-<script>
-    const pagefind = await import("dist/pagefind/pagefind.js");
+<div class="search-container">
+  <label class="input"  id="search-input" placeholder="Recherche...">
+    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
+    <input type="search" required placeholder="Recherche ..."/>
+  </label>
+  <!-- <input type="text" id="search-input" placeholder="Recherche..." /> -->
+  <div
+    class="absolute top-[8vh] w-full max-h-[50vh] max-w-[1100px] overflow-y-auto bg-base-200 z-10 shadow-lg"
+    id="search-results"
+  >
+  </div>
+</div>
 
-    const search = await pagefind.search("static");
-    console.log(search);
-    pagefind.init();
-    window.addEventListener("DOMContentLoaded", (event) => {
-        new PagefindUI({ element: "#search", showSubResults: true });
+<script>
+  var searchContainer = document.getElementById("search-input");
+  const screenWidth = window.innerWidth;
+
+  if (screenWidth < 600) {
+    const maxWidth = 100;
+    searchContainer.style.maxWidth = `${maxWidth}px`;
+  }
+
+  // Attend que le document soit complètement chargé
+  document.addEventListener("DOMContentLoaded", async () => {
+    // Avec astro-pagefind, le chemin est généralement différent
+    const pagefindUIPath = "/pagefind/pagefind-ui.js";
+
+    const pagefindPath = "/pagefind/pagefind.js";
+
+    try {
+      // Import des modules
+      const { PagefindUI } = await import(/* @vite-ignore */ pagefindUIPath);
+      const pagefind = await import(/* @vite-ignore */ pagefindPath);
+
+      // Initialisation de pagefind
+      await pagefind.init();
+      console.log("Pagefind initialisé avec succès");
+
+      // Configuration des écouteurs d'événements pour la recherche
+      setupSearch(pagefind);
+    } catch (error) {
+      console.error("Erreur lors de l'initialisation de Pagefind:", error);
+    }
+  });
+
+  function setupSearch(pagefind) {
+    const searchInput = document.getElementById("search-input");
+    let debounceTimeout;
+
+    searchInput.addEventListener("input", (e) => {
+      clearTimeout(debounceTimeout);
+      debounceTimeout = setTimeout(() => {
+        performSearch(e.target.value, pagefind);
+      }, 300);
     });
-    
+  }
+
+  async function performSearch(query, pagefind) {
+    const resultsContainer = document.getElementById("search-results");
+
+    if (!query.trim()) {
+      resultsContainer.innerHTML = "";
+      return;
+    }
+
+    try {
+      const searchResults = await pagefind.search(query);
+      displayResults(searchResults, resultsContainer);
+    } catch (error) {
+      console.error("Échec de la recherche:", error);
+      resultsContainer.innerHTML =
+        "<p>La recherche a échoué. Veuillez réessayer.</p>";
+    }
+  }
+
+  async function displayResults(searchResults, resultsContainer) {
+    resultsContainer.innerHTML = "";
+
+    if (!searchResults.results || searchResults.results.length === 0) {
+      resultsContainer.innerHTML = "<p>Aucun résultat trouvé</p>";
+      return;
+    }
+
+    // Traiter chaque résultat en utilisant async/await et map
+    const resultsPromises = searchResults.results.map(async (result) => {
+      try {
+        const data = await result.data();
+        console.log(data);
+
+        // Créer le HTML des éléments d'ancrage en utilisant map
+        const anchorsHtml =
+          data.anchors && data.anchors.length > 0
+            ? data.anchors
+                .map((anchor) => {
+                  const indexData = anchor.id.split("-");
+                  console.log(indexData);
+
+                  var filiere = indexData[0];
+
+                  var type = indexData[1];
+
+                  var titre = indexData[2].split("_").join(" ");
+                  titre = titre.charAt(0).toUpperCase() + titre.slice(1);
+
+                  var searchDesc = indexData[3].split("_").join(" ");
+                  searchDesc =
+                    searchDesc.charAt(0).toUpperCase() + searchDesc.slice(1);
+
+                  const baseUrl = data.url || data.raw_url;
+                  const anchorUrl = `${baseUrl}#${anchor.id}`;
+
+                  return `
+                                <a href="${anchorUrl}">
+                                  <div  class="py-1">
+                                    <p>${titre || "Section sans nom"}</p>
+                                    ${searchDesc === "" ? "" : `<p class="w-fit pl-4 text-sm font-thin border-l-2 border-b-2 border-r-0 border-t-0">${searchDesc}   &nbsp &nbsp &nbsp</p>`}
+                                    </div>
+                                </a>
+                        `;
+                })
+                .join("")
+            : `
+                        <a href="${data.url || data.raw_url}">
+                            <span class="excerpt">${data.excerpt || "Pas d'extrait disponible"}</span>
+                        </a>`;
+
+        // Créer le HTML complet du groupe de pages
+        return `
+                    <div class="page-group">
+                        <div class="text-xl font-bold">${data.meta.title || "Page sans titre"}</div>
+                        <ul class="results-list font-light pl-4">
+                            ${anchorsHtml}
+                        </ul>
+                    </div>
+                `;
+      } catch (error) {
+        console.error("Erreur lors du traitement du résultat:", error);
+        return "";
+      }
+    });
+
+    // Attendre que toutes les promesses soient résolues et ajouter le HTML au conteneur
+    const resultsHtml = await Promise.all(resultsPromises);
+    resultsContainer.innerHTML = resultsHtml.join("");
+
+    const rect = resultsContainer.getBoundingClientRect();
+    const screenWidth = window.innerWidth;
+
+    const availableWidth = screenWidth - rect.left;
+    const maxWidth = Math.min(1100, availableWidth);
+
+    resultsContainer.style.maxWidth = `${maxWidth}px`;
+  }
 </script>
 
+<style>
+  .search-container {
+    margin: 20px auto;
+    max-width: 800px;
+  }
 
+  #search-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+  }
 
+  .page-group {
+    margin-bottom: 30px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 15px;
+  }
+
+  .results-list {
+    list-style-type: none;
+    padding-left: 15px;
+    margin: 0;
+  }
+
+  .results-list li {
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 15px;
+  }
+
+  .search-result a {
+    text-decoration: none;
+    color: #0066cc;
+    display: block;
+  }
+
+  .search-result a:hover {
+    text-decoration: underline;
+  }
+
+  .element-type,
+  .location {
+    display: inline-block;
+    font-size: 0.8em;
+    color: #666;
+    margin-left: 5px;
+  }
+</style>
 <!-- 
 <div class="float-startw-full" id="search"></div>
 <script>

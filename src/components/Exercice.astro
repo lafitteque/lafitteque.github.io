@@ -3,14 +3,14 @@ import "../styles/global.css"; // Importe le CSS global
 const { titre } = Astro.props;
 ---
 
-<div data-pagefind-ignore="all">
-  <div class="exercice-header ml-8 p-0 mb-0 mt-2">
-    <strong class="p-1 border-[0.25rem] border-antiprimary">
+<div data-pagefind-ignore="all" class="mb-2 mt-4" >
+  <div class="exercice-header ml-8 mt-2">
+    <strong class="p-1 border-[0.25rem] border-base-content">
       Exercice
       <span class="exercice-number"></span></strong
     ><span>&nbsp {titre}</span>
   </div>
-  <div class="ml-20 border-l-4 border-b-4 p-1 border-antiprimary">
-    <div class="p-1"><slot /></div>
+  <div class="ml-20 mt-1 border-l-4 border-b-4 p-1 border-base-content">
+    <div class="p-1 overflow-x-auto overflow-y-hidden"><slot /></div>
   </div>
 </div>
