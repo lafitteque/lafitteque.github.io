@@ -2,4 +2,3 @@
 - Tableau de valeur automatique
 - Graph automatique
 - Tableau : double barre (ou barre épaisse) et barre oblique pour double entrée
-- Table des matières en live sur le côté plutôt qu'en haut
