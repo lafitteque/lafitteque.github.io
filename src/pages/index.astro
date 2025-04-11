@@ -5,9 +5,85 @@ import Base from "@layouts/Main_Page.astro";
 <Base>
     <!-- Contenu spécifique de cette page -->
     <h1>Bienvenue sur Suplémaths</h1>
+
     <p>
-        Ce site est dédié aux mathématiques et à l'informatique en classe préparatoire. Sélectionnez
-        la filière de votre choix à l'aide du bouton en haut à gauche de
-        l'écran !
+        Ce site est dédié aux mathématiques et à l'informatique en classe
+        préparatoire. Sélectionnez la filière de votre choix à l'aide du bouton
+        en haut à gauche de l'écran !
     </p>
+
+    <br />
+    <br />
+
+    <strong class="text-3xl">Intentions de l'auteur</strong>
+
+    <br />
+    <br />
+
+    <p>
+        L'auteur a pour objectif de rendre les contenus de L1, L2 et de classe
+        préparatoire accéssibles. L'accessibilité est entendue ici sous
+        plusieurs significations :
+    </p>
+
+    <ul class="!list-disc pl-5">
+        <li class="my-4">
+            D'abord l'accès en une recherche google ou sur le site à l'aide de
+            la barre de recherche
+        </li>
+
+        <li class="my-4">
+            Ensuite, l'intention de l'auteur est de favoriser une compréhension
+            profonde de l'auteur. L'auteur a à coeur la visualisation des
+            objets, la manière de les représenter et encourage chaque personne
+            qui fait des mathématiques à faire des dessins.
+        </li>
+    </ul>
+
+    <p> Les contenus sont structurés selon les programmes de classe préparatoire mais ne sont pas du tout limités à un public de CPGE. Les élèves de terminale curieux, les élèves de L1 et L2 ou les personnes curieuses sont les bienvenues.</p>
+    
+    
+    <br />
+    <br />
+
+    <strong class="text-3xl"
+        >A propos de la création du site (partie technique)</strong
+    >
+
+    <br />
+
+    <br />
+    <p>Ce site a été réalise à l'aide des outils suivants :</p>
+
+    <ul class="!list-disc pl-5">
+        <li class="my-4">
+            <a href="https://astro.build">Astro</a>
+            pour la création de "components" (concrètement les éléments cachables,
+            les items de cours, ...).
+        </li>
+
+        <li class="my-4">
+            La logique est gérée en partie par Astro (JSX) ainsi qu'en
+            Javascript.
+        </li>
+
+        <li class="my-4">
+            Le style lui est géré en CSS, <a href="https://tailwindcss.com"
+                >TailwindCSS</a
+            > et <a href="https://daisyui.com">DaisyUI</a>.
+        </li>
+
+        <li class="my-4">
+            Les rendus mathématiques sont réalisés grâce à <a
+                href="https://katex.org">Katex</a
+            >.
+        </li>
+
+        <li class="my-4">
+            Les animations sont en parties réalisées par mes soins (Javascript)
+            mais surtout à l'aide d'intégrations <a href="https://katex.org"
+                >Géogébra</a
+            >.
+        </li>
+    </ul>
 </Base>

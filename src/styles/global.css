@@ -132,11 +132,3 @@ td {
   /* Centrer le contenu */
 }
 
-li:before { 
-  content: "-";
-  padding-right: 0.5rem;
-}
-
-li{
-  margin-bottom: 0.5rem;
-}

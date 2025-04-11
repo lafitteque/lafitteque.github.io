@@ -7,8 +7,7 @@ import Filiere from "../components/Filiere.astro";
 import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
-import ChoixInfo from "../components/ChoixInfo.astro";
-import MathsSuperieur from "../components/MathsSuperieur.astro";
+
 
 type Props = {
   title: string;
@@ -18,10 +17,17 @@ const { headings, title } = Astro.props;
 ---
 
 <!-- Amélioration : Sidebar ne doit pas empecher le scroll --><!doctype html>
-<html lang="fr" data-theme="light">
+<html
+  lang="fr"
+  data-theme="light"
+  style="--my-base-content: var(--base-content)"
+>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
     ></script>
     <script src="https://www.geogebra.org/apps/deployggb.js"></script>
@@ -34,54 +40,70 @@ const { headings, title } = Astro.props;
     />
   </head>
   <body>
-    <div class="navbar bg-base-300 z-10">
-      <div class="navbar-star0 mx-2">
+    <div class="navbar bg-base-300 z-10 max-h-[8vh]">
+      <div class="navbar-star0">
         <!-- Début NavBar -->
+
+        <label class="btn btn-circle swap swap-rotate w-12 h-12">
+          <input type="checkbox" id="sidebarButton" />
+
+          <svg
+            class="swap-off fill-current absolute"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <path
+              d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
+            ></path>
+          </svg>
+
+          <svg
+            class="swap-on fill-current absolute"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <polygon
+              points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+            ></polygon>
+          </svg>
+        </label>
       </div>
-      <div class="navbar-center lg:flex mx-2">
+      <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
-        <!-- <ChoixInfo/> -->
         <Filiere />
-        <!-- <MathsSuperieur/> -->
+        <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>
       <!-- Fin NavBar -->
       <Options />
     </div>
-    <div class="max-w-[1000px] mx-auto max-h-[91vh] overflow-y-auto">
-      <Katex />
-      <slot data-pagefind-body/>
+    <div class="overflow-y-auto max-h-[90vh]">
+      <div class="max-w-[1000px] mx-auto max-h-[90vh]">
+        <Katex />
+        <slot data-pagefind-body />
+      </div>
     </div>
   </body>
 </html>
 <script>
+  // --- Restyle du css pour latex --- //
   var ks = document.querySelectorAll(".katex-display");
   ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
 
-  var tempSidebar = document.querySelectorAll(".sidebar");
-  var sidebar = tempSidebar[0];
 
-  var hamburgerButton = document.getElementById("sidebarButton");
-  hamburgerButton.addEventListener("change", (event) => {
-    if (event.currentTarget.checked) {
-      sidebar.classList.add("active");
-    } else {
-      sidebar.classList.remove("active");
-    }
+  // --- Exclusion des titres, sous-titres, etc de l'indexation de recherche --- //
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("h1, h2, h3, h4").forEach((el) => {
+      el.setAttribute("data-pagefind-ignore", "all");
+    });
   });
 </script>
 <style>
-  .sidebar {
-    position: fixed;
-    top: 8.5%;
-    align-items: flex-start;
-    justify-items: start;
-    padding: 0;
-    width: 300px;
-    height: 100%;
-    transition: left 0.5s ease;
-    left: -350px;
-  }
+ 
   /* Active/current link */
   a.active {
     background-color: #04aa6d;
