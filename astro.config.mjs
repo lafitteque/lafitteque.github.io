@@ -106,7 +106,7 @@ export default defineConfig({
   vite: {
     resolve: {
       alias: {
-        '@src': '/src',
+        '@src': path.resolve(__dirname, 'src')
       }
     },
     server: {

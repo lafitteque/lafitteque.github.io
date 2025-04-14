@@ -6,11 +6,11 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
 
-<Item type='definition' titre='application'>
+<Item type='definition' titre='application, fonction, ensemble de définition'>
 
 Soient $E$ et $F$ deux ensembles. 
 
-Une application $f$ de $E$ dans $F$ associe un élément de $F$ à chaque élément de $E$.
+Une application (ou fonction) $f$ de $E$ dans $F$ associe un élément de $F$ à chaque élément de $E$.
 
 <br/>
 
@@ -21,7 +21,7 @@ L'ensemble des fonctions de $E$ dans $F$ est noté $\cF(E \v F)$ ou encore $F^E$
 
 **Illustration :**
 
-<img width="500" height="500" class="content-center mx-auto" src = "/src/svgs/appli_quelconque.svg" alt="Illustration de la définition d'une application"/>
+<img width="500" height="500" class="content-center mx-auto" src = "/svgs/appli_quelconque.svg" alt="Illustration de la définition d'une application"/>
 
 <Remarque titre=' Hors Programme'>
 
@@ -109,7 +109,7 @@ $\cd$ La fonction exponentielle : $ exp : \begin{cases} \R \rightarrow \R \\ x \
 $\cd$ La fonction logarithme népérien : $ \ln : \begin{cases} \R_+^*  \rightarrow \R  \\ x \mapsto \ln(x) \end{cases} $
 </Hideable>
 
-<Item type='definition' titre='composition'>
+<Item type='definition' titre='composition de fonctions' searchDesc="applications">
 Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E\v F$ et $G$ sont trois ensembles. On définit la composée de $g$ et $f$ dite "$f$ rond $g$" ainsi :
 
 $ g \circ f : \begin{cases} E \rightarrow  G \\ x \mapsto \Big(g \circ f\Big) (x) = g\Big( f(x) \Big) \end{cases} $

@@ -6,7 +6,7 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
 
-<Item type='definition' titre='injectivité'>
+<Item type='definition' titre="injectivité d'une fonction" searchDesc="application">
 Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **injective** si et seulement si :
 
 $$
@@ -16,7 +16,7 @@ $$
 
 **Illustration :**
 
-<img width="500" height="500" class="content-center mx-auto" src = "/src/svgs/appli_injective.svg" alt="Illustration de la définition d'une application injective"/>
+<img width="500" height="500" class="content-center mx-auto" src = "/svgs/appli_injective.svg" alt="Illustration de la définition d'une application injective"/>
 
 
 En clair, être injectif c'est ne pas passer deux fois par la même valeur de l'ensemble d'arrivée.
@@ -42,7 +42,7 @@ $\cd$ La fonction définie sur $\{0 \v 1 \}$ par $h(0) = 1$ et $h(1) = 0$ est in
 En effet, si $h(x) = h(y)$, alors soit $h(x) = 1 = h(y)$ et donc $x = y = 0$ par définition de $h$ soit $h(x) = h(y) = 0$ et $x = y = 1$ par définition de $h$. 
 </Hideable>
 
-<Item type='definition' titre='surjective'>
+<Item type='definition' titre='application surjective' searchDesc="fonction">
 Soit $f$ une fonction de $E$ dans $F$. On dit que $f$ est **surjective** si et seulement si :
 
 $$
@@ -52,7 +52,7 @@ $$
 
 **Illustration :**
 
-<img width="500" height="500" class="content-center mx-auto" src = "/src/svgs/appli_surjective.svg" alt="Illustration de la définition d'une application surjective"/>
+<img width="500" height="500" class="content-center mx-auto" src = "/svgs/appli_surjective.svg" alt="Illustration de la définition d'une application surjective"/>
 
 En clair, être surjectif c'est balayer toutes les valeurs de l'ensemble d'arrivée.
 
@@ -74,14 +74,14 @@ Cependant, si l'on définit $f$ ainsi : $f : \begin{cases} \R \rightarrow \{1\} 
 La notion de surjectivité dépend du contexte. Il est donc très important de bien lire les énoncés et exercices et de s'assurer d'avoir bien compris le contexte et les objets en jeu.
 </Remarque>
 
-<Item type='definition' titre='bijective'>
+<Item type='definition' titre='fonction bijective' searchDesc="application">
 
 On dit d'une fonction $f$ qu'elle est bijective si et seulement si elle est à la fois injective et surjective
 </Item>
 
 **Illustration :**
 
-<img width="500" height="500" class="content-center mx-auto" src = "/src/svgs/appli_bijective.svg" alt="Illustration de la définition d'une application bijective"/>
+<img width="500" height="500" class="content-center mx-auto" src = "/svgs/appli_bijective.svg" alt="Illustration de la définition d'une application bijective"/>
 
 En clair, être bijectif c'est associer une et une seule valeur de l'ensemble de départ à chacun des éléments de l'ensemble d'arrivée. C'est une correspondance terme à terme.
 
@@ -104,7 +104,7 @@ f(A) = \{ f(x) \mid x \in A \} = \{ y \in F \mid \Big( \exists x \in E \mid f(x)
 $$
 </Item>
 
-<Item type='proposition' titre=''>
+<Item type='proposition' titre='inclusion et image par une application' searchDesc="fonction ensembles">
 Soient $A$ et $B$ deux ensembles. 
 
 Si $A \subset B$, alors $f(A) \subset f(B)$

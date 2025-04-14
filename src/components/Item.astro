@@ -50,7 +50,7 @@ if (Astro.url.pathname.length > 2) {
   chapitre = Astro.url.pathname.slice(1, 20).split("/")[1];
 }
 
-const tagweight = (tag == "admis") * 2;
+const tagweight = tag ? 2 : 0;
 const itemColorName = typeColors[type]; // Couleur par défaut si type inconnu
 const itemWidth = borderWidths[type];
 const itemText = textValues[type];
@@ -85,15 +85,15 @@ const itemText = textValues[type];
 >
   <div class="p-1
     min-h-10 text-lg" style=`background-color: color-mix(in oklab, var(--color-${itemColorName}) 95%, black 5%);`>
-    <div class="float-top">
+    <div class="float-top flex-nowrap">
       <span class="item-number text-base w-8 h-8 text-center rounded-full mr-2"
       ></span>
 
-      <strong class="inline-block font-bold">
+      <strong class=" font-bold">
         {itemText} : {titre}
       </strong>
       <span
-        class="inline-block ml-8"
+        class=`inline-block ml-${tagweight*4}`
         style=`border: solid ${tagweight}px #ff4545; margin-right: 1rem; border-radius: 10%`
       >
         {tag}
@@ -101,7 +101,7 @@ const itemText = textValues[type];
     </div>
   </div>
   <div class="item-body p-2 overflow-x-auto bg-base-200" style=`border: 4px solid color-mix(in oklab, var(--color-${itemColorName}) 80%, var(--color-base-100) 20%); border-right : none; border-top: none; border-bottom: none;`>
-    <div style="margin: 0 5px;">
+    <div class="wrap-break-word" style="margin: 0 5px;">
       <slot />
     </div>
   </div>
