@@ -7,10 +7,12 @@ import Filiere from "../components/Filiere.astro";
 import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
+import ChoixInfo from "../components/ChoixInfo.astro";
+
 var filiere = "";
 
 if (Astro.url.pathname.length > 2) {
-  filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
+  filiere = Astro.url.pathname.slice(1, 20).split("/")[0].split("-")[1];
 }
 
 if (filiere === "") {
@@ -84,6 +86,7 @@ const { headings, title } = Astro.props;
       <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
         <Filiere />
+        <ChoixInfo/>
         <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>
@@ -117,7 +120,7 @@ const { headings, title } = Astro.props;
                 <div>
                   <a
                     class="px-2 block decoration-none z-20"
-                    href={`/${filiere}${cours.url}`}
+                    href={`/info-${filiere}${cours.url}`}
                   >
                     {cours.titre}
                   </a>
@@ -142,7 +145,7 @@ const { headings, title } = Astro.props;
                 <div>
                   <a
                     class="px-2 block decoration-none z-20"
-                    href={`/${filiere}${cours.url}`}
+                    href={`/info-${filiere}${cours.url}`}
                   >
                     {cours.titre}
                   </a>

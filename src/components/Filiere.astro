@@ -6,6 +6,7 @@ var urlFiliere = "";
 if (Astro.url.pathname.length > 2) {
   urlFiliere = Astro.url.pathname.slice(1, 20).split("/")[0];
 }
+urlFiliere = urlFiliere.startsWith("cpge") ? urlFiliere.split("-")[1] : ""; 
 ---
 
 <ul class="menu menu-horizontal px-1" data-pagefind-ignore="all">
@@ -18,7 +19,7 @@ if (Astro.url.pathname.length > 2) {
         {
           filieres.map((filiere) => (
             <li class=" before:content-[]">
-              <a href={`/${filiere.toLowerCase()}`}>{filiere.toUpperCase()}</a>
+              <a href={`/cpge-${filiere.toLowerCase()}`}>{filiere.toUpperCase()}</a>
             </li>
           ))
         }

@@ -9,13 +9,12 @@ import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
 import ChoixInfo from "../components/ChoixInfo.astro";
 
-
 var filiere = "";
 
 if (Astro.url.pathname.length > 2) {
-  filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
+  filiere = Astro.url.pathname.slice(1, 20).split("/")[0].split("-")[1];
 }
-
+console.log(filiere);
 if (filiere === "") {
   filiere = "mpsi";
 }
@@ -87,7 +86,7 @@ const { headings, title } = Astro.props;
       <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
         <Filiere />
-        <ChoixInfo/>
+        <ChoixInfo />
         <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>
@@ -121,7 +120,7 @@ const { headings, title } = Astro.props;
                 <div>
                   <a
                     class="px-2 block decoration-none z-20"
-                    href={`/${filiere}${cours.url}`}
+                    href={`/cpge-${filiere}${cours.url}`}
                   >
                     {cours.titre}
                   </a>
@@ -146,7 +145,7 @@ const { headings, title } = Astro.props;
                 <div>
                   <a
                     class="px-2 block decoration-none z-20"
-                    href={`/${filiere}${cours.url}`}
+                    href={`/cpge-${filiere}${cours.url}`}
                   >
                     {cours.titre}
                   </a>
@@ -195,7 +194,6 @@ const { headings, title } = Astro.props;
     transition: left 0.5s ease;
     left: -380px;
   }
-
 
   .sidebar.active {
     left: 0px;
