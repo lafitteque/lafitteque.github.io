@@ -102,7 +102,16 @@
   "psi2": [],
   "pc1": [],
   "pc2": [],
-  "ipt1": [],
+  "ipt1": [
+    {
+      "titre": "Nombres et Booléens",
+      "url": "/nombres_et_booleens"
+    },
+    {
+      "titre": "Conditions et Boucles",
+      "url": "/conditions_et_boucles"
+    }
+  ],
   "ipt2": [
     {
       "titre": "Auto-Jointure",

@@ -18,21 +18,18 @@ var modulesUrl = `&module=${modulesFiles
 auxUrl = auxUrl.endsWith("/") ? "" : auxUrl;
 modulesUrl = modulesUrl.endsWith("/") ? "" : modulesUrl;
 
-
 const fullUrl = `https://notebook.basthon.fr/?kernel=${kernel}&from=${norebookUrl}${modulesUrl}${auxUrl}&extensions=sequenced`;
 console.log(fullUrl);
+
 ---
 
 <!-- Composant BasthonNotebook -->
-<div class="h-full overflow-auto">
-    <!-- <h2>Notebook : {dir}</h2> -->
 
     <iframe
         src={fullUrl}
-        class="w-full h-[97vh]"
+        class="w-full h-[90vh]"
         style="border: none;"
         sandbox="allow-scripts allow-same-origin allow-forms allow-downloads"
     >
     </iframe>
     <!-- {fullUrl} -->
-</div>
