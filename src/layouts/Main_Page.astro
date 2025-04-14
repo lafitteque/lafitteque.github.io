@@ -7,6 +7,7 @@ import Filiere from "../components/Filiere.astro";
 import Options from "../components/Options.astro";
 import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
+import ChoixInfo from "../components/ChoixInfo.astro";
 
 
 type Props = {
@@ -48,6 +49,7 @@ const { headings, title } = Astro.props;
       <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
         <Filiere />
+        <ChoixInfo/>
         <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>

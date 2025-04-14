@@ -101,5 +101,12 @@
   "psi1": [],
   "psi2": [],
   "pc1": [],
-  "pc2": []
+  "pc2": [],
+  "ipt1": [],
+  "ipt2": [
+    {
+      "titre": "Auto-Jointure",
+      "url": "/auto_jointure"
+    }
+  ]
 }
