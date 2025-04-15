@@ -5,6 +5,15 @@ import Item from '@components/Item.astro'
 import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
+{true && (
+  <>
+    ## Section conditionnelle
+
+    Ce contenu n'est visible que si `showSection` est `true`.
+    
+  </>
+)}
+
 
 <Item type='definition' titre='notation somme' searchDesc="notation à l'aide de la lettre sigma majuscule">
 Soit $E \subset \C$  un ensemble, $n \in \N$ et $(a_1 \v a_2 \v \dotsm \v a_{n-1} \v a_n) \in E^n$. On note :

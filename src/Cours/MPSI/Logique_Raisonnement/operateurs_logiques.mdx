@@ -9,13 +9,16 @@ import Fil from '@components/Fil.astro'
 
 
 <Hideable type="exemple"> 
-  $ \cP_1 $ : "tout entier naturel est pair" est fausse.
+
+  $\cd \cP_1 $ : "tout entier naturel est pair" est fausse.
   
-  $ \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
+  $\cd \cP_2 $: "tout entier multiple de quatre est également un multiple de deux" est vraie.
 </Hideable>
+
 
 {/*<Item type="definition" titre="table de vérité"> On appelle table de vérité un tableau à double entrée définissant la valeur d'une fonction logique
 pour chacune des combinaisons possibles des entrées. </Item>*/}
+
 
 <Item type="definition" titre="conjonction, disjonction et négation"> 
 
@@ -95,14 +98,14 @@ $\cd$ "(A $\OU$ B) $\OU$ C"  a la même valeur de vérité que "A $\OU$ (B $\OU$
 
 <Hideable type='démonstration'>
 
-**Commutativité :**
+$\cd$ **Commutativité :**
 La table de vérité de "A $\ET$ B" est la même que celle de "B $\ET$ A". Ces deux propositions ont donc la même valeur de vérité peu importe celles de A $\ET$ de B.
 
 Il en va de même pour "A $\OU$ B".
 
 <br/>
 
-**Associativité de la conjonction :** On dresse une table de vérité :
+$\cd$ **Associativité de la conjonction :** On dresse une table de vérité :
 
 | A | B | C || A $\ET$ B | B $\ET$ C| (A $\ET$ B) $\ET$ C | A $\ET$ (B $\ET$ C) |
 |---|---|---|---|---|---|---|---|
@@ -119,7 +122,7 @@ Les tables de vérités de "(A $\ET$ B) $\ET$ C" et de "A $\ET$ (B $\ET$ C)" co�
 
 <br/>
 
-**Associativité de la disjonction :** On dresse une table de vérité :
+$\cd$ **Associativité de la disjonction :** On dresse une table de vérité :
 
 | A | B | C || A $\OU$ B | B $\OU$ C || (A $\OU$ B) $\OU$ C | A $\OU$ (B $\OU$ C) |
 |---|---|---|---|---|---|---|---|---|
@@ -172,7 +175,7 @@ $\cd$ "(A $\OU$ B) $\ET$ C" a la même valeur de vérité que "(A $\ET$ C) $\OU$
 <Hideable type='démonstration'>
 Dressons la table de vérité des propositions.
 
-**Etudions d'abord "(A $\ET$ B) $\OU$ C" :**
+$\cd$ **Etudions d'abord "(A $\ET$ B) $\OU$ C" :**
 
 | A  | B | C || A $ET$ B | (A $ET$ B) $\OU$ C || A $\OU$ C | B $\OU$ C | (A $\OU$ C) $ET$ (B $\OU$ C) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -187,7 +190,7 @@ Dressons la table de vérité des propositions.
 
 <br/>
 
-**Etudions maintenant "(A $\OU$ B) $\ET$ C" :**
+$\cd$ **Etudions maintenant "(A $\OU$ B) $\ET$ C" :**
 
 | A  | B | C || A $\OU$ B | (A $\OU$ B) $\ET$ C || A $\ET$ C | B $\ET$ C | (A $\ET$ c) $\OU$ (B $\ET$ C) |
 |---|---|---|---|---|---|---|---|---|---|
@@ -250,14 +253,14 @@ Donner la négation de "(A $\Rightarrow$ B)" et celle de "(A $\ssi $ B)" en n'ut
 
 <Hideable type="solution" titre=''>
 
-**Négation de "(A $\Rightarrow$ B)" :** 
+$\cd$ **Négation de "(A $\Rightarrow$ B)" :** 
 
 A partir de l'exercice précédent, on sait que $ \Big( $ A $ \Rightarrow $ B $ \Big) \ssi  \Big( $ ($\NON$ A) $\OU$ B $ \Big) $ et donc, en passant à la négation et en développant, 
 on a "$\NON$ $\Big( $ ($\NON$ A) $\OU$ B $ \Big)$" qui a même valeur de vérité que "$\Big($ $\NON$ ($\NON$ A) $\Big)$ $\ET$ ($\NON$ B)" qui a même valeur de vérité que "A $\ET$ ($\NON$ B)"
 
 <br/>
 
-**Négation de "(A $\ssi $ B)" :** 
+$\cd$ **Négation de "(A $\ssi $ B)" :** 
 
 A partir de la table de vérité de "A $\ssi $ B", on peut se rendre compte que la proposition a la même valeur de vérité que"$\Big($ ( $\NON$ A) $\ET$ ($\NON$ B) $\Big)$ $\OU$ (A $\ET$ B)" 
 ce que l'on peut vérifier facilement à l'aide d'une table de vérité. On en déduit, en passant à la négation que, 
@@ -330,11 +333,13 @@ $\cd$ contraposée de $\cP$ la proposition "($\NON$ B) $\Rightarrow$ ($\NON$ A)"
 
 
 <Item type='propriete' titre='raisonnement par contraposée'>
+
 Soient A et B deux propositions.
 On a "(A $\Rightarrow$ B)" ssi. "($\NON$ B) $\Rightarrow$ ($\NON$ A)".
 </Item>
 
 <Hideable type='démonstration'>
+
 "A $\Rightarrow$ B" ssi."B $\OU$ ($\NON$ A)" ssi."($\NON$ A) $\OU$ B" ssi."($\NON$ B) $\Rightarrow$ ($\NON$ A)"
 </Hideable>
 

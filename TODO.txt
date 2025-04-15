@@ -2,3 +2,4 @@
 - Guillemets = c'est la merde (chap 1)
 - Ajouter pop définition quand au dessus d'un mot clé
 - Remarque : problème de couleur en dark mode
+- Recherche : changer affichage + ajouter SearchDesc quand beroin (3 premiers dossiers de Cours/MPSI déjà faits)
