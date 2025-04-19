@@ -6,7 +6,7 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
 
-<Item type='definition' titre="dérivées d'ordre supérieur">
+<Item type='definition' titre="dérivées d'ordre supérieur" searchDesc="fonction">
 
 On dit que $f$ admet une dérivée seconde si $f$ est dérivable et que $f'$ est dérivable. On a alors $f'' = (f')'$ qui est dite dérivée seconde de $f$ et qui se note également $f^{(2)}$.
 
@@ -25,12 +25,12 @@ On note $\cD^k(I\v \R)$ l'ensemble des fonctions de $I$ dans $\R$ dérivables $k
  $f^{(0)}$ est la fonction $f$
 </Remarque>
 
-<Item type='proposition' titre='formule de newton'>
+<Item type='proposition' titre='formule de newton' searchDesc="fonction dérivée">
 
 
 Soient $f$ et $g$ deux fonctions dérivables $n$ fois de $I$ dans $\R$.
 
 $$
-(f.g)^{(n)} = \somme{i=0}{n} \begin{pmatrix} n \\ k \end{pmatrix} f^{(k)}.g^{(n-k)}
+(f.g)^{(n)} = \somme{i=0}{n} \binomiale{k}{n} f^{(k)}.g^{(n-k)}
 $$
 </Item>

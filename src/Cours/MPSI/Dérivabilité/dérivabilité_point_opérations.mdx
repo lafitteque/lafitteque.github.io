@@ -6,7 +6,7 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
 
-<Item type='definition' titre='dérivabilité en un point'>
+<Item type='definition' titre='dérivabilité en un point' searchDesc="fonction déribée">
 
 On pose $\Delta_a (h) = \dfrac{f(a+h) - f(a)}{h}$ pour $h \neq 0$ et tel que $h + a \in I$.
 
@@ -21,7 +21,7 @@ $$
 
 AF : Interprétation : vitesse / pente
 
-<Item type='definition' titre='tangente'>
+<Item type='definition' titre='tangente'  searchDesc="droite ">
 
 On appelle tangente à $\cC_f$ (ou simplement tangente à $f$) en $a$ la droite d'équation :
 
@@ -33,13 +33,13 @@ $$
 AF : illustration : pente, retard de $a$, valeur après le retard
 
 
-<Item type='definition' titre='dérivabilité à gauche / droite'>
+<Item type='definition' titre='dérivabilité à gauche / droite' searchDesc="fonction">
 
 On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\limm{\substack{h \to 0 \\ h < 0}} \dfrac{f(a+h) - f(a)}{h}$ converge (resp. à droite $f'(a) = \limm{\substack{h \to 0 \\ h > 0}} \dfrac{f(a+h) - f(a)}{h}$).
 </Item>
 
 
-<Item type='proposition' titre='caractérisation de la dérivabilité'>
+<Item type='proposition' titre='caractérisation de la dérivabilité'  searchDesc="en a d'une fonction">
 
 $f$ est dérivable en $a$ si et seulement si il existe $C \in \R$ et une fonction $\epsilon$ définie sur $J\setminus \{ 0\} $ (où $J$ est un intervalle ouvert contenant $0$) et telle que $\limm{\substack{x \to 0 \\ x \neq 0}} \epsilon(h) = 0$ et : $\forall x \in J\setminus \{ 0\} \v f(a + h) = f(a) + C.h + h.\epsilon(h)$
 
@@ -54,7 +54,7 @@ $\cd$ Supposons que $f$ est dérivable en $a$. On pose $C = f'(a)$ et $\epsilon$
 
 </Hideable>
 
-<Item type='proposition' titre='dérivabilité et opérations'>
+<Item type='proposition' titre='dérivabilité et opérations' searchDesc="fonction">
 
 La somme, le produit, le quotient de fonctions dérivables en $a$ reste dérivable en $a$. Il en va de même pour le produit par un scalaire.
 </Item>
@@ -65,7 +65,7 @@ Cela découle directement des propriétés sur les limites.
 </Hideable>
 
 
-<Item type='proposition' titre='dérivabilité et continuité'>
+<Item type='proposition' titre='dérivabilité et continuité'  searchDesc="fonction">
 
 Si $f$ est dérivable en $a$, alor $f$ est continue en $a$.
 </Item>

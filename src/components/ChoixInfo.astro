@@ -1,25 +1,23 @@
 ---
-const choix = ["IPT"] //, "Option_Info"];
+const choix = ["IPT"]; //, "Option_Info"];
 import "../styles/global.css"; // Importe le CSS global
 var urlChoix = "";
 
 if (Astro.url.pathname.length > 2) {
   urlChoix = Astro.url.pathname.slice(1, 20).split("/")[0];
 }
-urlChoix = urlChoix.startsWith("info") ? urlChoix.split("-")[1] : ""; 
+urlChoix = urlChoix.startsWith("info") ? urlChoix.split("-")[1] : "";
 ---
 
 <ul class="menu menu-horizontal px-1">
   <li class="before:content-[] rounded-md border-2 border-base-200">
     <details>
-      <summary class="bg-base-200 hover:bg-base-300"
-        >Informatique : {urlChoix.toUpperCase()}</summary
-      >
+      <summary class="bg-base-200 hover:bg-base-300">Info.</summary>
       <ul class="bg-base-200 pt-0">
         {
           choix.map((c) => (
             <li class=" before:content-[]">
-              <a href={`/info-${c.toLowerCase()}`}>
+              <a href={`/${c.toLowerCase()}`}>
                 {c.toUpperCase().replace("_", " ")}
               </a>
             </li>

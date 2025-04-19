@@ -3,7 +3,12 @@ title: "Nombres complexes et trigonométrie"
 tag: ["autre"]
 layout: '@layouts/Base.astro'
 ---
-
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
 import Tableofcontents from '@components/Tableofcontents.astro'
 
 import CercleTrigonometrique from "@mpsi/Trigonométrie/cercle_trigonométrique.mdx"
@@ -33,44 +38,59 @@ On se place dans un repère orthonormé $(O \v \vec{i} \v \vec{j})$.
 ## Trigonométrie : cercle trigonométrique, fonctions trigonométriques et formules
 
 ### Cercle trigonométrique et ce qui en découle directement
-<CercleTrigonometrique />
+<CercleTrigonometrique  />
 
 ### A propos des fonctions trigonométriques
-<FonctionsTrigonometriquesProprietes />
+<FonctionsTrigonometriquesProprietes  />
 
 ### Valeurs usuelles des fonctions trigonométriques
-<ValeursUsuelles />
+<ValeursUsuelles  />
 
 ## Les complexes, opérations usuelles et interprétation géométrique
-<Operations />
+<Operations  />
 
 
 ## Conjugaison et module, utilisation de la forme trigonométrique
 
 ### Conjugaison et module
-<Conjugaison />
-<Module />
+<Conjugaison  />
+<Module  />
 
 
 ### Forme trigonométrique et forme exponentielle
-<FormeTrigonometrique />
+<FormeTrigonometrique  />
+
 <Argument />
-<FormeExponentielle />
+
+<Item type='proposition' titre="tangente et argument d'un complexe">
+
+Soit $z \in \C$ tel que $z \notin i\R$.
+
+On a $\Arg(z) \equiv  \dfrac{\Im(z)}{\Re(z)} \; [\pi]$
+</Item>
+
+
+<Remarque titre=''>
+
+Cette propriété est très utile en physique. Retenez-la!
+</Remarque>
+
+<FormeExponentielle  />
 
 
 ### Applications à la trigonométrie
-<ConsequencesTrigonometrie />
+<ConsequencesTrigonometrie  />
 
 ## Racines de l'unité
 
 ### Cercle unité
-<CercleUnite />
+<CercleUnite  />
 
 ### Racines n-ièmes 
-<Racines />
+<Racines  />
 
 ## Interprétations géométrique
-<InterpretationGraphique />
+<InterpretationGraphique  />
 
 
 

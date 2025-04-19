@@ -76,7 +76,6 @@ export class Graph {
     }
 
     graphToCoord(x, y) {
-        console.log("graph to coords", (x - this.info.origin[0]) / this.info.unitStepX, -(y + this.info.origin[1]) / this.info.unitStepY);
         return [(x - this.info.origin[0]) / this.info.unitStepX, -(y + this.info.origin[1]) / this.info.unitStepY];
     }
 

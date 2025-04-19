@@ -13,13 +13,13 @@ urlFiliere = urlFiliere.startsWith("cpge") ? urlFiliere.split("-")[1] : "";
   <li class="before:content-[] rounded-md border-2 border-base-200">
     <details>
       <summary class="bg-base-200 hover:bg-base-300"
-        >CPGE : {urlFiliere.toUpperCase()}</summary
+        >Filière </summary
       >
       <ul class="bg-base-200 pt-0 z-10">
         {
           filieres.map((filiere) => (
             <li class=" before:content-[]">
-              <a href={`/cpge-${filiere.toLowerCase()}`}>{filiere.toUpperCase()}</a>
+              <a href={`/${filiere.toLowerCase()}`}>{filiere.toUpperCase()}</a>
             </li>
           ))
         }
@@ -27,3 +27,12 @@ urlFiliere = urlFiliere.startsWith("cpge") ? urlFiliere.split("-")[1] : "";
     </details>
   </li>
 </ul>
+<script>
+  document.addEventListener("click", (event) => {
+  document.querySelectorAll("details[open]").forEach((details) => {
+    if (!details.contains(event.target)) {
+      details.removeAttribute("open");
+    }
+  });
+});
+</script>

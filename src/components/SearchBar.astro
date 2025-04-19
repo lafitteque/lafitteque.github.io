@@ -89,7 +89,6 @@ import "../styles/global.css"; // Importe le CSS global
     const resultsPromises = searchResults.results.map(async (result) => {
       try {
         const data = await result.data();
-        console.log(data);
 
         // Créer le HTML des éléments d'ancrage en utilisant map
         const anchorsHtml =
@@ -97,7 +96,6 @@ import "../styles/global.css"; // Importe le CSS global
             ? data.anchors
                 .map((anchor) => {
                   const indexData = anchor.id.split("-");
-                  console.log(indexData);
 
                   var filiere = indexData[0];
 

@@ -8,7 +8,7 @@ const { type, titre } = Astro.props;
 const typeUpper = type.charAt(0).toUpperCase() + type.slice(1);
 ---
 
-<div tabindex="0" class="collapse collapse-arrow ml-8 w-auto" data-pagefind-ignore="all">
+<div tabindex="0" class="collapse collapse-arrow ml-8 w-auto" data-pagefind-ignore="all" client:visible>
   <input type="checkbox" />
   <div
     class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none hover:bg-base-300"

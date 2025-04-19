@@ -6,34 +6,34 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
 
-<Item type='definition' titre='coefficients binomiaux'>
+<Item type='definition' titre='coefficients binomiaux' searchDesc="binomial">
 Soit le couple $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$. 
 
-On note $\binom{n}{k}$ (se lit "$k$ parmi $n$") la quantité suivante :
+On note $\binomiale{n}{k}$ (se lit "$k$ parmi $n$") la quantité suivante :
 
 $$ 
-\binom{n}{k} = \dfrac{n!}{k!(n-k)!}
+\binomiale{n}{k} = \dfrac{n!}{k!(n-k)!}
 $$
 
 </Item>
 
 <Remarque titre='convention'>
 
-Par convention, si $k \in \Z$ et $k \notin \defentiers{0}{n}$, on pose $\binom{n}{k} = 0$. 
+Par convention, si $k \in \Z$ et $k \notin \defentiers{0}{n}$, on pose $\binomiale{n}{k} = 0$. 
 
 La raison étant que cela permet de conserver la propriété de somme qui sera présentée ultérieurement.
 </Remarque>
 
-<Item type='corollaire' titre='formules usuelles'>
+<Item type='corollaire' titre='formules usuelles' searchDesc="coefficients binomiaux">
 Soit $(k,n) \in \N^2$ tel que $0 \leqslant k \leqslant n$
 
-$\cd$ $\binom{n}{0} = \binom{n}{n} = 1$
+$\cd$ $\binomiale{n}{0} = \binomiale{n}{n} = 1$
 
-$\cd$ $\binom{n}{k} = \binom{n}{n-k}$
+$\cd$ $\binomiale{n}{k} = \binomiale{n}{n-k}$
 
-$\cd$ $\binom{n}{1} = n$
+$\cd$ $\binomiale{n}{1} = n$
 
-$\cd$ $\binom{n}{2} = \dfrac{n(n-1)}{2}$ (ce qui n'est pas sans rappeler la somme des entiers de $1$ à $n-1$)
+$\cd$ $\binomiale{n}{2} = \dfrac{n(n-1)}{2}$ (ce qui n'est pas sans rappeler la somme des entiers de $1$ à $n-1$)
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -44,8 +44,8 @@ Toutes les formules sont triviales en partant de la définition.
 <Item type='proposition' titre='formulaire des coefficients binômiaux'>
 Soient $k$ et $n$ des entiers tels que $0 \leqslant k \leqslant n$. On a :
 
-$\cd$ $\binom{n}{k} + \binom{n}{k+1} = \binom{n+1}{k+1}$
-$\cd$ $\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}$
+$\cd$ $\binomiale{n}{k} + \binomiale{n}{k+1} = \binomiale{n+1}{k+1}$
+$\cd$ $\binomiale{n+1}{k+1} = \dfrac{n+1}{k+1}\binomiale{n}{k}$
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -53,37 +53,37 @@ $\cd$ $\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}$
 **Montrons la première formule :** 
 
 $$
-\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k+1)!(n-k-1)!}
+\binomiale{n}{k} + \binomiale{n}{k+1} = \dfrac{n!}{k!(n-k)!} + \dfrac{n!}{(k+1)!(n-k-1)!}
 $$
 
 puis on factorise pour obtenir :
 
 $$
-\binom{n}{k} + \binom{n}{k+1} = \dfrac{n!}{k!(n-k-1)!}\Big( \dfrac{1}{k+1} + \dfrac{1}{n-k} \Big) = \dfrac{n!}{k!(n-k-1)!}\dfrac{(n+1)}{(k+1)(n-k)!}
+\binomiale{n}{k} + \binomiale{n}{k+1} = \dfrac{n!}{k!(n-k-1)!}\Big( \dfrac{1}{k+1} + \dfrac{1}{n-k} \Big) = \dfrac{n!}{k!(n-k-1)!}\dfrac{(n+1)}{(k+1)(n-k)!}
 $$
 
 On a donc 
 
 $$
-\binom{n}{k} + \binom{n}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \binom{n+1}{k+1}
+\binomiale{n}{k} + \binomiale{n}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \binomiale{n+1}{k+1}
 $$
 
 
 **Montrons maintenant la seconde formule :** 
 
 $$
-\binom{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \dfrac{(n+1)\times n!}{(k+1)\times k! (n-k)!} = \dfrac{n+1}{k+1} \dfrac{n!}{k!(n-k)!} 
+\binomiale{n+1}{k+1} = \dfrac{(n+1)!}{(k+1)!\Big(n+1-(k+1)\Big)!} = \dfrac{(n+1)\times n!}{(k+1)\times k! (n-k)!} = \dfrac{n+1}{k+1} \dfrac{n!}{k!(n-k)!} 
 $$
 
 Finalement, 
 
 $$
-\binom{n+1}{k+1} = \dfrac{n+1}{k+1}\binom{n}{k}
+\binomiale{n+1}{k+1} = \dfrac{n+1}{k+1}\binomiale{n}{k}
 $$
 
 </Hideable>
 
-<Item type='definition' titre='triangle de Pascal'>
+<Item type='definition' titre='triangle de Pascal' searchDesc="coefficients binomiaux">
 Le triangle de pascal est le tableau contenant les coefficients binômiaux :
 
 | n / k | 0 | 1 | 2 | 3 | 4 | 5 | ... | n |
@@ -95,10 +95,10 @@ Le triangle de pascal est le tableau contenant les coefficients binômiaux :
 | 4 | 1 | 4 | 6 | 4 | 1 | *0* | ... | *0* |
 | 5 | 1 | 5 | 10 | 10 | 5 | 1 | ... | *0* |
 | ... | ... | ... | ... | ... | ... | ... | ... | ... |
-| n | $\binom{n}{0}$ | $\binom{n}{1}$ | $\binom{n}{2}$ | $\binom{n}{3}$ | $\binom{n}{4}$ | $\binom{n}{5}$ | ... | 1 |
+| n | $\binomiale{n}{0}$ | $\binomiale{n}{1}$ | $\binomiale{n}{2}$ | $\binomiale{n}{3}$ | $\binomiale{n}{4}$ | $\binomiale{n}{5}$ | ... | 1 |
 </Item>
 
-<Item type='proposition' titre='binome de newton'>
+<Item type='proposition' titre='formule du binôme de newton' searchDesc="coefficients binomiaux">
 Soient $a,b$ deux complexes et $n$ un entier naturel. On a :
 
 $$
@@ -113,7 +113,7 @@ en utilisant la convention $0^0 = 1$.
 On démontre cela par récurrence : soit la propriété 
 
 $$
-\cP(n) \, : \, "(a+b)^n = \somme{k=0}{n} \binom{n}{k} a^kb^{n-k}, \forall (a,b) \in (\C^*)^2"
+\cP(n) \, : \, "(a+b)^n = \somme{k=0}{n} \binomiale{n}{k} a^kb^{n-k}, \forall (a,b) \in (\C^*)^2"
 $$
 
 où $n$ est un entier naturel.
@@ -129,34 +129,34 @@ où $n$ est un entier naturel.
 $(a+b)^{n+1} = (a+b)(a+b)^n$ mais par linéarité de la somme et par hypothèse de récurrence en utilisant $\cP(n)$, on a :
 
 $$
-(a+b)(a+b)^n = (a+b)\somme{k=0}{n} \binom{n}{k} a^kb^{n-k} = \somme{k=0}{n} \binom{n}{k} (a+b)a^kb^{n-k} 
+(a+b)(a+b)^n = (a+b)\somme{k=0}{n} \binomiale{n}{k} a^kb^{n-k} = \somme{k=0}{n} \binomiale{n}{k} (a+b)a^kb^{n-k} 
 $$
 
 Puis, par linéarité de la somme :
 
 $$
-(a+b)^{n+1} = \somme{k=0}{n} \binom{n}{k} a^{k+1}b^{n-k} + \somme{k=0}{n} \binom{n}{k} a^kb^{n-k+1} 
+(a+b)^{n+1} = \somme{k=0}{n} \binomiale{n}{k} a^{k+1}b^{n-k} + \somme{k=0}{n} \binomiale{n}{k} a^kb^{n-k+1} 
 $$ 
 
 d'où
 
 $$
-(a+b)^{n+1} = a^{n+1}b^0 + \somme{k=0}{n-1} \binom{n}{k} a^{k+1}b^{n-k} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} 
+(a+b)^{n+1} = a^{n+1}b^0 + \somme{k=0}{n-1} \binomiale{n}{k} a^{k+1}b^{n-k} + a^0b^{n+1} + \somme{k=1}{n} \binomiale{n}{k} a^kb^{n-k+1} 
 $$ 
 
 puis on effectue le changement d'indice $k' = k+1$ sur la somme de gauche :
 
 $$
-(a+b)^{n+1} = a^{n+1}b^0 + \somme{k'=1}{n} \binom{n}{k'-1} a^{k'}b^{n-k'+1} + a^0b^{n+1} + \somme{k=1}{n} \binom{n}{k} a^kb^{n-k+1} 
+(a+b)^{n+1} = a^{n+1}b^0 + \somme{k'=1}{n} \binomiale{n}{k'-1} a^{k'}b^{n-k'+1} + a^0b^{n+1} + \somme{k=1}{n} \binomiale{n}{k} a^kb^{n-k+1} 
 $$
 
 
 $$
-(a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \underbrace{(\binom{n}{k-1} + \binom{n}{k})}_{= \binom{n+1}{k}} a^{k}b^{n-k+1}
+(a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \underbrace{(\binomiale{n}{k-1} + \binomiale{n}{k})}_{= \binomiale{n+1}{k}} a^{k}b^{n-k+1}
 $$
 
 $$
- \text{donc } (a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \binom{n+1}{k} a^{k}b^{n-k+1} = \somme{k = 0}{n+1} \binom{n+1}{k} a^{k}b^{(n+1)-k}
+ \text{donc } (a+b)^{n+1} = a^{n+1} + b^{n+1}  + \somme{k = 1}{n} \binomiale{n+1}{k} a^{k}b^{n-k+1} = \somme{k = 0}{n+1} \binomiale{n+1}{k} a^{k}b^{(n+1)-k}
 $$
 
 On a bien montré $\cP(n) \Rightarrow \cP(n+1)$
@@ -167,11 +167,11 @@ On a bien montré $\cP(n) \Rightarrow \cP(n+1)$
 
 </Hideable>
 
-<Item type='corollaire' titre=''>
+<Item type='corollaire' titre='somme et somme alternée des coefficients binômiaux'>
 Soit $n \in \N^*$. 
 
 $$
-\somme{k = 0}{n} \binom{n}{k} = 2^n \quad \text{ et }\quad \somme{k=0}{n} \binom{n}{k}(-1)^k = 0
+\somme{k = 0}{n} \binomiale{n}{k} = 2^n \quad \text{ et }\quad \somme{k=0}{n} \binomiale{n}{k}(-1)^k = 0
 $$
 </Item>
 

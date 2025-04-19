@@ -12,9 +12,9 @@ import ChoixInfo from "../components/ChoixInfo.astro";
 var filiere = "";
 
 if (Astro.url.pathname.length > 2) {
-  filiere = Astro.url.pathname.slice(1, 20).split("/")[0].split("-")[1];
+  filiere = Astro.url.pathname.slice(1, 20).split("/")[0];
 }
-console.log(filiere);
+
 if (filiere === "") {
   filiere = "mpsi";
 }
@@ -105,55 +105,29 @@ const { headings, title } = Astro.props;
     >
       <ul class="text-base-content w-[350px] bg-base-300">
         <!-- Sidebar content here -->
-        <div tabindex="0" class="collapse collapse-arrow w-auto">
-          <input type="checkbox" />
-          <div
-            class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none"
-          >
-            Semestre 1
-          </div>
-          <div
-            class="border-l-10 base-content leading-10 collapse-content text-lg"
-          >
-            {
-              coursData[`${filiere}1`].map((cours) => (
-                <div>
-                  <a
-                    class="px-2 block decoration-none z-20"
-                    href={`/cpge-${filiere}${cours.url}`}
-                  >
-                    {cours.titre}
-                  </a>
-                </div>
-              ))
-            }
-          </div>
-        </div>
-
-        <div tabindex="0" class="collapse collapse-arrow w-auto">
-          <input type="checkbox" />
-          <div
-            class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none"
-          >
-            Semestre 2
-          </div>
-          <div
-            class="border-l-10 base-content leading-10 collapse-content text-lg"
-          >
-            {
-              coursData[`${filiere}2`].map((cours) => (
-                <div>
-                  <a
-                    class="px-2 block decoration-none z-20"
-                    href={`/cpge-${filiere}${cours.url}`}
-                  >
-                    {cours.titre}
-                  </a>
-                </div>
-              ))
-            }
-          </div>
-        </div>
+        {
+          Object.entries(coursData[`${filiere}`]).map(([key, value]) => (
+            <div tabindex="0" class="collapse collapse-arrow w-auto">
+              <input type="checkbox" />
+              <div class="collapse-title bg-base-200 font-bold cursor-pointer text-lg rounded-none">
+                {key}
+              </div>
+              <div class="border-l-10 base-content leading-10 collapse-content text-lg">
+                {value.map((cours) => (
+                  <div>
+                    <a
+                      class="px-2 block decoration-none z-20"
+                      href={`/${filiere}${cours.url}`}
+                    >
+                      {cours.titre}
+                    </a>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )
+        )
+        }
       </ul>
     </div>
   </body>
