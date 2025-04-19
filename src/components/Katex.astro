@@ -1,18 +1,7 @@
 ---
-import katex from 'katex';
-
-// Configuration des macros globales
-const macros = {};
-
-// Récupération du contenu du slot par défaut
-const formula = await Astro.slots.render('default') || '';
-const html = katex.renderToString(formula.trim(), {
-  throwOnError: false,
-  macros});
-
 ---
 
-<div class="text-center"><span class="katex-container" set:html={html}></span></div>
+<div class="text-center"><span class="katex-container" ></span></div>
 
 <link
   rel="stylesheet"
