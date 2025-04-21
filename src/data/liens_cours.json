@@ -138,5 +138,17 @@
         "url": "/auto_jointure"
       }
     ]
+  },
+  "agregation": {
+    "Fondements Alg.": [],
+    "Fondements Ana.": [],
+    "Approfondissement Alg.": [
+      {
+        "difficulty": "theoreme",
+        "titre": "Théorie de Gallois",
+        "url": "/theorie_gallois"
+      }
+    ],
+    "Approfondissement Ana.": []
   }
 }

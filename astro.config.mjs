@@ -20,6 +20,9 @@ const macros = {
   "\\K": "\\mathbb{K}",
   "\\L": "\\mathbb{L}",
   "\\indicatrice": "\\mathbb{1}",
+  "\\F": "\\mathbb{F}",
+  "\\M": "\\mathbb{M}",
+  "\\E": "\\mathbb{E}",
 
   "\\cA": "\\mathscr{A}",
   "\\cB": "\\mathscr{B}",
@@ -99,7 +102,8 @@ const macros = {
   "\\deg": "\\operatorname{deg}",
   "\\dom": "\\operatorname{dom}",
   "\\diag": "\\operatorname{diag}",
-  "\\GL": "\\operatorname{GL}"
+  "\\GL": "\\operatorname{GL}",
+  "\\Rac": "\\operatorname{Rac}"
 };
 
 export default defineConfig({

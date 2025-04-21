@@ -2,19 +2,98 @@
 import Base from "@layouts/Base.astro";
 ---
 
-    <!-- Contenu spécifique de cette page -->
-    <h1>Agreg</h1>
-    <p></p>
-    <label class="btn btn-circle swap swap-rotate">
-        <input type="checkbox" />
-      
-        <!-- icône hamburger -->
-        <svg class="swap-off fill-current absolute " xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-          <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-        </svg>
-      
-        <!-- icône close -->
-        <svg class="swap-on fill-current absolute " xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-          <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" />
-        </svg>
-      </label>
+<Base>
+  <!-- Contenu spécifique de cette page -->
+  <h1>Agrégation</h1>
+
+  <br />
+  <br />
+
+  <p>Cette section est dédiée à la préparation à l'agrégation.</p>
+  <br />
+  <p>
+    Les contenus de cette section sont rajoutés au compte goutte selon les
+    envies du ou des auteurs. Ils ne sont en aucun cas l'intégralité de ce que
+    doit savoir une personne préparant l'agrégation.
+  </p>
+  <br />
+  <br />
+
+  <br />
+  <br />
+
+  <strong class="text-3xl">Intentions de l'auteur</strong>
+
+  <br />
+  <br />
+
+  <p>
+    L'objectif ici est de donner les clés pour comprendre les outils
+    fondamentaux (ou certains d'entre eux) pour un agrégatif. Pour cela, les
+    cours de cette section sont séparés en plusieurs catégories :
+  </p>
+  <ul class="!list-disc pl-5">
+    <li class="my-4">Les fondamentaux en Analyse / Algèbre</li>
+    <li class="my-4">Les approfondissements en Analyse / Algèbre</li>
+  </ul>
+
+  <p>
+    On note deux choses : les probabilités seront traitées dans l'analyse et
+    l'agrégatif doit connaître au moins quelques approfondissements.
+
+    <br />
+
+    On classera les approfondissements selon leur utilité pour l'agrégation :
+    <ul class="!list-disc pl-5">
+      <li class="my-4">
+        Vert : ce sont des approfondissements qui peuvent se placer facilement
+        en leçon et très couramment utilisés. Il est bon d'avoir une culture
+        générale sur ces approfondisssements.
+      </li>
+      <li class="my-4">
+        Orange : ce sont des approfondissements qui permettent de mieux
+        comprendre certains objets, leur utilisation ou leur contexte. Ils sont
+        utiles pour développer un axe spécifique dans certaines leçons ou pour
+        donner du contexte à certains développements.
+      </li>
+      <li class="my-4">
+        Rouge : ces approfondissements sont là si vous pensez avoir tout vu mais
+        seront plus difficilement utilisables en leçon.
+      </li>
+    </ul>
+
+    <br />
+
+    Par ailleurs, chaque chapitre fera du mieux possible pour approcher les
+    notions le plus simplement possible et donnera des références qui sont
+    essentielles pour l'agrégation. Les références du site ne sont pas les
+    seules à prendre en compte et l'agrégatif est grandement incité à se
+    construire ses propres références.
+  </p>
+
+  <br />
+  <br />
+
+  <strong class="text-3xl">Liens utiles</strong>
+
+  <br />
+
+  <br />
+  <p>Ce site a été réalise à l'aide des outils suivants :</p>
+
+  <ul class="!list-disc pl-5">
+    <li class="my-4">
+      <a href="https://agreg-maths.fr/"
+        >Agreg-Maths : Le couteau suisse de l'agrégatif</a
+      >. Site incontournable de l'agrégatif. On y trouve des leçons d'autres
+      agrégatifs, des développements et leurs recasages. S'y trouvent également
+      des retours d'oraux avec des questions d'oral.
+    </li>
+
+    <li class="my-4">
+      <a href="https://agreg.org/">Site officiel de l'agrégation</a>. On y
+      trouve les informations sur les concours (lieux, dates) ainsi que les
+      sujets et rapports des années précédentes et évidemment le programme.
+    </li>
+  </ul>
+</Base>
