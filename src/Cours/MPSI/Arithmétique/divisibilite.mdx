@@ -1,0 +1,129 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+Dans cette sous-section, $n\v m$ et $k$ désignent des entiers relatifs.
+
+<Item type='definition' titre="diviseur et multiple d'entiers relatifs">
+
+On dit que $n$ divise $m$ s'il existe $k$ tel que $m = k.n$.
+
+Dans ce cas, on dit que $n$ et $k$ sont des **diviseurs** de $m$ et que $m$ est un **multiple** de $k$ et $n$.
+</Item>
+
+
+<Item type='proposition' titre="relation d'ordre">
+
+La divisibilité est une relation d'ordre sur $\N$. 
+
+<br />
+
+Ceci est faux sur $\Z$!!!
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $a$ et $b$ deux entiers naturels.
+
+$\cd$ **Reflexivité :** $a \divise a$ puisque $a = \underbrace{1}_{\in \Z}.a$
+
+$\cd$ **Antisymétrie :** Supposons qu'on a : $a \divise b \ET b \divise a$. 
+
+Il existe $k$ et $l$ deux entiers tels que $a = k.b$ et $b = l.a$ mais donc $a = k.l.a$ d'où $1 = k.l$ 
+
+mais donc $k = l = 1$ (c'est ici qu'il y a un problème sur $\Z$ puisque $k = l = -1$ convient et n'aboutit pas au résultat voulu)
+
+$\cd$ **Transitivité :** Supposons qu'on a : $a \divise b \ET b \divise c$.
+
+Il existe $k_1 \in \Z$ tel que $b = a . k_1$ et $k_2 \in \Z$ tel que $c = k_2.b$.
+
+On a donc, $c = k_2 . (k_1.a) = (k_1.k_2).a$. En posant $k = k_1 . k_2$, on a bien $c = \underbrace{k}_{\in \Z}.a$ et donc $a \divise c$.
+</Hideable>
+
+<Item type='proposition' titre='multiplicativité de la divisibilité'>
+
+Soient $(c\v d) \in \Z^2$ et supposons que $a \divise b$
+
+$\cd$ si $c \divise d$, alors $ c.a \divise d.b$ 
+
+$\cd$ en particulier, $c.a \divise c.b$ 
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si on a : $a \divise b$ et $c \divise d$, alors il existe $k$ et $l$ deux entiers tels que $b = k.a$ et $d = l.c$ mais donc $d.b = (c.a).k.l$ d'où $c.a \divise d.b$. 
+
+En particulier, $c \divise c$ d'où le deuxième cas.
+</Hideable>
+
+
+<Item type='proposition' titre='divisibilité et valeur absolue'>
+
+Si $n \divise m$ alors $|n| \divise m$.
+
+De même, si $n \divise m$ alors $n \divise |m|$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $n \divise m$, alors il existe $k \in \Z$ tel que $m = k.n$ mais donc $m = (-k).(-n)$.
+
+D'où $-n \divise m \ET n \divise m$. d'où $|n| \divise m$.
+
+<br/>
+
+La deuxième affirmation vient du fait que, si $m$ est positif, $|m| = k.n$ et sinon, $|m| = (-k).n$. d'où $n \divise |m|$
+</Hideable>
+
+
+<Item type='proposition' titre='divisibilité et comparaison'>
+
+Si $n \v m > 0$ et $n \divise m$, alors $n \leqslant m$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$n \divise m$ donc il existe $k \in \Z$ tel que $m = k.n$.
+
+Mais $n \v m > 0$ donc $\dfrac{m}{n} = k \geqslant 0$. 
+
+$\cd$ Si $k = 0$ alors $m = n = 0$ d'où $m \geqslant n$.
+
+$\cd$ Sinon, $k \geqslant 1$ et donc $m = n.k \geqsalnt n$.
+</Hideable>
+
+
+<Item type='proposition' titre='égalité et divisibilité'>
+
+Soient $n$ et $m$ tels que $n \divise m \ET m \divise n$
+
+$\cd$ Si $n$ et $m$ sont positifs : $n = m$
+
+$\cd$ Sinon : $n = \pm b$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Comme $n \divise m \ET m \divise n$, on a $|n| \divise |m| \ET |m| \divise |n|$ mais donc $|n| \leqslant |m| \ET |m| \leqslant |n|$ d'où $|n| = |m|$.
+
+On en déduit que, si $n$ et $m$ ont même signe, $n = m$ et sinon $n = -m$
+</Hideable>
+
+
+<Item type='proposition' titre='divisibilité et combinaison linéaire'>
+
+Soient $\lambda$ et $\mu$ deux entiers relatifs. Supposons que : $n \divise a \in \Z \ET n \divise b \in \Z$. 
+
+Alors, on a : $n \divise (\lambda.a + \mu.b)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+D'après l'hypotèse, il existe $(k_1 \v k_2) \in \Z^2$ tels que $a = k_1.n$ et $b = k_2.n$. 
+
+Donc $\lambda.a + \mu.b = \lambda.k_1.n + \mu.k_2.n = n.(\underbrace{\lambda.k_1 + \mu.k_2}_{\in \Z})$ d'où $n \divise \lambda.a + \mu.b$
+</Hideable>

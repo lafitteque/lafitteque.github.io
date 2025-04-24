@@ -1,0 +1,100 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='loi de composition interne'>
+
+Soit $E$ un ensemble.
+
+On appelle loi de composition interne sur $E$ une application de $E \times E$ dans $E$. On peut aussi l'appeler "opération interne".
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+$- : (x \v y) \in Z^2 \mapsto x - y $ est une loi de composition interne sur $\Z$.
+
+Cependant, sur $\N$ elle n'est pas interne car $1 - 2 \notin \N$.
+</Hideable>
+
+
+<Item type='definition' titre='partie stable'>
+
+Soit $\times$ une loi de composition interne sur $E$. On dit que $F \subset E$ est stable par $\times$ si :
+
+$$
+\forall (x \v y ) \in F^2 \v x \times y \in F
+$$
+
+En clair, l'opération garde les éléments de $F$ dans $F$.
+</Item>
+
+
+<Item type='definition' titre='propriétés usuelles'>
+
+Soit $E$ un ensemble muni d'une loi de composition interne notée $\ast$. On considèrera $(a \v b \v c) \in E^3$ des éléments quelconques de $E$.
+
+$\cd$ **commutativité :** $a$ et $b$ commutent si $a\ast b = b\ast a$. On dit que $E$ est commutatif si tout couple d'élément dans $E$ commute.
+
+$\cd$ **associativité :** il y a associativité dans $E$ si on a toujours $a\ast (b \ast c) = (a \ast b) \ast c$.
+
+$\cd$ **élément neutre :** $e \in E$ est un élément neutre de $E$ si pour tout $x \in E$, on a $e \ast x = x \ast e = x$
+
+$\cd$ **inversibilité :** on suppose que $E$ a un élément neutre $e$. On dit que $a$ est inversible s'il existe un élément $b$ de $E$  tel que $a \ast b = b\ast a = e$
+</Item>
+
+<Remarque titre=''>
+
+En supposant que l'inverse existe, si la loi est notée $+$, on note souvent $-a$ l'inverse de $a$. Si la loi est notée $\times \v \ast $ ou $\cdot$, on note souvent $a^{-1}$ l'inverse de $a$.
+
+De même, il arrive que pour la notation additive le neutre soit noté $0$ et que pour les notations multiplicatives, le neutre soit noté $1$.
+</Remarque>
+
+<Item type='proposition' titre="unicité du neutre">
+
+Soit $E$ muni d'une opération interne. S'il existe, le neutre est unique
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $e$ et $e'$ sont deux éléments neutres de $E$. On a $e \ast e' = e$ puis que $e'$ est un élément neutre. Mais on a aussi $e \ast e' = e'$ puisque $e$ est un élément neutre.
+
+Mais donc $e = e \ast e' = e'$ d'où $e = e'$.
+
+</Hideable>
+
+
+<Item type='proposition' titre="unicité de l'inverse">
+
+Soit $E$ muni d'une opération interne associative. Lorsqu'il existe, l'inverse est unique.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+soit $a \in E$ et $b$ et $c$ deux inverses de $a$ dans $E$. 
+
+$a \ast b \ast c = (a \ast b) \ast c = e \ast c = c$
+
+Mais on a aussi $a \ast b \ast c = (a \ast b) \ast c = (b \ast a) \ast c = b \ast (a \ast c) = b \ast e = b$
+
+Mais donc $c = a \ast b \ast c = b$ d'où $c = b$.
+
+</Hideable>
+
+
+<Exercice titre='sur le cercle unité'>
+
+On considère $\U$ le cercle unité muni du produit complexe.
+
+1\) Montrer que $\U$ des un groupe abélien (on pourra utiliser les propriétés de $\C$).
+
+2\) Soit $G$ un sous-groupe de $(\C \v \times)$ non trivial (différent de $\{0\}$). Montrer que, si $G$ est borné, alors $G \subset \U$
+
+</Exercice>
+
+
+## Groupes

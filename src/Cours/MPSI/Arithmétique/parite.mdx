@@ -1,0 +1,54 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='parité et imparité'>
+
+On dit qu'un nombre $n$ est pair s'il existe $k \in \Z$ tel que $n = 2.k$.
+
+On dit qu'il est impair s'il existe $k \in \Z$ tel que $n = 2.k + 1$.
+</Item>
+
+
+<Item type='proposition' titre='produit et parité'>
+
+| Produit | n est pair | n est impair |
+|---|---|---|
+| m est pair | pair | pair |
+| m est impair | pair | impair |
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Si $n$ et $m$ sont pairs, alors il existe $k$ et $l$ des entiers tels que $n = 2k et $m = 2l$.
+
+Donc $n.m = 2.(\underbrace{2.k.l}_{\in \Z})$ et donc le produit est pair.
+ 
+$\cd$ Si $n$ et $m$ ont une parité opposée, il existe $k$ et $l$ des entiers tels que $n = 2k$ et $m = 2l +1$ (quitte à échanger les rôles de $n$ et $m$). 
+
+On a donc $n.m = 2.\big(\underbrace{k.(2l + 1)}_{\in \Z}\big)$ et donc le produit est pair.
+
+$\cd$ Si $n$ et $m$ sont impairs, il existe $k$ et $l$ des entiers tels que $n = 2k$ et $m = 2l +1$.
+
+On a alors $n.m = (2k+1)(2l+1) = 4k.l + 2k + 2l + 1 = 2(\underbrace{2k.l + k + l}_{\in \Z}) + 1$ et donc le produit est impair.
+
+</Hideable>
+
+<Exercice titre=''>
+
+Soient $a$ et $b$ deux entiers tels que $a \times b = 952 \, 167 \, 452 \, 384 \, 959$.
+
+Que dire de la parité de $a$ et $b$?
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+D'après la propriété précédente, le produit de deux entiers est impair si et seulement si les deux entiers sont impairs.
+
+Donc $a$ et $b$ sont tous les deux impairs.
+</Hideable>

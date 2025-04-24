@@ -1,0 +1,31 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='divisibilité'>
+
+Soient $P$ et $Q$ deux polynômes de $\K[X]$.
+
+On dit que $P$ divise $Q$ s'il existe un torisième polynôme $U \in \K[X]$ tel que $$Q = P . U$. On note $P \divise Q$
+
+<br/>
+
+On dit que $P$ (et $U$) est un **diviseur** de $Q$ et que $Q$ est un **multiple** de $P$ (et de $U$)
+</Item>
+
+
+<Item type='definition' titre='racine et multiplicité'>
+
+Soit $P$ un polynôme de $\K[X]$ et soit $\lambda \in \K$.
+
+On dit que $\lambda$ est une racine de $P$ si $(x - \lambda) \divise P$
+
+<br/>
+
+Soit $n \in \N^*$, on dit que $\lambda$ est racine de multiplicité $n$ de $P$ si $(X - \lambda)^n \divise P$ et $(X - \lambda)^n \divisepas P$
+
+</Item>

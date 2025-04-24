@@ -1,0 +1,56 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='sous-groupe'>
+
+Soit $(G \v +)$ un groupe. 
+
+On dit que $(H \v +)$ est un sous groupe de $G$ si $H$ est un groupe et que $H \subset G$.
+
+<br/>
+
+Il arriver que cela soit noté $H < G$. Attention, cette notation n'est pas généralisée en CPGE.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation des sous-groupes'>
+
+Soit $(G \v +)$ un groupe. 
+
+$(H \v +)$ est un sous groupe de $(G \v +)$ si et seulement si les affirmations suivantes sont vraies :
+
+$\cd$ $H \subset G$ 
+
+$\cd$ $H$ est non vide
+
+$\cd$ $\forall (h_1 \v h_2) \in H^2\v h_1 + (-h_2) \in H$ (ou $h_1.h_2^{-1} \in H$)
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Supposons que $H$ soit un sous-groupe de $G$ pour la loi $+$.
+
+Dans ce cas, par définition, $H \subset G$. De plus, $H$ étant un groupe et sa loi étant interne, la troisième affirmation est également remplie. $H$ admet un neutre et est donc non vide.
+
+<br/>
+
+$\cd$ Supposons que les affirmations soient vraies. 
+
+<Indent>
+
+$\cdot$ **neutre :** D'abord, soit $h \in H$, $\underbrace{h}_{\in G} + \underbrace{(-h)}_{\in G} = e_G \in H$. Donc $H$ admet un élément neutre : $e_G$ que l'on note simplement $e$.
+
+$\cdot$ **associativité :** Ensuite, comme $G$ est associatif, $H$ l'est aussi.
+
+$\cdot$ **inversibilité :** Puis, soit $h \in H$, $\underbrace{e}_{\in H} + \underbrace{(-h)}_{\in H} = -h \in H$. Les inverses des éléments de $H$ sont dans $H$.
+
+$\cdot$ **loi interne :** La loi est interne puisque, si $h_1$ et $h_2$ sont des éléments de $H$, $-h_2 \in H$. Mais donc $h_1 + (-(-h_2)) = h_1 + h_2 \in H$
+</Indent>
+
+</Hideable>

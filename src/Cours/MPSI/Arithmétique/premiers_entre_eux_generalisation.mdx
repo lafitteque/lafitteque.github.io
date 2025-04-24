@@ -1,0 +1,65 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='PGCD de plusieurs entiers'>
+
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On appelle **plus grand diviseur commun** de $n_1 \v n_2 \v \dotsm n_k$ le plus grand $d \in \N$ tel que $d \divise n_1 \v d \divise n_2 \v \dotsm \v d \divise n_k$.
+
+On note un tel $d$ ainsi : $pgcd(n_1 \v n_2 \v \dotsm n_k)$
+</Item>
+
+<Item type='definition' titre='entiers premiers entre eux dans leur ensemble'>
+
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On dit que $n_1 \v n_2 \v \dotsm n_k$ sont premiers dans leur ensemble si $pgcd(n_1 \v n_2 \v \dotsm n_k) = 1$
+</Item>
+
+<Item type='definition' titre='entiers premiers entre eux deux à deux'>
+
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+On dit que $n_1 \v n_2 \v \dotsm n_k$ sont premiers deux à deux si, pour tout $(i \v j) \in \defentiers{1}{k}$ tels que $i \neq j$, on a $n_i \gcd n_j = 1$.
+
+</Item>
+
+
+<Item type='proposition' titre='lien entre les deux'>
+
+Si des entiers sont premiers entre eux deux à deux, alors ils le sont dans leur ensemble.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de remarquer que $pgcd(n_1 \v n_2 \v \dotsm \v n_k) \divise pgcd(n_1 \v n_2)$.
+</Hideable>
+
+
+<Item type='proposition' titre='cas général du théorème de Bezout'>
+
+Soient $n_1 \v n_2 \v \dotsm n_k$ des entiers naturels.
+
+Ils sont premiers entre eux dans leur ensemble si et seulement s'il existe $u_1 \v u_2 \v \dotsm \v u_k$ des entiers relatifs tels que :
+
+$$
+u_1.n_1 + u_2.n_2 + \dotsm + u_k.n_k = 1
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Le résultat se montre par récurrence (que nous allons abréger ici). 
+
+L'initialisation est triviale au rang $1$ et le rang $2$ constitue le théorème de Bezout. 
+
+L'hérédité découle du fait que $pgcd(u_1 \v u_2 \v \dotsm \v u_k) = pgcd(pgcd(u_1 \v u_2) \v pgcd(u_3 \v \dotsm \v u_k))$, ce qui nous permet d'appliquer la propriété au rang $2$ (deux fois) et au rang $n-2$.
+
+</Hideable>

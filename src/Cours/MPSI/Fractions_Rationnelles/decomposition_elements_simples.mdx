@@ -1,0 +1,110 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='theoreme' titre='décomposition en éléments simples' tag="admis">
+
+Soit $F = \dfrac{P}{Q} \in \K(X)$ de forme irreductible tel que $Q = \produit{i = 1}{n} Q_i^{\alpha_i}$ sa décomposition en produit de facteurs irréductibles. Il existe :
+
+$\cd$  $Q_1 \v \dotsm \v Q_n \in \K[X]$ irréductibles 
+
+$\cd$ Des $P_i,k \in \K[X]$ où $ i \in \defentiersn$ et $1 \leqslant k \leqslant \alpha_i$ tels que $\deg(P_i,k) < \deg(Q_i)$
+
+tels que :
+
+$$
+F = E + \somme{i=1}{n} \left( \somme{k = 1}{\alpha_i} \dfrac{P_{i,k}}{Q_i^k} \right)
+$$
+
+où $E \in \K(X)$ est la partie entière de $\dfrac{P}{Q}$.
+
+De plus, l'écriture sous cette forme est unique.
+</Item>
+
+
+<Fil>
+
+**Cas réel :** Il existe une décomposition de la forme $F = E + \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X-\lambda_i)^k} \right) \; + \;  \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X^2 + b_k X + c_k )^k} \right)$ où les $\lambda_i \v a_i \v b_i \v c_i$ sont des réels.
+
+
+<br />
+
+**Cas complexe :** Il existe une décomposition de la forme $F = E + \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X-\lambda_i)^k} \right)$ où les $a_i \v \lambda_i$ sont des complexes.
+</Fil>
+
+<Remarque titre=''>
+
+La méthode la plus fondamentale pour trouver la décomposition en éléments simples est l'identification. On part de la décomposition en éléments simples avec ses coefficients inconnus, on met sous le même dénominateur puis on identifie les coefficients.
+
+</Remarque>
+
+
+<Exercice titre=''>
+
+1\) Donner la décomposition en éléments simples sur $\R$ de $\dfrac{1}{X^2 + X}$ 
+
+<br/>
+
+2\) Donner la décomposition en éléments simples sur $\R$ de $\dfrac{2X^5 + 3X^2}{X(X+1)(X+2)}$. 
+
+<br/>
+
+3\) Donner les décompositions en éléments simples sur $\R$ et $\C$ de $\dfrac{X}{(X+1)(X^2+1)}$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) Soit $F = \dfrac{1}{X^2 + X} = \dfrac{1}{X(X+1)}$ est une forme irréductible. Donc il existe $a,b \in \R$ tels que $F = \dfrac{a}{X+1} \dfrac{b}{X}$ (la partie entière est nulle car le degré du numérateur est strictement inférieur à celui du dénominateur).
+
+On a donc $F = \dfrac{aX + b(X+1)}{X(X+1)} = \dfrac{(a+b)X + b}{X(X+1)}$. 
+
+Par identification, $a+b = 0$ et $b = 1 d'où $a = -1$ et $b = 1$.
+
+En conclusion, $F$ admet la décomposition en éléments simples suivante sur $\R$ : $F = \dfrac{1}{X} - \dfrac{1}{X+1}$. Il faut la connaître par coeur car elle au centre de nombreuses astuces.
+
+<br/>
+
+2\) Soit $F = \dfrac{2X^5 + 3X^2}{X(X+1)(X+2)} = \dfrac{2X^4 + 3X}{(X+1)(X+2)}$. Cette fois-ci, la partie entière est non nulle, il faut effectuer la division euclidienne de $2X^5 + 3X^2$ par $X(X+1)(X+2) = X^2 + 3X + 2$:
+
+$ (2X^5 + 3X) - 2.X^2(X^2 + 3X + 2) = (2X^4 + 3X) - (2X^4 -6X^3 -4X^2) = -6X^3 -4X^2 + 3X^1$
+
+$ (-6X^3 -4X^2 + 3X^1) + 6X.(X^2 + 3X + 2) = (-6X^3 -4X^2 + 3X^1) + (6X^3 + 18X^2 + 12X^1) = 14X^2 + 15X$
+
+$ (14X^2 + 15X) - 14.(X^2 + 3X + 2) = (14X^2 + 15X^1) - (14X^2 + 42X + 28) = -27X -28$
+
+On en déduit que $(2X^5 + 3X) = (X^2 + 3X + 2) . (2X^2 - 6X + 14) + (-27X -28)$.
+
+On a donc $F = 2X^2 - 6X + 14 + \dfrac{-27X - 28}{(X+1)(X+2)} $
+
+Puis, $\dfrac{-27X - 28}{(X+1)(X+2)} = \dfrac{a}{X+1} + \dfrac{b}{X+2} = \dfrac{(a+b)X + 2a + b}{(X+1)(X+2)}$.
+
+Par identification, $ \begin{cases}a+b = -27 \\ 2a + b = -28 \end{cases}$ qui donne, par l'opération $L_2 \leftarrow L_2 - L_1$, $a = -1$ et il suit que $b = -26$. On peut vérifier mais on sait qu'il y a existence et unicité de l'éctiture, comme on n'a trouvé qu'une solution, elle convient nécessairement (modulo les erreurs de calcul).
+
+On a finalement : $F = 2X^2 - 6X + 14 - \dfrac{1}{X+1} - \dfrac{26}{X+2}$
+
+<br/>
+
+3\) Soit $F = \dfrac{X}{(X+1)(X^2+1)}$ que l'on remarque être irreductible et de partie entière nulle. 
+
+On sait qu'il existe $(a \v b \v c) \in \R^3$ tels que $F = \dfrac{a}{X+1} + \dfrac{bX + c}{X^2 + 1} $
+
+On a donc $F = \dfrac{a(X^2 + 1) + (bX + c)(X+1)}{(X+1)(X^2+1)} = \dfrac{(a+b)X^2 + (b+c)X + (a + c)}{(X+1)(X^2+1)}$
+
+Par identification, $\begin{cases}a+b = 0 \\ b+c = 1 \\ a + c = 0 \end{cases}$, il suit que $-c = a = -b$ et que $2b = 1$. On a donc $a = -\dfrac{1}{2}$ et $b = c = \dfrac{1}{2}$.
+
+Finalement, $F = -\dfrac{\dfrac{1}{2}}{X+1} + \dfrac{\dfrac{1}{2}X + \dfrac{1}{2}}{X^2+1}$
+
+<br/>
+
+Sur $\C$, il reste à décomposer $\dfrac{\dfrac{1}{2}X + \dfrac{1}{2}}{X^2+1} = \dfrac{1}{(X+i)(X-i)}$ pour conclure sur $\C$ : il existe $a \v b$ des complexes tels que $\dfrac{1}{(X+i)(X-i)} = \dfrac{a}{X + i} + \dfrac{b}{X - i} = \dfrac{(a+b)X + (b-a)i}{X^2 + 1}$
+
+il suit que $\begin{cases} a+b = \dfrac{1}{2} \\ (b-a)i = \dfrac{1}{2} \end{cases}$ d'où, par l'opération $L_1 \leftarrow L_1 + i.L_2$, on obtient $a = \dfrac{1}{2}$ puis $b =  \dfrac{1-i}{2}$ par l'opération $L_2 \leftarrow i.L_2$.
+
+On a finalement : $F = -\dfrac{1}{2} . \dfrac{1}{X+1} + \dfrac{\dfrac{1}{2}}{X + i} + \dfrac{\dfrac{1-i}{2}}{X - i}$
+
+</Hideable>

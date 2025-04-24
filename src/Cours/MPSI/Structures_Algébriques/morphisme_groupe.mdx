@@ -1,0 +1,140 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='morphisme de groupes'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes.
+
+On dit qu'une application $\varphi : G \rightarrow H$ est un morphisme de groupes si :
+
+$\cd$ $\varphi(e_G) = e_H$
+
+$\cd$ $\forall (g_1 \v g_2) \in G^2 \v \varphi(g_1 \ast g_2) = \varphi(g_1) \times \varphi(g_2)$
+</Item>
+
+<Remarque titre=''>
+
+morphisme = conserve la structure 
+
+expl : morphisme d'ensembles n'a pas de structure à conserver, c'est simplement une fonction
+
+morphisme de groupe conserve les propriétés de l'opération du groupe
+
+on verra d'autres types de morphismes associés à d'autres structures. Dans chaque cas, un morphisme de **machin** conserve la structure de **machin**.
+</Remarque>
+
+<Item type='proposition' titre='inverse et morphisme  de groupes'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes. Si $g \in G$, on a $\phi(g^{-1}) = \phi(g)^{-1}$
+</Item>
+
+
+<Item type='proposition' titre='image et image réciproque'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ $(\phi(G) \v \times)$ est un sous groupe de $(H \v \times)$
+
+$\cd$ $(\phi^{-1}(H) \v \ast)$ est un sous groupe de $(G \v \ast)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+
+$\cd$ Montrons que $(\phi(A) \v +_B)$ est un sous-groupe de $(B \v +_B)$.
+
+<Indent>
+
+$\bullet$ $\phi(A) \subset B$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ élément neutre : $\phi(e_A) = e_B$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in A^2 \v \phi(x) -_B \phi(y) = \phi( \underbrace{x -_A y}_{\in A}) \in \phi(A)$
+
+</Indent>
+
+
+<br/>
+
+$\cd$ Montrons que $(\phi^{-1}(A) \v +_A )$ est un sous-groupe de $(A \v +_A)$.
+
+<Indent>
+
+$\bullet$ $\phi^{-1}(B) \subset A$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(e_A) = e_B$ donc $e_A \in \phi^{-1}(B)$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) -_B \phi(y) = \phi(x -_A y) \in B$ donc $x -_A y \in \phi^{-1}(B)$
+
+</Indent>
+
+</Hideable>
+
+
+<Item type='definition' titre='image et noyau'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ On appelle noyau de $\phi$ l'ensemble $\Ker(\phi) = \{ g \in G \mid \phi(g) = e_H\}$
+
+$\cd$ On appelle image de $\phi$ l'ensemble $\Im(\phi) = \phi(G) = \{ h \in H \mid \exists g \in G \mid \phi(g) = h \}$
+</Item>
+
+
+<Item type='proposition' titre="caractérisations de l'injectivité et de la surjectivité">
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ $\phi$ est injectif si et seulement si $\Ker(\phi) = {e_G}$
+
+$\cd$ $\phi$ est surjectif si et seulement si $\Im(\phi) = H$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+La deuxième affirmation est une caractérisation de la surjectivité vue dans le chapitre sur les applications.
+
+<br/>
+
+**Montrons la première affirmation :** 
+
+$\cd$ Supposons $\Ker(\phi) = {e_G}$ : 
+
+soient $g$ et $g'$ des éléments de $g$ tels que $\phi(g) = \phi(g')$
+
+On a alors $\phi(g) \times \phi(g')^{-1} = \phi(g) \times \phi(g'^{-1}) = \phi(g \ast g'^{-1}) = e_H$.
+
+Comme $\phi(g \ast g'^{-1}) = e_H$, on a $g \ast g'^{-1} = e_G$ mais donc $g = g'$ en multipliant par $g'$ de part et d'autre. D'où l'injectivité.
+
+
+$\cd$ Supposons que $\phi$ soit injective. Par injectivité, $\phi(g) = \underbrace{e_H}_{= \phi(e_G)} \Rightarrow  g = e_G$
+
+Donc $\Ker(\phi) = \{e_G\}$
+
+</Hideable>
+
+
+<Item type='definition' titre='morphismes de groupes particuliers'>
+
+Soient $(G \v \ast)$ et $(H \v \times)$ deux groupes et $\phi : G \rightarrow H$ un morphisme de groupes.
+
+$\cd$ On dit que $\phi$ est un **automorphisme** si $G = H$ et $\ast = \times$.
+
+$\cd$ On dit que $\phi$ est un **isomorphisme** si $\phi$ est bijectif.
+</Item>
+
+<Remarque titre=''>
+
+En vulgarisé :
+
+$\cd$ isomorphisme $\rightarrow$ "même taille" (bijection)
+
+$\cd$ automorphisme $\rightarrow$ dans lui-même ($G = H$)
+
+La notion de même taille n'a plus vraiment de sens quand les ensembles sont infinis, mais c'est une manière de retenir.
+</Remarque>

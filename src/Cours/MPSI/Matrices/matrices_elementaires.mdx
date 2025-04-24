@@ -1,0 +1,45 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='matrices élémentaires'>
+
+On note $E_{i, j} \in \cM_{n, p}(\R)$ la matrice 
+
+$$
+E_{i,j} = 
+\begin{matrix}
+\begin{matrix} & & & j & & & \\ & & & \downarrow & & & \end{matrix} & \\
+\begin{pmatrix}
+0 &  & & \dotsm & & & 0 \\
+\vdots & \dotsm & & 0 & & \dotsm & \vdots \\[0.5em]
+0 & \dotsm & 0  & 1 & 0 & \dotsm & 0 \\
+\vdots & \dotsm & & 0 & & \dotsm & \vdots \\[0.5em]
+0 &  & & \dotsm & &  & 0\end{pmatrix} & \begin{matrix}  \\ \leftarrow i  \\ \\ \end{matrix}  
+\end{matrix}
+$$
+
+<br/>
+
+On note $\delta_i^j$ la quantité égale à $0$ si $i \neq j$ et à $1$ si $i = j$. (on peut remarquer que $\delta_i^j = \indicatrice_{ \{ (i,i) \mid i \in \defentiersn \}}$). 
+
+Ce symbôle est appelé **symbôle de Kronecker** et permet de définir $E_{i,j}$ simplement : $E_{i,j} = \left( \delta_i^j\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+</Item>
+
+<Item type='proposition' titre=' à propos de matrices élémentaires'>
+
+Toute matrice s'écrit comme combinaison linéaire des matrices élémentaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$.
+
+$A = \somme{i = 1}{n} \somme{j = 1}{p} a_{i,j} E_{i,j}$
+
+</Hideable>

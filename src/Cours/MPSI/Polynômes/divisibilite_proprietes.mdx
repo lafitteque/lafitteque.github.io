@@ -1,0 +1,58 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='proposition' titre='transitivité'>
+
+Soient $(P \v Q \v L) \in \K[X]^3$
+
+$$
+P \divise Q \ET Q \divise L \Rightarrow P \divise L
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $P \divise Q \ET Q \divise L$. 
+
+Il existe $A$ et $B$ dans $\K[X]$ tels que $Q = A . P$ et $L = B . Q$. On a donc $L = (A.B) . P$ donc $P \divise L$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='combinaison linéaire'>
+
+Soient $\lambda$ et $\mu$ des éléments de $\K$ et $(P \v Q \v L) \in \K[X]^3$.
+
+$(P \divise Q \ET P \divise L) \Rightarrow (P \divise \lambda Q + \mu R)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $P \divise Q \ET P \divise L$.
+
+Il existe $A$ et $B$ dans $\K[X]$ tels que $Q = A . P$ et $L = B . P$.
+
+On a donc $\lambda Q + \mu L = \lambda A . P + \mu B . P = P (\lambda A + \mu B)$ donc $p \divise \lambda Q + \mu L$
+</Hideable>
+
+<Remarque titre=''>
+
+La divisibilité n'est pas une relation d'équivalence car $1 \divise 2 \ET 2 \divise 1$ et pourtant $1 \neq 2$. La relation n'est donc pas symétrique.
+</Remarque>
+
+<Item type='proposition' titre='divisibilité et degré'>
+
+Soient $(P \v Q ) \in \K[X]^2$ non nuls.
+
+$P \divise Q \Rightarrow \deg(P) \leqslant \deg(Q)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Si $P \divise Q$, il existe $L \in \K[X]$ tel que $Q = L . P$ auquel cas $\deg(Q) = \deg(L) + \deg(P) \geqslant \deg(P)$ car les polynômes sont non nuls et donc les degrés sont dans $\N$.
+</Hideable>

@@ -13,195 +13,28 @@ import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 import Footer from '@components/Footer.astro'
 
+import DefinitionsVocabulaire from '@mpsi/Fractions_Rationnelles/definitions_vocabulaire.mdx'
+import DecompositionElementsSimples from '@mpsi/Fractions_Rationnelles/decomposition_elements_simples.mdx'
+import MethodesUsuelles from '@mpsi/Fractions_Rationnelles/methodes_usuelles.mdx'
+
+
 # Chapitre 13 - Fractions rationnelles
 
 <Tableofcontents />
 
 ## Généralités
-
-<Item type='defprop' titre='corps des fractions rationnelles' tag="admis">
-
-Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$.
-
-On note $\dfrac{P}{Q}$ le couple $(P\v Q)$. On effectue avec cette fraction les opérations comme sur $\R$.
-
-L'ensemble de ces fractions est noté $\K(X)$ et est appelé l'ensemble des **fractions rationnelles**. En particulier, $\left( \K(X) \v + \v \times \right)$ est un corps.
-
-
-<br/>
-
-On appelle fonction rationnelle associée à $\dfrac{P}{Q}$ la fonction $x \mapsto \dfrac{\tilde{P}(x)}{\tilde{Q}(x)}$ définie sur tout $\R$ excepté en les racines de $Q$.
-</Item>
-
-
-<Item type='definition' titre='forme irreductible et vocabulaire'>
-
-Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$.
-
-$\cd$ On dit que $\dfrac{P}{Q}$ est irréductible si $P \gcd Q = 1$.
-
-$\cd$ Si $P = QP_2 + R$ est la division euclidienne de $P$ par $Q$, alors $\dfrac{P}{Q} = P_2 + \dfrac{R}{Q}$ et on dit que la partie entière de $\dfrac{P}{Q}$ est $P_2$
-
-
-$\cd$ On définit le degré d'une fraction rationnelle ainsi : $\deg(\dfrac{P}{Q}) = \deg(P) - \deg(Q)$
-</Item>
-
-
-<Item type='definition' titre='zéros et pôles'>
-
-
-Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$ tels que $P \gcd Q = 1$. On note $F = \dfrac{P}{Q}$.
-
-$\cd$ On appelle zéros de $F$ les zéros de $P$.
-
-$\cd$ Si $\lambda \in \K$ est une racine de multiplicité $n$ de $Q$, on dit que $\lambda$ est un pôle de multiplicité $n$ de $F$.
-</Item>
+<DefinitionsVocabulaire />
 
 ## Décomposition en éléments simples
 
 ### Propriétés
 
-<Item type='theoreme' titre='décomposition en éléments simples' tag="admis">
-
-Soit $F = \dfrac{P}{Q} \in \K(X)$ de forme irreductible tel que $Q = \produit{i = 1}{n} Q_i^{\alpha_i}$ sa décomposition en produit de facteurs irréductibles. Il existe :
-
-$\cd$  $Q_1 \v \dotsm \v Q_n \in \K[X]$ irréductibles 
-
-$\cd$ Des $P_i,k \in \K[X]$ où $ i \in \defentiersn$ et $1 \leqslant k \leqslant \alpha_i$ tels que $\deg(P_i,k) < \deg(Q_i)$
-
-tels que :
-
-$$
-F = E + \somme{i=1}{n} \left( \somme{k = 1}{\alpha_i} \dfrac{P_{i,k}}{Q_i^k} \right)
-$$
-
-où $E \in \K(X)$ est la partie entière de $\dfrac{P}{Q}$.
-
-De plus, l'écriture sous cette forme est unique.
-</Item>
-
-
-<Fil>
-
-**Cas réel :** Il existe une décomposition de la forme $F = E + \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X-\lambda_i)^k} \right) \; + \;  \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X^2 + b_k X + c_k )^k} \right)$ où les $\lambda_i \v a_i \v b_i \v c_i$ sont des réels.
-
-
-<br />
-
-**Cas complexe :** Il existe une décomposition de la forme $F = E + \somme{i = 1}{n} \left( \somme{k=1}{\alpha_i} \dfrac{a_i}{(X-\lambda_i)^k} \right)$ où les $a_i \v \lambda_i$ sont des complexes.
-</Fil>
-
-<Remarque titre=''>
-
-La méthode la plus fondamentale pour trouver la décomposition en éléments simples est l'identification. On part de la décomposition en éléments simples avec ses coefficients inconnus, on met sous le même dénominateur puis on identifie les coefficients.
-
-</Remarque>
-
-
-<Exercice titre=''>
-
-1\) Donner la décomposition en éléments simples sur $\R$ de $\dfrac{1}{X^2 + X}$ 
-
-<br/>
-
-2\) Donner la décomposition en éléments simples sur $\R$ de $\dfrac{2X^5 + 3X^2}{X(X+1)(X+2)}$. 
-
-<br/>
-
-3\) Donner les décompositions en éléments simples sur $\R$ et $\C$ de $\dfrac{X}{(X+1)(X^2+1)}$
-</Exercice>
-
-<Hideable type='solution' titre=''>
-
-1\) Soit $F = \dfrac{1}{X^2 + X} = \dfrac{1}{X(X+1)}$ est une forme irréductible. Donc il existe $a,b \in \R$ tels que $F = \dfrac{a}{X+1} \dfrac{b}{X}$ (la partie entière est nulle car le degré du numérateur est strictement inférieur à celui du dénominateur).
-
-On a donc $F = \dfrac{aX + b(X+1)}{X(X+1)} = \dfrac{(a+b)X + b}{X(X+1)}$. 
-
-Par identification, $a+b = 0$ et $b = 1 d'où $a = -1$ et $b = 1$.
-
-En conclusion, $F$ admet la décomposition en éléments simples suivante sur $\R$ : $F = \dfrac{1}{X} - \dfrac{1}{X+1}$. Il faut la connaître par coeur car elle au centre de nombreuses astuces.
-
-<br/>
-
-2\) Soit $F = \dfrac{2X^5 + 3X^2}{X(X+1)(X+2)} = \dfrac{2X^4 + 3X}{(X+1)(X+2)}$. Cette fois-ci, la partie entière est non nulle, il faut effectuer la division euclidienne de $2X^5 + 3X^2$ par $X(X+1)(X+2) = X^2 + 3X + 2$:
-
-$ (2X^5 + 3X) - 2.X^2(X^2 + 3X + 2) = (2X^4 + 3X) - (2X^4 -6X^3 -4X^2) = -6X^3 -4X^2 + 3X^1$
-
-$ (-6X^3 -4X^2 + 3X^1) + 6X.(X^2 + 3X + 2) = (-6X^3 -4X^2 + 3X^1) + (6X^3 + 18X^2 + 12X^1) = 14X^2 + 15X$
-
-$ (14X^2 + 15X) - 14.(X^2 + 3X + 2) = (14X^2 + 15X^1) - (14X^2 + 42X + 28) = -27X -28$
-
-On en déduit que $(2X^5 + 3X) = (X^2 + 3X + 2) . (2X^2 - 6X + 14) + (-27X -28)$.
-
-On a donc $F = 2X^2 - 6X + 14 + \dfrac{-27X - 28}{(X+1)(X+2)} $
-
-Puis, $\dfrac{-27X - 28}{(X+1)(X+2)} = \dfrac{a}{X+1} + \dfrac{b}{X+2} = \dfrac{(a+b)X + 2a + b}{(X+1)(X+2)}$.
-
-Par identification, $ \begin{cases}a+b = -27 \\ 2a + b = -28 \end{cases}$ qui donne, par l'opération $L_2 \leftarrow L_2 - L_1$, $a = -1$ et il suit que $b = -26$. On peut vérifier mais on sait qu'il y a existence et unicité de l'éctiture, comme on n'a trouvé qu'une solution, elle convient nécessairement (modulo les erreurs de calcul).
-
-On a finalement : $F = 2X^2 - 6X + 14 - \dfrac{1}{X+1} - \dfrac{26}{X+2}$
-
-<br/>
-
-3\) Soit $F = \dfrac{X}{(X+1)(X^2+1)}$ que l'on remarque être irreductible et de partie entière nulle. 
-
-On sait qu'il existe $(a \v b \v c) \in \R^3$ tels que $F = \dfrac{a}{X+1} + \dfrac{bX + c}{X^2 + 1} $
-
-On a donc $F = \dfrac{a(X^2 + 1) + (bX + c)(X+1)}{(X+1)(X^2+1)} = \dfrac{(a+b)X^2 + (b+c)X + (a + c)}{(X+1)(X^2+1)}$
-
-Par identification, $\begin{cases}a+b = 0 \\ b+c = 1 \\ a + c = 0 \end{cases}$, il suit que $-c = a = -b$ et que $2b = 1$. On a donc $a = -\dfrac{1}{2}$ et $b = c = \dfrac{1}{2}$.
-
-Finalement, $F = -\dfrac{\dfrac{1}{2}}{X+1} + \dfrac{\dfrac{1}{2}X + \dfrac{1}{2}}{X^2+1}$
-
-<br/>
-
-Sur $\C$, il reste à décomposer $\dfrac{\dfrac{1}{2}X + \dfrac{1}{2}}{X^2+1} = \dfrac{1}{(X+i)(X-i)}$ pour conclure sur $\C$ : il existe $a \v b$ des complexes tels que $\dfrac{1}{(X+i)(X-i)} = \dfrac{a}{X + i} + \dfrac{b}{X - i} = \dfrac{(a+b)X + (b-a)i}{X^2 + 1}$
-
-il suit que $\begin{cases} a+b = \dfrac{1}{2} \\ (b-a)i = \dfrac{1}{2} \end{cases}$ d'où, par l'opération $L_1 \leftarrow L_1 + i.L_2$, on obtient $a = \dfrac{1}{2}$ puis $b =  \dfrac{1-i}{2}$ par l'opération $L_2 \leftarrow i.L_2$.
-
-On a finalement : $F = -\dfrac{1}{2} . \dfrac{1}{X+1} + \dfrac{\dfrac{1}{2}}{X + i} + \dfrac{\dfrac{1-i}{2}}{X - i}$
-
-</Hideable>
+<DecompositionElementsSimples />
 
 
 ### Méthodes usuelles
 
-<Item type='methode' titre='exploiter les pôles'>
-
-
-Soit $F = \dfrac{X^2 - X + 3}{X^2(X+3)}$
-
-On sait qu'il existe des constantes telles que $F = \dfrac{a}{X} + \dfrac{b}{X^2} + \dfrac{c}{X+3}$
-
-On a donc $X^2 . F = aX + b + X^2.\dfrac{c}{X+3}$ mais $X^2 . F = \dfrac{X^2 - X + 3}{(X+3)}$.
-
-On peut évaluer la fonction rationnelle associée en $x = 0$ pour obtenir : $\dfrac{0^2 - 0 + 3}{(2.0+3)} = a.0 + b + 0^2.\dfrac{c}{2.0+3}$ d'où $1 = b$
-
-On a obtenu un coefficient avec des efforts raisonnables.
-
-<br/> 
-
-On peut faire de même avec $X + 3$ : $(X+3). F = \dfrac{X^2 - X + 3}{X^2} = (X + 3) . \dfrac{a}{X} + (X + 3) . \dfrac{b}{X^2} + c$
-
-En évaluant la fonction rationnelle associée en $-3$, on a : $ \dfrac{(-3)^2 - (-3) + 3}{(-3)^2} = c$ donc $c = \dfrac{5}{3}$. 
-
-<br/>
-
-On ne peut pas obtenir le coefficient $b$ avec cette méthode car multiplier par $X$ laisse une fraction avec $X$ au dénominateur, ce qui empêche toute évaluation en $0$.
-
-<br/>
-
-En général, en reprenant les notations du théorème de décompositions en facteur premier on peut multiplier $F$ par $Q_i^{\alpha_i}$ et ce pour tout $i$. Ensuite, on évalue en le ou les pôles de $Q_i$ (dans $\C$ si besoin).  
-</Item>
-
-
-<Item type='methode' titre='utiliser les limites'>
-
-Soit $F = \dfrac{X}{(X^2 + 2)(3X^2 + X + 16)^2}$. On sait qu'il existe des constantes telles que $F = \dfrac{aX + b}{X^2 + 2} + \dfrac{cX + d}{3x^2 + X + 16} +  \dfrac{eX + f}{(3x^2 + X + 16)^2}$.
-
-Soit $f$ la fonction rationnelle associée à $F$. On a $\limto{x \to + \infty} x.f(x) = 0 = \dfrac{a}{3} + e$, ce qui nous donne une relation simple.
-
-</Item>
+<MethodesUsuelles />
 
 ### Astuces
 

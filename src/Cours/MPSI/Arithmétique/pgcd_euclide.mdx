@@ -1,0 +1,99 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+Dans cette sections, on considèrera que $n\v m$ et $k$ sont des entiers naturels.
+
+<Item type='definition' titre='plus grand diviseur commun'>
+
+On appelle **plus grand diviseur commun** de $n$ et $m$ le plus grand entier $k$ tel que : $k \divise a \ET k \divise b$.
+
+On note un tel $k$ soit $PGCD(a\v b)$, soit $pgcd(a \v b)$, soit $a \gcd b$ 
+</Item>
+
+<Remarque titre=''>
+
+L'ensemble des diviseurs de $a$ et de $b$ est non vide (il contient $1$), majoré et inclu dans $\Z$ donc il y a bien existence du plus grand diviseur commun.
+</Remarque>
+
+
+<Item type='proposition' titre="algorithme d'Euclide">
+
+Soit $n = qm + r$ la division euclidienne de $n$ par $m$. On a :
+
+$$
+n \gcd m = m \gcd r
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $d = n \gcd m$. 
+
+$d \divise m$ et $d \divise n$ donc $d \divise n - q.m = r$. Donc $d \divise m \gcd r$.
+
+D'autre part, $m \gcd r $ divise $r$ et $m$ mais il divise donc $r + q.m = d$. D'où $ m \gcd r \divise d$ 
+
+On a donc $d = m \gcd r$
+</Hideable>
+
+
+<Item type='proposition' titre='relation de Bezout'>
+
+Soient $a$ et $b$ deux entiers naturels et $d = a \gcd b$.
+
+Il existe $(u\v v) \in \Z^2$ tels que : 
+
+$$
+au + bv = d
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+
+On pose $a_0 = a$ et $a_1 = b$. On construit Soit $n \in \N^*$ tel que $a_{n} > 0$ et $a_{n-1} = a_n.q_n + r_n$ la division euclidienne de $a_{n-1}$ par $a_n$, on pose $a_{n+1} = r_n$. Si $a_n = 0$, on pose $a_{n+1} = 0$
+
+Si $a_{n+1} > 0$ alors $a_{n+1} > a_{n+2}$ pusique le dividende est strictement supérieur au reste. Comme la suite est minorée par $0$ (un reste est positif), elle ne peut être strictement décroissante car sinon elle tendrait vers $- \infty$ ce qui contredit la minoration. 
+
+Elle est donc stationnaire et il existe $N$ minimal tel que $\forall n > N \v a_n = 0$.
+
+D'après la propriété précédente, $a_n \gcd a_{n+1} = a_{n+1} \gcd a_{n+2}$ tant qu'aucun des termes n'est nul.
+
+On remarque également que $a_N = a_N \gcd 0 = a_{N-1} \gcd a_N = \dotsm = a \gcd b$.
+
+<br/>
+
+Montrons sur $\defentiers{0}{N-1}$ la propriété $\cP(k) : \exists (u\v v)\in \Z^2 \mid a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v $
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, $a \gcd b = a_{N-0} =  1.a_{N-0}  + 0.a_{N-1}$. $u = 1$ et $v = 0$ conviennent. 
+
+<br/>
+
+**Hérédité :** Soit $ n \leqslant N-2 \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+Par hypothèse de récurrence, il existe $a$ et $b$ des entiers tels que $a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v$
+
+Mais, par construction, $a_{N-(k+2)} = {N-(k+1)}.q_{N-(k+1)} + a_{N-k} $ donc $a_{N-(k+2)} - {N-(k+1)}.q_{N-(k+1)}  =  a_{N-k} $ 
+
+On a donc $a \gcd b = a_{N-k}.u + a_{N-(k+1)}.v = u.(a_{N-(k+2)} - a_{N-(k+1)}.q_{N-(k+1)}) + a_{N-(k+1)}.v$
+
+puis, $a \gcd b = a_{N-(k+1)}.(v-u.q_{N-(k+1)}) + a_{N-(k+2)}.u$. 
+
+$\tilde{u} = v-u.q_{N-(k+1)}$ et $\tilde{v} = u$ conviennent puisqu'ils sont dans $\Z$ et vérifient la relation voulue
+
+
+<br/>
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \defentiers{0}{N-2}$. On a donc bien montré que la propriété est vraie sur $\defentiers{0}{N-2}$
+
+
+Avec $\cP(N-1)$, on obtient le résultat voulu.
+
+</Hideable>

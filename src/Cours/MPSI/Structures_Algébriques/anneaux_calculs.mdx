@@ -1,0 +1,68 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='proposition' titre="le zéro est absorbant">
+
+Le zéro d'un anneau $(A\v + \v \times)$ est absorbant, c'est à dire que $\forall x \in A \v x \times 0_A = 0_A \times x = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in A$,
+
+$0_A \times x = (1_A - 1_A) \times x = x - x = 0_A$
+
+De même $x \times 0_A = x \times (1_A - 1_A) = x - x = 0_A$
+
+
+</Hideable>
+
+
+<Item type='proposition' titre="produit et inverse pour l'addition">
+
+Soit $a \in (A \v + \v \times)$ un anneau.
+
+$$
+-a = (-1_A) \times a
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$(1_A - 1_A) \times a = 0_A$ mais donc $1_A \times a + (-1_A) \times a = 0_a$. L'inverse de $a$ est donc $-1_A \times a$.
+</Hideable>
+
+
+<Item type='proposition' titre='formule du binôme'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+Si $(a \v b) \in A^2$ commutent, on a :
+
+$$
+(a+b)^n = \somme{k=0}{n} \binomiale{k}{n} a^k \times b^{n-k}
+$$
+</Item>
+
+
+<Item type='proposition' titre='factorisation particulière'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+Si $(a \v b) \in A^2$ commutent, on a :
+
+$$
+a^n - b^n = (a-b)\somme{k=0}{n-1} a^k \times b^{n-k-1}
+$$
+</Item>
+
+<Remarque titre=''>
+
+Les démonstrations sont identiques à celles sur $\R$ ou $\C$ présentes dans le chapitre sur les sommes.
+</Remarque>

@@ -3,9 +3,22 @@ import "../styles/global.css"; // Importe le CSS global
 ---
 
 <div class="search-container">
-  <label class="input"  id="search-input" placeholder="Recherche...">
-    <svg class="h-[1em] opacity-50" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><g stroke-linejoin="round" stroke-linecap="round" stroke-width="2.5" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></g></svg>
-    <input type="search" required placeholder="Recherche ..."/>
+  <label class="input" id="search-input" placeholder="Recherche...">
+    <svg
+      class="h-[1em] opacity-50"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      ><g
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        stroke-width="2.5"
+        fill="none"
+        stroke="currentColor"
+        ><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"
+        ></path></g
+      ></svg
+    >
+    <input type="search" required placeholder="Recherche ..." />
   </label>
   <!-- <input type="text" id="search-input" placeholder="Recherche..." /> -->
   <div
@@ -23,6 +36,16 @@ import "../styles/global.css"; // Importe le CSS global
     const maxWidth = 100;
     searchContainer.style.maxWidth = `${maxWidth}px`;
   }
+
+  document.addEventListener("click", function (event) {
+    const searchContainer = document.querySelector(".search-container");
+    const resultsContainer = document.getElementById("search-results");
+
+    // Vérifie si le clic s’est fait en dehors de la zone de recherche
+    if (!searchContainer.contains(event.target)) {
+      resultsContainer.innerHTML = "";
+    }
+  });
 
   // Attend que le document soit complètement chargé
   document.addEventListener("DOMContentLoaded", async () => {
@@ -69,7 +92,7 @@ import "../styles/global.css"; // Importe le CSS global
 
     try {
       const searchResults = await pagefind.search(query);
-      displayResults(searchResults, resultsContainer);
+      displayResults(searchResults, resultsContainer, query);
     } catch (error) {
       console.error("Échec de la recherche:", error);
       resultsContainer.innerHTML =
@@ -77,7 +100,7 @@ import "../styles/global.css"; // Importe le CSS global
     }
   }
 
-  async function displayResults(searchResults, resultsContainer) {
+  async function displayResults(searchResults, resultsContainer, query) {
     resultsContainer.innerHTML = "";
 
     if (!searchResults.results || searchResults.results.length === 0) {
@@ -89,7 +112,10 @@ import "../styles/global.css"; // Importe le CSS global
     const resultsPromises = searchResults.results.map(async (result) => {
       try {
         const data = await result.data();
-
+        console.log(data);
+        if (query === query.trim()) {
+          data.anchors.filter((a) => a.text.includes(query));
+        }
         // Créer le HTML des éléments d'ancrage en utilisant map
         const anchorsHtml =
           data.anchors && data.anchors.length > 0
@@ -101,21 +127,21 @@ import "../styles/global.css"; // Importe le CSS global
 
                   var type = indexData[1];
 
-                  var titre = indexData[2].split("_").join(" ");
+                  var titre = indexData[2];
+                  const baseUrl = data.url || data.raw_url;
+                  const anchorUrl = `${baseUrl}#${filiere}-${type}-${titre}`;
+
+                  titre = titre.split("_").join(" ");
                   titre = titre.charAt(0).toUpperCase() + titre.slice(1);
 
                   var searchDesc = indexData[3].split("_").join(" ");
                   searchDesc =
                     searchDesc.charAt(0).toUpperCase() + searchDesc.slice(1);
 
-                  const baseUrl = data.url || data.raw_url;
-                  const anchorUrl = `${baseUrl}#${anchor.id}`;
-
                   return `
                                 <a href="${anchorUrl}">
                                   <div  class="py-1">
                                     <p>${titre || "Section sans nom"}</p>
-                                    ${searchDesc === "" ? "" : `<p class="w-fit pl-4 text-sm font-thin border-l-2 border-b-2 border-r-0 border-t-0">${searchDesc}   &nbsp &nbsp &nbsp</p>`}
                                     </div>
                                 </a>
                         `;
@@ -141,7 +167,6 @@ import "../styles/global.css"; // Importe le CSS global
       }
     });
 
-    // Attendre que toutes les promesses soient résolues et ajouter le HTML au conteneur
     const resultsHtml = await Promise.all(resultsPromises);
     resultsContainer.innerHTML = resultsHtml.join("");
 

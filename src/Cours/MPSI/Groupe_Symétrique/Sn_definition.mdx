@@ -1,0 +1,44 @@
+
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='permutation'>
+
+Soit $E$ un ensemble fini. On appelle permutation de $E$ une application de $E$ dans $E$ bijective.
+
+En clair, il s'agit de changer l'ordre des éléments.
+</Item>
+
+<Item type='defprop' titre='groupe symétrique'>
+
+Soit $E$ un ensemble fini.
+
+On note $\cS(E)$ ou $\cS_E$ l'ensemble des permutations de $E$. 
+
+<br/>
+
+$(\cS_E \v \circ)$ est un groupe.
+
+<br/>
+
+En particulier, on note $\cS_n$ l'ensemble des permutations de $\defentiersn$ et $\cS_n$ est appelé groupe symétrique.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons qu'il s'agit bien d'un groupe :
+
+$\bullet$ **opération interne :** la composée de deux bijections de $E$ dans $E$ est encore une bijection de $E$ dans $E$ (cf. chapitre sur les applications).
+
+$\bullet$ **élément neutre :** l'identité $id_E : x \mapsto x$ est un élément neutre puisque, $\forall \phi \in \cS_E \v \phi \circ id_E = id_E \circ \phi = \phi$
+
+$\bullet$ **inverse :** la réciproque d'une bijection de $E$ dans $E$ est également une bijecition de $E$ dans $E$.
+
+$\bullet$ **associativité :** l'assiciativité de la composition est toujours vraie : pour toutes fonctions de $E$ dans $E$ $f\v g$ et $h$ et pour tout $x \in E$, on a : $f(g(h(x))) = (f\circ g)\Big(h(x)\Big) = f\Big(g\circ h(x)\Big)$.
+
+</Hideable>

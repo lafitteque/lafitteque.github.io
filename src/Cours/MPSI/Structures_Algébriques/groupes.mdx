@@ -1,0 +1,96 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='groupe'>
+
+On appelle groupe un ensemble $G$ muni d'une loi de composition interne que l'on note ici $+$ tel que :
+
+$\cd$ $G$ est associatif
+
+$\cd$ $G$ admet un élément neutre
+
+$\cd$ tout élément de $G$ admet un inverse
+
+On note $(G\v +)$ un tel groupe. 
+
+<br/>
+
+Si $(G \v +)$ est commutatif, on dit que le groupe est **abélien**.
+</Item>
+
+<Remarque titre=''>
+
+Attention, si on vous demande de démontrer que $(G \v \ast)$ est un groupe, il faut montrer les trois propriétés ci-dessus mais également le fait que la loi est interne ! 
+</Remarque>
+
+
+<Item type='proposition' titre='groupes usuels'>
+
+$\cd$ **groupes additifs :** $(\Z \v +) \v (\Q \v +) \v (\R \v +) \v (\C \v +)$ sont des exemples de groupes additifs.
+
+$\cd$ **groupes multiplicatifs :** $(\Q^* \v \times) \v (\R^* \v \times) \v (\C^* \v \times)$ sont des exemples de groupes multiplicatifs.
+
+</Item>
+
+
+<Item type='proposition' titre="unicité de l'élément neutre et de l'inverse">
+
+Dans un groupe, il y a unicité de l'élément neutre et de l'inverse
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On a vu que c'était le cas pour un ensemble $G$ qui est associatif. C'est le cas d'un groupe.
+</Hideable>
+
+
+<Item type='proposition' titre="propriétés de l'inverse">
+
+Soit $(G\v \cdot)$ un groupe et soient $(g\v h) \in G^2$. On a les propriétés suivantes :
+
+$\cd$ $\Big(g^{-1}\Big)^{-1} = g$
+
+$\cd$ $(g\cdot h)^{-1} = h^{-1}g^{-1}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $g^{-1} \cdot g = e$ mais donc l'inverse de $g^{-1}$ est $g$. D'où $\Big(g^{-1}\Big)^{-1} = g$
+
+<br/>
+
+$\cd$ $g \cdot h \cdot h^{-1} \cdot g^{-1} = g \cdot (h \cdot h^{-1}) \cdot g^{-1} = g \cdot e \cdot g^{-1} = g \cdot g^{-1} = e$. De même $h^{-1} \cdot g^{-1} \cdot g \cdot h = e$. 
+
+On en conclut que $(g \cdog h)^{-1} = h^{-1} \cdot g^{-1}$
+</Hideable>
+
+
+<Item type='proposition' titre=''>
+
+Soit $(G \v \ast)$ un groupe et soient $g\v h$ des éléments de $G$. 
+
+$$
+g \ast h = e \ssi h \ast g = e \ssi h = g^{-1}
+$$
+
+En clair, il n'y a pas besoin de vérifier l'inversibilité à gauche et à droite, une des deux suffit.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Soit $g \in G$. Supposons qu'il existe $h \in G$ tel que $g \ast h = e$. On veut montrer que $h = g^{-1}$
+
+Mais donc $g \ast h \ast g = g$ et par associativité, $g \ast (h \ast g) = g$.
+
+En multipliant par $g^{-1}$ à gauche, on a : $(h \ast g) = e$
+
+<br/>
+
+$\cd$ De même en supposant que $h$ est un inverse à gauche : $g \ast h \ast g  = g = (g \ast h) \ast g$ d'où $g \ast h = e$ après multiplication à droite par $g^{-1}$. $h$ est donc un inverse à droite également.
+</Hideable>

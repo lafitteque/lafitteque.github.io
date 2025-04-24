@@ -1,0 +1,52 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='distributivité'>
+
+Soit $A$ un ensemble muni de deux lois internes $+$ et $\times$.
+
+On dit que $\times$ est distributive sur $+$ si : $\forall (a \v b \v c) \in A^3 \v a\times(b+c) = a\times b + a \times c \ET (b+c)\times a = b\times a + c \times a$
+</Item>
+
+
+<Item type='definition' titre='anneau'>
+
+Soit $A$ un ensemble muni de deux lois de composition interne $+$ et $\times.
+
+On dit que $(A \v + \v \times)$ est un anneau si :
+
+$\cd$ $(A\v +)$ est un groupe abélien dont le neutre est noté $0$
+
+$\cd$ $(A \v \times)$ admet un élément neutre noté $1$
+
+$\cd$ $(A \v \times)$ est associatif
+
+$\cd$ $\times$ est distributive sur $+$
+</Item>
+
+<Item type='proposition' titre='anneaux usuels' tag="admis">
+
+Voici quelques anneaux usuels :
+
+
+$\cd$ Les anneaux triviaux $(\{0\} \v + \v \times)$ et $(\{0 \v 1\} \v + \v \times)$.
+
+$\cd$ Les anneaux de nombres : $(\Z \v + \v \times) \v (\Q \v + \v \times) \v (\R \v + \v \times) \v (\C \v + \v \times)$.
+
+$\cd$ Les anneaux de fonctions : $(\cC^1(\defff{0}{1} \v \R) \v + \v \times)$ par exemple.
+
+$\cd$ L'anneau des matrices : $(\cM_n(\R) \v + \v \times)$ sur lequel nous reviendrons dans d'autres chapitres.
+</Item>
+
+<Remarque titre=''>
+
+On remarque qu'un anneau a une deuxième loi plus faible que la première avec en particulier l'inversibilité en moins. A cela s'ajoute la non-commutativité. 
+
+Nous donnerons un nom particulier aux anneaux qui ont la gentillesse d'avoir une deuxième loi plus sympathique (existence de l'inverse en particulier).
+</Remarque>

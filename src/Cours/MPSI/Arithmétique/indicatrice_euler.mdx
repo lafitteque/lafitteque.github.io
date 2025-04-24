@@ -1,0 +1,66 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre="indicatrice d'Euler">
+
+On appelle indicatrice d'Euler et l'on note $\varphi$ l'application :
+
+$ \varphi : \begin{cases} \N \rightarrow \N \\ n \mapsto \Card( \{ k \in \N \mid k \gcd  n = 1\})  \end{cases} $
+
+<br/>
+
+Rappel : $\Card(E)$ désigne le cardinal de l'ensemble $E$, soit le nombre d'éléments de $E$.
+</Item>
+
+
+
+<Item type='proposition' titre="formules de l'indicatrice">
+
+$\cd$ Soient $p \in \cP$ et $n \in \N^*$. $\varphi(p^n) = p^n - p^{n-1} = p^{n-1}(p-1)$ 
+
+$\cd$ Soient $(a \v b) \in (\N^*)^2$ tels que $a \gcd b = 1$, $\varphi(ab) = \varphi(a) . \varphi(b)$
+
+$\cd$ Soit $n = p_1^{\alpha_1}.p_2^{\alpha_2}. \dotsm p_k^{\alpha_k}$ (sa décomposition en facteurs premiers). 
+
+$$
+\varphi(n) = p_1^{\alpha_1-1}(p_1-1) \dotsm p_k^{\alpha_k-1}(p_k-1) = n \produit{p \mid n}{} (1 - \dfrac{1}{p})
+$$
+
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Première propriété :** Les nombres premiers avec $p^n$ et inférieurs à $p^n$ sont ceux qui ne sont pas multiples de $p$. Soit tous les nombres autres que  $ p \v 2p \v \dotsm \v (p^{n-1} - 1) . p \v p^n$. 
+
+Il y a donc $p^{n-1}$ nombres à exclure sur tous les entiers entre $1$ et $p^n$.
+
+On en déduit que $\varphi(p^n) = p^n - p^{n-1}$
+
+
+<br/>
+
+$\cd$ **Seconde propriété :** Soit $n \in \defentiers{1}{a.b}$. 
+
+On considère $n \in \defentiers{1}{a.b-1}$. 
+
+$n \gcd ab = 1 \ssi (n \gcd a = 1 \ET n \gcd b = 1)$. Mais être premier avec $a$, c'est dire qu'il existe $p$ tel que $p \gcd a = 1$. Mais comme le reste de la division euclidienne de $p$ par $a$ noté $\tilde{p}$ vérifie $p \gcd a = a \gcd \tilde{p}$, on a :
+
+$$
+n \gcd ab = 1 \ssi (\exists 1<p<a \v 1<q<b \mid p \gcd a = 1 \ET q \gcd b = 1 \ET \begin{cases} \congru{n}{p}{a} \\ \congru{m}{q}{b} \end{cases})
+$$
+
+D'après le théorème chinois, on sait que pour chaque couple $(p \v q)$ convenant, il y a un et un seul $n$ convenant dans l'intervalle voulu.
+
+Il y a exactement $\varphi(p).\varphi(q)$ tels couples, d'où le résultat.
+
+
+<br/>
+
+$\cd$ La troisième propriété est une conséquence directe des deux autres.
+</Hideable>

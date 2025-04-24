@@ -1,0 +1,45 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='defprop' titre='corps des fractions rationnelles' tag="admis">
+
+Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$.
+
+On note $\dfrac{P}{Q}$ le couple $(P\v Q)$. On effectue avec cette fraction les opérations comme sur $\R$.
+
+L'ensemble de ces fractions est noté $\K(X)$ et est appelé l'ensemble des **fractions rationnelles**. En particulier, $\left( \K(X) \v + \v \times \right)$ est un corps.
+
+
+<br/>
+
+On appelle fonction rationnelle associée à $\dfrac{P}{Q}$ la fonction $x \mapsto \dfrac{\tilde{P}(x)}{\tilde{Q}(x)}$ définie sur tout $\R$ excepté en les racines de $Q$.
+</Item>
+
+
+<Item type='definition' titre='forme irreductible et vocabulaire'>
+
+Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$.
+
+$\cd$ On dit que $\dfrac{P}{Q}$ est irréductible si $P \gcd Q = 1$.
+
+$\cd$ Si $P = QP_2 + R$ est la division euclidienne de $P$ par $Q$, alors $\dfrac{P}{Q} = P_2 + \dfrac{R}{Q}$ et on dit que la partie entière de $\dfrac{P}{Q}$ est $P_2$
+
+
+$\cd$ On définit le degré d'une fraction rationnelle ainsi : $\deg(\dfrac{P}{Q}) = \deg(P) - \deg(Q)$
+</Item>
+
+
+<Item type='definition' titre='zéros et pôles'>
+
+
+Soient $\left( P\v Q\right) \in \K[X]\times \K[X]$ où $Q \neq 0$ tels que $P \gcd Q = 1$. On note $F = \dfrac{P}{Q}$.
+
+$\cd$ On appelle zéros de $F$ les zéros de $P$.
+
+$\cd$ Si $\lambda \in \K$ est une racine de multiplicité $n$ de $Q$, on dit que $\lambda$ est un pôle de multiplicité $n$ de $F$.
+</Item>

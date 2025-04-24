@@ -1,0 +1,41 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+
+<Item type='definition' titre='anneau intègre'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+On dit que $A$ est **intègre** si : 
+
+$$
+\forall (a\v b) \in A^2 \v \Big(a\times b = 0 \Rightarrow (a = 0 \OU b = 0) \Big)
+$$
+</Item>
+
+
+<Item type='proposition' titre='simplifications dans un anneau intègre'>
+
+Soient $(a \v b \v c)$ des éléments d'un anneau intègre noté $(A \v + \v \times)$. On suppose $a \neq 0$
+
+On a :
+
+$\cd$ $a\times b = a\times c \Rightarrow b = c$
+
+$\cd$ $b \times a = c \times a \Rightarrow b = c$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Dans le deux cas il s'agit de factoriser pour utiliser la propriété d'un anneau intègre.
+
+$\cd $ $a\times b = a\times c \Rightarrow a\times (b-c) = 0 \Rightarrow a = 0 \OU b = c \Rightarrow b= c$
+
+$\cd $ $b\times a = c\times a \Rightarrow  (b-c)\times a = 0 \Rightarrow a = 0 \OU b = c \Rightarrow b= c$
+</Hideable>

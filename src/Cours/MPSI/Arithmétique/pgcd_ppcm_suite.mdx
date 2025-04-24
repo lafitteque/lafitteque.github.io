@@ -1,0 +1,106 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='proposition' titre='application aux diviseurs du PGCD'>
+
+On pose $d = n \gcd m$, si $k \divise n$ et $k \divise m$, alors $k \divise d$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Supposons que $d \gcd k = 1$
+
+Il existe $a$ et $b$ des entiers tels que $a.d = n$ et $b.d = m$. Mais donc $k \divise a.d$ et $k \divise b.d$.
+
+Comme $d \gcd k = 1$, d'après le lemme de Gauss, $k \divise a$ et $k \divise b$, 
+
+mais donc il existe $\alpha$ et $\beta$ des entiers tels que $n = \alpha.k.d$ et $m = \beta.k.d$ d'où $k.d \divise n$ et $k.d \divise m$ et donc $d.k = d$ par maximalité du PGCD.
+
+On en déduit que $k = 1$.
+
+<br />
+Si $d \gcd k \neq 1$, il suffit de considérer $\tilde{k} = \dfrac{k}{d \gcd k}$ et on a $d \gcd \tilde{k} = 1$ d'où $\tilde{k} = 1$ et $k = k \gcd d \divise d$.
+</Hideable>
+
+<Item type='proposition' titre='multiplicativité du PGCD'>
+
+$(k.a) \gcd (k.b) = k.(a \gcd b)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \gcd b \divise a$ et $a \gcd b \divise b$
+
+mais donc $k.(a \gcd b) \divise k.a$ et $k.(a \gcd b) \divise k.b$
+
+et on en déduit que $k.(a \gcd b) \leqslant (k.a) \gcd (k.b)$.
+
+<br/>
+
+Posons $d = (k.a) \gcd (k.b)$. Il existe $u$ et $v$ des entiers tels que $k.a = u.d$ et $k.b = v.d$
+
+Mais $k \divise d$ puisque $k \divise k.a$ et $k \divise k.b$. Donc il existe $c \in \N$ tel que $d = k.c$ d'où :
+
+$k.a = u.k.c$ et $k.b = v.k.c$ mais donc $a = u.c$ et $b = v.c$. Mais donc $c \divise a \gcd b$ d'où $c \leqslant a \gcd b$.
+
+On a donc $d \leqslant k.(a \gcd b)$
+
+<br/>
+
+Par double inégalité, on a le résultat voulu.
+</Hideable>
+
+
+<Item type='proposition' titre='pgcd et ppcm'>
+
+Soient $a$ et $b$ des entiers naturels.
+
+$$
+a.b = (a \gcd b) . (a \lcm b)
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $d = a \gcd b$ et $m = a \lcm b$.
+
+D'abord, il existe $k$ et $l$ deux entiers tels que $a = k.d$ et $b = l.d$.
+
+Mais $k.l.d = (k.d).l =  (l.d).k$ et donc c'est un multiple de $a$ et de $b$. 
+
+D'où $m \leqslant k.l.d$ par minimalité de $m$ puis $m.d \leqslant (k.d).(l.d) = a.b$
+
+<br/>
+
+$\dfrac{a}{d} \gcd \dfrac{b}{d} = 1$ mais $\dfrac{a}{d} \divise \dfrac{m}{d}$ et $\dfrac{b}{d} \divise \dfrac{m}{d}$.
+
+D'après le lemme de Gauss, $\dfrac{ab}{d^2} \divise \dfrac{m}{d}$ mais donc $ab \divise m.d$ d'où $a.b \leqslant m.d$
+
+<br />
+
+On a le résultat voulu par double inégalité.
+</Hideable>
+
+
+<Item type='proposition' titre='application aux multiples du ppcm'>
+
+Soient $a$ et $b$ des entiers naturels.
+
+Soit $k$ tel que $a \divise k$ et $b \divise k$. On a : $a \lcm b \divise k$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On pose $m = a \lcm b$ et $d = a \gcd b$.
+
+Déjà, $m = \dfrac{ab}{d}$ 
+
+Ensuite, $\dfrac{a}{d} \divise \dfrac{k}{d}$ et $\dfrac{b}{d} \divise \dfrac{k}{d}$.
+
+Comme $\dfrac{a}{d} \gcd \dfrac{b}{d} = 1$. D'après le lemme de Gauss, $\dfrac{a}{d} . \dfrac{b}{d} \divise \dfrac{k}{d}$ d'où $m = dfrac{ab}{d} \divise k$
+</Hideable>

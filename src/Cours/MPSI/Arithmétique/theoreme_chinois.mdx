@@ -1,0 +1,51 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='theoreme' titre=' (des) chinois'>
+
+Soient $m$ et $n$ deux entiers naturels non nuls premiers entre eux. Soient également $a$ et $b$ des entiers tels que $0 \leqslant a < m$ et $0 \leqslant b < n$.
+
+Le système suivant admet une et une seule solution dans $\defentiers{0}{mn-1}$
+
+$$
+\begin{cases}
+\congru{x}{a}{m}
+\\
+\congru{x}{b}{n}
+\end{cases}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Existence :**
+
+$m \gcd n = 1$ donc il existe $u$ et $v$ des entiers relatifs tels que $mu + nv = 1$
+
+Mais donc $\congru{a(mu + nv)}{a}{m}$ d'où $\congru{nva}{a}{m}$. De même, $\congru{mub}{b}{n}$.
+
+On pose $x = m.u.b + n.v.a$
+
+Mais $\congru{x}{a}{m}$ et $\congru{x}{b}{n}$. 
+
+Le résultat est conservé si l'on prend $\tilde{x}$ le reste de la division euclidienne de $x$ par $ab$. En effet, cela revient à retirer un multiple de $a$ (resp. de $b$) à $x$, ce qui laisse inchangées les congruences ci-dessus. 
+
+$\tilde{x} \in \defentiers{0}{mn-1}$ et convient.
+
+
+**Unicité :** Soient $x$ et $y$ deux solutions au système. 
+
+$\congru{x}{y}{m}$ et $\congru{x}{y}{n}$. Mais donc $m \divise x-y$ et $n \divise x-y$. 
+
+Il existe $k_1$ et $k_2$ des entiers tels que $x-y = k_1 m = k_2 n$ mais d'après le lemme de gausse, comme $m \divise k_2 n$, nécessairement, $m \divise k_2$ et donc il existe $k_3$ tel que $k_2 = k_3 m$.
+
+On réinjecte pour obtenir $x - y = k_3 mn$ et donc $\congru{x-y}{0}{mn}$. 
+
+$-mn < x-y < mn$ mais le seul multiple de $mn$ dans ces bornes est $0$. Donc $x-y = 0$ puis $x = y$.
+
+</Hideable>

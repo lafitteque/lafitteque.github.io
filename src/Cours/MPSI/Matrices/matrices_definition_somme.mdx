@@ -1,0 +1,60 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+Par la suite, $m \v n \v p $ et $q$ désignent des entiers naturels non nuls.
+
+<br/>
+
+On définit ci-dessous les matrices, mais ce qui est réellement intéressant, ce sont les opérations entre matrices.
+
+<Item type='definition' titre='matrice'>
+
+On appelle matrice à $n$ lignes et $p$ colonnes et à coefficients dans $\R$ un élément de $\R^{n.p}$ que l'on note sous la forme suivante :
+
+$$
+\begin{pmatrix}
+a_{1, 1} & a_{1, 2} & \dotsm & a_{1, p} \\
+a_{2, 1} & a_{2, 2} & \dotsm & a_{2, p} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{n, 1} & a_{n, 2} & \dotsm & a_{n, p} \\
+\end{pmatrix} = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}
+$$
+
+<br/>
+
+L'ensemble des matrices à $n$ lignes et $p$ colonnes à coefficients dans $\R$ est noté $\cM_{n, p}(\R)$. On dit que ces matrices sont rectangulaires
+
+L'ensemble des matrices carrées de taille $n$ est $\cM_n(\R) = \cM_{n,n}(\R)$.
+</Item>
+
+
+<Item type='definition' titre='addition de matrices'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$ et $B = \left(  b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$ deux éléments de $\cM_{n, p}(\R)$. On définit $A + B$ ainsi :
+
+$$
+A + B = \begin{pmatrix}
+a_{1, 1} + b_{1,1} & a_{1, 2} + b_{1, 2} & \dotsm & a_{1, p} + b_{1, p} \\
+a_{2, 1} + b_{2, 1} & a_{2, 2} + b_{2, 2} & \dotsm & a_{2, p} + b_{2, p} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{n, 1} + b_{n, 1} & a_{n, 2} + b_{n, 2} & \dotsm & a_{n, p} + b_{n, p} \\
+\end{pmatrix} = \left(  a_{i,j} + b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} 
+$$
+</Item>
+
+
+<Item type='definition' titre='produit par un scalaire'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$ et $\lambda \in \R$. On définit $\lambda . A$ ainsi :
+
+$$
+\lambda . A = \left(  \lambda . a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} 
+$$
+
+</Item>

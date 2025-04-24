@@ -1,0 +1,113 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='fonction polynômiale'>
+
+Soit $P = \somme{i = 0}{n} a_i X^i$ un élément de $\K[X]$.
+
+On appelle fonction polynômiale associée à $P$ la fonction $\tilde{P} : x \mapsto \somme{i = 0}{n} a_i x^i$ définie sur $\K$.
+</Item>
+
+
+<Item type='proposition' titre='caractérisation par les fonctions polynômiales'>
+
+Deux polynômes de $\K[X]$ sont égaux si et seulement si leurs fonctions polynômiales associées sont égales.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct :** si les polynômes ont mêmes coefficients, les fonctions associées sont identiques.
+
+$\cd$ **Sens réciproque ($LeftArrow$) :** Si $f$ est une fonction polynômiale, ses coefficients $c_i$ se retrouvent ainsi: $c_i = \dfrac{f^{(i)(0)}}{n!}$. Si les deux fonctions sont égales, alors les coefficiens sont les mêmes et les polynômes aussi
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation des racines'>
+
+$\lambda$ est racine de $P$ si et seulement si $\tilde{P}(\lambda) = 0$.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Version avec la division euclidienne :** Soit $P = (X - \lambda) Q + R$ la division euclidienne de $P$ par $(X - \lambda)$.
+
+Mais $\deg(R) < \deg(X - \lambda) = 1$ donc $R$ est constant. On a donc $R = \tilde{R}(\lambda)= \underbrace{(\lambda - \lambda) \tilde{Q}(\lambda)}_{ = 0} + \tilde{R}(\lambda) =  \tilde{P}(\lambda) $.
+
+Il suit que  : $\lambda$ est racine de $P \ssi (X - \lambda) \divise P \ssi R = 0 \ssi \tilde{P}(\lambda) = 0$
+
+
+<br/>
+
+$\cd$ **Version sans la division euclidienne :**
+$\lambda$ est racine de $P  \ssi  (X - \lambda) \divise P  \ssi  \exists U \mid P = (X - \lambda) . U$
+
+Mais donc : $\lambda$ est racine de $P \rightarrow \tilde{P}(\lambda) = (\lambda - \lambda) . \tilde{U}(\lambda) = 0$ d'où le sens direct.
+
+<br/>
+
+D'autre part, si $\tilde{P}(\lambda) = 0$, on considère l'écriture de $P$ : $P = \somme{i = 0}{N} a_i X^i$. 
+
+On a donc $\tilde{P} (x) =  \somme{i = 0}{N} a_i (x - \lambda + \lambda)^i$. En posant $y = x-\lambda$, on a $\tilde{P} (x) = \somme{i = 0}{N} a_i (y + \lambda)^i$
+
+On note $\tilde{P} (x) = \somme{i = 0}{N} b_i (y)^i = \somme{i = 0}{N} b_i (x - \lambda)^i$ après développement.
+
+$\tilde{P} (\lambda) = b_0 = 0$ mais donc  $\tilde{P} (\lambda) = (x - \lambda)(\somme{i = 0}{N-1} b_{i+1} (x - \lambda)^i)$
+
+Par caractérisation des polynômes par leur fonction asssociée, $P = (X - \lambda)(\somme{i = 0}{N-1} b_{i+1} (X - \lambda)^i)$ et donc $X - \lambda \divise P$ d'où le fait que $\lambda$ soit racine de $P$
+
+</Hideable>
+
+<Remarque titre=''>
+
+Cette démonstration donne un aperçu de la puissance de la division euclidienne dans l'étude des racines. Il s'agit d'un outil important qu'il ne faut pas oublier.
+</Remarque>
+
+
+<Remarque titre=''>
+
+Si l'on s'intéressait à des polynômes à coefficients dans d'autres ensembles plus saugrenus, ces propriétés ne seraient pas nécessairement vraie.
+</Remarque>
+
+
+
+
+<Item type='proposition' titre="nombre de racines d'un polynôme">
+
+Soit $P$ un polynôme de $\K[X]$ de degré $n \in \N$.
+
+$P$ admet au plus $n$ racines distinctes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons sur $\N$ la propriété $\cP(n) : $ si $P \in \K[X]$ et $\deg(P) = n$, alors il a au plus $n$ racines.
+
+**Initialisation :** On vérifie $\cP(0)$. En effet, un polynôme de degré $0$ est constant et non nul, il n'a donc aucune racine.
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+Soit $\lambda$ une racine de $P$. Il existe $P_2$ de degré $n$ tel que $P = P_2 . (X - \lambda)$ et par hypothèse de récurrence sur $P_2$, $P_2$ admet au plus $n$ racines.
+
+Raisonnons par l'absurde et supposons que $P$ ait au moins $n+2$ racines. On note $\mu$ une racine de $P$ qui n'est ni une racine de $P_2$, ni $\lambda$ et qui existe d'après notre hypothèse.
+
+$\tilde{P}(\mu) = 0 = \tilde{P_2} (\mu) . (\mu - \lambda) \neq 0$ ce qui est absurde.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N$
+
+</Hideable>
+
+
+<Item type='consequence' titre=''>
+
+Un polynôme de $\K_n[X]$ qui admet au moins $n+1$ racines est le polynôme nul.
+</Item>

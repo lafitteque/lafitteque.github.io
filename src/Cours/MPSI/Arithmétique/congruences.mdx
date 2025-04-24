@@ -1,0 +1,102 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='relation de congruence'>
+
+Soient $a$ et $b$ deux entiers relatifs et $n$ un entier naturel non nul.
+
+On dit que $a$ et $b$ sont congrus modulo $n$ si $n \divise a - b $. On note $\congru{a}{b}{n}$ dans ce cas.
+
+</Item>
+
+<Item type='proposition' titre='relation binaire'>
+
+La congruence modulo $n \in \N^*$ est une relation d'équivalence sur $\Z$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $a \v b$ et $c$ trois entiers relatifs et $n \in \N^*$.
+
+$\cd$ Reflexivité : $ n \divise 0 =  a - a $ donc $\congru{a}{a}{n}$
+
+$\cd$ Symétrie : Si $\congru{a}{b}{n}$, alors $n \divise a - b$ d'où $n \divise b - a$ et donc $\congru{b}{a}{n}$
+
+$\cd$ Transitivité : Si $\congru{a}{b}{n}$ et $\congru{b}{c}{n}$, alors $n \divise a - b$ et $n \divise b-c$ d'où $n \divise (a-b) + (b-c) = a - c$ et donc $\congru{a}{c}{n}$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='congruences et opérations'>
+
+Soient $a \v b \v c$ et $d$ des entiers relatifs et $n \in \N^*$
+
+$\cd$ Si $\congru{a}{b}{n}$ et $\congru{c}{d}{n}$, alors $\congru{a+c}{b+d}{n}$
+
+$\cd$ Si $\congru{a}{b}{n}$ et $\congru{c}{d}{n}$, alors $\congru{a.c}{b.d}{n}$
+
+$\cd$ Si $\congru{a}{b}{n}$ et $k \in \N^*$, alors $\congru{a^k}{b^k}{n}$.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Addition :** Par hypothèse, $n \divise a-b$ et $n \divise c-d$ mais donc $n \divise (a-b) + (c-d) = (a+c) - (b+d)$ d'où $\congru{a+c}{b+d}{n}$
+
+$\cd$ **Multiplication :** Par hypothèse, $n \divise a-b$ et $n \divise c-d$ mais donc $n \divise c.(a-b)$ et $n \divise b.(c-d)$. d'où $n \divise c.(a-b) + b.(c-d) = c.a - b.d$ d'où $\congru{c.a}{b.d}{n}$.
+
+$\cd$ Il s'agit d'une récurrence immédiate sur la propriété précédente.
+
+</Hideable>
+
+
+<Item type='proposition' titre='inversion et congruence'>
+
+Soient $a$ un entier relatif et $n$ un entier naturel non nul.
+
+On a équivalence entre les deux affirmations suivantes :
+
+$\cd$ i\) Il existe $c \in \Z$ tel que $\congru{a.x}{1}{n}$
+
+$\cd$ ii\) $a \gcd n = 1$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Supposons ii\) :** Il existe $(u \v v) \in \Z^2$ tels que $au + nv = 1$. On a donc $\congru{au + nv}{1}{n}$ mais d'autre part, $\congru{nv}{0}{n}$ d'où $\congru{au}{1}{n}$. $c = u$ convient.
+
+$\cd$ **Supposons i\) :** Dans ce cas, $n \divise a.x - 1$ mais donc il existe $k \in \Z$ tel que $n.k = a.x - 1$ mais donc $ax + n.(-k) = 1$ d'où $a \gcd n = 1$ d'après le théorème de Bezout.
+
+</Hideable>
+
+
+<Item type='theoreme' titre='petit théorème de Fermat'>
+
+Soit $p$ un nombre premier et soit $a \in \Z$.
+
+$\congru{a^{p-1}}{1}{p}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $a$ et $b$ des entiers, montrons le résultat intermédiaire suivant : $\congru{(a+b)^{p}}{a^p + b^p}{p}$.
+
+D'abord, $(a+b)^{p} = \somme{k=0}{p} \binomiale{k}{n} a^k.b^{p-k}$
+
+Si $0 < k < p$, $p \divise \binomiale{k}{p} $. En effet, $\binomiale{k}{p} = \dfrac{p!}{k!(p-k)!}$ d'où $p! = k!(p-k)!\binomiale{k}{p}$ puis $p \divise k!(p-k)!\binomiale{k}{p}$ mais $p \gcd k!(p-k)! = 1$ d'où $p \divise \binomiale{k}{p}$.
+
+On a donc $\congru{(a+b)^{p}}{a^p + b^p}{p}$.
+
+<br/>
+
+Reprenons la démonstration principale. $a^p = (\somme{i=1}{a} 1)^p$ mais par récurrence immédiate, $\congru{(\somme{i=1}{a} 1)^p}{\somme{i=1}{a}1^p}{p}$ mais donc $\congru{a^p}{a}{p}$.
+
+Comme $a \gcd p = 1$, il existe $c \in \Z$ tel que $\congru{ac}{1}{p}$.
+
+En multipliant de part et d'autre $\congru{a^p}{a}{p}$ par $c$, on a $\congru{a^{p-1}}{1}{p}$.
+</Hideable>

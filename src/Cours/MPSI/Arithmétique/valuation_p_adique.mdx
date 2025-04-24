@@ -1,0 +1,77 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='valuation p-adique'>
+
+Soit $p$ un nombre premier. On appelle valuation $p$-adique de $n$ et on note $\nu_p(n)$ le plus grand entier $k$ tel que $p^k \divise n$.
+
+On a $\nu_p(n) = \max(\{ k \in \N \mid p^k \divise n\})$
+</Item>
+
+
+<Item type='proposition' titre='lien avec la décomposition en facteurs premiers'>
+
+Soit $n \in \N$ et $n = p_1^{a_1} . p_2^{a_2}  \dotsm p_k^{a_k}$ sa décomposition en facteurs premiers.
+
+$\nu_{p_i}(n) = a_i$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Déjà, $\nu_{p_i} \geqslant a_i$ puisque $p_i^{a_i} \divise n$.
+
+D'autre part, $p_i^{a_i + 1}$ ne divise pas $n$. Montrons cela par l'absurde.
+
+En posant $\tilde{n} = \dfrac{n}{p_i^{a_i}}$, on a :
+
+$$
+p_i \divise \tilde{n} = p_1^{a_1} . p_2^{a_2} \dotsm p_{i-1}^{a_{i-1}} . p_{i+1}^{a_{i+1}} \dotsm  p_k^{a_k}
+$$
+
+mais $p_i \gcd p_j = 1$ pour tout $i \neq j$. D'après le lemme de Gauss appliqué moult fois, 
+
+$p_i \divise 1$. Ce qui est absurde car $p_i$ est premier et donc $p_i > 1$.
+
+On en conclut que $\nu_{p_i} \leqslant a_i$ mais par double inégalité, $\nu_{p_i} = a_i$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='valuation p-adique et produit'>
+
+Si $p \in \cP$, $\nu_p(n.m) = \nu_p(n) + \nu_p(m)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $p_1 \v \dotsm \v p_k$ l'ensemble des diviseurs premiers de $n$ et $m$. Soient les décompositions en produits de facteurs premiers de $n$ et $m$ : 
+
+$n = p_1^{a_1} . p_2^{a_2}  \dotsm p_k^{a_k}$ et $m = p_1^{b_1} . p_2^{b_2}  \dotsm p_k^{b_k}$.
+
+$\cd$ S'il existe $i$ tel que $p = p_i$, alors $\nu_p(n) = a_i$ et $\nu_p(m) = b_i$. Mais $n.m = p_1^{a_1 + b_1} . p_2^{a_2 + b_2}  \dotsm p_k^{a_k + b_k}$. Par unicité de la décomposition en produit de facteurs premiers, $\nu_p(n.m) = a_i + b_i = \nu_p(n) + \nu_p(m)$
+
+$\cd$ Si $p$ n'est pas parmi les $p_i$, alors $p$ ne divise ni $n$ ni $m$ et donc $\nu_p(n.m) = 0 = \nu_p(n) + \nu_p(m)$ puisque chacun vaut $0$.
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation de la divisibilité'>
+
+$n$ divise $m$ si et seulement si $\forall p \in \cP \v \nu_p(n) \leqslant \nu_p(m)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $p_1 \v \dotsm \v p_k$ les diviseurs premiers de $m$ et $n$ et où $k \in \N$.
+
+$ m =  n . \p_1^{\nu_{p_1}(m) - \nu_{p_1}(m)} \dotsm \p_k^{\nu_{p_k}(m) - \nu_{p_k}(m)} $ 
+
+Mais donc, $n \divise m \ssi \nu_{p_1}(m) - \nu_{p_1}(m) \geqslant 0 \ET \dotsm \ET \nu_{p_k}(m) - \nu_{p_k}(m) \geqslant 0 $
+
+D'où le résultat.
+
+</Hideable>

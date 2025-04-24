@@ -1,0 +1,79 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='polynôme irreductible'>
+
+On dit que $P \in \K[X]$ non nul est irreductible si :
+
+$$
+P = A . B \Rightarrow \deg(A) = 0 \OU \deg(B) = 0
+$$
+
+Autrement dit, $P$ est irreductible si et seulement si ses diviseurs sont les polynômes constants et ceux de la forme $\lambda . P \v \lambda \neq 0$.
+</Item>
+
+<Item type='theoreme' titre="d'Alembert-Gauss" tag="admis">
+
+Dans $\C[X]$ les polynômes irreductibles sont exactement les polynômes constants et ceux de degré 1.
+</Item>
+
+
+<Item type='proposition' titre='irreductibles (cas réel)'>
+
+Dans $\K[X]$ les polynômes irreductibles sont exactement les polynômes constants, ceux de degré $1$ et ceux de degré $2$ dont le discriminant est strictement négatif.
+</Item>
+
+
+<Item type='theoreme' titre='décomposition en produit de polynomes irreductibles' tag='admis'>
+
+
+Soit $P \in \K[X]$. Il existe $P_1 \v \dotsm \v P_k$ des éléments irréductibles de $\K[X]$ et $\alpha_1 \v \dotsm \v \alpha_k$ des entiers positifs où $k \in \N$ tels que :
+
+$$
+P = 1 . P_1^{\alpha_1}.P_2^{\alpha_2}. \dotsm P_k^{\alpha_k}
+$$
+</Item>
+
+<Item type='consequence' titre='Caractérisation de la divisibilité (cas complexe)'>
+
+Soient $P$ et $Q$ deux éléménts de $\C[X]$.
+
+Notons $\lambda_1 \v \dotsm \v \lambda_n$ les racines de $P$ et $\alpha_1 \v \dotsm \v \alpha_n$ leurs multiplicités (resp $\beta_1 \v \dotsm \beta_n$ leurs multiplicités en tant que racines éventuelles de $Q$).
+
+$P$ divise $Q$ si et seulement si $\forall i \in \defentiersn \v \alpha_i \leqslant \beta_i$.
+</Item>
+
+<Item type='consequence' titre='primalité et racines communes'>
+
+Soient $P$ et $Q$ deux éléménts de $\C[X]$.
+
+Ils sont premiers entre eux si et seulement s'ils n'ont pas de racine commune.
+</Item>
+
+
+<Item type='proposition' titre='racines conjuguées'>
+
+Soit $P \in \R[X]$.
+
+Soit $\lambda \in \C$ tel que $\tilde{P}(\lambda) = 0$, alors $\tilde{P}(\overline{\lambda}) = 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{i = 0}{n} a_i X^i$.
+
+$\tilde{P}(\overline{\lambda}) = \somme{i = 0}{n} a_i (\overline{\lambda})^i = \somme{i = 0}{n} a_i \overline{\lambda^i} = \overline{\somme{i = 0}{n} a_i \lambda^i} = \overline{\tilde{P}(\lambda)} = 0$
+</Hideable>
+
+
+<Remarque titre=''>
+
+Cela n'est vrai que si le polynôme a des coefficients réels! Par exemple $P = iX^2 + X$ a pour racines $i$ et $0$ qui ne sont pas conjuguées.
+
+</Remarque>

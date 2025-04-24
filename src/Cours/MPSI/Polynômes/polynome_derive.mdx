@@ -1,0 +1,94 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='polynôme dérivé'>
+
+On appelle polynôme dérivé de $P = \somme{i = 0 }{n} a_i X^i \in \K[X]$ le polynôme suivant :
+
+$P' = \somme{i = 0 }{n-1} a_{i+1} X^i = \somme{i = 1 }{n} a_i X^{i-1}$
+
+<br/>
+
+On note le polynôme $P$ dérivé $k$ fois ainsi : $P^{(k)}$. De plus, $P^{(k)} = \somme{i = 0}{n-k} k! . a_{i+k} X^i$
+</Item>
+
+<Remarque titre=''>
+
+En fait, il s'agit du polynôme associé à $(\tilde{P}) '$ puisqu'on a la relation suivante : $(\tilde{P}) ' = \tilde{(P')}$.
+</Remarque>
+
+
+<Item type='proposition' titre='propriétés du polynôme dérivé'>
+
+Soient $P$ et $Q$ deux éléments de $\K[X]$ et $\lambda \v \mu$ des éléments de $\K$.
+
+$\cd$ $(\lambda . P + \mu . Q )' = \lambda . P' + \mu . Q'$
+
+$\cd$ $(PQ)' = P' . Q + P . Q'$
+
+$\cd$ $(PQ)^{(n)} = \somme{k = 0}{n} \binomiale{k}{n} P^{(k)} Q^{(n-k)}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+En se ramenant à la fonction polynômiale associée, on a exactement les mêmes propriétés que sur les fonctions. Par caractérisation des polynômes par leur fonction associée, les résultats valent également pour les polynômes.
+</Hideable>
+
+
+<Item type='theoreme' titre='formule de Taylor polynômiale'>
+
+Soit $P \in \K[X]$ de degré $n \in \N$.
+
+$P = \somme{k = 0}{n} \dfrac{ \tilde{P}^{(k)} (0) }{k!} X^k$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{k = 0}{n} a_k X^k$.
+
+Comme $P^{(k)} = \somme{i = 0}{n-k} k! . a_{i+k} X^i$ on a $\tilde{P^{(j)}} (0) = k! . a_k$
+
+Mais donc $a_k = \dfrac{ \tilde{P}^{(k)} (0) }{k!}$ d'où $P = \somme{k = 0}{n} \dfrac{ \tilde{P}^{(k)} (0) }{k!} X^k$.
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation des racines multiples'>
+
+Soient $\lambda \in \K \v n \in \N^*$ et $P \in \K[X]$.
+
+$\lambda$ est racine de multiplicité $n$ de $P$ si et seulement si $\tilde{P^{(0)}}(\lambda) = \tilde{P^{(1)}}(\lambda) = \dotsm = \tilde{P^{(n-1)}}(\lambda) = 0$ et $\tilde{P^{(n-1)}}(\lambda) \neq 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** supposons que $\lambda$ est racine de multiplicité $n$ de $P$. Alors il existe un polynôme $Q$ tel que $P = (X - \lambda)^n . Q$.
+
+Il convient déjà de remarquer qu'en dérivant $(X - \lambda)^n$  $k$ fois, on obtient $\dfrac{n!}{(n-k)!}(X - \lambda)^{n-k}$.
+
+D'après la formule de dérivation de Leibniz, $P^{(m)} = \somme{k = 0}{m} \binomiale{k}{m} \dfrac{n!}{(n-k)!}(X - \lambda)^{n-k} Q^{(m-k)}$ avec $m \in \defentiers{0}{n-1}$
+
+
+Mais donc $(X - \lambda)^{n-m} \divise P^{(m)}$ d'où le fait que $\lambda$ soit racine de $P^{(m)}$ si $m \in \defentiers{0}{n-1}$.
+
+De plus, $P^{(n)} = Q + \somme{k = 0}{n-1} \binomiale{k}{m} \dfrac{n!}{(n-k)!}(X - \lambda)^{n-k} Q^{(m-k)} $ en séprant le dernier terme des autres (on rappelle que pour cette formule, on pose $0^0 = 1$).
+
+En évaluant en $\lambda$ le polynôme associé, on obtient $Q(\lambda) \neq 0$. (En effet, si $\lambda$ était racien de $Q$, alors on aurait $Q = Q_2 . (X - \lambda)$ et aussi $P = (X- \lambda)^{n+1} Q_2$ ce qui contredirait le fait que $\lambda$ soit de multiplicité $n$)
+
+
+
+$\cd$ **Réciproque ($\LeftArrow$) :** Notons $k \geqslant 1$ la multiplicité de $\lambda$ qui est racine de $P$ puisque $\tilde{P}(0) = 0$.
+
+D'après le sens direct, $\forall i \in \defentiers{0}{k-1} \v \tilde{P{(i)}}(\lambda) = 0 \ET \tilde{P^{(k)}}(\lambda) \neq 0$.
+
+On sait donc que $k \geqslant n$ car sinon, on aurait $\tilde{P^{(k)}}(\lambda) = 0$.
+
+Par ailleurs, $k \leqslant n$ car sinon, on aurait $\tilde{P^{(n)}}(\lambda) \neq 0$ alors même que $n < k$.
+
+Par double inégalité, $n = k$.
+
+</Hideable>

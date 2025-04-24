@@ -5,14 +5,6 @@ import Item from '@components/Item.astro'
 import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
-{true && (
-  <>
-    ## Section conditionnelle
-
-    Ce contenu n'est visible que si `showSection` est `true`.
-    
-  </>
-)}
 
 
 <Item type='definition' titre='notation somme' searchDesc="notation sigma majuscule">
@@ -27,6 +19,30 @@ ou encore $\somme{i \in \defentiersn}{} a_i = a_1 + a_2 + \dotsm + a_{n-1} + a_n
 Par convention, on pose $\somme{i \in \emptyset}{} a_i = 0 $
 
 </Item>
+
+
+<Exercice titre=''>
+
+Compléter les trois notations somme suivantes pour que les égalités soient vraies :
+
+$\cd$ a\) $\somme{i = 8}{ \dotsm } 1 = 1 + 1 + 1 + 1 + 1 + 1$
+
+$\cd$ b\) $\somme{i = \dotsm}{ \dotsm } i = 11 + 12 + 13 + 14 + 15$
+
+$\cd$ c\) $\somme{i = \dotsm}{ \dotsm } 5i + 4 =  \Big( 5\times \left(-2\right) + 4 \Big)  \; + \;   \Big( 5\times \left(-1\right) + 4 \Big)   \; + \;   \Big( 5\times 0 + 4 \Big)   \; + \;   \Big( 5\times 1 + 4 \Big)  \; + \;  \Big( 5\times 2 + 4 \Big) $
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$\cd$ a\) $\somme{i = 8}{ 13} 1 = \underbrace{1}_{i = 8} + \underbrace{1}_{i = 9} + \underbrace{1}_{i = 10} + \underbrace{1}_{i = 11} + \underbrace{1}_{i = 12} + \underbrace{1}_{i = 13}$
+
+$\cd$ b\) $\somme{i = 11}{ 15 } i = \underbrace{11}_{i = 11} + \underbrace{12}_{i = 12} + \underbrace{13}_{i = 13} + \underbrace{14}_{i = 14} + \underbrace{15}_{i = 15}$
+
+$\cd$ c\) $\somme{i = -2}{ 2 } 5i + 4 =  \Big( 5\times \left(-2\right) + 4 \Big)  \; + \;   \dotsm  \; + \;  \Big( 5\times 2 + 4 \Big) $
+
+</Hideable>
+
 
 <Item type='proposition' titre='linéarité de la somme'>
 Soient $\alpha$ et $\beta$ des complexes, $n$ un entier strictement positif, $a_1 \v a_2 \v \dotsm \v a_n$ et $(b_1 \v b_2 \v \dotsm \v b_{n-1} \v b_n)$ des éléments de $\C$. 
@@ -46,6 +62,7 @@ En réorganisant les termes, on obtient $ \somme{k=1}{n} \Big( \alpha a_k + \bet
 
 Finalement, $\somme{k=1}{n} \Big( \alpha a_k + \beta b_k \Big) = \alpha \somme{k=1}{n} a_k \, + \, \beta \somme{k=1}{n} b_k$
 </Hideable>
+
 
 <Item type='proposition' titre='sommes des entiers et de leurs carrés' searchDesc="formules">
 Soit $n \in \N$. On a :
@@ -119,6 +136,74 @@ On en conclut que $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$.
 **Conclusion :** $\cP(1)$ est vérifiée et $\forall n \in \N^*\v \cP(n) \Rightarrow \cP(n+1)$. On en conclut que $\cP(n)$ est vérifiée pour tout $n \in \N^*$
 </Hideable>
 
+<Exercice titre=''>
+
+
+$\cd$ a\) Compléter l'égalité suivante où $u_k \in \N$ pour tout $k \in \Z$ : $\somme{k = 17}{354} u_k \; + \; \somme{k = \dotsm}{\dotsm} u_k  = \somme{k = 0}{354} u_k$
+
+$\cd$ b\) Calculer la somme suivante : $S_1 = 13 + 19 + 25 + 31 + 37 + \dotsm + 667$
+
+$\cd$ c\) Calculer la somme suivante :  $S_2 = \somme{k = 4}{12} 2k^2 -k + 6$
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$\cd$ a\) On "complète" le trou manquant dans la première somme : les valeurs de $k$ entre $0$ et $16$ :
+
+$\somme{k = 17}{354} u_k \; + \; \somme{k = 0}{16} u_k  = \somme{k = 0}{354} u_k$
+
+<br/>
+
+$\cd$ b\) $13 + 19 + 25 + 31 + 37 + \dotsm + 667 = (6 \times 2 + 1) + (6 \times 3 + 1) + \dotsm + (111 \times 6 + 1)$ 
+
+On peut donc réécrire cette somme ainsi : $S_1 = \somme{k = 2}{111} (6k + 1)$.
+
+Par linéarité de la somme, on a : 
+
+$$
+S_1 = 6\somme{k = 2}{111} k  \; + \; \somme{k = 2}{111} 1
+$$
+
+On obtient donc : 
+
+$$
+S_1 = 6. \Big( \somme{k = 0}{111} k \; - \; \somme{k = 0}{1} k\Big) + \Big(\somme{k = 1}{111} 1 - \somme{k = 1}{1} 1 \Big)
+$$
+
+En appliquant la formule connue de la somme des entiers : 
+
+$$
+S_1 = (6 \times \dfrac{111 \times 112}{2} - 0 - 1) + (111 - 1)
+$$
+
+Finalement, 
+$$
+S_1 = 6 \times 111 \times 66 + 110 = 43 \, 956 + 110 = 44 \, 066
+$$
+
+<br/>
+
+$\cd$ c\) On procède à l'aide de la linéarité de la somme :
+
+$$
+S_2 = \somme{k = 4}{12} 2k^2 -k + 6 = 2\somme{k = 4}{12} k^2   - \somme{k = 4}{12} k  +  6\somme{k = 4}{12} 1
+$$
+
+Il suit, en "complétant les sommes pour que $k$ parte de $0$", que :
+
+$$
+S_2 = 2.\Big( \dfrac{12 \times (12 + 1) \times (2\times 12 + 1)}{6} - \dfrac{3 \times (3 + 1) \times (2\times 3 + 1)}{6} \Big) - (\dfrac{12 \times (12 + 1)}{2} - \dfrac{3 \times (3 + 1)}{2}) + 6 \times 9
+$$
+
+Finalement, $S_2 = 2.\Big( 26 \times 25 - 14 \Big) - (6 \times 13 - 6) + 54 $
+
+On simplifie et on obtient : $S_2 = 1 \, 254$
+
+
+</Hideable>
+
+
 <Item type='proposition' titre='somme géométrique'>
 Soit $q \in \R\setminus\{ 1\}$.
 
@@ -152,4 +237,19 @@ On a bien montré que $\cP(n) \Rightarrow \cP(n+1)$.
 <br/>
 
 **Conclusion :** On a montré que $\cP(0)$ est vérifiée et que $\cP(n) \Rightarrow \cP(n+1)$ si $n \in \N$. On a bien montré que $\cP(n)$ était vérifiée pour tout $n$ entier naturel.
+</Hideable>
+
+
+<Exercice titre=''>
+
+Exprimer $\somme{k = 4}{88} q^k$ en fonction de $q \in \R$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+**Si $q = 1$ :** $\somme{k = 4}{88} q^k = \somme{k = 4}{88} 1 = 85$
+
+<br/>
+
+**Sinon :** $\somme{k = 4}{88} q^k = q^4 \somme{k = 0}{84} q^k = q^4 . \dfrac{1 - q^{85}}{1 - q}$
 </Hideable>

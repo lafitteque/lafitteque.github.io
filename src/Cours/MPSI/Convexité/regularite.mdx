@@ -1,0 +1,106 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='proposition' titre='caractérisation des fonctions convexes dérivables'>
+
+Si $f$ est dérivable, alors il y a équivalence entre les deux affirmations suivantes :
+
+$\cd$ i\) $f'$ est croissante.
+
+$\cd$ ii\) $f$ est convexe.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **i\) $\Rightarrow$ ii\) :** On suppose que $f'$ est croissante. Soient $x \v y$ et $z$ ds éléments de $I$ tels que $x < y < z$.
+
+Il existe $c \in \defoo{x}{y}$ tel que $f'(c) = \dfrac{f(y)-f(x)}{y-x}$ d'après l'égalité des accroissements finis.
+
+De même, il existe $d \in \defoo{y}{z}$ tel que $f'(d) = \dfrac{f(z)-f(y)}{z-y}$.
+
+Mais, par croissance de $f'$, $f'(c) \leqslant f'(d)$ donc $\dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(z)-f(y)}{z-y}$
+
+<br /> Il nous manque à ordonner la troisième pente pour arriver à la caractérisation par l'inégalité des trois pentes.
+
+Mais $\dfrac{f(z) - f(x)}{z-x} = \dfrac{f(z) - f(y) + f(y) - f(z)}{z-x} = \dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(x)}{y-x} .\dfrac{y-x}{z-x}$
+
+Or $\dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} \leqslant \dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(z) - f(y)}{z-y} .\dfrac{y-x}{z-x} = \dfrac{f(z) - f(y)}{z-y}$
+
+Et $\dfrac{f(z) - f(y)}{z-y}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} \geqslant \dfrac{f(y) - f(x)}{y-x}.\dfrac{z-y}{z-x} + \dfrac{f(y) - f(z)}{y-x} .\dfrac{y-x}{z-x} = \dfrac{f(y) - f(z)}{y-x}$ 
+
+On a bien l'inégalité des trois pentes et par conséquent, $f$ est convexe.
+
+
+<br/>
+
+$\cd$ **ii\) $\Rightarrow$ i\) :** On suppose que $f$ est convexe. Soient $x < t$ des éléments de $I$.
+
+D'après l'inégalité des trois pentes, si $x < y < z < t$, on a :
+
+- d'une part $\dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(z)-f(y)}{z-y}$ pour $x < y < z$. 
+
+- d'autre part $\dfrac{f(z)-f(y)}{z-y} \leqslant \dfrac{f(t)-f(z)}{t-z}$ pour $y < z < t$. 
+
+On en déduit que $ \dfrac{f(y)-f(x)}{y-x} \leqslant \dfrac{f(t)-f(z)}{t-z}$.
+
+En faisant tendre $y$ vers $x$ et $z$ vets $t$, on en déduit que $f'(x) \leqslant f'(t)$.
+
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation par les tangentes'>
+
+On suppose que $f$ est dérivable.
+
+Dans ce cas, $f$ est  convexe si et seulement si $\cC_f$ est au-dessus de toutes ses tangentes.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+Soit $a \in I$ et comparons $\cC_f$ à la tangente à $\cC_f$ en $a$ en étudiant la différence des ordonnées.
+
+On pose $g_a : x \mapsto f(x) - (f'(a) (x-a) + f(a))$
+
+$g_a'(x) = f'(x) - f'(a)$
+
+<br/>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** On suppose que $f$ est convexe. 
+
+Dans ce cas $g_a' > 0 \ssi x > a$ car $f'$ est croissante. On en déduit que $g_a$ est croissante sur $I \bigcap \defof{- \infty}{a}$ puis décroissante sur $I \bigcap \deffo{a}{ \infty}$ et atteint donc son minimum en $a$.
+
+Comme $g_a(a) = 0$, alors $g_a \geqslant 0$ d'où $f$ est au-dessus de ses tangentes.
+
+
+$\cd$ **Sens réciproque ($\Leftarrow$) :** On suppose que $f$ est au-dessus de ses tangentes et $a < b$ des éléments de $I$.
+
+Puisque $f$ est au-dessus de ses tangentes, elle est au-dessus de celle en $b$ d'équation $y = f'(b)(x-b) + f(b)$.
+
+En s'intéressant au point $a$ en particulier, $ f(a) \geqslant f'(b) (a-b) + f(b)$ mais donc $\dfrac{f(a)-f(b)}{a-b} \leqslant f'(b)$.
+
+De même en le point $b$ et par rapport à la tangente en $a$, on trouve $f(b) \geqslant f'(a) (b-a) + f(a)$ d'où $\dfrac{f(a) - f(b)}{a-b} \geqslant f'(a)$
+
+Mais donc $f'(b) \geqslant \dfrac{f(a) - f(b)}{a-b} \geqslant f'(a)$ d'où $f'(b) \geqslant f'(a)$. Finalement, $f'$ est croissante.
+
+</Hideable>
+
+
+<Item type='proposition' titre="caractérisation par l'accélération">
+
+Si $f$ est dérivable deux fois, alors on a équivalence entre les affirmations suivantes :
+
+$\cd$ i\) $f$ est convexe.
+
+$\cd$ ii\) $f'' \geqslant 0$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+On suppose que $f$ est dérivable deux fois.
+
+$f$ est convexe $\ssi$ $f'$ est croissante $\ssi$ $f'' \geqslant 0$
+</Hideable>

@@ -1,0 +1,79 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Fil>
+
+Dans la suite, on utilisera la notation $(0)$ qui signifie que l'on rempli les coefficients de la matrice avec des $0$.
+
+Soit $A = \left( \begin{array}{c|c|c|c} C_1 & C_2 & \dotsm & C_n \end{array} \right) \in \cM_n(\R)$ où $C_1 \v C_2 \v \dotsm \v C_n$ sont les colonnes de $A$.
+
+$$
+\begin{matrix} & \begin{matrix}  & j &  \\   &\downarrow & \end{matrix} \\ A . E_{i,j} = & \Bigg( \begin{array}{c|c|c|c|c|c|c}
+   & & & & & & \\ 
+   (0) & \dotsm  & (0) & C_i &  (0) &  \dotsm & (0)  \\
+    & & & & & & 
+\end{array} \Bigg) \end{matrix} 
+$$
+
+<br/>
+
+
+Si $A = 
+\begin{pmatrix} L_1 \\[0.4em] \hline \\[-0.9em]
+L_2 \\[0.4em] \hline \\[-0.9em]
+\dotsm \\[0.4em] \hline \\[-0.9em]
+L_n 
+\end{pmatrix} \in \cM_n(\R)$ où $L_1 \v L_2 \v \dotsm \v L_n$ sont les lignes de $A$.
+
+$$
+\begin{matrix}  E_{i,j} . A = &  
+\begin{pmatrix}
+ (0 & \dotsm & 0) \\[0.4em] \hline \\[-0.9em]
+ & \dotsm & \\ \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0)  \\[0.4em] \hline \\[-0.9em] & & \\[-0.9em]
+ & L_j & \\[0.4em] \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0) \\[0.4em] \hline \\[-0.9em]
+ & \dotsm & \\ \hline \\[-0.9em] & & \\[-0.9em]
+ (0 & \dotsm & 0) \\[-0.9em] & & 
+\end{pmatrix} & \begin{matrix}  \\ \leftarrow i \\ \\ \end{matrix}
+ \end{matrix} 
+$$
+
+Ceci est donc l'écriture sans la notation $(0)$.
+
+</Fil>
+
+<Item type='proposition' titre='produit de deux matrices élémentaires'>
+
+Soient $n \in \N^*$ et $1 \leqslant i \v j \v k \v l\leqslant n$.
+
+Dans $\cM_n(\R)$, on a :
+
+$$
+E_{i,j} . E_{k,l} = \delta_j^k E_{i,l}
+$$
+
+Le résultat est analogue pour des matrices rectangulaires.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Remarquons que les coefficients de $E_{i,j}$ sont les $\delta_a^i . \delta_b^j$ où $1 \leqslant a \v b \leqslant n$.
+
+On a donc : $E_{i,j} . E_{k,l}  = \left( \somme{c = 1}{n}(\delta_a^i . \delta_c^j) (\delta_c^k . \delta_b^l)\right)_{ 1 \leqslant a \v b \leqslant n }$
+
+mais $\delta_a^i . \delta_c^j . \delta_c^k . \delta_b^l \neq 0 \Rightarrow a = i \v c = j \v c = k \v b = l$.
+
+Mais donc, le produit est non nul uniquement quand $k = j$, auquel cas $\delta_a^i . \delta_c^j . \delta_c^k . \delta_b^l = 1 \ssi a = i \v  j = k \v b = l$ 
+
+On en déduit que $E_{i,j} . E_{k,l} = \delta_j^k E_{i,l}$
+
+</Hideable>
+
+

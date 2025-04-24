@@ -1,0 +1,44 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='methode' titre='exploiter les pôles'>
+
+
+Soit $F = \dfrac{X^2 - X + 3}{X^2(X+3)}$
+
+On sait qu'il existe des constantes telles que $F = \dfrac{a}{X} + \dfrac{b}{X^2} + \dfrac{c}{X+3}$
+
+On a donc $X^2 . F = aX + b + X^2.\dfrac{c}{X+3}$ mais $X^2 . F = \dfrac{X^2 - X + 3}{(X+3)}$.
+
+On peut évaluer la fonction rationnelle associée en $x = 0$ pour obtenir : $\dfrac{0^2 - 0 + 3}{(2.0+3)} = a.0 + b + 0^2.\dfrac{c}{2.0+3}$ d'où $1 = b$
+
+On a obtenu un coefficient avec des efforts raisonnables.
+
+<br/> 
+
+On peut faire de même avec $X + 3$ : $(X+3). F = \dfrac{X^2 - X + 3}{X^2} = (X + 3) . \dfrac{a}{X} + (X + 3) . \dfrac{b}{X^2} + c$
+
+En évaluant la fonction rationnelle associée en $-3$, on a : $ \dfrac{(-3)^2 - (-3) + 3}{(-3)^2} = c$ donc $c = \dfrac{5}{3}$. 
+
+<br/>
+
+On ne peut pas obtenir le coefficient $b$ avec cette méthode car multiplier par $X$ laisse une fraction avec $X$ au dénominateur, ce qui empêche toute évaluation en $0$.
+
+<br/>
+
+En général, en reprenant les notations du théorème de décompositions en facteur premier on peut multiplier $F$ par $Q_i^{\alpha_i}$ et ce pour tout $i$. Ensuite, on évalue en le ou les pôles de $Q_i$ (dans $\C$ si besoin).  
+</Item>
+
+
+<Item type='methode' titre='utiliser les limites'>
+
+Soit $F = \dfrac{X}{(X^2 + 2)(3X^2 + X + 16)^2}$. On sait qu'il existe des constantes telles que $F = \dfrac{aX + b}{X^2 + 2} + \dfrac{cX + d}{3x^2 + X + 16} +  \dfrac{eX + f}{(3x^2 + X + 16)^2}$.
+
+Soit $f$ la fonction rationnelle associée à $F$. On a $\limto{x \to + \infty} x.f(x) = 0 = \dfrac{a}{3} + e$, ce qui nous donne une relation simple.
+
+</Item>

@@ -1,0 +1,98 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre="morphisme d'anneau et isomorphisme">
+
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux.
+
+On dit que $\varphi : A \rightarrow B$ est un morphisme d'anneau si :
+
+$\cd$ $\varphi(1_A) = 1_B$
+
+$\cd$ $\forall (x \v y) \in A^2 \v \varphi(x +_A y) = \varphi(x) +_B \varphi(y)$
+
+$\cd$ $\forall (x \v y) \in A^2 \v \varphi(x \times y) = \varphi(x) \ast \varphi(y)$
+
+<br/>
+
+Comme pour les groupes, on dit que c'est un automorphisme si $A = B \v +_A = +_B \v \times = \ast$ (il s'agit d'égalité d'applications).
+
+On dit que c'est un automorphisme s'il est bijectif.
+</Item>
+
+
+<Item type='proposition' titre="propriétés du morphisme d'anneau">
+
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux et $\phi : A \rightarrow B$ un morphisme d'anneau.
+
+$\cd$ $\phi(0_A) = \phi(0_B)$
+
+$\cd$ Si $a \in A \v \phi(- a) = - \phi(a)$
+
+$\cd$ Si $a \in A^{\times} \v \phi(a^{-1}) = \phi(a)^{-1}$. 
+
+$\cd$ Soit $n \in \N^*$ et $a \in A$. Si l'on note $na = \underbrace{a + a + \dotsm + a}_{n\text{ fois}} $ où $a \in A$, on a $\phi(na) = n \phi(a)$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$  $\phi(0_A +_A 0_A) = \phi(0_A) +_B \phi(0_A)$. Mais donc $\phi(0_A) = \phi(0_A) +_B \phi(0_A)$.
+
+En ajoutant $-\phi(0_A)$ de part et d'autre, on a $0_B = \phi(0_A)$ 
+
+$\cd$ d'après la propriété précédente, $\phi$ est un morphisme de groupes pour les additions, d'où le résultat.
+
+$\cd$ $1_B = \phi(1_A) = \phi(a \times a^{-1}) = \phi(a) \ast \phi(a^{-1})$. Donc $\phi(a)^{-1} = \phi(a^{-1})$
+
+$\cd$ cela se montre par récurrence.
+
+</Hideable>
+
+
+<Item type='proposition' titre='image et image réciproque'>
+
+Soient $(A \v +_A \v \times)$ et $(B \v +_B \v \ast)$ deux anneaux et $\phi : A \rightarrow B$ un morphisme d'anneau.
+
+$\phi(A)$ et $\phi^{-1}(B)$ sont des anneaux.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Montrons que $(\phi(A) \v +_B \v \ast)$ est un sous-anneau de $(B \v +_B \v \ast)$.
+
+<Indent>
+
+$\bullet$ $\phi(A) \subset B$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(1_A) = 1_B$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in A^2 \v \phi(x) -_B \phi(y) = \phi( \underbrace{x -_A y}_{\in A}) \in \phi(A)$
+
+$\bullet$ stabilité du produit :  soient $(x \v y) \in A^2 \v \phi(x) \ast \phi(y) = \phi( \underbrace{x \times y}_{\in A}) \in \phi(A)$
+
+</Indent>
+
+
+<br/>
+
+$\cd$ Montrons que $(\phi^{-1}(A) \v +_A \v \times)$ est un sous-anneau de $(A \v +_A \v \times)$.
+
+<Indent>
+
+$\bullet$ $\phi^{-1}(B) \subset A$ : c'est le cas par définition de $\phi$.
+
+$\bullet$ unité : $\phi(1_A) = 1_B$ donc $1_A \in \phi^{-1}(B)$.
+
+$\bullet$ stabilité de la différence : soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) -_B \phi(y) = \phi(x -_A y) \in B$ donc $x -_A y \in \phi^{-1}(B)$
+
+$\bullet$ stabilité du produit :  soient $(x \v y) \in \phi^{-1}(B)^2 \v \phi(x) \ast \phi(y) = \phi(x \times y) \in B$ donc $x \times y \in \phi^{-1}(B)$
+
+</Indent>
+
+
+</Hideable>

@@ -48,6 +48,14 @@ En clair, une table de vérité permet de définir de nouvelles propositions à 
 Le "ou" est inclusif par défaut. Cela signifie que A et B peuvent tous deux être vrais. L'opération "ou exclisif" se note généralement "xor".
 </Remarque>
 
+<br/>
+
+Quand on veut faire une table de vérité, il faut lister toutes les possibilités de valeurs de vérité des propositions A, B, C, ... données en entrée. On peut s'aider d'un arbre binaire comme celui ci-dessous :
+
+<img width="500" height="500" class="content-center mx-auto" src = "/svgs/arbre_binaire_vrai_faux.svg" alt="choix de valeurs de vérité des propositions"/>
+
+<br/>
+
 <Exercice titre="">
 Montrer que "A $\OU$ ($\NON$ A)" a pour valeur de vérité "Vrai" et que "A $\ET$ ($\NON$ A)" a pour valeur de vérité "Faux".
 </Exercice>
@@ -81,6 +89,9 @@ Répondre à la question c'est dire si "A $\ET$ B" est vrai ou bien si C est vra
 | Faux | Faux | Faux || Faux | Faux | Ici, (A $\ET$ B) est faux mais C est également faux, donc (A $\ET$ B) $\OU$ C est faux. |
 </Hideable>
 
+<Remarque titre=''>
+
+</Remarque>
 
 <Item type='proposition' titre='commutativité et associativité de la conjonction ainsi que de la disjonction' searchDesc="et, ou, non, formules"> 
 

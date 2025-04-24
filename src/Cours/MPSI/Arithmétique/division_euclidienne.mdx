@@ -1,0 +1,79 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='theoreme' titre='division euclidienne'>
+
+On suppose $m \neq 0$. 
+Il existe un unique $q \in \Z$ et un unique $r \in \defentiers{0}{m-1}$ tels que :
+
+$$
+n = qm + r
+$$
+
+On appelle cette égalité la division euclidienne de $n$ par $m$.
+
+<br />
+
+$m$ est le **dividende** de cette division, $q$ est le **quotient** de cette division et $r$ est le **reste** de cette division
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Existence :** On pose $q = \floor{\dfrac{n}{m}}$ et $r = n - m.q$.
+
+On a bien $q \in \Z$ et donc $r \in \Z$. 
+
+On a également $\dfrac{n}{m} \leqslant \floor{\dfrac{n}{m}} < \dfrac{n}{m} + 1$ donc $n \leqslant m.\floor{\dfrac{n}{m}} < n + m$
+
+En clair, $n \leqslant m.q < n + m$ donc $0 \leqslant n-m.q = r < m$ d'où $r \in \defentiers{0}{m-1}$.
+
+On a bien vérifié toutes les propriétés voulues, donc $q$ et $r$ conviennent.
+
+$\cd$ **Unicité :** Supposons qu'il existe $(q_1\v q_2 \v r_1 \v r_2) \in \Z^2 \times \defentiers{0}{m-1}^2$ tels que $n = q_1.m + r_1 = q_2.m + r_2$.
+
+Dans ce cas, $q_1.m - q_2.m = r_2 - r_1$ et donc $m.(q_1 -q_2) = r_2 - r_1$ d'où $m \divise r_2 - r_1$ et donc $|m| \leqslant |r_2 - r_1|$ si les deux parties sont non nulles. 
+
+Mais $-m< r_2 - r_1 < m$ ce qui contredit que $|m| \leqslant |r_2 - r_1|$, mais donc l'une est partie au moins est nulle, c'est nécessairement $r_2 - r_1$ car $m \neq 0$. 
+
+D'où $m.(q_1 -q_2) = r_2 - r_1 = 0$ donc $r_1 = r_2$. Par produit nul, $q_1 -q_2 = 0$ d'où $q_1 = q_2$. 
+
+</Hideable>
+
+
+<Item type='proposition' titre='caractérisation de la divisibilité'>
+
+On suppose que : $n \neq 0$.
+
+$n \divise m$ si et seulement si le reste de la division euclidienne de $m$ par $n$ est nul.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Supposons $n \divise m$ :** il existe $k \in \Z$ tel que $m = \underbrace{k}_{\in \Z}.n + 0$ qui convient comme division euclidienne et donc le reste est nul.
+
+$\cd$ **Supposons que le reste de la division euclidienne de $m$ par $n$ soit nul :** soit $m = q.n + r$ la division euclidienne de $m$ par $n$. 
+
+Par hypothèse, $r = 0$ et donc $m = \underbrac{q}_{\in \Z} . n$ d'où $n \divise m$
+
+</Hideable>
+
+<Item type='proposition' titre='cas de la parité'>
+
+Un nombre est pair si et seulement si c'est un multiple de deux.
+
+Un nombre est impair si et seulement si ce n'est pas un multiple de deux.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n = 2q + r$ la division euclidienne de $n$ par $2$. 
+
+$n$ est pair si et seulement si $r = 0$ et donc si et seulement si $2 \divise n$ 
+
+C'est analogue pour l'imparité.
+</Hideable>

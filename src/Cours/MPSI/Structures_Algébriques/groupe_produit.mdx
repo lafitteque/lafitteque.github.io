@@ -1,0 +1,40 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+
+<Item type='defprop' titre='groupe produit'>
+
+Soient $(G \v \ast_G)$ et $(H \v \ast_H)$ deux groupes.
+
+Soit $\ast : ((g \v h) \v (g' \v h')) \in (G\times H)^2 \mapsto (g \ast_G g' \v h \ast_H h')$. 
+
+$(G \times H \v \ast)$ est un groupe et est appelé **groupe produit** de $G$ et $H$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $\ast$ est une loi de composition interne : en effet, soient $(g \v g' \v h \v h') \in G^2 \times H^2$, $(g \v h) \ast (g' \v h') \in G \times H$ puisque $g \ast_G g' \in G$ et $h \ast_H h' \in H$ car $\ast_G$ et $\ast_H$ sont des lois de composition interne.
+
+$\cd$ Soient $g_1 \v g_2 \v g_3$ des éléments de $G$ et $h_1 \v h_2 \v h_3$ des éléments de $H$.
+
+$(g_1 \v h_1) \ast \Big((g_2 \v h_2) \ast (g_3 \v h_3)\Big) =(g_1 \v h_1) \ast (g_2 \ast_G g_3 \v h_2 \ast_H h_3) = (g_1 \ast_G g_2 \ast_G g_3 \v h_1 \ast_H h_2 \ast_H h_3) $
+
+d'autre part $\Big((g_1 \v h_1) \ast (g_2 \v h_2)\Big) \ast (g_3 \v h_3) =(g_1 \ast_G g_2 \v h_1 \ast_H h_2) \ast ( g_3 \v h_3) = (g_1 \ast_G g_2 \ast_G g_3 \v h_1 \ast_H h_2 \ast_H h_3) $
+
+On rappelle que $h_1 \ast_H h_2 \ast_H h_3$ et $g_1 \ast_G g_2 \ast_G g_3$ n'ont pas besoin de parenthèses par associativité des lois internes de $G$ et $H$.
+
+On a bien $\Big((g_1 \v h_1) \ast (g_2 \v h_2)\Big) \ast (g_3 \v h_3) = (g_1 \v h_1) \ast \Big((g_2 \v h_2) \ast (g_3 \v h_3)\Big) =(g_1 \v h_1) \ast (g_2 \ast_G g_3 \v h_2 \ast_H h_3)$.
+
+$\cd$ On vérifie facilement que $(g \v h) \in G \times H$ a pour inverse $(g^{-1} \v h^{-1})$ 
+
+$\cd$ On note $e_G$ l'élément neutre de $G$ et $e_H$ le neutre de $H$.
+
+On vérifie facilement que $(e_G \v e_H)$ est le neutre de $(G \times H \v \ast)$
+
+</Hideable>

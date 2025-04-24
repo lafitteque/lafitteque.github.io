@@ -1,0 +1,171 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='polynôme'>
+
+On appelle polynôme une suite finie (une suite qui est nulle à partir d'un certain rang) $c_0 \v c_1 \v \dotsm \v c_N \v \dotsm$ où $\forall n > N \v c_n = 0$.
+
+On note cette suite $P = c_N X^n + \dotsm + c_2 X^2 + c_1 X + c_0 $. On dit que $c_0 \v c_1 \v \dotsm \v c_N $ sont les coefficients de $P$.
+
+<br/>
+
+L'ensemble des polynômes à coefficients dans $\K$ est noté $\K[X]$
+
+<br/>
+
+On dit d'un polynôme qu'il est un **monôme** s'il n'a qu'un seul coefficient non nul (ex : $12X^5$ ou encore $8$)
+</Item>
+
+
+<Item type='definition' titre='opérations entre polynômes'>
+
+Soient $n$ et $m$ deux entiers naturels et $P$ et $Q$ des polynômes de $\R[X]$ que l'on note $P = \somme{i = 0}{n}b_i X^i = a_0 + \dotsm + a_n X^n$ et $Q = \somme{j = 0}{m}b_j X^j = b_0 + \dotsm + b_m X^m$.
+
+$\cd$ **Somme :** $P + Q = \somme{i = 0}{\max(n\v m)} (a_i + b_i)X^i$
+
+$\cd$ **Produit :** $P . Q = \somme{i = 0}{n} \somme{j = 0}{m} (a_i . b_j)X^{i+j}$
+
+$\cd$ **Composition :** $P \circ Q = \somme{i=0}{n} a_i \Big( \somme{j=0}{m} b_j X^j \Big)^j $
+</Item>
+
+
+
+
+<Item type='definition' titre='coefficient dominant'>
+
+On appelle coefficient dominant de $P \in \K[X]$ le coefficient non nul d'indice le plus élevé. On le note parfois $\dom(P)$
+
+<br/>
+
+Si le coefficient dominant de $P$ est $1$, on dit que $P$ est unitaire.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+$P = 3X -7X^3 + X^2$ a pour coefficient dominant $-7$.
+
+Attention, $P = 0$ n'a pas de coefficient dominant.
+</Hideable>
+
+
+<Item type='definition' titre='degré'>
+
+On appelle degré de $P \in \K[X]$ l'indice du coefficient dominant. Dans le cas particulier où $P = 0$, il n'y a pas de coefficent non nul et on dit que le degré de $P$ est $- \infty$
+
+On note $\deg(P)$ ce nombre ou parfois $d^{\circ} P$ (notation moins courante et donc à introduire avant utilisation).
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+$P = 32X^8 -X^3 + X^{21}$ est de degré $21$
+</Hideable>
+
+
+<Item type='proposition' titre='degré et addition'>
+
+Soient $P$ et $Q$ des éléments de $\K[X]$.
+
+$$
+\deg(P + Q) \leqslant \max(deg(P) \v \deg(Q))
+$$
+
+Mais on a en particulier $\deg(P + Q) = \max(deg(P) \v \deg(Q)) \text{ si } \deg(P) \neq \deg(Q) $
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{i = 0}{n} a_i X^i$ et $Q = \somme{i = 0}{m} b_i X^i$ où $a_n \neq 0$ et $b_m \neq 0$.
+
+$\cd$ Si $n > m$ : le coefficient dominant de $P + Q$ est $a_n \neq 0$ et donc $\deg(P + Q) = n = \max(n \v m)$
+
+$\cd$ Si $n < m$ : on inverse les rôles de $P$ et $Q$
+
+$\cd$ Si $n = m$ : $P + Q = \somme{i = 0}{n} (a_i + b_i) X^i$. On a donc $\deg(P + Q) \leqslant \deg(P)$. De plus, l'égalité n'est atteinte que si $a_n + b_n \neq 0$
+
+<br/>
+
+Dans tous les cas, $\deg(P + Q) \leqslant \max(deg(P) \v \deg(Q))$, ce qu'il fallait démontrer.
+</Hideable>
+
+
+<Item type='consequence' titre='degré de la somme de deux polynômes'>
+
+Soient $P_1 \v \dotsm \v P_n$ des polynômes de degrés deux à deux distincts.
+
+$\deg(P_1 + \dotsm + P_n) = \max_{i \in \defentiers{1}{n}}(\deg(P_i))$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons sur $\N^*$ la propriété $\cP(n) :$ Soient $P_1 \v \dotsm \v P_n$ des polynômes de degrés deux à deux distincts, $\deg(P_1 + \dotsm + P_n) = \max_{i \in \defentiers{1}{n}}(\deg(P_i))$.
+
+**Initialisation :** On vérifie $\cP(1)$. En effet, $\deg(P_1) = \max_{i \in \{1\}} \big( \deg(P_i) \big)$. et $\cP(2)$ est vraie d'après la propriété précédente.
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+On se donne des polynômes $P_i$ de degrés deux à deux distincts.
+
+Soit $Q = P_1 + \dotsm + P_n $
+
+$P_1 + \dotsm + P_n + P_{n+1} = Q + P_{n+1}$. 
+
+Par hypothèse de récurrence, $\deg(Q) = max_{i \in \defentiersn}\big( P_i \big)$.
+
+Donc, d'après $\cP(2)$, $P_1 + \dotsm + P_n + P_{n+1}$ a pour degré $\max\big(Q \v P_{n+1} \big) = max_{i \in \defentiers{1}{n+1}}\big( P_i \big)$
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ ainsi que $\cP(2)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+
+</Hideable>
+
+
+<Item type='proposition' titre='degré et produit'>
+
+Soient $P$ et $Q$ des éléments de $\K[X]$ non nuls.
+
+$\deg(P \times Q) = \deg(P) + \deg(Q)$
+
+<br />
+
+En particulier, $\deg(P^k) = k.\deg(P)$ si $k \in \N$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{i = 0}{n} a_i X^i$ et $Q = \somme{j = 0}{m} b_j X^j$ où $a_n \neq 0$ et $b_m \neq 0$.
+
+$P . Q = \somme{i = 0}{n} \somme{j = 0}{m} (a_i . b_j)X^{i+j} = \somme{k = 0}{n + m} \Big( \somme{\substack{(i \v j)  \in \defentiers{0}{n}^2 \\ i+ j = k}}{m} (a_i . b_j) \Big) X^{k}$
+
+Si l'on note $c_i$ les coefficients de $P . Q$, on a $c_{n + m} = a_n . b_m \neq 0$ et $c_i = 0$ si $i > n + m$ d'où $\deg(P . Q) = \deg(P) + \deg(Q)$
+
+
+<br/>
+
+La propriété d'exponentiation découle d'une récurrence immédiate.
+</Hideable>
+
+
+<Item type='proposition' titre='degré et composition'>
+
+Soient $P$ et $Q$ des éléments de $\K[X]$.
+
+$\deg(P \circ Q) = \deg(P) \times \deg(Q)$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $P = \somme{i = 0}{n} a_i X^i$ et $Q = \somme{j = 0}{m} b_j X^j$ où $a_n \neq 0$ et $b_m \neq 0$.
+
+$P \circ Q = \somme{i=0}{n} a_i . Q^j $
+
+Il s'agit d'une somme de polynômes de degré $j.m$ d'après la propriété précédente. Comme les $Q^j$ ont tous un degré distinct, leur somme a pour degré $\max_j( \deg(Q^j)) = n . m$
+
+</Hideable>

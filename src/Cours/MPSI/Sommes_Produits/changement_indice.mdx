@@ -24,6 +24,20 @@ $\cd$ $i-1 = i'$ d'où $a_{i-1} = a_{i'}$
 
 **En résumé :** changer d'indice c'est définir un nouvel indice en fonction de celui (ou ceux) déjà présents et réecrire la somme en fonction de ce nouvel indice. 
 
+
+<Exercice titre=''>
+
+Soit $S = \somme{i = 154}{1000} (i^3 + 2i)$. Effectuer le changement de variable $k = -i +4$ 
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$i = 154 \ssi k = -154 + 4 = 150$ et $i = 1000 \ssi k = -1000 + 4 = -996$. Enfin, $i = -k + 4$.
+
+On a donc $S = \somme{k = 150}{ -996} \Big( (-k + 4)^3 + 2(-k + 4) \Big)$
+</Hideable>
+
 <Item type='proposition' titre='différence de puissances' searchDesc="somme factorisation">
 Soient $a,b$ des réels et $n$ un entier positif. Alors :
 

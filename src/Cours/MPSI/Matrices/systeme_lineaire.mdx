@@ -1,0 +1,258 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+Soit $n \in \N$. Soient $x_1 \v \dotsm x_n$ des réels, $a_{1, 1} \v \dotsm a_{1, n} \v a_{2, 1} \v \dotsm \v a_{2, n} \v \dotsm \v a_{n, n}$ et $b_1 \v \dotsm \v b_n$ des réels.
+
+Le système suivant est un système dit linéaire.
+$$
+\begin{cases}
+    a_{1,1}x_1 + \dotsm + a_{1,n} x_n = b_1
+    \\
+    \dotsm
+    \\
+    a_{n,1}x_n + \dotsm + a_{n,n} x_n = b_n
+\end{cases}
+$$
+
+Pour résoudre de tels systèmes, on peut effectuer des opérations sur les lignes et les colonnes (ou bien effectuer des substitutions, ce qui peut être fait par combinaison, on ne s'y intéresse donc pas).
+
+<br/>
+
+Prenons le système suivant :
+
+$$
+S : 
+\begin{cases}
+    x + z = 1
+    \\
+    y + 2z = 4 + x
+    \\
+    x = y + z
+\end{cases}
+$$
+
+On peut, en réorganisant chaque équation, remettre ce système sous la forme générique, ce qui en fait un système linéaire :
+
+$$
+S : 
+\begin{cases}
+    1.x + 0.y + 1.z = 1
+    \\
+    -1.x + 1.y + 2.z = 4 
+    \\
+    1.x - 1.y - 1.z = 0
+\end{cases}
+$$
+
+La première ligne est notée $L_1$, la deuxième $L_2$, ...
+
+<br/>
+
+<Fil>
+
+**Résolvons ce système par la méthode du pivot de Gauss :**
+
+
+Le pivot de Gauss consiste à réduire le nombre d'inconnues des $n-1$ premières lignes à l'aide de la dernière, puis faire de même pour les $n-2$ premières lignes à l'aide de l'avant-dernière ligne, ... Quand il ne reste que la première ligne, on réduit utilise la première ligne pour simplifier celles dessous, puis la deuxième pour simplifier celles dessous, ...
+
+Nous pourrons utiliser les opérations élémentaires (introduites par l'exemple, ci-dessous) : effectuer des combinaisons linéaires de lignes ou les échanger.
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    2x -y  = 1 \qquad L_1 \leftarrow L_1 + L_3
+    \\
+    x -y  = 4  \qquad L_2 \leftarrow L_2 + 2.L_3
+    \\
+    x - y -z = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = 1 - 4 = -3   \qquad L_1 \leftarrow L_1 - L_2
+    \\
+    x -y  = 1
+    \\
+    x -y -z = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    -y  = 7 \qquad L_2 \leftarrow L_2 - L_1
+    \\
+    -y -z = 3 \qquad L_3 \leftarrow L_3 - L_1 
+\end{cases}
+$$
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    y  = -7 \qquad L_2 \leftarrow -1.L_2
+    \\
+    -y -z = 3 \qquad L_3 \leftarrow L_3 + L_2
+\end{cases}
+$$
+
+
+<br/>
+
+$$
+S : 
+\begin{cases}
+    x = -3 
+    \\
+    y  = -7 
+    \\
+    -z = -4 \qquad L_3 \leftarrow -L_3 - L_2
+\end{cases}
+$$
+<br/>
+
+A chaque étape, nous avons procédé par équivalence, ce qui signifie que nous n'avons pas à vérifier que $(-3 \pv -7 \pv 4)$ est une solution.
+
+Cependant, certaines opérations peuvent faire perdre cette équivalence comme $L_1 \leftarrow L_1 - L_1$ ou d'autre cas où l'on perd l'information de la ligne d'origine. Il est donc **TOUJOURS** judicieux de vérifier que la solution convient. Cela permet en plus de vérifier ses calculs.
+
+**Vérification :**
+
+Prenons $x = -3 \pv y = -7 \pv z = 4$
+
+<br/>
+
+$$
+\begin{cases}
+    1.x + 0.y + 1.z = -3 + 4 = 1
+    \\
+    -1.x + 1.y + 2.z = 3 -7 + 8 = 4 
+    \\
+    1.x - 1.y - 1.z = -3 + 7 - 4 = 0
+\end{cases}
+$$
+
+<br/>
+
+La solution convient donc.
+</Fil>
+
+<br/>
+
+
+Pour résoudre un système, il est souvent plus pratique de ne pas utiliser le pivot de Gauss et de trouver des opérations qui vont nous donner directement la valeur d'une variable. Cependant, il est important de savoir la mettre en oeuvre afin de toujours avoir une méthode qui fonctionne.
+
+<br/>
+Voici deux autres exemples qui n'ont pas une seule et unique solution:
+
+<br/>
+
+<Hideable type='exemple' titre='Aucune solution'>
+
+
+$$
+S_1 : 
+\begin{cases}
+    -x + y = 1
+    \\
+    -2x + 2y = 0
+\end{cases}
+$$
+
+<br/>
+
+$$
+S_1 : 
+\begin{cases}
+    x = 1
+    \\
+    0 = 1\qquad L_2 \leftarrow L_2 - 2.L_1
+\end{cases}
+$$
+
+<br/>
+
+On en déduit qu'il n'y a pas de solution, car supposer que $(x\v y)$ est solution aboutit à $0 = 1$.
+
+
+
+</Hideable>
+
+
+<Hideable type='exemple' titre='Infinité de solutions'>
+
+$$
+S_2 : 
+\begin{cases}
+    x + y + z = 1
+    \\
+    2x + y = 0
+\end{cases}
+$$
+
+<br/>
+
+On remarque qu'il y a en réalité une troisième ligne "cachée" : $0.x + 0.y + 0.z = 0$ ce qui en fait un système linéaire.
+
+Comme on ne peut pas réduire le nombre de variables sur la troisième et troisième ligne, on passe directement à la première.
+
+<br/>
+
+$$
+S_2 : 
+\begin{cases}
+    -x +  z = 1  \qquad L_1 \leftarrow L_1 - L_2 
+    \\
+    2x + y = 0 
+\end{cases}
+$$
+
+<br/>
+
+Soit $(x\v y \v z) \in \R$ une solution de $S_2$, on a $z = 1 + x$ et $y = -2.x$
+
+Mais donc $(x\v y \v z) = (x \v -2.x \v 1 + x) $.
+
+On vérifie que ces solutions conviennent pour tout $x \in \R$ :
+
+<br/>
+
+$$
+\begin{cases}
+    x + (-2.x) + (1 + x) = 1
+    \\
+    2x + (-2.x) = 0
+\end{cases}
+$$
+
+<br/>
+
+On remarque les solutions sont de la forme  $x.(1 \v -2 \v 1) + (0 \v 0 \v 1) $. Ces points forment une droite affine de l'espace.
+
+</Hideable>
+
+<Remarque titre=''>
+
+Le pivot de Gauss peut se commencer à la première ligne plutôt qu'à la première. Comme l'ordre des lignes peut être changé à tout moment, cela importe peu.
+</Remarque>
+
+
+On peut également échanger des lignes, ce qui se note $L_i \leftrightarrow L_j$

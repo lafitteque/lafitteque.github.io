@@ -1,0 +1,46 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='polynôme scindé'>
+
+
+On dit qu'un polynôme est **scindé** s'il peut s'écrire comme un produit de polynômes de degré au plus $1$. Dans ce cas il peut s'écrire sous la forme :
+
+$$
+A (X - \lambda_1)^\alpha_1 . \dotsm . (X - \lambda_k)^\alpha_k
+$$
+
+où $A \v \lambda_1 \dotsm \lambda_k$ sont des éléments de $\K$ deux à deux distincts et $k \v \alpha_1 \v \dotsm \v \alpha_k$ sont des éléments de $\N^*$.
+
+<br/>
+
+On dit que le polynôme est **scindé à racines simples** s'il est scindé et que ses racines sont toutes simples (donc $\alpha_i \leqslant 1$ dans l'écriture ci-dessus)
+
+</Item>
+
+
+<Item type='proposition' titre='relations coefficients-racines (formules de Viète)'>
+
+Soit $P = \somme{i = 0}{n} a_i X^i \in \K[X]$ scindé et dont les racines sont $\lambda_1 \v \dotsm \v \lambda_n$ (comptées autant de fois que leur multiplicité)..
+
+$ a_k = (-1)^{n-k} \somme{i_1 < \dotsm < i_{n-k} }{} \lambda_{i_1} . \dotsm . \lambda_{i_{n-k}}$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$P = \produit{i = 1}{n} (X - \lambda_i) = (X - \lambda_1)(X - \lambda_2) \dotsm (X - \lambda_n)$
+
+Le coefficient de degré $k$ est la somme de tous les termes développés de degré $k$ si l'on prenait le temps de développer.
+
+Quand on développe, pour obtenir un terme de degré $k$, il faut choisir $n-k$ facteurs parmi lesquels on va distribuer sur la constante (et non sur le $X$).
+
+On obtient donc le terme $(-\lambda_{i_1}) . \dotsm (-\lambda_{i_{n-k}})X^k$. Cela vaut pour tous les choix de $\lambda_{i_j}$ possibles. On imposer l'ordre pour ne pas compter deux fois le même terme développé.
+
+Au final, on a les termes de la forme $(-1)^{n-k} \lambda_{i_1} . \dotsm . \lambda_{i_{n-k}}$ où $i_1 < \dotsm < i_{n-k}$. En sommant, on a le résultat voulu.
+</Hideable>

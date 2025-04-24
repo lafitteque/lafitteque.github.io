@@ -1,0 +1,106 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='produit de matrices'>
+
+Soient $A = \left(  a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$ et $B = \left(  b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{p, m}(\R)$. On définit $A B$ ainsi :
+
+$$
+A B = \left(  \somme{k = 0}{p}a_{i,k} . b_{k,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant m} 
+$$
+
+<br/>
+
+&#9888; Il est **très** rare que $AB$ donne la même matrice que $BA$.
+
+</Item>
+
+<Remarque titre=''>
+
+Il est essentiel que le nombre de colonnes de $A$ coïncide avec le nombre de lignes de $B$, sans quoi le produit n'est pas défini.
+
+On remarque que, si $n \neq m$, il est certain que le produit ne peut pas commuter puisque $BA$ n'a aucun sens.
+</Remarque>
+
+
+<Item type='proposition' titre='propriétés des produits'>
+
+Soient $(\lambda \v \mu) \in \R^2$ et $m\v n$ et $p$ trois entiers naturels.
+
+$\cd$ Si $A \in \cM_{n,p}(\R)$, on a : 
+
+$$
+\lambda . (\mu A) = (\lambda . \mu) . A = \mu . (\lambda . A)
+$$
+
+$\cd$ Soient $A \in \cM_{n,p}(\R) \v B \in \cM_{p,m}(\R) \v C \in \cM_{m,q}(\R)$. On a : 
+
+$$
+(AB).C = A.(BC)
+$$
+
+$\cd$ Si $A \in \cM_{n,p}(\R)$ et $(B \v C) \in \cM_{p, m}(\R)^2$, alors on a :
+$$
+A . (\lambda B + \mu C) = \lambda A.B + \mu A . C
+$$
+
+$\cd$ Si $(A \v B) \in \cM_{n, p}(\R)^2$ et $C \in \cM_{p,m}(\R)$, alors on a : 
+
+$$
+(\lambda A + \mu B) . C= \lambda A.C + \mu B . C
+$$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+On note $a_{i,j}$ les coefficients de $A$ (idem pour $B$ et $C$).
+
+$\cd$ **Première formule :** 
+
+$\lambda . (\mu A) = \lambda . \left(  \mu.a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} = \left(  (\lambda . \mu) a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} = \mu . \left(  \lambda . a_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+
+Donc $\lambda . (\mu A) = (\lambda . \mu) . A = \mu . (\lambda . A)$
+
+
+<br/>
+
+$\cd$ **Deuxième formule :**
+
+On note $(AB)_{i,j}$ les coefficients de la matrice $AB$ où $1 \leqslant i \leqslant n$ et $1 \leqslant j \leqslant m$
+
+$(AB)_{i,j} = \somme{k = 1}{p}a_{i,k}b_{k,j}$
+
+
+On considère maintenant $1 \leqslant i \leqslant n$ et $1 \leqslant j \leqslant q$.
+
+Mais donc $\Big( (AB).C \Big)_{i,j} = \somme{l = 1}{m} (\somme{k = 1}{p}a_{i,k}b_{k,l}) . c_{l,j}$
+
+De même, $\Big( A.(BC) \Big)_{i,j} = \somme{l = 1}{p}  a_{i,l} . (\somme{k = 1}{m}b_{l,k}c_{k,j})$ 
+
+Mais $\somme{l = 1}{m} (\somme{k = 1}{p} a_{i,k} . b_{k,l}) . c_{l,j} =  \somme{l = 1}{m} \somme{k = 1}{p}a_{i,k} . b_{k,l} . c_{l,j}$
+
+Puis, en inversant les sommes, on obtient $ \somme{k = 1}{p} \somme{l = 1}{m} a_{i,k} . b_{k,l} . c_{l,j} = \somme{k = 1}{p} a_{i,k} .(\somme{l = 1}{m} b_{k,l} . c_{l,j})$.
+
+En renomant les indices, on a : $\somme{l = 1}{m} (\somme{k = 1}{p} a_{i,k} . b_{k,l}) . c_{l,j} = \somme{l = 1}{m} (\somme{k = 1}{p}a_{i,k}b_{k,l}) . c_{l,j}$. D'où $A.(BC) = (AB).C$
+
+
+<br/>
+
+$\cd$ **Troisième formule :**
+
+Notons $d_{i,j}$ les coefficients de $A . (\lambda B + \mu C)$.
+
+$d_{i,j} = \somme{k = 1}{p} a_{i,k} .(\lambda b_{k,j} + \mu c_{k,j}) = \lambda .\somme{k = 1}{p} a_{i,k} .b_{k,j} + \mu .\somme{k = 1}{p} a_{i,k} .c_{k,j}$ par linéarité de la somme.
+
+Mais donc $d_{i,j} = \lambda (AB)_{i,j} + \mu (AC)_{i,j}$. D'où la formule.
+
+$\cd$ **Quatrième formule :** la méthode est identique à celle ci-dessus.
+
+</Hideable>

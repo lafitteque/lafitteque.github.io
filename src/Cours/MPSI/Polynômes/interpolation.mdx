@@ -1,0 +1,59 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='proposition' titre='polynômes de Lagrange'>
+
+Soient $(a_1 \v a_2 \v \dotsm \v a_n) \in \K^2$.
+
+Soit $i \in \defentiers{1}{n}$. 
+
+Les polynômes de Lagrange sont les $L_i = \produit{k \neq i }{\dfrac{X - a_k}{a_i - a_k}}$ où $1 \leqslant i \leqslant n$ et vérifient :
+
+$$
+\begin{cases}
+    \tilde{L_i}(a_i) = 1
+    \\
+    \forall j \neq i \v \tilde{L_i}(a_j) = 0
+\end{cases}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Les évaluations conviennent et le degré est la somme des degrés des facteurs soit $n-1$ puisque les facteurs sont de degré $1$.
+</Hideable>
+
+
+<Item type='theoreme' titre='interpolation de Lagrange'>
+
+Soient $\Point{a_1}{b_1} \v \dotsm \Point{a_n}{b_n}$ des éléments de $\K^2$ et où $n \in \N^*$.
+
+Il existe un unique polynôme $P \in \K_{n-1}[X]$ à coefficients dans $\K$ tel que :
+
+$$
+\forall i \in \defentiersn \tilde{P}(a_i) = b_i
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Existence :**
+
+On reprend les polynômes de Lagrange définis dans la propriété précédente.
+
+On pose $P = \somme{i = 1}{n} b_i . L_i$ qui convient car de degré au plus égal à $n-1$ (cf. propriétés du degré) et ses évaluations sont comme voulues.
+
+
+<br />
+
+$\cd$ **Unicité :**
+
+Supposons qu'il existe $Q$ qui convienne également, $P-Q$ vérifie : $\tilde{P - Q} (a_i) = b_i - b_i = 0$ et donc $P - Q$ a $n$ racines mais est de degré au plus $n-1$. 
+
+On a donc $P - Q = 0$ puis $P = Q$
+</Hideable>

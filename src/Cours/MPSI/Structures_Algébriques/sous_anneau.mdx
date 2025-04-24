@@ -1,0 +1,54 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='sous-anneau'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+On dit que $(B \v + \v \times)$ est un sous-anneau de $(A \v + \v \times)$ si :
+
+$\cd$ $(B \v + \v \times)$ est un anneau.
+
+$\cd$ $B \subset A$.
+</Item>
+
+
+<Item type='proposition' titre="caractérisation d'un sous-anneau">
+
+Soit $(A \v + \v \times)$ un anneau et $B \subset A$.
+
+$(B \v + \v \times)$ est un sous-anneau de $(A \v + \v \times)$ si et seulement si :
+
+$\cd$ i\) $1_A \in B$.
+
+$\cd$ ii\) $(a\v b) \in B^2$, alors $a - b \in A$.
+
+$\cd$ iii\) $(a\v b) \in B^2$, alors $a \times b \in A$.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ Supposons que $(B \v + \v \times)$ soit un sous-anneau de $(A \v + \v \times)$.
+
+Dans ce cas, comme $(B \v +)$ est un groupe abélien, la propriétés ii\) est vraie.
+
+Comme $\times$ est une loi interne, iii\) est vraie.
+
+$1_B$ est inversible et $\underbrace{1_B}_{\in A} \times \underbrace{1_B}_{\in A}^{-1} = 1_A$. Mais $1_B^{-1} = 1_B$ et $1_B \times \underbrace{1_B}_{\in B} = 1_B$ car $1_B$ est le neutre de $(B \v \times)$. On a donc $1_B = 1_A \in B$.
+
+<br/>
+
+$\cd$ Supposons que les propriétés i\) , ii\) , iii\) sont vraies.
+
+D'après la caractérisation des groupes, comme i\) et ii\) sont vraies, $(B \v +)$ est un groupe. Il est abélien puisque $+$ est commutatif sur $A$ mais $B \subset A$.
+
+La loi $\times$ est interne (dans $B$) d'après iii\).
+
+La loi $\times$ est associative et se distribue sur la loi $+$ (dans $B$) car $B \subset A$.
+</Hideable>

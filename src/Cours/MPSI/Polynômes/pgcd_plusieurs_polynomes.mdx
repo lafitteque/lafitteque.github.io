@@ -1,0 +1,65 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='defprop' titre='PGCD de plusieurs polynômes'>
+
+Soient $P_1 \v \dotsm P_n$ des éléments de $\K[X]$ non nuls.
+
+On appelle plus grand diviseur commun de $P_1 \v \dotsm P_n$ un polynôme noté $D$ qui vérifie :
+
+$\cd$ $D \divise P_1 \v \dotsm \v  D \divise P_n$ 
+
+$\cd$ $\forall A \in \K[X] \v (A \divise P_1 \v \dotsm \v  A \divise P_n \Rightarrow A \divise D)$
+
+On a toujours existence d'un tel polynôme et il est unique si l'on impose qu'il soit unitaire.
+</Item>
+
+<Hideable type='démonstration' titre='(schéma)'>
+
+On peut procéder par récurrence en montrant que $pgcd(P_1 \v P_2 \v \dotsm \v P_n) = pgcd\Big(P_1 \v pgcd(P_2 \v \dotsm \v  P_n)\Big)$.
+</Hideable>
+
+
+<Item type='definition' titre='polynômes premiers entre eux dans leur ensemble'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des polynômes à coefficients dans $\K$.
+
+On dit que $P_1 \v P_2 \v \dotsm P_k$ sont premiers dans leur ensemble si $pgcd(P_1 \v P_2 \v \dotsm P_k) = 1$
+</Item>
+
+<Item type='definition' titre='polynômes premiers entre eux deux à deux'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des entiers naturels.
+
+On dit que $P_1 \v P_2 \v \dotsm P_k$ sont premiers deux à deux si, pour tout $(i \v j) \in \defentiers{1}{k}$ tels que $i \neq j$, on a $P_i \gcd P_j = 1$.
+
+</Item>
+
+
+<Item type='proposition' titre='lien entre les deux'>
+
+Si des polynômes sont premiers entre eux deux à deux, alors ils le sont dans leur ensemble.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Il suffit de remarquer que $pgcd(P_1 \v P_2 \v \dotsm \v P_k) \divise pgcd(P_i \v P_j)$.
+</Hideable>
+
+
+<Item type='proposition' titre='cas général du théorème de Bezout'>
+
+Soient $P_1 \v P_2 \v \dotsm P_k$ des éléments de $\K[X]$.
+
+Ils sont premiers entre eux dans leur ensemble si et seulement s'il existe $U_1 \v U_2 \v \dotsm \v U_k$ des éléments de $\K[X]$ tels que :
+
+$$
+U_1.P_1 + U_2.P_2 + \dotsm + U_k.P_k = 1
+$$
+
+</Item>

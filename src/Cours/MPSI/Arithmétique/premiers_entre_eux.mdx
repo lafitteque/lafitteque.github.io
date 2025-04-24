@@ -1,0 +1,85 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='nombres premiers entre eux'>
+
+Soient $n$ et $m$ des entiers naturels.
+
+On dit que $n$ et $m$ sont premiers entre eux si $n \gcd m = 1$
+</Item>
+
+<Item type='theoreme' titre='de Bezout'>
+
+Deux entiers naturels $a$ et $b$ sont premiers entre eux si et seulement s'il existe $u$ et $v$ deux entiers relatifs tels que $au + bv = 1$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+D'après la relation de Bezout, le sens direct est immédiat.
+
+Intéressons nous au sens réciproque :
+
+Supposons qu'il existe $u$ et $v$ tels que $au + bv = 1$ et posons $d = a \gcd b$.
+
+$d \divise a$ et $d \divise b$ donc $d \divise au + bv$ mais donc $d \divise 1$ d'où $d = 1$
+</Hideable>
+
+
+
+<Item type='definition' titre="forme irréductible d'un rationnel">
+
+Soient $a$ et $b$ deux entiers et $b > 0$.
+
+On dit qu'une fraction de la forme $\dfrac{a}{b}$ est irréductible si $a$ et $b$ sont premiers entre eux.
+</Item>
+
+<Exercice titre=''>
+
+Est-ce que les fractions suivantes sont irreductibles?
+
+1\) avec des entiers donnés
+
+2\) expression affine en $n$ au num et au dénum
+
+AF
+</Exercice>
+
+
+<Item type='lemme' titre='de Gauss'>
+
+Soient $(a \v b \v c) \in \N^3$ tels que $a \gcd b = 1$.
+
+Si $a \divise bc$, alors $a \divise c$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \gcd b = 1$ donc il existe $u$ et $v$ des entiers relatifs tels que $a.u + b.v = 1$.
+
+D'où $a.u + b.v = 1$ donc $ac.u + bc.v = c$. Mais $a \divise bc$ donc $a \divise ac.u + bc.v = c$
+
+</Hideable>
+
+
+<Item type='proposition' titre='nombres premiers entre eux et divisibilité du produit'>
+
+Soient $a \v b$ et $n$ des entiers naturels.
+
+Si $a \divise n \v b \divise n$ et $a \gcd b = 1$, alors $ab \divise n$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$a \divise n$ donc il existe un entier naturel $k$ tel que $n = ak$. Mais $b \divise n = a.k$ donc $b \divise k$ d'après le lemme de Gauss.
+
+Il suit qu'il existe $l \in \N$ tel que $k = b.l$. 
+
+D'où $n = a.k = ab.l$ mais donc $ab \divise n$.
+
+
+</Hideable>

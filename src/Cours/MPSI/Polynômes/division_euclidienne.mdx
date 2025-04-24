@@ -1,0 +1,94 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='defprop' titre='division euclidienne'>
+
+Soient $P$ et $L$ des éléments de $\K[X]$ non nuls.
+
+Il existe un unique couple $(R \v Q) \in \K[X]^2$  tels que $P = Q . L + R$ et où $\deg(R) < \deg(L)$
+
+<br />
+
+On dit que $R$ est le reste de la division euclidienne de $P$ par $L$ et que $Q$ est le quotient de la division euclidienne de $P$ par $L$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soient $P$ et $L$ deux polynômes à coefficients dans $\K$ non nuls.
+
+
+$\cd$ **Existence :**
+
+Montrons sur $\N$ la propriété $\cP(n) :$ si $\deg(P) = n$, alors il existe un couple $(R \v Q) \in \K[X]^2$  tels que $P = Q . L + R$ et où $\deg(R) < \deg(L)$. Nous utilsierons une récurrence forte.
+
+**Initialisation :** On vérifie $\cP(0)$ en supposant $\deg(P) = 0$. 
+
+En effet, si $\deg(L) = 0 \v P = \underbrace{\dfrac{P}{L}}_{Q} \times L + \underbrace{0}_{ R} $ où $\deg(R) = - \infty < \deg(L) = 0$
+
+Dans le cas contraire, $\deg(L) > 0$, $Q = 1$ et $R = 0$ conviennt : $P = 1 \times P + 0$ et $\deg(R) = - \infty < deg(L) = 0$.
+
+Dans tous les cas, $\cP(0)$ est vraie.
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(0) \v \dotsm \v \cP(n)$ vraies. Montrons $\cP(n+1)$.
+
+Supposons $\deg(P) = n+1$
+
+Cas 1 : $\deg(L) > \deg(P)$, alors $Q = 0$ et $R = P$ conviennent : $P = 0 \times L + P$ et $\deg(R) = \deg(P) < \def(L)$
+
+<br />
+
+Cas 2 : Sinon, on note $P = \somme{i = 0}{n+1} a_i X^i$ et $L = \somme{i = 0}{l} b_i X^i$ où $a_k \neq 0 $ et $b_l \neq 0$.
+
+On pose $P_2 = P - L . \dfrac{a_k}{b_l} X^{n+1 - l}$ et $\deg(P_2) < \deg_P $ 
+
+On applique l'hypothèse de récurrence (forte) à $P_2$ et il existe donc $Q_2$ et $R_2$ tels que $P_2 = Q_2 . L + R_2$ et où $\deg(R_2) < \deg(L)$. On injecte cela dans l'égalité précédente pour obtenir :
+
+$P = L (\underbrace{\dfrac{a_k}{b_l} X^{n+1 - l} + Q_2}_{Q}) + \underbrace{R_2}_{R}$ où $\deg(R) < \deg(L)$.
+<br/>
+
+**Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N$
+
+<br/>
+
+$\cd$ **Unicité :** Supposons qu'il y ait deux écritures de la division euclidienne de $P$ par $L$ : $P = Q_1 . L + R_1$ et $P = Q_2 . L + R_2$.
+
+On a donc $Q_1 . L + R_1 = Q_2 . L + R_2$ puis $(Q_1 - Q_2). L  =  (R_2 - R_1) $
+
+En raisonnant sur le degré, comme $\deg(L) > \deg(R_1) $ et $\deg(L) > \deg(R_2) $, nécessairement, $\deg(L) > \deg(R_2 - R_1) $.
+
+Mais, si $Q_1 - Q_2 \neq 0$ , alors $\deg((Q_1 - Q_2). L) = \deg(Q_1 - Q_2) + \deg(L) > \deg(R_2 - R_1)$ ce qui contredit l'égalité car deux polynômes égaux ont même degré. On a donc $Q_1 - Q_2 = 0$
+
+On en conclut que $Q_1 = Q_2$ et que $R_1 = R_2$. D'où l'unicité de la division euclidienne.
+
+</Hideable>
+
+<Remarque titre=''>
+
+Le cas où $P = 0$ est trivial et ne pose pas problème mais n'est pas non plus très intéressant.
+
+Le cas où $L = 0$ pose problème car il empèche d'avoir $\deg(L) > \deg(R)$ car $- \infty$ ne peut pas être en-dessous de $\deg(R)$.
+</Remarque>
+
+
+
+<Item type='proposition' titre='caractérisation de la divisibilité par le reste'>
+
+Soient $P$ et $Q$ deux polynômes à coefficients dans $\K$.
+
+$P \divise Q \ssi $ le reste de la division euclidienne de $Q$ par $P$ est le polynôme nul.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct ($\Rightarrow$) :**  Si $P \divise Q$ , il existe un polynôme $L$ tel que $Q = L . P + 0$ ce qui est bien la division euclidienne de $Q$ par $P$ et le reste est nul.
+
+$\cd$ **Réciproque ($\Leftarrow$) :** Supposons qu'il existe $L$ un polynôme tel que la division euclidienne de $Q$ par $P$ soit $Q = P . L + 0$, on a bien $Q = P . L$ maid donc $P \divise L$
+
+</Hideable>

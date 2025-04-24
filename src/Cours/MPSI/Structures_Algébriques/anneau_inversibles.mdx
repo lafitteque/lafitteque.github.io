@@ -1,0 +1,31 @@
+
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+
+
+<Item type='defprop' titre='groupe des inversibles'>
+
+Soit $(A \v + \v \times)$ un anneau.
+
+On note $A^{\times}$ ou $A^{*}$ l'ensemble $\{a \in A \mid \exist b \in A \v a\times b = 1 \}$. 
+
+On appelle $(A^{\times} \v \times)$ le groupe des inversibles de $A$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Loi interne :** d'après les propriétés sur les inverses, le produit de deux inversibles l'est encore.
+
+**Inversibilité :** par définition, tout élément de $A^{\times}$ est inversible
+
+**Neutre :** $1$ est inversible puisque $1 \times 1 = 1$. Il est donc dans $A$ et est l'élément neutre.
+
+**Associativité :** $A$ est un anneau, donc $\times$ est associative.
+</Hideable>

@@ -1,0 +1,58 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='polynômes premiers entre eux'>
+
+Soient $P$ et $Q$ deux polynômes à coefficients dans $\K$.
+
+On dit que $P$ et $Q$ sont premiers entre eux si $P \gcd Q = 1$
+</Item>
+
+
+<Item type='theoreme' titre='identité de Bezout'>
+
+Soient $P$ et $Q$ deux polynômes à coefficients dans $\K$ premiers entre eux.
+
+Il existe $U$ et $V$ dans $\K[X]$ tels que $U.P + V.Q = 1$.
+
+<br/>
+
+En général, si $P$ et $Q$ ne sont pas premiers entre eux, il existe $U$ et $V$ dans $\K[X]$ tels que $U.P + V.Q = (P \gcd Q)$.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Version 1 :** On procède comme dans les entiers par divisions euclidiennes successives.
+
+$\cd$ **Version 2 :** On note $D = P \gcd Q$. On utilise le fait que $\{ A.P_1 + B . P_2 \mid (A \v B) \in \K[X]\} = D . \K[X]$, ce qui a été montré pour définir le PGCD. 
+
+$D$ est bien de la forme $U.P + V.Q$ mais $D = 1$ donc il existe $U$ et $V$ tels que $U.P + V.Q = 1$ 
+</Hideable>
+
+
+<Item type='lemme' titre='de Gauss'>
+
+Soient $A, B$ et $C$ trois polynômes à coefficients dans $\K$.
+
+Si $A \gcd B = 1$ et $A \divise B . C$, on a $A \divise C$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+D'après l'identité de Bezout, il existe $U$ et $V$ tels que $AU + BV = 1$.
+
+Mais donc $A . UC + (BC) . V = C$.
+
+Comme $A \divise A . UC$ et $A \divise (BC) . V$, on a $A \divise A . UC + (BC) . V = C$.
+</Hideable>
+
+<Remarque titre=''>
+
+utile pour montrer qu'un polynôme est nul.
+</Remarque>

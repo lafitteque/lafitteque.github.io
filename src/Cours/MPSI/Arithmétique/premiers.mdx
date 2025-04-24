@@ -1,0 +1,70 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='definition' titre='nombre premier'>
+
+Soit $p \in \N$. On dit que $p$ est premier s'il admet exactement deux diviseurs : $1$ et lui-même.
+
+L'ensemble des nombres premiers est parfois noté $\cP$, ce que nous ferons dans ce cours.
+</Item>
+
+AF : Crible d'Eratosthène
+
+
+<Item type='theoreme' titre='décomposition en produit de facteurs premiers'>
+
+Soit $n \in \N$. Il existe $p_1 \v \dotsm \v p_k$ des éléments de $\cP$ et $\alpha_1 \v \dotsm \v \alpha_k$ des entiers positifs où $k \in \N$ tels que :
+
+$$
+n = 1 . p_1^{\alpha_1}.p_2^{\alpha_2}. \dotsm p_k^{\alpha_k}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Montrons sur $\N^*$ la propriété $\cP(n) : $ tout entier naturel $k \in \defentiers{1}{n}$ admet une décomposition en produit de facteurs premiers.
+
+**Initialisation :** On vérifie $\cP(1)$. En effet, $1 = 1$.
+
+<br/>
+
+**Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$ 
+
+$\cd$ **Cas où $n+1$ est premier :** dans ce cas $n+1 = 1 . (n+1)^1$ qui est sa décomposition en facteurs premiers.
+
+$\cd$ **Sinon :** $n+1$ n'est pas premier et $n+1>1$. $n+1$ admet donc un diviseur $k > 1$. Mais donc il existe $l \in \N^*$ tel que $n+1 = k.l$
+
+$k \leqslant n$ et $l \leqslant n$. Mais par hypothèse de récurrence appliquée à $k$ et $l$, il existe $p_1 \v \dotsm \v p_m$ des nombres premiers, $\alpha_1 \v \dotsm \v \alpha_m$ et $\beta_1 \v \dotsm \v \beta_m$ des entiers positifs tels que :
+
+$k = 1 . p_1^{\alpha_1}.p_2^{\alpha_2}. \dotsm p_k^{\alpha_k}$ et $l = 1 . p_1^{\beta_1}.p_2^{\beta_2}. \dotsm p_k^{\beta_k}$.
+
+Mais donc $n+1 = k.l = 1 . p_1^{\alpha_1 + \beta_1}.p_2^{\alpha_2 + \beta_2}. \dotsm p_k^{\alpha_k + \beta_k}$, ce qui montre que $n+1$ admet une décomposition en produit de facteurs premiers.
+
+<br/>
+
+**Conclusion :** On a montré $\cP(1)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N^*$. On a donc bien montré que la propriété est vraie sur $\N^*$
+</Hideable>
+
+
+<Item type='proposition' titre='cardinalité des premiers'>
+
+L'ensemble des nombres premiers est infini.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Raisonnons par l'absurde et supposons que $\cP = \{p_1 \v \dotsm \v p_n\}$ où $n \in \N^*$.
+
+On pose $A = p_1 . p_2 \dotsm p_n + 1$. 
+
+Soit $p$ un diviseur premier de $A$. Il existe $1 \leqslant i \leqslant n$ tel que $p = p_i$. 
+
+Et donc $p \divise p_1 . p_2 \dotsm p_n $ mais donc $p \divise (A - p_1 . p_2 \dotsm p_n) = 1$ d'où $p=1$.
+
+Ceci est absurde puisque $p$ est premier mais pas $1$. On en déduit que $\cP$ ne peut pas être fini.
+</Hideable>

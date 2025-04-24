@@ -1,0 +1,104 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+
+<Item type='definition' titre='matrice transposée'>
+
+Soit $A = \left( a_{i,j}\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} \in \cM_{n, p}(\R)$. On appelle matrice transposée de $A$ la matrice :
+
+$$
+A^T = \left( a_{j,i}\right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p} =  \begin{pmatrix}
+a_{1, 1} & a_{2, 1} & \dotsm & a_{p, 1} \\
+a_{1, 2} & a_{2, 2} & \dotsm & a_{p, 2} \\
+\vdots & \vdots & \vdots & \vdots \\
+a_{1, n} & a_{2, n} & \dotsm & a_{p, n} 
+\end{pmatrix} \in \cM_{p,n}
+$$
+</Item>
+
+<Item type='proposition' titre=' propriétés de la transposée'>
+
+Soient $(\lambda \v \mu) \in \R^2$ et $(A \v B) \in \cM_{n,p}(\R)$.
+
+$\cd$ $\left(A^T \right)^T = A$
+
+$\cd$ $\left(\lambda .A + \mu B \right)^T = \lambda .A^T + \mu B^T$
+
+$\cd$ Soit $C \in \cM_{p,m}(\R)$. $(AC)^T = C^T A^T$
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Première formule :** Notons $b_{i,j}$ les coefficients de $A^T$. $b_{i,j} = a_{j,i}$.
+
+Mais donc $\Big((A^T)^T\Big)_{i,j} = b_{j,i} = a_{i,j}$ d'où le résultat.
+
+
+<br/>
+
+$\cd$ **Deuxième formule :**
+
+$\left(\lambda .A + \mu B \right) = \left( \lambda a_{i,j} + \mu b_{i,j} \right)_{1 \leqslant i \leqslant n \v 1 \leqslant j \leqslant p}$
+
+Donc $\left(\lambda .A + \mu B \right)^T = \left( \lambda a_{j,i} + \mu b_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p} = \lambda . \left( a_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p}  + \mu  \left( b_{j,i} \right)_{1 \leqslant j \leqslant n \v 1 \leqslant i \leqslant p} = \lambda .A^T + \mu B^T$
+
+
+<br/>
+
+$\cd$ **Troisième formule :**
+
+$(AC)^T$ a pour coefficients les $\somme{k=1}{n} a_{j,k}. c_{k,i} = \somme{k=1}{n} C^T_{i,k} . A^T_{k,j} = (CA)^T_{i,j}$ d'où le résultat. 
+
+</Hideable>
+
+
+<Item type='definition' titre='matrice symétrique'>
+
+On dit qu'une matrice de $\cM_n(\R)$ est symétrique si elle vérifie :
+
+$$
+A^T = A
+$$
+
+L'ensemble des matrices symétriques est noté $\cS_n(\R)$ (ou $S_n(\R)$).
+</Item>
+
+<Item type='definition' titre='matrice antisymétrique'>
+
+On dit qu'une matrice de $\cM_n(\R)$ est antisymétrique si elle vérifie :
+
+$$
+A^T = -A
+$$
+
+L'ensemble des matrices symétriques est noté $\cA_n(\R)$ (ou $A_n(\R)$).
+</Item>
+
+
+<Exercice titre=''>
+
+1\) Montrer que, si $A = \left( a_{i, j}\right)_{1 \leqslant i \v j \leqslant n } \in \cA_n(\R)$, alors : $\forall i \in \defentiersn \v a_{i,i} = 0 $.
+
+2\) Montrer que, si $M \in \cM_{n,p}(\R)$, alors $MM^T \in \cS_n(\R)$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) Par antisymétrie de $A$ : $\forall 1 \leqslant i \v j\leqslant n \v a_{i,j} = -a_{j,i}$. En particulier, si $i = j$, on a :$\forall 1 \leqslant i \leqslant n \v a_{i,i} = -a_{i,i}$ 
+
+d'où $\forall 1 \leqslant i \leqslant n \v 2 a_{i,i} = 0 $.
+
+Les éléments diagonaux sont donc tous nuls.
+
+
+<br/>
+
+2\) Soient $1 \leqslant i\v j \leqslant n$. On a : $(MM^T)_{i,j} = \somme{k = 1}{p} m_{i,k} \underbrace{m_{j,k}}_{(M^T)_{k,j}}$ $ = \somme{k = 1}{p} m_{j,k} m_{i,k}  = \left((MM^T)^T\right)_{i,j}$
+
+</Hideable>

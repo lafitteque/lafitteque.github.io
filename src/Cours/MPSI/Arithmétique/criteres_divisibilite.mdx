@@ -1,0 +1,83 @@
+import Hideable from '@components/Hideable.astro'
+import Remarque from '@components/Remarque.astro'
+import Exercice from '@components/Exercice.astro'
+import Item from '@components/Item.astro'
+import Indent from '@components/Indent.astro'
+import Fil from '@components/Fil.astro'
+
+
+<Item type='proposition' titre='critères de divisibilité'>
+
+Soit $n$ un entier naturel (ou relatif).
+
+$\cd$ $n$ est divisible par $2$ si son dernier chiffre est pair.
+
+$\cd$ $n$ est divisible par $3$ si la somme de ses chiffres est également divisible par $3$.
+
+$\cd$ $n$ est divisible par $4$ si ses deux derniers chiffres forment un multiple de $4$.
+
+$\cd$ $n$ est divisible par $5$ si son dernier chiffre est $0$ ou $5$.
+
+$\cd$ $n$ est divisible par $6$ si c'est un multiple de $2$ et de $3$.
+
+$\cd$ $n$ est divisible par $9$ si la somme de ses chiffres est également divisible par $9$.
+
+$\cd$ $n$ est divisible par $10$ si son dernier chiffre des $0$.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $n = a_k . 10^k + a_{k-1} . 10^{k-1} + \dotsm + a_1 . 10^1 + a_0 \; (E)$ l'écriture décimale de $n$.
+
+$\cd$ $\congru{10}{0}{2}$ donc $\congru{10^m}{0}{2}$ si $m \in \N^*$. En passant $(E)$ modulo $2$, on a $\congru{n}{a_0}{2}$. Mais donc $n$ n'est divisible par $2$ que si $a_0$ l'est aussi.
+
+$\cd$ $\congru{10}{1}{3}$ donc $\congru{10^m}{1}{3}$ si $m \in \N^*$. En passant $(E)$ modulo $3$, on a $\congru{a_0 + a_1 + \dotsm + a_k}{n}{3}$. Mais donc $n$ n'est divisible par $3$ que si la somme de ses chiffres l'est aussi.
+
+$\cd$ $\congru{10}{2}{4}$ donc $\congru{10^m}{2^m}{4}$ si $m \in \N^*$ et donc $\congru{10^m}{0}{4}$ si $m > 1$. En passant $(E)$ modulo $4$, on a $\congru{n}{a_1 . 10^1 + a_0}{k}$ ce qui correspond au critère donné.
+
+$\cd$ $\congru{10}{0}{5}$ donc $\congru{10^m}{0}{2}$ si $m \in \N^*$. En passant $(E)$ modulo $5$, on a $\congru{n}{a_0}{5}$. Mais les seuls multiples de $5$ à un seul chiffre sont $0$ et $5$. Donc $n$ n'est divisible par $5$ que si $a_0 = 0$ ou $a_0 = 5$.
+
+$\cd$ $2 \gcd 3 = 1$ donc, si $2 \times 3 \divise n$, alors $2 \divise n \ET 3 \divise n$. Inversement, si $2 \divise n \ET 3 \divise n$, comme $2 \gcd 3 = 1$, $2 \times 3 \divise n$. 
+
+On peut simplement voir cela en terme de décomposition en facteurs premiers. $6$ est un facteur de $n$ si et seulement si $2$ et $3$ sont également des facteurs de $n$.
+
+$\cd$ $\congru{10}{1}{9}$ donc $\congru{10^m}{1}{9}$ si $m \in \N^*$. En passant $(E)$ modulo $3$, on a $\congru{a_0 + a_1 + \dotsm + a_k}{n}{9}$. Mais donc $n$ n'est divisible par $9$ que si la somme de ses chiffres l'est aussi.
+
+$\cd$ $\congru{10}{0}{10}$ donc $\congru{10^m}{0}{10}$ si $m \in \N^*$. En passant $(E)$ modulo $10$, on a $\congru{n}{a_0}{10}$. Mais le seul multiple de $10$ à un seul chiffre est $0$. Donc $n$ n'est divisible par $10$ que si $a_0 = 0$.
+
+</Hideable>
+
+<Exercice titre=''>
+
+1\) Donner un critère de divisibilité par $11$.
+
+
+2\) Pour quels entiers $n$ le nombre $A_n = \somme{i=0}{n} 10^i$ est-il divisible par $7$?
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+1\) $\congru{10}{-1}{11}$ donc $\congru{10^m}{(-1)^m}{11}$ si $m \geqslant 0$. en reprenant les notations de la proposition précédente, 
+
+$\congru{n}{a_0 - a_1 + a_2 \dotsm + (-1)^k a_k}{11}$. La somme alternée de chiffres doit donc être divisible par $11$. On remarque que $\congru{-a_0 + a_1 - a_2 \dotsm + (-1)^{k-1} a_k}{a_0 - a_1 + a_2 \dotsm + (-1)^k a_k}{11}$ et donc qu'il n'y a pas de mauvais choix d'alternance de la somme.
+
+<br/>
+
+2\) $\congru{10}{3}{7}$ donc $\congru{10^2}{2}{7}$, $\congru{10^3}{6}{7}$, $\congru{10^4}{4}{7}$, $\congru{10^5}{5}{7}$ et $\congru{10^6}{1}{7}$. En général on a donc $\congru{10^{6i + r}}{10^r}{7}$.
+
+On note $n = 6q + r$ la division euclidienne de $n$ par $6$. $A_n = \somme{i=0}{q-1} 10^{6i} + \somme{i=0}{q-1} 10^{6i+1} + \dotsm + \somme{i=0}{q-1} 10^{6i+5} + \somme{i=0}{r} 10^{6q + i}$.
+
+En passant cela modulo $7$, on a $\congru{A_n}{3q + 2q + 6q + 4q +5q +q +\somme{i=0}{r} 10^{6q + i}}{7}$. On peut simplifier un peu en remarquant que $\congru{6}{-1}{7}$ et $\congru{5}{-2}{7}$. D'où $\congru{A}{3q + 2q  - q + 4q  - 2q +q +\somme{i=0}{r} 10^{i}}{7}$.
+
+Mais donc $\congru{A_n}{7q +\somme{i=0}{r} 10^{i}}{7}$ puis $\congru{A_n}{\somme{i=0}{r} 10^{i}}{7}$.
+
+Reste à vérifier toutes les valeurs de $r$ possibles (de $0$ à $5$) soit les nombres suivants : $1 (r = 0) \v 11 (r = 1)\v 111 (r = 2)\v 1 \, 111 (r = 3) \v 11 \, 111(r = 4) \v 111 \, 111(r = 5)$. 
+
+Pour $r = 0$ et $r = 1$ on n'a pas des multiples de $7$.
+
+Pour les autres cas, il va falloir poser une division euclidienne. On obtient $111 = 15\times 7 + 6 \v 1\, 111 = 158 \times 7 + 5 \v 11\v 111 = 1\, 587 \times 7 + 2$ et $111 \, 111 = 15\, 873 \times 7$.
+
+Le seul convenant est $r = 5$. On conclut que $A_n$ est divisible par $7$ si et seulement si $\congru{n}{5}{6}$.
+
+</Hideable>
