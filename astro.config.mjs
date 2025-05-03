@@ -103,7 +103,11 @@ const macros = {
   "\\dom": "\\operatorname{dom}",
   "\\diag": "\\operatorname{diag}",
   "\\GL": "\\operatorname{GL}",
-  "\\Rac": "\\operatorname{Rac}"
+  "\\Rac": "\\operatorname{Rac}",
+  "\\Iso": "\\operatorname{Iso}",
+  "\\End": "\\operatorname{End}",
+  "\\Aut": "\\operatorname{Aut}",
+  "\\Hom": "\\operatorname{Hom}"
 };
 
 export default defineConfig({

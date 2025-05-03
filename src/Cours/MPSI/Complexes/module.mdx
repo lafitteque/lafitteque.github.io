@@ -30,6 +30,30 @@ $$
 </Hideable>
 
 
+<Exercice titre=''>
+
+Soient $z \v z' \v z''$ trois complexes **non nuls**. Montrer que $z\overline{z'}z'' + z''\overline{z}z' \in \R \ssi z'' \in \R$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$z\overline{z'}z'' + z''\overline{z}z' = z''(z\overline{z'} + \overline{z}z')$
+
+On reconnaît que $\overline{z}z'$ est le conjugué de $z\overline{z'}$. On a donc : 
+
+$z\overline{z'}z'' + z''\overline{z}z' = z''.2\Re(z\overline{z'})$. Posons $A = 2\Re(z\overline{z'})$.
+
+<br/>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** Supposons que $A.z'' \in \R$ . Il existe $c \in \R$ tel que $A.z'' = c$. Mais donc $z'' = \dfrac{c}{A} \in \R$.
+
+<br/>
+
+$\cd$ **Sens réciproque ($\Leftarrow$) :** Supposons que $z'' \in \R$ . Il existe $c \in \R$ tel que $z'' = c$. Mais donc $A.z'' = A.c \in \R$.
+
+</Hideable>
+
+
 <Item type='proposition' titre='propriétés du module' searchDesc="produit multiplication quotient division conjugaison puissance">
 Soient $z$ et $z'$ des complexes et $n$ un entier non nul. On a :
 
@@ -323,3 +347,10 @@ En posant $\lambda_{n+1} = \mu \Lambda \geqslant 0$, on a $z_{n+1}  = \lambda_{n
 </Indent>
 
 </Hideable>
+
+<Exercice titre=''>
+
+Soit $n \in \N$.
+
+Montrer que $\Bigg| \somme{i=0}{n} (-1)^n\sin(\dfrac{1}{2^n}) \Bigg| \leqslant 2 - \dfrac{1}{2^n}$
+</Exercice>

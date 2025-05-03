@@ -1,6 +1,6 @@
 {
   "mpsi": {
-    "semestre 1": [
+    "Semestre 1": [
       {
         "titre": "Chapitre 1 - Logique et ensembles",
         "url": "/mpsi_logique",
@@ -94,23 +94,23 @@
         ]
       }
     ],
-    "semestre 2": []
+    "Semestre 2": []
   },
   "mp": {
-    "semestre 1": [],
-    "semestre 2": []
+    "Semestre 1": [],
+    "Semestre 2": []
   },
   "pcsi": {
-    "semestre 1": [],
-    "semestre 2": []
+    "Semestre 1": [],
+    "Semestre 2": []
   },
   "psi": {
-    "semestre 1": [],
-    "semestre 2": []
+    "Semestre 1": [],
+    "Semestre 2": []
   },
   "pc": {
-    "semestre 1": [],
-    "semestre 2": []
+    "Semestre 1": [],
+    "Semestre 2": []
   },
   "ipt": {
     "Python : Syntaxe": [

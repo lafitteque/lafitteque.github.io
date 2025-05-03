@@ -16,6 +16,57 @@ On note  $z = |z| e^{i \theta}$.
 On appelle cette écriture une **forme exponentielle** de $z$.
 </Item>
 
+<Remarque titre=''>
+
+En particulier, $\cos(\theta) = \Re(e^{i\theta})$ et $\sin(\theta) = \Im(e^{i\theta})$
+</Remarque>
+
+<Item type='methode' titre="linéarisation d'une expression trigonométrique">
+
+Il est parfois utile de ré-exprimer une expression comme $A_x = \alpha\cos(nx) + \beta\sin(mx) \v (x\v \alpha \v \beta) \in \R^3 \v (n \v m) \in \N^2$ en fonction de $\cos(x)$ et, si besoin, de $\sin(x)$.
+
+<br/>
+
+Linéarisons en particulier $\cos(4x)$. On voit le cosinus comme la partie réelle d'une exponentielle (ou la partie imaginaire pour le sinus): 
+
+$$
+\cos(4x) = \Re(e^{4ix}) = \Re\Big( (e^{ix})^4 \Big) = \Re \Big( (\cos(x) + i \sin(x))^4 \Big)
+$$
+
+En développant, on obtient : 
+
+$$
+\cos(4x) = \Re \Big(\cos(x)^4 + 4i \cos(x)^3\sin(x) - 6\cos(x)^2\sin(x)^2 - 4i \cos(x)\sin(x)^3 + \sin(x)^4  \Big)
+$$
+
+En ne conservant que la partie réelle, 
+
+$$
+\cos(4x) = \cos(x)^4 - 6\cos(x)^2\underbrace{\sin(x)^2}_{= 1 - \cos(x)^2} + \underbrace{\sin(x)^4}_{= (1 - \cos(x)^2)^2}
+$$
+
+Il suit donc que $\cos(4x) = \cos(x)^4 + 6 \cos(x)^4 - 6\cos(x)^2 + 1 - 2\cos(x)^2 + \cos(x)^4$
+
+En simplifiant, $\cos(4x) = 1 - 8\cos(x)^2 + 8\cos(x)^4$
+</Item>
+
+<Remarque titre='Hors Programme'>
+
+Linéariser une expression ne contenant que des cosinus comme : $\cos(25x) - 7 \cos(8x)$ donnera une expression qu'il est possible d'écrire uniquement en fonction de $\cos(x)$ (c'est simplement dû au fait que seul les puissances paires de $\sin$ subsistent après passage à la partie réelle et on peut donc utiliser $\sin^2 = 1 - \cos^2$). Le résultat ne fera intervenir que des puissances paires.
+
+<br/>
+
+Par contre, si l'expression initiale ne contient que des sinus, le résultat sera plus riche : 
+
+Si $n$ est pair, $\sin(nx)$ se linéarise sous la forme $\cos(x) .  \Big(a_0 \sin(x)^1 + a_1\sin(x)^3 + a_2 \sin(x)^5 \dotsm + a_k \sin(x)^{2k + 1} \Big)$
+
+Si $n$ est impair, $\sin(nx)$ se linéarise sous la forme $a_0 \sin(x)^1 + a_1\sin(x)^3 + a_2 \sin(x)^5 \dotsm + a_k \sin(x)^{2k + 1}$
+
+On remarque que les puissances des sinus sont impaires.
+
+</Remarque>
+
+
 <Item type='proposition' titre="identification d'un complexe par la forme exponentielle">
 Soient $z$ et $z'$ deux complexes dont une éxriture sous forme exponentielle est $z = |z| e^{i \theta_1}$ et $z' = |z'| e^{i \theta_2}$. On a :
 
@@ -85,4 +136,28 @@ $\cd$ $\sin(\theta) = \dfrac{e^{i\theta} - e^{-i\theta}}{2i}$
 $e^{i\theta} = \cos(\theta) + i \sin(\theta)\; $ et $\; e^{-i\theta} = \cos(-\theta) + i \sin(-\theta) = \cos(\theta) - i \sin(-\theta)$
 
 Par somme on déduit la première égalité et par différence on déduit la seconde égalité.
+</Hideable>
+
+
+<Exercice titre=''>
+
+Soit $\theta \in \R$.
+
+Montrer que $1+ e^{i\theta} = 2 \cos(\dfrac{\theta}{2}) e^{i\frac{\theta}{2}}$ et en déduire un argument de $1 + e^{i\theta}$.
+
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+On factorise $1+ e^{i\theta}$ par $e^{i \frac{\theta}{2}}$ et on obtient : 
+
+$$
+1+ e^{i\theta} = e^{i \frac{\theta}{2}} . (e^{-i \frac{\theta}{2}} + e^{i \frac{\theta}{2}}) = e^{i \frac{\theta}{2}} . 2\cos(\frac{\theta}{2})
+$$
+
+<br/>
+
+L'un des arguments d'un complexe de la forme $Ae^{i\alpha}$ où $A \in \R^*$ et $\alpha \in \R$ est $\alpha$.
+
+Dans notre cas, $A = 2\cos(\frac{\theta}{2})$ et $\alpha = \frac{\theta}{2}$ qui est un argument convenant.
 </Hideable>

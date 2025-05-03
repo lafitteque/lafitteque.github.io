@@ -32,6 +32,21 @@ Puisque $BC \geqslant AB$, on conclut que $|x| \geqslant |\sin(x)|$
 </Hideable>
 
 
+<Exercice titre=''>
+
+Avec les résultats vus au lycée, justifier que $\limm{x \to 0} \sin(x) = 0$.
+</Exercice>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $x \in \R$,
+
+$|\sin(x)| \leqslant |x|$ donc $\underbrace{-x}_{\to 0} \leqslant \sin(x) \leqslant \underbrace{x}_{\to 0}$
+
+D'après le théorème des gendarmes, $\limm{x \to 0} \sin(x) = 0$.
+</Hideable>
+
+
 <Item type='proposition' titre='dérivées des fonctions trigonométriques' tag="admis">
 
 $\cos$ et $\sin$ sont continues et dérivables sur $\R$ et pour tout $x \in \R$,
@@ -41,16 +56,21 @@ $\cd$ $\cos'(x) = -\sin(x)$
 $\cd$ $\sin'(x) = \cos(x)$
 </Item>
 
-<Remarque titre='pistes pour la preuve géométrique'>
+<Hideable type='démonstration' titre='pistes pour la preuve géométrique'>
+
 
 La démonstration consiste à utiliser des formules $\cos(a+b)$ et $\sin(a+b)$ et à démontrer que $\limm{h \to 0} \dfrac{\sin(h)}{h} = 1 $ et $\limm{h \to 0} \dfrac{1 - \cos(h)}{h} = 0 $.
 
 <br/>
 
-L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique. 
+L'élément crucial est la démonstration de la première limite qui se fait de manière géométrique (s'appuyant sur le dessin ci-dessous).
+
+<image class="mx-auto" src="/images/lim_sin_x_sur_x.png" width="400" height="300"></image>
 
 On peut encadrer l'aire de la section de cercle d'arc $\theta$ par les aires de deux triangles rectangles et en déduire la compariason des aires (aires de deux triangles et d'une section de cercle) $\dfrac{\sin(\theta)\times 1}{2} \leqslant \dfrac{\theta}{2} \leqslant \dfrac{\tan(\theta) \times 1}{2}$. Cela permet de conclure.
-</Remarque>
+
+
+</Hideable>
 
 
 <Item type='definition' titre='fonction tangente'>

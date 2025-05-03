@@ -77,6 +77,76 @@ Comme l'enroulement de longueur $2\pi$ emène sur le point $\Point{1}{0}$, y ajo
 D'où $\begin{cases} \cos(x + 2\pi) = \cos(x) \\ \sin(x + 2\pi) = \sin(x)  \end{cases}$
 </Hideable>
 
+<Exercice titre=''>
+Soient $a\v b$ deux entiers natuerls non nuls et $f$ et $g$ sont des fonction de $\R$ dans $\R$.
+
+Montrer que, si $f$ est $a$-périodique et $g$ est $b$-périodique, alors $f+g$ et $f \times g$ sont périodiques.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Soient $x \in \R$ et $(k\v l) \in \Z^2$, $\begin{cases} f(x+ ka) = f(x) \\ g(x + lb) = g(x)\end{cases}$
+
+En particulier,$f(x + ab) = f(x)$ et $g(x + ab) = g(x)$ avec $k = b$ et $l = a$.
+
+Mais donc $(f+g)(x + ab) = f(x + ab) + g(x + ab) = f(x) + g(x) = (f+g)(x)$. D'où $f+g$ est $ab$-périodique.
+
+<br/>
+
+On a le même résultat pour le produit : $(f \times g)(x + ab) = f(x + ab)  \times  g(x + ab) = f(x)  \times  g(x) = (f \times g)(x)$. D'où $f \times g$ est $ab$-périodique.
+
+<br/>
+
+En fait, si $d$ est le ppcm de $a$ et de $b$, ces deux fonctions sont $d$-périodiques pour les mêmes raisons que celles vues ci-dessus.
+
+</Hideable>
+
+
+<Fil>
+
+On peut également exploiter les propriétés géométriques du cercle (ses nombreuses symétries) pour obtenir des formules.
+
+Prenons le schéma suivant : 
+
+<img class="mx-auto" src='/svgs/dephasages_1.svg' width='500' height='500'></img>
+
+Si l'on place un point sur le cercle trigonométrique pour un angle $\theta$, on obtient des informations sur $\cos(\pi - \theta) \v \cos(\pi + \theta)$ et $\cos(- \theta)$ et sur les sinus des mêmes angles. 
+
+On a, pour le cosinus :
+
+$\cd$ $\cos(-\theta) = \cos(\theta)$
+
+$\cd$ $\cos(\pi - \theta) = \cos(\pi + \theta) = - \cos(\theta)$
+
+
+Et pour le sinus : 
+
+$\cd$ $\sin(-\theta) = \sin(\pi + \theta) =  -\sin(\theta) $
+
+$\cd$ $\sin(\pi - \theta) =  \sin(\theta)$
+
+<br/>
+
+<br/>
+
+On peut utiliser d'autres symétries comme celle d'axe $y=x$ illustrée ci-dessous :
+
+<br/>
+
+<img class="mx-auto" src='/svgs/dephasages_2.svg' width='300' height='300'></img>
+
+On en déduit que :
+
+$\cd$ $\sin(\dfrac{\pi}{2} - \theta) =  \cos(\theta)$
+
+$\cd$ $\cos(\dfrac{\pi}{2} - \theta) =  \sin(\theta)$
+
+<br/>
+
+En clair, cette symétrie échange les valeurs d'abscisse et d'ordonnée.
+</Fil>
+
+
 <Item type='definition' titre="parité d'une fonction">
 Soit $f$ une fonction définie sur $\defoo{-A}{A}$ où $A \in \R$ (également valable si les deux bornes sont fermées). On dit que :
 
@@ -92,17 +162,21 @@ $\cd$ Une fonction est paire ssi. l'axe des ordonnées est un axe de symétrie d
 $\cd$ Une fonction est impaire ssi. son origine est un centre de symétrie de sa représentation graphique.
 </Remarque>
 
+
+Les deux prochaines démonstrations ne sont là que pour formaliser les résultats ci-dessus obtenus géométriquement et uniquement pour les curieux. Il faut savoir les retrouver avec un dessin mais pas nécessairement refaire les démonstrations formelles.
+
 <Item type='proposition' titre='parité des fonctions cosinus et sinus'>
 La fonction $\cos$ est paire alors que la fonction $\sin$ est impaire.
 </Item>
 
-<Hideable type='démonstration' titre=''>
+<Hideable type='démonstration' titre='pour les curieux'>
 La symétrie d'axe $y=0$ envoie $\Point{x}{y}$ sur $\Point{x}{-y}$. L'abscisse est conservée et l'ordonnée change de signe. Par ailleurs, l'enroulement se fait dans le sens opposé quand l'on applique cette symétrie. On utilise cela pour conclure :
 
 $\cd$ on en déduit que $\cos(-\theta) = \cos(\theta) \, \forall \theta \in \R$.
 
 $\cd$ on en déduit que $\sin(-\theta) = -\sin(\theta) \, \forall \theta \in \R$.
 </Hideable>
+
 
 <Item type='proposition' titre='formulaire des déphasages'>
 Pour tout $x \in \R$, on a les formules suivantes :
@@ -120,7 +194,7 @@ $\cd$ $\cos(\dfrac{\pi}{2} - x) = -\sin(x)$
 $\cd$ $\sin(\dfrac{\pi}{2} - x) = \cos(x)$
 </Item>
 
-<Hideable type='démonstration' titre=''>
+<Hideable type='démonstration' titre='pour les curieux'>
 
 **Déphasage de $\pi$ :**
 
@@ -159,6 +233,7 @@ Mais la symétrie envoie $(x \v y)$ sur $(y \v x)$, d'où le résultat.
 
 </Hideable>
 
+Contrairement aux formules précédentes, les suivantes sont non-triviales. On verra plus tard un moyen de les retrouver rapidement car la démonstration n'est pas rapide à refaire pour retrouver ces formules. 
 
 <Item type='proposition' titre='formules trigonométriques de sommes et différence des angles'>
 Soient $a$ et $b$ deux réels. On a :

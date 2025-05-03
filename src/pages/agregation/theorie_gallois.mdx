@@ -43,18 +43,64 @@ Par ailleurs, connaître les résultats sur les polynômes cyclotomiques sera ut
 
 <br/>
 
-Dans ce chapitre, si $A$ est un anneau, $P \in \A[X]$ et $a \in A$, on notera $P(a)$ la fonction polynômiale sur $A$ évaluée en $a$ (au lieu de $\tilde{P}(a)$). En clair, on confond la notation d'un polynôme et de la fonction associée.
+Dans ce chapitre, si $A$ est un anneau, $P \in A[X]$ et $a \in A$, on notera $P(a)$ la fonction polynômiale sur $A$ évaluée en $a$ (au lieu de $\tilde{P}(a)$). En clair, on confond la notation d'un polynôme et de la fonction associée.
+
+<br/>
+
+Par ailleurs, $\K \v \L$ et $\M$ désignent des corps tels que $\L $ et $ \M$ sont des extensions de $\K$.
 
 <br/>
 
 <br/>
 
-## Brefs rappels sur les corps 
+## Rappels essentiels 
 
-Dans cette section, $\K$ et $\L$ désignent des corps tels que $\K \subset \L$.
+
+### Polynôme minimal
+
+<Item type='definition' titre='polynôme minimal'>
+
+Soit $a \in \L$ algébrique sur $\K$.
+
+On appelle polynôme minimal de $a$ sur $\K$ le polynôme unitaire de degré minimal annulant $a$.
+
+<br/>
+
+Il existe plusieurs notations. Les plus courantes sont : $\mu_a$ et $\pi_a$ pour désigner le polynôme minimal de $a$. On peut parfois préciser le corps de référence : $\pi_{a, \K}$ s'il y a ambiguïté.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+$\pi_{i,\C} = X - i$ alors que $\pi_{i, \R} = X^2 + 1$
+</Hideable>
+
+
+<Item type='proposition' titre='propriétés du polynôme minimal'>
+
+Soit $a \in \L$ algébrique sur $\K$. Soit $\pi_a$ le polynôme minimal de $a$ sur $\K$.
+
+$\cd$ Si $P \in \K[X]$ annule $a$, alors $\pi_a \divise P$
+
+$\cd$ L'idéal sur $\K[X]$ engendré par $\pi_a$ est l'ensemble des polynômes annulant $a$. 
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ $\K$ est un corps et donc $\K[X]$ est euclidien. Supposons $P(a) = 0$ et $P \notin (\pi_a)$. On pose $P = \pi_a Q + R$ la division euclidienne de $P$ par $\pi_a$.
+
+$R = P - Q.\pi_a$ annule $a$ et $\deg(R) < \deg(\pi_a)$. Comme $\pi_a$ est minimal en degré, $R = 0$ et donc $\pi_a \divise P$.
+
+<br/>
+
+$\cd$ On a $(\pi_a) = \pi_a . \K[X]$ et donc tout polynôme de $(\pi_a)$ est de la forme $P = \pi_a .Q$ où $Q \in \K[X]$. Ces polynômes $P$ s'annulent donc en $a$. Inversement, si $P$ s'annule en $a$, $\pi_a \divise P$ d'après le point précédent et $P$ est un multiple de $\pi_a$.
+
+</Hideable>
 
 
 ### Eléments algébriques et transcendants
+
+
 
 <Item type='definition' titre='élément algébrique'>
 
@@ -86,83 +132,11 @@ $\cd$ $\pi$
 
 </Hideable>
 
+
 ### Extension de corps
 
-<Item type='definition' titre='polynômes en a'>
 
-Soit $a \in \L$. On définir $\K[a]$ comme suit :
-
-$$
-K[a] = \{ P(a) \mid P \in \K[X]\}
-$$
-
-Mais on peut aussi voir cet ensemble comme l'image de l'application suivante (évaluation en $a$):
-
-$$
-\phi : \begin{cases} \K[X]  \rightarrow \L  \\ a \mapsto P(a) \end{cases} 
-$$
-
-On a donc $K[a] = \phi(\K[X])$.
-
-<br/>
-
-Plus généralement, $\K[a_1\v a_2 , \dotsm \v a_n] = \{P(a_1 \v \dotsm a_n) \mid P \in \K[X_1 \v \dotsm \v X_n]\}$.
-
-</Item>
-
-
-<Item type='defprop' titre='extension de corps par éléments algébriques'>
-
-Si $a \in \L$ est algébrique sur $\K$, alors tout élément de $\K[a]$ est algébrique sur $\K$ et $\K[a]$ est un corps. 
-
-<br/>
-
-Plus généralement, si $(a_1, \v \dotsm \v a_n) \in \L^n$ sont des nombres algébriques sur $\K$, alors tout élément de $\K[a_1\v a_2 , \dotsm \v a_n] $  est algébrique sur $\K$ et $\K[a_1\v a_2 , \dotsm \v a_n]$ est un corps.
-
-</Item>
-
-
-<Item type='definition' titre='extension de corps de type fini'>
-
-Si $a \in \L$, on note $\K(a)$ le plus petit corps contenant $\K \ET a$.
-
-<br/>
-
-Plus généralement, si $(a_1, \v \dotsm \v a_n) \in \L^n$, on note $\K(a_1 \v \dotsm \v a_n)$ le plus petit corps contenant $\K \v a_1 \v \dotsm \ET a_n$.
-
-</Item>
-
-<Remarque titre=''>
-
-si $(a\v a_1, \v \dotsm \v a_n) \in \L^{n+1}$ sont des nombres algébriques sur $\K$, on a en particulier :
-
-$$
-\\
-\K[a] = \K(a)
-\\[1em]
-\K[a_1 \v \dotsm \v a_n] = \K(a_1 \v \dotsm \v a_n)
-$$
-</Remarque>
-
-<Item type='proposition' titre='extension finie et élément algébrique'>
-
-$\K[a] = \K(a) \ssi $ $a$ est algébrique sur $\K$
-</Item>
-
-
-<Item type='definition' titre="différents types d'extensions">
-
-
-$\cd$ $\L$ est **algébrique** sur $\K$ si chaque élément de $\L$ est algébrique sur $\K$.
-
-$\cd$ $\L$ est **de type fini** sur $\K$ s'il existe $n \in \N$ et $(a_1, \v \dotsm \v a_n) \in \L^n$ tels que $\L = \K(a_1 \v \dotsm a_n)$.
-
-$\cd$ $\L$ est **simple** (ou monogène) sur $\K$ s'il existe $a \in \K$ tel que $\K(a) = \L$.
-
-
-On désignera par $\L / \K$ le procédé d'extension de $\K$ vers $\L$. On pourra donc dire que $\L / \K$ est algébrique (ou de type fini).
-</Item>
-
+#### Corps et espaces vectoriels 
 
 <Item type='proposition' titre='corps et espace vectoriel'>
 
@@ -200,7 +174,7 @@ Bien sur, cela n'a de sens que si cette quantité est finie.
 </Item>
 
 
-<Item type='proposition' titre='double extension et base télescopique'>
+<Item type='theoreme' titre='de la base telescopique (ou de multiplicité du degré)'>
 
 Si $\K \subset \M \subset \L$ sont des corps et que $[L : K]$ est fini, on a :
 
@@ -233,41 +207,133 @@ d'où $\dim_{\K}(\L) = n . m = [\L : \M] . [\M : \K]$
 </Hideable>
 
 
-### Polynôme minimal
+#### Extensions et polynômes
 
-<Item type='definition' titre='polynôme minimal'>
+<Item type='definition' titre='polynômes en a'>
 
-Soit $a \in \L$ algébrique sur $\K$.
+Soit $a \in \L$. On définir $\K[a]$ comme suit :
 
-On appelle polynôme minimal de $a$ sur $\K$ le polynôme unitaire de degré minimal annulant $a$.
+$$
+K[a] = \{ P(a) \mid P \in \K[X]\}
+$$
+
+Mais on peut aussi voir cet ensemble comme l'image de l'application suivante (évaluation en $a$):
+
+$$
+\phi : \begin{cases} \K[X]  \rightarrow \L  \\ a \mapsto P(a) \end{cases} 
+$$
+
+On a donc $K[a] = \phi(\K[X])$.
 
 <br/>
 
-Il existe plusieurs notations. Les plus courantes sont : $\mu_a$ et $\pi_a$ pour désigner le polynôme minimal de $a$. On peut parfois préciser le corps de référence : $\pi_{a, \K}$ s'il y a ambiguïté.
+Plus généralement, $\K[a_1\v a_2 , \dotsm \v a_n] = \{P(a_1 \v \dotsm a_n) \mid P \in \K[X_1 \v \dotsm \v X_n]\}$.
+
 </Item>
 
-<Hideable type='exemple' titre=''>
+<Item type='defprop' titre='extension simple'>
 
-$\pi_{i,\C} = X - i$ alors que $\pi_{i, \R} = X^2 + 1$
+Soit $a \in \L$. On note $\K(a)$ le plus petit corps contenant $\K$ et $a$. Un tel corps existe.
+</Item>
+
+<Hideable type='démonstration' titre='idée principale'>
+
+Pour l'existence, on peut prendre $\K' = \K[X]/(\pi_a)$ si $a$ est algébrique et $\K' = \K(X)$ sinon. $X$ prend le rôle de $a$.
+</Hideable>
+
+<Item type='defprop' titre='extension de corps par éléments algébriques'>
+
+Soit $a \in \L$. $a$ est algébrique sur $\K \ssi \K[a] = \K(a)$. De plus, si $a$ est algébrique sur $\K$, tout élément de $\K[a]$ est algébrique sur $\K$. 
+
+<br/>
+
+Plus généralement, soient $(a_1, \v \dotsm \v a_n) \in \L^n$. Ce sont des nombres algébriques sur $\K$ si et seulement si $\K[a_1\v a_2 , \dotsm \v a_n] = \K(a_1\v a_2 , \dotsm \v a_n)$ . 
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+$\cd$ **Sens direct ($\Rightarrow$) :** Supposons que $a$ est algébrique sur $\K$.
+
+$ \phi : \begin{cases}  \K[X] \rightarrow \L \\ P \mapsto P(a) \end{cases}$ est un morphisme d'anneaux.
+
+D'après le théorème d'isomorphisme, il existe $\overline{\phi} : \K[X] / (\pi_a) \rightarrow L$ injectif.
+
+Mais $\Im(\overline{\phi}) = \K[a]$ donc $\K[X] / (\pi_a) \cong \K[a]$.
+
+Remarquons que $\K$ est un corps et donc que $\K[X]$ est principal. Il suit que, comme $P$ est irréductible, $(P)$ est maximal. On en déduit que $\K[X] / (\pi_a)$ est un corps.
+
+Par ailleurs $\K[a] \subset \K(a)$, donc $\K[a] = \K(a)$
+
+<br/>
+
+$\cd$ Bonus : calcul de l'inverse de $a$ :
+
+$X \divisepas \pi_a$ puisque $\pi_a$ est irréductible. Notons donc $\pi_a = X.Q + c$ la division euclidienne de $\pi_a$ par $X$ où $c \neq 0$ est dans $\K$.
+
+$\pi_a(a) = 0$ mais donc $a.Q(a) + c = 0$ puis $a.Q(a).(-c^{-1}) = c.(-c^{-1})$ et finalement $a.\Big(\underbrace{Q(a).(-c^{-1})}_{= a^{-1}} \Big) = 1$.
+
+<br/>
+
+$\cd$ **Sens réciproque ($\Leftarrow$) :** Supposons que $\K[a] = \K(a)$.
+
+$a$ admet un inverse dans $\K[a]$ de la forme $Q(a)$ où $Q \in \K[X]$. Il suit que $P = X.Q - 1 \in \K[X]$ annule $a$ et donc que $a$ est algébrique sur $\K$
+
+<br/>
+<br/>
+
+$\cd$ **Tout élément de K[a] est algébrique sur K :** Supposons que $\K[a] = \K(a)$. 
+
+Soit $b \in \K[a]$. $b$ a une expression polynômiale en $a$. Montrons que la somme et le produit de deux éléments algébriques sur $\K$ est encore algébrique sur $\K$, ce qui montrera que tout polynôme en des élements algébriques sur $\K$ est encore algébrique sur $\K$.
+
+Soient $b$ et $b'$ deux éléments de $\L$ algébriques sur $\K$. $\K[b + b'] \subset \K[b , b']$ et $\K[bb'] \subset \K[b , b']$. Mais $\K[b,b'] = \K[b][b']$ qui est un corps et donc un $\K$-e.v de dimension $\deg(\pi_{b, \K}) \times \deg(\pi_{b', \K[b]}) < + \infty$ puisque ces deux éléments sont algébriques sur $\K$.
+
+On conclut donc que $\K[a+b]$ et $\K[ab]$ sont également de dimension finie, ce qui signifie que $a+b$ et $ab$ sont algébriques d'après l'équivalence précédente.
+
 </Hideable>
 
 
-<Item type='proposition' titre='propriétés du polynôme minimal'>
+<Item type='definition' titre='extension de corps de type fini'>
 
-Soit $a \in \L$ algébrique sur $\K$. Soit $\pi_a$ le polynôme minimal de $a$ sur $\K$.
+Si $a \in \L$, on note $\K(a)$ le plus petit corps contenant $\K \ET a$.
 
-$\cd$ Si $P \in \K[X]$ annule $a$, alors $\pi_a \divise P$
+<br/>
 
-$\cd$ L'idéal sur $\K[X]$ engendré par $\pi_a$ est l'ensemble des polynômes annulant $a$. On a $(\pi_a) = \pi_a . \K[X]$.
+Plus généralement, si $(a_1, \v \dotsm \v a_n) \in \L^n$, on note $\K(a_1 \v \dotsm \v a_n)$ le plus petit corps contenant $\K \v a_1 \v \dotsm \ET a_n$.
+
+</Item>
+
+<Remarque titre=''>
+
+si $(a\v a_1, \v \dotsm \v a_n) \in \L^{n+1}$ sont des nombres algébriques sur $\K$, on a en particulier :
+
+$$
+\\
+\K[a] = \K(a)
+\\[1em]
+\K[a_1 \v \dotsm \v a_n] = \K(a_1 \v \dotsm \v a_n)
+$$
+</Remarque>
+
+<Item type='definition' titre="différents types d'extensions">
+
+
+$\cd$ $\L$ est **algébrique** sur $\K$ si chaque élément de $\L$ est algébrique sur $\K$.
+
+$\cd$ $\L$ est **de type fini** sur $\K$ s'il existe $n \in \N$ et $(a_1, \v \dotsm \v a_n) \in \L^n$ tels que $\L = \K(a_1 \v \dotsm a_n)$.
+
+$\cd$ $\L$ est **simple** (ou monogène) sur $\K$ s'il existe $a \in \K$ tel que $\K(a) = \L$.
+
+
+On désignera par $\L / \K$ le procédé d'extension de $\K$ vers $\L$. On pourra donc dire que $\L / \K$ est algébrique (ou de type fini).
 </Item>
 
 
-## Les morphismes de corps et leurs propriétés
 
-### Généralités
+### Les morphismes : généralités
 
 <Remarque titre=''>
-Il existe plusieurs types de morphismes : de groupes, d'anneaux, d'espaces vectoriels, d'algèbre et de corps. Souvent, on ommet de préciser de quel type de morphisme on parle. Il faut partir du plus restrictif.
+Il existe plusieurs types de morphismes : de groupes, d'anneaux, d'espaces vectoriels, d'algèbre et de corps. Souvent, on omet de préciser de quel type de morphisme on parle. Il faut partir du plus restrictif.
 
 $\phi : (\Z / 2\Z)^2 \rightarrow \F_4$ ne peut pas être un morphisme de corps puisque son ensemble de départ n'en est pas un. Il peut cependant être un morphisme d'espaces vectoriels, d'anneaux ou de groupes.
 
@@ -314,17 +380,34 @@ En conclusion, $\Ker(\phi)$ est réduit à $\{0\}$ et $\phi$ est injectif.
 </Hideable>
 
 
-### Morphismes et polynômes
 
-On dira que $\phi$ vérifie $(id-F)$ si :
 
-$\phi$ est un morphisme de corps dont le corps de départ contient $F$ et $\forall x \in \F \v \phi(x) = x$.
+## Les K-morphismes : lien entre espaces vectoriels et corps
 
+
+Soient $\L / \K$ et $\M / \K$ des extensions. On dira que $\phi$ est un $\K$-morphisme si :
+
+$\phi : \L (\supset \K) \rightarrow \M$ est un morphisme de corps et $\phi_{\mid \K} = id_{\K}$.
+
+
+<Item type='definition' titre='K-morphisme'>
+
+On note :
+
+$\cd$ $\Hom_{\K}(\L \v \M)$ l'ensemble des $\K$-morphismes de $\L$ dans $\M$.
+
+$\cd$ $\Iso_{\K}(\L \v \M)$ l'ensemble des $\K$-morphismes qui sont isomorphes de $\L$ dans $\M$. Ce sont des $\K$-isomorphismes.
+
+$\cd$ $\End_{\K}(\L)$ l'ensemble des $\K$-morphismes de $\L$ dans lui-même. Ce sont des $\K$-endomorphismes.
+
+$\cd$ $\Aut_{\K}(\L)$ l'ensemble des $\K$-morphismes qui sont des automorphismes de $\L$. Ce sont des $\K$-automorphismes.
+
+</Item>
 
 
 <Item type='proposition' titre='commutativité entre morphisme et polynôme'>
 
-Soit $P \in \K[X]$ et $a \in \K$. Si $\phi$ est un morphisme de corps de $\K$ dans $\M$ et qu'il vérifie $(id-\K)$, on a :
+Soit $P \in \K[X]$ et $a \in \K$. Si $\phi$ est un $\K$-morphisme de $\K$ dans $\M$, on a :
 
 $$
 \phi(P(a)) = P(\phi(a)) 
@@ -337,7 +420,7 @@ $$
 
 $\cd$ $\phi(a + b) = \phi(a) + \phi(b)$ et $\phi(a.b) = \phi(a).\phi(b)$.
 
-Il suit que $\phi(\somme{i = 0}{n} c_i . a^i) = \somme{i = 0}{n} \underbrace{\phi(c_i)}_{= c_i} .\phi( a)^i = P(\phi(c_i))$.
+Il suit que $\phi(\somme{i = 0}{n} c_i . a^i) = \somme{i = 0}{n} \underbrace{\phi(c_i)}_{= c_i} .\phi( a)^i = P(\phi(a))$.
 
 <br/>
 
@@ -351,7 +434,7 @@ $a \in \Rac_{\K}(P) \ssi P(a) 0 = \ssi \phi(P(a)) = 0 \ssi P(\phi(a)) = 0 \ssi \
 
 <Item type='proposition' titre='cas des rationnels'>
 
-Soit $\Q \subset \K$ et $\Q \subset \M$. Tout morphisme de corps de $\K$ dans $\M$ vérifie $(id-\Q)$ :
+Soit $\Q \subset \K$ et $\Q \subset \M$. Tout morphisme de corps de $\K$ dans $\M$ vérifie est un $\K$-morphisme :
 
 C'est-à-dire que, si $\phi : \K \rightarrow \M$ est un morphisme de corps, $\phi_{\mid \Q} = id_{\Q}$
 
@@ -369,7 +452,7 @@ Ensuite, comme $\phi(a.b^{-1}) = \phi(a) . \phi(b)^{-1}$, on étend le résultat
 
 <Remarque titre='peut-on faire mieux ?'>
 
-On peut étendre le résultat à $\R$ : un morphisme de corps qui contient $\R$ vérifie $(id-\R)$.
+On peut étendre le résultat à $\R$ : un automorphisme de corps dont le corps contient $\R$ est un $\R$-morphisme.
 
 Par contre, le résultat ne va pas plus loin puisque sur $\C$, il y a des morphismes qui ne sont pas l'identité comme par exemple $z \mapsto \overline{z}$ qui est un automorphisme de corps (de $\C$ dans $\C$).
 </Remarque>
@@ -377,7 +460,7 @@ Par contre, le résultat ne va pas plus loin puisque sur $\C$, il y a des morphi
 
 <Item type='proposition' titre="morphismes de corps et d'espaces vectoriels">
 
-Si un morphisme de corps vérifie $(id-\K)$, alors c'est un morphisme de $\K$-e.v .
+Un $\K$-morphisme est un morphisme de $\K$-e.v .
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -388,12 +471,62 @@ Dans ce cas $\phi(\lambda u + \mu v ) = \phi(\lambda) \phi(u) + \phi(\mu) \phi(v
 </Hideable>
 
 
+<Remarque titre=''>
+
+Contrairement aux morphismes de corps, les $\K$-morphismes permettent des intéractions faciles avec les polynômes et leurs racines. Les étudier est donc une bonne piste pour en savoir plus sur les polynômes et leurs racines. De plus, cela nous permet d'obtenir un morphisme d'espace vectoriel, ce qui nous fait espérer des liens entre la dimension de $\K[a]$ et les caractéristiques des $\K$-morphismes partant de $\K[a]$. 
+</Remarque>
+
+
+<Item type='lemme' titre=''>
+
+Soit $a \in \L$ algébrique sur $\K$. Il existe $\phi \in \Hom_{\L}(\K(a) \v \L)$ et le nombre de tels morphismes est au plus $[\K(a) : \K]$ avec égalité si les racines de $P$ sont simples dans $\M$.
+
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Tout élément de $\K(a)$ s'écrit sous la forme $Q(a)$ avec $Q \in \K[X]$. On a donc $\phi(Q(a)) = Q(\phi(a))$ et on en déduit que $\phi$ est entièrement déterminé par l'image de $a$ par $\phi$. Par ailleurs, puisque $a$ est racine de $\pi_a$, $\phi(a)$ est aussi une racine de $\pi_a$. Il y a donc au plus $\Card(\Rac_{\M}(\pi_a))$ possibilités. 
+
+<br/> 
+
+Il reste à montrer que chacune définit un morphisme de corps. Nous proposons deux façons de faire : 
+
+$\cd$ **Version par construction :** Soit $x = Q(a) \in \L$, on pose $\phi(x) = \phi(Q(a)) = Q(\phi(a))$. Ceci est bien défini car $Q_1(a) = Q_2(a) \Rightarrow \pi_a \divise Q_1 - Q_2$ et donc l'évaluation est identique. On vérifie facilement qu'il s'agit d'un morphisme de corps puisque $1$ est envoyé sur $1$, les autres propriétés sont données par $Q_1(a) + Q_2(a) = (Q_1 + Q_2) (a)$ et $Q_1(a).Q_2(a) = (Q_1 . Q_2) (a)$.
+
+<br/>
+
+$\cd$ **Version par théorème d'isomorphisme :** On considère $\gamma \in \Rac_{\L}(\pi_a)$ et l'application $ e_{\gamma} : \begin{cases} \K[X] \rightarrow \K(a) \\ P \mapsto P(\gamma)  \end{cases}$ qui est un morphisme d'anneaux. D'après le théorème de factorisation, il existe $\tilde{e_{\gamma}} : \K[X]/(\pi_a) \rightarrow \K(a)$ un isomorphisme.
+
+On a alors $\K(a) \xrightarrow{\tilde{e_a}^{-1}} \L[X]/(\pi_a) \xrightarrow{j} \L$. 
+
+On obtient donc un morphisme qui envoit $a$ sur $\gamma$ comme voulu.
+
+</Hideable>
+
+<Remarque titre=''>
+
+Un morphisme d'esapace vectoriel peut être défini par l'image des éléments d'une base (en dimension finie). Ici, on a un résultat similaire où le pendant de la dimension est le nombre d'éléments algébriques minimal utilisé pour l'extension.
+
+<br/>
+
+Quand on pense en termes de combinaisons linéaires sur un e.v. , on pense en termes de polynômes sur un corps quand on a un $\K$-morphisme.
+
+Si $\K$ est de type fini et de la forme $\K(a_1 \v \dotsm \v a_n)$ où le nombre de $a_i$ est minimal, on peut remarquer les similarités et différences suivantes:
+
+| Morphisme de $\K$ espace vectoriel | $\K$-morphisme |
+|---|---|
+| Base $e_1 \v \dotsm \v e_n$ | générateurs $a_1 \v \dotsm \v a_n$ |
+| combinaison linéaire des $e_i$ | polynôme en les $a_i$ |
+| Choix des $\phi(e_i)$ libre | Choix des $\phi(a_i)$ très limité |
+
+</Remarque>
+
 <Item type='proposition' titre='nombres de morphismes sur un corps de décomposition'>
 
 Soit $P$ un polynôme de $\K[X]$. Soit $\E$ un corps tel que $\E$ soit engendré par $\K$ et les racines de $P$ sur $\E$. Soit $\K \subset \M$ un corps tel que $P$ soit scindé sur $\M$. 
 
 $$
-\Card(\{\phi : \E \rightarrow \M \mid (id-\K) \}) \leqslant [E : K]
+\Card(\Hom_{\K}(\E \v \M)) \leqslant [E : K]
 $$
 
 Avec égalité si $P$ est scindé à racines simples dans $\M$.
@@ -413,52 +546,26 @@ Remarquons de plus que, $P$ est à racines simples $\Rightarrow P_i$ est à raci
 
 <br/>
 
-b\) **Raisonnement d'extension simple en extension simple : résultat intermédiaire**
+b\) **Raisonnement d'extension simple en extension simple**
 
-On souhaite arriver au résultat en comptant à partir du cas $\K(a_1) \rightarrow \M$ puis $\K(a_1, a_2) \rightarrow \M$ , ...
-
-
-Montrons donc un résultat intermédiaire : soit $a$ algébrique sur $\L$. Il existe $\phi : \L(a) \rightarrow \M$ vérifiant $(id-\K)$. Le nombre de tels morphismes est au plus $[\L(a) : \L]$ avec égalité si les racines de $P$ sont simples dans $\M$.
-
-<Indent>
+On souhaite arriver au résultat en comptant à partir du cas $\K(a_1) \rightarrow \M$ puis $\K(a_1, a_2) \rightarrow \M$ , ... On utilisera à chaque étape le résultat du lemme précédent.
 
 
-Tout élément de $\L(a)$ s'écrit sous la forme $Q(a)$ avec $Q \in \L[X]$. On a donc $\phi(Q(a)) = Q(\phi(a))$ et on en déduit que $\phi$ est entièrement déterminé par l'image de $a$ par $\phi$. Par ailleurs, puisque $a$ est racine de $\pi_a$, $\phi(a)$ est aussi une racine de $\pi_a$. Il y a donc au plus $\Card(\Rac_{\M}(\pi_a))$ possibilités. 
-
-<br/> 
-
-Il reste à montrer que chacune définit un morphisme de corps. Nous proposons deux façons de faire : 
-
-*Version par construction :* Soit $x = Q(a) \in \L$, on pose $\phi(x) = \phi(Q(a)) = Q(\phi(a))$. Ceci est bien défini car $Q_1(a) = Q_2(a) \Rightarrow \pi_a \divise Q_1 - Q_2$ et donc l'évaluation est identique. On vérifie facilement qu'il s'agit d'un morphisme de corps puisque $1$ est envoyé sur $1$ d'après $(id-\K)$, les autres propriétés sont données par $Q_1(a) + Q_2(a) = (Q_1 + Q_2) (a)$ et $Q_1(a).Q_2(a) = (Q_1 . Q_2) (a)$.
-
-<br/>
-
-*Version par factorisation :* On considère $\gamma \in \Rac_{\M}(\pi_a)$ et l'application $ e_{\gamma} : \begin{cases} \L[X] \rightarrow \L(a) \\ P \mapsto P(\gamma)  \end{cases}$ qui est un morphisme d'anneaux. D'après le théorème de factorisation, il existe $\tilde{e_{\gamma}} : \L[X]/(\pi_a) \rightarrow \L(a)$ un isomorphisme.
-
-On a alors $\L(a) \xrightarrow{\tilde{e_a}^{-1}} \L[X]/(\pi_a) \xrightarrow{j} \M$. 
-
-On obtient donc un morphisme qui envoit $a$ sur $\gamma$ comme voulu.
-</Indent>
-
-<br/>
-
-c\) **Raisonnement d'extension simple en extension simple : suite**
-
-$\pi_{a_1 , \K}$ est irréductible à racines simples. On a donc $[\K(a_1) : \K] = \deg(\pi_{a_1 , \K}) \geqslant \Card(\Rac_{\M}(\pi_{a_1 , \K}))$ (en particulier, si $P$ est à racines simples, on a égalité). On a donc au plus $[\K(a_1) : \K]$ morphismes vérifiant $(id-\K)$ et $\phi : \K(a_1) \rightarrow \M$. Notons $\phi_1$ un tel morphisme.
+$\pi_{a_1 , \K}$ est irréductible à racines simples. On a donc $[\K(a_1) : \K] = \deg(\pi_{a_1 , \K}) \geqslant \Card(\Rac_{\M}(\pi_{a_1 , \K}))$ (en particulier, si $P$ est à racines simples, on a égalité). On a donc au plus $[\K(a_1) : \K]$ $\K$-morphismes de la forme $\phi : \K(a_1) \rightarrow \M$. Notons $\phi_1$ un tel morphisme.
 
 <br/>
 
 $\pi_{a_2 , \K(a_1)}$ est irréductible sur $\K(a_1)$. On pose $\K' = \phi_1(\K(a_1))$ et $g = \phi_1(\pi_{a_2 , \K(a_1)})$. 
 
-$\K' \subset \M$ est un sous-corps de $\M$ car c'est l'image d'un corps par un morphisme de corps. 
+$\K' \xhookrightarrow \M$ est un sous-corps de $\M$. 
 
-Par ailleurs, par hypothèse, $P = \produit{i = 1}{N} (X - \beta_i) \in \M[X]$ et $\phi_1(P) = P$ puisque $\phi_1$ vérifie $(id-\K)$ et que $P \in \K[X]$.
+Par ailleurs, par hypothèse, $P = \produit{i = 1}{N} (X - \beta_i) \in \M[X]$ et $\phi_1(P) = P$ puisque $(\phi_1)_{\mid \K} = id_{\K}$ et que $P \in \K[X]$.
 
 Ajoutons à cela que $\pi_{a_2 , \K(a_1)} \divise P$ dans $\K(a_1)$ et donc il existe $Q \in \K(a_1)$ tel que $P = Q . \pi_{a_2 , \K(a_1)}$ ce qui mène à $P = \phi_1(P) = g . \phi_1(Q)$ et donc $g \divise P$. On en déduit que $g$ est à racines simples si $P$ l'est également (et oui, c'est juste pour ça que l'on a dû faire un détour).
 
-Comme $\K(a_1) \subset \M$ à un morphisme injectif près, on peut appliquer le résultat intermédiaire pour obtenir au plus $[\K(a_1, a_2) : \K(a_1)]$ morphismes $\phi_2$ vérifiant $(id-\K(a_1))$ ce qui nous donne le nombre de manières d'étendre les morphismes trouvés sur $\K(a_1)$ à $\K(a_1, a_2)$. 
+Comme $\K(a_1) \xhookrightarrow{} \M$, on peut appliquer le résultat intermédiaire pour obtenir au plus $[\K(a_1, a_2) : \K(a_1)]$ $\K$ morphismes $\phi_2$ ce qui nous donne le nombre de manières d'étendre les morphismes trouvés sur $\K(a_1)$ à $\K(a_1, a_2)$. 
 
-En effet, $\phi_2 \circ \phi_1$ vérifie $(id-\K)$ (on a étendue $\phi_1$ par l'identité hors de $\K(a_1)$).
+En effet, $\phi_2 \circ \phi_1$ vérifie est un $\K$-morphisme (on a étendue $\phi_1$ par l'identité hors de $\K(a_1)$).
 
 
 <br/>

@@ -1,5 +1,0 @@
-- $$ ne fonctionne pas
-- Comment intégrer des graphs?
-- Remarque taille minimale : ondelettes dépassent
-- Pas de version mobile ...
-- sidebar à refaire (et éviter le problème quand cachée / affichée)
