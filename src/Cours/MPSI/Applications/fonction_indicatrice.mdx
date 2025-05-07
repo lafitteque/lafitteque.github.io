@@ -80,7 +80,7 @@ $\cd$ Cas 4 : $x \in A \bigcap B$. Dans ce cas, $\indicatrice_{A \setminus B} = 
 
 **Quatrième égalité :** 
 
-$ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \indicatrice_A(x) = 1$ et $\indicatrice_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice{B} (y) = 1$ 
+$ \indicatrice_{A \times B} (x,y) = 1 \ssi (x \v y) \in A \times B \ssi x \in A $ et $ y \in B \ssi \indicatrice_A(x) = 1$ et $\indicatrice_B(y) = 1 \ssi  \indicatrice_{A}(x) \indicatrice_{B} (y) = 1$ 
 
 D'où l'égalité.
 
@@ -106,3 +106,35 @@ On peut ainsi démontrer les propriétés telles que $(A \bigcap B) \bigcup C = 
 
 Cela en fait un outil apprécié car il évite de toujours faire appel à des disjonctions de cas.
 </Remarque>
+
+<Exercice titre=''>
+
+On appelle différence symétrique de $E$ et $F$ l'ensemble $E\Delta F = (E\bigcup F) \setminus (E \bigcap F)$.
+
+A l'aide des fonctions indicatrices uniquement, montrer que $E\Delta F = (E \bigcap \overline{F}) \bigcup (\overline{E} \bigcap F)$
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+$\indicatrice_{E\Delta F} = \indicatrice_{E \bigcup F}(1- \indicatrice_{E \bigcap F})$
+
+d'où $\indicatrice_{E\Delta F} = \Big( \indicatrice_{E} + \indicatrice_{F} - \indicatrice_{E}\indicatrice_{F} \Big) \Big(1 - \indicatrice_{E}\indicatrice_{F} \Big)$
+
+puis $\indicatrice_{E\Delta F} = \indicatrice_{E} + \indicatrice_{F} - \indicatrice_{E}\indicatrice_{F} - \indicatrice_{E}^2\indicatrice_{F} - \indicatrice_{E}\indicatrice_{F}^2 + \indicatrice_{E}^2\indicatrice_{F}^2$
+
+Comme $\indicatrice_{A}^2 = \indicatrice_{A}$ , il suit que $\indicatrice_{E\Delta F} = \indicatrice_{E} + \indicatrice_{F} - 2 \times \indicatrice_{E}\indicatrice_{F} $
+
+<br/>
+
+D'autre part, $\indicatrice_{(E \bigcap \overline{F}) \bigcup (\overline{E} \bigcap F)} $ $ = \indicatrice_{E \bigcap \overline{F}} + \indicatrice_{\overline{E} \bigcap F} - \indicatrice_{E \bigcap \overline{F}}\indicatrice_{\overline{E} \bigcap F} $
+
+d'où $\indicatrice_{(E \bigcap \overline{F}) \bigcup (\overline{E} \bigcap F)} = \indicatrice_{E} (1 - \indicatrice_{F}) + (1-\indicatrice_{E}) \indicatrice_{F} - \indicatrice_{E}(1-\indicatrice_{F})(1-\indicatrice_{E})\indicatrice_{F}$
+
+puis $\indicatrice_{(E \bigcap \overline{F}) \bigcup (\overline{E} \bigcap F)} = \indicatrice_{E} - \indicatrice_{E}\indicatrice_{F} + \indicatrice_{F} - \indicatrice_{E}\indicatrice_{F} - \indicatrice_{E}\indicatrice_{F} + \indicatrice_{E}^2\indicatrice_{F} + \indicatrice_{E}\indicatrice_{F}^2  - \indicatrice_{E}^2\indicatrice_{F}^2$
+
+On simplifie : $\indicatrice_{(E \bigcap \overline{F}) \bigcup (\overline{E} \bigcap F)} = \indicatrice_{E} + \indicatrice_{F} - 2 \times \indicatrice_{E}\indicatrice_{F}  $
+
+<br/>
+
+Les deux fonctions indicatrices sont égales et donc les deux ensembles sont égaux eux aussi. On trouve également que $\indicatrice_{E\Delta F} = \indicatrice_{E} + \indicatrice_{F} - 2 \times \indicatrice_{E}\indicatrice_{F} $, ce qui caractérise la différence symétrique simplement.
+</Hideable>

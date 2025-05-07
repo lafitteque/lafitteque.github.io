@@ -9,7 +9,6 @@ import Katex from "../components/Katex.astro";
 import SearchBar from "../components/SearchBar.astro";
 import ChoixInfo from "../components/ChoixInfo.astro";
 
-
 type Props = {
   title: string;
 };
@@ -44,12 +43,11 @@ const { headings, title } = Astro.props;
     <div class="navbar bg-base-300 z-10 max-h-[8vh]">
       <div class="navbar-star0">
         <!-- Début NavBar -->
-
       </div>
       <div class="navbar-center lg:flex">
         <!-- Milieu NavBar -->
         <Filiere />
-        <ChoixInfo/>
+        <ChoixInfo />
         <SearchBar />
       </div>
       <div class="navbar-end lg:flex"></div>
@@ -60,15 +58,17 @@ const { headings, title } = Astro.props;
       <div class="max-w-[1000px] mx-auto max-h-[90vh]">
         <Katex />
         <slot data-pagefind-body />
+        <div class="bg-base-300 h-20">&nbsp</div>
       </div>
     </div>
+    <br />
+    <br />
   </body>
 </html>
 <script>
   // --- Restyle du css pour latex --- //
   var ks = document.querySelectorAll(".katex-display");
   ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
-
 
   // --- Exclusion des titres, sous-titres, etc de l'indexation de recherche --- //
   document.addEventListener("DOMContentLoaded", () => {
@@ -78,7 +78,6 @@ const { headings, title } = Astro.props;
   });
 </script>
 <style>
- 
   /* Active/current link */
   a.active {
     background-color: #04aa6d;
