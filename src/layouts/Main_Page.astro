@@ -39,7 +39,7 @@ const { headings, title } = Astro.props;
       crossorigin="anonymous"
     />
   </head>
-  <body>
+  <body class="">
     <div class="navbar bg-base-300 z-10 max-h-[8vh]">
       <div class="navbar-star0">
         <!-- Début NavBar -->
@@ -54,15 +54,12 @@ const { headings, title } = Astro.props;
       <!-- Fin NavBar -->
       <Options />
     </div>
-    <div class="overflow-y-auto max-h-[90vh]">
-      <div class="max-w-[1000px] mx-auto max-h-[90vh]">
+    <div class="overflow-y-auto max-h-[92vh]">
+      <div class="max-w-[1000px] mx-auto min-h-[92vh]">
         <Katex />
         <slot data-pagefind-body />
-        <div class="bg-base-300 h-20">&nbsp</div>
       </div>
     </div>
-    <br />
-    <br />
   </body>
 </html>
 <script>

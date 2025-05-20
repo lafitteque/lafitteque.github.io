@@ -56,3 +56,62 @@ $$
 On remarquera la forte similarité avec les suites récurrentes d'ordre 2. Cette similarité vient de l'aspect linéaire des deux problèmes qui se résolvent de la même manière.
 .
 </Remarque>
+
+<Item type='methode' titre="résolution d'une équation différentielle d'ordre 2">
+1\) Rechercher une solution particulière notée $g$
+
+2\) Obtenir les solutions particulières à l'équation différentielle homogène associée.
+
+3\) En déduire la forme générale des solutions comme somme d'une solution particulière et de la solution générale à l'équation homogène.
+</Item>
+
+<Exercice titre=''>
+
+Résoudre l'équation différentielle suivante : $y'' + 3y' - 4y = x^2$.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+On cherche d'abord une solution particulière. Au vu du système, on cherche d'abord une solution polynômiale. On peut commencer par chercher une solution de la forme $y = ax^2 + bx + c$.
+
+Si une telle solution convient, alors elle vérifie l'équation différentielle, et donc $2a +6ax + 3b -4ax^2 -4bx - 4c = x^2$. Par identification, on a :
+
+$$
+\begin{cases}
+-4a = 1
+\\
+6a - 4b = 0
+\\
+2a + 9b - 4c = 0
+\end{cases}
+$$
+
+Ensuite, on a :
+
+$$
+\begin{cases}
+a = -\dfrac{1}{4}
+\\
+b = -\dfrac{3}{8}
+\\
+c = -\dfrac{31}{32}
+\end{cases}
+$$
+
+
+Une solution particulière est donc $y = -\dfrac{1}{4}x^2 -\dfrac{8}{3}x -\dfrac{31}{32}$
+
+<br/>
+
+L'équation caractéristique est $x^2 +3x - 4$ et le calcul du discriminant donne $9 + 16 = 25$. Les solutions de cette équation sont donc réelles et valent $\dfrac{-3 \pm 5}{2}$ soit encore $1$ ou $-4$.
+
+On en déduit que les solutions de l'équation homogène associée sont de la forme $y = \lambda . e^{x} + \mu . e^{-4 x}$ où $(\lambda \v \mu) \in \R^2$.
+
+L'ensemble des solutions de l'équation homogène est $S_H = \{  y : x \mapsto \lambda . e^{x} + \mu . e^{-4 x} \mid (\lambda \v \mu) \in \R^2\}$
+
+<br/>
+
+Finalement, les folutions de l'équation différentielle sont toutes les fonctions de la forme $y = \lambda . e^{x} + \mu . e^{-4 x} -\dfrac{1}{4}x^2 -\dfrac{8}{3}x -\dfrac{31}{32}$ où $(\lambda \v \mu) \in \R^2$
+
+L'ensemble des solutions de l'équation différentielle est $S = \{  y : x \mapsto \lambda . e^{x} + \mu . e^{-4 x} -\dfrac{1}{4}x^2 -\dfrac{8}{3}x -\dfrac{31}{32} \mid (\lambda \v \mu) \in \R^2\}$
+</Hideable>
