@@ -33,7 +33,7 @@ $\cd$ Si $\Delta \neq 0$, on note $\delta$ une racine complexe de $\Delta$. $(E)
 <Hideable type='démonstration' titre=''>
 
 $ax^2 + bx + c = 0 \ssi a(x^2 + \dfrac{b}{a}x) + c = 0$. 
-On a $x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \dfrac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}$. En injectant ce résultat dans le premier, on a :
+On a $x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \frac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}$. En injectant ce résultat dans le premier, on a :
 
 $ax^2 + bx + c = 0 \ssi a\Big((x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}\Big) + c = 0 \ssi a(x + \dfrac{b}{2a})^2 - \cancel{a}.\dfrac{b^2}{4\cancel{a}.a} + c = 0 \ssi (x + \dfrac{b}{2a})^2 = \dfrac{b^2 - 4ac}{4a^2} $.
 
@@ -50,7 +50,7 @@ Dans le cas où $a\v b \v c \in \R$, on a $a\overline{z}^2 + b\overline{z} + c =
 
 Soit $\suitedefN{u_n}$ est linéaire d'ordre $2$ telle que $u_{n+2} = a.u_{n+1} + b.u_n$ pour tout $n \in \N$ et où $a$ et $b$ sont des réels.
 
-On appelle $(E) : r^2 = ar + b$ l'équation quaractéristique de la suite $\suitedefN{u_n}$.
+On appelle $(E) : r^2 = ar + b$ l'équation caractéristique de la suite $\suitedefN{u_n}$.
 
 $\cd$ si $(E)$ a deux racines réelles $r_1$ et $r_2$, alors il existe $\lambda$ et $\mu$ des réels tels que $u_n = \lambda r_1^n + \mu r_2^n$ pour tout $n$ entier.
 
@@ -61,5 +61,60 @@ $\cd$ si $(E)$ a deux racines complexes $r.e^{i\alpha}$ et $r.e^{-i\alpha}$, alo
 
 <Exercice titre='suite de fibonacci'>
 
-Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{cases} u_{n+2} = u_{n+1} + u_n \\ u_0 = u_1 = 1\end{cases}$
+Donner l'expression explicite de la suite $\suitedefN{u_n}$ telle que : $\begin{cases} u_{n+2} = u_{n+1} + u_n \\ u_0 = 0 \\ u_1 = 1\end{cases}$
 </Exercice>
+
+<Hideable type='solution' titre=''>
+
+On trouve les solutions de l'équation caractéristique $(E) : x^2 - x - 1 = 0$. 
+
+On calcule le discriminant $(-1)^2 - 4 \times 1 \times (-1) = 5$.
+
+On en déduit les solutions : $x_{\pm} = \dfrac{1 \pm \sqrt{5}}{2}$. On note $\phi = \dfrac{1 + \sqrt{5}}{2}$ et $\overline{\phi} = \dfrac{1 - \sqrt{5}}{2}$.
+
+<br/>
+
+On en déduit qu'il existe $\lambda \v \mu$ des réels tels que $ \forall n \in \N \v u_n = \lambda \phi^n + \mu \overline{\phi}^n$.
+
+En utilisant les deux premiers termes, on a 
+
+$$
+\begin{cases} 
+    \lambda + \mu = 0
+    \\ 
+    \lambda \phi + \mu \overline{\phi} = 1 
+\end{cases}
+$$
+
+Il suit que :
+$$
+\begin{cases} 
+    \mu = - \lambda 
+    \\ 
+    \lambda \phi - \lambda \overline{\phi} = 1 
+\end{cases}
+$$
+
+Puis, 
+
+$$
+\begin{cases} 
+    \mu = 1 - \lambda  
+    \\ 
+    \lambda (\phi - \overline{\phi})  = 1
+\end{cases}
+$$
+
+On remarque que $\phi - \overline{\phi} = \sqrt{5}$, on a ensuite 
+
+$$
+\begin{cases} 
+    \mu = - \dfrac{1}{\sqrt{5}} 
+    \\
+    \lambda  = \dfrac{1}{\sqrt{5}} 
+\end{cases}
+$$
+
+On a donc $u_n = \dfrac{1}{\sqrt{5}} (\phi + \overline{\phi})$ pour tout $n \in \N$.
+
+</Hideable>

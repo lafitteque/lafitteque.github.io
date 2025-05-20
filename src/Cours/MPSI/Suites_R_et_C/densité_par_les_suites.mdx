@@ -13,15 +13,25 @@ Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in
 
 <Hideable type='démonstration' titre=''>
 
-**Sens direct :** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul, $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. Construisons une suite $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
+$\cd$ **Sens direct ($\Rightarrow$):** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul.
+
+On sait que $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. 
+
+Construisons une suite $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
 
 On choisit donc $x_n \in A \bigcap \defoo{x - \dfrac{1}{n} }{x + \dfrac{1}{n}}$, donc $ x - \dfrac{1}{n} \leqslant x_n \leqslant x + \dfrac{1}{n}$. Par encadrement et passage à la limite, la suite converge vers $x$.
 
-**Sens réciproque :** Soient $a,b$ des réels strictemement ordonnés, montrons que $A \bigcap \defoo{a}{b} \neq \empty$.
+<br/>
+
+$\cd$ **Sens réciproque ($\Leftarrow$):** Soient $a,b$ des réels strictemement ordonnés. 
+
+Montrons que $A \bigcap \defoo{a}{b} \neq \empty$.
+
 Soit $x \in \defoo{a}{b}$ et soit $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
 
 Soit $\epsilon = \dfrac{\min(x-a \v b-x)}{2}$. Il existe $N \in \N$ tel que $n \geqslant N \Rightarrow |x_n - x| \leqslant \epsilon$ et donc $x_n \in A \bigcap \defoo{a}{b}$.
 </Hideable>
+
 
 <Remarque titre=''>
 C'est en fait la définition de la densite valable même dans $\C$ ou dans un sous-ensemble de $\C$.

@@ -30,9 +30,9 @@ Soit $A$ une primitive de $a$.
 $y $ vérifie $\cC  \ssi \forall x \in I \v y'(x) + a(x).y(x) = g(x) \ssi \forall x \in I \v y'(x).e^{A(x)} + a(x).e^{A(x)}.y(x) = g(x).e^{A(x)}$
 
 Donc 
-$ y $ vérifie $\cC \ssi (y.e^A)' = g.e^A$ et $y(x_0) = y_0$ où $e^A$ désigne $ x \mapsto e^{A(x)}$ et $y(x_0) = y_0$
+$ y $ vérifie $\cC \ssi (y.e^A)' = g.e^A$ où $e^A$ désigne $ x \mapsto e^{A(x)}$ et $y(x_0) = y_0$
 
-D'après le théorème fondamental de l'analyse, il existe une unique fonction $F$ de $I$ dans $\R$ telle que $F' = g.e^A$ et $F(x_0) = y(x_0).e^{A(x_0)}$.
+D'après le théorème fondamental de l'analyse, il existe une unique fonction $F$ de $I$ dans $\R$ telle que $F' = g.e^A \ET F(x_0) = y(x_0).e^{A(x_0)}$. On en déduit que $F = y.e^A$ puisqu'elle vérifie les mêmes propriétés.
 
 D'où : 
 $ y $ vérifie $\cC \ssi y.e^A = F \ssi y = F.e^{-A}$ où $e^{-A} : x \mapsto e^{-A(x)}$
