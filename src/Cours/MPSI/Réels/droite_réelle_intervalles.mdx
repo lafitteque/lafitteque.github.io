@@ -100,3 +100,34 @@ On a donc $\defof{- \infty}{M}  \subset I \subset \defof{- \infty}{M}$. La deuxi
 
 $\cd$ autres cas : les autres cas ne seront pas traités car analogues
 </Hideable>
+
+<Item type='proposition' titre="réunion et intersection d'intervalles">
+
+$\cd$ La réunion de deux intervalles $I$ et $J$ est un intervalle si et seulement si $I \bigcap J \neq \empty$
+
+$\cd$ L'intersection de deux intervalles est un intervalle.
+
+<br/>
+
+Si les deux intervalles sont ouvers (resp. fermés), l'intersection et la réunion le sont également.
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+**Schéma des preuves :**
+
+$\cd$ Pour l'intersection, il faut considérer le minimum $m$ et le maximum $M$ des quatre bornes (éventuellements infinies) s'il y a intersection et il suit que $I \bigcup J = \defff{m}{M}$ (où les bornes sont éventuellements ouvertes et/ou infinies). S'il n'y a pas d'intersection, alors il y a un nombre entre $m$ et $M$ qui n'est pas dans $I \bigcup J$ (si les bornes sont $a \leqslant b \leqslant c \leqslant d$, prendre un nombre strictement entre $b$ et $c$) ce qui est prouve que ce n'est pas un intervalle
+
+$\cd$ Pour l'intersection, si l'on note $I = \defff{a}{b}$ et $J = \defff{c}{d}$ (à l'ouverture des bornes près), il faut distinguer les cas suivants : 
+
+<Indent>
+
+$\bullet$ $a \leqslant b < c \leqslant d$ qui donne une intersection vide
+
+$\bullet$ $a \leqslant b = c \leqslant d$ qui donne une intersection réduite à $c$
+
+$\bullet$ $a  \leqslant c \leqslant d \leqslant b$ qui donne $I \bigcap J = \defff{c}{d}$
+
+Tous les cas n'ont pas été traités mais certains sont symétriques dans le sens où il suffit d'inverser les rôles de $I$ et de $J$. D'autres cas consistent simplement à différencier les inégalités strictes ou larges, mais cela change juste le fait que les bornes soient ouvertes ou fermées.
+</Indent>
+</Hideable>

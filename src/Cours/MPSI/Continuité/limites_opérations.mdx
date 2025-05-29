@@ -56,7 +56,7 @@ Le cas $- \infty$ est analogue en remplaçant $A > 0$ par $A < 0$ mais égalemen
 
 <Hideable type='solution' titre=''>
 
-1/)
+1\)
 Remarquons déjà que si $x \neq 1$ , alors $f(x) = \dfrac{(x-1)(x+1)}{x-1} = x+1$. 
 
 **Analyse :** Supposons qu'il y ait un $\eta$ qui convienne.
@@ -75,7 +75,7 @@ On souhaite trouver un $\eta$ qui vérifie que : $|x-3| <  \eta \Rightarrow |g(x
 
 **Analyse :** si l'on suppose que l'on a un tel $\eta$, alors $|x^2 - 9| = |x-3| . |x + 3| \leqslant \eta . \underbrace{|x + 3|}_{= |x-3 + 3 + 3|} \leqslant \eta^2 . 6$.
 
-Mais alors $\eta^2 . 6 \leqslant \epsilon$ d'où $\eta \leqslant \sqrt{\dfrac{\epsilon}{6}}$ par croissance de la racine carrée.
+Mais alors $\eta^2 . 6 \leqslant \epsilon$ permettrait d'obtenir l'égalité ce qui mène à $\eta \leqslant \sqrt{\dfrac{\epsilon}{6}}$ par croissance de la racine carrée.
 
 **Synthèse :** on vérifie par les mêmes inégalités que $\eta = \sqrt{\dfrac{\epsilon}{6}}$ convient.
 
@@ -126,7 +126,7 @@ Par différence, $ - 2 \epsilon < l - l' < 2 \epsilon$. Ceci étant vrai pour to
 Soient $\lambda$ et $\mu$ deux réels. Si $\limm{x \to a} f(x) = l$ et $\limm{x \to a} g(x) = l'$, on a :
 
 $$
-\limm{x \to a} \Big(\lambda . f(x) + \mu . g(x) \Big) = \lambda . \limm{x \to a} f(x) + \mu . \limm{x \to a} g(x)
+\limm{x \to a} \Big(\lambda . f(x) + \mu . g(x) \Big) = \lambda . \limm{x \to a} f(x) + \mu . \limm{x \to a} g(x) = \lambda . l + \mu l'
 $$
 </Item>
 
@@ -235,7 +235,7 @@ On remarque que l'hypothèse de majoration de $\epsilon$ importe peu. En effet, 
 Si $h$ est définie sur $J$ un intervalle de $\R$ tel que $l \in J$, que $\limm{x \to a} f(x) = l$ et que Si $\limm{x \to l} h(x) = l'$, alors :
 
 $$
-\limm{x \to a} h \circ f (x)  = l'
+\limm{x \to a} (h \circ f) (x)  = \limm{y \to f(a)} h (y) =  l'
 $$
 </Item>
 
@@ -251,7 +251,7 @@ $$
 \end{cases}
 $$
 
-On remarque que choisit $\epsilon_f = \eta_h$ convient. D'où le résultat.
+On remarque que choisir $\epsilon_f = \eta_h$ convient. D'où le résultat.
 
 </Hideable>
 
@@ -325,7 +325,7 @@ Il s'agit de la propriété précédente appliquée à $g : x \mapsto M$ défini
 
 Soit $J \subset I$ un intervalle ouvert contenant $a$ et $h$ définie sur $I$. On suppose que $\limm{x \to a} f(x) = \limm{x \to a} h(x) = l \in \R$.
 
-Si : $\forall x \in J \v f(x) \leqslant g(x) \leqslant h(x)$, alors $g(x)$ tend vers $l$ quand $x$ tend vers $a$.
+Si $\forall x \in J \v f(x) \leqslant g(x) \leqslant h(x)$, alors $g(x)$ tend vers $l$ quand $x$ tend vers $a$.
 
 </Item>
 
@@ -364,7 +364,7 @@ On a bien l'encadrement voulu, d'où : $\limm{x \to a} g(x) = l$
 
 Supposons que $\limm{x \to b} f(x) = + \infty$ et que : $f(x) \leqslant g(x) \v \forall x \in I$. 
 
-On a : $\limm{x \to b} g(x) = + \infty$
+On a $\limm{x \to b} g(x) = + \infty$
 
 </Item>
 
@@ -386,9 +386,10 @@ On suppose que $I = \R$
 
 Si $f$ est croissante alors une et une seule des deux propriétés est vraie:
 
-$\cd$ $\limm{x \to + \infty} = + \infty$
+$\cd$ $\limm{x \to + \infty} f(x) = + \infty$
 
 $\cd$ $f$ converge en $+ \infty$.
+
 </Item>
 
 <Hideable type='démonstration' titre=''>
@@ -397,13 +398,9 @@ On procède par disjonction de cas :
 
 $\cd$ **Cas 1 - $f$ est majorée :** on note $l$ la quantité $\sup_{x \in \R}(f(x))$.
 
-Par caractérisation de la borne supérieure, il existe $\suitedefN{x_n} \in \R^{\N}$ telle que $f(x_n) \limton l$.
+Soit $\epsilon > 0 $, il existe $A \in \R$ tel que $l - \epsilon \leqslant f(A) < l$ (car sinon $l - \epsilon < l$ serait un majorant plus petit que la borne supérieur ce qui est absurde).
 
-Soit $\epsilon > 0 $, il existe $N \in \N$ tel que, si $n > N$, alors $|f(x_n) - l| < \epsilon$. 
-
-Mais donc, si $x > x_n$, $l - \epsilon \leqslant f(x_n) \leqslant f(x) \leqslant l$.
-
-On a donc $A = x_n$ qui convient pour la définition de la limite en $+ \infty$.
+Mais donc, si $x > A$, $l - \epsilon \leqslant f(A) \leqslant f(x) \leqslant l$ par croissance de $f$.
 
 $\cd$ **Cas 2 - $f$ n'est pas majorée :** la définition de la majoration s'écrit : $\exists M \in \R \mid \forall x \in \R \v f(x) \leqslant M$.
 

@@ -1,15 +1,15 @@
 <div class="m-auto">
-    <div id="sketch-holder"></div>
+    <div id="sketch-holder-continuite"></div>
 </div>
 <script type="module" is:inline>
-    import {Graph, MathFunction, GraphInfo} from "/scripts/graphClasses.js";
+    import { Graph, MathFunction, GraphInfo } from "/scripts/graphClasses.js";
     var myGraph;
     var info;
     var epsilon = 0.5;
 
     function setup() {
         var canvasDOM = createCanvas(200, 40);
-        var holder = document.getElementById("sketch-holder");
+        var holder = document.getElementById("sketch-holder-continuite");
         holder.appendChild(canvas);
         canvasDOM.mouseClicked(customMouseClicked);
         background(0);
@@ -19,7 +19,9 @@
 
     function customMouseClicked() {
         var firstTime = height === 40;
-        var a = firstTime ? 2 : myGraph.graphToCoord(mouseX, mouseY)[0];
+        var a = firstTime
+            ? 2
+            : max(-1, min(3, myGraph.graphToCoord(mouseX, mouseY)[0]));
 
         resizeCanvas(
             min(Math.floor((window.innerWidth * 0.7) / 2) * 2, 900),
@@ -31,26 +33,51 @@
         myGraph = new Graph(info);
 
         noStroke();
-        fill(100,100,100)
+        fill(100, 100, 100);
         rect(
             info.offset + info.tickOffset,
-            myGraph.coordToGraph(0,carre(a) + epsilon)[1],
+            myGraph.coordToGraph(0, carre(a) + epsilon)[1],
             info.width2 - info.tickOffset,
-            info.unitStepY * 2 * epsilon
-        )
+            info.unitStepY * 2 * epsilon,
+        );
 
+        // Main plot : axes + function
         myGraph.drawGraphAxes();
         myGraph.plotFunction(carre);
 
-        
-        myGraph.functions.map((f) =>
-            f.visualisationContinuite(info, myGraph, a, epsilon),
+        // Double arrow with 2ε
+        var f_a = carre(a);
+        var arrowOffset = 1;
+        myGraph.plotArrow(
+            a + arrowOffset,
+            f_a - epsilon / 3,
+            a + arrowOffset,
+            f_a - epsilon,
+        );
+        myGraph.plotArrow(
+            a + arrowOffset,
+            f_a + epsilon / 3,
+            a + arrowOffset,
+            f_a + epsilon,
+        );
+        strokeWeight(1);
+        fill(50, 255, 50);
+        stroke(50, 255, 50);
+        textSize(16);
+        text(
+            "2ε",
+            myGraph.coordToGraph(a + arrowOffset - 0.05, 0)[0],
+            myGraph.coordToGraph(0, f_a - 0.1)[1],
         );
 
+        // Plot Visualisation
+        myGraph.functions.map((f) =>
+            f.visualisationContinuite(info, myGraph, a, epsilon, color = [230,40,40]),
+        );
     }
 
     function carre(x) {
-        return x * x;
+        return 0.5 * x * x;
     }
 
     window.setup = setup;

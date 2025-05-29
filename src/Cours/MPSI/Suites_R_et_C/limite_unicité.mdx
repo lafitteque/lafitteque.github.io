@@ -5,6 +5,38 @@ import Item from '@components/Item.astro'
 import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
+import IllustrationLimiteSuite from '@components/Graph/limite_suite.astro'
+
+
+<Fil>
+
+Nous allons créer la définition de limite. Pour cela, utilisons l'exemple cliquable ci-dessous pour comprendre comment faire.
+
+Tout d'abord, on se donne une suite qui a l'air de se rapprocher à terme de $1$. On dira que les termes de la suite sont $\epsilon$-proches de $1$ quand ils valent $1$ à $epsilon$ près.
+
+<br/>
+
+Sur l'exemple ci-dessous, on peut cliquer à un rang $n$ et un programme calcule un nombre $\epsilon$ qui est le plus grand écart entre un terme de la suite de rang au moins $n$ et $1$ (la limite).
+
+<br/>
+Cliquez sur l'exemple afin d'experimenter avec.
+
+<br/>
+
+<IllustrationLimiteSuite/>
+
+<br/>
+
+On remarque que, plus on prend $n$ grand, plus le $\epsilon$ calculé est petit et donc plus les termes de la suite se "resserrent" autour de la limite. 
+
+Converger, c'est dire que le $\epsilon$ sera aussi petit que l'on veut si l'on va assez loin dans les termes de la suite.
+
+Par exemple, si on prend $\epsilon = 0.01$, il existe un rang à partir duquel les termes de la suite sont $\epsilon$-proches de la limite.
+
+<br/>
+
+C'est justement là la définition de la convergence que nous allons choisir : une suite converge vers $l$ si pour tout $\epsilon >0$ il existe un rang à partir duquel les termes sont $\epsilon$-proches de $l$.
+</Fil>
 
 <Item type='definition' titre='convergence'>
 
@@ -29,6 +61,10 @@ On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
 <br/>
 
 S'il existe $l \in \C$ tel que $\suitedefN{u_n}$ tend vers $l$, on dit que $\suitedefN{u_n}$ est convergente de limite $l$. Sinon, on dit qu'elle diverge.
+
+<br/>
+
+Pour converger vers l'infini, on utilisera la même logique sauf qu'on ne peut pas être $\epsilon$-proche de l'infini. On remplacera simplement cela par : dépasser $A>0$ à partir d'un certain rang. 
 </Item>
 
 

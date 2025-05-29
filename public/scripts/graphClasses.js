@@ -45,9 +45,8 @@ export class MathFunction {
             xCount += delta;
         }
         for (let x = a - xCount; x < a + xCount - 2 * delta; x += 2 * delta) {
-            stroke(color);
+            stroke(100,100,255);
             strokeWeight(2);
-            line(x, this.f(x), x + 2 * delta, this.f(x + 2 * delta));
             var current = graph.coordToGraph(x, this.f(x));
             var next = graph.coordToGraph(x + 2 * delta, this.f(x + 2 * delta));
             line(current[0], current[1], next[0], next[1]);
@@ -77,6 +76,32 @@ export class Graph {
 
     graphToCoord(x, y) {
         return [(x - this.info.origin[0]) / this.info.unitStepX, -(y + this.info.origin[1]) / this.info.unitStepY];
+    }
+
+    plotArrow(xStart, yStart, xFinish, yFinish, color = "white") {
+        var startCoord = this.coordToGraph(xStart, yStart);
+        var finishCoord = this.coordToGraph(xFinish, yFinish);
+        var offset = this.info.offset
+
+        var unitVector = createVector(finishCoord[0] - startCoord[0], finishCoord[1] - startCoord[1]).normalize()
+        var normalUnitVector = createVector(finishCoord[0] - startCoord[0], finishCoord[1] - startCoord[1]).normalize().rotate(1.57);
+
+        var arrowEndLinePosition1 = unitVector.copy();
+        arrowEndLinePosition1.mult(-offset).add(normalUnitVector.copy().mult(5));
+
+        var arrowEndLinePosition2 = unitVector.copy();
+        arrowEndLinePosition2.mult(-offset).sub(normalUnitVector.copy().mult(5));
+
+        push();
+        stroke(50,255,50);
+        strokeWeight(2);
+        //Main line
+        line(startCoord[0], startCoord[1], finishCoord[0], finishCoord[1]);
+
+        // Arrows
+        line(finishCoord[0], finishCoord[1], finishCoord[0] + arrowEndLinePosition1.x, finishCoord[1] + arrowEndLinePosition1.y);
+        line(finishCoord[0], finishCoord[1], finishCoord[0] + arrowEndLinePosition2.x, finishCoord[1] + arrowEndLinePosition2.y);
+        pop();
     }
 
     plotPoint(x, y, pointStyle = "x", color = "white", weight = "2") {
@@ -184,6 +209,40 @@ export class Graph {
         var unitStepY = info.unitStepY;
         var origin = info.origin;
 
+        if (gridSubdivision !== 0) {
+            var subUnitStepX =
+                (width2 - 2 * tickOffset) / ((maxX - minX) * gridSubdivision);
+            var subUnitStepY =
+                (height2 - 2 * tickOffset) / ((maxY - minY) * gridSubdivision);
+
+            for (
+                let i = minX * gridSubdivision;
+                i <= maxX * gridSubdivision;
+                i++
+            ) {
+                if (i === 0) {
+                    continue;
+                }
+                var xPos = origin[0] + i * subUnitStepX;
+                stroke(150);
+                strokeWeight(1);
+                line(xPos, tickOffset, xPos, height - tickOffset);
+            }
+            for (
+                let i = minY * gridSubdivision;
+                i <= maxY * gridSubdivision;
+                i++
+            ) {
+                if (i === 0) {
+                    continue;
+                }
+                var yPos = origin[1] - i * subUnitStepY;
+                stroke(150);
+                strokeWeight(1);
+                line(tickOffset, yPos, width - tickOffset, yPos);
+            }
+        }
+
         push();
         stroke(255);
         strokeWeight(2);
@@ -213,6 +272,7 @@ export class Graph {
             );
             strokeWeight(1);
             fill("white")
+            textSize(16);
             text(i.toString(), xPos - 5, origin[1] + tickLength + 15);
         }
         for (let i = minY; i <= maxY; i++) {
@@ -230,44 +290,11 @@ export class Graph {
             );
             strokeWeight(1);
             fill("white")
+            textSize(16);
             text(i.toString(), origin[0] - tickLength - 15, yPos);
         }
 
-        if (gridSubdivision === 0) {
-            return;
-        }
-
-        var subUnitStepX =
-            (width2 - 2 * tickOffset) / ((maxX - minX) * gridSubdivision);
-        var subUnitStepY =
-            (height2 - 2 * tickOffset) / ((maxY - minY) * gridSubdivision);
-
-        for (
-            let i = minX * gridSubdivision;
-            i <= maxX * gridSubdivision;
-            i++
-        ) {
-            if (i === 0) {
-                continue;
-            }
-            var xPos = origin[0] + i * subUnitStepX;
-            stroke(150);
-            strokeWeight(1);
-            line(xPos, tickOffset, xPos, height - tickOffset);
-        }
-        for (
-            let i = minY * gridSubdivision;
-            i <= maxY * gridSubdivision;
-            i++
-        ) {
-            if (i === 0) {
-                continue;
-            }
-            var yPos = origin[1] - i * subUnitStepY;
-            stroke(150);
-            strokeWeight(1);
-            line(tickOffset, yPos, width - tickOffset, yPos);
-        }
+        
     }
 }
 
