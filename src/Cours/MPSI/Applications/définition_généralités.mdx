@@ -38,15 +38,15 @@ En théorie , fonction et application ne sont pas strictement identiques mais on
 
 <Hideable type='exemple' titre='différentes fonctions et différentes manières de les introduire'>
 
-1\) Définitir en descrivant : soit $f$ la fonction qui à un réel assossie son carré.
+1\) **Définir en décrivant :** soit $f$ la fonction qui à un réel assossie son carré.
 
 <br/>
 
-2\) Définir par le calcul : soit $f$ la fonction définie sur $\defoo{2}{7}$ telle que $f(x) = \dfrac{1}{(x-2)(x-7)}$.
+2\) **Définir par le calcul :** soit $f$ la fonction définie sur $\defoo{2}{7}$ telle que $\forall x \in \defoo{2}{7} \v f(x) = \dfrac{1}{(x-2)(x-7)}$.
 
 <br/>
 
-3\) Définir en tant qu'application : Soit $f : \begin{cases} \deffo{-1}{1} \rightarrow \R \\[-0.5em] \\ x \mapsto \dfrac{\sqrt{1+x}}{x-1} \end{cases}$
+3\) **Définir en tant qu'application :** Soit $f : \begin{cases} \deffo{-1}{1} \rightarrow \R \\[-0.5em] \\ x \mapsto \dfrac{\sqrt{1+x}}{x-1} \end{cases}$
 
 <br/>
 
@@ -74,14 +74,14 @@ $$
 
 <Item type='definition' titre="restriction d'une fonction">
 
-Soient $G$ un sous-ensemble de $E$, $F$ un ensemble et $f$ une fonction de $G$ dans $F$. 
+Soient $G$ un sous-ensemble de $E$, $F$ un ensemble et $f$ une fonction de $E$ dans $F$. 
 
-On note $f_{|A} : \begin{cases} G \rightarrow F \\ x \mapsto f(x) \end{cases}$. On dit que l'on restreint $f$ à $G$.
+On note $f_{|G} : \begin{cases} G \rightarrow F \\ x \mapsto f(x) \end{cases}$. On dit que l'on restreint $f$ à $G$.
 </Item>
 
 <Item type='definition' titre="prolongement d'une fonction">
 
-Soient $E$ et $F$ deux ensembles, $A$ un ensemble tel que $E \subset A$ et $f$ une fonction de $E$ dans $f$. 
+Soient $E$ et $F$ deux ensembles, $A$ un ensemble tel que $E \subset A$ et $f$ une fonction de $E$ dans $F$. 
 
 On dit que $g$ définie de $A$ dans $F$ est un prolongement de $f$ si $g_{|E} = f$.
 </Item>
@@ -113,7 +113,7 @@ $\cd$ La fonction logarithme népérien : $ \ln : \begin{cases} \R_+^*  \rightar
 </Hideable>
 
 <Item type='definition' titre='composition de fonctions' searchDesc="applications">
-Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E\v F$ et $G$ sont trois ensembles. On définit la composée de $g$ et $f$ dite "$f$ rond $g$" ainsi :
+Soient $f$ de $E$ dans $F$ et $g$ de $F$ dans $G$ deux fonctions où $E\v F$ et $G$ sont trois ensembles. On définit la composée de $g$ et $f$ dite "$g$ rond $f$" ainsi :
 
 $ g \circ f : \begin{cases} E \rightarrow  G \\ x \mapsto \Big(g \circ f\Big) (x) = g\Big( f(x) \Big) \end{cases} $
 </Item>

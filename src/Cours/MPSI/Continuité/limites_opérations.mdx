@@ -5,7 +5,37 @@ import Item from '@components/Item.astro'
 import Indent from '@components/Indent.astro'
 import Fil from '@components/Fil.astro'
 
-import IllustrationContinuite from '@components/Graph/continuité.astro'
+import IllustrationLimite from '@components/Graph/continuité.astro'
+
+
+<Fil>
+
+Essayons de définir la limite d'une fonction en un point $a$. Nous allons nous baser sur la notion déjà vue dans le chapitre sur les suites : être $\epsilon$-proche de la limite $l$.
+
+Si on a $l \in \R$ et $a \in \R$. Dire que $f$ converge en $a$ vers $l$, c'est dire que $f(x)$ est $\epsilon$-proche de $l$ en choisissant $x$ suffisamment proche de $a$ (mais différent de $a$ parce qu'il est évident que $f(a)$ est $\epsilon$-proche de $l$ si $l = f(a)$).
+
+<br/>
+
+On représente sur l'exemple interactif ci-dessous le calcul de telles zones autour de $a$ qui donnent images $\epsilon$-proches de $l = f(a)$. On a choisi $\epsilon = 1$.
+
+<br/>
+
+<IllustrationLimite/>
+
+<br/>
+
+On remarque que, plus la courbe est "plate", plus la plage autour de $a$ est grande. Inversement, plus la pente est grande, plus la plage autour de $a$ est petite.
+
+En clair, s'il y a un saut, la plage sera infiniement petite si l'on prend $\epsilon$ suffisamment petit. On comprend donc que cette approche nous permet de distinguer quand il y a un "saut" dans le tracé de la fonction.
+
+<br/>
+
+On construit ainsi la définition de la limite de $f$ en $a$ qui, encore une fois, demande à vérifier d'être $\epsilon$-proche pour tout choix de $\epsilon$ :
+
+pour tout $\epsilon > 0$, il existe un intervalle ouvert contenant $a$ dont les images par $f$ sont toutes $\epsilon$-proches de $l$.
+
+</Fil>
+
 
 <Item type='definition' titre="limite finie d'une fonction en un point" searchDesc="converge">
 
@@ -19,7 +49,6 @@ Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a}
 
 </Item>
 
-<IllustrationContinuite/>
 
 <Remarque titre=''>
 

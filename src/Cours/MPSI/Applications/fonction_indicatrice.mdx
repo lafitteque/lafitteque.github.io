@@ -13,7 +13,7 @@ Soit $A$ un sous-ensemble de $E$.
 On pose la fonction suivante nomée fonction indicatrices de $A$ sur $E$ :
 
 $$
-\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 0 \text{ si } x \notin A \\ 1 \text{ sinon} \end{cases} \end{cases}
+\indicatrice_A : \begin{cases} E \rightarrow \{0 \v 1\} \\ \\[-0.5em] x \mapsto \begin{cases} 1 \text{ si } x \in A \\ 0 \text{ sinon} \end{cases} \end{cases}
 $$
 </Item>
 
@@ -27,11 +27,11 @@ Soient $A$ et $B$ deux sous-ensembles de $E$. On a :
 
 $\cd$ $\indicatrice_{A \bigcup B} = \indicatrice_{A} + \indicatrice_{B} - \indicatrice_{A}.\indicatrice_{B}$
 
-$\cd$ $\indicatrice_{A \bigcap B} = \indicatrice_{A}.\indicatrice_{B}$
+$\cd$ $\indicatrice_{A \bigcap B} = \indicatrice_{A} . \indicatrice_{B}$
 
-$\cd$ $\indicatrice_{A \setminus B} = \indicatrice_{A} - \indicatrice_{A}\indicatrice_{B}$
+$\cd$ $\indicatrice_{A \setminus B} = \indicatrice_{A} - \indicatrice_{A} . \indicatrice_{B}$
 
-$\cd$ $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) \indicatrice_{B} (y)$ 
+$\cd$ $\indicatrice_{A \times B} (x,y) = \indicatrice_{A}(x) . \indicatrice_{B} (y)$ 
 </Item>
 
 <Hideable type='démonstration' titre=''>

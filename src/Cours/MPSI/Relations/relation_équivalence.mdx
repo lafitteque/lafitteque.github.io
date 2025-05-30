@@ -31,10 +31,26 @@ On se donne un ensemble $A$ et $B \subset \cP(A)$. Montrer que la relation "êtr
 </Exercice>
 
 
+<Hideable type='solution' titre=''>
+
+$\cd$ **Reflexivité :** un ensemble $C \in B$ est en bijection avec lui-même par la fonction $id_C$ par exemple.
+
+$\cd$ **Symétrie :** soient $C \v D \in B$ et $f$ une bijection de $C$ dans $D$ qui justifie $C \cR D$. On a $f^{-1}$ qui est une bijection de $D$ dans $C$ et donc $D \cR C$.
+
+$\cd$ **Transitivité :** soient $C \v D \v E \in B$ tels que $C \cR D \ET D \cR E$ par les fonctions $f$ et $g$. Alors $C \cR E$ par la fonction $g \circ f$. 
+</Hideable>
+
+
+<br/>
+
+Etudions maintenant en particulier deux relations arithmétiques : la divisibilité et la congruence.
+
+<br/>
+
 <Item type='definition' titre='divisibilité'>
 Soient $n$ et $m$ deux entiers. 
 
-On dit que $n$ divise $m$ (que l'on note souvent $n \mid m$) si :
+On dit que $n$ divise $m$ (que l'on note souvent $n \divise m$) si :
 
 $$
 \exists k \in \Z \mid m = k.n
@@ -43,8 +59,14 @@ $$
 
 <Item type='consequence' titre='inégalité dans les positifs' searchDesc="relation binaire">
 
-Si $(n\v m) \in \N^2$, alors $n \mid m \Rightarrow n \leqslant m$
+Si $(n\v m) \in \N^2$, alors $n \divise m \Rightarrow n \leqslant m$
 </Item>
+
+<Item type='proposition' titre=''>
+
+La divisibilité est une relation d'équivalence sur $\N$ mais pas sur $\Z$ (démonstration dans le chapitre d'arithmétique).
+</Item>
+
 
 <Item type='definition' titre='congruence dans les entiers'>
 Soient $n\v m \v q$ trois entiers relatifs où $q \neq 0$. 
@@ -55,8 +77,9 @@ $$
 m-n = k.q
 $$
 
-C'est à dire si $q$ divise $m-n$.
+Soit, dit autrement, $q \divise m-n$. On note $\congru{m}{n}{q}$.
 </Item>
+
 
 <Item type='definition' titre='congruence dans les réels' searchDesc="modulo, relation binaire">
 Soient $a\v b \v x$ trois réels où $x \neq 0$. 
@@ -67,5 +90,14 @@ $$
 b-a = k.x
 $$
 
-C'est à dire si $x$ divise $b-a$.
+Soit, dit autrement, $q \divise m-n$. On note $\congru{a}{b}{x}$.
 </Item>
+
+
+<Item type='proposition' titre='la relation de congruence'>
+
+La congruence modulo un entier ou un réel est une relation d'équivalence.
+
+La démonstration sera faite dans le chapitre sur l'arithmétique.
+</Item>
+

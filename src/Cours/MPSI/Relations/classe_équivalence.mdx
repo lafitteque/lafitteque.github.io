@@ -42,9 +42,9 @@ Si deux éléments ne sont pas en relation, alors leurs classes d'équivalence s
 
 <Hideable type='démonstration' titre=''>
 
-$\cd$ $i \Rightarrow ii$ : supposons $x$ et $y$ sont en relation. Par transitivité, tout élément en relation avec $x$ est en relation avec $y$ et inversement. D'où le sens direct de l'implication.
+$\cd$ $i \Rightarrow ii$ : supposons $x$ et $y$ en relation. Par transitivité, tout élément en relation avec $x$ est en relation avec $y$ et inversement. D'où le sens direct de l'implication.
 
-$\cd$ $ii \Rightarrow iii$  : c'est évident car $x \in \cC_x$ donc $\cC_x \bigcap \cC_y = \cC_x \neq \empty$
+$\cd$ $ii \Rightarrow iii$  : c'est évident car $x \in \cC_x$ par reflexivité de la relation. Donc $\cC_x \bigcap \cC_y = \cC_x \neq \empty$
 
 $\cd$ $iii \Rightarrow i$ : Si $\cC_x \bigcap \cC_y \neq \empty$, il existe $z \in \cC_x \bigcap \cC_y$. Donc $x \cR z $ et $z \cR y$ d'où $x \cR y$ par transitivité.
 
@@ -61,7 +61,7 @@ Soient $X$ un ensemble contenant un élément par classe d'équivalence distinct
 
 <br/>
 
-D'une part, $\bigcup \limits_{x \in X} \cC_x \subset E$ car pour tout $x$, $\cC_x \subset X$.
+D'une part, $\bigcup \limits_{x \in X} \cC_x \subset E$ car pour tout $x$, $\cC_x \subset E$.
 
 <br/>
 
