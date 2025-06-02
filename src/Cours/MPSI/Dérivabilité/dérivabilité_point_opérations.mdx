@@ -41,16 +41,16 @@ On dit que $f$ est dérivable à gauche (resp. à droite) en $a$ si $\limm{\subs
 
 <Item type='proposition' titre='caractérisation de la dérivabilité'  searchDesc="en a d'une fonction">
 
-$f$ est dérivable en $a$ si et seulement si il existe $C \in \R$ et une fonction $\epsilon$ définie sur $J\setminus \{ 0\} $ (où $J$ est un intervalle ouvert contenant $0$) et telle que $\limm{\substack{x \to 0 \\ x \neq 0}} \epsilon(h) = 0$ et : $\forall x \in J\setminus \{ 0\} \v f(a + h) = f(a) + C.h + h.\epsilon(h)$
+$f$ est dérivable en $a$ si et seulement si il existe $C \in \R$ et une fonction $\varepsilon$ définie sur $J\setminus \{ 0\} $ (où $J$ est un intervalle ouvert contenant $0$) et telle que $\limm{\substack{x \to 0 \\ x \neq 0}} \varepsilon(h) = 0$ et : $\forall x \in J\setminus \{ 0\} \v f(a + h) = f(a) + C.h + h.\varepsilon(h)$
 
 </Item>
 
 
 <Hideable type='démonstration' titre=''>
 
-$\cd$ Montrons d'abord le sens réciproque : on a $f(a + h) = f(a) + C.h + h.\epsilon(h)$ puis $\dfrac{f(a + h) - f(a)}{h} = C + \epsilon(h) \limto{h \to 0} C$ d'où la dérivabilité de $f$ en $a$
+$\cd$ Montrons d'abord le sens réciproque : on a $f(a + h) = f(a) + C.h + h.\varepsilon(h)$ puis $\dfrac{f(a + h) - f(a)}{h} = C + \varepsilon(h) \limto{h \to 0} C$ d'où la dérivabilité de $f$ en $a$
 
-$\cd$ Supposons que $f$ est dérivable en $a$. On pose $C = f'(a)$ et $\epsilon$ telle que $\epsilon(h) = \dfrac{f(a + h) - f(a)}{h} - C$ définie sur $J \setminus \{ 0\}$ où $J$ est un intervalle ouvert contenant $0$ (il suffit d'en prendre un dans $I$).
+$\cd$ Supposons que $f$ est dérivable en $a$. On pose $C = f'(a)$ et $\varepsilon$ telle que $\varepsilon(h) = \dfrac{f(a + h) - f(a)}{h} - C$ définie sur $J \setminus \{ 0\}$ où $J$ est un intervalle ouvert contenant $0$ (il suffit d'en prendre un dans $I$).
 
 </Hideable>
 
@@ -72,9 +72,9 @@ Si $f$ est dérivable en $a$, alor $f$ est continue en $a$.
 
 <Hideable type='démonstration' titre=''>
 
-Comme $f$ est dérivable en $a$, il existe une fonction $\epsilon$ définie sur $J \setminus \{0\}$ où $J$ est un ouvert contenant $0$ telle que : $f(a + h) = f(a) + h.f'(a) + h.\epsilon(h)$. 
+Comme $f$ est dérivable en $a$, il existe une fonction $\varepsilon$ définie sur $J \setminus \{0\}$ où $J$ est un ouvert contenant $0$ telle que : $f(a + h) = f(a) + h.f'(a) + h.\varepsilon(h)$. 
 
-En effectuant le changement de variable $x = a+h$, on a $f(x) = f(a) + (x-a).f'(a) + (x-a). \epsilon(x-a) \limto{x \to a} f(a)$ d'où la continuité de $f$ en $a$.
+En effectuant le changement de variable $x = a+h$, on a $f(x) = f(a) + (x-a).f'(a) + (x-a). \varepsilon(x-a) \limto{x \to a} f(a)$ d'où la continuité de $f$ en $a$.
 </Hideable>
 
 <Exercice titre=''>

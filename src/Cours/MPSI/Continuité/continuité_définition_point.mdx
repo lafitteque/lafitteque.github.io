@@ -64,24 +64,24 @@ $\cd$ ii\) pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton 
 
 $\cd$ **i\) $\Rightarrow$ ii\) :** supposons que $f$ est continue en $a$ et $\suitedefN{u_n}$ une suite de $I^{\N}$ convergent vers $a$.
 
-Soient $\epsilon > 0$ et $\eta$ convenant pour la limite de $f$ en $a$.
+Soient $\varepsilon > 0$ et $\eta$ convenant pour la limite de $f$ en $a$.
 
 Soit $\eta > 0$, par convergence de $u$ : $\exists N \in \N \mid \forall n > N \v |u_n - a| \leqslant \eta$.
 
-Mais donc, par continuité en $a$, $|u_n - a| \leqslant \eta \Rightarrow |f(u_n) - f(a)| \leqslant \epsilon$ d'où $f(u_n) \limton f(a)$
+Mais donc, par continuité en $a$, $|u_n - a| \leqslant \eta \Rightarrow |f(u_n) - f(a)| \leqslant \varepsilon$ d'où $f(u_n) \limton f(a)$
 
 
 $\cd$ **ii\) $\Rightarrow$ i\) :** supposons que pour toute suite $\suitedefN{u_n} \in I^{\N}$ telle que $u_n \limton a$ on ait $f(u_n) \limton f(a)$. 
 
 Raisonnons par l'absurde en supposant que i\) n'est pas vérifiée. 
 
-La négation de i\) donne : $\exists \epsilon > 0 \mid \forall \eta > 0 \v \exists x \in I \mid |x-a|< \eta \ET |f(x) - f(a)| > \epsilon $.
+La négation de i\) donne : $\exists \varepsilon > 0 \mid \forall \eta > 0 \v \exists x \in I \mid |x-a|< \eta \ET |f(x) - f(a)| > \varepsilon $.
 
-Soit un tel $\epsilon > 0$, on pose $\eta_n = \dfrac{1}{n}$ et $x_n \in I $ tel que : $|x-a|< \eta \ET |f(x) - f(a)| > \epsilon $ (d'après l'hypothèse "$\NON$ i\)").
+Soit un tel $\varepsilon > 0$, on pose $\eta_n = \dfrac{1}{n}$ et $x_n \in I $ tel que : $|x-a|< \eta \ET |f(x) - f(a)| > \varepsilon $ (d'après l'hypothèse "$\NON$ i\)").
 
-Mais donc $x_n \limton a$ car $|x_n - a| < \eta_n = \dfrac{1}{n}$. Cependant, $\suitedefN{f(x_n)}$ ne converge pas vers $f(a)$ car $\in I \mid |x-a|< \eta \ET |f(x_n) - f(a)| > \epsilon $ et on rappelle que $\epsilon$ est ici une constante strictement positive.
+Mais donc $x_n \limton a$ car $|x_n - a| < \eta_n = \dfrac{1}{n}$. Cependant, $\suitedefN{f(x_n)}$ ne converge pas vers $f(a)$ car $\in I \mid |x-a|< \eta \ET |f(x_n) - f(a)| > \varepsilon $ et on rappelle que $\varepsilon$ est ici une constante strictement positive.
 
-En effet, si l'on avait $f(x_n) \limton l$, alors $|f(x_n) - f(a)| > \epsilon $ donnerait, par passage à la limite : $|l - f(a)| > \epsilon $ ce qui veut dire que $l$ et $f(a)$ ne sont pas identiques car distants d'au moins $\epsilon$.
+En effet, si l'on avait $f(x_n) \limton l$, alors $|f(x_n) - f(a)| > \varepsilon $ donnerait, par passage à la limite : $|l - f(a)| > \varepsilon $ ce qui veut dire que $l$ et $f(a)$ ne sont pas identiques car distants d'au moins $\varepsilon$.
 
 On en conclut donc que l'hypothèse $\NON$ i\) est absurde d'où i\) $\Rightarrow$ ii\).
 
@@ -119,8 +119,8 @@ $\cd$ On dit que $f$ est continue à droite en $a$
 si : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \geqslant a  \v 
-\Big( |x - a | < \eta \Rightarrow |f(x) - f(a)| \leqslant \epsilon \Big)
+\forall \varepsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \geqslant a  \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - f(a)| \leqslant \varepsilon \Big)
 $$
 
 On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{x \to a^+} f(x) = f(a)$ 
@@ -128,8 +128,8 @@ On note $\limm{\substack{ x \to a \\ x \geqslant a}} f(x) = l$ ou encore $\limm{
 $\cd$ On dit que $f$ est continue à gauche en $a$ s'il existe $l \in \R$ tel que : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \leqslant a \v 
-\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \epsilon \Big)
+\forall \varepsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \leqslant a \v 
+\Big( |x - a | < \eta \Rightarrow |f(x) - l| \leqslant \varepsilon \Big)
 $$
 
 On note $\limm{\substack{ x \to a \\ x \leqslant a}} f(x) = l$ ou encore $\limm{x \to a^-} f(x) = l$ 

@@ -49,43 +49,60 @@ $$
 
 <Hideable type='démonstration' titre=''>
 
-**Sens direct :** On suppose que $I$ est un intervalle de $\R$. 
+**Sens direct ($\Rightarrow$) :** On suppose que $I$ est un intervalle de $\R$ et on prend $a \v b$ deux éléments de $I$.  
 
 Il existe $(m\v M) \in \R^2$ tels que : $x \in I \ssi m < x < M$ (on ne considère pas les autre cas que le cas ouvert car leur démonstration est analogue). 
 
-Mais si $a$ et $b$ sont dans $I$, alors $m < a \leqslant b < M$ (si $a > b$, alors $\defff{a}{b} = \empty \subset I$, on considère donc $a \leqslant b$). 
+Mais comme $a$ et $b$ sont dans $I$, on a $m < a \leqslant b < M$ (si $a > b$, alors $\defff{a}{b} = \empty \subset I$, on considère donc $a \leqslant b$). 
 
 On a donc $x \in \defff{a}{b} \Rightarrow m < a \leqslant x \leqslant b < M$ et donc $x \in I$.
 
 <br/>
 
-**Sens réciproque :** On suppose que : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$. 
+**Sens réciproque ($\Leftarrow$) :** On suppose que $I \subset \R$ est un ensemble qui vérifie : $\forall (a,b) \in I^2\v \defff{a}{b} \subset I$. 
 
-Dans $\overline{\R}$, tout ensemble est borné par les infinis. 
+Dans $\overline{\R}$, tout ensemble non vide est borné par les infinis. 
 
-Donc $I$ admet une borne supérieure et une borne inférieure notées $M$ et $m$ dans cet ordre. 
+Eliminons déjà la cas où $I = \empty$ qui et trivial. On considère maintenant que $I$ est non vide et admet une borne supérieure et une borne inférieure éventuellement infinies notées $M$ et $m$ dans cet ordre. 
 
-$\cd$ cas 1 : $m$ et $M$ sont dans $I$, par hypothèse, $\defff{m}{M} \subset I$ 
+<br/>
+
+$\cd$ **cas 1 : $m$ et $M$ sont dans $I$**
+
+par hypothèse, $\defff{m}{M} \subset I$ 
 
 mais $I \subset \defff{m}{M}$ car $m$ est un minorant de $I$ et $M$ est un majorant de $I$.
 
 D'où l'égalité par double inclusion et $I$ est un intervalle.
 
-$\cd$ cas 2.a : $m$ et $M$ ne sont pas dans $I$ et sont finis. 
+<br/>
 
-Comme $I$ est non vide, il existe $\epsilon > 0$ suffisamment petit tel que $m + \epsilon \in I$ et $M - \epsilon \in I$. 
+$\cd$ **cas 2.a : $m$ et $M$ ne sont pas dans $I$ et sont finis** 
 
-Donc, par hypothèse, $\defff{m + \epsilon}{M - \epsilon} \subset I$. 
+Soit $x \in \defoo{m}{M}$, il existe un $\varepsilon >0$ tel que 
 
-D'où, $x \in I \Rightarrow  \exists \epsilon \in \R_+^* \v m < m + \epsilon \leqslant x \leqslant M - \epsilon < M \Rightarrow x \in \defoo{m}{M}$. 
+$$
+m+\varepsilon \leqslant x \leqslant M-\varepsilon
+$$
+
+D'autre part, comme $m$ et $M$ sont les bornes inférieure et supérieure de $I$, il existe $\tilde{m}$ et $\tilde{M}$ dans $I$ tels que 
+
+$$
+\tilde{m} \leqslant m+\varepsilon \leqslant x \leqslant M-\varepsilon \leqslant \tilde{M}
+$$
+
+Donc, par hypothèse, $\defff{\tilde{m}}{\tilde{M}} \subset I$ et donc $x \in \defoo{m}{M}$. On a donc : $\defoo{m}{M} \subset I$.
 
 Mais $I \subset \defoo{m}{M}$ car $m$ et $M$ sont les bornes supérieure et inférieure non atteintes de $I$. 
 
 Par double inclusion, $I$ est un intervalle.
 
-$\cd$ cas 2.b : traitons le cas où $m = - \infty$ et $M$ est fini et dans $I$. Soit $y \in I$.
+<br/>
 
-Dans ce cas, pour tout $x \in \defof{- \infty}{y}$, il existe un élément $m \in I$ tel que $m \leqslant x$.
+$\cd$ **cas 2.b : traitons le cas où $m = - \infty$ et $M$ est fini et dans $I$**
+
+
+Soit $y \in I$. Dans ce cas, pour tout $x \in \defof{- \infty}{y}$, il existe un élément $m \in I$ tel que $m \leqslant x$ puisque $I$ n'a pas de minorant dans $\R$.
 
 Donc $x \in \defof{- \infty}{y} \Rightarrow \exists m \in I \mid x \in \defff{m}{y} \subset I$. 
 
@@ -93,13 +110,15 @@ Donc $\defof{- \infty}{y} \subset I$.
 
 <br/>
 
-Il suffit de montrer que $\defff{y}{M} \subset I$. Cela se fait exactement comme en 1. .
+Il suffit de remarquer que $\defff{y}{M} \subset I$ par hypothèse pour conclure que $\defof{-\infty}{M} \subset I$.
 
-On a donc $\defof{- \infty}{M}  \subset I \subset \defof{- \infty}{M}$. La deuxième inclusion vient du fait que $M$ est un majorant.
+Mais $I \subset \defof{-\infty}{M}$ puisque $M$ est un majorant de $I$. On a donc le résultat voulu.
 
 
 $\cd$ autres cas : les autres cas ne seront pas traités car analogues
+
 </Hideable>
+
 
 <Item type='proposition' titre="réunion et intersection d'intervalles">
 
@@ -109,14 +128,14 @@ $\cd$ L'intersection de deux intervalles est un intervalle.
 
 <br/>
 
-Si les deux intervalles sont ouvers (resp. fermés), l'intersection et la réunion le sont également.
+Si les deux intervalles sont ouverts (resp. fermés), l'intersection et la réunion le sont également.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 **Schéma des preuves :**
 
-$\cd$ Pour l'intersection, il faut considérer le minimum $m$ et le maximum $M$ des quatre bornes (éventuellements infinies) s'il y a intersection et il suit que $I \bigcup J = \defff{m}{M}$ (où les bornes sont éventuellements ouvertes et/ou infinies). S'il n'y a pas d'intersection, alors il y a un nombre entre $m$ et $M$ qui n'est pas dans $I \bigcup J$ (si les bornes sont $a \leqslant b \leqslant c \leqslant d$, prendre un nombre strictement entre $b$ et $c$) ce qui est prouve que ce n'est pas un intervalle
+$\cd$ Pour la réunion, il faut considérer le minimum $m$ et le maximum $M$ des quatre bornes (éventuellements infinies) s'il y a intersection et il suit que $I \bigcup J = \defff{m}{M}$ (où les bornes sont éventuellements ouvertes et/ou infinies). S'il n'y a pas d'intersection, alors il y a un nombre entre $m$ et $M$ qui n'est pas dans $I \bigcup J$ (si les bornes sont $a \leqslant b \leqslant c \leqslant d$, prendre un nombre strictement entre $b$ et $c$) ce qui est prouve que ce n'est pas un intervalle
 
 $\cd$ Pour l'intersection, si l'on note $I = \defff{a}{b}$ et $J = \defff{c}{d}$ (à l'ouverture des bornes près), il faut distinguer les cas suivants : 
 

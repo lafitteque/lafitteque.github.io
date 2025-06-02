@@ -12,11 +12,11 @@ import IllustrationLimiteSuite from '@components/Graph/limite_suite.astro'
 
 Nous allons créer la définition de limite. Pour cela, utilisons l'exemple cliquable ci-dessous pour comprendre comment faire.
 
-Tout d'abord, on se donne une suite qui a l'air de se rapprocher à terme de $1$. On dira que les termes de la suite sont $\epsilon$-proches de $1$ quand ils valent $1$ à $epsilon$ près.
+Tout d'abord, on se donne une suite qui a l'air de se rapprocher à terme de $1$. On dira que les termes de la suite sont $\varepsilon$-proches de $1$ quand ils valent $1$ à $\varepsilon$ près.
 
 <br/>
 
-Sur l'exemple ci-dessous, on peut cliquer à un rang $n$ et un programme calcule un nombre $\epsilon$ qui est le plus grand écart entre un terme de la suite de rang au moins $n$ et $1$ (la limite).
+Sur l'exemple ci-dessous, on peut cliquer à un rang $n$ et un programme calcule un nombre $\varepsilon$ qui est le plus grand écart entre $1$ et les termes à partir du rang $n$.
 
 <br/>
 Cliquez sur l'exemple afin d'experimenter avec.
@@ -27,15 +27,19 @@ Cliquez sur l'exemple afin d'experimenter avec.
 
 <br/>
 
-On remarque que, plus on prend $n$ grand, plus le $\epsilon$ calculé est petit et donc plus les termes de la suite se "resserrent" autour de la limite. 
+On remarque que, plus on prend $n$ grand, plus le $\varepsilon$ calculé est petit et donc plus les termes de la suite se "resserrent" autour de la limite. 
 
-Converger, c'est dire que le $\epsilon$ sera aussi petit que l'on veut si l'on va assez loin dans les termes de la suite.
+Converger, c'est dire que le $\varepsilon$ sera aussi petit que l'on veut si l'on va assez loin dans les termes de la suite.
 
-Par exemple, si on prend $\epsilon = 0.01$, il existe un rang à partir duquel les termes de la suite sont $\epsilon$-proches de la limite.
+Par exemple, si on prend $\varepsilon = 0,01$, il existe un rang à partir duquel les termes de la suite sont $\varepsilon$-proches de la limite.
 
 <br/>
 
-C'est justement là la définition de la convergence que nous allons choisir : une suite converge vers $l$ si pour tout $\epsilon >0$ il existe un rang à partir duquel les termes sont $\epsilon$-proches de $l$.
+C'est justement la définition de la convergence que nous allons choisir : une suite converge vers $l$ si pour tout $\varepsilon > 0$ il existe un rang à partir duquel les termes sont $\varepsilon$-proches de $l$.
+
+<br/>
+
+Pour converger vers l'infini, on utilisera la même logique sauf qu'on ne peut pas être $\varepsilon$-proche de l'infini. On remplacera simplement cela par : dépasser $A>0$ à partir d'un certain rang. 
 </Fil>
 
 <Item type='definition' titre='convergence'>
@@ -45,7 +49,7 @@ Soit $\suitedefN{u_n}$ une suite réelle (ou complexe). On dit qu'elle :
 $\cd$ tend vers $l \in \R$ (ou $\C$) si : 
 
 $$
-\forall \epsilon > 0 \v \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+\forall \varepsilon > 0 \v \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \varepsilon
 $$
 
 On note $\limm{n \to \infty} u_n = l$ ou $u_n \limton l$
@@ -53,7 +57,7 @@ On note $\limm{n \to \infty} u_n = l$ ou $u_n \limton l$
 $\cd$ (cas réel uniquement) tend vers $+ \infty$ (resp. $- \infty$) si : 
 
 $$
-\forall A \in \R \v \exists N \in \N \mid n \geqslant N \Rightarrow u_n \geqslant A (\text{resp. }u_n \leqslant A)
+\forall A \in \R \v \exists N \in \N \mid n \geqslant N \Rightarrow u_n \geqslant A ( \text{resp. }u_n \leqslant A)
 $$ 
 
 On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
@@ -62,11 +66,7 @@ On note $\limm{n \to +\infty} u_n = \pm \infty$ ou $u_n \limton \pm \infty$
 
 S'il existe $l \in \C$ tel que $\suitedefN{u_n}$ tend vers $l$, on dit que $\suitedefN{u_n}$ est convergente de limite $l$. Sinon, on dit qu'elle diverge.
 
-<br/>
-
-Pour converger vers l'infini, on utilisera la même logique sauf qu'on ne peut pas être $\epsilon$-proche de l'infini. On remplacera simplement cela par : dépasser $A>0$ à partir d'un certain rang. 
 </Item>
-
 
 
 <Item type='proposition' titre='unicité de la limite'>
@@ -76,22 +76,22 @@ Une suite convergeante n'admet qu'une seule et unique limite.
 
 <Hideable type='démonstration' titre=''>
 
-Supposons que $\suitedefN{u_n}$ converge à la fois vers $l_1$ et $l_2$ deux complexes. Soit $\epsilon > 0$, on a : 
+Supposons que $\suitedefN{u_n}$ converge à la fois vers $l_1$ et $l_2$ deux complexes. Soit $\varepsilon > 0$, on a : 
 
 $$
 \begin{cases}
-    \exists N_1 \in \N \mid n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon
+    \exists N_1 \in \N \mid n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \varepsilon
     \\
-    \exists N_2 \in \N \mid n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon
+    \exists N_2 \in \N \mid n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \varepsilon
 \end{cases}
 $$
 
 Soit $N = max(N_1\v N_2)$. On a : 
 $$
 \begin{cases}
-    n \geqslant N \Rightarrow |u_n - l_1| \leqslant \epsilon
+    n \geqslant N \Rightarrow |u_n - l_1| \leqslant \varepsilon
     \\
-    n \geqslant N \Rightarrow |u_n - l_2| \leqslant \epsilon
+    n \geqslant N \Rightarrow |u_n - l_2| \leqslant \varepsilon
 \end{cases}
 $$
 
@@ -99,16 +99,27 @@ Donc
 
 $$
 \begin{cases} 
-    -\epsilon \leqslant u_n - l_1 \leqslant \epsilon 
+    -\varepsilon \leqslant u_n - l_1 \leqslant \varepsilon 
     \\
-    -\epsilon \leqslant u_n - l_2 \leqslant \epsilon 
+    -\varepsilon \leqslant u_n - l_2 \leqslant \varepsilon 
 \end{cases}
 $$
  
-puis en faisant la différence des deux lignes, on obtient $-2\epsilon \leqslant l_1 - l_2 \leqslant 2\epsilon$ 
+puis en faisant la différence des deux lignes, on obtient $-2\varepsilon \leqslant l_1 - l_2 \leqslant 2\varepsilon$ 
 
-Comme cela vaut pour tout $\epsilon > 0$, on a $l_1 - l_2 = 0$ d'où $l_1 = l_2$.
+Comme cela vaut pour tout $\varepsilon > 0$, on a $l_1 - l_2 = 0$ d'où $l_1 = l_2$.
+
+<br/>
+
+<br/>
+
+Une autre démonstration était possible par l'absurde en supposant $l_1 < l_2$ (quitte à changer l'ordre) et en choisissant $\epsilon = \dfrac{l2-l1}{4}$. 
+
+On arrive alors à une contradiction puisque $l_1-\epsilon \leqslant u_n \leqslant l_1 + \epsilon < l_2 - \epsilon \leqslant u_n \leqslant l_2 + \epsilon$.
+
+Mais donc $u_n < u_n$ ce qui serait absurde
 </Hideable>
+
 
 <Item type='proposition' titre='convergence et bornes'>
 
@@ -117,11 +128,11 @@ Toute suite complexe convergeante est bornée.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\suitedefN{u_n}$ une suite complexe convergeante de limite $l$. On pose $\epsilon = 1$. 
+Soit $\suitedefN{u_n}$ une suite complexe convergeante de limite $l$. On pose $\varepsilon = 1$. 
 
 Il existe $N \in \N$ tel que si $n \geqslant N$, alors $|u_n - l| \leqslant 1$. 
 
-Mais donc si $n \geqslant N$, alors $l - \epsilon \leqslant u_n \leqslant 1 + l$. 
+Mais donc si $n \geqslant N$, alors $l - 1 \leqslant u_n \leqslant 1 + l$. 
 
 En particulier, $1 + |l|$ est un majorant de $(u_n)_{n \geqslant N}$. 
 

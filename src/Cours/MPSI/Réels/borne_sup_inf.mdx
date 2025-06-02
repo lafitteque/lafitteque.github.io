@@ -28,6 +28,37 @@ Les termes de la suite sont bornés par ces valeurs et on ne trouvera pas de bor
 On peut imaginer des cas où les bornes sont atteintes une et une seule fois comme par exemple la suite $0 \pv 2 \pv 1 \pv 1 \pv 1 \pv 1 \pv 1 \pv 1 \pv 1 \dotsm$ dont la borne supérieure est $2$, la borne inférieure est $0$ et pourtant ces bornes ne concernent que les deux premiers termes.
 </Fil>
 
+<Item type='proposition' titre='caractérisation de la borne supérieure et inférieure'>
+
+Soit $A \subset \R$ un ensemble non vide.
+
+$\cd$ $M = \sup A$ si et seulement si $\begin{cases} \forall x \in A \v M \geqslant x \\ (a \in A \ET \forall x \in A \v a \geqslant x) \Rightarrow M \leqslant a\end{cases}$
+
+$\cd$ $m = \inf A$ si et seulement si $\begin{cases} \forall x \in A \v m \leqslant x \\ (a \in A \ET \forall x \in A \v a \leqslant x) \Rightarrow m \geqslant a\end{cases}$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Les deux résultats sont analogues, on ne démontrera que celui de la borne supérieure.
+
+$\cd$ **Sens direct ($\Rightarrow$) :**
+
+Déjà, $M = \sup A \Rightarrow \forall x \in A \v M \geqslant x$ car c'est la définition d'un majorant et que la borne supérieure est un majorant. 
+
+Supposons $(a \in A \ET \forall x \in A \v a \leqslant x)$. $a$ est un majorant et, par définition de la borne supérieure, $a \geqslant M$ puisque $M$ est le plus petit majorant de $A$.
+
+<br/>
+
+$\cd$ **Sens réciproque ($\Leftarrow$) :**
+
+Si $\forall x \in A \v M \geqslant x$, alors $M$ est un majorant.
+
+Si $(a \in A \ET \forall x \in A \v a \geqslant x) \Rightarrow M \leqslant a$, alors tout majorant de $A$ est plus grand que $M$ et donc $M$ est le plus petit majorant.
+
+On en conclut que $M = \sup A$
+</Hideable>
+
+
 <Item type='proposition' titre='existence de la borne supérieure et inférieure' tag='admis' searchDesc="ensemble">
 
 Soit $A$ un sous-ensemble non vide de $\R$. 
@@ -75,13 +106,13 @@ L'hypothèse est absurde et $\pi$ est donc bien le plus grand des minorants : c'
 
 <br/>
 
-2\) $\forall n \in \N^* \v 0 < x \leqslant 1$ 
+2\) $\forall n \in \N^* \v 0 < \dfrac{1}{n} \leqslant 1$ 
 
-Mais donc $1$ est un majorant atteind, c'est donc la borne supérieure de $B$.
+Mais donc $1$ est un majorant atteint, c'est donc la borne supérieure de $B$.
 
-Supposons qu'il y ait $\epsilon > 0$ un minorant de $B$. 
+Supposons qu'il y ait $\varepsilon > 0$ un minorant de $B$. 
 
-Pour $N \in \N^*$ assez grand, $\underbrace{\dfrac{1}{N}}_{\in B} < \epsilon$ mais donc $\epsilon$ ne serait pas un minorant. 
+Pour $N \in \N^*$ assez grand, $\underbrace{\dfrac{1}{N}}_{\in B} < \varepsilon$ mais donc $\varepsilon$ ne serait pas un minorant. 
 
 C'est absurde et donc $0$ est le plus grand minorant : c'est la borne inférieure.
 </Hideable>

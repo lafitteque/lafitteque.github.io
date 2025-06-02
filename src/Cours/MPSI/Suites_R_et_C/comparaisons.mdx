@@ -15,15 +15,15 @@ Si : $\forall n \in \N \v u_n \leqslant v_n$ alors : $l_1 \leqslant l_2$
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$, d'après la définition de la limite, on trouve $N_1$ et $N_2$ pour les deux suites. 
+Soit $\varepsilon > 0$, d'après la définition de la limite, on trouve $N_1$ et $N_2$ pour les deux suites. 
 
-Supposons $n \geqslant \max(N_1\v N_2)$. On a $|u_n - l_1| \leqslant \epsilon$ et $|v_n - l_2| \leqslant \epsilon$. D'où 
+Supposons $n \geqslant \max(N_1\v N_2)$. On a $|u_n - l_1| \leqslant \varepsilon$ et $|v_n - l_2| \leqslant \varepsilon$. D'où 
 
 $$
 \begin{cases} 
-    -\epsilon \leqslant  u_n - l_1 \leqslant \epsilon 
+    -\varepsilon \leqslant  u_n - l_1 \leqslant \varepsilon 
     \\  
-    -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon 
+    -\varepsilon \leqslant  v_n - l_2 \leqslant \varepsilon 
 \end{cases}
 $$ 
 
@@ -31,15 +31,15 @@ puis
 
 $$
 \begin{cases} 
-    l_1 - \epsilon \leqslant  u_n \leqslant l1 + \epsilon 
+    l_1 - \varepsilon \leqslant  u_n \leqslant l_1 + \varepsilon 
     \\  
-    l_2 - \epsilon \leqslant  v_n  \leqslant l_2 + \epsilon 
+    l_2 - \varepsilon \leqslant  v_n  \leqslant l_2 + \varepsilon 
 \end{cases}
 $$ 
 
-et donc $l_1 - \epsilon \leqslant  u_n  \leqslant  v_n  \leqslant l_2 + \epsilon$
+et donc $l_1 - \varepsilon \leqslant  u_n  \leqslant  v_n  \leqslant l_2 + \varepsilon$
 
-finalement $l_1 - \epsilon \leqslant l_2 + \epsilon$. Ceci étant vrai peu importe la valeur de $\epsilon > 0$ choisie, on conclut que $l_1 \leqslant l_2$
+finalement $l_1 - \varepsilon \leqslant l_2 + \varepsilon$. Ceci étant vrai peu importe la valeur de $\varepsilon > 0$ choisie, on conclut que $l_1 \leqslant l_2$
 </Hideable>
 
 <Item type='consequence' titre='comparaison avec un réel'>
@@ -65,7 +65,7 @@ Il existe un rang à partir duquel la suite  $\suitedefN{u_n}$ est strictement p
 
 On suppose sans perte de généralité que $l > 0$ (sinon il suffit de considérer $\suitedefN{-u_n}$).
 
-On pose $\epsilon = \dfrac{l}{2}$. Soit $N$ tel que : $n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon = \dfrac{l}{2}$.
+On pose $\varepsilon = \dfrac{l}{2}$. Soit $N$ tel que : $n \geqslant N \Rightarrow |u_n - l| \leqslant \varepsilon = \dfrac{l}{2}$.
 
 
 Supposons $n \geqslant N \quad $ $ -\dfrac{l}{2} \leqslant  u_n - l \leqslant \dfrac{l}{2} \;$ d'où $ \; 0 < \dfrac{l}{2} \leqslant  u_n  \leqslant \dfrac{3l}{2}$ donc $u_n >0$ dès que $n \geqslant N$.
@@ -78,16 +78,16 @@ Soient $\suitedefN{u_n}$, $\suitedefN{v_n}$ et $\suitedefN{w_n}$ trois suites r�
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$ d'après la définition de la convergence pour $u$ (resp. pour $w$) on obtient $N_1$ (resp. $N_2$). 
+Soit $\varepsilon > 0$ d'après la définition de la convergence pour $u$ (resp. pour $w$) on obtient $N_1$ (resp. $N_2$). 
 
-D'après ces définitions, si $n \geqslant N = \max(N_1\v N_2)$, alors $|u_n - l| \leqslant \epsilon$ et $|w_n - l| \leqslant \epsilon$ 
+D'après ces définitions, si $n \geqslant N = \max(N_1\v N_2)$, alors $|u_n - l| \leqslant \varepsilon$ et $|w_n - l| \leqslant \varepsilon$ 
 
-puis, en ajoutant $l$ à chaque inégalité, on obtient $l-\epsilon \leqslant u_n \leqslant v_n \leqslant w_n \leqslant l + \epsilon$. 
+puis, en ajoutant $l$ à chaque inégalité, on obtient $l-\varepsilon \leqslant u_n \leqslant v_n \leqslant w_n \leqslant l + \varepsilon$. 
 
 On a donc : 
 
 $$
-\forall n \in N \v n \geqslant N \Rightarrow l-\epsilon \leqslant v_n \leqslant l + \epsilon
+\forall n \in N \v n \geqslant N \Rightarrow l-\varepsilon \leqslant v_n \leqslant l + \varepsilon
 $$ 
 
 D'où la convergence de $\suitedefN{v_n}$ vers $l$
@@ -100,7 +100,7 @@ Déterminer la limite de la suite $u_n = 6\dfrac{n+1}{n} + \dfrac{\sin(n)}{n}$ d
 
 <Hideable type='solution' titre=''>
 
-$\underbrace{6 - \dfrac{1}{n}}_{\limton 6} \leqslant  6\dfrac{n+1}{n} + \dfrac{\sin(n)}{n} \leqslant \underbrace{6 \dfrac{n+1}{n} + \dfrac{1}{n}}_{\limton 6}$
+$\underbrace{6 - \dfrac{1}{n}}_{\limton 6} \leqslant  6\dfrac{n+1}{n} + \dfrac{\sin(n)}{n} \leqslant \underbrace{6 (1+\dfrac{1}{n}) + \dfrac{1}{n}}_{\limton 6}$
 
 D'après le théorème des gendarmes, $\limm{n \to + \infty} u_n = 6$
 </Hideable>

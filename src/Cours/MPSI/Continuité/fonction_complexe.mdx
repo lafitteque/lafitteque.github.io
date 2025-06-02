@@ -11,7 +11,7 @@ import Fil from '@components/Fil.astro'
 On dit que $f : \C \rightarrow \C$ est continue en $a \in \C$ si : 
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in \C \v \Big( |x - a| < \eta \Rightarrow |f(x) - f(a)| < \epsilon \Big)
+\forall \varepsilon > 0 \v \exists \eta > 0 \mid \forall x \in \C \v \Big( |x - a| < \eta \Rightarrow |f(x) - f(a)| < \varepsilon \Big)
 $$
 </Item>
 
@@ -25,16 +25,16 @@ Une fonction complexe est continue en $a$ si et seulement si sa partie imaginair
 
 Soit $f$ une fonction complexe définie sur $\C$.
 
-$\cd$ **Supposons que $f$ est continue en $a$ :** Soit $\epsilon > 0$, il existe $\eta > 0$. Considérons $x$ tel que $|x-a| < \eta$.
+$\cd$ **Supposons que $f$ est continue en $a$ :** Soit $\varepsilon > 0$, il existe $\eta > 0$. Considérons $x$ tel que $|x-a| < \eta$.
 
-On a $|f(x) - f(a)| < \epsilon$ mais $ \Re(f(x)) - \Re(f(a))  = \Re(f(x) - f(a)) \leqslant |f(x) - f(a)|  \leqslant \epsilon$ et les mêmes inégalités valent également pour la partie imaginaire. D'où la continuité de celles-ci en $a$
+On a $|f(x) - f(a)| < \varepsilon$ mais $ \Re(f(x)) - \Re(f(a))  = \Re(f(x) - f(a)) \leqslant |f(x) - f(a)|  \leqslant \varepsilon$ et les mêmes inégalités valent également pour la partie imaginaire. D'où la continuité de celles-ci en $a$
 
 
-$\cd$ **Supposons que $\Re(f)$ et $\Im(f)$ sont continues en $a$ :** Soit $\epsilon > 0$, il existe $\eta_r$ et $\eta_i$ convenant pour la continuité de la partie réelle et de la partie imaginaire en $a$. On pouse $\eta = \min(\eta_r\v \eta_i)$. 
+$\cd$ **Supposons que $\Re(f)$ et $\Im(f)$ sont continues en $a$ :** Soit $\varepsilon > 0$, il existe $\eta_r$ et $\eta_i$ convenant pour la continuité de la partie réelle et de la partie imaginaire en $a$. On pouse $\eta = \min(\eta_r\v \eta_i)$. 
 
-Soit $x$ tel que $|x-a| < \eta$. On a $|f(x) - f(a)| \leqslant |\Re(f(x)) - \Re(f(a))| + |\Im(f(x)) - \Im(f(a))| \leqslant 2 \epsilon$ par inégalité triangulaire.
+Soit $x$ tel que $|x-a| < \eta$. On a $|f(x) - f(a)| \leqslant |\Re(f(x)) - \Re(f(a))| + |\Im(f(x)) - \Im(f(a))| \leqslant 2 \varepsilon$ par inégalité triangulaire.
 
-Il suffit donc de considérer $\tilde{\epsilon} = \dfrac{\epsilon}{2}$ pour conclure.
+Il suffit donc de considérer $\tilde{\varepsilon} = \dfrac{\varepsilon}{2}$ pour conclure.
 
 </Hideable>
 

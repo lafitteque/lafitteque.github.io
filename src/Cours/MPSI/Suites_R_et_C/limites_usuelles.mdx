@@ -17,7 +17,7 @@ Soit $k \in \N^*$, on a les limites suivantes.
 
 <Hideable type='démonstration' titre=''>
 
-Soient $A \in \R$ et $\epsilon > 0$. Il suffit de trouver un $N \in \N$ convenant pour la définition dans chaque cas.
+Soient $A \in \R$ et $\varepsilon > 0$. Il suffit de trouver un $N \in \N$ convenant pour la définition dans chaque cas.
 
 <br/>
 
@@ -25,11 +25,11 @@ $\cd$ **$u_n = n^k$ :** dans ce cas, $N = A$ convient par croissance de $\suited
 
 <br/>
 
-$\cd$ **$u_n = \dfrac{1}{n^k}$ :** ici, $N = \ceil{\dfrac{1}{\epsilon}}$ convient car : $0 < \dfrac{1}{n^k} \leqslant \dfrac{1}{n}$ et $\dfrac{1}{n} \leqslant \epsilon$ si $n \geqslant \ceil{\dfrac{1}{\epsilon}}$ par décroissance de $\suitedefN{u_n}$.
+$\cd$ **$u_n = \dfrac{1}{n^k}$ :** ici, $N = \ceil{\dfrac{1}{\varepsilon}}$ convient car : $0 < \dfrac{1}{n^k} \leqslant \dfrac{1}{n}$ et $\dfrac{1}{n} \leqslant \varepsilon$ si $n \geqslant \ceil{\dfrac{1}{\varepsilon}}$ par décroissance de $\suitedefN{u_n}$.
 
 <br/>
 
-$\cd$ **$u_n = \sqrt{n}$ :** ce cas se traite comme précedemment mais avec $N = \dfrac{1}{\sqrt{\epsilon}}$ puisqu'un passage à la racine carrée est nécessaire sur l'inégalité précédente (la racine carrée est croissante).
+$\cd$ **$u_n = \sqrt{n}$ :** ce cas se traite comme précedemment mais avec $N = \dfrac{1}{\sqrt{\varepsilon}}$ puisqu'un passage à la racine carrée est nécessaire sur l'inégalité précédente (la racine carrée est croissante).
 
 <br/>
 
@@ -71,7 +71,7 @@ $\cd$ **$u_n = q^n$ , cas divergeant :** Soit $n \in \N$. Si $q > 1$, alors, $u_
 
 $\cd$ **$u_n = q^n$ , cas convergeant :** Soit $n \in \N$. Si $|q| < 1$, alors $\ln(|q|) < 0$ et donc $n\ln(|q|) = \ln(|q|^n) \limton - \infty$. 
 
-Soit $\epsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqslant N$, alors $\ln(|q|^n) \leqslant A$. Mais donc, par croissance de l'exponentielle, $|q|^n \leqslant e^A$. En posant $\tilde{A} = \ln(\epsilon)$, on conclut que $|q|^n \leqslant \epsilon$ si $n \geqslant N$.
+Soit $\varepsilon > 0$. Soit $A \in \R$, il existe $N \in \N$ tel que, si $n \geqslant N$, alors $\ln(|q|^n) \leqslant A$. Mais donc, par croissance de l'exponentielle, $|q|^n \leqslant e^A$. En posant $\tilde{A} = \ln(\varepsilon)$, on conclut que $|q|^n \leqslant \varepsilon$ si $n \geqslant N$.
 
 </Hideable>
 
@@ -190,11 +190,11 @@ Montrer qu'une suite à valeurs entières $\suitedefN{u_n}$ convergente est stat
 
 <Hideable type='solution' titre=''>
 
-Soit $l$ la limite de $u_n$. On prend $\epsilon = \dfrac{1}{4}$ 
+Soit $l$ la limite de $u_n$. On prend $\varepsilon = \dfrac{1}{4}$ 
 
-Par définition de la convergence, il existe $N \in \N$ tel que $\forall n \geqslant N \v \left| u_n - l \right| \leqslant \epsilon$
+Par définition de la convergence, il existe $N \in \N$ tel que $\forall n \geqslant N \v \left| u_n - l \right| \leqslant \varepsilon$
 
-On a donc, si $n \geqslant N \v  l - \epsilon \leqslant u_n \leqslant l + \epsilon$. 
+On a donc, si $n \geqslant N \v  l - \varepsilon \leqslant u_n \leqslant l + \varepsilon$. 
 
 Dit autrement, $u_n \in \defff{l - \dfrac{1}{4}}{ l + \dfrac{1}{4}}$
 

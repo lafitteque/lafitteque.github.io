@@ -13,7 +13,7 @@ Une fonction de $\N$ dans $\N$ est dite extractrice si elle est strictement croi
 
 <Item type='proposition' titre="comparaison avec l'identité">
 
-Soit $\phi$ un extractrice, on a :
+Soit $\phi$ une extractrice, on a :
 
 $$
 \forall n \in \N \v \phi(n) \geqslant n
@@ -26,7 +26,7 @@ Soit $n \in \N$.
 
 Comme $\phi$ est strictement croissante et à valeurs dans $\N$, on sait que $\phi(n+1) - \phi(n) \geqslant 1$. 
 
-Par somme télescopique, $\phi(n) = \phi(0) +  \somme{n-1}{i = 0} \phi(i+1) - \phi(i) \geqslant \phi(0) + n \geqslant n$.
+Par somme télescopique, $\phi(n) = \phi(0) +  \somme{i = 0}{n-1} \phi(i+1) - \phi(i) \geqslant \phi(0) + n \geqslant n$.
 
 
 </Hideable>
@@ -47,15 +47,15 @@ Si $\suitedefN{u_n}$ est convergente de limite $l \in \R$, alors toute suite ext
 
 Soit $\suitedefN{u_n}$ une suite réelle convergente de limite $l \in \R$ et $\phi$ une extractrice. 
 
-Soit $\epsilon > 0$, par définition de la convergence,  
+Soit $\varepsilon > 0$, par définition de la convergence,  
 
 $$
- \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \epsilon
+ \exists N \in \N \mid n \geqslant N \Rightarrow |u_n - l| \leqslant \varepsilon
 $$
 
 Mais $\phi$ est strictement croissante donc $\phi(n) \geqslant n$ d'où $n \geqslant N \Rightarrow \phi(n) \geqslant N$. 
 
-Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \epsilon$  d'où la convergence de la suite extraite vers la même limite.
+Mais donc : $\exists N \in \N \mid n \geqslant N \Rightarrow |u_{\phi(n)} - l| \leqslant \varepsilon$  d'où la convergence de la suite extraite vers la même limite.
 </Hideable>
 
 
@@ -67,21 +67,21 @@ Soit $\suitedefN{u_n} \in \R^{\N}$. Si $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$, il existe $(N_1\v N_2) \in \N^2$ convenant pour la définition de la convergence pour $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n+1}}$.
+Soit $\varepsilon > 0$, il existe $(N_1\v N_2) \in \N^2$ convenant pour la définition de la convergence pour $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n+1}}$.
 
 Si $n \geqslant N = max(N_1 \v N_2)$, alors 
 
 $$
-|u_{2n} - l|\leqslant \epsilon \ET|u_{2n+1} - l|\leqslant \epsilon \quad (1)
+|u_{2n} - l|\leqslant \varepsilon \ET|u_{2n+1} - l|\leqslant \varepsilon \quad (1)
 $$ 
 
 Soit $n \in \N$, il existe $k \in \N$ tel que $n = 2k$ ou $n = 2k+1$.
 
 
-Mais donc, si $n \geqslant 2N$, $k \geqslant \dfrac{n}{2} \geqslant N$. On applique donc $(1)$ à $k$ et on pose $\tilde{N} = 2N$ pour obtenir :
+Mais donc, si $n \geqslant 2N + 1$, alors $k \geqslant \dfrac{n}{2} \geqslant N$. On applique donc $(1)$ à $k$ et on pose $\tilde{N} = 2N + 1$ pour obtenir :
 
 $$
-\forall \epsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant \tilde{N} \Rightarrow |u_n - l| \leqslant \epsilon
+\forall \varepsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant \tilde{N} \Rightarrow |u_n - l| \leqslant \varepsilon
 $$
 </Hideable>
 
@@ -113,6 +113,11 @@ $$
 \end{cases}
 $$
 
+<br/>
+
+On pose $A = \{ u_n \mid n \in \N\}$.
+
+<br/>
 
 **Initialisation :** On vérifie $\cP(0)$. En effet, $\phi(0) = 0$ convient et $a_0 = \inf(A)$ et $b_0 = \sup(A)$. 
 

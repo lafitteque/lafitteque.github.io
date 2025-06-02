@@ -10,13 +10,13 @@ import IllustrationLimite from '@components/Graph/continuité.astro'
 
 <Fil>
 
-Essayons de définir la limite d'une fonction en un point $a$. Nous allons nous baser sur la notion déjà vue dans le chapitre sur les suites : être $\epsilon$-proche de la limite $l$.
+Essayons de définir la limite d'une fonction en un point $a$. Nous allons nous baser sur la notion déjà vue dans le chapitre sur les suites : être $\varepsilon$-proche de la limite $l$.
 
-Si on a $l \in \R$ et $a \in \R$. Dire que $f$ converge en $a$ vers $l$, c'est dire que $f(x)$ est $\epsilon$-proche de $l$ en choisissant $x$ suffisamment proche de $a$ (mais différent de $a$ parce qu'il est évident que $f(a)$ est $\epsilon$-proche de $l$ si $l = f(a)$).
+Si on a $l \in \R$ et $a \in \R$. Dire que $f$ converge en $a$ vers $l$, c'est dire que $f(x)$ est $\varepsilon$-proche de $l$ en choisissant $x$ suffisamment proche de $a$ (mais différent de $a$ parce qu'il est évident que $f(a)$ est $\varepsilon$-proche de $l$ si $l = f(a)$).
 
 <br/>
 
-On représente sur l'exemple interactif ci-dessous le calcul de telles zones autour de $a$ qui donnent images $\epsilon$-proches de $l = f(a)$. On a choisi $\epsilon = 1$.
+On représente sur l'exemple interactif ci-dessous le calcul de telles zones autour de $a$ qui donnent images $\varepsilon$-proches de $l = f(a)$. On a choisi $\varepsilon = 1$.
 
 <br/>
 
@@ -26,13 +26,13 @@ On représente sur l'exemple interactif ci-dessous le calcul de telles zones aut
 
 On remarque que, plus la courbe est "plate", plus la plage autour de $a$ est grande. Inversement, plus la pente est grande, plus la plage autour de $a$ est petite.
 
-En clair, s'il y a un saut, la plage sera infiniement petite si l'on prend $\epsilon$ suffisamment petit. On comprend donc que cette approche nous permet de distinguer quand il y a un "saut" dans le tracé de la fonction.
+En clair, s'il y a un saut, la plage sera infiniement petite si l'on prend $\varepsilon$ suffisamment petit. On comprend donc que cette approche nous permet de distinguer quand il y a un "saut" dans le tracé de la fonction.
 
 <br/>
 
-On construit ainsi la définition de la limite de $f$ en $a$ qui, encore une fois, demande à vérifier d'être $\epsilon$-proche pour tout choix de $\epsilon$ :
+On construit ainsi la définition de la limite de $f$ en $a$ qui, encore une fois, demande à vérifier d'être $\varepsilon$-proche pour tout choix de $\varepsilon$ :
 
-pour tout $\epsilon > 0$, il existe un intervalle ouvert contenant $a$ dont les images par $f$ sont toutes $\epsilon$-proches de $l$.
+pour tout $\varepsilon > 0$, il existe un intervalle ouvert contenant $a$ dont les images par $f$ sont toutes $\varepsilon$-proches de $l$.
 
 </Fil>
 
@@ -42,7 +42,7 @@ pour tout $\epsilon > 0$, il existe un intervalle ouvert contenant $a$ dont les 
 On dit que $f$ admet une limite $l$ en $a$ si :
 
 $$
-\forall \epsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \v \Big( |x - a| < \eta \Rightarrow |f(x)  - l| < \epsilon \Big)
+\forall \varepsilon > 0 \v \exists \eta > 0 \mid \forall x \in I \v \Big( |x - a| < \eta \Rightarrow |f(x)  - l| < \varepsilon \Big)
 $$
 
 Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a} l $. On dit que $f$ converge en $a$ vers la valeur $a$.
@@ -52,9 +52,9 @@ Dans ce cas, on note $ \limm{x \to a} f(x) = l$ ou encore $ f(x) \limto{x \to a}
 
 <Remarque titre=''>
 
-Dans la définition, on peut remplacer $|f(x)  - l| < \epsilon$ par $|f(x)  - l| \leqslant \epsilon$. On peut faire de même pour $|x - a| < \eta$. 
+Dans la définition, on peut remplacer $|f(x)  - l| < \varepsilon$ par $|f(x)  - l| \leqslant \varepsilon$. On peut faire de même pour $|x - a| < \eta$. 
 
-**Attention cependant :** $\eta$ et $\epsilon$ doivent être **__STRICTEMENT__** positifs.
+**Attention cependant :** $\eta$ et $\varepsilon$ doivent être **__STRICTEMENT__** positifs.
  
 </Remarque>
 
@@ -90,23 +90,23 @@ Remarquons déjà que si $x \neq 1$ , alors $f(x) = \dfrac{(x-1)(x+1)}{x-1} = x+
 
 **Analyse :** Supposons qu'il y ait un $\eta$ qui convienne.
 
-$\cd$ si $x \neq 1$, $|f(x) - f(1)| = |x+1 - 2| = |x-1| < \eta \leqslant \epsilon$
+$\cd$ si $x \neq 1$, $|f(x) - f(1)| = |x+1 - 2| = |x-1| < \eta \leqslant \varepsilon$
 
-**Synthèse :** on vérifie que $\eta = \epsilon$ permet d'obtenir l'inégalité voulue par les mêmes calculs.
+**Synthèse :** on vérifie que $\eta = \varepsilon$ permet d'obtenir l'inégalité voulue par les mêmes calculs.
 
 **Conclusion :** $f$ est continue en $1$.
 
 
 <br/>
-2\) Soit $\epsilon > 0$. 
+2\) Soit $\varepsilon > 0$. 
 
-On souhaite trouver un $\eta$ qui vérifie que : $|x-3| <  \eta \Rightarrow |g(x) - g(3)| = |x^2 - 9| < \epsilon$
+On souhaite trouver un $\eta$ qui vérifie que : $|x-3| <  \eta \Rightarrow |g(x) - g(3)| = |x^2 - 9| < \varepsilon$
 
 **Analyse :** si l'on suppose que l'on a un tel $\eta$, alors $|x^2 - 9| = |x-3| . |x + 3| \leqslant \eta . \underbrace{|x + 3|}_{= |x-3 + 3 + 3|} \leqslant \eta^2 . 6$.
 
-Mais alors $\eta^2 . 6 \leqslant \epsilon$ permettrait d'obtenir l'égalité ce qui mène à $\eta \leqslant \sqrt{\dfrac{\epsilon}{6}}$ par croissance de la racine carrée.
+Mais alors $\eta^2 . 6 \leqslant \varepsilon$ permettrait d'obtenir l'égalité ce qui mène à $\eta \leqslant \sqrt{\dfrac{\varepsilon}{6}}$ par croissance de la racine carrée.
 
-**Synthèse :** on vérifie par les mêmes inégalités que $\eta = \sqrt{\dfrac{\epsilon}{6}}$ convient.
+**Synthèse :** on vérifie par les mêmes inégalités que $\eta = \sqrt{\dfrac{\varepsilon}{6}}$ convient.
 
 **Conclusion :** $g$ est continue en $3$.
 
@@ -117,7 +117,7 @@ Mais alors $\eta^2 . 6 \leqslant \epsilon$ permettrait d'obtenir l'égalité ce 
 Si $I$ est non majoré, on dit que $f$ admet une limite $l$ en $+ \infty$ si :
 
 $$
-\forall \epsilon > 0 \v \exists A \in \R \mid \forall x \in I \v \Big( x > A \Rightarrow |f(x) - l| < \epsilon \Big)
+\forall \varepsilon > 0 \v \exists A \in \R \mid \forall x \in I \v \Big( x > A \Rightarrow |f(x) - l| < \varepsilon \Big)
 $$
 
 
@@ -135,19 +135,19 @@ Si $f$ admet en $a$ pour limite $l$ et $l'$, alors $l = l'$.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$. Il existe $\eta _1 > 0$ et $\eta _2 > 0$ tels que :
+Soit $\varepsilon > 0$. Il existe $\eta _1 > 0$ et $\eta _2 > 0$ tels que :
 
-$\cd$ $x \in I $ et $ |x - a| < \eta _1 \Rightarrow |f(x) - l| < \epsilon$ 
+$\cd$ $x \in I $ et $ |x - a| < \eta _1 \Rightarrow |f(x) - l| < \varepsilon$ 
 
-$\cd$ $x \in I $ et $ |x - a| < \eta _2 \Rightarrow |f(x) - l'| < \epsilon$ 
+$\cd$ $x \in I $ et $ |x - a| < \eta _2 \Rightarrow |f(x) - l'| < \varepsilon$ 
 
 Soit $\eta = \min( \eta_1 \v \eta_2)$ et soit $x \in I$ tel que $|x-a| < \eta$. 
 
-On a : $\begin{cases} |f(x) - l| < \epsilon \\ |f(x) - l'| < \epsilon\end{cases}$
+On a : $\begin{cases} |f(x) - l| < \varepsilon \\ |f(x) - l'| < \varepsilon\end{cases}$
 
-Mais donc $\begin{cases} - \epsilon < f(x) - l < \epsilon \\ - \epsilon  f(x) - l'< \epsilon\end{cases}$
+Mais donc $\begin{cases} - \varepsilon < f(x) - l < \varepsilon \\ - \varepsilon  f(x) - l'< \varepsilon\end{cases}$
 
-Par différence, $ - 2 \epsilon < l - l' < 2 \epsilon$. Ceci étant vrai pour tout $\epsilon > 0$, on en conclut que $l' = l$.
+Par différence, $ - 2 \varepsilon < l - l' < 2 \varepsilon$. Ceci étant vrai pour tout $\varepsilon > 0$, on en conclut que $l' = l$.
 </Hideable>
 
 <Item type='proposition' titre='linéarité de la limite' searchDesc="combinaison addition somme scalaire">
@@ -161,29 +161,29 @@ $$
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$ , il existe $\eta_1$ et $\eta_2$ convenant pour les limites de $f$ en $a$ et $g$ en $a$ dans cet ordre.
+Soit $\varepsilon > 0$ , il existe $\eta_1$ et $\eta_2$ convenant pour les limites de $f$ en $a$ et $g$ en $a$ dans cet ordre.
 
 On pose $\eta = \min(\eta_1 \v \eta_2)$. On a donc, si $x \in I$ et $|x - a| < \eta$ : 
 
 $$
-|(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| \leqslant |\lambda| . |f(x) - l| + |\mu| . |g(x) - l'| < |\lambda| . \epsilon + |\mu| . \epsilon  = (|\lambda| + |\mu| ) . \epsilon \quad \text{(In. 1)}
+|(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| \leqslant |\lambda| . |f(x) - l| + |\mu| . |g(x) - l'| < |\lambda| . \varepsilon + |\mu| . \varepsilon  = (|\lambda| + |\mu| ) . \varepsilon \quad \text{(In. 1)}
 $$
 
-Soit $\tilde{\epsilon} = \dfrac{\epsilon}{|\lambda| + |\mu|}$ (ou $1$ si $\lambda = \mu = 0$). 
+Soit $\tilde{\varepsilon} = \dfrac{\varepsilon}{|\lambda| + |\mu|}$ (ou $1$ si $\lambda = \mu = 0$). 
 
 Par définition de la convergence, il existe $\tilde{\eta_1}$ et $\tilde{\eta_2}$ tels que : 
 
 $$
 \begin{cases}
-\forall x \in I \v \Big( |x - a| < \tilde{\eta_1} \Rightarrow |f(x) - l| < \tilde{\epsilon} \Big)
+\forall x \in I \v \Big( |x - a| < \tilde{\eta_1} \Rightarrow |f(x) - l| < \tilde{\varepsilon} \Big)
 \\
-\forall x \in I \v \Big( |x - a| < \tilde{\eta_2} \Rightarrow |g(x) - l'| < \tilde{\epsilon} \Big)
+\forall x \in I \v \Big( |x - a| < \tilde{\eta_2} \Rightarrow |g(x) - l'| < \tilde{\varepsilon} \Big)
 \end{cases}
 $$
 
 Mais donc, avec $\tilde{\eta} = \min(\tilde{\eta_1}\v \tilde{\eta_2})$, et en appliquant l'inégalité (In. 1), on a :
 
-$\forall x \in I \v \Big( |x - a| < \tilde{\eta} \Rightarrow |(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| < \epsilon  \Big)$
+$\forall x \in I \v \Big( |x - a| < \tilde{\eta} \Rightarrow |(\lambda . f(x) - \mu . g(x)) - (\lambda . l + \mu . l')| < \varepsilon  \Big)$
 </Hideable>
 
 
@@ -196,7 +196,7 @@ On dit que $f$ est bornée au voisinage de $a$.
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon = 1$. 
+Soit $\varepsilon = 1$. 
 
 Il existe $\eta>0$ tel que $f(\defoo{a- \eta}{ a+ \eta}) \subset \defff{f(a)-1}{f(a)+1}$. 
 
@@ -218,7 +218,7 @@ D'où le résultat
 
 $\cd$ **Démonstration pour le produit :** Nous allons réutiliser une astuce importante qu'il faut connaître : celle d'ajouter et soustraire un terme qui nous arrange!
 
-Soit $\epsilon > 0$ et soient $\eta_f$ et $\eta_g$ convenant pour la continuité de $f$ et $g$ en $a$.
+Soit $\varepsilon > 0$ et soient $\eta_f$ et $\eta_g$ convenant pour la continuité de $f$ et $g$ en $a$.
 
 $|f(x).g(x) - l.l'| = |f(x).g(x) - f(x) . l' + f(x) . l' - l.l'| \leqslant |f(x).g(x) - f(x) . l'| + |f(x) . l' - l.l'| $
 
@@ -228,34 +228,34 @@ On considère les intervalles ouverts $J_f$ et $J_g$ contenant $a$ tels que $f$ 
 
 Soit $\eta > 0$ tel que $\defoo{a-\eta}{a+\eta} \subset J \bigcap \defoo{a-\eta_f}{a+\eta_f} \bigcap \defoo{a-\eta_g}{a+\eta_g}$ (on rappelle qu'une intersection d'intervalles est un intervalle, on peut également vérifier que $J \bigcap \defoo{a-\eta_f}{a+\eta_f} \bigcap \defoo{a-\eta_g}{a+\eta_g}$ est ouvert).
 
-On a alors $|x - a| < \eta \Rightarrow |f(x).g(x) - l . l'| \leqslant |f(x)| . |g(x) - l'| + |l'| . |f(x) - l| \leqslant M . \epsilon + |l'|. M = \epsilon . (M + |l'|)$
+On a alors $|x - a| < \eta \Rightarrow |f(x).g(x) - l . l'| \leqslant |f(x)| . |g(x) - l'| + |l'| . |f(x) - l| \leqslant M . \varepsilon + |l'|. M = \varepsilon . (M + |l'|)$
 
-On pose $\tilde{\epsilon} = \dfrac{\epsilon}{M + |l'|}$, ce qui permet de conclure.
+On pose $\tilde{\varepsilon} = \dfrac{\varepsilon}{M + |l'|}$, ce qui permet de conclure.
 
 
 $\cd$ **Démonstration pour le quotient :** en réalité, il suffit de démontrer la continuité de $\dfrac{1}{g}$ en $a$ car le quotient peut être vu comme un produit.
 
-Soient $\dfrac{l'}{2} \geqslant \epsilon > 0$ et $\eta$ convenant pour la continuité de $g$ en $a$. On pose $x \in I$ tel que $|x-a| < \eta$. On suppose que $l' > 0$ (le cas négatif est analogue).
+Soient $\dfrac{l'}{2} \geqslant \varepsilon > 0$ et $\eta$ convenant pour la continuité de $g$ en $a$. On pose $x \in I$ tel que $|x-a| < \eta$. On suppose que $l' > 0$ (le cas négatif est analogue).
 
-$|g(x) - l'| \leqslant \epsilon$ donc :
+$|g(x) - l'| \leqslant \varepsilon$ donc :
 
-$-\epsilon \leqslant g(x) - l' \leqslant \epsilon$ 
+$-\varepsilon \leqslant g(x) - l' \leqslant \varepsilon$ 
 
-puis $-\epsilon + l' \leqslant g(x)  \leqslant \epsilon + l'$
+puis $-\varepsilon + l' \leqslant g(x)  \leqslant \varepsilon + l'$
 
-ensuite, $\dfrac{1}{\epsilon + l'} \leqslant \dfrac{1}{g(x)}  \leqslant \dfrac{1}{-\epsilon + l'}$ par décroissance de la fonction inverse sur $\R_+^*$.
+ensuite, $\dfrac{1}{\varepsilon + l'} \leqslant \dfrac{1}{g(x)}  \leqslant \dfrac{1}{-\varepsilon + l'}$ par décroissance de la fonction inverse sur $\R_+^*$.
 
-mais en soustrayant $\dfrac{1}{l'}$, on a $\dfrac{1}{\epsilon + l'} - \dfrac{1}{l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{1}{-\epsilon + l'} - \dfrac{1}{l'}$
+mais en soustrayant $\dfrac{1}{l'}$, on a $\dfrac{1}{\varepsilon + l'} - \dfrac{1}{l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{1}{-\varepsilon + l'} - \dfrac{1}{l'}$
 
-ensuite, $\dfrac{- \epsilon}{(\epsilon + l').l'} = \dfrac{l' - \epsilon - l'}{(\epsilon + l').l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{l' + \epsilon - l'}{(-\epsilon + l').l'} = \dfrac{ \epsilon }{(-\epsilon + l').l'} $
+ensuite, $\dfrac{- \varepsilon}{(\varepsilon + l').l'} = \dfrac{l' - \varepsilon - l'}{(\varepsilon + l').l'} \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant  \dfrac{l' + \varepsilon - l'}{(-\varepsilon + l').l'} = \dfrac{ \varepsilon }{(-\varepsilon + l').l'} $
 
-Mais $\dfrac{1}{(-\epsilon + l').l'} \v \dfrac{1}{(\epsilon + l').l'} \leqslant \dfrac{1}{l'.\dfrac{l'}{2}}$. 
+Mais $\dfrac{1}{(-\varepsilon + l').l'} \v \dfrac{1}{(\varepsilon + l').l'} \leqslant \dfrac{1}{l'.\dfrac{l'}{2}}$. 
 
-On pose $M = \dfrac{1}{l'.\dfrac{l'}{2}}$ d'où $-M.\epsilon \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant M.\epsilon $
+On pose $M = \dfrac{1}{l'.\dfrac{l'}{2}}$ d'où $-M.\varepsilon \leqslant \dfrac{1}{g(x)} - \dfrac{1}{l'} \leqslant M.\varepsilon $
 
-En considérant $\tilde{\epsilon} = \dfrac{\epsilon}{M}$, on conclut.
+En considérant $\tilde{\varepsilon} = \dfrac{\varepsilon}{M}$, on conclut.
 
-On remarque que l'hypothèse de majoration de $\epsilon$ importe peu. En effet, si $\epsilon > l'/2$, il suffit de prendre $\epsilon_2 = l'/2$ et le $\eta$ en découlant conviendra. 
+On remarque que l'hypothèse de majoration de $\varepsilon$ importe peu. En effet, si $\varepsilon > l'/2$, il suffit de prendre $\varepsilon_2 = l'/2$ et le $\eta$ en découlant conviendra. 
 </Hideable>
 
 
@@ -270,17 +270,17 @@ $$
 
 <Hideable type='démonstration' titre=''>
 
-Soient $\epsilon_f > 0$, $\epsilon_h > 0$, $\eta_f$ et $\eta_h$ convenant pour la continuité de $f$ en $a$ et la continuité de $h$ en $l$. On considère $x \in I$ tel que $|x - a| \leqslant \eta_f$
+Soient $\varepsilon_f > 0$, $\varepsilon_h > 0$, $\eta_f$ et $\eta_h$ convenant pour la continuité de $f$ en $a$ et la continuité de $h$ en $l$. On considère $x \in I$ tel que $|x - a| \leqslant \eta_f$
 
 $$
 \begin{cases}
-|f(x) - l| \leqslant \epsilon_f
+|f(x) - l| \leqslant \varepsilon_f
 \\
-|f(x) - l| < \eta_h \Rightarrow |h(f(x)) - l'| < \epsilon_h
+|f(x) - l| < \eta_h \Rightarrow |h(f(x)) - l'| < \varepsilon_h
 \end{cases}
 $$
 
-On remarque que choisir $\epsilon_f = \eta_h$ convient. D'où le résultat.
+On remarque que choisir $\varepsilon_f = \eta_h$ convient. D'où le résultat.
 
 </Hideable>
 
@@ -295,7 +295,7 @@ Si : $\forall x \in J \v f(x) \leqslant g(x)$, alors $l \leqslant l'$
 
 <Hideable type='démonstration' titre=''>
 
-Soit $\epsilon > 0$, il existe $\eta_f$ et $\eta_g$ convenant pour la limite de $f$ et de $g$ en $a$.
+Soit $\varepsilon > 0$, il existe $\eta_f$ et $\eta_g$ convenant pour la limite de $f$ et de $g$ en $a$.
 
 On pose $\eta = \min(\eta_f \v \eta_g)$
 
@@ -303,9 +303,9 @@ On a donc, si $x \in I$ tel que $|x - a| < \eta$
 
 $$
 \begin{cases}
-|f(x) - l| \leqslant \epsilon
+|f(x) - l| \leqslant \varepsilon
 \\
-|g(x) - l'| \leqslant \epsilon
+|g(x) - l'| \leqslant \varepsilon
 \end{cases}
 $$
 
@@ -313,9 +313,9 @@ mais donc,
 
 $$
 \begin{cases}
-    -\epsilon \leqslant f(x) - l \leqslant \epsilon
+    -\varepsilon \leqslant f(x) - l \leqslant \varepsilon
     \\
-    -\epsilon \leqslant g(x) - l' \leqslant \epsilon
+    -\varepsilon \leqslant g(x) - l' \leqslant \varepsilon
 \end{cases}
 $$
 
@@ -323,15 +323,15 @@ puis,
 
 $$
 \begin{cases}
-    l -\epsilon \leqslant f(x) \leqslant l + \epsilon
+    l -\varepsilon \leqslant f(x) \leqslant l + \varepsilon
     \\
-    l' -\epsilon \leqslant g(x) \leqslant l' + \epsilon
+    l' -\varepsilon \leqslant g(x) \leqslant l' + \varepsilon
 \end{cases}
 $$
 
-donc $l - \epsilon \leqslant f(x) \leqslant g(x) \leqslant l' + \epsilon $.
+donc $l - \varepsilon \leqslant f(x) \leqslant g(x) \leqslant l' + \varepsilon $.
 
-Mais comme ceci vaut pour tout $\epsilon > 0$, on a bien $l \leqslant l'$
+Mais comme ceci vaut pour tout $\varepsilon > 0$, on a bien $l \leqslant l'$
 
 </Hideable>
 
@@ -360,15 +360,15 @@ Si $\forall x \in J \v f(x) \leqslant g(x) \leqslant h(x)$, alors $g(x)$ tend ve
 
 <Hideable type='démonstration' titre=''>
 
-**Montrons qu'il y a convergence :** Soit $\epsilon > 0$ et soient $\eta_f$ et $\eta_h$ convenant pour la limite de $f$ et de $h$ en $a$.
+**Montrons qu'il y a convergence :** Soit $\varepsilon > 0$ et soient $\eta_f$ et $\eta_h$ convenant pour la limite de $f$ et de $h$ en $a$.
 
 On pose $\eta = \min(\eta_f \v \eta_h)$. Soit $x \in I$ tel que $|x-a| < \eta$,
 
 $$
 \begin{cases}
--\epsilon \leqslant f(x) - l \leqslant \epsilon
+-\varepsilon \leqslant f(x) - l \leqslant \varepsilon
 \\
--\epsilon \leqslant h(x) - l \leqslant \epsilon
+-\varepsilon \leqslant h(x) - l \leqslant \varepsilon
 \end{cases}
 $$
 
@@ -376,13 +376,13 @@ puis,
 
 $$
 \begin{cases}
-    l -\epsilon \leqslant f(x) \leqslant l + \epsilon
+    l -\varepsilon \leqslant f(x) \leqslant l + \varepsilon
     \\
-    l -\epsilon \leqslant h(x) \leqslant l + \epsilon
+    l -\varepsilon \leqslant h(x) \leqslant l + \varepsilon
 \end{cases}
 $$
 
-On a donc : $l -\epsilon \leqslant f(x) \leqslant g(x) \leqslant h(x) \leqslant l + \epsilon$
+On a donc : $l -\varepsilon \leqslant f(x) \leqslant g(x) \leqslant h(x) \leqslant l + \varepsilon$
 
 On a bien l'encadrement voulu, d'où : $\limm{x \to a} g(x) = l$
 
@@ -427,9 +427,9 @@ On procède par disjonction de cas :
 
 $\cd$ **Cas 1 - $f$ est majorée :** on note $l$ la quantité $\sup_{x \in \R}(f(x))$.
 
-Soit $\epsilon > 0 $, il existe $A \in \R$ tel que $l - \epsilon \leqslant f(A) < l$ (car sinon $l - \epsilon < l$ serait un majorant plus petit que la borne supérieur ce qui est absurde).
+Soit $\varepsilon > 0 $, il existe $A \in \R$ tel que $l - \varepsilon \leqslant f(A) < l$ (car sinon $l - \varepsilon < l$ serait un majorant plus petit que la borne supérieur ce qui est absurde).
 
-Mais donc, si $x > A$, $l - \epsilon \leqslant f(A) \leqslant f(x) \leqslant l$ par croissance de $f$.
+Mais donc, si $x > A$, $l - \varepsilon \leqslant f(A) \leqslant f(x) \leqslant l$ par croissance de $f$.
 
 $\cd$ **Cas 2 - $f$ n'est pas majorée :** la définition de la majoration s'écrit : $\exists M \in \R \mid \forall x \in \R \v f(x) \leqslant M$.
 

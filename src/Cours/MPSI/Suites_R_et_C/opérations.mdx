@@ -32,46 +32,52 @@ $\cd$ Si $l_2 \neq 0$ et que $ \forall n \in \N \v v_n \neq 0$, $\limm{n \to + \
 
 **$\cd$ Produit par un scalaire :** 
 
-si $\lambda \in \C$, par définition de la limité, si $\epsilon >0$ alors il existe $N\in \N$ tel que, si $n \geqslant N$, on a $|u_n - l_1| \leqslant \epsilon$. 
+Soit $\varepsilon >0$ et  $\lambda \in \C$, par définition de la limité, il existe $N\in \N$ tel que, si $n \geqslant N$, on a $|u_n - l_1| \leqslant \varepsilon$. 
 
-Mais donc en multipliant par $\lambda$, on a $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \epsilon$. 
+Mais donc en multipliant par $\lambda$, on a $ \forall n \geqslant N \v | \lambda .u_n - \lambda . l_1| \leqslant \lambda . \varepsilon$. 
 
-Mais ce qui nous arrangerait serait d'avoir une majoration par $\epsilon$. Posons donc $\tilde{epsilon} = \dfrac{\lambda}{\epsilon}$. 
+Mais ce qui nous arrangerait serait d'avoir une majoration par $\varepsilon$. Posons donc $\tilde{epsilon} = \dfrac{\lambda}{\varepsilon}$. 
 
-Par définition de la limite, il existe $\tilde{N}$ tel que , si $n \geqslant \tilde{N}$, alors $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \tilde{\epsilon} = \epsilon$. 
+Le résultat précédent vaut pour tout $\varepsilon >0$ donc également pour $\tilde{\varepsilon}$ : il existe $\tilde{N}$ tel que , si $n \geqslant \tilde{N}$, alors $| \lambda .u_n - \lambda . l_1| \leqslant \lambda . \tilde{\varepsilon} = \varepsilon$. 
 
-**On réutilisera cette téchnique par la suite sans détailler plus que : "en posant $\tilde{\epsilon} = \dfrac{\lambda}{\epsilon}$"**
+**On réutilisera cette téchnique par la suite sans détailler plus que : "en posant $\tilde{\varepsilon} = \dfrac{\lambda}{\varepsilon}$"**
 
 On conclut que : 
 
 $$
-\forall \epsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant N \Rightarrow | \lambda .u_n - \lambda . l_1| \leqslant \epsilon
+\forall \varepsilon > 0 \v \exists \tilde{N} \in \N \mid n \geqslant \tilde{N} \Rightarrow | \lambda .u_n - \lambda . l_1| \leqslant \varepsilon
 $$
 
 <br/>
 
-**$\cd$ Somme des limites :** par définition de la limite, si $\epsilon > 0$, il existe $N_1$ et $N_2$ des entiers tels que :
+
+**$\cd$ Somme des limites :** 
+
+Soit $\epsilon >0$, par définition de la limite, il existe $N_1$ et $N_2$ des entiers tels que :
 
 $$
 \begin{cases}
-    n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \epsilon
+    n \geqslant N_1 \Rightarrow |u_n - l_1| \leqslant \varepsilon
     \\
-    n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \epsilon
+    n \geqslant N_2 \Rightarrow |u_n - l_2| \leqslant \varepsilon
 \end{cases}
 $$
 
-par somme, on a $- 2\epsilon \leqslant u_n + v_n - l_1 - l_2 \leqslant 2\epsilon$ 
+par somme, on a $- 2\varepsilon \leqslant u_n + v_n - l_1 - l_2 \leqslant 2\varepsilon$ 
 
-d'où $|(u_n + v_n) - (l_1 + l_2)| \leqslant 2 \epsilon$.
+d'où $|(u_n + v_n) - (l_1 + l_2)| \leqslant 2 \varepsilon$.
 
-On pose $\tilde{\epsilon} = \dfrac{\epsilon}{2}$ pour conclure.
+On pose $N = \max(N_1 \v N_2)$ et $\tilde{\varepsilon} = \dfrac{\varepsilon}{2}$ pour conclure.
 
 <br/>
 
-**$\cd$ Produit de limites :** Soit $\epsilon > 0$, on a $N_1$ et $N_2$ à partir des limites de $\suitedefN{u_n}$ et de $\suitedefN{u_n}$. On s'intéresse à $u_n.v_n - l_1.l_2$ mais nous n'avons des informations que sur $u_n - l_1$ et sur $v_n - l_2$ que nous ne reconnaissons pas ici.
+
+**$\cd$ Produit de limites :** 
+
+Soit $\varepsilon > 0$, on a $N_1$ et $N_2$ à partir des limites de $\suitedefN{u_n}$ et de $\suitedefN{v_n}$. On s'intéresse à $u_n.v_n - l_1.l_2$ mais nous n'avons des informations que sur $u_n - l_1$ et sur $v_n - l_2$ que nous ne reconnaissons pas ici.
 
 
-__ASTUCE A CONNAITRE :__ le fait que $u_n.v_n - l_1 . l_2$ lie les deux suites nous gène. On préfèrerair $u_n.l_2 - l_1 . l_2$ car il suffirait de factoriser par $l_2$ pour conclure. Et bien ajoutons et soustrayons $u_n.l_2$. 
+__ASTUCE A CONNAITRE :__ le fait que $u_n.v_n - l_1 . l_2$ lie les deux suites nous gène. On préfèrerait $u_n.l_2 - l_1 . l_2$ car il suffirait de factoriser par $l_2$ pour conclure. Et bien ajoutons et soustrayons $u_n.l_2$. 
 
 
 $$
@@ -81,42 +87,45 @@ $$
 On en déduit donc que 
 
 $$
-|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\epsilon + |l_2|.\epsilon
+|u_n.v_n - l_1 . l_2 | \leqslant  |u_n|.|v_n - l_2| + |l_2|.|u_n - l_1| \leqslant |u_n|.\varepsilon + |l_2|.\varepsilon
 $$ 
 
 mais $\suitedefN{|u_n|}$ est majorée par un $M \in \R$ car $\suitedefN{u_n}$ est convergeante. On a donc 
 
 $$
-|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\epsilon + |l_2|.\epsilon = \epsilon (M + |l2|)
+|u_n.v_n - l_1 . l_2 | \leqslant  \leqslant M.\varepsilon + |l_2|.\varepsilon = \varepsilon (M + |l2|)
 $$
 
-En posant $\tilde{\epsilon} = \dfrac{\epsilon}{M + |l2|}$, on peut conclure.
+En posant $\tilde{\varepsilon} = \dfrac{\varepsilon}{M + |l2|}$, on peut conclure.
 
 <br/>
 
-**$\cd$ Quotient :** Montrons que $\limm{n \to \infty} \dfrac{1}{v_n} = \dfrac{1}{l_2}$. On suppose $l_2 > 0$ (quitte à considérer $-1 \times \dfrac{1}{-v_n}$ où $\suitedefN{-v_n}$ a pour limite $-l_2 > 0$).
 
- Soit $\epsilon > 0$, 
- 
- il existe $N \in \N$ tel que, si $n \geqslant N$, alors $|v_n - l_2| \leqslant \epsilon$. 
- 
- Prenons $N$ qui convient et $n \geqslant N$. Alors, $ -\epsilon \leqslant  v_n - l_2 \leqslant \epsilon$ 
- 
- d'où  $ l_2 - \epsilon \leqslant  v_n\leqslant l_1 + \epsilon$ 
- 
- puis $\dfrac{1}{l_2 - \epsilon} \geqslant \dfrac{1}{v_n} \geqslant \dfrac{1}{l_2 + \epsilon}$ par décroissance de la fonction inverse. 
- 
- ensuite, on a $\epsilon . \dfrac{1}{l_2(l_2-\epsilon)}= \dfrac{1}{l_2 - \epsilon} - \dfrac{1}{l_2} \geqslant \dfrac{1}{v_n} - \dfrac{1}{l_2} \geqslant 0$. 
+**$\cd$ Quotient :** 
 
- Si l'on suppose que $\epsilon < \dfrac{l_2}{2}$, on trouve $ \dfrac{1}{l_2(l_2-\epsilon)} \leqslant \dfrac{2}{l_2^2}$. 
+Montrons que $\limm{n \to \infty} \dfrac{1}{v_n} = \dfrac{1}{l_2}$. On suppose $l_2 > 0$ (quitte à considérer $-u_n \times \dfrac{1}{-v_n}$ où $\suitedefN{-v_n}$ a pour limite $-l_2 > 0$).
+
+ Soit $\varepsilon > 0$, 
  
- En posant $\tilde{\epsilon} = \epsilon . \dfrac{l_2^2}{2}$, on peut conclure. 
+ il existe $N \in \N$ tel que, si $n \geqslant N$, alors $|v_n - l_2| \leqslant \varepsilon$. 
+ 
+ Prenons $N$ qui convient et $n \geqslant N$. Alors, $ -\varepsilon \leqslant  v_n - l_2 \leqslant \varepsilon$ 
+ 
+ d'où  $ l_2 - \varepsilon \leqslant  v_n\leqslant l_2 + \varepsilon$ 
+ 
+ puis $\dfrac{1}{l_2 - \varepsilon} \geqslant \dfrac{1}{v_n} \geqslant \dfrac{1}{l_2 + \varepsilon}$ par décroissance de la fonction inverse. 
+ 
+ ensuite, on a $\varepsilon . \dfrac{1}{l_2(l_2-\varepsilon)}= \dfrac{1}{l_2 - \varepsilon} - \dfrac{1}{l_2} \geqslant \dfrac{1}{v_n} - \dfrac{1}{l_2} \geqslant \dfrac{1}{l_2 + \varepsilon} - \dfrac{1}{l_2} = \dfrac{-\epsilon}{l_2(l_2 + \epsilon)}$. 
+
+ Si l'on suppose que $\varepsilon < \dfrac{l_2}{2}$, on trouve $ \dfrac{1}{l_2(l_2-\varepsilon)} \v  \dfrac{1}{l_2(l_2+\varepsilon)} \leqslant \dfrac{2}{l_2^2}$. 
+ 
+ En posant $\tilde{\varepsilon} = \varepsilon . \dfrac{l_2^2}{2}$, on peut conclure. 
  
  <br/>
  
- En effet, supposer $\epsilon < \dfrac{l_2}{2}$ n'est pas gênant car, si $\epsilon \geqslant \dfrac{l_2}{2}$, il suffit de prendre le $N$ trouvé pour par exemple $\epsilon = \dfrac{l_2}{4}$ et la définition sera vérifiée.
+ En effet, supposer $\varepsilon < \dfrac{l_2}{2}$ n'est pas gênant car, si $\varepsilon \geqslant \dfrac{l_2}{2}$, il suffit de prendre le $N$ trouvé pour par exemple $\varepsilon = \dfrac{l_2}{4}$ et la définition sera vérifiée.
 
 
-En considérant la suite $(\dfrac{1}{v_n})_{n \in \N}$, on peut appliquer le résultat pour le produit et obtenir la propriété sur le quotient.
+En considérant les suites $\suitedefN{u_n}$ et $(\dfrac{1}{v_n})_{n \in \N}$, on peut appliquer le résultat pour le produit et obtenir la propriété sur le quotient.
 
 </Hideable>

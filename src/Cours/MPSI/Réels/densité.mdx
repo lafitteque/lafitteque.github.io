@@ -28,7 +28,7 @@ $\cd$ Les irrationnels ($\R \setminus \Q$) sont denses dans les réels.
 
 **Deux premiers résultats :** on va montrer le premier résutat ce qui démontrera le second car $\D \subset \Q$. 
 
-Soient $x \in \R$ et $n \in \N$. 
+Soient $a$ et $b$ sont deux réels ordonnés strictement, il existe $x \in \defoo{a}{b}$.
 
 On pose $x_n = \dfrac{\floor{x.10^n}}{10^n}$. On a :
 
@@ -38,19 +38,25 @@ puis $x - \dfrac{1}{10^n} \leqslant \dfrac{\floor{x.10^n}}{10^n} \leqslant x$. M
 
 <br/>
 
-Donc, si $a$ et $b$ sont deux réels ordonnés strictement, alors il existe $x \in \defoo{a}{b}$.
+Pour $n$ assez grand, on imagine que $x_n = x - \dfrac{1}{10^n} \in \defff{a}{b}$. Trouvons donc un tel $n$. 
 
-Pour $n$ assez grand, $x - \dfrac{1}{10^n} \in \defff{a}{b}$. (on peut vérifier que $n = \ceil{\dfrac{2}{x-a}}$ convient)
+Il faut que $\dfrac{1}{10^n} \leqslant x-a$ et donc que $10^n \geqslant \dfrac{1}{x-a}$ puis $n \geqslant \log_{10}(\dfrac{1}{x-a})$. 
+
+Finalement, $n = \ceil{\log_{10}(\dfrac{1}{x-a})}$ convient par décroissance de $\suitedefN{\dfrac{1}{10^n}}$.
 
 Soit un tel $n$, alors $x_n$ est dans $\defff{a}{b}$. Donc $\defff{a}{b} \bigcap \R \neq \empty$
 
 <br/>
 
-**Troisième résultat :** On peut procéder par translation : $\pi + \Q \subset \R \setminus \Q$. 
+**Troisième résultat :** On peut procéder par translation : $\pi + \Q = \{ \pi + x \v x \in \Q} \subset \R \setminus \Q$. 
+
+On peut montrer cela par l'absurde en supposant $x \in \Q$ tel que $\pi + x = q \in \Q$. On aurait donc $\pi = x-q \in \Q$ ce qui est absurde puisque $\pi \notin \Q$.
+
+<br/>
 
 On peut alors considérer $\tilde{a} = a - \pi$ et $\tilde{b} = b - \pi$. 
 
-Comme $\defff{\tilde{a}}{\tilde{b}} \bigcap \Q \neq \empty$ par densité de $\Q$, $\defff{a}{b} \bigcap \Big(\R \setminus \Q \Big) \neq \empty$
+Comme $\defff{\tilde{a}}{\tilde{b}} \bigcap \Q \neq \empty$ par densité de $\Q$, on a $\defff{a}{b} \bigcap \Big(\R \setminus \Q \Big) \neq \empty$
 
 On a donc $\R \setminus \Q$ qui est dense dans $\R$.
 </Hideable>
