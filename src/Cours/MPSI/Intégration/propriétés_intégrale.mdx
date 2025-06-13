@@ -16,7 +16,20 @@ $$
 </Item>
 
 <Hideable type='démonstration' titre=''>
-Soit $F$ une primitive 
+Soient $F$ une primitive de $f$ et $G$ une primitive de $G$.
+
+$(\lambda . F + \mu . G)' = \lambda . f + \mu . g$ et donc 
+
+$$
+\integ{a}{b} \lambda . f(x) + \mu . g(x) dx = \Big[\lambda . F + \mu . G\Big]_a^b = \lambda . \Big(F(b)-F(a)\Big) + \mu . \Big(G(b)-G(a)\Big) 
+$$
+
+On en déduit que 
+
+$$
+\integ{a}{b} \lambda . f(x) + \mu . g(x) dx = \lambda . \integ{a}{b} f(x) + \mu . \integ{a}{b} g(x) dx
+$$
+
 </Hideable>
 
 <Item type='proposition' titre='relation de chasles' searchDesc="intégrale">

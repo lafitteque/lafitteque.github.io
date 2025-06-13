@@ -51,35 +51,6 @@ Dans ce chapitre, $A$ désigne un sous-ensemble de $\R$.
 ### Fonctions trigonométriques réciproques
 <FonctionsTrigoReciproques  />
 
-<Item type='proposition' titre='formule avec Arctan'>
-
-$$
-\forall x \in \R^* \v \Arctan(x) + \Arctan(\dfrac{1}{x}) = 
-\begin{cases}
-    \dfrac{\pi}{2} \quad \text{ si } x > 0
-    \\
-    -\dfrac{\pi}{2} \quad \text{ si } x < 0
-\end{cases}
-$$
-</Item>
-
-<Hideable type='démonstration' titre=''>
-
-Soit $f : x \mapsto \Arctan(x) + \Arctan(\dfrac{1}{x})$ définie sur $\R^*$.
-
-$f'(x) = \dfrac{1}{1 + x^2} + \dfrac{\dfrac{-1}{x^2}}{1 + (\dfrac{1}{x})^2}$
-
-On en déduit que $f'(x) = \dfrac{1}{1 + x^2} - \dfrac{1}{x^2 + 1}$ en multipliant en haut et en bas par $x^2$ dans la deuxième fraction.
-
-Il suit que $f'(x) = 0$.
-
-On sait donc que $f' = 0$ sur $\R_-^*$ et donc que $f$ y est constante (ce que l'on admet ici). Il en va de même pour $f'$ sur $\R_+^*$.
-
-
-Comme $f(1) = 2 \Arctan(1) = \dfrac{\pi}{2}$ et $f(-1) = 2\Arctan(-1) = - \dfrac{\pi}{2}$, on a le résultat souhaité.
-</Hideable>
-
-
 
 ### Fonctions hyperboliques et logarithmiques
 
@@ -102,12 +73,43 @@ On pose $\cC^1(I \v \R) = \{ f \in \R^{I} \mid f \text{ est de classe } \cC^1 \}
 </Item>
 
 
+### Formulaire 
+<Formulaire />
+
 
 ### Application à l'étude de fonctions
 <EtudeFonctions />
 
-### Formulaire 
-<Formulaire />
+
+
+<Item type='proposition' titre='formule avec Arctan'>
+
+$$
+\forall x \in \R^* \v \Arctan(x) + \Arctan(\dfrac{1}{x}) = 
+\begin{cases}
+    \dfrac{\pi}{2} \quad \text{ si } x > 0
+    \\
+    -\dfrac{\pi}{2} \quad \text{ si } x < 0
+\end{cases}
+$$
+</Item>
+
+<Hideable type='démonstration' titre=''>
+
+Soit $f : x \mapsto \Arctan(x) + \Arctan(\dfrac{1}{x})$ définie sur $\R^*$.
+
+$f'(x) = \dfrac{1}{1 + x^2} + \dfrac{\dfrac{-1}{x^2}}{1 + (\dfrac{1}{x})^2}$
+
+On en déduit que $f'(x) = \dfrac{1}{1 + x^2} - \dfrac{1}{x^2 + 1}$ en multipliant en haut et en bas par $x^2$ dans la deuxième fraction.
+
+Il suit que $f'(x) = 0$.
+
+On sait donc que $f' = 0$ sur $\R_-^*$ et donc que $f$ y est constante. Il en va de même pour $f'$ sur $\R_+^*$.
+
+
+Comme $f(1) = 2 \Arctan(1) = \dfrac{\pi}{2}$ et $f(-1) = 2\Arctan(-1) = - \dfrac{\pi}{2}$, on a le résultat souhaité.
+</Hideable>
+
 
 ### Généralisations
 
@@ -128,7 +130,7 @@ $$
 
 On dit que $f$ est de classe $\cC^k$ si elle est dérivable $k$ fois et que sa dérivée $k$-ième est continue.
 
-On note $\cC^k(I\v \R) = \{f \in \cD^k(I\v \R) \mid f{(k)} \text{ est continue} \}$
+On note $\cC^k(I\v \R) = \{f \in \cD^k(I\v \R) \mid f^{(k)} \text{ est continue} \}$
 </Item>
 
 <Remarque titre=''>

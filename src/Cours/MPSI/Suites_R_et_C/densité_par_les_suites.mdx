@@ -8,14 +8,14 @@ import Fil from '@components/Fil.astro'
 
 <Item type='proposition' titre='caractérisation de la densité'>
 
-Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in \R$, il existe $\suitedefN{u} \in A^{\N}$ telle que $u_n \limton x$.
+Soit $A \subset \R$, $A$ est dense dans $\R$ si et seulement si pour tout $x \in \R$, il existe $\suitedefN{u_n} \in A^{\N}$ telle que $u_n \limton x$.
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
 $\cd$ **Sens direct ($\Rightarrow$):** Supposons $A$ dense dans $\R$. $n$ désigne un entier naturel non nul.
 
-On sait que $A\bigcap \defoo{x - \dfrac{1}{n} \v x + \dfrac{1}{n}} \neq \empty$. 
+On sait que $A\bigcap \defoo{x - \dfrac{1}{n}}{x + \dfrac{1}{n}} \neq \empty$. 
 
 Construisons une suite $\suitedefN{x_n} \in A^{\N}$ qui converge vers $x$. 
 

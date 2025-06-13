@@ -22,11 +22,13 @@ Comme $u_{n+1} = f(u_n)$, par passage à la limite, $l = f(l)$.
 
 Soit $f : \R \rightarrow \R$ et une suite vérifiant la relation de récurrence $u_{n+1} = f(u_n)\v \forall n \in \N$.
 
-- L'étude de $g = f - id$ permet de déterminer le signe de $u_{n+1} - u_n$ car $u_{n+1} - u_n = f(u_n) - u_n$. Si l'étude de $g$ montre qu'elle est par exemple positive sur $\defff{a}{b}$ __ET__ que $f(\defff{a}{b}) \subset \defff{a}{b}$, alors il est intéressant de montrer (si c'est le cas) que $u_0 \in \defff{a}{b} \Rightarrow \forall n \in \N, u_n \in \defff{a}{b}$, ce qui signifie que $u$ est monotone et que l'on peut conclure par le théorème de la limite monotone. Il en va de même pour le cas décroissant.
+L'étude de $g = f - id$ permet de déterminer le signe de $u_{n+1} - u_n$ car $u_{n+1} - u_n = f(u_n) - u_n$. Cela peut donner des informations importantes sur $u$ et en particulier sa monotonie.
 
-$\cd$ La limite éventuelle est trouvée à l'aide du (ou des) point fixe de $f$.
+Cependant, si l'on souhaite étudier la convergence de $u$, il faudra souvent utiliser l'une des méthodes suivantes :
 
-$\cd$ Si l'on n'arrive pas à conclure mais que $f$ est monotone sur $J$ et que $f(J) \subset J$ :
+$\cd$ La limite **éventuelle** est trouvée à l'aide du (ou des) point fixe de $f$.
+
+$\cd$ Si l'on n'arrive pas à conclure mais que $f$ est monotone sur $J \subset \R$ et que $f(J) \subset J$ :
 
 <Indent>
 
@@ -73,14 +75,14 @@ $\cd$ **Cas 1 :** Si $u_0 \in \defff{0}{1}$, on montre par récurrence que $u_n 
 
 **Hérédité :** Soit $ n \in \N^*$, on suppose $\cP(n)$ vraie. Montrons $\cP(n+1)$.
 
-$u_{n+1} = u_n^2$ mais comme $0 \leqslant u_n \leqslant 1$ par hypothèse de récurrence, on a bien $0 \leqslant u_{n+} \leqslant 1$ par croissance de $x \mapsto x$^sur $\R_+^*$. D'où $u_{n+1} \in \defff{0}{1}$ 
+$u_{n+1} = u_n^2$ mais comme $0 \leqslant u_n \leqslant 1$ par hypothèse de récurrence, on a bien $0 \leqslant u_{n+1} \leqslant 1$ par croissance de $x \mapsto x^2$ sur $\R_+^*$. D'où $u_{n+1} \in \defff{0}{1}$ 
 
 **Conclusion :** On a montré $\cP(0)$ et on a montré que $\cP(n) \Rightarrow \cP(n+1)$ si $ n \in \N$. On a donc bien montré que la propriété est vraie sur $\N^*$
 
 
 Maintenant, il suffit de remarquer que $g(x) \leqslant 0$ si $x \in \defff{0}{1}$ pour montrer que la suite est décroissante car $u_{n+1} - u_n = g(u_n)$.
 
-La suite est décroissante et minorée donc convergente. Sa limite est notée $l$ est est un point fixe de $f$ d'où $f(l) = l$ et donc $l^2 = l$ et $l \in \{ 0 \v 1\}$. Mais la suite est en faite strictement décroissante sur $\defoo{0}{1}$ car $g$ y est strictement négative. Donc, soit $u_0 = 1$ et dans ce cas $l = 1$, soit $u_0 < 1$ et alors $l = 0$.
+La suite est décroissante et minorée donc convergente. Sa limite est notée $l$ est est un point fixe de $f$ d'où $f(l) = l$ et donc $l^2 = l$ et $l \in \{ 0 \v 1\}$. Mais la suite est en fait strictement décroissante sur $\defoo{0}{1}$ car $g$ y est strictement négative. Donc, soit $u_0 = 1$ et dans ce cas $l = 1$, soit $u_0 < 1$ et alors $l = 0$.
 
 <br/>
 
@@ -116,13 +118,39 @@ On suppose que $0 \leqslant w_0 \leqslant 1$. Montrons sur $\N$ la propriété $
 
 Déjà, $f \circ f (x) = 1-(1-x^2)^2 = 1 - 1 + 2x^2 -x^4 = 2x^2 - x^4 \v \forall x\in \R$
 
-$w_{n+2} - w_{n+1} = 2w_{n+1}^2 - w_{n+1}^4 - 2 w_n^2 + w_n^4 = 2(w_{n+1}^2 - w_n^2) - (w_{n+1}^4 - w_n^4)$
+On a donc :
 
-$w_{n+2} - w_{n+1} = 2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1}^2 - w_n^2)(w_{n+1}^2 + w_n^2) = 2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1} - w_n)(w_{n+1} + w_n)(w_{n+1}^2 + w_n^2)$
+$$
+w_{n+2} - w_{n+1} = 2w_{n+1}^2 - w_{n+1}^4 - 2 w_n^2 + w_n^4 = 2(w_{n+1}^2 - w_n^2) - (w_{n+1}^4 - w_n^4)
+$$
 
-On factorise : $w_{n+2} - w_{n+1} = (w_{n+1} - w_n)(w_{n+1} + w_n)\Big( 2 - (w_{n+1}^2 + w_n^2) \Big)$. 
+Puis, en factorisant :
 
-En effet, $ 0 \leqslant x \leqslant 1 \Rightarrow  0 \leqslant x^2 \leqslant 1 \Rightarrow 0 \geqslant -x^2 \geqslant -1 \Rightarrow 1 \geqslant 1-x^2 \geqslant 0$. Donc $\defff{0}{1}$ est stable par $f$. Par récurrence immédiate (en utilisant la stabilité de $\defff{0}{1}$ par $f$), $0 \leqslant w_n \leqslant 1\v \forall n \in \N$ d'où $w_{n+1}^2 + w_n^2 \leqslant 2$.
+$$
+w_{n+2} - w_{n+1} = 2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1}^2 - w_n^2)(w_{n+1}^2 + w_n^2) 
+$$
+
+et ensuite, 
+
+$$
+w_{n+2} - w_{n+1} =  2(w_{n+1} - w_n)(w_{n+1} + w_n) - (w_{n+1} - w_n)(w_{n+1} + w_n)(w_{n+1}^2 + w_n^2)
+$$
+
+On factorise : 
+
+$$
+w_{n+2} - w_{n+1} = (w_{n+1} - w_n)(w_{n+1} + w_n)\Big( 2 - (w_{n+1}^2 + w_n^2) \Big)
+$$ 
+
+En effet, 
+
+$$
+ 0 \leqslant x \leqslant 1 \Rightarrow  0 \leqslant x^2 \leqslant 1 \Rightarrow 0 \geqslant -x^2 \geqslant -1 \Rightarrow 1 \geqslant 1-x^2 \geqslant 0
+$$
+
+Donc $\defff{0}{1}$ est stable par $f$. Par récurrence immédiate (en utilisant la stabilité de $\defff{0}{1}$ par $f$), $0 \leqslant w_n \leqslant 1\v \forall n \in \N$ 
+
+d'où $0 \leqslant w_{n+1}^2 + w_n^2 \leqslant 2$.
 
 Donc $(w_{n+1} + w_n)\Big( 2 - (w_{n+1}^2 + w_n^2) \Big) \geqslant 0$ et on en conclut que $w_{n+1} + w_n$ et $w_{n+2} - w_{n+1}$ ont même signe. Mais par hytpothèse de récurrence, $w_{n+1} + w_n$ et $w_1 + w_0$ ont même signe. D'où le résultat.
 
@@ -146,9 +174,9 @@ On trouve une racine évidente : $1$
 
 On a ensuite $l(l-1)(l^2 -l -1) = 0$ et en calculant le discriminant de $l^2 -l -1 = 0$, on trouve $l(l-1)(l- x_-)(l - x_+) = 0$ où $x_{\pm} = \dfrac{-1 \pm \sqrt{5}}{2}$. 
 
-Nécessairement, $l \neq x_-$ car $l geqslant 0$. Mais on peut également écarter les cas $0$ et $1$ car on peut montrer par récurrence que $u_0 \leqslant v_n \leqslant v_0 $ et $v_0 \geqslant u_n \geqslant u_0$ sur $\N$ et on en déduit par passage à la limite que aucune de ces deux suites ne peut converger ni vers $0$ ni vers $1$. 
+Nécessairement, $l \neq x_-$ car $l \geqslant 0$. Mais on peut également écarter les cas $0$ et $1$ car on peut montrer par récurrence que $u_0 \leqslant v_n \leqslant v_0 $ et $v_0 \geqslant u_n \geqslant u_0$ sur $\N$ et on en déduit par passage à la limite qu'aucune de ces deux suites ne peut converger ni vers $0$ ni vers $1$. 
 
 <br/>
 
-On conclut : $u$ et $v$ sont convergentes vers l'un de leurs points fixes. Mais le seul qui soit possible est $\dfrac{-1 + \sqrt{5}}{2}$. On en déduit que $s_n \limton \dfrac{-1 + \sqrt{5}}{2}$
+On conclut : $u$ et $v$ sont convergentes vers l'un de leurs points fixes. Mais le seul qui soit possible est $\dfrac{-1 + \sqrt{5}}{2}$. On en déduit que $\suitedefN{u_{2n}}$ et $\suitedefN{u_{2n+1}}$ convergent toutes les deux vers $\dfrac{-1 + \sqrt{5}}{2}$  et donc que : $s_n \limton \dfrac{-1 + \sqrt{5}}{2}$.
 </Hideable>

@@ -8,20 +8,32 @@ import Fil from '@components/Fil.astro'
 
 <Item type='theoreme' titre='changement de variable' searchDesc="intégrale">
 
-Soit $\phi$ une fonction de classe $\cC^1$ définie sur $\defff{a}{b}$ et à valeurs dans $I$. On a :
+Soit $\varphi$ une fonction de classe $\cC^1$ définie sur $\defff{a}{b}$ et à valeurs dans $I$. On a :
 
 $$
-\integ{a}{b} (f \circ \phi)(t) . \phi'(t) dt = \integ{\phi(a)}{\phi(b)} f(u) du
+\integ{a}{b} (f \circ \varphi)(t) . \varphi'(t) dt = \integ{\varphi(a)}{\varphi(b)} f(u) du
 $$
 </Item>
 
 <Hideable type='démonstration' titre=''>
 
-On part de $(F \circ \phi)' = \phi' . f \circ \phi$. 
+On part de $(F \circ \varphi)' = \varphi' . f \circ \varphi$. 
 
-Par intégration entre $a$ et $b$, $\integ{a}{b} (F \circ \phi)'(t) dt = \integ{a}{b} \phi'(t) . (f \circ \phi) (t) dt$
+Par intégration entre $a$ et $b$, 
 
-Il suit que $\Big[(F \circ \phi(t))\Big]_a^b = \integ{a}{b} \phi'(t) . (f \circ \phi) (t) dt$
+$$
+\integ{a}{b} (F \circ \varphi)'(t) dt = \integ{a}{b} \varphi'(t) . (f \circ \varphi) (t) dt
+$$
 
-Mais $\Big[(F \circ \phi(t))\Big]_a^b = F(\phi(b)) - F(\phi(a)) = \integ{\phi(a)}{\phi(b)} f(u) du$
+Il suit que 
+
+$$
+\Big[(F \circ \varphi(t))\Big]_a^b = \integ{a}{b} \varphi'(t) . (f \circ \varphi) (t) dt
+$$
+
+Mais donc 
+
+$$
+\Big[(F \circ \varphi(t))\Big]_a^b = F(\varphi(b)) - F(\varphi(a)) = \integ{\varphi(a)}{\varphi(b)} f(u) du
+$$
 </Hideable>

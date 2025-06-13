@@ -7,7 +7,7 @@ import Fil from '@components/Fil.astro'
 
 <Item type='proposition' titre='monotonie et dérivée' tag="admis"  searchDesc="fonction croissante décroissante">
 
-Soit $f$ une fonction dérivable.
+Soit $f$ une fonction dérivable sur $I \subset \R$ un intervalle.
 
 $f'$ est de signe constant si et seulement si $f$ est monotone. 
 </Item>
@@ -16,7 +16,7 @@ Cette propriété nécessite d'avoir vu la notion de limite pour les fonctions, 
 
 <Item type='proposition' titre='monotonie stricte et dérivée' searchDesc="croissante décroissante fonction">
 
-Soit $f$ une fonction dérivable.
+Soit $f$ une fonction dérivable sur  $I \subset \R$ un intervalle.
 
 Si $f'$ est strictement positive (resp. strictement négative), alors $f$ est strictement croissante (resp. strictement décroissante). 
 </Item>
@@ -25,6 +25,13 @@ Si $f'$ est strictement positive (resp. strictement négative), alors $f$ est st
 
 Attention ! La réciproque est fausse et un contre-exemple très classique est la fonction $x \mapsto x^3$ qui a une dérivée s'annulant en $0$ et pourtant elle est strictement croissante. 
 </Remarque>
+
+<Item type='proposition' titre='dérivée nulle'>
+
+Soit $f$ une fonction dérivable sur  $I \subset \R$ un intervalle.
+
+Si $f' = 0$, alors $f$ est constante. 
+</Item>
 
 <Item type='proposition' titre='inégalités classiques'  searchDesc="exponentielle puissance logarithme">
 
@@ -39,7 +46,7 @@ $\cd$ $(1+x)^n \geqslant 1 + nx \quad \v \forall x \in \R_+$
 
 <Hideable type='démonstration' titre=''>
 
-$\cd$ **Première inégalité :** On pose $f : x \mapsto e^x - x - 1$ sur $\R$. Sa dérivée est $f' : x \mapsto e^x - 1$ qui est positive sur $\R_+$. On en déduit que $f$ est décroissante sur $\R_-$ et croissante sur $\R^+$ et qu'elle atteint son minimum en $0$ et celui-ci est $0$. 
+$\cd$ **Première inégalité :** On pose $f : x \mapsto e^x - x - 1$ sur $\R$. Sa dérivée est $f' : x \mapsto e^x - 1$ qui est positive sur $\R_+$. On en déduit que $f$ est décroissante sur $\R_-$ et croissante sur $\R_+$ et qu'elle atteint son minimum en $0$ et celui-ci est $0$. 
 
 Donc $f \geqslant 0$ d'où le résultat.
 

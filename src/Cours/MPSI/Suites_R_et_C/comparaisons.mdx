@@ -104,3 +104,35 @@ $\underbrace{6 - \dfrac{1}{n}}_{\limton 6} \leqslant  6\dfrac{n+1}{n} + \dfrac{\
 
 D'après le théorème des gendarmes, $\limm{n \to + \infty} u_n = 6$
 </Hideable>
+
+
+<Item type='definition' titre='suite stationnaire'>
+
+On dit qu'une suite est stationnaire si elle est constante à partir d'un certain rang.
+</Item>
+
+<Hideable type='exemple' titre=''>
+
+La suite $u_n =  \floor{100.e^{-n}}$ définie sur $\N$ est stationnaire. Cette suite prend les valeurs suivantes : $ 100 \pv  36\pv  13\pv  4\pv  1 \pv  0 \pv  0 \pv  0 \pv  \dotsm$
+</Hideable>
+
+
+<Exercice titre=''>
+
+Montrer qu'une suite à valeurs entières $\suitedefN{u_n}$ convergente est stationnaire.
+</Exercice>
+
+<Hideable type='solution' titre=''>
+
+Soit $l$ la limite de $u_n$. On prend $\varepsilon = \dfrac{1}{4}$ 
+
+Par définition de la convergence, il existe $N \in \N$ tel que $\forall n \geqslant N \v \left| u_n - l \right| \leqslant \varepsilon$
+
+On a donc, si $n \geqslant N \v  l - \varepsilon \leqslant u_n \leqslant l + \varepsilon$. 
+
+Dit autrement, $u_n \in \defff{l - \dfrac{1}{4}}{ l + \dfrac{1}{4}}$
+
+Il existe au plus un entier dans cet intervalle. De plus, on sait qu'il en existe un puisque $u_n \in \N$ et $u_n \in \defff{l - \dfrac{1}{4}}{ l + \dfrac{1}{4}}$.
+
+Si l'on note $m$ cet entier, on a : $\forall n \geqslant N \v u_n = m$ (puisqu'il n'y a qu'un choix possible dans $\defff{l - \dfrac{1}{4}}{ l + \dfrac{1}{4}} \bigcap \N$). On en conclut également que $l = m$.
+</Hideable>

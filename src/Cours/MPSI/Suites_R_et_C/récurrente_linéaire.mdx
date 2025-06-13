@@ -8,10 +8,10 @@ import Fil from '@components/Fil.astro'
 
 <Item type='definition' titre="suite récurrente linéaire homogène d'ordre k">
 
-On dit qu'une suite réelle $\suitedefN{u_n}$ est linéaire homogène d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_k$ des réels tels que :
+On dit qu'une suite réelle $\suitedefN{u_n}$ est récurrente linéaire homogène d'ordre $k \in \N^*$ s'il existe $a_1 \v a_2 \v \dotsm \v a_{k-1}$ des réels tels que :
 
 $$ 
-a_{n+k+1} = a_{k}.u_{n+k} + a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N 
+u_{n+k} = a_{k-1}.u_{n+k-1} + \dotsm + a_{1}.u_{n+1} + a_{0}.u_{n} \v \forall n \in \N 
 $$
 </Item>
 
@@ -33,9 +33,18 @@ $\cd$ Si $\Delta \neq 0$, on note $\delta$ une racine complexe de $\Delta$. $(E)
 <Hideable type='démonstration' titre=''>
 
 $ax^2 + bx + c = 0 \ssi a(x^2 + \dfrac{b}{a}x) + c = 0$. 
-On a $x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \frac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}$. En injectant ce résultat dans le premier, on a :
 
-$ax^2 + bx + c = 0 \ssi a\Big((x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}\Big) + c = 0 \ssi a(x + \dfrac{b}{2a})^2 - \cancel{a}.\dfrac{b^2}{4\cancel{a}.a} + c = 0 \ssi (x + \dfrac{b}{2a})^2 = \dfrac{b^2 - 4ac}{4a^2} $.
+On a 
+
+$$
+x^2 + \dfrac{b}{a}x = \underbrace{x^2 + 2.\dfrac{1}{2}\dfrac{b}{a}x + \dfrac{b^2}{4a^2}}_{= (x + \frac{b}{2a})^2} - \dfrac{b^2}{4a^2} = (x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}
+$$
+
+En injectant ce résultat dans le premier, on a :
+
+$$
+ax^2 + bx + c = 0 \ssi a\Big((x + \dfrac{b}{2a})^2 - \dfrac{b^2}{4a^2}\Big) + c = 0 \ssi a(x + \dfrac{b}{2a})^2 - \cancel{a}.\dfrac{b^2}{4\cancel{a}.a} + c = 0 \ssi (x + \dfrac{b}{2a})^2 = \dfrac{b^2 - 4ac}{4a^2} 
+$$
 
 Le seul élément ayant une seule racine carrée est $0$, donc,
 
@@ -43,7 +52,7 @@ $\cd$ soit le terme de droite vaut $0$ et $\Delta = b^2 - 4ac$ vaut $0$, auquel 
 
 $\cd$ soit le terme de droite ne vaut pas $0$, auquel cas, $\delta$ et $-\delta$ sont distinctes et sont deux racines de $\Delta$, on a donc  $ax^2 + bx + c = 0 \ssi x + \dfrac{b}{2a} = \pm \dfrac{\delta}{2a}$ d'où le résultat.
 
-Dans le cas où $a\v b \v c \in \R$, on a $a\overline{z}^2 + b\overline{z} + c = az^2 + bz + c$ si $z \in \C$. Donc, si $z$ est racine de $(E)$ alors $\overline{z}$ est racine de $(E)$, ce qui nous donne deux racines à condition que $z \in \C \setminus \R$ car dans ce cas $\overline{z} \neq z$.
+Dans le cas où $a\v b \v c \in \R$, on a $a\overline{z}^2 + b\overline{z} + c = \overline{az^2 + bz + c}$ si $z \in \C$. Donc, si $z$ est racine de $(E)$ alors $\overline{z}$ est racine de $(E)$, ce qui nous donne deux racines à condition que $z \in \C \setminus \R$ car dans ce cas $\overline{z} \neq z$.
 </Hideable>
 
 <Item type='proposition' titre='formules explicites' tag="admis">
@@ -115,6 +124,6 @@ $$
 \end{cases}
 $$
 
-On a donc $u_n = \dfrac{1}{\sqrt{5}} (\phi + \overline{\phi})$ pour tout $n \in \N$.
+On a donc $u_n = \dfrac{1}{\sqrt{5}} (\phi^n - \overline{\phi} ^n)$ pour tout $n \in \N$.
 
 </Hideable>

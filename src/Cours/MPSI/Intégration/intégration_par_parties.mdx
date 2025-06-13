@@ -19,17 +19,34 @@ $$
 
 On part de $(f.g)' = f'.g + f.g'$.
 
-Par intégration entre $a$ et $b$, $\integ{a}{b}(f.g)(t) dt = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
+Par intégration entre $a$ et $b$, 
 
-Ensuite, $\Big[ (f.g) (t)\Big]_a^b = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) $
+$$
+\integ{a}{b}(f.g)(t) dt = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) 
+$$
 
-Enfin, $\Big[ (f.g) (t)\Big]_a^b  - \integ{a}{b}(f.g')(t) = \integ{a}{b}(f'.g)(t)$
+Ensuite, 
+
+$$
+\Big[ (f.g) (t)\Big]_a^b = \integ{a}{b}(f'.g)(t) + \integ{a}{b}(f.g')(t) 
+$$
+
+Enfin, 
+
+$$
+\Big[ (f.g) (t)\Big]_a^b  - \integ{a}{b}(f.g')(t) = \integ{a}{b}(f'.g)(t)
+$$
+
 </Hideable>
 
 
 <Exercice titre=''>
 
-Soit $x \in \R_+^*$. En utilisant une intégration par partie, calculer $\integ{1}{x} \ln(t) dt$.
+Soit $x \in \R_+^*$. En utilisant une intégration par partie, calculer 
+
+$$
+\integ{1}{x} \ln(t) dt
+$$
 </Exercice>
 
 <Hideable type='solution' titre=''>
@@ -38,7 +55,7 @@ $$
 \integ{1}{x} \ln(t) dt = \integ{1}{x} 1 \times \ln(t) dt  \mathop{=} \limits_{\substack{ \text{par IPP} \\ u(t) = t \v u'(t) = 1 \\ v(t) = \ln(t) \v v'(t) = \dfrac{1}{t}}} \Big[t . \ln(t) \Big]_1^x - \integ{1}{x} \underbrace{t \times \dfrac{1}{t}}_{= 1} dt
 $$
 
-Cette intégration est correcte car $u$ et $v$ sont $\cC^1$ sur $\R_+^*$. Il suit que :
+Cette intégration par parties est correcte car $u$ et $v$ sont $\cC^1$ sur $\R_+^*$. Il suit que :
 
 $$
 \integ{1}{x} \ln(t) dt = x.\ln(x) - 1.\ln(1) - [t]_1^x = x.\ln(x) - x + 1

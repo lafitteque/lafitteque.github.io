@@ -19,7 +19,7 @@ $$
 \end{cases}
 $$
 
-Cette fonction est bien définie car $\sin_{\mid \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
+Cette fonction est bien définie car $\sin_{\divise  \defff{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
 </Item> 
 
 
@@ -29,7 +29,7 @@ Cette fonction est bien définie car $\sin_{\mid \defff{-\dfrac{\pi}{2}}{\dfrac{
 On définir la fonction suivante :
 
 $$
-Arccos: 
+\Arccos: 
 \begin{cases}
 	\defff{-1}{1} \rightarrow \defff{0}{\pi}
 	\\
@@ -37,7 +37,7 @@ Arccos:
 \end{cases}
 $$
 
-Cette fonction est bien définie car $cos_{\mid \defff{0}{\pi}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
+Cette fonction est bien définie car $\cos_{ \divise  \defff{0}{\pi}}$ à valeurs dans $\defff{-1}{1}$ est bijective.
 </Item> 
 
 
@@ -54,7 +54,26 @@ $$
 \end{cases}
 $$
 
-Cette fonction est bien définie car $cos_{\defoo{ -\dfrac{\pi}{2}}{\dfrac{\pi}{2}} }$ à valeurs dans $\defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$ est bijective.
+Cette fonction est bien définie car $\tan_{ \divise \defoo{ -\dfrac{\pi}{2}}{\dfrac{\pi}{2}} }$ à valeurs dans $\defoo{- \infty }{ \infty}$ est bijective.
 </Item> 
 
+<Item type='proposition' titre="argument d'un complexe et Arctan">
 
+Soit $z = a + ib$ l'écriture algébrique d'un complexe.
+
+Si $a > 0$ alors on a : $\Arg(z) = \Arctan(\dfrac{b}{a})$.
+
+<br/>
+
+(sinon, il y a un décalage de $\pm \pi$).
+</Item>
+
+
+<Hideable type='démonstration' titre=''>
+
+Si $a > 0$, alors $Arg(z) \in \defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$.
+
+De plus, $a = \cos(\Arg(z))$ et $b = \sin( \Arg(z))$ donc $\dfrac{b}{a} = \tan(\Arg(z))$. 
+
+Comme $\Arg(z)$ est dans $\defoo{-\dfrac{\pi}{2}}{\dfrac{\pi}{2}}$ et que $\Arctan$ est bijective, on a $\Arctan(\dfrac{b}{a}) = \Arg(z)$
+</Hideable>
