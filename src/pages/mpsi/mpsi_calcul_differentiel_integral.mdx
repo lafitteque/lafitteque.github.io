@@ -174,6 +174,31 @@ Dans cette section, on considère $I$ un intervalle de $\R$ et $f$ définie sur 
 2\) Montrer que l'aire du disque de rayon $1$ est $\pi$.
 </Exercice>
 
+<Hideable type='solution' titre=''>
+
+1\)  Un point $A\Point{x}{y}$ est sur le cercle unité s'il vérifie $x^2 + y^2 = 1$ d'où $y^2 = 1 - x^2$ et donc $|y| =\sqrt{1 - x^2}$. Mais comme $y \geqslant 0$ sur le premier cadrant, on a $y = \sqrt{1 - x^2}$
+
+On propose donc $f : x \mapsto \sqrt{1 - x^2}$
+
+<br/>
+
+2\) L'aire du disque unité est donc $4 \times \integ{0}{1} \sqrt{1 - x^2} dx$ par symétries d'axes $x = 0$ et $y = 0$.
+
+Mais $\integ{0}{1} \sqrt{1 - x^2} dx = \integ{\frac{\pi}{2}}{0} \sqrt{1 - cos(t)^2}. (-\sin(t)) dt$ par le changement de variable $x = \cos(t)$ qui donne $\dfrac{dx}{dt} = -\sin(t)$
+
+On obtient donc $\integ{0}{1} \sqrt{1 - x^2} dx = \integ{\frac{\pi}{2}}{0} -|\sin(t)|.\sin(t) dt = \integ{\frac{\pi}{2}}{0} -\sin(t)^2 dt$
+
+En inversant l'ordre des bornes, il suit que $\integ{0}{1} \sqrt{1 - x^2} dx = \integ{0}{\frac{\pi}{2}} \sin(t)^2 dt$
+
+Par passage aux complexes, on a 
+
+$$
+\integ{0}{1} \sqrt{1 - x^2} dx = \\integ{0}{\frac{\pi}{2}} \dfrac{1-\cos(2t)}{2}dt = \Big[\dfrac{t}{2} - \dfrac{\sin(t)}{2}\Big]_0^{\frac{\pi}{2}} = \dfrac{pi}{4}  
+$$
+
+Finalement l'aire du disque unité vaut $4 \times \dfrac{\pi}{4}$ soit $\pi$.
+
+</Hideable>
 
 #### Astuces courantes
 <Astuces />

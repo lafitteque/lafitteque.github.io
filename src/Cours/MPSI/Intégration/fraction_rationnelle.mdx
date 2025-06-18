@@ -20,21 +20,45 @@ Réexprimons $\dfrac{6x^2 - 4x + 1}{2x^2-x -6}$ plus simplement.
 
 <br />
 
-$\dfrac{6x^2 - 4x + 1}{2x^2-x -6} =  \dfrac{(6x^2 - 3x - 18) + 19 - x}{2x^2-x -6} = 3 + \dfrac{-x + 19}{(2x + 3) (x - 2)}$
+$$
+\dfrac{6x^2 - 4x + 1}{2x^2-x -6} =  \dfrac{(6x^2 - 3x - 18) + 19 - x}{2x^2-x -6} = 3 + \dfrac{-x + 19}{(2x + 3) (x - 2)}
+$$
 
-Ensuite, $\dfrac{-x + 19}{(2x + 3) (x - 2)} = \dfrac{a}{(2x + 3)} + \dfrac{b}{(x - 2)}$
+Ensuite, 
 
-Mais donc $\dfrac{a(x -2) + b(2x+3)}{(2x + 3)(x-2)} = \dfrac{-x + 19}{(2x + 3) (x - 2)}$ d'où $a(x -2) + b(2x+3) = x(2b + a) + (3b - 2a) = -x + 19$
+$$
+\dfrac{-x + 19}{(2x + 3) (x - 2)} = \dfrac{a}{(2x + 3)} + \dfrac{b}{(x - 2)}
+$$
 
-Par identification, $\begin{cases} -1 = 2b + a \\ 19 = 3b - 2a \end{cases}$ 
+Mais donc 
 
-On en déduit que $\begin{cases} -1 = 2b + a \\ 17 = 7b \end{cases}$
+$\dfrac{a(x -2) + b(2x+3)}{(2x + 3)(x-2)} = \dfrac{-x + 19}{(2x + 3) (x - 2)}$ d'où $a(x -2) + b(2x+3) = x(2b + a) + (3b - 2a) = -x + 19$
 
-Finalement, $\begin{cases} - \dfrac{41}{7} = a \\ b = \dfrac{17}{7} \end{cases}$
+Par identification, 
+
+$$
+\begin{cases} -1 = 2b + a \\ 19 = 3b - 2a \end{cases}
+$$ 
+
+On en déduit que 
+
+$$
+\begin{cases} -1 = 2b + a \\ 17 = 7b \end{cases}
+$$
+
+Finalement, 
+
+$$
+\begin{cases} - \dfrac{41}{7} = a \\ b = \dfrac{17}{7} \end{cases}
+$$
 
 <br />
 
-**Conclusion :** $\dfrac{6x^2 - 4x + 1}{2x^2-x -6} = 3 + \dfrac{- \dfrac{41}{7}}{(2x + 3)} + \dfrac{\dfrac{17}{7}}{(x - 2)}$
+**Conclusion :** 
+
+$$
+\dfrac{6x^2 - 4x + 1}{2x^2-x -6} = 3 + \dfrac{- \dfrac{41}{7}}{(2x + 3)} + \dfrac{\dfrac{17}{7}}{(x - 2)}
+$$
 </Hideable>
 
 <Remarque titre=''>
@@ -65,7 +89,7 @@ $$
 \integ{}{} \dfrac{1}{ax^2 + bx + c} dx
 $$ 
 
-(on laisse les bornes d'intégration vide car seule la méthode nous intéresse).
+(on laisse les bornes d'intégration vides car seule la méthode nous intéresse).
 
 $\cd$ Si le trinôme a deux racines, on se ramène à la méthode ci-dessus.
 
@@ -75,13 +99,13 @@ $\cd$ Si le trinôme n'a pas de racine, alors on se ramène à une forme $\dfrac
 
 Pour cela, mettons sous forme cannonique $ax^2 + bx + c \;$ : $ \; ax^2 + bx + c = a (x - \alpha)^2  + \beta $. 
 
-On a ensuite $ax^2 + bx + c = \beta \Big( a (\dfrac{x - \alpha}{\sqrt{\beta}})^2  + 1 \Big)$
+On a ensuite $ax^2 + bx + c = \beta \Big( (\sqrt{a}\dfrac{x - \alpha}{\sqrt{\beta}})^2  + 1 \Big)$
 
 On a donc reformulé notre intégrale ainsi : 
 
 $$
-\beta \integ{}{} \dfrac{1}{(\dfrac{x - \alpha}{\sqrt{\beta}})^2 + 1} dx
+\beta \integ{}{} \dfrac{1}{(\sqrt{a}\dfrac{x - \alpha}{\sqrt{\beta}})^2 + 1} dx
 $$ 
 
-Le changement de variable $u = \dfrac{x - \alpha}{\sqrt{\beta}}$ permet de conclure en se ramenant à la dérivée de $\Arctan$.
+Le changement de variable $u = \sqrt{a}\dfrac{x - \alpha}{\sqrt{\beta}}$ permet de conclure en se ramenant à la dérivée de $\Arctan$.
 </Item>
