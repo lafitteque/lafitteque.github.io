@@ -121,6 +121,7 @@ import "../styles/global.css"; // Importe le CSS global
           data.anchors && data.anchors.length > 0
             ? data.anchors
                 .map((anchor) => {
+
                   const indexData = anchor.id.split("-");
 
                   var filiere = indexData[0];
@@ -128,15 +129,20 @@ import "../styles/global.css"; // Importe le CSS global
                   var type = indexData[1];
 
                   var titre = indexData[2];
+
                   const baseUrl = data.url || data.raw_url;
                   const anchorUrl = `${baseUrl}#${filiere}-${type}-${titre}`;
+
 
                   titre = titre.split("_").join(" ");
                   titre = titre.charAt(0).toUpperCase() + titre.slice(1);
 
-                  var searchDesc = indexData[3].split("_").join(" ");
+                  console.log(indexData);
+
+                  var searchDesc = (indexData[3]? indexData[3] : "").split("_").join(" ");
                   searchDesc =
                     searchDesc.charAt(0).toUpperCase() + searchDesc.slice(1);
+
 
                   return `
                                 <a href="${anchorUrl}">
