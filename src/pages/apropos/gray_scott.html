@@ -1,127 +1,178 @@
-<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-<script>
-    // This is a simulation of Grey-Scott reactions
-    // A very good explaination is detailed at: https://mrob.com/pub/comp/xmorphia/
-    // This code is the modified version of my own code (which worked slower) following The Coding Train video : https://www.youtube.com/watch?v=BV9ny785UNc&t=369s
-    // Screen and grid parameters
-    let screenWidth = 300;
-    let gridWidth = 300;
-    let cellWidth;
+<!DOCTYPE html>
+<html lang="fr">
 
-    // Map of A and B
-    let current;
-    let prev;
-
-    // Equation parameters
-    let initialA = 1;
-    let setBValue = 1;
-    let k = 0.062;
-    let Da = 1;
-    let Db = 0.5;
-    let f = 0.055;
-    let deltaTime = 1;
-    let d = 1;
-    let maxB = 1; // Size of a drop when the user clicks
-    let sizeDrop = 10; // To know the concentration of A and B at each location
-    class Cell {
-        a;
-        b;
-        constructor(a_, b_) {
-            this.a = a_;
-            this.b = b_;
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
-    }
-    function setup() {
-        createCanvas(300, 300);
-        cellWidth = screenWidth / gridWidth;
-        Initialize();
-        DrawReaction();
-    }
-    function draw() {
-        Reaction();
-        DrawReaction(); // We currentize the concentration after computing them
-        let temp = structuredClone(current);
-        prev = temp;
-        textSize(20);
-        text("Click = add A molecules", 10, 30);
-    }
-    function mouseClicked() {
-        // On click, put a drop of B in the reaction
-        for (let i = -sizeDrop; i < sizeDrop; i++) {
-            for (let j = -sizeDrop; j < sizeDrop; j++) {
-                prev[int(mouseY / cellWidth) + i][int(mouseX / cellWidth) + j].b = setBValue;
+
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Simulation des réactions de Gray-Scott</h1>
+        <h2>Contrôles :</h2>
+        <div class="controls">
+            <span class="key">Cliquer;</span> Ajoute du réactif A
+        </div>
+
+        <p><strong>Instructions :</strong> Cliquer pour ajouter du réactif A et observer la simulation</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        // This is a simulation of Grey-Scott reactions
+        // A very good explaination is detailed at: https://mrob.com/pub/comp/xmorphia/
+        // This code is the modified version of my own code (which worked slower) following The Coding Train video : https://www.youtube.com/watch?v=BV9ny785UNc&t=369s
+        // Screen and grid parameters
+        let screenWidth = 300;
+        let gridWidth = 300;
+        let cellWidth;
+
+        // Map of A and B
+        let current;
+        let prev;
+
+        // Equation parameters
+        let initialA = 1;
+        let setBValue = 1;
+        let k = 0.062;
+        let Da = 1;
+        let Db = 0.5;
+        let f = 0.055;
+        let deltaTime = 1;
+        let d = 1;
+        let maxB = 1; // Size of a drop when the user clicks
+        let sizeDrop = 10; // To know the concentration of A and B at each location
+        class Cell {
+            a;
+            b;
+            constructor(a_, b_) {
+                this.a = a_;
+                this.b = b_;
             }
         }
-    }
-    function Initialize() {
-        // We fill the concentration of each cell in the grid
-        current = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        prev = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                current[i][j] = new Cell(initialA, 0);
-                prev[i][j] = new Cell(initialA, 0);
+        function setup() {
+            createCanvas(300, 300);
+            cellWidth = screenWidth / gridWidth;
+            Initialize();
+            DrawReaction();
+        }
+        function draw() {
+            Reaction();
+            DrawReaction(); // We currentize the concentration after computing them
+            let temp = structuredClone(current);
+            prev = temp;
+            textSize(20);
+            text("Click = add A molecules", 10, 30);
+        }
+        function mouseClicked() {
+            // On click, put a drop of B in the reaction
+            for (let i = -sizeDrop; i < sizeDrop; i++) {
+                for (let j = -sizeDrop; j < sizeDrop; j++) {
+                    prev[int(mouseY / cellWidth) + i][int(mouseX / cellWidth) + j].b = setBValue;
+                }
             }
         }
-    }
-    function Reaction() {
-        for (let i = 1; i < gridWidth - 1; i++) {
-            for (let j = 1; j < gridWidth - 1; j++) {
-                // Equations of propagation and reaction
-                let a = prev[i][j].a;
-                let b = prev[i][j].b;
-                let laplacienA =
-                    (0.2 * prev[i][j - 1].a +
-                        0.2 * prev[i - 1][j].a +
-                        0.2 * prev[i + 1][j].a +
-                        0.2 * prev[i][j + 1].a +
-                        0.05 * prev[i - 1][j - 1].a +
-                        0.05 * prev[i - 1][j + 1].a +
-                        0.05 * prev[i + 1][j - 1].a +
-                        0.05 * prev[i + 1][j + 1].a -
-                        prev[i][j].a) /
-                    d /
-                    d;
-                let laplacienB =
-                    (0.2 * prev[i][j - 1].b +
-                        0.2 * prev[i - 1][j].b +
-                        0.2 * prev[i + 1][j].b +
-                        0.2 * prev[i][j + 1].b +
-                        0.05 * prev[i - 1][j - 1].b +
-                        0.05 * prev[i - 1][j + 1].b +
-                        0.05 * prev[i + 1][j - 1].b +
-                        0.05 * prev[i + 1][j + 1].b -
-                        prev[i][j].b) /
-                    d /
-                    d; // The first term is for propagation
-                // The second term is for the reaction
-                // The third term is the impact of a continuous encrease of A
-                current[i][j].a =
-                    a + deltaTime * (Da * laplacienA - a * b * b + f * (1 - a));
-                current[i][j].b =
-                    b + deltaTime * (Db * laplacienB + a * b * b - (f + k) * b); // The values can't be higher than 1 or lower than 0 (as they are proportions)
-                current[i][j].a = max(0, min(1, current[i][j].a));
-                current[i][j].b = max(0, min(1, current[i][j].b));
+        function Initialize() {
+            // We fill the concentration of each cell in the grid
+            current = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            prev = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    current[i][j] = new Cell(initialA, 0);
+                    prev[i][j] = new Cell(initialA, 0);
+                }
             }
         }
-    }
-    function DrawReaction() {
-        loadPixels();
-        for (let x = 0; x < gridWidth; x++) {
-            for (let y = 0; y < gridWidth; y++) {
-                let a = current[y][x].a;
-                let b = current[y][x].b;
-                let c = floor((a - b) * 255);
+        function Reaction() {
+            for (let i = 1; i < gridWidth - 1; i++) {
+                for (let j = 1; j < gridWidth - 1; j++) {
+                    // Equations of propagation and reaction
+                    let a = prev[i][j].a;
+                    let b = prev[i][j].b;
+                    let laplacienA =
+                        (0.2 * prev[i][j - 1].a +
+                            0.2 * prev[i - 1][j].a +
+                            0.2 * prev[i + 1][j].a +
+                            0.2 * prev[i][j + 1].a +
+                            0.05 * prev[i - 1][j - 1].a +
+                            0.05 * prev[i - 1][j + 1].a +
+                            0.05 * prev[i + 1][j - 1].a +
+                            0.05 * prev[i + 1][j + 1].a -
+                            prev[i][j].a) /
+                        d /
+                        d;
+                    let laplacienB =
+                        (0.2 * prev[i][j - 1].b +
+                            0.2 * prev[i - 1][j].b +
+                            0.2 * prev[i + 1][j].b +
+                            0.2 * prev[i][j + 1].b +
+                            0.05 * prev[i - 1][j - 1].b +
+                            0.05 * prev[i - 1][j + 1].b +
+                            0.05 * prev[i + 1][j - 1].b +
+                            0.05 * prev[i + 1][j + 1].b -
+                            prev[i][j].b) /
+                        d /
+                        d; // The first term is for propagation
+                    // The second term is for the reaction
+                    // The third term is the impact of a continuous encrease of A
+                    current[i][j].a =
+                        a + deltaTime * (Da * laplacienA - a * b * b + f * (1 - a));
+                    current[i][j].b =
+                        b + deltaTime * (Db * laplacienB + a * b * b - (f + k) * b); // The values can't be higher than 1 or lower than 0 (as they are proportions)
+                    current[i][j].a = max(0, min(1, current[i][j].a));
+                    current[i][j].b = max(0, min(1, current[i][j].b));
+                }
+            }
+        }
+        function DrawReaction() {
+            loadPixels();
+            for (let x = 0; x < gridWidth; x++) {
+                for (let y = 0; y < gridWidth; y++) {
+                    let a = current[y][x].a;
+                    let b = current[y][x].b;
+                    let c = floor((a - b) * 255);
 
-                // Position dans pixels[] (RGBA → 4 valeurs par pixel)
-                let index = (x + y * screenWidth) * 4;
-                pixels[index + 0] = 20 + 0.8 * c; // R
-                pixels[index + 1] = 20 + 0.9 * c; // G
-                pixels[index + 2] = 20 + 0.9 * c; // B
-                pixels[index + 3] = 255; // A
+                    // Position dans pixels[] (RGBA → 4 valeurs par pixel)
+                    let index = (x + y * screenWidth) * 4;
+                    pixels[index + 0] = 20 + 0.8 * c; // R
+                    pixels[index + 1] = 20 + 0.9 * c; // G
+                    pixels[index + 2] = 20 + 0.9 * c; // B
+                    pixels[index + 3] = 255; // A
+                }
             }
+            updatePixels();
         }
-        updatePixels();
-    }
 
-</script>
+    </script>

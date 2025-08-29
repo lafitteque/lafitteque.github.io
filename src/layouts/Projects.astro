@@ -1,0 +1,108 @@
+---
+import { type CollectionEntry, getCollection } from "astro:content";
+
+import "../styles/global.css"; // Importe le CSS global
+
+import Filiere from "../components/ChoixMaths.astro";
+import Options from "../components/Options.astro";
+import Katex from "../components/Katex.astro";
+import SearchBar from "../components/SearchBar.astro";
+import ChoixInfo from "../components/ChoixInfo.astro";
+
+type Props = {
+  title: string;
+};
+
+const { headings, title } = Astro.props;
+---
+
+<!doctype html>
+<html
+  lang="fr"
+  data-theme="light"
+  style="--my-base-content: var(--base-content)"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"
+    ></script>
+    <script src="https://www.geogebra.org/apps/deployggb.js"></script>
+    <title>Suplémaths - Les maths du supérieur</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"
+      integrity="sha384-WsHMgfkABRyG494OmuiNmkAOk8nhO1qE+Y6wns6v+EoNoTNxrWxYpl5ZYWFOLPCM"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body class="">
+    <div class="navbar bg-base-300 z-10 max-h-[8vh]">
+      <div class="navbar-star0">
+        <!-- Début NavBar -->
+      </div>
+      <div class="navbar-center lg:flex">
+        <!-- Milieu NavBar -->
+        <Filiere />
+        <ChoixInfo />
+        <SearchBar />
+      </div>
+      <div class="navbar-end lg:flex"></div>
+      <!-- Fin NavBar -->
+      <Options />
+    </div>
+    <div class="overflow-y-auto max-h-[92vh]">
+      <div class="max-w-[2000px] mx-auto min-h-[92vh]">
+        <Katex />
+        <slot data-pagefind-body />
+      </div>
+    </div>
+  </body>
+</html>
+<script>
+  // --- Restyle du css pour latex --- //
+  var ks = document.querySelectorAll(".katex-display");
+  ks.forEach((k) => (k.style.margin = "0.25rem 0rem"));
+
+  // --- Exclusion des titres, sous-titres, etc de l'indexation de recherche --- //
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("h1, h2, h3, h4").forEach((el) => {
+      el.setAttribute("data-pagefind-ignore", "all");
+    });
+  });
+</script>
+<style>
+  /* Active/current link */
+  a.active {
+    background-color: #04aa6d;
+    color: white;
+  }
+
+  /* Links on mouse-over */
+  a:hover:not(.active) {
+    background-color: #555;
+    color: white;
+  }
+
+  .sidebar.active {
+    left: 0px;
+  }
+
+  /* Icône burger */
+  .burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: var(--base-content);
+    margin: 6px 0;
+  }
+
+  @media only (min-width: 600px) {
+    .main-content-wrapper {
+      margin-left: 0px;
+    }
+  }
+</style>

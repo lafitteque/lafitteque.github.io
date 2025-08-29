@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Automate cellulaire : simulation de feux de forêt</h1>
+        <h2>Contrôles :</h2>
+        <div class="controls">
+            <span class="key">&uarr;</span> Augmente la densité de forêt
+            <span class="key">&darr;</span> Diminue la densité de forêt
+            <span class="key">R</span> Lancer la simulation
+        </div>
+
+        <p><strong>Instructions :</strong> Dessinez les murs souhaités à l'aide de la souris puis changez de mode pour
+            ajouter de l'eau avec la souris également.</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        // Simulation type "propagation de voisinage"
+        // Inspirée de l'automate cellulaire "fourmi de Langton"
+
+        let grid;
+        let screenWidth = 500;
+        let gridWidth = 50;
+        let cellWidth;
+        let x, y;
+
+        let density = 60;
+        let maxDensity = 100;
+        let minDensity = 20;
+
+        let activation = 0;
+
+        // tableaux pour mémoriser les voisins
+        let neighboursX = [];
+        let neighboursY = [];
+        let lastLayerX = [];
+        let lastLayerY = [];
+        let neighboursNumber = 0;
+
+        function addNeighbours() {
+            let lastLayerSize = lastLayerX.length;
+
+            for (let i = 0; i < lastLayerSize; i++) {
+                for (let j = -1; j < 2; j += 2) {
+                    // Gauche / droite
+                    let x_ = lastLayerX[i] + j;
+                    let y_ = lastLayerY[i];
+
+                    if (x_ >= 0 && x_ < gridWidth && y_ >= 0 && y_ < gridWidth) {
+                        if (grid[x_][y_] === 1 && !isInNeighbours(x_, y_)) {
+                            lastLayerX.push(x_);
+                            lastLayerY.push(y_);
+                            neighboursX.push(x_);
+                            neighboursY.push(y_);
+                            neighboursNumber++;
+                        }
+                    }
+
+                    // Haut / bas
+                    x_ = lastLayerX[i];
+                    y_ = lastLayerY[i] + j;
+
+                    if (x_ >= 0 && x_ < gridWidth && y_ >= 0 && y_ < gridWidth) {
+                        if (grid[x_][y_] === 1 && !isInNeighbours(x_, y_)) {
+                            lastLayerX.push(x_);
+                            lastLayerY.push(y_);
+                            neighboursX.push(x_);
+                            neighboursY.push(y_);
+                            neighboursNumber++;
+                        }
+                    }
+                }
+            }
+
+            // On vide la couche précédente
+            lastLayerX.splice(0, lastLayerSize);
+            lastLayerY.splice(0, lastLayerSize);
+        }
+
+        function drawNeighbours() {
+            while (neighboursNumber > 0) {
+                drawBurned(neighboursX[0], neighboursY[0]);
+                neighboursX.shift();
+                neighboursY.shift();
+                neighboursNumber--;
+            }
+        }
+
+        function setup() {
+            createCanvas(screenWidth, screenWidth);
+            neighboursNumber = 0;
+            Init();
+        }
+
+        function isInNeighbours(x_, y_) {
+            return neighboursX.some((nx, i) => nx === x_ && neighboursY[i] === y_);
+        }
+
+        function Init() {
+            grid = Array.from({ length: gridWidth }, () => new Array(gridWidth));
+            cellWidth = screenWidth / gridWidth;
+
+            x = floor(gridWidth / 2);
+            y = floor(gridWidth / 2);
+
+            background(40);
+
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    // 1 = blanc, 0 = noir
+                    grid[i][j] = random(100) < density ? 1 : 0;
+                }
+            }
+
+            drawGrid();
+
+            // Frontière de départ
+            lastLayerX = [];
+            lastLayerY = [];
+            neighboursX = [];
+            neighboursY = [];
+            neighboursNumber = 0;
+
+            for (let i = 1; i < gridWidth - 1; i++) {
+                grid[i][0] = -1;
+                lastLayerX.push(i);
+                lastLayerY.push(0);
+                drawBurned(i, 0);
+            }
+        }
+
+        function draw() {
+            let isInBounds = x > 1 && x < gridWidth && y > 1 && y < gridWidth;
+
+            if (activation === 1 && isInBounds) {
+                if (neighboursNumber === 0) {
+                    addNeighbours();
+                } else {
+                    drawNeighbours();
+                }
+            }
+            textSize(22);
+            fill(255);
+            text("Up/Down : Change Density ; any key : start", 25, 480);
+        }
+
+        function keyPressed() {
+            if (keyCode === 18) { // ALT
+                Init();
+            } else if (keyCode === UP_ARROW) {
+                density = constrain(density + 1, minDensity, maxDensity);
+                Init();
+            } else if (keyCode === DOWN_ARROW) {
+                density = constrain(density - 1, minDensity, maxDensity);
+                Init();
+            } else {
+                activation = 1;
+                console.log("Simulation activée");
+            }
+            console.log("Densité:", density);
+        }
+
+        function drawGrid() {
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    push();
+                    stroke(60);
+                    if (grid[i][j] === 1) {
+                        fill(0, 220, 0); // vert pour vivant
+                    } else {
+                        fill(80); // gris/noir pour mort
+                    }
+                    rect(cellWidth * i, cellWidth * j, cellWidth * 0.95, cellWidth * 0.95);
+                    pop();
+                }
+            }
+        }
+
+        function drawBurned(x, y) {
+            push();
+            stroke(0);
+            fill(255, 20, 20);
+            rect(cellWidth * x, cellWidth * y, cellWidth * 0.95, cellWidth * 0.95);
+            pop();
+        }
+
+    </script>

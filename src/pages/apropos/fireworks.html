@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Simulation de feux d'artifices</h1>
+        
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script>
+    let screenWidth = 1000;
+    let projectileNumber = 50;
+    let projectiles;
+    function setup() {
+        createCanvas(1000, 1000);
+        background(20);
+        createProjectiles();
+    }
+    function draw() {
+        background(20);
+        for (let i = 0; i < projectileNumber; i++) {
+            if (projectiles[i].vy > 0) {
+                projectiles[i].advance();
+                projectiles[i].show_projectile();
+            } else if (!projectiles[i].delete) {
+                projectiles[i].explosion();
+            } else {
+                projectiles[i] = new Projectile(9.8);
+            }
+        }
+    }
+    function createProjectiles() {
+        projectiles = new Array(projectileNumber);
+        for (let i = 0; i < projectileNumber; i++) {
+            projectiles[i] = new Projectile(9.8);
+        }
+    }
+    class Projectile {
+        constructor(gravity_) {
+            this.x = random(100, 900);
+            this.y = 50;
+            this.vx = random(-2, 2);
+            this.vy = random(10, 13);
+            this.gravity = gravity_;
+            this.size = random(5, 6);
+            this.numberOfDebris = int(random(20, 25));
+            this.debris = new Array(this.numberOfDebris);
+            this.r = random(120, 255);
+            this.g = random(120, 255);
+            this.b = random(120, 255);
+            this.framesToWait = int(random(0, 150));
+            this.framesFromExplosionToEnd = int(random(70, 120));
+            this.beginExplosion = false;
+            this.delete = false;
+        }
+        advance() {
+            if (this.framesToWait != 0) {
+                this.framesToWait--;
+            } else {
+                let dt = 0.01;
+                this.vy -= dt * this.gravity;
+                this.x += this.vx;
+                this.y += this.vy;
+            }
+        }
+        explosion() {
+            if (!this.beginExplosion) {
+                this.beginExplosion = true;
+                for (let i = 0; i < this.numberOfDebris; i++) {
+                    this.debris[i] = new Projectile(4);
+                    this.debris[i].x = this.x;
+                    this.debris[i].y = this.y;
+                    this.debris[i].framesToWait = 0;
+                    this.debris[i].size = 4;
+                    this.debris[i].r = this.r;
+                    this.debris[i].g = this.g;
+                    this.debris[i].b = this.b;
+                    this.debris[i].vy = random(0, 2.5);
+                    this.debris[i].vx = random(-2.5, 2.5);
+                }
+            } else {
+                for (let i = 0; i < this.numberOfDebris; i++) {
+                    let c = (this.framesFromExplosionToEnd + 20) / 120.0;
+                    this.debris[i].r = this.r * c;
+                    this.debris[i].g = this.g * c;
+                    this.debris[i].b = this.b * c;
+                    this.debris[i].advance();
+                    this.debris[i].show_projectile();
+                }
+                this.framesFromExplosionToEnd--;
+                if (this.framesFromExplosionToEnd == 0) {
+                    this.delete = true;
+                }
+            }
+        }
+        show_projectile() {
+            if (this.framesToWait == 0) {
+                push();
+                noStroke();
+                fill(this.r, this.g, this.b);
+                circle(this.x, 1000 - this.y, this.size);
+                pop();
+            }
+        }
+    }
+</script>

@@ -1,163 +1,218 @@
-<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-<script>
+<!DOCTYPE html>
+<html lang="fr">
 
-    // This was my first project in JavaScript and I wanted to learn the basics without using classes or more advanced programming
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
 
-    var speed = 30;
-    var framerate = 10;
-    var direction = [0, 0];
-    var input_direction = [0, 0];
-    var screenSize = 600;
-    var snake = [[screenSize / 2, screenSize / 2]];
-    var partsNumber = 1;
-    var tail = [[screenSize / 2, screenSize / 2]];
-    var applePosition = ApplePosition();
-    var a = applePosition[0];
-    var b = applePosition[1];
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-    var apple = [a, b];
-    var start = true;
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-    function setup() {
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
 
-        createCanvas(screenSize, screenSize);
-        frameRate(5);
-        background(0);
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Jeux : Snake</h1>
+        <h2>Contrôles :</h2>
+        <div class="controls">
+            <span class="key">&larr;</span>, <span class="key">&rarr;</span>, <span class="key">&uarr;</span>, <span
+                class="key">&darr;</span> Changer de direction (ou commencer la partie)
+        </div>
+
+        <p><strong>Instructions :</strong> Vous êtes un serpent végétarien (en vert), mangez des pommes (en rouge) pour
+            grandir</p>
+
+        <p>Il s'agit de mon premier projet en JavaScript</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+
+        // This was my first project in JavaScript and I wanted to learn the basics without using classes or more advanced programming
+
+        var speed = 30;
+        var framerate = 10;
+        var direction = [0, 0];
+        var input_direction = [0, 0];
+        var screenSize = 600;
+        var snake = [[screenSize / 2, screenSize / 2]];
+        var partsNumber = 1;
+        var tail = [[screenSize / 2, screenSize / 2]];
+        var applePosition = ApplePosition();
+        var a = applePosition[0];
+        var b = applePosition[1];
+
+        var apple = [a, b];
+        var start = true;
+
+        function setup() {
+
+            createCanvas(screenSize, screenSize);
+            frameRate(5);
+            background(0);
 
 
-        noStroke();
-        fill(0, 255, 0);
-        rectMode(CENTER);
-        rect(snake[0][0], snake[0][1], 30);
+            noStroke();
+            fill(0, 255, 0);
+            rectMode(CENTER);
+            rect(snake[0][0], snake[0][1], 30);
 
-        noStroke();
-        fill(255, 0, 0);
-        rectMode(CENTER);
-        rect(apple[0], apple[1], 30);
+            noStroke();
+            fill(255, 0, 0);
+            rectMode(CENTER);
+            rect(apple[0], apple[1], 30);
 
-        stroke(255, 0, 0);
-        strokeWeight(10);
-        rectMode(CENTER);
-        noFill()
-        rect(300, 300, 600)
-    }
+            stroke(255, 0, 0);
+            strokeWeight(10);
+            rectMode(CENTER);
+            noFill()
+            rect(300, 300, 600)
+        }
 
-    function draw() {
-        if (test_collision() == true) {
-            direction = [0, 0];
-            snake = [[screenSize / 2, screenSize / 2]];
-            partsNumber = 1;
-            tail = [[screenSize / 2, screenSize / 2]];
+        function draw() {
+            if (test_collision() == true) {
+                direction = [0, 0];
+                snake = [[screenSize / 2, screenSize / 2]];
+                partsNumber = 1;
+                tail = [[screenSize / 2, screenSize / 2]];
+                applePosition = ApplePosition();
+                a = applePosition[0];
+                b = applePosition[1];
+                apple = [a, b];
+                start = true;
+
+            }
+
+            background(0);
+            tail = [snake[partsNumber - 1][0], snake[partsNumber - 1][1]];
+
+            noStroke();
+            fill(255, 0, 0);
+            rectMode(CENTER);
+            rect(apple[0], apple[1], 30);
+
+            stroke(255, 0, 0);
+            strokeWeight(10);
+            rectMode(CENTER);
+            noFill()
+            rect(300, 300, 600)
+
+            direction = structuredClone(input_direction);
+            for (var i = 1; i < partsNumber; i++) {
+                snake[partsNumber - i][0] = snake[partsNumber - i - 1][0];
+                snake[partsNumber - i][1] = snake[partsNumber - i - 1][1];
+                drawGreenRectangle(snake[partsNumber - i][0], snake[partsNumber - i][1]);
+            }
+            snake[0][0] += direction[0];
+            snake[0][1] += direction[1];
+
+            drawGreenRectangle(snake[0][0], snake[0][1]);
+
+
+
+            if (snake[0][0] == apple[0] && snake[0][1] == apple[1]) {
+                addSnakePart();
+
+            }
+
+        }
+
+        function addSnakePart() {
+            partsNumber += 1;
+            snake.push([tail[0], tail[1]]);
             applePosition = ApplePosition();
             a = applePosition[0];
             b = applePosition[1];
             apple = [a, b];
-            start = true;
-
         }
 
-        background(0);
-        tail = [snake[partsNumber - 1][0], snake[partsNumber - 1][1]];
-
-        noStroke();
-        fill(255, 0, 0);
-        rectMode(CENTER);
-        rect(apple[0], apple[1], 30);
-
-        stroke(255, 0, 0);
-        strokeWeight(10);
-        rectMode(CENTER);
-        noFill()
-        rect(300, 300, 600)
-
-        direction = structuredClone(input_direction);
-        for (var i = 1; i < partsNumber; i++) {
-            snake[partsNumber - i][0] = snake[partsNumber - i - 1][0];
-            snake[partsNumber - i][1] = snake[partsNumber - i - 1][1];
-            drawGreenRectangle(snake[partsNumber - i][0], snake[partsNumber - i][1]);
-        }
-        snake[0][0] += direction[0];
-        snake[0][1] += direction[1];
-
-        drawGreenRectangle(snake[0][0], snake[0][1]);
-
-
-
-        if (snake[0][0] == apple[0] && snake[0][1] == apple[1]) {
-            addSnakePart();
-
-        }
-
-    }
-
-    function addSnakePart() {
-        partsNumber += 1;
-        snake.push([tail[0], tail[1]]);
-        applePosition = ApplePosition();
-        a = applePosition[0];
-        b = applePosition[1];
-        apple = [a, b];
-    }
-
-    function test_collision() {
-        var booleen = snake[0][0] >= 600 || snake[0][0] <= 0 || snake[0][1] >= 600 || snake[0][1] <= 0;
-        for (var i = 1; i < partsNumber; i++) {
-            if (snake[0][0] == snake[i][0] && snake[0][1] == snake[i][1]) {
-                booleen = true;
+        function test_collision() {
+            var booleen = snake[0][0] >= 600 || snake[0][0] <= 0 || snake[0][1] >= 600 || snake[0][1] <= 0;
+            for (var i = 1; i < partsNumber; i++) {
+                if (snake[0][0] == snake[i][0] && snake[0][1] == snake[i][1]) {
+                    booleen = true;
+                }
             }
+            return booleen;
+
         }
-        return booleen;
-
-    }
 
 
-    function drawGreenRectangle(x, y) {
-        noStroke();
-        fill(0, 255, 0);
-        rectMode(CENTER);
-        rect(x, y, 25);
-    }
-
-    function inList(element_x, element_y, list) {
-        var bool_temp = false;
-        for (var i = 0; i < partsNumber; i++) {
-            bool_temp = bool_temp || (list[i][0] == element_x && list[i][1] == element_y);
+        function drawGreenRectangle(x, y) {
+            noStroke();
+            fill(0, 255, 0);
+            rectMode(CENTER);
+            rect(x, y, 25);
         }
-        return bool_temp;
-    }
 
-    // Calculates the position of the apple
-    function ApplePosition() {
-        x_apple = Math.floor(Math.random() * 18 + 1) * 30;
-        y_apple = Math.floor(Math.random() * 18 + 1) * 30;
-        var bool_temp = inList(x_apple, y_apple, snake);
-        while (bool_temp) {
+        function inList(element_x, element_y, list) {
+            var bool_temp = false;
+            for (var i = 0; i < partsNumber; i++) {
+                bool_temp = bool_temp || (list[i][0] == element_x && list[i][1] == element_y);
+            }
+            return bool_temp;
+        }
+
+        // Calculates the position of the apple
+        function ApplePosition() {
             x_apple = Math.floor(Math.random() * 18 + 1) * 30;
             y_apple = Math.floor(Math.random() * 18 + 1) * 30;
-            bool_temp = inList(x_apple, y_apple, snake);
+            var bool_temp = inList(x_apple, y_apple, snake);
+            while (bool_temp) {
+                x_apple = Math.floor(Math.random() * 18 + 1) * 30;
+                y_apple = Math.floor(Math.random() * 18 + 1) * 30;
+                bool_temp = inList(x_apple, y_apple, snake);
+            }
+            return [x_apple, y_apple];
         }
-        return [x_apple, y_apple];
-    }
 
 
-    // Manages Inputs and directions
-    function keyPressed() {
-        if (keyCode === LEFT_ARROW && (direction[1] != 0 || start == true)) {
-            input_direction = [-speed, 0];
-            start = false;
+        // Manages Inputs and directions
+        function keyPressed() {
+            if (keyCode === LEFT_ARROW && (direction[1] != 0 || start == true)) {
+                input_direction = [-speed, 0];
+                start = false;
+            }
+            else if (keyCode === RIGHT_ARROW && (direction[1] != 0 || start == true)) {
+                input_direction = [+speed, 0];
+                start = false;
+            }
+            else if (keyCode === DOWN_ARROW && (direction[0] != 0 || start == true)) {
+                input_direction = [0, +speed];
+                start = false;
+            }
+            else if (keyCode === UP_ARROW && (direction[0] != 0 || start == true)) {
+                input_direction = [0, -speed];
+                start = false;
+            }
         }
-        else if (keyCode === RIGHT_ARROW && (direction[1] != 0 || start == true)) {
-            input_direction = [+speed, 0];
-            start = false;
-        }
-        else if (keyCode === DOWN_ARROW && (direction[0] != 0 || start == true)) {
-            input_direction = [0, +speed];
-            start = false;
-        }
-        else if (keyCode === UP_ARROW && (direction[0] != 0 || start == true)) {
-            input_direction = [0, -speed];
-            start = false;
-        }
-    }
 
-</script>
+    </script>

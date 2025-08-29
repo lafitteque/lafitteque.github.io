@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Approximation d'un dessin par transformée de Fourier</h1>
+        <h2>Contrôles :</h2>
+        <div class="controls">
+            <span class="key">R</span> Lancer l'approximation par Transformée de Fourier
+            <span class="key">A</span> Réinitialiser l'algorithme
+            <span class="key">Click</span> Dessiner
+        </div>
+
+        <p><strong>Instructions :</strong> Dessinez d'abord à l'aide de la souris puis lancez l'approximation et sa
+            visualisation.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        let taille_ecran = 800;
+        let rayons;
+        let vitesse_angulaire;
+        let t = 0;
+        let activation_fourier = false;
+        let dessin;
+        let compte_dessin = 0;
+        let calcul_fourier = false;
+        let pourcentage_frequences = 100;
+        let nombre_frequences;
+        let F;
+        let dessin_fft;
+        let phases;
+
+        function setup() {
+            dessin = Array.from(new Array(0), () => new Array(2));
+            createCanvas(800, 800);
+            background(20);
+            frameRate(60);
+        }
+        function keyPressed() {
+            if (keyPressed) {
+                if (key == "r") {
+                    activation_fourier = true;
+                    calcul_fourier = true;
+                }
+                if (key == "a") {
+                    activation_fourier = false;
+                    dessin = Array.from(new Array(0), () => new Array(2));
+                    compte_dessin = 0;
+                    background(20);
+                }
+            }
+        }
+        function draw() {
+            if (activation_fourier) {
+                if (calcul_fourier) {
+                    calcul_fourier = false;
+                    nombre_frequences = (pourcentage_frequences / 100) * dessin.length;
+                    rayons = new Array(nombre_frequences);
+                    vitesse_angulaire = new Array(nombre_frequences);
+                    dessin_fft = Array.from(
+                        new Array(dessin.length),
+                        () => new Array(2)
+                    );
+                    phases = new Array(nombre_frequences);
+                    F = dft(dessin);
+                    calcul_fourier = false;
+                }
+                if (t >= dessin.length) {
+                    t = 0;
+                }
+
+                trace();
+                t += 1;
+            }
+            textSize(22);
+            stroke(1);
+            fill(255);
+            text("Drag : Draw ; R : Start ; A : Reset", 25, 30);
+        }
+        function mouseDragged() {
+            if (!activation_fourier) {
+                compte_dessin++;
+                dessin = actualise_dessin();
+                strokeWeight(4);
+                stroke(220);
+                line(pmouseX, pmouseY, mouseX, mouseY);
+            }
+        }
+        function actualise_dessin() {
+            let dessin2 = Array.from(new Array(compte_dessin), () => new Array(2));
+            for (let i = 0; i < compte_dessin - 1; i++) {
+                dessin2[i][0] = dessin[i][0];
+                dessin2[i][1] = dessin[i][1];
+            }
+            dessin2[compte_dessin - 1][0] = mouseX - taille_ecran / 2;
+            dessin2[compte_dessin - 1][1] = mouseY - taille_ecran / 2;
+            return dessin2;
+        }
+        function dessin_ligne(n) {
+            let res = new Array(dessin.length);
+            for (let i = 0; i < dessin.length; i++) {
+                res[i] = dessin[i][n];
+            }
+            return res;
+        }
+        function trace() {
+            let x = taille_ecran / 2;
+            let y = taille_ecran / 2;
+            let x_suivant = taille_ecran / 2;
+            let y_suivant = taille_ecran / 2;
+            background(20);
+            for (let i = 0; i < nombre_frequences; i++) {
+                x_suivant = rayons[i] * cos(vitesse_angulaire[i] * t + phases[i]) + x;
+                y_suivant = rayons[i] * sin(vitesse_angulaire[i] * t + phases[i]) + y;
+
+                noFill();
+                strokeWeight(1);
+                stroke(150);
+                ellipse(x, y, rayons[i] * 2, rayons[i] * 2);
+                line(x, y, x_suivant, y_suivant);
+                x = x_suivant;
+                y = y_suivant;
+            }
+
+            dessin_fft[t][0] = x_suivant;
+            dessin_fft[t][1] = y_suivant;
+
+            for (let i = 1; i < t; i++) {
+                push();
+                strokeWeight(3);
+                stroke(190);
+                line(dessin_fft[i - 1][0],
+                    dessin_fft[i - 1][1],
+                    dessin_fft[i][0],
+                    dessin_fft[i][1]
+                );
+                pop();
+
+            }
+            push();
+            strokeWeight(4);
+            point(x_suivant, y_suivant);
+            pop();
+        }
+        function dft(matrix) {
+            let out = Array.from(new Array(matrix.length), () => new Array(2));
+            let n = matrix.length;
+            for (let k = 0; k < n; k++) {
+                // For each output element
+                let sumreal = 0;
+                let sumimag = 0;
+                for (let t_ = 0; t_ < n; t_++) {
+                    // For each input element
+                    let angle = (2 * Math.PI * t_ * k) / n;
+                    sumreal +=
+                        matrix[t_][0] * Math.cos(angle) + matrix[t_][1] * Math.sin(angle);
+                    sumimag +=
+                        -matrix[t_][0] * Math.sin(angle) +
+                        matrix[t_][1] * Math.cos(angle);
+                }
+                out[k][0] = sumreal / n;
+                out[k][1] = sumimag / n;
+                if (k < nombre_frequences) {
+                    rayons[k] = sqrt(out[k][0] * out[k][0] + out[k][1] * out[k][1]);
+                    vitesse_angulaire[k] = (2 * Math.PI * k) / dessin.length;
+                    phases[k] = atan2(out[k][1], out[k][0]);
+                }
+            }
+            return out;
+        }
+    </script>

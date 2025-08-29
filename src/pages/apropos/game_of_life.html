@@ -1,118 +1,171 @@
-<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-<script>
-    // This is the implementation of the Game of Life
-    // The grid represents cells (black cells are alive, white cells are not)
-    //
-    // The Game of Life follows simple rules: (we call neighbour a cell which is alive)
-    // 1) if a cell has 2 neighbours : the cell is unchanged
-    // 2) if a cell has 3 neighbours : the cell becomes alive
-    // 3) Else : the cell becomes white (dead)
-    // Screen parameters
-    let screenWidth = 800; // Grid parameters
-    let gridWidth = 40;
-    let cellWidth;
-    let grid;
-    let nextGrid; // to know if the the simulation is running
-    let activation = 0;
-    function setup() {
-        frameRate(60);
-        createCanvas(800, 800);
-        background(100, 100, 100);
-        Init();
-        drawGrid(grid);
-    }
-    function Init() {
-        grid = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        nextGrid = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        cellWidth = screenWidth / gridWidth;
-        activation = 0;
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                grid[i][j] = 1; // 1 stands for white cells
-            }
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
-    }
-    function draw() {
-        if (activation == 1) {
-            frameRate(5);
-            iterate();
+
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        background(40, 40, 40);
-        drawGrid(grid);
-        textSize(25);
-        text("ALT = Clear ; Click = Change Color ; Any key = Start", 30, 30);
-    }
-    function mouseClicked() {
-        // Click a cell to invert its colour
-        let i = int(mouseX / cellWidth);
-        let j = int(mouseY / cellWidth);
-        grid[i][j] = 1 - grid[i][j];
-    }
-    function keyPressed() {
-        // Press ALT to clear
-        // Press any other key (except escape) to run the simulation)
-        if (keyCode == ALT) {
+
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Automate cellulaire : le jeu de la vie</h1>
+        <h2>Contrôles :</h2>
+        <div class="controls">
+            <span class="key">ALT</span> Réinitialiser
+            <span class="key">Cliquer</span> Changer la couleur d'une case
+            <span class="key">R</span> Lancer la simulation
+        </div>
+
+        <p><strong>Instructions :</strong> Dessinez la situation initiale de votre choix et observez.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        // This is the implementation of the Game of Life
+        // The grid represents cells (black cells are alive, white cells are not)
+        //
+        // The Game of Life follows simple rules: (we call neighbour a cell which is alive)
+        // 1) if a cell has 2 neighbours : the cell is unchanged
+        // 2) if a cell has 3 neighbours : the cell becomes alive
+        // 3) Else : the cell becomes white (dead)
+        // Screen parameters
+        let screenWidth = 800; // Grid parameters
+        let gridWidth = 40;
+        let cellWidth;
+        let grid;
+        let nextGrid; // to know if the the simulation is running
+        let activation = 0;
+        function setup() {
+            frameRate(60);
+            createCanvas(800, 800);
+            background(100, 100, 100);
             Init();
-        } else {
-            activation = 1;
+            drawGrid(grid);
         }
-    }
-    function drawGrid(grid) {
-        // Draw each cell depending on its value (0 : black  ;  1 : white)
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                push();
-                stroke(200);
-                fill(grid[i][j] * 255);
-                rect(
-                    cellWidth * i,
-                    cellWidth * j,
-                    cellWidth * 0.95,
-                    cellWidth * 0.95
-                );
-                pop();
+        function Init() {
+            grid = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            nextGrid = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            cellWidth = screenWidth / gridWidth;
+            activation = 0;
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    grid[i][j] = 1; // 1 stands for white cells
+                }
             }
         }
-    }
-    function iterate() {
-        nextGrid = structuredClone(grid); // We look at each cell
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                // And count the neighbours (cells with a value of 0
-                let neighboursNumber = 0;
-                for (let di = -1; di <= 1; di++) {
-                    for (let dj = -1; dj <= 1; dj++) {
-                        let outOfBounds =
-                            di + i == gridWidth ||
-                            dj + j == gridWidth ||
-                            di + i == -1 ||
-                            dj + j == -1;
-                        if (!outOfBounds && (dj != 0 || di != 0)) {
-                            if (grid[i + di][j + dj] == 0) {
-                                // we need to count all the neighbours before changing the values, that's why we need grid and nextGrid
-                                neighboursNumber++;
+        function draw() {
+            if (activation == 1) {
+                frameRate(5);
+                iterate();
+            }
+            background(40, 40, 40);
+            drawGrid(grid);
+            textSize(25);
+            text("ALT = Clear ; Click = Change Color ; Any key = Start", 30, 30);
+        }
+        function mouseClicked() {
+            // Click a cell to invert its colour
+            let i = int(mouseX / cellWidth);
+            let j = int(mouseY / cellWidth);
+            grid[i][j] = 1 - grid[i][j];
+        }
+        function keyPressed() {
+            // Press ALT to clear
+            // Press any other key (except escape) to run the simulation)
+            if (keyCode == ALT) {
+                Init();
+            } else {
+                activation = 1;
+            }
+        }
+        function drawGrid(grid) {
+            // Draw each cell depending on its value (0 : black  ;  1 : white)
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    push();
+                    stroke(200);
+                    fill(grid[i][j] * 255);
+                    rect(
+                        cellWidth * i,
+                        cellWidth * j,
+                        cellWidth * 0.95,
+                        cellWidth * 0.95
+                    );
+                    pop();
+                }
+            }
+        }
+        function iterate() {
+            nextGrid = structuredClone(grid); // We look at each cell
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    // And count the neighbours (cells with a value of 0
+                    let neighboursNumber = 0;
+                    for (let di = -1; di <= 1; di++) {
+                        for (let dj = -1; dj <= 1; dj++) {
+                            let outOfBounds =
+                                di + i == gridWidth ||
+                                dj + j == gridWidth ||
+                                di + i == -1 ||
+                                dj + j == -1;
+                            if (!outOfBounds && (dj != 0 || di != 0)) {
+                                if (grid[i + di][j + dj] == 0) {
+                                    // we need to count all the neighbours before changing the values, that's why we need grid and nextGrid
+                                    neighboursNumber++;
+                                }
                             }
                         }
-                    }
-                } // Rules of the Game Of Life
-                if (neighboursNumber == 3) {
-                    nextGrid[i][j] = 0;
-                } else if (neighboursNumber != 2) {
-                    nextGrid[i][j] = 1;
-                } // if neighboursNumber = 2 then the cell is unchange
-            }
-        } // We save the previous grid in memory
-        grid = structuredClone(nextGrid);
-    }
-    // function copy_array(matrix) {
-    //     let myInt = new Array(matrix.length);
-    //     for (let i = 0; i < matrix.length; i++) {
-    //         let aMatrix = matrix[i];
-    //         let aLength = aMatrix.length;
-    //         myInt[i] = new Array(aLength);
-    //         structuredClone(aMatrix, 0, myInt[i], 0, aLength);
-    //     }
-    //     return myInt;
-    // }
+                    } // Rules of the Game Of Life
+                    if (neighboursNumber == 3) {
+                        nextGrid[i][j] = 0;
+                    } else if (neighboursNumber != 2) {
+                        nextGrid[i][j] = 1;
+                    } // if neighboursNumber = 2 then the cell is unchange
+                }
+            } // We save the previous grid in memory
+            grid = structuredClone(nextGrid);
+        }
+        // function copy_array(matrix) {
+        //     let myInt = new Array(matrix.length);
+        //     for (let i = 0; i < matrix.length; i++) {
+        //         let aMatrix = matrix[i];
+        //         let aLength = aMatrix.length;
+        //         myInt[i] = new Array(aLength);
+        //         structuredClone(aMatrix, 0, myInt[i], 0, aLength);
+        //     }
+        //     return myInt;
+        // }
 
-</script>
+    </script>

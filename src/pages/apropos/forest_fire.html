@@ -1,182 +1,229 @@
-<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
-<script>
-    // This is a simulation of a forest fire
-    // The simulation shows the propagation of a fire on a map (left) and the temperatures on another one (right)
-    // When a cell of forest is completely burned, the temperature is considered to be the initial temperature
-    // Screen and grid parameters
-    let screenWidth = 800;
-    let gridWidth = 800;
-    let cellWidth; // To know if the simulation is running
-    let activation = 0; // Temperature maps
-    let temperature;
-    let previousTemperature;
-    let initialTemperature = 20; // To know if a cell of forest is burning
-    let burning; // Forest maps
-    let forest;
-    let nextForest; // Equation parameters
-    let deltaTime = 1;
-    let k = 0.004;
-    let deltaNoise = 0.02;
-    let rho = 0.1;
-    let H0 = 1600;
-    let capacity = 0.5;
-    let D = 0.01;
-    let h = 0.4;
-    let temperatureThreshold = 150;
-    let temperatureBeginFire = 300;
+<!DOCTYPE html>
+<html lang="fr">
 
-    function setup() {
-        frameRate(60);
-        createCanvas(1600, 800);
-        background(100, 100, 100);
-        init();
-        drawForest(forest);
-    }
-    function init() {
-        // Initialize the maps of temperature, burning, and forest
-        temperature = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        previousTemperature = Array.from(
-            new Array(gridWidth),
-            () => new Array(gridWidth)
-        );
-        forest = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        burning = Array.from(new Array(gridWidth), () => new Array(gridWidth));
-        cellWidth = screenWidth / gridWidth;
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                temperature[i][j] = initialTemperature;
-                previousTemperature[i][j] = initialTemperature;
-            }
-        } // We set the forest elements  with perlin noise. The model only uses one layer of perlin noise
-        // But we could do multiple layers with different frequencies and magnitudes
-        // For example  the sum of A/i * noise(freq*i)
-        // Which can be seen as adding detail (high frequencies and low magnitude) with each layer
-        // This method is used for procedural terain generation
-        for (let i = 1; i < gridWidth - 1; i++) {
-            for (let j = 1; j < gridWidth - 1; j++) {
-                forest[i][j] = noise(deltaNoise * j, deltaNoise * i);
-            }
-        } // We set the borders with no forest (this is to avoid problems when calculating the elements on each border.
-        for (let i = 0; i < gridWidth; i++) {
-            forest[i][0] = 0;
-            forest[i][gridWidth - 1] = 0;
-            forest[gridWidth - 1][i] = 0;
-            forest[0][i] = 0;
-        }
-    }
-    function mouseClicked() {
-        beginFire()
-    }
-    function beginFire() {
-        let squareSize = 5;
-        for (let i = -int(squareSize / 2); i < int(squareSize / 2) + 1; i++) {
-            for (let j = -int(squareSize / 2); j < int(squareSize / 2) + 1; j++) {
-                temperature[int(mouseX / cellWidth) + i][int(mouseY / cellWidth) + j] =
-                    temperatureBeginFire;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
         }
 
-    }
-    function drawForest(forest) {
-        loadPixels();
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                let forestCol = [0, forest[i][j] * 255, 0, 255];
-                let tVal = temperature[i][j];
-                let tempCol = [
-                    (tVal / 600) * 255,
-                    0,
-                    255 - (tVal / 600) * 255,
-                    255
-                ];
+        .instructions {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
-                for (let x = 0; x < cellWidth; x++) {
-                    for (let y = 0; y < cellWidth; y++) {
-                        // forêt à gauche
-                        let idxF = 4 * ((j * cellWidth + y) * width + (i * cellWidth + x));
-                        pixels[idxF] = forestCol[0];
-                        pixels[idxF + 1] = forestCol[1];
-                        pixels[idxF + 2] = forestCol[2];
-                        pixels[idxF + 3] = 255;
+        .controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
 
-                        // température à droite
-                        let idxT = 4 * ((j * cellWidth + y) * width + (i * cellWidth + x + screenWidth));
-                        pixels[idxT] = tempCol[0];
-                        pixels[idxT + 1] = tempCol[1];
-                        pixels[idxT + 2] = tempCol[2];
-                        pixels[idxT + 3] = 255;
+        .key {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="instructions">
+        <p><a href="/"> &larr; Retour à la page d'acceuil du site</a></p>
+
+        <h1>Simulation de feux de forêts par les équations différentielles</h1>
+
+        <p><strong>Instructions :</strong> Cliquez sur le carré vert à gauche pour déclancher un feux de forêt. </p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <script>
+        // This is a simulation of a forest fire
+        // The simulation shows the propagation of a fire on a map (left) and the temperatures on another one (right)
+        // When a cell of forest is completely burned, the temperature is considered to be the initial temperature
+        // Screen and grid parameters
+        let screenWidth = 800;
+        let gridWidth = 800;
+        let cellWidth; // To know if the simulation is running
+        let activation = 0; // Temperature maps
+        let temperature;
+        let previousTemperature;
+        let initialTemperature = 20; // To know if a cell of forest is burning
+        let burning; // Forest maps
+        let forest;
+        let nextForest; // Equation parameters
+        let deltaTime = 1;
+        let k = 0.004;
+        let deltaNoise = 0.02;
+        let rho = 0.1;
+        let H0 = 1600;
+        let capacity = 0.5;
+        let D = 0.01;
+        let h = 0.4;
+        let temperatureThreshold = 150;
+        let temperatureBeginFire = 300;
+
+        function setup() {
+            frameRate(60);
+            createCanvas(1600, 800);
+            background(100, 100, 100);
+            init();
+            drawForest(forest);
+        }
+        function init() {
+            // Initialize the maps of temperature, burning, and forest
+            temperature = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            previousTemperature = Array.from(
+                new Array(gridWidth),
+                () => new Array(gridWidth)
+            );
+            forest = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            burning = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+            cellWidth = screenWidth / gridWidth;
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    temperature[i][j] = initialTemperature;
+                    previousTemperature[i][j] = initialTemperature;
+                }
+            } // We set the forest elements  with perlin noise. The model only uses one layer of perlin noise
+            // But we could do multiple layers with different frequencies and magnitudes
+            // For example  the sum of A/i * noise(freq*i)
+            // Which can be seen as adding detail (high frequencies and low magnitude) with each layer
+            // This method is used for procedural terain generation
+            for (let i = 1; i < gridWidth - 1; i++) {
+                for (let j = 1; j < gridWidth - 1; j++) {
+                    forest[i][j] = noise(deltaNoise * j, deltaNoise * i);
+                }
+            } // We set the borders with no forest (this is to avoid problems when calculating the elements on each border.
+            for (let i = 0; i < gridWidth; i++) {
+                forest[i][0] = 0;
+                forest[i][gridWidth - 1] = 0;
+                forest[gridWidth - 1][i] = 0;
+                forest[0][i] = 0;
+            }
+        }
+        function mouseClicked() {
+            beginFire()
+        }
+        function beginFire() {
+            let squareSize = 5;
+            for (let i = -int(squareSize / 2); i < int(squareSize / 2) + 1; i++) {
+                for (let j = -int(squareSize / 2); j < int(squareSize / 2) + 1; j++) {
+                    temperature[int(mouseX / cellWidth) + i][int(mouseY / cellWidth) + j] =
+                        temperatureBeginFire;
+                }
+            }
+
+        }
+        function drawForest(forest) {
+            loadPixels();
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    let forestCol = [0, forest[i][j] * 255, 0, 255];
+                    let tVal = temperature[i][j];
+                    let tempCol = [
+                        (tVal / 600) * 255,
+                        0,
+                        255 - (tVal / 600) * 255,
+                        255
+                    ];
+
+                    for (let x = 0; x < cellWidth; x++) {
+                        for (let y = 0; y < cellWidth; y++) {
+                            // forêt à gauche
+                            let idxF = 4 * ((j * cellWidth + y) * width + (i * cellWidth + x));
+                            pixels[idxF] = forestCol[0];
+                            pixels[idxF + 1] = forestCol[1];
+                            pixels[idxF + 2] = forestCol[2];
+                            pixels[idxF + 3] = 255;
+
+                            // température à droite
+                            let idxT = 4 * ((j * cellWidth + y) * width + (i * cellWidth + x + screenWidth));
+                            pixels[idxT] = tempCol[0];
+                            pixels[idxT + 1] = tempCol[1];
+                            pixels[idxT + 2] = tempCol[2];
+                            pixels[idxT + 3] = 255;
+                        }
+                    }
+                }
+            }
+            updatePixels();
+        }
+        function draw() {
+            nextTemperature();
+            calcule_bois();
+            drawForest(forest);
+            textSize(25);
+            fill(255);
+            text("Click = Start Fire", 30, 30);
+            fill(255);
+            text("Biomass Map", 600, 30);
+            fill(255);
+            text("Temperature Map", 1350, 30);
+        }
+        function calcule_bois() {
+            for (let i = 0; i < gridWidth; i++) {
+                for (let j = 0; j < gridWidth; j++) {
+                    // The wood in each cell decreases when it is burning
+                    if (
+                        burning[i][j] ||
+                        (temperature[i][j] > temperatureThreshold && forest[i][j] > 0)
+                    ) {
+                        burning[i][j] = true;
+                        forest[i][j] -= k * deltaTime;
+                        forest[i][j] = max(0, forest[i][j]);
+                    } // If there is no wood left, the cell stops burning
+                    if (forest[i][j] == 0 || temperature[i][j] < 150) {
+                        burning[i][j] = false;
                     }
                 }
             }
         }
-        updatePixels();
-    }
-    function draw() {
-        nextTemperature();
-        calcule_bois();
-        drawForest(forest);
-        textSize(25);
-        fill(255);
-        text("Click = Start Fire", 30, 30);
-        fill(255);
-        text("Biomass Map", 600, 30);
-        fill(255);
-        text("Temperature Map", 1350, 30);
-    }
-    function calcule_bois() {
-        for (let i = 0; i < gridWidth; i++) {
-            for (let j = 0; j < gridWidth; j++) {
-                // The wood in each cell decreases when it is burning
-                if (
-                    burning[i][j] ||
-                    (temperature[i][j] > temperatureThreshold && forest[i][j] > 0)
-                ) {
-                    burning[i][j] = true;
-                    forest[i][j] -= k * deltaTime;
-                    forest[i][j] = max(0, forest[i][j]);
-                } // If there is no wood left, the cell stops burning
-                if (forest[i][j] == 0 || temperature[i][j] < 150) {
-                    burning[i][j] = false;
+        function nextTemperature() {
+            for (let i = 1; i < gridWidth - 1; i++) {
+                for (let j = 1; j < gridWidth - 1; j++) {
+                    // Equations of propagation and combustion
+                    if (burning[i][j]) {
+                        temperature[i][j] =
+                            previousTemperature[i][j] +
+                            deltaTime *
+                            ((forest[i][j] * H0) / rho / capacity - // The temperature increases more when there is more wood left
+                                h *
+                                (previousTemperature[i][j] -
+                                    initialTemperature) + // The temperature naturally decreases with time (the energy is dissipated)
+                                D * laplacian(previousTemperature, i, j)); // Propagation
+                    } else {
+                        temperature[i][j] +=
+                            deltaTime *
+                            (-h * (previousTemperature[i][j] - initialTemperature) +
+                                D * laplacian(previousTemperature, i, j));
+                    }
                 }
             }
+            let temp = temperature;
+            previousTemperature = temp;
         }
-    }
-    function nextTemperature() {
-        for (let i = 1; i < gridWidth - 1; i++) {
-            for (let j = 1; j < gridWidth - 1; j++) {
-                // Equations of propagation and combustion
-                if (burning[i][j]) {
-                    temperature[i][j] =
-                        previousTemperature[i][j] +
-                        deltaTime *
-                        ((forest[i][j] * H0) / rho / capacity - // The temperature increases more when there is more wood left
-                            h *
-                            (previousTemperature[i][j] -
-                                initialTemperature) + // The temperature naturally decreases with time (the energy is dissipated)
-                            D * laplacian(previousTemperature, i, j)); // Propagation
-                } else {
-                    temperature[i][j] +=
-                        deltaTime *
-                        (-h * (previousTemperature[i][j] - initialTemperature) +
-                            D * laplacian(previousTemperature, i, j));
-                }
-            }
+        function laplacian(matrix, i, j) {
+            // The choice here was to consider the corners (diagonals) and weight them with lower values
+            return (
+                0.2 * matrix[i + 1][j] +
+                0.2 * matrix[i][j + 1] +
+                0.2 * matrix[i - 1][j] +
+                0.2 * matrix[i][j - 1] +
+                0.05 * matrix[i + 1][j + 1] +
+                0.05 * matrix[i - 1][j + 1] +
+                0.05 * matrix[i - 1][j - 1] +
+                0.05 * matrix[i + 1][j - 1] -
+                8 * matrix[i][j]
+            );
         }
-        let temp = temperature;
-        previousTemperature = temp;
-    }
-    function laplacian(matrix, i, j) {
-        // The choice here was to consider the corners (diagonals) and weight them with lower values
-        return (
-            0.2 * matrix[i + 1][j] +
-            0.2 * matrix[i][j + 1] +
-            0.2 * matrix[i - 1][j] +
-            0.2 * matrix[i][j - 1] +
-            0.05 * matrix[i + 1][j + 1] +
-            0.05 * matrix[i - 1][j + 1] +
-            0.05 * matrix[i - 1][j - 1] +
-            0.05 * matrix[i + 1][j - 1] -
-            8 * matrix[i][j]
-        );
-    }
-</script>
+    </script>
