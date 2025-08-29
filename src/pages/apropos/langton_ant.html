@@ -1,0 +1,129 @@
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script>
+
+    // Simulation of the cellular automata Langtaon's Ant
+    // The ant (here a red square) goes 1 step further each step but changes its direction depending on the colour of the cell (Left/Right for White/Black)
+    // The Cells are initialized with the white colour, but can be modified by clicking on them.
+    // The simulation can run by pressing any key (except Alt or Escape).
+    // The simulation can be reinitilized by pressing Alt.
+    // the grid of cells (white = 1 ; black = 0 )
+    let grid; // Screen Parameters
+    let screenWidth = 800;
+    let gridWidth = 40;
+    let cellWidth; // Position
+    let x;
+    let y; // Direction
+    let d_x = 0;
+    let d_y = -1; // Is running / Is not running (should be a boolean)
+    let activation = 0;
+    function setup() {
+        frameRate(100);
+        createCanvas(800, 800);
+        Init();
+    }
+    function Init() {
+        grid = Array.from(new Array(gridWidth), () => new Array(gridWidth));
+        cellWidth = int(screenWidth / gridWidth);
+        console.log(screenWidth, gridWidth, cellWidth)
+        // The initial position is the middle of the grid
+        x = int(gridWidth / 2 - 1);
+        y = int(gridWidth / 2 - 1);
+        background(40, 40, 40); // All the cells are set to white ( cell value = 1 )
+        for (let i = 0; i < gridWidth; i++) {
+            for (let j = 0; j < gridWidth; j++) {
+                grid[i][j] = 1;
+            }
+        }
+        drawGrid();
+        drawAnt(x, y);
+    }
+    function draw() {
+        // Always show the grid and move the ant if the simulation is running (activation = 1)
+        let isInBounds = x > 1 && x < gridWidth && y > 1 && y < gridWidth;
+        if (activation == 1 && isInBounds) {
+            advanceAnt();
+        }
+        background(40, 40, 40);
+        drawGrid();
+        drawAnt(x, y);
+        textSize(25);
+        text("ALT = Clear ; Click = Change Color ; Any key = Start", 30, 30);
+    }
+    function mouseClicked() {
+        // click on a cell to change its colour
+        let i = -1;
+        let j = -1;
+        if (mouseX / cellWidth < gridWidth && mouseX / cellWidth >= 0) {
+            i = int(mouseX / cellWidth);
+        }
+        if (mouseY / cellWidth < gridWidth && mouseY / cellWidth >= 0) {
+            j = int(mouseY / cellWidth);
+        }
+        console.log(mouseX, mouseY);
+        if (i >= 0 && j >= 0) {
+            grid[i][j] = 1 - grid[i][j];
+        }
+    }
+    function keyPressed() {
+        // Press ALT to clear
+        // Press any other key (except escape) to run the simulation)
+        if (keyCode == ALT) {
+            Init();
+            activation = 0;
+        } else {
+            activation = 1;
+            d_y = -1;
+        }
+    }
+    function drawGrid() {
+        for (let i = 0; i < gridWidth; i++) {
+            for (let j = 0; j < gridWidth; j++) {
+                push();
+                stroke(200);
+                fill(grid[i][j] * 255);
+                rect(
+                    cellWidth * i,
+                    cellWidth * j,
+                    cellWidth * 0.95,
+                    cellWidth * 0.95
+                );
+                pop();
+            }
+        }
+    }
+    function advanceAnt() {
+        // we change the direction depending on actual direction and the colour of the cell the Ant is actually walking on
+        if (grid[x][y] == 1) {
+            if (d_y != 0) {
+                d_x = d_y;
+                d_y = 0;
+            } else {
+                d_y = -d_x;
+                d_x = 0;
+            }
+        } else {
+            if (d_y != 0) {
+                d_x = -d_y;
+                d_y = 0;
+            } else {
+                d_y = +d_x;
+                d_x = 0;
+            }
+        }
+        x += d_x;
+        y += d_y;
+        grid[x][y] = 1 - grid[x][y]; // We change the colour of the cell
+    }
+    function drawAnt(x, y) {
+        push();
+        stroke(0);
+        fill(255, 20, 20);
+        ellipse(
+            cellWidth * (x + 0.5),
+            cellWidth * (y + 0.5),
+            cellWidth * 0.7,
+            cellWidth * 0.7
+        );
+        pop();
+    }
+</script>

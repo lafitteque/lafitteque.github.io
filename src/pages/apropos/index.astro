@@ -3,6 +3,7 @@ import Base from "@layouts/Main_Page.astro";
 ---
 
 <Base>
+    <br /><a href="/"> &larr; Retour à la page d'acceuil du site</a><br />
     <!-- Contenu spécifique de cette page -->
     <h1>A propos de Moi : Quentin Lafitte</h1>
 
@@ -52,19 +53,31 @@ import Base from "@layouts/Main_Page.astro";
         de mes projets.
         <br />
 
-        L'orienté objet est au coeur de presque tous mes projets. J'aime
+        L'orienté objet est au coeur de presque tous mes projets . J'aime
         concevoir des objets intuitifs et que mon code soit lisible et puisse
         être résumé en des étapes simples.
+
+        <br />
+
+        Certains projets visualisables sur le site ont été réalisés en
+        Javascript, d'autres en Java. Pour rendre ceux en Java visibles sur le
+        site, je les ai convertis automatiquement en Javascript à l'aide de
+        l'outil <a href="https://dkessner.github.io/processing-p5-convert/"
+            >Processing to P5</a
+        > disponible en ligne gratuitement.
     </p>
 
     <ul class="!list-disc pl-5">
         <li class="my-4">
-            <a href="/apropos/boids">BOIDS de Craig Reynolds (en 2D)</a>
+            <a href="/apropos/boids">BOIDS de Craig Reynolds (en 2D)</a> (JavaScript).
         </li>
-        <li class="my-4">Réaction de Gray-Scott (sans convection)</li>
+        <li class="my-4">
+            <a href="apropos/gray_scott">Réaction de Gray-Scott </a> sans convection
+            (Java).
+        </li>
         <li class="my-4">Implémentation de Quad-Trees.</li>
         <li class="my-4">
-            <a href="/apropos/solar_system"> Simulation du système solaire</a>.
+            <a href="/apropos/solar_system"> Simulation du système solaire</a> (JavaScript).
         </li>
 
         <li class="my-4">
@@ -75,15 +88,11 @@ import Base from "@layouts/Main_Page.astro";
         <li class="my-4">
             <a href="/apropos/double_pendulum">
                 Simulation d'un double pendule</a
-            >.
+            > (Java).
         </li>
         <li class="my-4">
-            Simulations de feux de forêts par des équations différentielles ou
-            par un modèle probabiliste.
-        </li>
-        <li class="my-4">
-            Automates cellulaires : jeux de la vie, simulation de chute de
-            sable, d'eau et d'infiltration d'eau dans le sable.
+            <a href="/apropos/forest_fire">Simulations de feux de forêts</a> par
+            des équations différentielles ou par un modèle probabiliste. (Java)
         </li>
         <li class="my-4">
             Simulation de blobs et fourmis sur Unity en HLSL (ComputeShader).
@@ -93,13 +102,23 @@ import Base from "@layouts/Main_Page.astro";
             transformations de Fourrier discrètes.
         </li>
         <li class="my-4">
-            <a href="/apropos/snake"> Implémentatio d'un Snake</a>
+            <a href="/apropos/langton_ant">
+                Implémentation de la fourmi de Langton</a
+            > (Java).
+        </li>
+        <li class="my-4">
+            <a href="/apropos/game_of_life">
+                Implémentation du jeu de la vie de Conway</a
+            > (Java).
+        </li>
+        <li class="my-4">
+            <a href="/apropos/snake"> Implémentation d'un Snake</a> (JavaScript).
         </li>
 
         <li class="my-4">
             <a href="/apropos/bouncing_balls">
                 Une simple simulation de balles</a
-            >
+            > (Java).
         </li>
     </ul>
 
@@ -117,10 +136,30 @@ import Base from "@layouts/Main_Page.astro";
             Apprentissage de Godot (GDScript) pour des prototypes de jeux.
         </li>
         <li class="my-4">
-            Développement de Mods pour Dome Keeper (<a
-                href="https://steamcommunity.com/sharedfiles/filedetails/?id=3355699902"
-                >lien vers une Beta de mon premier Mod</a
-            >)
+            Développement de Mods pour Dome Keeper (GDScript):
+            <ul class="pl-6">
+                <li class="my-4">
+                    - Ajout d'énormément de contenu au jeu (nouveaux mode de
+                    jeux, nouvelles mécaniques, nouvelles options, ...) :<a
+                        href="https://steamcommunity.com/sharedfiles/filedetails/?id=3355699902"
+                        >All You Can Mine</a
+                    >
+                </li>
+                <li class="my-4">
+                    - Ajout d'un nouveau personnage jouable avec des mécaniques
+                    de jeux uniques :
+                    <a
+                        href="https://steamcommunity.com/sharedfiles/filedetails/?id=3457074035&searchtext="
+                        >Excavator</a
+                    >
+                </li>
+                <li class="my-4">
+                    - Ajout d'un nouveau mode de jeu : <a
+                        href="https://steamcommunity.com/sharedfiles/filedetails/?id=3377504681&searchtext=endless"
+                        >Endless Combat Mode</a
+                    >
+                </li>
+            </ul>
         </li>
     </ul>
 </Base>
