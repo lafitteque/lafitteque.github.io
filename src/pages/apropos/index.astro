@@ -1,0 +1,126 @@
+---
+import Base from "@layouts/Main_Page.astro";
+---
+
+<Base>
+    <!-- Contenu spécifique de cette page -->
+    <h1>A propos de Moi : Quentin Lafitte</h1>
+
+    <br />
+    <br />
+
+    <h2>Mon parcours</h2>
+    <br />
+    <p>
+        Ayant passé ma scolarité au Lycée Français de Madrid, j'ai décidé de
+        suivre une formation scientifique en allant au Lycée Pierre de Fermat en
+        MPSI-MP (option informatique). J'ai ensuite intégré CentraleSupélec
+        (Cursus Supélec) et en suis ressorti ingénieur en télécommunications et
+        en computer science. J'ai immédiatement décidé de passer l'agrégation de
+        mathématiques et suis devenu professeur agrégé. Depuis, j'ai enseigné en
+        collège et en lycée et enseigne actuellement l'informatique à
+        l'Université Rennes 2.
+    </p>
+    <br />
+    <br />
+
+    <h2>Mes projets</h2>
+
+    <h3>Suplémaths : les mathématiques du supérieur</h3>
+    <p>
+        Ce site a été créé par moi-même avec quelques aides ponctuelles. J'ai
+        également utilisé ChatGPT, notamment pour générer rapidement les classes
+        tailwindcss afin d'avoir des rendus précis.
+
+        <br />
+
+        Tous les contenus mathématiques, informatiques et les animations ont été
+        créés par moi-même. Il est hors de question pour moi de faire appel à
+        des IA génératives pour créer du contenu de cours / exercices.
+    </p>
+
+    <h3>Simulations informatiques</h3>
+    <p>
+        J'aime beaucoup suivre des contenus de vulgarisation scientifique tels
+        <a href="https://www.youtube.com/@ScienceEtonnante"
+            >SciencesEtonnantes</a
+        >, <a href="https://www.youtube.com/@Fouloscopie">Fouloscopie</a>
+        <a href="https://www.youtube.com/@TheCodingTrain">The Coding Train</a> ou
+        <a href="https://www.youtube.com/@SebastianLague">Sebastian Lague</a> qui
+        réalisent de nombreuses simulations informatiques. J'aime parfois reproduire
+        leurs simulations ou recréer les miennes. Voici une liste non exhaustive
+        de mes projets.
+        <br />
+
+        L'orienté objet est au coeur de presque tous mes projets. J'aime
+        concevoir des objets intuitifs et que mon code soit lisible et puisse
+        être résumé en des étapes simples.
+    </p>
+
+    <ul class="!list-disc pl-5">
+        <li class="my-4">
+            <a href="/apropos/boids">BOIDS de Craig Reynolds (en 2D)</a>
+        </li>
+        <li class="my-4">Réaction de Gray-Scott (sans convection)</li>
+        <li class="my-4">Implémentation de Quad-Trees.</li>
+        <li class="my-4">
+            <a href="/apropos/solar_system"> Simulation du système solaire</a>.
+        </li>
+
+        <li class="my-4">
+            Simulation de populations de renards, lapins et carottes (chaque
+            entité est modélisée et a un comportement spatial propre dépendant
+            de son champs de vision) .
+        </li>
+        <li class="my-4">
+            <a href="/apropos/double_pendulum">
+                Simulation d'un double pendule</a
+            >.
+        </li>
+        <li class="my-4">
+            Simulations de feux de forêts par des équations différentielles ou
+            par un modèle probabiliste.
+        </li>
+        <li class="my-4">
+            Automates cellulaires : jeux de la vie, simulation de chute de
+            sable, d'eau et d'infiltration d'eau dans le sable.
+        </li>
+        <li class="my-4">
+            Simulation de blobs et fourmis sur Unity en HLSL (ComputeShader).
+        </li>
+        <li class="my-4">
+            Approximation de dessins faits d'une seule ligne à l'aide de
+            transformations de Fourrier discrètes.
+        </li>
+        <li class="my-4">
+            <a href="/apropos/snake"> Implémentatio d'un Snake</a>
+        </li>
+
+        <li class="my-4">
+            <a href="/apropos/bouncing_balls">
+                Une simple simulation de balles</a
+            >
+        </li>
+    </ul>
+
+    <h3>Développement de jeux vidéo / Mods</h3>
+
+    J'ai développé des prototypes de jeux vidéo inachevés. Je n'ai aucune
+    prétention dans ce domaine et m'y suis adonné par curiosité mais également
+    par plaisir de créer.
+
+    <ul class="!list-disc pl-5">
+        <li class="my-4">
+            Apprentissage de Unity (C\#) pour des projets de jeux (platformer).
+        </li>
+        <li class="my-4">
+            Apprentissage de Godot (GDScript) pour des prototypes de jeux.
+        </li>
+        <li class="my-4">
+            Développement de Mods pour Dome Keeper (<a
+                href="https://steamcommunity.com/sharedfiles/filedetails/?id=3355699902"
+                >lien vers une Beta de mon premier Mod</a
+            >)
+        </li>
+    </ul>
+</Base>

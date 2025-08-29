@@ -1,0 +1,241 @@
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script>
+    // This is an implementation of the BOIDS by K. Reynolds in 2D
+
+    // Screen parameters
+    var screenWidth = 800;
+    var screenOffset = 50;
+
+    // Birds parameters
+    var birdsNumber = 100;
+    var birds = [];
+    var distances = [];
+    var speed = 2.5;
+
+    var triangleCoord = [0, -7, -4, 7, 4, 7];
+    var colorOffset = 150;
+
+    var fr = 40;
+
+    //Behaviour Parameters
+    var maxRandomAngle = 3.1415 / 10;
+    var maxAngleChange = 3.1415 / 8;
+    var visionDistance = 100;
+    var groupingDistance = 50;
+    var ungroupingDistance = 40;
+    var visionAngle = 3.1415;
+    var independance = 1;
+    var allignment = 0.5;
+    var grouping = 0.5;
+    var ungrouping = 4;
+    var group = 1;
+
+    const initiateBird = () => {
+        return {
+            x: Math.random() * (screenWidth - 2 * screenOffset) + screenOffset,
+            y: Math.random() * (screenWidth - 2 * screenOffset) + screenOffset,
+            direction: Math.random() * 2 * PI - PI,
+            red: Math.random() * (255 - colorOffset) + colorOffset,
+            green: Math.random() * (255 - colorOffset) + colorOffset,
+            blue: Math.random() * (255 - colorOffset) + colorOffset,
+            mem: this.direction,
+
+            getDirection: function () {
+                return this.direction;
+            },
+
+            getXDirection: function () {
+                return speed * Math.cos(this.direction);
+            },
+
+            getYDirection: function () {
+                return speed * Math.sin(this.direction);
+            },
+
+            directionCalculus: function (
+                X_approach,
+                Y_approach,
+                X_away,
+                Y_away,
+                v_main,
+                dirAll,
+                countInRange,
+            ) {
+                // Allignment
+                // The bird wants to be parallel to the other birds at the good distance
+                var a = 0;
+                if (countInRange > 0) {
+                    a = dirAll.reduce((acc, elem) => acc + elem, 0);
+                    a /= countInRange;
+                    a -= this.direction;
+                }
+
+                // Direction
+
+                // If a neighbour is too close, we go away from him and if he is to far away we come close to him, this can be seen as directing our bird to the mean of the positions of the neighbours
+
+                // But we have to weight the closest birds with a negative value in order to go away from them so the X_away contains already the inverse information: the vector to go from the neighbour to the actual Bird
+
+                var d = 0;
+                if (X_approach.length > 0) {
+                    var x_mean =
+                        grouping *
+                        X_approach.reduce((acc, elem) => acc + elem, 0) +
+                        ungrouping *
+                        X_away.reduce((acc, elem) => acc + elem, 0);
+
+                    var y_mean =
+                        grouping *
+                        Y_approach.reduce((acc, elem) => acc + elem, 0) +
+                        ungrouping *
+                        Y_away.reduce((acc, elem) => acc + elem, 0);
+
+                    x_mean /= X_approach.length + X_away.length;
+                    y_mean /= X_approach.length + X_away.length;
+
+                    var v_mean = createVector(x_mean - this.x, y_mean - this.y);
+                    this.v_mean1 = [x_mean - this.x, y_mean - this.y];
+                    this.v_mean2 = [
+                        (this.getXDirection + x_mean - this.x) / 2,
+                        (this.getYDirection + y_mean - this.y) / 2,
+                    ];
+
+                    d = v_main.angleBetween(v_mean);
+                }
+
+                // We do a weighted mean depending on the defined beheviour
+                var dir_change =
+                    (group * d + allignment * a) /
+                    (independance + group + allignment); //
+
+                // For more natural behaviours we add some random
+                dir_change +=
+                    Math.random() * maxRandomAngle - maxRandomAngle / 2;
+
+                this.direction += min(maxAngleChange, max(dir_change, -maxAngleChange));
+            },
+
+            advance: function () {
+                // this is the problematic part: by working modulus the screen width, we don't consider the real distances. In fact if one bird is at the Middle-Left side and another one at the Middle-Right side, they will be consider as really far away even if in modulus range they are close.
+
+                // We could implement a better version which would consider the distance with the modulus or do a version with walls and consider each pixel of the wall as a special bird wich could be seen as a static predator, forcing our birds to stay away from him. But I don't like to put birds in a cage.
+
+                // In order to use the modulus distance, we should calculate each time the module of the vector:
+                // 	(x_1 - x_2) % screenWidth 		, 		(y_1 - y_2)  % screenWidth
+
+                this.x = (this.x + this.getXDirection() + screenWidth) % screenWidth;
+                this.y = (this.y + this.getYDirection() + screenWidth) % screenWidth;
+            },
+
+            draw: function () {
+                push();
+                fill(this.red, this.green, this.blue);
+                translate(this.x, this.y);
+                rotate(this.direction + PI / 2);
+                triangle(...triangleCoord);
+                pop();
+                this.mem = this.direction;
+            },
+        };
+    };
+
+    function setup() {
+        createCanvas(screenWidth, screenWidth);
+        background(220);
+
+        frameRate(fr);
+
+        birds = Array(birdsNumber)
+            .fill(0)
+            .map((v) => initiateBird());
+        distances = Array(birdsNumber).fill(Array(birdsNumber).fill(0));
+
+        birds.forEach((bird) => {
+            bird.mem = bird.direction;
+        });
+    }
+
+    // draw is the main loop
+    function draw() {
+        background(0);
+
+        distances = distances.map((line, l) =>
+            line.map((column, c) =>
+                dist(birds[l].x, birds[l].y, birds[c].x, birds[c].y),
+            ),
+        );
+
+        rules();
+
+        birds.forEach((bird) => bird.draw());
+        birds.forEach((bird) => console.log(bird.x, bird.y))
+    }
+
+    //Applies the three rules: Be alligned with the group, don't collide and stay packed
+    function rules() {
+        for (var l = 0; l < birdsNumber; l++) {
+            // We set all of our variables to calculate the directions of the birds
+            var directions_allign = [];
+            var v_main = createVector(
+                birds[l].getXDirection(),
+                birds[l].getYDirection(),
+            );
+            var positions_approachX = [];
+            var positions_approachY = [];
+            var positions_awayX = [];
+            var positions_awayY = [];
+            var actualBird = birds[l];
+
+            for (var c = 0; c < birdsNumber; c++) {
+                var otherBird = birds[c];
+                // v_sec is the vector directed from the bird we are loocking at and his neighbour we are looking at
+                var v_sec = createVector(
+                    birds[c].x - birds[l].x,
+                    birds[c].y - birds[l].y,
+                );
+
+                // The goal here is to collect all the data we need about the neighbours
+                // The Birds who are not in the neighbourhood do not matter
+
+                // Is in the allignment Area //
+
+                if (
+                    distances[l][c] < groupingDistance &&
+                    distances[l][c] > ungroupingDistance &&
+                    c != l &&
+                    Math.abs(v_main.angleBetween(v_sec)) < visionAngle
+                ) {
+                    directions_allign.push(birds[c].getDirection());
+                }
+
+                // Is in the "go away" Area //
+                else if (distances[l][c] < ungroupingDistance && c != l) {
+                    positions_awayX.push(2 * actualBird.x - otherBird.x);
+                    positions_awayY.push(2 * actualBird.y - otherBird.y);
+                }
+
+                // Is in the approach Area //
+                else if (
+                    distances[l][c] < visionDistance &&
+                    distances[l][c] > visionDistance &&
+                    c != l
+                ) {
+                    positions_approachX.push(otherBird.x);
+                    positions_approachY.push(otherBird.y);
+                }
+            }
+
+            // Now that we have all the information about the neighbours, we calculate the direction
+            birds[l].directionCalculus(
+                positions_approachX,
+                positions_approachY,
+                positions_awayX,
+                positions_awayY,
+                v_main,
+                directions_allign,
+                directions_allign.length,
+            );
+            birds[l].advance();
+        }
+    }
+</script>

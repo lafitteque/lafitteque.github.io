@@ -1,0 +1,200 @@
+<script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+<script>
+
+    // A simulation of the solar system with newton's law 
+    // and computing all the interactions between planets
+
+    // // // // // // // // // // // // // // 
+    // // // // // Variables   // // // // // 
+    // // // // // // // // // // // // // // 
+
+    var fr = 20
+    var planetNumber = 10;
+    var planets;
+    var screenSize = 1100;
+    var G = 6.67 * Math.pow(10, -11)
+    var DeltaTime = 3600 * 12
+
+    var Colors = ["rgb(255,255,0)",       // SOLEIL
+        "rgb(255,255,255)",      // MERCURE
+        "rgb(255,153,,51)",      // VENUS
+        "rgb(0 , 0 , 255)",       // TERRE
+        "rgb(255 , 51 , 51)",     // MARS
+        "rgb(153 , 73 , 0 )",    // JUPITER
+        "rgb(204 , 204 , 0 )",   // SATURNE
+        "rgb( 0 , 128 , 255 )",  // URANUS
+        "rgb( 51 ,51 255 )",      // NEPTUNE
+        "rgb( 204 , 0 , 0 )",];   // PLUTON
+
+
+
+    // Diameters (1000 km)
+
+    var Diameters = [1392 * 0.4,  // SOLEIL
+        4.8,   // MERCURE
+        12.1,  // VENUS
+        12.7,  // TERRE
+        6.7,   // MARS
+    139 / 4,  // JUPITER
+    114.6 / 4, // SATURNE
+    50.5 * 0.5,  // URANUS
+        49.1,  // NEPTUNE
+        2.3];  // PLUTON
+
+    // Distance Planet-Sun (millions km)
+    var Distances = [0,    // SOLEIL
+        58,   // MERCURE
+        108,  // VENUS
+        150,  // TERRE
+        228,  // MARS
+        778,  // JUPITER
+        1427, // SATURNE
+        2870, // URANUS
+        4497, // NEPTUNE
+        5900]; // PLUTON
+
+    // Speed (km / s)
+    var InitialSpeed =
+        [0,    // SOLEIL
+            47,   // MERCURE
+            35,  // VENUS
+            30,  // TERRE
+            24,  // MARS
+            13,  // JUPITER
+            9.6, // SATURNE
+            6.7, // URANUS
+            5.4, // NEPTUNE
+            4.7]; // PLUTON
+
+
+
+    // Masses  (10^23 kg)
+    var Masses =
+        [19890000,    // SOLEIL
+            3,   // MERCURE
+            40,  // VENUS
+            60,  // TERRE
+            6,  // MARS
+            18000,  // JUPITER
+            5600, // SATURNE
+            860, // URANUS
+            8600, // NEPTUNE
+            0.1]; // PLUTON
+
+
+
+    // // // // // // // // // // // // // // // // // //   
+    // // // // // // Class Planet   // // // // // // // 
+    // // // // // // // // // // // // // // // // // // 
+
+
+    class Planet {
+        constructor(m, D, x, y, v_x, v_y, color) {
+            this.r = D / 2;
+            this.m = m;
+            this.x = x;
+            this.y = y;
+            this.v_y = v_y;
+            this.v_x = v_x;
+            this.color = color;
+
+        }
+
+        distance = function (p1, p2) {
+            return dist(p1.x, p1.y, p2.x, p2.y);
+        }
+
+        speedCalculus = function (planets) {
+            planets = planets.filter(p => { return p != this });
+
+            // Acceleration:  
+            var Ax = planets.reduce((acc, p) =>
+                acc + G * p.m * cos(Math.atan2(p.y - this.y, p.x - this.x))
+                / Math.pow(this.distance(this, p), 2), 0);
+
+            var Ay = planets.reduce((acc, p) =>
+                acc + G * p.m * sin(Math.atan2(p.y - this.y, p.x - this.x))
+                / Math.pow(this.distance(this, p), 2), 0);
+
+            // The speed is deduced from the acceleration
+            this.v_x += Ax * DeltaTime;
+            this.v_y += Ay * DeltaTime;
+
+        }
+
+        advance = function () {
+            this.x += this.v_x * DeltaTime;
+            this.y += this.v_y * DeltaTime
+        }
+
+        draw = function () {
+            push();
+            fill(this.color);
+            translate(screenSize / 2 + this.x / 3000000000, screenSize / 2 + this.y / 3000000000);
+            // We divide x and y in order to see the planets on the screen
+            ellipse(0, 0, this.r, this.r)
+            pop();
+
+            push()
+            stroke(255)
+            translate(screenSize / 2 + this.x / 3000000000, screenSize / 2 + this.y / 3000000000);
+            line(0, 0, this.v_x / 1000, this.v_y / 1000)
+            pop()
+        }
+
+    }
+
+    function setup() {
+        createCanvas(2 * screenSize, screenSize);
+        frameRate(fr);
+
+        // // // // // // // // // // // // // // //  
+        // // // //Setting initial values // // // //
+        // // // // // // // // // // // // // // // // 
+
+        Diameters[0] /= 10                // Because the sun is too big
+
+        for (var i = 0; i < planetNumber; i++) {
+            Masses[i] *= Math.pow(10, 23)               // Conversion in kg
+        }
+
+        for (var i = 1; i < planetNumber; i++) {
+            Diameters[i] = Diameters[i] * 2;    // Because the planets are too small
+            InitialSpeed[i] *= 1000 // Conversion m/s
+            Distances[i] *= Math.pow(10, 9)    // Conversion m
+        }
+
+
+        // // // // // // // // // // // // // // // // //   
+        // // // // Planets Creation   // // // // // // //
+        // // // // // // // // // // // // // // // // // 
+
+        planets = new Array();
+
+        for (var i = 0; i < planetNumber; i++) {
+
+            planets.push(new Planet(Masses[i],
+                Diameters[i],
+                Distances[i],
+                0,
+                0,
+                InitialSpeed[i],
+                Colors[i]))
+
+            planets[i].draw()
+        }
+    }
+
+
+
+    // Main Loop
+    function draw() {
+        background(0);
+        planets.forEach((p, i) => {
+            p.speedCalculus(planets);
+            p.advance();
+            p.draw();
+        })
+    }
+
+</script>
