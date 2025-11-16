@@ -136,6 +136,10 @@
       {
         "titre": "Auto-Jointure",
         "url": "/auto_jointure"
+      },
+      {
+        "titre": "Auto-Jointure V2",
+        "url": "/auto_jointure_v2"
       }
     ]
   },
