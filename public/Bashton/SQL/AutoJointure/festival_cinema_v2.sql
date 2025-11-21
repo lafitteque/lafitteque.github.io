@@ -39,7 +39,7 @@ INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALU
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (3, 'Une classe sans nom', 9, 1986, 2.8, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (4, 'Le bouc chauve', 20, 2010, 4.0, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (5, 'Born to die', 10, 2012, 2.7, null);
-INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (6, 'Living pool', 3, 2015, 4.6);
+INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (6, 'Living pool', 3, 2015, 4.6, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (7, 'Au coin de la fournaise', 4, 2000, 2.5, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (8, 'Election day', 19, 1995, 3.6, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (9, 'Lady walf', 10, 2020, 3.6, null);
