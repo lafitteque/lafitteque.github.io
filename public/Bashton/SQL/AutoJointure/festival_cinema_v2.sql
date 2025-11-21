@@ -1,6 +1,6 @@
 -- Création des tables
 CREATE TABLE realisateur (id INT PRIMARY KEY, nom VARCHAR(100), prenom VARCHAR(100), annee_naissance INT);
-CREATE TABLE film (id INT PRIMARY KEY, titre VARCHAR(255), id_realisateur INT, annee_sortie INT, note FLOAT, FOREIGN KEY(id_realisateur) REFERENCES realisateur(id), FOREIGN KEY(remake_de) REFERENCES film(id));
+CREATE TABLE film (id INT PRIMARY KEY, titre VARCHAR(255), id_realisateur INT, remake_de INT annee_sortie INT, note FLOAT, FOREIGN KEY(id_realisateur) REFERENCES realisateur(id), FOREIGN KEY(remake_de) REFERENCES film(id));
 CREATE TABLE salle (id INT PRIMARY KEY, prix INT, nb_places INT);
 CREATE TABLE programmation (
     id_film INT, 
