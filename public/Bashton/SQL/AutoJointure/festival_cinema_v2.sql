@@ -50,7 +50,7 @@ INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALU
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (14, 'Le tout venant', 3, 2013, 2.9, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (15, 'Faire le beau', 5, 2020, 4.8, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (16, 'Ouaf ouaf', 9, 1995, 4.1, null);
-INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (17, 'Le spectacle', 3, 1988, 3.1), null;
+INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (17, 'Le spectacle', 3, 1988, 3.1, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (18, 'Surréel', 11, 1990, 4.0, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (19, 'Hot dogs', 4, 1998, 4.8, null);
 INSERT INTO film (id, titre, id_realisateur, annee_sortie, note, remake_de) VALUES (20, 'Miami 68', 10, 1980, 2.8, null);
