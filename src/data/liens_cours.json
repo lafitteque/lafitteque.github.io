@@ -134,12 +134,12 @@
     "Python : Algorithmique": [],
     "Bases de données": [
       {
-        "titre": "Auto-Jointure",
-        "url": "/auto_jointure"
+        "titre": "Cours - Auto-Jointure",
+        "url": "/auto_jointure_v2"
       },
       {
-        "titre": "Auto-Jointure V2",
-        "url": "/auto_jointure_v2"
+        "titre": "TD - Auto-Jointure",
+        "url": "/auto_jointure_td"
       }
     ]
   },
