@@ -1,7 +1,7 @@
 CREATE TABLE patient (patient_id INT PRIMARY KEY, nom VARCHAR(100), prenom VARCHAR(100), naissance DATE);
 
 -- Insertion des papatients
-INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (1, 'Altrain', 'Lucie', '2001-0097-12');
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (1, 'Altrain', 'Lucie', '2001-09-12');
 INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (2, 'Retarier', 'Luc', '2005-02-17');
 INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (3, 'Fléchier', 'Laëtitia', '1983-11-05');
 INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (4, 'Crevier', 'Mathieu', '1971-10-01');
