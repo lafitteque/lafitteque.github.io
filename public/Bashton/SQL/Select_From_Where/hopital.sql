@@ -1,0 +1,33 @@
+CREATE TABLE patient (patient_id INT PRIMARY KEY, nom VARCHAR(100), prenom VARCHAR(100), naissance DATE);
+
+-- Insertion des papatients
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (1, 'Altrain', 'Lucie', 12/07/2001);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (2, 'Retarier', 'Luc', 17/02/2005);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (3, 'Fléchier', 'Laëtitia', 05/11/1983);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (4, 'Crevier', 'Mathieu', 01/10/1971);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (5, 'Riqueti', 'Frédéric', 16/07/1991);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (6, 'Jauffret', 'Jordan', 24/07/1995);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (7, 'Bullion', 'Timothée', 29/07/1997);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (8, 'Compere', 'Bruno', 13/07/1991);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (9, 'Pichard', 'Barthélemy', 04/07/1984);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (10, 'Thibodeau', 'Kevin', 04/07/1995);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (11, 'Robineau', 'Joël', 08/07/1998);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (12, 'Lecerf', 'Daniel', 06/07/1998);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (13, 'Barthet', 'Axel', 16/07/1991);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (14, 'Calvet', 'Albertine', 11/07/2001);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (15, 'Bullion', 'Marie-Noëlle', 26/07/1992);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (16, 'Le Sueur', 'Mélodie', 22/07/2002);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (17, 'Pichard', 'Julia', 21/07/2005);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (18, 'Soyer', 'Carine', 23/07/2009);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (19, 'Pierrat', 'Blanche', 25/07/1976);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (20, 'Celice', 'Catherine', 20/07/1984);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (21, 'Houdin', 'Carole', 15/07/2001);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (22, 'Carbonneau', 'Alphonsine', 06/07/1972);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (23, 'Seyrès', 'Frédérique', 01/07/1978);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (24, 'Toussaint', 'Néo', 03/07/1967);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (25, 'Bombelles', 'Maël', 14/07/1975);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (26, 'Lortie', 'Christopher', 23/07/1998);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (27, 'Pichard', 'Jean-Charles', 29/07/1967);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (28, 'Morel', 'Sylviane', 27/07/1968);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (29, 'Chuquet', 'Godeleine', 27/07/2003);
+INSERT INTO patient (patient_id, nom, prenom, naissance) VALUES (30, 'Azéma', 'Gervaise', 19/07/1975);

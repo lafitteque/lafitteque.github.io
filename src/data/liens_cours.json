@@ -134,6 +134,10 @@
     "Python : Algorithmique": [],
     "Bases de données": [
       {
+        "titre": "Cours - Select, From et Where",
+        "url": "/select_from_where"
+      },
+      {
         "titre": "Cours - Auto-Jointure",
         "url": "/auto_jointure_v2"
       },
